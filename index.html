@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join My Camp - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
@@ -42,7 +42,7 @@
     }
 
     .header {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.imgur.com/nEj9nEl.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/coverphoto.png') center/cover no-repeat;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -180,6 +180,20 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
+    /* Responsive: Stack circle images on mobile */
+    @media (max-width: 768px) {
+      .about-circles {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .about-circles img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
     .countdown {
       font-size: 2em;
       font-weight: bold;
@@ -216,9 +230,9 @@
     <h1>About Our Camp</h1>
     <p>We are a community of creators, dreamers, and doers who co-create an environment of expression, support, and radical participation. From first-timers to seasoned Burners, all are welcome.</p>
     <div class="about-circles">
-      <img src="https://imgur.com/7NOJ0Zg" alt="Camp Art">
-      <img src="https://i.imgur.com/XqZAmSH.jpg" alt="Team Fun">
-      <img src="https://i.imgur.com/YmFzCZx.jpg" alt="Night Lights">
+      <img src="images/pic1.jpg" alt="Camp Art" />
+      <img src="images/pic2.jpg" alt="Team Fun" />
+      <img src="images/pic3.jpg" alt="Night Lights" />
     </div>
   </section>
 
@@ -226,8 +240,8 @@
     <h1>Request to Join</h1>
     <p>Fill out the form below to join our camp and become a part of our amazing community.</p>
     <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
       <textarea placeholder="Why do you want to join?" required></textarea>
       <button type="submit">Submit</button>
     </form>
@@ -261,9 +275,9 @@
   <section class="section" id="submit">
     <h1>Submit Your Event</h1>
     <form>
-      <input type="text" placeholder="Event Name" required>
+      <input type="text" placeholder="Event Name" required />
       <textarea placeholder="Event Description" required></textarea>
-      <input type="text" placeholder="Who Will Run the Event" required>
+      <input type="text" placeholder="Who Will Run the Event" required />
       <button type="submit">Submit Event</button>
     </form>
   </section>
@@ -271,10 +285,10 @@
   <section class="section" id="gallery">
     <h1>Camp Gallery</h1>
     <div class="gallery">
-      <img src="https://i.imgur.com/ybLQ3hT.jpg" alt="Camp vibes">
-      <img src="https://i.imgur.com/5zTn7e3.jpg" alt="Evening lights">
-      <img src="https://i.imgur.com/MX9j3dM.jpg" alt="Art installations">
-      <img src="https://i.imgur.com/dzMgCvY.jpg" alt="Camp crew">
+      <img src="images/gallery1.jpg" alt="Camp vibes" />
+      <img src="images/gallery2.jpg" alt="Evening lights" />
+      <img src="images/gallery3.jpg" alt="Art installations" />
+      <img src="images/gallery4.jpg" alt="Camp crew" />
     </div>
   </section>
 
@@ -300,6 +314,7 @@
       const seconds = Math.floor((diff / 1000) % 60);
       countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
     }
+
     setInterval(updateCountdown, 1000);
     updateCountdown();
   </script>
