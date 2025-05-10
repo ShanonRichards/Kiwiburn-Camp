@@ -41,16 +41,16 @@
       background-color: #4caf50;
     }
 
-.header {
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://raw.githubusercontent.com/your-username/your-repository-name/main/images/coverphoto.png') center/cover no-repeat;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  position: relative;
-}
+    .header {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.imgur.com/nEj9nEl.jpg') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
 
     .header h1 {
       font-size: 4em;
@@ -298,7 +298,7 @@
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
+      countdown.textContent = ${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!;
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
