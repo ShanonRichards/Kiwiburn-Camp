@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join My Camp - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
@@ -42,7 +42,7 @@
     }
 
     .header {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/Cover-Photo.jpg') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/coverphoto.png') center/cover no-repeat;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -53,7 +53,7 @@
     }
 
     .header h1 {
-      font-size: 3em;
+      font-size: 4em;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
       max-width: 90%;
     }
@@ -81,7 +81,7 @@
     }
 
     .section {
-      padding: 60px 15px;
+      padding: 80px 20px;
       text-align: center;
       transition: background-color 1s ease;
     }
@@ -95,13 +95,13 @@
     }
 
     .section h1, .section h2 {
-      font-size: 2em;
+      font-size: 2.5em;
       margin-bottom: 20px;
       color: #111;
     }
 
     .section p {
-      font-size: 1em;
+      font-size: 1.1em;
       max-width: 800px;
       margin: 0 auto 30px auto;
       line-height: 1.6;
@@ -111,7 +111,7 @@
     ul {
       list-style: none;
       padding: 0;
-      font-size: 1em;
+      font-size: 1.1em;
     }
 
     li {
@@ -181,7 +181,7 @@
     }
 
     .countdown {
-      font-size: 1.5em;
+      font-size: 2em;
       font-weight: bold;
       color: #fff;
       margin-top: 20px;
@@ -194,18 +194,35 @@
       color: white;
     }
 
-    @media screen and (max-width: 768px) {
-      .header h1 {
-        font-size: 2em;
-      }
-
+    /* === Mobile Styles === */
+    @media (max-width: 768px) {
       nav {
         flex-direction: column;
         align-items: center;
       }
 
       nav a {
-        margin: 8px 0;
+        margin: 5px 0;
+        font-size: 0.9rem;
+      }
+
+      .header h1 {
+        font-size: 2.2em;
+        padding: 0 15px;
+      }
+
+      .section h1, .section h2 {
+        font-size: 1.8em;
+      }
+
+      .section p, ul {
+        font-size: 1em;
+        padding: 0 10px;
+      }
+
+      .about-circles {
+        flex-direction: column;
+        align-items: center;
       }
 
       .about-circles img {
@@ -213,19 +230,124 @@
         height: 120px;
       }
 
-      .section h1, .section h2 {
-        font-size: 1.5em;
+      form input, form textarea, form button {
+        font-size: 0.95rem;
       }
 
       .countdown {
-        font-size: 1.2em;
+        font-size: 1.3em;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- existing HTML content remains unchanged -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#join">Join Camp</a>
+    <a href="#mission">Mission</a>
+    <a href="#members">Members</a>
+    <a href="#events">Events</a>
+    <a href="#submit">Submit Event</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
 
+  <header class="header">
+    <h1>Join Our Kiwiburn Camp</h1>
+    <a href="#about" class="scroll-down">▼</a>
+  </header>
+
+  <section class="section" id="about">
+    <h1>About Our Camp</h1>
+    <p>We are a community of creators, dreamers, and doers who co-create an environment of expression, support, and radical participation. From first-timers to seasoned Burners, all are welcome.</p>
+    <div class="about-circles">
+      <img src="https://i.imgur.com/xZ2tQJP.jpg" alt="Camp Art" />
+      <img src="https://i.imgur.com/XqZAmSH.jpg" alt="Team Fun" />
+      <img src="https://i.imgur.com/YmFzCZx.jpg" alt="Night Lights" />
+    </div>
+  </section>
+
+  <section class="section" id="join">
+    <h1>Request to Join</h1>
+    <p>Fill out the form below to join our camp and become a part of our amazing community.</p>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Why do you want to join?" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section class="section mission" id="mission">
+    <h2>Our Mission</h2>
+    <p>We are a vibrant, inclusive camp bringing together creative minds and passionate individuals. At Kiwiburn, we aim to foster community spirit, self-expression, and mutual support while contributing to the larger festival experience.</p>
+  </section>
+
+  <section class="section" id="members">
+    <h1>This Year's Camp Members</h1>
+    <ul>
+      <li><strong>Camp Lead:</strong> Shanon</li>
+      <li><strong>Build Lead:</strong> Aidan</li>
+      <li><strong>Wellbeing Lead:</strong> Sarsha</li>
+      <li>Cosmic Rejex Crew</li>
+    </ul>
+  </section>
+
+  <section class="section" id="events">
+    <h1>Camp Events</h1>
+    <ul>
+      <li>🌀 Cosmic Karaoke - Friday Night</li>
+      <li>🎨 Body Paint Station - Daily</li>
+      <li>🔥 Fire Jam Circle - Saturday Evening</li>
+      <li>🌄 Sunrise Yoga - Sunday Morning</li>
+    </ul>
+  </section>
+
+  <section class="section" id="submit">
+    <h1>Submit Your Event</h1>
+    <form>
+      <input type="text" placeholder="Event Name" required />
+      <textarea placeholder="Event Description" required></textarea>
+      <input type="text" placeholder="Who Will Run the Event" required />
+      <button type="submit">Submit Event</button>
+    </form>
+  </section>
+
+  <section class="section" id="gallery">
+    <h1>Camp Gallery</h1>
+    <div class="gallery">
+      <img src="https://i.imgur.com/ybLQ3hT.jpg" alt="Camp vibes" />
+      <img src="https://i.imgur.com/5zTn7e3.jpg" alt="Evening lights" />
+      <img src="https://i.imgur.com/MX9j3dM.jpg" alt="Art installations" />
+      <img src="https://i.imgur.com/dzMgCvY.jpg" alt="Camp crew" />
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Kiwiburn Camp</p>
+    <div class="countdown" id="countdown"></div>
+  </footer>
+
+  <script>
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date('2025-01-27T12:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) {
+        countdown.textContent = "Kiwiburn is happening now!";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
