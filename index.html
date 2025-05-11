@@ -41,7 +41,7 @@
     }
 
     .header {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/coverphoto.png') center/cover no-repeat;
+      background: url('images/coverphoto.png') center/cover no-repeat;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -86,7 +86,7 @@
       background-color: #e8f5e9;
     }
 
-    .section h1 {
+    .section h1, .section h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
       color: #111;
@@ -131,20 +131,41 @@
       transform: scale(1.05);
     }
 
-    .about-circles {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 40px auto 0 auto;
     }
 
-    .about-circles img {
+    .member {
+      text-align: center;
+    }
+
+    .member img {
       width: 180px;
       height: 180px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+    }
+
+    .member h3 {
+      margin: 10px 0 5px;
+      font-size: 1.2em;
+    }
+
+    .member span {
+      font-weight: bold;
+      color: #4caf50;
+      display: block;
+    }
+
+    .member p {
+      font-size: 0.95em;
+      color: #444;
     }
 
     .countdown {
@@ -185,6 +206,19 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    .contact-lead {
+      padding: 40px 20px;
+      background-color: #111;
+      color: white;
+      text-align: center;
+    }
+
+    .contact-lead a {
+      color: #4caf50;
+      font-size: 1.2em;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -205,8 +239,8 @@
 
   <section class="section" id="about">
     <h1>About Our Camp</h1>
-    <p>Join the Rejex... (content unchanged)</p>
-    <div class="about-circles">
+    <p>Join the Rejex... (update with actual camp info)</p>
+    <div class="gallery">
       <img src="images/img1.jpg" alt="Camp Art">
       <img src="images/img2.jpg" alt="Team Fun">
       <img src="images/img3.jpg" alt="Night Lights">
@@ -229,29 +263,71 @@
 
   <section class="section" id="mission">
     <h1>Our Mission</h1>
-    <p>
-      Our mission is to create an inclusive, expressive, and unforgettable space at Kiwiburn where art, connection, and radical self-expression thrive. We aim to build a supportive and collaborative community that welcomes all voices and creative contributions.
-    </p>
+    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
   </section>
 
   <section class="section" id="members">
     <h1>Meet Our Members</h1>
-    <p>Our camp is made up of diverse and passionate individuals from all walks of life. Get to know some of our core crew below.</p>
-    <div class="about-circles">
-      <img src="images/member1.jpg" alt="Member 1 - Sarah">
-      <img src="images/member2.jpg" alt="Member 2 - Kai">
-      <img src="images/member3.jpg" alt="Member 3 - Aroha">
+    <div class="members-grid">
+      <div class="member">
+        <img src="images/member1.jpg" alt="Member 1">
+        <h3>Jess</h3>
+        <span>Camp Decorator</span>
+        <p>Loves glitter and good vibes. Designs all our trippy visuals.</p>
+      </div>
+      <div class="member">
+        <img src="images/member2.jpg" alt="Member 2">
+        <h3>Leo</h3>
+        <span>Sound Technician</span>
+        <p>Master of decks and sound. You’ll hear him before you see him.</p>
+      </div>
+      <div class="member">
+        <img src="images/member3.jpg" alt="Member 3">
+        <h3>Ash</h3>
+        <span>Vibe Manager</span>
+        <p>Creates safe spaces and makes sure everyone’s feeling loved.</p>
+      </div>
+      <div class="member">
+        <img src="images/member4.jpg" alt="Member 4">
+        <h3>Mikayla</h3>
+        <span>Chef</span>
+        <p>Feeds the crew and brings gourmet energy to the paddock.</p>
+      </div>
+      <div class="member">
+        <img src="images/member5.jpg" alt="Member 5">
+        <h3>Rory</h3>
+        <span>Engineer</span>
+        <p>Builds our structures and keeps things standing strong.</p>
+      </div>
+      <div class="member">
+        <img src="images/member6.jpg" alt="Member 6">
+        <h3>Elle</h3>
+        <span>Costume Queen</span>
+        <p>Runs the dress-up rack and slays every outfit change.</p>
+      </div>
+      <div class="member">
+        <img src="images/member7.jpg" alt="Member 7">
+        <h3>Finn</h3>
+        <span>Fire Spinner</span>
+        <p>Performs dazzling fire shows at sunset.</p>
+      </div>
+      <div class="member">
+        <img src="images/member8.jpg" alt="Member 8">
+        <h3>Nina</h3>
+        <span>Workshop Lead</span>
+        <p>Hosts breathwork, yoga, and sound healing under the stars.</p>
+      </div>
     </div>
   </section>
 
   <section class="section" id="events">
     <h1>Past Events</h1>
-    <p>We've hosted some amazing events at past Kiwiburns:</p>
+    <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
     <ul>
-      <li>🕺 Glow Night Dance-Off – 2024</li>
-      <li>🔥 Fire Poi Jam & Chill – 2023</li>
-      <li>🎨 Body Paint & Beats – 2022</li>
-      <li>🌅 Sunrise Chill Sessions – 2021</li>
+      <li>🔥 Fire & Flow Friday</li>
+      <li>🎨 Paint & Glow Workshop</li>
+      <li>🌈 Sunrise Gratitude Circle</li>
+      <li>🎧 DJ Showcase & Open Decks</li>
     </ul>
   </section>
 
@@ -275,6 +351,12 @@
       <img src="images/photo2.jpg" alt="Gallery Image 2">
       <img src="images/photo3.jpg" alt="Gallery Image 3">
     </div>
+  </section>
+
+  <section class="contact-lead">
+    <h2>Need to reach out?</h2>
+    <p>Message the Camp Lead on Facebook:</p>
+    <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
   </section>
 
   <footer class="footer">
