@@ -177,58 +177,6 @@
       color: white;
     }
 
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav a {
-        margin: 8px 0;
-      }
-
-      .header h1 {
-        font-size: 2em;
-        padding: 0 10px;
-      }
-
-      .section h1, .section h2 {
-        font-size: 1.8em;
-      }
-
-      .section p {
-        font-size: 1em;
-        padding: 0 10px;
-      }
-
-      .about-circles {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .about-circles img {
-        width: 150px;
-        height: 150px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-        padding: 0 10px;
-      }
-
-      .scroll-down {
-        font-size: 1.2rem;
-      }
-
-      .countdown {
-        font-size: 1.2em;
-        padding: 0 10px;
-      }
-
-      footer {
-        padding: 20px 10px;
-        font-size: 0.9em;
-      }
     /* Styles for the modal */
     .modal {
       display: none;
@@ -316,33 +264,6 @@
 
   <section class="section" id="join">
     <h1>Request to Join</h1>
-    <p>Click below to fill out the form and become part of our amazing community.</p>
-    <a href="join.html"><button>Go to Join Form</button></a>
-  </section>
-
-  <section class="section mission" id="mission">
-    <h2>Our Mission</h2>
-    <p>We are a vibrant, inclusive camp bringing together creative minds and passionate individuals...</p>
-  </section>
-
-  <section class="section" id="members">
-    <h1>This Year's Camp Members</h1>
-    <ul>
-      <li><strong>Camp Lead:</strong> Shanon</li>
-      <li><strong>Build Lead:</strong> Aidan</li>
-      <li><strong>Wellbeing Lead:</strong> Sarsha</li>
-      <li>Cosmic Rejex Crew</li>
-    </ul>
-  </section>
-
-  <section class="section" id="events">
-    <h1>Camp Events</h1>
-    <ul>
-      <li>🌀 Cosmic Karaoke - Friday Night</li>
-      <li>🎨 Body Paint Station - Daily</li>
-      <li>🔥 Fire Jam Circle - Saturday Evening</li>
-      <li>🌄 Sunrise Yoga - Sunday Morning</li>
-    </ul>
     <p>Fill out the form below to request to join our amazing community!</p>
     <div class="form-container">
       <form id="joinForm" onsubmit="handleSubmit(event)">
@@ -356,17 +277,6 @@
 
   <section class="section" id="submit">
     <h1>Submit Your Event</h1>
-    <p>Click below to submit your event idea and bring your vision to life!</p>
-    <a href="submit.html"><button>Go to Event Submission</button></a>
-  </section>
-
-  <section class="section" id="gallery">
-    <h1>Camp Gallery</h1>
-    <div class="gallery">
-      <img src="images/gallery1.jpg" alt="Camp vibes">
-      <img src="images/gallery2.jpg" alt="Evening lights">
-      <img src="images/gallery3.jpg" alt="Art installations">
-      <img src="images/gallery4.jpg" alt="Camp crew">
     <p>Fill out the form below to submit your event idea!</p>
     <div class="form-container">
       <form id="eventForm" onsubmit="handleEventSubmit(event)">
@@ -410,6 +320,26 @@
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      document.getElementById("joinForm").reset();
+      openModal();
+    }
+
+    function handleEventSubmit(event) {
+      event.preventDefault();
+      document.getElementById("eventForm").reset();
+      openModal();
+    }
+
+    function openModal() {
+      document.getElementById("thankYouModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("thankYouModal").style.display = "none";
+    }
   </script>
 </body>
 </html>
