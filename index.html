@@ -248,18 +248,38 @@
   </section>
 
   <section class="section" id="join">
-    <h1>Request to Join</h1>
-    <p>Fill out the form below to request to join our amazing community!</p>
-    <div class="form-container">
-      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
-        <button type="submit">Submit Request</button>
-      </form>
-    </div>
-  </section>
+   <h2>Request to Join</h2>
+  <p>Fill out the form below to request to join our amazing community!</p>
+  <div class="form-container">
+    <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <select name="role" required>
+        <option value="">Select a Camp Role</option>
+        <optgroup label="Leadership & Logistics">
+          <option>🛠️ Camp Lead</option>
+          <option>🚛 Logistics & Build Lead</option>
+          <option>💰 Finance & Budget Lead</option>
+          <option>📆 Volunteer Coordinator</option>
+        </optgroup>
+        <optgroup label="Setup & Infrastructure">
+          <option>🔨 Build Crew</option>
+          <option>🎶 Sound & Lights Lead</option>
+          <option>🥗 Kitchen Lead</option>
+          <option>⛑️ Safety & Medical Lead</option>
+          <option>🔥 Fire & Rangers Lead</option>
+        </optgroup>
+        <optgroup label="Community & Experience">
+          <option>🎨 Art & Decor Lead</option>
+          <option>🎭 Event & Theme Night Lead</option>
+        </optgroup>
+      </select>
+      <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+</section>
 
   <section class="section" id="mission">
     <h1>Our Mission</h1>
