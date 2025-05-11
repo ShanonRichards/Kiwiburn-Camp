@@ -168,6 +168,47 @@
       color: #444;
     }
 
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 40px auto 0 auto;
+    }
+
+    .event {
+      text-align: left;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .event:hover {
+      transform: scale(1.02);
+    }
+
+    .event img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .event h3 {
+      font-size: 1.5em;
+      margin: 0 0 10px;
+      color: #111;
+    }
+
+    .event p {
+      font-size: 1em;
+      color: #333;
+      line-height: 1.5;
+    }
+
     .countdown {
       font-size: 2em;
       font-weight: bold;
@@ -349,12 +390,28 @@
   <section class="section" id="events">
     <h1>Past Events</h1>
     <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
-    <ul>
-      <li>🔥 Fire & Flow Friday</li>
-      <li>🎨 Paint & Glow Workshop</li>
-      <li>🌈 Sunrise Gratitude Circle</li>
-      <li>🎧 DJ Showcase & Open Decks</li>
-    </ul>
+    <div class="events-grid">
+      <div class="event">
+        <img src="images/fire_flow_poster.jpg" alt="Fire & Flow Friday Poster">
+        <h3>Fire & Flow Friday</h3>
+        <p>An electrifying night of fire spinning performances and flow arts workshops, where participants learned poi and staff techniques under the stars.</p>
+      </div>
+      <div class="event">
+        <img src="images/paint_glow_poster.jpg" alt="Paint & Glow Workshop Poster">
+        <h3>Paint & Glow Workshop</h3>
+        <p>A vibrant daytime event where campers painted with neon colors and created glow-in-the-dark art pieces to decorate the camp at night.</p>
+      </div>
+      <div class="event">
+        <img src="images/sunrise_circle_poster.jpg" alt="Sunrise Gratitude Circle Poster">
+        <h3>Sunrise Gratitude Circle</h3>
+        <p>A serene morning gathering where campers shared gratitude, meditated, and welcomed the sunrise with a communal drum circle.</p>
+      </div>
+      <div class="event">
+        <img src="images/dj_showcase_poster.jpg" alt="DJ Showcase & Open Decks Poster">
+        <h3>DJ Showcase & Open Decks</h3>
+        <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
+      </div>
+    </div>
   </section>
 
   <section class="section" id="submit">
