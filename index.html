@@ -1,133 +1,190 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Camp Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiwiburn Camp</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-    }
-
-    .section {
-      padding: 40px;
-      max-width: 600px;
-      margin: auto;
-      background: #fff;
-      margin-top: 40px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      margin-bottom: 10px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    input, textarea {
-      margin-bottom: 15px;
-      padding: 10px;
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+    a.button {
+      display: inline-block;
+      margin: 20px;
+      padding: 15px 25px;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      font-size: 18px;
+    }
+    a.button:hover { background-color: #45a049; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Cosmic Rejex Camp</h1>
+  <p>Join our awesome Kiwiburn crew or submit your epic event idea!</p>
+
+  <a href="join.html" class="button">Join the Camp</a>
+  <a href="submit-event.html" class="button">Submit an Event</a>
+</body>
+</html>
+
+
+<!-- join.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Camp</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; max-width: 600px; margin: auto; }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
       font-size: 16px;
     }
-
     button {
-      padding: 12px;
       background-color: #4caf50;
       color: white;
       border: none;
-      border-radius: 5px;
-      font-size: 16px;
       cursor: pointer;
     }
-
-    button:hover {
-      background-color: #45a049;
-    }
-
-    /* Modal Styles */
-    #thankYouModal {
+    .modal {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 9999;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
       justify-content: center;
       align-items: center;
     }
-
-    #thankYouModal .modal-content {
+    .modal-content {
       background: white;
-      padding: 30px;
-      border-radius: 10px;
+      padding: 20px;
+      border-radius: 8px;
       text-align: center;
-      max-width: 400px;
-      margin: auto;
     }
-
-    #thankYouModal button {
-      background-color: #333;
-      margin-top: 20px;
+    .close-btn {
+      background: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border: none;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+  <h1>Join Our Camp</h1>
+  <form id="joinForm" action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Why do you want to join?" required></textarea>
+    <button type="submit">Submit</button>
+    <input type="hidden" name="_captcha" value="false">
+  </form>
 
-  <!-- Join Camp Section -->
-  <section class="section" id="join">
-    <h1>Request to Join</h1>
-    <p>Fill out the form below to join our camp and become a part of our amazing community.</p>
-    <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" target="hidden_iframe" onsubmit="showThankYou(); return true;">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Why do you want to join?" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </section>
-
-  <!-- Submit Event Section -->
-  <section class="section" id="submit">
-    <h1>Submit Your Event</h1>
-    <p>Use the form below to submit your event idea to the camp schedule.</p>
-    <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" target="hidden_iframe" onsubmit="showThankYou(); return true;">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="event" placeholder="Event Name" required>
-      <textarea name="description" placeholder="Event Description" required></textarea>
-      <input type="text" name="host" placeholder="Who Will Run the Event" required>
-      <button type="submit">Submit Event</button>
-    </form>
-  </section>
-
-  <!-- Thank You Modal -->
-  <div id="thankYouModal">
+  <div class="modal" id="thankYouModal">
     <div class="modal-content">
-      <h2>Thank You!</h2>
-      <p>Your submission has been received. We'll be in touch soon!</p>
-      <button onclick="document.getElementById('thankYouModal').style.display='none'">Close</button>
+      <h2>Thank you for joining!</h2>
+      <p>We'll be in touch soon 🖤</p>
+      <button class="close-btn" onclick="document.getElementById('thankYouModal').style.display='none'">Close</button>
     </div>
   </div>
 
-  <!-- Hidden iframe to prevent reload -->
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
-
-  <!-- JavaScript for Modal -->
   <script>
-    function showThankYou() {
-      setTimeout(() => {
+    const form = document.getElementById('joinForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form)
+      }).then(() => {
+        form.reset();
         document.getElementById('thankYouModal').style.display = 'flex';
-      }, 500);
-    }
+      });
+    });
   </script>
+</body>
+</html>
 
+
+<!-- submit-event.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Event</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; max-width: 600px; margin: auto; }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .close-btn {
+      background: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Submit an Event Idea</h1>
+  <form id="eventForm" action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+    <input type="text" name="event_name" placeholder="Event Name" required>
+    <textarea name="event_description" placeholder="Event Description" required></textarea>
+    <input type="text" name="event_lead" placeholder="Who Will Run the Event" required>
+    <button type="submit">Submit</button>
+    <input type="hidden" name="_captcha" value="false">
+  </form>
+
+  <div class="modal" id="eventModal">
+    <div class="modal-content">
+      <h2>Thank you for your event idea!</h2>
+      <p>We'll review it and get back to you soon 🎉</p>
+      <button class="close-btn" onclick="document.getElementById('eventModal').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('eventForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form)
+      }).then(() => {
+        form.reset();
+        document.getElementById('eventModal').style.display = 'flex';
+      });
+    });
+  </script>
 </body>
 </html>
