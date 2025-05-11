@@ -3,387 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join My Camp - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: rgba(34, 34, 34, 0.8);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 15px 10px;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1rem;
-      margin: 5px 15px;
-      padding: 10px 15px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-
-    nav a:hover {
-      background-color: #4caf50;
-    }
-
-    .header {
-      background: url('images/coverphoto.png') center/cover no-repeat;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      position: relative;
-    }
-
-    .header h1 {
-      font-size: 4em;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-      max-width: 90%;
-    }
-
-    .scroll-down {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      animation: bounce 2s infinite;
-      color: white;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
-      40% { transform: translate(-50%, -10px); }
-      60% { transform: translate(-50%, -5px); }
-    }
-
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .section:nth-of-type(odd) {
-      background-color: #f0f0f0;
-    }
-
-    .section:nth-of-type(even) {
-      background-color: #e8f5e9;
-    }
-
-    .section h1, .section h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      color: #111;
-    }
-
-    .section p {
-      font-size: 1.1em;
-      max-width: 800px;
-      margin: 0 auto 30px auto;
-      line-height: 1.6;
-      color: #222;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.1em;
-    }
-
-    li {
-      margin: 10px 0;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding-top: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    .members-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: 40px auto 0 auto;
-    }
-
-    .member {
-      text-align: center;
-    }
-
-    .member img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      margin-bottom: 10px;
-    }
-
-    .member h3 {
-      margin: 10px 0 5px;
-      font-size: 1.2em;
-    }
-
-    .member span {
-      font-weight: bold;
-      color: #4caf50;
-      display: block;
-    }
-
-    .member p {
-      font-size: 0.95em;
-      color: #444;
-    }
-
-    .countdown {
-      font-size: 2em;
-      font-weight: bold;
-      color: #fff;
-      margin-top: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background-color: #222;
-      color: white;
-    }
-
-    .form-container {
-      text-align: left;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .form-container input,
-    .form-container textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    .form-container button {
-      padding: 12px 20px;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .contact-lead {
-      padding: 40px 20px;
-      background-color: #111;
-      color: white;
-      text-align: center;
-    }
-
-    .contact-lead a {
-      color: #4caf50;
-      font-size: 1.2em;
-      text-decoration: none;
-    }
-  </style>
+  <title>Cosmic Rejex Kiwiburn Theme Camp</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet"/>
 </head>
 <body>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#join">Join Camp</a>
-    <a href="#mission">Mission</a>
-    <a href="#members">Members</a>
-    <a href="#events">Events</a>
-    <a href="#submit">Submit Event</a>
-    <a href="#gallery">Gallery</a>
-  </nav>
-
   <header class="header">
-    <h1>Join Our Kiwiburn Camp</h1>
-    <a href="#about" class="scroll-down">▼</a>
+    <div class="logo">
+      <img src="images/cosmicrejexlogo.png" alt="Cosmic Rejex Logo"/>
+      <h1>Cosmic Rejex</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#members">Members</a></li>
+        <li><a href="#join">Join</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#submit">Submit</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="section" id="about">
-    <h1>About Our Camp</h1>
-    <p>Join the Rejex... (update with actual camp info)</p>
-    <div class="gallery">
-      <img src="images/img1.jpg" alt="Camp Art">
-      <img src="images/img2.jpg" alt="Team Fun">
-      <img src="images/Eventposter.jpg" alt="Night Lights">
-    </div>
-  </section>
+  <main>
+    <section class="section" id="about">
+      <h1>About Our Camp</h1>
+      <p>Join the Rejex... (update with actual camp info)</p>
+      <div class="gallery">
+        <img src="images/img1.jpg" alt="Camp Art">
+        <img src="images/img2.jpg" alt="Team Fun">
+        <img src="images/Eventposter.jpg" alt="Night Lights">
+      </div>
+    </section>
 
-  <section class="section" id="join">
-    <h1>Request to Join</h1>
-    <p>Fill out the form below to request to join our amazing community!</p>
-    <div class="form-container">
-      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
-        <button type="submit">Submit Request</button>
-      </form>
-    </div>
-  </section>
+    <section class="section" id="mission">
+      <h1>Our Mission</h1>
+      <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
+    </section>
 
-  <section class="section" id="mission">
-    <h1>Our Mission</h1>
-    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
-  </section>
+    <!-- Moved Members Section Up -->
+    <section class="section" id="members">
+      <h1>Meet Our Members</h1>
+      <div class="members-grid">
+        <div class="member">
+          <img src="images/shanon.jpg" alt="Shanon">
+          <h3>Shanon</h3>
+          <p>The glue of the group, bringing organization, snacks, and vibes.</p>
+        </div>
+        <div class="member">
+          <img src="images/sarsha.jpg" alt="Sarsha">
+          <h3>Sarsha</h3>
+          <p>Our spirit guide. Cosmic. Random. Beautiful chaos.</p>
+        </div>
+        <div class="member">
+          <img src="images/cat.jpg" alt="Cat">
+          <h3>Cat</h3>
+          <p>The queen of crafts. Can turn any trash into treasure.</p>
+        </div>
+        <div class="member">
+          <img src="images/chris.jpg" alt="Chris">
+          <h3>Chris</h3>
+          <p>Master builder and our fire safety guy. Also a secret softie.</p>
+        </div>
+        <div class="member">
+          <img src="images/jade.jpg" alt="Jade">
+          <h3>Jade</h3>
+          <p>Party starter. Costume legend. Probably in a wig right now.</p>
+        </div>
+        <div class="member">
+          <img src="images/jordan.jpg" alt="Jordan">
+          <h3>Jordan</h3>
+          <p>Tech wizard and playlist overlord. Don’t touch his aux.</p>
+        </div>
+      </div>
+    </section>
 
-  <section class="section" id="members">
-    <h1>Meet Our Members</h1>
-    <div class="members-grid">
-      <div class="member">
-        <img src="images/ShanonRichards.jpg" alt="Member 1">
-        <h3>Shanon Richards</h3>
-        <span>Camp Lead</span>
-        <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution.</p>
+    <!-- Join Section is Now Below Members -->
+    <section class="section" id="join">
+      <h1>Request to Join</h1>
+      <p>Fill out the form below to request to join our amazing community!</p>
+      <div class="form-container">
+        <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
+          <button type="submit">Submit Request</button>
+        </form>
       </div>
-      <div class="member">
-        <img src="images/MeganR.jpg" alt="Member 2">
-        <h3>Meghan-Louise Robson</h3>
-        <span>Camp Lead</span>
-        <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution</p>
-      </div>
-      <div class="member">
-        <img src="images/RussellDuffield.jpg" alt="Member 3">
-        <h3>Russell Duffield</h3>
-        <span>Vibe Manager</span>
-        <p>Creates safe spaces and makes sure everyone’s feeling loved.</p>
-      </div>
-      <div class="member">
-        <img src="images/michealdunstan.jpg" alt="Member 4">
-        <h3>Micheal Dunstan</h3>
-        <span>Finance Coordinator</span>
-        <p>To manage camp finances transparently and responsibly, handling budgeting, and camp expenses.</p>
-      </div>
-      <div class="member">
-        <img src="images/tomasshelby.jpg" alt="Member 5">
-        <h3>Tomas Shelby</h3>
-        <span>Music/DJ Coordinator</span>
-        <p>To curate and coordinate the camp’s musical experience, ensuring smooth DJ scheduling, sound setup.</p>
-      </div>
-      <div class="member">
-        <img src="images/jarrodskiffington.jpg" alt="Member 6">
-        <h3>Jarrod Skiffington</h3>
-        <span>Transport Lead</span>
-        <p>To organize and manage the transport of camp gear, ensuring everything is picked up, packed, and delivered safely to and from the Kiwiburn site.</p>
-      </div>
-      <div class="member">
-        <img src="images/tylerrowe.jpg" alt="Member 7">
-        <h3>Tyler Rowe</h3>
-        <span>Art Lead</span>
-        <p>To lead the vision, planning, and execution of the camp’s creative elements, including decor, installations, signage, and artistic vibes.</p>
-      </div>
-      <div class="member">
-        <img src="images/sarshaskiffington.jpg" alt="Member 8">
-        <h3>Sarsha Skiffington</h3>
-        <span>Event Lead</span>
-        <p>To plan, coordinate, and oversee camp-hosted events, ensuring smooth execution and maximum fun while aligning with Kiwiburn’s principles.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section" id="events">
-    <h1>Past Events</h1>
-    <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
-    <ul>
-      <li>🔥 Fire & Flow Friday</li>
-      <li>🎨 Paint & Glow Workshop</li>
-      <li>🌈 Sunrise Gratitude Circle</li>
-      <li>🎧 DJ Showcase & Open Decks</li>
-    </ul>
-  </section>
+    <section class="section" id="events">
+      <h1>Upcoming Events</h1>
+      <ul>
+        <li><strong>Moonlight Mayhem:</strong> Fire dancing, LED shows, and DJ sets under the stars.</li>
+        <li><strong>Rejex Ritual:</strong> A wild bonding ceremony. Expect glitter. Lots of glitter.</li>
+        <li><strong>Build Weekend:</strong> Come help us create the magic before Kiwiburn. Pizza provided!</li>
+      </ul>
+    </section>
 
-  <section class="section" id="submit">
-    <h1>Submit Your Event</h1>
-    <p>Fill out the form below to submit your event idea!</p>
-    <div class="form-container">
-      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="eventName" placeholder="Event Name" required>
-        <textarea name="eventDescription" rows="4" placeholder="Event Description" required></textarea>
-        <button type="submit">Submit Event</button>
-      </form>
-    </div>
-  </section>
-
-  <section class="section" id="gallery">
-    <h1>Camp Gallery</h1>
-    <div class="gallery">
-      <img src="images/photo1.jpg" alt="Gallery Image 1">
-      <img src="images/photo2.jpg" alt="Gallery Image 2">
-      <img src="images/photo3.jpg" alt="Gallery Image 3">
-    </div>
-  </section>
-
-  <section class="contact-lead">
-    <h2>Need to reach out?</h2>
-    <p>Message the Camp Lead on Facebook:</p>
-    <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
-  </section>
+    <section class="section" id="submit">
+      <h1>Submit Content</h1>
+      <p>Want to contribute a story, artwork, or something cool to our site? Send it our way!</p>
+      <div class="form-container">
+        <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="title" placeholder="Title" required>
+          <textarea name="content" rows="6" placeholder="Your content here..." required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <p>&copy; 2025 Kiwiburn Camp</p>
-    <div class="countdown" id="countdown"></div>
+    <p>&copy; 2025 Cosmic Rejex. Made with weird vibes & space glitter.</p>
   </footer>
-
-  <script>
-    const countdown = document.getElementById('countdown');
-    const targetDate = new Date('2025-01-27T12:00:00');
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
-      if (diff <= 0) {
-        countdown.textContent = "Kiwiburn is happening now!";
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
 </body>
 </html>
