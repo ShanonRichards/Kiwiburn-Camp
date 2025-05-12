@@ -4,32 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join Cosmic Rejex - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(to bottom, #0a0a23, #1a1a3a);
-      color: #fff;
+      background: linear-gradient(to bottom, #0a1a3a, #1a2a5a);
+      color: #e0e0e0;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background-color: rgba(10, 10, 35, 0.9);
-      backdrop-filter: blur(10px);
+      background-color: rgba(10, 20, 50, 0.95);
+      backdrop-filter: blur(8px);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       padding: 15px 10px;
       z-index: 1000;
-      border-bottom: 2px solid #39ff14;
+      border-bottom: 1px solid #00f7ff;
     }
 
     nav a {
-      color: #39ff14;
+      color: #00f7ff;
       text-decoration: none;
       font-family: 'Orbitron', sans-serif;
       font-weight: 500;
@@ -37,21 +37,21 @@
       margin: 5px 15px;
       padding: 10px 15px;
       border-radius: 4px;
-      transition: background 0.3s, text-shadow 0.3s;
+      transition: background 0.3s, color 0.3s;
       position: relative;
     }
 
     nav a:hover {
-      background-color: #39ff14;
-      color: #0a0a23;
-      text-shadow: 0 0 10px #39ff14;
+      background-color: #00f7ff;
+      color: #0a1a3a;
     }
 
     nav a::before {
-      content: '👽';
-      font-size: 0.8rem;
+      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="2" fill="%2300f7ff"/></svg>');
       position: absolute;
-      left: -20px;
+      left: -18px;
+      top: 50%;
+      transform: translateY(-50%);
       opacity: 0;
       transition: opacity 0.3s;
     }
@@ -61,34 +61,27 @@
     }
 
     .header {
-      background: url('images/coverphoto.png') center/cover no-repeat, radial-gradient(circle, rgba(10,10,35,0.7), rgba(10,10,35,1));
+      background: url('images/coverphoto.png') center/cover no-repeat, linear-gradient(to bottom, rgba(10,20,50,0.8), rgba(10,20,50,1));
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #39ff14;
+      color: #00f7ff;
       position: relative;
-      overflow: hidden;
     }
 
     .header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 4.5em;
-      text-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14;
+      font-size: 4em;
+      text-shadow: 0 0 10px rgba(0,247,255,0.5);
       max-width: 90%;
+      animation: pulse 3s infinite ease-in-out;
     }
 
-    .ufo {
-      position: absolute;
-      width: 100px;
-      animation: fly 10s linear infinite;
-    }
-
-    @keyframes fly {
-      0% { transform: translate(-150px, 0); }
-      50% { transform: translate(100vw, 50px); }
-      100% { transform: translate(-150px, 100px); }
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 10px rgba(0,247,255,0.5); }
+      50% { text-shadow: 0 0 20px rgba(0,247,255,0.8); }
     }
 
     .scroll-down {
@@ -97,9 +90,9 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
+      color: #00f7ff;
       animation: bounce 2s infinite;
-      color: #39ff14;
-      text-shadow: 0 0 10px #39ff14;
+      text-shadow: 0 0 5px #00f7ff;
     }
 
     @keyframes bounce {
@@ -111,29 +104,28 @@
     .section {
       padding: 80px 20px;
       text-align: center;
-      position: relative;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(57,255,20,0.3)"/></svg>') repeat;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><circle cx="25" cy="25" r="1" fill="rgba(0,247,255,0.2)"/></svg>') repeat;
     }
 
     .section:nth-of-type(odd) {
-      background-color: rgba(15, 15, 50, 0.8);
+      background-color: rgba(10, 20, 50, 0.9);
     }
 
     .section:nth-of-type(even) {
-      background-color: rgba(30, 30, 70, 0.8);
+      background-color: rgba(20, 30, 70, 0.9);
     }
 
     .section h1, .section h2 {
       font-family: 'Orbitron', sans-serif;
       font-size: 2.5em;
       margin-bottom: 20px;
-      color: #39ff14;
-      text-shadow: 0 0 10px #39ff14;
+      color: #00f7ff;
+      text-shadow: 0 0 5px rgba(0,247,255,0.5);
     }
 
     .section h1::before, .section h2::before {
-      content: '🛸';
-      margin-right: 10px;
+      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><ellipse cx="10" cy="10" rx="8" ry="4" fill="none" stroke="%2300f7ff" stroke-width="1"/></svg>');
+      margin-right: 8px;
     }
 
     .section p {
@@ -141,7 +133,7 @@
       max-width: 800px;
       margin: 0 auto 30px auto;
       line-height: 1.6;
-      color: #ccc;
+      color: #d0d0d0;
     }
 
     ul {
@@ -167,13 +159,13 @@
       width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(57,255,20,0.5);
+      box-shadow: 0 4px 10px rgba(0,247,255,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px #39ff14;
+      box-shadow: 0 0 15px rgba(0,247,255,0.5);
     }
 
     .members-grid {
@@ -193,28 +185,27 @@
       height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(57,255,20,0.5);
+      box-shadow: 0 4px 10px rgba(0,247,255,0.3);
       margin-bottom: 10px;
-      border: 2px solid #39ff14;
+      border: 1px solid #00f7ff;
     }
 
     .member h3 {
       margin: 10px 0 5px;
       font-family: 'Orbitron', sans-serif;
       font-size: 1.2em;
-      color: #39ff14;
+      color: #00f7ff;
     }
 
     .member span {
-      font-weight: bold;
-      color: #39ff14;
+      font-weight: 500;
+      color: #00f7ff;
       display: block;
-      text-shadow: 0 0 5px #39ff14;
     }
 
     .member p {
       font-size: 0.95em;
-      color: #ccc;
+      color: #d0d0d0;
     }
 
     .events-grid {
@@ -227,16 +218,16 @@
 
     .event {
       text-align: left;
-      background-color: rgba(20, 20, 60, 0.9);
+      background-color: rgba(15, 25, 60, 0.9);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(57,255,20,0.5);
+      box-shadow: 0 4px 10px rgba(0,247,255,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .event:hover {
       transform: scale(1.02);
-      box-shadow: 0 0 20px #39ff14;
+      box-shadow: 0 0 15px rgba(0,247,255,0.5);
     }
 
     .event img {
@@ -245,37 +236,37 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      border: 1px solid #39ff14;
+      border: 1px solid #00f7ff;
     }
 
     .event h3 {
       font-family: 'Orbitron', sans-serif;
       font-size: 1.5em;
       margin: 0 0 10px;
-      color: #39ff14;
+      color: #00f7ff;
     }
 
     .event p {
       font-size: 1em;
-      color: #ccc;
+      color: #d0d0d0;
       line-height: 1.5;
     }
 
     .countdown {
       font-family: 'Orbitron', sans-serif;
       font-size: 2em;
-      font-weight: bold;
-      color: #39ff14;
+      font-weight: 500;
+      color: #00f7ff;
       margin-top: 20px;
-      text-shadow: 0 0 10px #39ff14;
+      text-shadow: 0 0 5px rgba(0,247,255,0.5);
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #0a0a23;
-      color: #39ff14;
-      border-top: 2px solid #39ff14;
+      background-color: #0a1a3a;
+      color: #00f7ff;
+      border-top: 1px solid #00f7ff;
     }
 
     .form-container {
@@ -291,56 +282,56 @@
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 5px;
-      border: 1px solid #39ff14;
+      border: 1px solid #00f7ff;
       font-size: 1rem;
       box-sizing: border-box;
-      background-color: rgba(20, 20, 60, 0.8);
-      color: #39ff14;
+      background-color: rgba(15, 25, 60, 0.9);
+      color: #e0e0e0;
     }
 
     .form-container input::placeholder,
     .form-container textarea::placeholder {
-      color: #39ff14;
-      opacity: 0.7;
+      color: #a0a0a0;
     }
 
     .form-container select {
       appearance: none;
-      background: rgba(20, 20, 60, 0.8) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,10" fill="%2339ff14"/></svg>') no-repeat right 10px center;
+      background: rgba(15, 25, 60, 0.9) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,10" fill="%2300f7ff"/></svg>') no-repeat right 10px center;
     }
 
     .form-container button {
       padding: 12px 20px;
-      background-color: #39ff14;
-      color: #0a0a23;
+      background-color: #00f7ff;
+      color: #0a1a3a;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Orbitron', sans-serif;
+      font-weight: 500;
       transition: box-shadow 0.3s ease;
     }
 
     .form-container button:hover {
-      box-shadow: 0 0 15px #39ff14;
+      box-shadow: 0 0 10px rgba(0,247,255,0.5);
     }
 
     .contact-lead {
       padding: 40px 20px;
-      background-color: #0a0a23;
-      color: #39ff14;
+      background-color: #0a1a3a;
+      color: #00f7ff;
       text-align: center;
-      border-top: 2px solid #39ff14;
+      border-top: 1px solid #00f7ff;
     }
 
     .contact-lead a {
-      color: #39ff14;
+      color: #00f7ff;
       font-size: 1.2em;
       text-decoration: none;
-      text-shadow: 0 0 5px #39ff14;
+      transition: text-shadow 0.3s ease;
     }
 
     .contact-lead a:hover {
-      text-shadow: 0 0 10px #39ff14;
+      text-shadow: 0 0 10px rgba(0,247,255,0.5);
     }
   </style>
 </head>
@@ -351,19 +342,18 @@
     <a href="#mission">Mission</a>
     <a href="#members">Members</a>
     <a href="#events">Events</a>
-    <a href="#submit">Beam Up Event</a>
+    <a href="#submit">Submit Event</a>
     <a href="#gallery">Gallery</a>
   </nav>
 
   <header class="header">
     <h1>Join Cosmic Rejex</h1>
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='50' viewBox='0 0 100 50'><ellipse cx='50' cy='25' rx='40' ry='20' fill='%2339ff14'/><circle cx='30' cy='15' r='5' fill='%230a0a23'/><circle cx='70' cy='15' r='5' fill='%230a0a23'/><path d='M40 35 Q50 40 60 35' stroke='%230a0a23' fill='none'/></svg>" class="ufo" alt="UFO">
     <a href="#about" class="scroll-down">▼</a>
   </header>
 
   <section class="section" id="about">
     <h1>About Our Camp</h1>
-    <p>Beam into Cosmic Rejex, where interstellar misfits unite to create otherworldly art, music, and vibes at Kiwiburn. We're all about defying gravity and embracing the cosmic chaos!</p>
+    <p>Welcome to Cosmic Rejex, a stellar community at Kiwiburn where creative minds unite to craft extraordinary art, music, and experiences under the stars.</p>
     <div class="gallery">
       <img src="images/img1.jpg" alt="Camp Art">
       <img src="images/img2.jpg" alt="Team Fun">
@@ -373,131 +363,131 @@
 
   <section class="section" id="join">
     <h2>Request to Join</h2>
-    <p>Ready to join our galactic crew? Fill out the form below to request a spot in our cosmic community!</p>
+    <p>Join our interstellar community by filling out the form below.</p>
     <div class="form-container">
       <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <select name="role" required>
-          <option value="">Select a Cosmic Role</option>
+          <option value="">Select a Role</option>
           <optgroup label="Leadership & Logistics">
-            <option>🛠️ Starship Captain</option>
-            <option>🚛 Galactic Logistics Lead</option>
-            <option>💰 Cosmic Treasurer</option>
-            <option>📆 Volunteer Coordinator</option>
+            <option>Starship Captain</option>
+            <option>Logistics Navigator</option>
+            <option>Treasurer</option>
+            <option>Volunteer Coordinator</option>
           </optgroup>
           <optgroup label="Setup & Infrastructure">
-            <option>🔨 Nebula Builders</option>
-            <option>🎶 Cosmic Sound & Lights Lead</option>
-            <option>🥗 Interstellar Kitchen Lead</option>
-            <option>⛑️ Space Medic</option>
-            <option>🔥 Fire & Rangers Lead</option>
+            <option>Build Crew</option>
+            <option>Sound & Lights Specialist</option>
+            <option>Kitchen Coordinator</option>
+            <option>Safety & Medical Officer</option>
+            <option>Fire & Rangers Lead</option>
           </optgroup>
           <optgroup label="Community & Experience">
-            <option>🎨 Alien Art Director</option>
-            <option>🎭 Cosmic Event Lead</option>
+            <option>Art & Decor Director</option>
+            <option>Event & Theme Coordinator</option>
           </optgroup>
         </select>
-        <textarea name="message" rows="4" placeholder="Why do you want to join our cosmic crew?" required></textarea>
-        <button type="submit">Beam Me Up!</button>
+        <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
+        <button type="submit">Submit Request</button>
       </form>
     </div>
   </section>
 
   <section class="section" id="mission">
-    <h1>Our Cosmic Mission</h1>
-    <p>We exist to unite creative extraterrestrials who reject the ordinary, support each other, and craft unforgettable moments under the Kiwiburn stars.</p>
+    <h1>Our Mission</h1>
+    <p>We are dedicated to fostering creativity, connection, and cosmic experiences, bringing together visionaries to shape unforgettable moments at Kiwiburn.</p>
   </section>
 
   <section class="section" id="members">
-    <h1>Meet Our Cosmic Crew</h1>
+    <h1>Meet Our Crew</h1>
     <div class="members-grid">
       <div class="member">
         <img src="images/ShanonRichards.jpg" alt="Member 1">
         <h3>Shanon Richards</h3>
         <span>Starship Captain</span>
-        <p>Guides our cosmic journey, handling planning, policies, and interstellar harmony.</p>
+        <p>Guides camp planning, policies, and operations with a cosmic vision.</p>
       </div>
       <div class="member">
         <img src="images/MeganR.jpg" alt="Member 2">
         <h3>Meghan-Louise Robson</h3>
         <span>Starship Captain</span>
-        <p>Co-pilots the camp, ensuring smooth operations and cosmic vibes.</p>
+        <p>Co-leads the camp, ensuring seamless execution and stellar vibes.</p>
       </div>
       <div class="member">
         <img src="images/RussellDuffield.jpg" alt="Member 3">
         <h3>Russell Duffield</h3>
-        <span>Vibe Commander</span>
-        <p>Creates safe spaces and keeps the cosmic love flowing.</p>
+        <span>Vibe Coordinator</span>
+        <p>Creates inclusive, welcoming spaces for all campers.</p>
       </div>
       <div class="member">
         <img src="images/michealdunstan.jpg" alt="Member 4">
         <h3>Micheal Dunstan</h3>
-        <span>Cosmic Treasurer</span>
-        <p>Manages our galactic credits with transparency and care.</p>
+        <span>Treasurer</span>
+        <p>Manages camp finances with transparency and responsibility.</p>
       </div>
       <div class="member">
         <img src="images/tomasshelby.jpg" alt="Member 5">
         <h3>Tomas Shelby</h3>
-        <span>Interstellar DJ</span>
-        <p>Curates cosmic beats to keep the dance floor orbiting.</p>
+        <span>Music Coordinator</span>
+        <p>Curates the camp’s soundscape, from DJs to live performances.</p>
       </div>
       <div class="member">
         <img src="images/member6.jpg" alt="Member 6">
         <h3>Elle</h3>
-        <span>Costume Nebula</span>
-        <p>Runs the cosmic wardrobe, ensuring every outfit is out of this world.</p>
+        <span>Costume Director</span>
+        <p>Manages the camp’s wardrobe, sparking creative expression.</p>
         <img src="images/jarrodskiffington.jpg" alt="Member 6">
         <h3>Jarrod Skiffington</h3>
-        <span>Transport Commander</span>
-        <p>Navigates our gear through the cosmos to and from Kiwiburn.</p>
+        <span>Transport Coordinator</span>
+        <p>Oversees the safe transport of camp gear to and from Kiwiburn.</p>
       </div>
       <div class="member">
         <img src="images/member7.jpg" alt="Member 7">
         <h3>Finn</h3>
-        <span>Fire Spinner</span>
-        <p>Lights up the night with dazzling cosmic fire shows.</p>
+        <span>Fire Performer</span>
+        <p>Delivers mesmerizing fire shows at sunset.</p>
       </div>
       <div class="member">
         <img src="images/member8.jpg" alt="Member 8">
         <h3>Nina</h3>
-        <span>Stellar Workshop Lead</span>
-        <p>Guides breathwork, yoga, and sound healing under the stars.</p>
+        <span>Workshop Coordinator</span>
+        <p>Leads breathwork, yoga, and sound healing sessions.</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="events">
-    <h1>Past Cosmic Events</h1>
-    <p>From interstellar discos to galactic art builds, here’s a taste of our cosmic creations.</p>
+    <h1>Past Events</h1>
+    <p>Explore our history of stellar events, from cosmic performances to collaborative art installations.</p>
     <div class="events-grid">
       <div class="event">
         <img src="images/Eventposter.jpg" alt="Emo Night Poster">
-        <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-        <p>Emo night returns with cosmic tears and teenage passion! Sip nebula-inspired drinks, get your makeup done, and vibe in our dark cosmic corner.</p>
+        <h3>Emo Night: A Tribute</h3>
+        <p>A nostalgic evening of emo vibes, themed drinks, and makeup stations, celebrating our cosmic community.</p>
       </div>
       <div class="event">
         <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
         <h3>Pole in the Paddock</h3>
-        <p>A stellar pole performance showcasing strength and grace. Watch humans defy gravity in a cosmic display of Kiwiburn energy!</p>
+        <p>A captivating pole performance showcasing strength, grace, and cosmic creativity.</p>
       </div>
       <div class="event">
         <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
         <h3>Cosmic Connections</h3>
-        <p>Join us to share stories of extraterrestrial encounters. A space for skeptics and seekers to explore the unknown and make cosmic contact.</p>
+        <p>A storytelling event exploring extraterrestrial themes, uniting skeptics and believers.</p>
       </div>
       <div class="event">
         <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
         <h3>DJ Showcase & Open Decks</h3>
-        <p>An open-deck party with local DJs spinning cosmic tracks, neon lights, and a dance floor orbiting all night.</p>
+        <p>A vibrant open-deck party with local DJs, colorful lights, and a cosmic dance floor.</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="submit">
-    <h1>Beam Up Your Event</h1>
-    <p>Share your interstellar event idea with our cosmic crew!</p>
+    <h1>Submit Your Event</h1>
+    <p>Propose your cosmic event idea to share with our stellar community.</p>
     <div class="form-container">
       <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
@@ -566,14 +556,14 @@
           <option value="Other">Other (Please Specify)</option>
         </select>
         <input type="text" name="equipmentOther" placeholder="Specify Other Equipment (if applicable)">
-        <textarea name="eventDescription" rows="6" placeholder="Enter Detailed Description of Your Cosmic Event Idea" required></textarea>
-        <button type="submit">Beam Up Event</button>
+        <textarea name="eventDescription" rows="6" placeholder="Describe Your Event Idea" required></textarea>
+        <button type="submit">Submit Event</button>
       </form>
     </div>
   </section>
 
   <section class="section" id="gallery">
-    <h1>Cosmic Gallery</h1>
+    <h1>Camp Gallery</h1>
     <div class="gallery">
       <img src="images/photo1.jpg" alt="Gallery Image 1">
       <img src="images/photo2.jpg" alt="Gallery Image 2">
@@ -582,8 +572,8 @@
   </section>
 
   <section class="contact-lead">
-    <h2>Need to Signal Us?</h2>
-    <p>Send a cosmic message to the Starship Captain on Facebook:</p>
+    <h2>Contact Us</h2>
+    <p>Reach out to our Starship Captain on Facebook:</p>
     <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
   </section>
 
@@ -600,14 +590,14 @@
       const now = new Date();
       const diff = targetDate - now;
       if (diff <= 0) {
-        countdown.textContent = "Kiwiburn is blasting off now!";
+        countdown.textContent = "Kiwiburn is live!";
         return;
       }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until cosmic liftoff!`;
+      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn`;
     }
 
     setInterval(updateCountdown, 1000);
