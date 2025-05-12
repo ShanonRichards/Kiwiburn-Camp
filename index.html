@@ -282,7 +282,7 @@
       background-color: #45a049;
     }
 
-    .events-container {
+    .events-container, .members-container {
       max-width: 1200px;
       margin: 0 auto;
       background-color: #fff;
@@ -301,16 +301,44 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       background-color: #fff;
     }
+
+    .newsletter-section {
+      padding: 80px 20px;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    .newsletter-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 2px solid #4caf50;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .newsletter-container h2 {
+      font-size: 2em;
+      margin-bottom: 15px;
+      color: #111;
+    }
+
+    .newsletter-container p {
+      font-size: 1.1em;
+      margin-bottom: 20px;
+      color: #222;
+    }
   </style>
 </head>
 <body>
   <nav>
     <a href="#about">About</a>
-    <a href="#join">Join Camp</a>
     <a href="#mission">Mission</a>
     <a href="#members">Members</a>
     <a href="#events">Events</a>
     <a href="#submit">Submit Event</a>
+    <a href="#newsletter">Newsletter</a>
     <a href="#gallery">Gallery</a>
   </nav>
 
@@ -329,74 +357,76 @@
     </div>
   </section>
 
-  <section class="section" id="join">
-    <h2>Request to Join</h2>
-    <p>Want to join our amazing community? Click below to submit your request!</p>
-    <a href="join-camp.html" class="submit-button">Click Here</a>
-  </section>
-
   <section class="section" id="mission">
     <h1>Our Mission</h1>
     <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
   </section>
 
-  <section class="section" id="members">
-    <h1>Meet Our Members</h1>
-    <div class="members-grid">
-      <div class="member">
-        <img src="images/ShanonRichards.jpg" alt="Member 1">
-        <h3>Shanon Richards</h3>
-        <span>Camp Lead</span>
-        <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution.</p>
+  <div class="members-container">
+    <section class="section" id="members">
+      <h1>Meet Our Members</h1>
+      <div class="members-grid">
+        <div class="member">
+          <img src="images/ShanonRichards.jpg" alt="Member 1">
+          <h3>Shanon Richards</h3>
+          <span>Camp Lead</span>
+          <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution.</p>
+        </div>
+        <div class="member">
+          <img src="images/MeganR.jpg" alt="Member 2">
+          <h3>Meghan-Louise Robson</h3>
+          <span>Camp Lead</span>
+          <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution</p>
+        </div>
+        <div class="member">
+          <img src="images/RussellDuffield.jpg" alt="Member 3">
+          <h3>Russell Duffield</h3>
+          <span>Vibe Manager</span>
+          <p>Creates safe spaces and makes sure everyone’s feeling loved.</p>
+        </div>
+        <div class="member">
+          <img src="images/michealdunstan.jpg" alt="Member 4">
+          <h3>Micheal Dunstan</h3>
+          <span>Finance Coordinator</span>
+          <p>To manage camp finances transparently and responsibly, handling budgeting, and camp expenses.</p>
+        </div>
+        <div class="member">
+          <img src="images/tomasshelby.jpg" alt="Member 5">
+          <h3>Tomas Shelby</h3>
+          <span>Music/DJ Coordinator</span>
+          <p>To curate and coordinate the camp’s musical experience, ensuring smooth DJ scheduling, sound setup.</p>
+        </div>
+        <div class="member">
+          <img src="images/member6.jpg" alt="Member 6">
+          <h3>Elle</h3>
+          <span>Costume Queen</span>
+          <p>Runs the dress-up rack and slays every outfit change.</p>
+          <img src="images/jarrodskiffington.jpg" alt="Member 6">
+          <h3>Jarrod Skiffington</h3>
+          <span>Transport Lead</span>
+          <p>To organize and manage the transport of camp gear, ensuring everything is picked up, packed, and delivered safely to and from the Kiwiburn site.</p>
+        </div>
+        <div class="member">
+          <img src="images/member7.jpg" alt="Member 7">
+          <h3>Finn</h3>
+          <span>Fire Spinner</span>
+          <p>Performs dazzling fire shows at sunset.</p>
+        </div>
+        <div class="member">
+          <img src="images/member8.jpg" alt="Member 8">
+          <h3>Nina</h3>
+          <span>Workshop Lead</span>
+          <p>Hosts breathwork, yoga, and sound healing under the stars.</p>
+        </div>
       </div>
-      <div class="member">
-        <img src="images/MeganR.jpg" alt="Member 2">
-        <h3>Meghan-Louise Robson</h3>
-        <span>Camp Lead</span>
-        <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution</p>
-      </div>
-      <div class="member">
-        <img src="images/RussellDuffield.jpg" alt="Member 3">
-        <h3>Russell Duffield</h3>
-        <span>Vibe Manager</span>
-        <p>Creates safe spaces and makes sure everyone’s feeling loved.</p>
-      </div>
-      <div class="member">
-        <img src="images/michealdunstan.jpg" alt="Member 4">
-        <h3>Micheal Dunstan</h3>
-        <span>Finance Coordinator</span>
-        <p>To manage camp finances transparently and responsibly, handling budgeting, and camp expenses.</p>
-      </div>
-      <div class="member">
-        <img src="images/tomasshelby.jpg" alt="Member 5">
-        <h3>Tomas Shelby</h3>
-        <span>Music/DJ Coordinator</span>
-        <p>To curate and coordinate the camp’s musical experience, ensuring smooth DJ scheduling, sound setup.</p>
-      </div>
-      <div class="member">
-        <img src="images/member6.jpg" alt="Member 6">
-        <h3>Elle</h3>
-        <span>Costume Queen</span>
-        <p>Runs the dress-up rack and slays every outfit change.</p>
-        <img src="images/jarrodskiffington.jpg" alt="Member 6">
-        <h3>Jarrod Skiffington</h3>
-        <span>Transport Lead</span>
-        <p>To organize and manage the transport of camp gear, ensuring everything is picked up, packed, and delivered safely to and from the Kiwiburn site.</p>
-      </div>
-      <div class="member">
-        <img src="images/member7.jpg" alt="Member 7">
-        <h3>Finn</h3>
-        <span>Fire Spinner</span>
-        <p>Performs dazzling fire shows at sunset.</p>
-      </div>
-      <div class="member">
-        <img src="images/member8.jpg" alt="Member 8">
-        <h3>Nina</h3>
-        <span>Workshop Lead</span>
-        <p>Hosts breathwork, yoga, and sound healing under the stars.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="section submit-section" id="join">
+      <h2>Request to Join</h2>
+      <p>Want to join our amazing community? Click below to submit your request!</p>
+      <a href="join-camp.html" class="submit-button">Click Here</a>
+    </section>
+  </div>
 
   <div class="events-container">
     <section class="section" id="events">
@@ -432,6 +462,14 @@
       <a href="submit-event.html" class="submit-button">Click Here</a>
     </section>
   </div>
+
+  <section class="newsletter-section" id="newsletter">
+    <div class="newsletter-container">
+      <h2>Updates & Newsletter</h2>
+      <p>Stay in the loop with the latest camp news, application updates, and camp fee information!</p>
+      <a href="newsletter.html" class="submit-button">Read Our Newsletter</a>
+    </div>
+  </section>
 
   <section class="section" id="gallery">
     <h1>Camp Gallery</h1>
