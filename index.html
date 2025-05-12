@@ -339,7 +339,7 @@
       background-color: #45a049;
     }
 
-    .events-container, .members-container {
+    .about-container, .mission-container, .events-container, .members-container, .gallery-container, .newsletter-container {
       max-width: 1200px;
       margin: 0 auto;
       background-color: #fff;
@@ -369,26 +369,8 @@
       text-align: center;
     }
 
-    .newsletter-container {
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #fff;
-      border: 2px solid #4caf50;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .newsletter-container h2 {
-      font-size: 2em;
-      margin-bottom: 15px;
-      color: #111;
-    }
-
-    .newsletter-container p {
-      font-size: 1.1em;
-      margin-bottom: 20px;
-      color: #222;
+    .newsletter-container .section {
+      padding: 0;
     }
 
     /* Mobile-specific styles */
@@ -530,7 +512,7 @@
         font-size: 0.8em;
       }
 
-      .events-container, .members-container {
+      .about-container, .mission-container, .events-container, .members-container, .gallery-container, .newsletter-container {
         max-width: 95%;
         padding: 20px 15px;
       }
@@ -594,27 +576,29 @@
   </nav>
 
   <header class="header">
-    <h1>Join Our Kiwiburn Camp</h1>
-    <h1>Join Our Kiwiburn </h1>
+    <h1>Join Our Kiwiburn</h1>
     <a href="#about" class="scroll-down">▼</a>
   </header>
 
-  <section class="section" id="about">
-    <h1>About Our Camp</h1>
-    <p>Join the Rejex... (update with actual camp info)</p>
-    <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
-    <div class="gallery">
-      <img src="images/Campphoto1.jpg" alt="Camp Mates">
-      <img src="images/Campphoto15.png" alt="Camp Mates">
-      <img src="images/Eventposter.jpg" alt="Night Lights">
-      <img src="images/Campphoto17.png" alt="Night Lights">
-    </div>
-  </section>
+  <div class="about-container">
+    <section class="section" id="about">
+      <h1>About Our Camp</h1>
+      <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
+      <div class="gallery">
+        <img src="images/Campphoto1.jpg" alt="Camp Mates">
+        <img src="images/Campphoto15.png" alt="Camp Mates">
+        <img src="images/Eventposter.jpg" alt="Night Lights">
+        <img src="images/Campphoto17.png" alt="Night Lights">
+      </div>
+    </section>
+  </div>
 
-  <section class="section" id="mission">
-    <h1>Our Mission</h1>
-    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
-  </section>
+  <div class="mission-container">
+    <section class="section" id="mission">
+      <h1>Our Mission</h1>
+      <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
+    </section>
+  </div>
 
   <div class="members-container">
     <section class="section" id="members">
@@ -769,22 +753,24 @@
     </section>
   </div>
 
-  <section class="newsletter-section" id="newsletter">
-    <div class="newsletter-container">
+  <div class="newsletter-container">
+    <section class="section" id="newsletter">
       <h2>Updates & Newsletter</h2>
       <p>Stay in the loop with the latest camp news, application updates, and camp fee information!</p>
       <a href="newsletter.html" class="submit-button">Read Our Newsletter</a>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <section class="section" id="gallery">
-    <h1>Camp Gallery</h1>
-    <div class="gallery">
-      <img src="images/photo1.jpg" alt="Gallery Image 1">
-      <img src="images/photo2.jpg" alt="Gallery Image 2">
-      <img src="images/photo3.jpg" alt="Gallery Image 3">
-    </div>
-  </section>
+  <div class="gallery-container">
+    <section class="section" id="gallery">
+      <h1>Camp Gallery</h1>
+      <div class="gallery">
+        <img src="images/photo1.jpg" alt="Gallery Image 1">
+        <img src="images/photo2.jpg" alt="Gallery Image 2">
+        <img src="images/photo3.jpg" alt="Gallery Image 3">
+      </div>
+    </section>
+  </div>
 
   <section class="contact-lead">
     <h2>Need to reach out?</h2>
