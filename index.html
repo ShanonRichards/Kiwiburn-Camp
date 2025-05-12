@@ -200,6 +200,21 @@
       border: 3px solid #f39c12;
     }
 
+    .member.important-role {
+      position: relative;
+    }
+
+    .member.important-role img::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
     .member h3 {
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
@@ -528,6 +543,11 @@
         height: 100px;
       }
 
+      .member.important-role img::before {
+        font-size: 1.2rem;
+        top: -15px;
+      }
+
       .role img {
         width: 50px;
         height: 50px;
@@ -692,13 +712,13 @@
     <section class="section" id="members">
       <h1>Meet Our Core Camp Crew</h1>
       <div class="members-grid">
-        <div class="member">
+        <div class="member important-role">
           <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
           <h3>Shanon Richards</h3>
           <span>Camp Lead</span>
           <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution.</p>
         </div>
-        <div class="member">
+        <div class="member important-role">
           <img src="images/MeganR.jpg" alt="Meghan-Louise Robson">
           <h3>Meghan Robson</h3>
           <span>Deputy Lead</span>
@@ -709,7 +729,7 @@
           <h3>Russell Duffield</h3>
           <span>Vibe Manager</span>
           <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging.</p>
-          </div>
+        </div>
         <div class="member">
           <img src="images/Star Dust Bambi.jpg" alt="Elle">
           <h3>Star Dust Bambi</h3>
