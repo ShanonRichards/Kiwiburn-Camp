@@ -170,7 +170,7 @@
 
     .events-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       max-width: 1000px;
       margin: 40px auto 0 auto;
@@ -183,6 +183,10 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
+    }
+
+    .event:last-child {
+      grid-column: 2 / 3;
     }
 
     .event:hover {
@@ -286,6 +290,14 @@
       border-radius: 10px;
       padding: 40px 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .submit-section {
+      background-color: #e0e0e0;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -412,7 +424,7 @@
       </div>
     </section>
 
-    <section class="section" id="submit">
+    <section class="section submit-section" id="submit">
       <h1>Submit Your Event</h1>
       <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
       <a href="submit-event.html" class="submit-button">Click Here</a>
