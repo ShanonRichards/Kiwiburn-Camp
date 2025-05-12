@@ -92,7 +92,7 @@
       color: #111;
     }
 
-     .section p {
+    .section p {
       font-size: 1.1em;
       max-width: 800px;
       margin: 0 auto 30px auto;
@@ -131,21 +131,28 @@
       transform: scale(1.05);
     }
 
-    .members-grid {
+    .members-grid, .roles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 30px;
       max-width: 1000px;
       margin: 40px auto 0 auto;
+      justify-items: center;
+      align-items: start;
     }
 
-    .member {
+    .member, .role {
       text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 300px;
     }
 
-    .member img {
-      width: 180px;
-      height: 180px;
+    .member img, .role img {
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -163,9 +170,43 @@
       display: block;
     }
 
-    .member p {
+    .member p, .role p {
       font-size: 0.95em;
       color: #444;
+      margin: 5px 0;
+    }
+
+    .role {
+      cursor: pointer;
+    }
+
+    .role h3 {
+      margin: 10px 0 5px;
+      font-size: 1.1em;
+      color: #222;
+    }
+
+    .role .tooltip {
+      visibility: hidden;
+      width: 200px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 10px;
+      position: absolute;
+      z-index: 10;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.9em;
+    }
+
+    .role:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
     }
 
     .events-grid {
@@ -368,59 +409,111 @@
 
   <div class="members-container">
     <section class="section" id="members">
-      <h1>Meet Our Members</h1>
+      <h1>Meet Our Core Camp Crew</h1>
       <div class="members-grid">
         <div class="member">
-          <img src="images/ShanonRichards.jpg" alt="Member 1">
+          <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
           <h3>Shanon Richards</h3>
           <span>Camp Lead</span>
           <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution.</p>
         </div>
         <div class="member">
-          <img src="images/MeganR.jpg" alt="Member 2">
+          <img src="images/MeganR.jpg" alt="Meghan-Louise Robson">
           <h3>Meghan-Louise Robson</h3>
           <span>Camp Lead</span>
-          <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution</p>
+          <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution.</p>
         </div>
         <div class="member">
-          <img src="images/RussellDuffield.jpg" alt="Member 3">
+          <img src="images/RussellDuffield.jpg" alt="Russell Duffield">
           <h3>Russell Duffield</h3>
           <span>Vibe Manager</span>
           <p>Creates safe spaces and makes sure everyone’s feeling loved.</p>
         </div>
         <div class="member">
-          <img src="images/michealdunstan.jpg" alt="Member 4">
+          <img src="images/michealdunstan.jpg" alt="Micheal Dunstan">
           <h3>Micheal Dunstan</h3>
           <span>Finance Coordinator</span>
-          <p>To manage camp finances transparently and responsibly, handling budgeting, and camp expenses.</p>
+          <p>Manages camp finances transparently, handling budgeting and expenses.</p>
         </div>
         <div class="member">
-          <img src="images/tomasshelby.jpg" alt="Member 5">
+          <img src="images/tomasshelby.jpg" alt="Tomas Shelby">
           <h3>Tomas Shelby</h3>
           <span>Music/DJ Coordinator</span>
-          <p>To curate and coordinate the camp’s musical experience, ensuring smooth DJ scheduling, sound setup.</p>
+          <p>Curates and coordinates the camp’s musical experience, ensuring smooth DJ scheduling and sound setup.</p>
         </div>
         <div class="member">
-          <img src="images/member6.jpg" alt="Member 6">
+          <img src="images/jarrodskiffington.jpg" alt="Jarrod Skiffington">
+          <h3>Jarrod Skiffington</h3>
+          <span>Transport Lead</span>
+          <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
+        </div>
+        <div class="member">
+          <img src="images/member6.jpg" alt="Elle">
           <h3>Elle</h3>
           <span>Costume Queen</span>
           <p>Runs the dress-up rack and slays every outfit change.</p>
-          <img src="images/jarrodskiffington.jpg" alt="Member 6">
-          <h3>Jarrod Skiffington</h3>
-          <span>Transport Lead</span>
-          <p>To organize and manage the transport of camp gear, ensuring everything is picked up, packed, and delivered safely to and from the Kiwiburn site.</p>
         </div>
         <div class="member">
-          <img src="images/member7.jpg" alt="Member 7">
+          <img src="images/member7.jpg" alt="Finn">
           <h3>Finn</h3>
           <span>Fire Spinner</span>
           <p>Performs dazzling fire shows at sunset.</p>
         </div>
         <div class="member">
-          <img src="images/member8.jpg" alt="Member 8">
+          <img src="images/member8.jpg" alt="Nina">
           <h3>Nina</h3>
           <span>Workshop Lead</span>
           <p>Hosts breathwork, yoga, and sound healing under the stars.</p>
+        </div>
+      </div>
+
+      <h2>Roles to Be Filled</h2>
+      <p>Join our team! Hover over each role to learn more about the responsibilities and expectations.</p>
+      <div class="roles-grid">
+        <div class="role">
+          <img src="images/role1.jpg" alt="Logistics Lead">
+          <h3>Logistics & Build Lead</h3>
+          <div class="tooltip">Plans camp layout, manages ride shares, carpools, and essential gear.</div>
+        </div>
+        <div class="role">
+          <img src="images/role2.jpg" alt="Volunteer Coordinator">
+          <h3>Volunteer Coordinator</h3>
+          <div class="tooltip">Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</div>
+        </div>
+        <div class="role">
+          <img src="images/role3.jpg" alt="Build Crew">
+          <h3>Build Crew</h3>
+          <div class="tooltip">Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</div>
+        </div>
+        <div class="role">
+          <img src="images/role4.jpg" alt="Sound & Lights Lead">
+          <h3>Sound & Lights Lead</h3>
+          <div class="tooltip">Oversees DJ schedules, lighting, sound compliance, and power systems.</div>
+        </div>
+        <div class="role">
+          <img src="images/role5.jpg" alt="Kitchen Lead">
+          <h3>Kitchen Lead</h3>
+          <div class="tooltip">Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</div>
+        </div>
+        <div class="role">
+          <img src="images/role6.jpg" alt="Safety & Medical Lead">
+          <h3>Safety & Medical Lead</h3>
+          <div class="tooltip">Stocks first aid, provides harm reduction & emergency support.</div>
+        </div>
+        <div class="role">
+          <img src="images/role7.jpg" alt="Fire & Rangers Lead">
+          <h3>Fire & Rangers Lead</h3>
+          <div class="tooltip">Manages fire safety, emergency exits & coordinates with Rangers.</div>
+        </div>
+        <div class="role">
+          <img src="images/role8.jpg" alt="Art & Decor Lead">
+          <h3>Art & Decor Lead</h3>
+          <div class="tooltip">Oversees decor, signs, and interactive art.</div>
+        </div>
+        <div class="role">
+          <img src="images/role9.jpg" alt="Event & Theme Night Lead">
+          <h3>Event & Theme Night Lead</h3>
+          <div class="tooltip">Plans events, workshops, performances & group photos.</div>
         </div>
       </div>
     </section>
