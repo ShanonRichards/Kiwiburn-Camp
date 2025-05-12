@@ -25,6 +25,12 @@
       z-index: 1000;
     }
 
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     nav a {
       color: #fff;
       text-decoration: none;
@@ -38,6 +44,16 @@
 
     nav a:hover {
       background-color: #4caf50;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
     }
 
     .header {
@@ -377,19 +393,50 @@
 
     /* Mobile-specific styles */
     @media only screen and (max-width: 768px) {
-      .header h1 {
-        font-size: 2.5em;
+      .hamburger {
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 10px;
       }
 
       nav {
-        flex-direction: column;
+        justify-content: flex-start;
         padding: 10px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(34, 34, 34, 0.9);
+        position: absolute;
+        top: 50px;
+        left: 0;
+        padding: 10px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
       }
 
       nav a {
         margin: 5px 0;
-        font-size: 0.9rem;
-        padding: 8px 12px;
+        font-size: 1rem;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .header {
+        height: 70vh;
+      }
+
+      .header h1 {
+        font-size: 2.5em;
+      }
+
+      .scroll-down {
+        font-size: 1.2rem;
       }
 
       .section {
@@ -402,27 +449,38 @@
 
       .section p {
         font-size: 1em;
-        max-width: 90%;
+        max-width: 95%;
       }
 
       .gallery {
         grid-template-columns: 1fr;
         gap: 15px;
+        max-width: 95%;
       }
 
       .members-grid, .roles-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        max-width: 95%;
       }
 
       .member img, .role img {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
+      }
+
+      .member h3, .role h3 {
+        font-size: 1.1em;
+      }
+
+      .member p, .role p {
+        font-size: 0.9em;
       }
 
       .events-grid {
         grid-template-columns: 1fr;
         gap: 20px;
+        max-width: 95%;
       }
 
       .event:last-child {
@@ -446,11 +504,11 @@
       }
 
       .form-container {
-        max-width: 90%;
+        max-width: 95%;
       }
 
       .submit-section, .newsletter-container {
-        max-width: 90%;
+        max-width: 95%;
         padding: 15px;
       }
 
@@ -471,15 +529,16 @@
         width: 150px;
         font-size: 0.8em;
       }
+
+      .events-container, .members-container {
+        max-width: 95%;
+        padding: 20px 15px;
+      }
     }
 
     @media only screen and (max-width: 480px) {
       .header h1 {
         font-size: 2em;
-      }
-
-      .scroll-down {
-        font-size: 1.2rem;
       }
 
       .section h1, .section h2 {
@@ -509,18 +568,29 @@
       .newsletter-container p {
         font-size: 0.9em;
       }
+
+      .event img {
+        height: 120px;
+      }
+
+      .hamburger {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#about">About</a>
-    <a href="#mission">Mission</a>
-    <a href="#members">Members</a>
-    <a href="#events">Events</a>
-    <a href="#submit">Submit Event</a>
-    <a href="#newsletter">Newsletter</a>
-    <a href="#gallery">Gallery</a>
+    <button class="hamburger" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#mission">Mission</a>
+      <a href="#members">Members</a>
+      <a href="#events">Events</a>
+      <a href="#submit">Submit Event</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#gallery">Gallery</a>
+    </div>
   </nav>
 
   <header class="header">
@@ -726,6 +796,13 @@
   </footer>
 
   <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
     const countdown = document.getElementById('countdown');
     const targetDate = new Date('2025-01-27T12:00:00');
 
