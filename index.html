@@ -540,20 +540,27 @@
       }
 
       .members-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
         max-width: 95%;
+        padding: 0 10px;
       }
 
       .roles-grid {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 15px;
         max-width: 95%;
+        padding: 0 10px;
+      }
+
+      .member {
+        padding: 10px;
+        min-height: 250px;
       }
 
       .member img {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
       }
 
       .member.camp-lead::before, .member.deputy-lead::before {
@@ -599,7 +606,8 @@
 
       .form-container {
         max-width: 95%;
-       }
+      }
+
       .submit-section, .newsletter-container {
         max-width: 95%;
         padding: 15px;
@@ -642,12 +650,45 @@
         font-size: 0.9em;
       }
 
+      .members-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 5px;
+      }
+
+      .roles-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 5px;
+      }
+
+      .member {
+        padding: 8px;
+        min-height: 200px;
+      }
+
+      .member img {
+        width: 60px;
+        height: 60px;
+      }
+
       .member h3, .role h3 {
         font-size: 0.95em;
       }
 
       .member p, .role p {
         font-size: 0.85em;
+      }
+
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1rem;
+        top: -12px;
+      }
+
+      .role img {
+        width: 45px;
+        height: 45px;
+        padding: 5px;
       }
 
       .countdown {
@@ -666,18 +707,14 @@
         height: 120px;
       }
 
-      .role img {
-        width: 45px;
-        height: 45px;
-        padding: 5px;
-      }
-
       .hamburger {
         font-size: 1.2rem;
       }
 
-      .roles-grid {
-        grid-template-columns: 1fr;
+      .role .tooltip {
+        width: 120px;
+        font-size: 0.8em;
+        padding: 8px;
       }
     }
   </style>
@@ -806,7 +843,9 @@
           <img src="images/olivia.jpg" alt="Olivia">
           <h3>Olivia Derewlany </h3>
           <span>Safety Officer</span>
-          <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness.</p>
+          <p>Ensures camp safety, fire
+
+ protocols, and first-aid basics. Supports emergency readiness.</p>
         </div>
         <div class="member">
           <img src="images/wenyi.jpg" alt="Wenyi">
