@@ -166,13 +166,24 @@
       min-height: 300px;
     }
 
-    .member img, .role img {
+    .member img {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       margin-bottom: 10px;
+    }
+
+    .role img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      background-color: #fff;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .member h3 {
@@ -227,9 +238,9 @@
 
     .events-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* Four columns for four events */
+      grid-template-columns: repeat(4, 1fr);
       gap: 30px;
-      max-width: 1200px; /* Increased to accommodate four events */
+      max-width: 1200px;
       margin: 40px auto 0 auto;
     }
 
@@ -369,7 +380,6 @@
       padding: 0;
     }
 
-    /* Mobile-specific styles */
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
@@ -442,9 +452,15 @@
         max-width: 95%;
       }
 
-      .member img, .role img {
+      .member img {
         width: 100px;
         height: 100px;
+      }
+
+      .role img {
+        width: 60px;
+        height: 60px;
+        padding: 8px;
       }
 
       .member h3, .role h3 {
@@ -456,7 +472,7 @@
       }
 
       .events-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr;
         gap: 20px;
         max-width: 95%;
       }
@@ -545,6 +561,12 @@
 
       .event img {
         height: 120px;
+      }
+
+      .role img {
+        width: 50px;
+        height: 50px;
+        padding: 6px;
       }
 
       .hamburger {
@@ -655,47 +677,47 @@
       <p>Join our team! Hover over each role to learn more about the responsibilities and expectations.</p>
       <div class="roles-grid">
         <div class="role">
-          <img src="images/role1.jpg" alt="Logistics Lead">
+          <img src="images/icons/logistics-lead.png" alt="Logistics Lead Icon">
           <h3>Logistics & Build Lead</h3>
           <div class="tooltip">Plans camp layout, manages ride shares, carpools, and essential gear.</div>
         </div>
         <div class="role">
-          <img src="images/role2.jpg" alt="Volunteer Coordinator">
+          <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
           <div class="tooltip">Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</div>
         </div>
         <div class="role">
-          <img src="images/Buildcrew.png" alt="Build Crew">
+          <img src="images/icons/build-crew.png" alt="Build Crew Icon">
           <h3>Build Crew</h3>
           <div class="tooltip">Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</div>
         </div>
         <div class="role">
-          <img src="images/role4.jpg" alt="Sound & Lights Lead">
+          <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
           <h3>Sound & Lights Lead</h3>
           <div class="tooltip">Oversees DJ schedules, lighting, sound compliance, and power systems.</div>
         </div>
         <div class="role">
-          <img src="images/role5.jpg" alt="Kitchen Lead">
+          <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
           <h3>Kitchen Lead</h3>
           <div class="tooltip">Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</div>
         </div>
         <div class="role">
-          <img src="images/role6.jpg" alt="Safety & Medical Lead">
+          <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
           <h3>Safety & Medical Lead</h3>
           <div class="tooltip">Stocks first aid, provides harm reduction & emergency support.</div>
         </div>
         <div class="role">
-          <img src="images/role7.jpg" alt="Fire & Rangers Lead">
+          <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
           <h3>Fire & Rangers Lead</h3>
           <div class="tooltip">Manages fire safety, emergency exits & coordinates with Rangers.</div>
         </div>
         <div class="role">
-          <img src="images/role8.jpg" alt="Art & Decor Lead">
+          <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
           <h3>Art & Decor Lead</h3>
           <div class="tooltip">Oversees decor, signs, and interactive art.</div>
         </div>
         <div class="role">
-          <img src="images/role9.jpg" alt="Event & Theme Night Lead">
+          <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
           <h3>Event & Theme Night Lead</h3>
           <div class="tooltip">Plans events, workshops, performances & group photos.</div>
         </div>
