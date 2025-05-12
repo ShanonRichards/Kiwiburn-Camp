@@ -79,9 +79,25 @@
       transition: border-color 0.3s, box-shadow 0.3s;
     }
 
-    .form-container input:focus,
-    .form-container textarea:focus,
+    .form-container select {
+      color: #000000; /* Black text for dropdown */
+      background: rgba(255, 255, 255, 0.9); /* Slightly opaque white background for contrast */
+    }
+
+    .form-container select option {
+      color: #000000; /* Black text for options */
+      background: #ffffff; /* White background for options */
+    }
+
     .form-container select:focus {
+      outline: none;
+      border-color: #ff00ff;
+      box-shadow: 0 0 10px #ff00ff;
+      color: #ffffff; /* White text when selected/focused */
+    }
+
+    .form-container input:focus,
+    .form-container textarea:focus {
       outline: none;
       border-color: #ff00ff;
       box-shadow: 0 0 10px #ff00ff;
