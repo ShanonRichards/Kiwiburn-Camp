@@ -4,28 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join My Camp - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto Condensed', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
-      color: #2b1b0f;
+      background: linear-gradient(180deg, #1a1a1a 0%, #2c1b2c 100%);
+      color: #d9d9d9;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background: rgba(44, 29, 15, 0.85);
+      background: rgba(10, 10, 10, 0.9);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       padding: 15px 10px;
       z-index: 1000;
-      border-bottom: 2px solid #e67e22;
+      border-bottom: 2px solid #a11212;
     }
 
     .nav-links {
@@ -35,26 +35,27 @@
     }
 
     nav a {
-      color: #f8e1b4;
+      color: #d9d9d9;
       text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 1.2rem;
       margin: 5px 15px;
       padding: 10px 15px;
       border-radius: 4px;
       transition: background 0.3s, color 0.3s;
       text-transform: uppercase;
+      text-shadow: 0 0 5px rgba(161, 18, 18, 0.5);
     }
 
     nav a:hover {
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: #a11212;
+      color: #1a1a1a;
     }
 
     .hamburger {
       display: none;
       font-size: 1.5rem;
-      color: #f8e1b4;
+      color: #d9d9d9;
       background: none;
       border: none;
       cursor: pointer;
@@ -68,13 +69,15 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #f8e1b4;
+      color: #d9d9d9;
       position: relative;
-      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
+      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.9);
+      background-blend-mode: overlay;
+      background-color: rgba(26, 26, 26, 0.7);
     }
 
     .header h1 {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 5em;
       max-width: 90%;
       letter-spacing: 2px;
@@ -82,8 +85,8 @@
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400; }
-      to { text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22; }
+      from { text-shadow: 0 0 10px #a11212, 0 0 20px #a11212, 0 0 30px #4b0e0e; }
+      to { text-shadow: 0 0 20px #d92b2b, 0 0 30px #d92b2b, 0 0 40px #a11212; }
     }
 
     .scroll-down {
@@ -93,7 +96,7 @@
       transform: translateX(-50%);
       font-size: 1.5rem;
       animation: bounce 2s infinite;
-      color: #f8e1b4;
+      color: #d9d9d9;
     }
 
     @keyframes bounce {
@@ -105,25 +108,26 @@
     .section {
       padding: 80px 20px;
       text-align: center;
-      background: url('images/dusty-texture.png') center/cover;
-      border-top: 1px solid #e67e22;
-      border-bottom: 1px solid #e67e22;
+      background: url('images/grunge-texture.jpg') center/cover;
+      border-top: 1px solid #a11212;
+      border-bottom: 1px solid #a11212;
     }
 
     .section:nth-of-type(odd) {
-      background-color: rgba(244, 228, 188, 0.8);
+      background-color: rgba(26, 26, 26, 0.8);
     }
 
     .section:nth-of-type(even) {
-      background-color: rgba(217, 185, 155, 0.8);
+      background-color: rgba(44, 27, 44, 0.8);
     }
 
     .section h1, .section h2 {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 3em;
       margin-bottom: 20px;
-      color: #2b1b0f;
+      color: #d9d9d9;
       letter-spacing: 1px;
+      text-shadow: 0 0 5px rgba(161, 18, 18, 0.5);
     }
 
     .section p {
@@ -131,7 +135,7 @@
       max-width: 800px;
       margin: 0 auto 30px auto;
       line-height: 1.6;
-      color: #2b1b0f;
+      color: #b3b3b3;
     }
 
     ul {
@@ -157,14 +161,16 @@
       width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid #e67e22;
+      border: 2px solid #a11212;
+      filter: grayscale(20%);
     }
 
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5);
+      box-shadow: 0 6px 15px rgba(161, 18, 18, 0.7);
+      filter: grayscale(0%);
     }
 
     .members-grid, .roles-grid {
@@ -184,10 +190,10 @@
       flex-direction: column;
       align-items: center;
       min-height: 320px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.2);
       padding: 15px;
       border-radius: 8px;
-      border: 1px solid #e67e22;
+      border: 1px solid #a11212;
       box-sizing: border-box;
     }
 
@@ -196,9 +202,10 @@
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       margin-bottom: 10px;
-      border: 3px solid #f39c12;
+      border: 3px solid #d92b2b;
+      filter: saturate(80%);
     }
 
     .member.camp-lead, .member.deputy-lead {
@@ -206,40 +213,40 @@
     }
 
     .member.camp-lead::before {
-      content: '👑';
+      content: '💀';
       position: absolute;
       top: -20px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
-      color: #FFD700;
+      color: #d9d9d9;
       z-index: 10;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .member.deputy-lead::before {
-      content: '👑';
+      content: '🖤';
       position: absolute;
       top: -20px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
-      color: #C0C0C0;
+      color: #b3b3b3;
       z-index: 10;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .member h3 {
       margin: 10px 0 5px;
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 1.5em;
-      color: #2b1b0f;
+      color: #d9d9d9;
       line-height: 1.2;
     }
 
     .member span {
       font-weight: bold;
-      color: #e67e22;
+      color: #a11212;
       display: block;
       font-size: 1.2em;
       margin-bottom: 5px;
@@ -248,7 +255,7 @@
 
     .member p {
       font-size: 1em;
-      color: #2b1b0f;
+      color: #b3b3b3;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
@@ -260,21 +267,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.3);
       padding: 15px;
       border-radius: 12px;
-      border: 2px solid #e67e22;
+      border: 2px solid #a11212;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       min-height: 220px;
       width: 100%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
       box-sizing: border-box;
     }
 
     .role:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5);
+      box-shadow: 0 6px 12px rgba(161, 18, 18, 0.7);
     }
 
     .role img {
@@ -283,24 +290,24 @@
       border-radius: 8px;
       object-fit: contain;
       margin-bottom: 10px;
-      background-color: #f8e1b4;
+      background-color: #2c1b2c;
       padding: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
 
     .role h3 {
       margin: 5px 0;
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 1.3em;
-      color: #2b1b0f;
+      color: #d9d9d9;
       line-height: 1.2;
     }
 
     .role .tooltip {
       visibility: hidden;
       width: 180px;
-      background-color: #2b1b0f;
-      color: #f8e1b4;
+      background-color: #1a1a1a;
+      color: #d9d9d9;
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -312,8 +319,8 @@
       opacity: 0;
       transition: opacity 0.3s, transform 0.3s;
       font-size: 0.9em;
-      font-family: 'Montserrat', sans-serif;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      font-family: 'Roboto Condensed', sans-serif;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     }
 
     .role:hover .tooltip {
@@ -332,17 +339,17 @@
 
     .event {
       text-align: left;
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(0, 0, 0, 0.3);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #e67e22;
+      border: 1px solid #a11212;
     }
 
     .event:hover {
       transform: scale(1.02);
-      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5);
+      box-shadow: 0 6px 15px rgba(161, 18, 18, 0.7);
     }
 
     .event img {
@@ -351,36 +358,37 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      border: 2px solid #f39c12;
+      border: 2px solid #d92b2b;
+      filter: contrast(110%);
     }
 
     .event h3 {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 1.6em;
       margin: 0 0 10px;
-      color: #2b1b0f;
+      color: #d9d9d9;
     }
 
     .event p {
       font-size: 1em;
-      color: #2b1b0f;
+      color: #b3b3b3;
       line-height: 1.5;
     }
 
     .countdown {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 2em;
       font-weight: bold;
-      color: #f8e1b4;
+      color: #d9d9d9;
       margin-top: 20px;
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #2b1b0f;
-      color: #f8e1b4;
-      border-top: 2px solid #e67e22;
+      background-color: #1a1a1a;
+      color: #d9d9d9;
+      border-top: 2px solid #a11212;
     }
 
     .form-container {
@@ -396,84 +404,84 @@
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 5px;
-      border: 1px solid #e67e22;
+      border: 1px solid #a11212;
       font-size: 1rem;
       box-sizing: border-box;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
+      background: rgba(0, 0, 0, 0.2);
+      color: #d9d9d9;
     }
 
     .form-container button {
       padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: #a11212;
+      color: #1a1a1a;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 1.2em;
     }
 
     .contact-lead {
       padding: 40px 20px;
-      background-color: #2b1b0f;
-      color: #f8e1b4;
+      background-color: #1a1a1a;
+      color: #d9d9d9;
       text-align: center;
-      border-top: 2px solid #e67e22;
-      border-bottom: 2px solid #e67e22;
+      border-top: 2px solid #a11212;
+      border-bottom: 2px solid #a11212;
     }
 
     .contact-lead a {
-      color: #f39c12;
+      color: #d92b2b;
       font-size: 1.2em;
       text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
     }
 
     .submit-button {
       display: inline-block;
       padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: #a11212;
+      color: #1a1a1a;
       text-decoration: none;
       border-radius: 5px;
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Special Elite', cursive;
       font-size: 1.2em;
       transition: background-color 0.3s, color 0.3s;
     }
 
     .submit-button:hover {
-      background-color: #f39c12;
-      color: #2b1b0f;
+      background-color: #d92b2b;
+      color: #1a1a1a;
     }
 
     .about-container, .mission-container, .events-container, .members-container, .gallery-container, .newsletter-container {
       max-width: 1200px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
+      background: rgba(0, 0, 0, 0.3);
+      border: 2px solid #a11212;
       border-radius: 10px;
       padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
 
     .section#submit {
-      background-color: rgba(244, 228, 188, 0.8);
+      background-color: rgba(26, 26, 26, 0.8);
     }
 
     .submit-section {
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
+      background: rgba(0, 0, 0, 0.3);
+      border: 2px solid #a11212;
       padding: 20px;
       border-radius: 10px;
       max-width: 600px;
       margin: 40px auto 0 auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
 
     .newsletter-section {
       padding: 80px 20px;
-      background-color: rgba(244, 228, 188, 0.8);
+      background-color: rgba(26, 26, 26, 0.8);
       text-align: center;
     }
 
@@ -498,7 +506,7 @@
         display: none;
         flex-direction: column;
         width: 100%;
-        background: rgba(44, 29, 15, 0.9);
+        background: rgba(10, 10, 10, 0.9);
         position: absolute;
         top: 50px;
         left: 0;
@@ -580,7 +588,7 @@
       }
 
       .member.camp-lead::before, .member.deputy-lead::before {
-        font-size: 1.2rem;
+        font downto: 1.2rem;
         top: -15px;
       }
 
@@ -709,7 +717,7 @@
       }
 
       .member span {
-        font-size: .nio;
+        font-size: 1em;
       }
 
       .member p {
@@ -724,7 +732,6 @@
       .role img {
         width: 45px;
         height: 45px;
-        padding: 5px;
       }
 
       .role h3 {
@@ -959,96 +966,6 @@
 
   <div class="events-container">
     <section class="section" id="events">
-      <h1>Past Events</h1>
-      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
-      <div class="events-grid">
-        <div class="event">
-          <img src="images/Eventposter.jpg" alt="Emo Night Poster">
-          <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-          <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
-        </div>
-        <div class="event">
-          <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
-          <h3>Pole in the paddock</h3>
-          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
-        </div>
-        <div class="event">
-          <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
-          <h3>Cosmic Connections</h3>
-          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
-        </div>
-        <div class="event">
-          <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
-          <h3>DJ Showcase & Open Decks</h3>
-          <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
-        </div>
-      </div>
-    </section>
+      <h1>P Penal Code violations (PCs) for the state in which the user is located
 
-    <section class="section submit-section" id="submit">
-      <h1>Submit Your Event</h1>
-      <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
-      <a href="submit-event.html" class="submit-button">Click Here</a>
-    </section>
-  </div>
-
-  <div class="newsletter-container">
-    <section class="section" id="newsletter">
-      <h2>Updates & Newsletter</h2>
-      <p>Stay in the loop with the latest camp news, application updates, and camp fee information!</p>
-      <a href="newsletter.html" class="submit-button">Read Our Newsletter</a>
-    </section>
-  </div>
-
-  <div class="gallery-container">
-    <section class="section" id="gallery">
-      <h1>Camp Gallery</h1>
-      <div class="gallery">
-        <img src="images/photo1.jpg" alt="Gallery Image 1">
-        <img src="images/photo2.jpg" alt="Gallery Image 2">
-        <img src="images/photo3.jpg" alt="Gallery Image 3">
-      </div>
-    </section>
-  </div>
-
-  <section class="contact-lead">
-    <h2>Need to reach out?</h2>
-    <p>Message the Camp Lead on Facebook:</p>
-    <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
-  </section>
-
-  <footer class="footer">
-    <p>© 2025 Kiwiburn Camp</p>
-    <div class="countdown" id="countdown"></div>
-  </footer>
-
-  <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    const countdown = document.getElementById('countdown');
-    const targetDate = new Date('2025-01-27T12:00:00');
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
-      if (diff <= 0) {
-        countdown.textContent = "Kiwiburn is happening now!";
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
-</body>
-</html>
+      The information provided about the user's location is insufficient to determine the specific state penal code to reference. Could you please provide the name of the state you are inquiring about? This will allow me to provide accurate information regarding the relevant penal code violations.
