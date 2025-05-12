@@ -11,36 +11,18 @@
       padding: 0;
       font-family: 'Montserrat', sans-serif;
       scroll-behavior: smooth;
-      background: url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
-      background-size: cover;
-      color: #222;
-      position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(10, 10, 35, 0.8), rgba(26, 26, 61, 0.8));
-      z-index: -1;
-      opacity: 0.9;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background: rgba(34, 34, 34, 0.8);
+      background-color: rgba(34, 34, 34, 0.8);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       padding: 15px 10px;
       z-index: 1000;
-      border-bottom: 1px solid #00d4ff;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     }
 
     .nav-links {
@@ -57,24 +39,21 @@
       margin: 5px 15px;
       padding: 10px 15px;
       border-radius: 4px;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+      transition: background 0.3s;
     }
 
     nav a:hover {
-      background: linear-gradient(45deg, #00d4ff, #ff00ff);
-      box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-      transform: scale(1.03);
+      background-color: #4caf50;
     }
 
     .hamburger {
       display: none;
       font-size: 1.5rem;
-      color: #00d4ff;
+      color: #fff;
       background: none;
       border: none;
       cursor: pointer;
       padding: 10px;
-      text-shadow: 0 0 5px #00d4ff;
     }
 
     .header {
@@ -88,22 +67,10 @@
       position: relative;
     }
 
-    .header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(255, 0, 255, 0.1));
-      z-index: 0;
-    }
-
     .header h1 {
       font-size: 4em;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6), 0 0 10px #00d4ff;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
       max-width: 90%;
-      z-index: 1;
     }
 
     .scroll-down {
@@ -113,14 +80,7 @@
       transform: translateX(-50%);
       font-size: 1.5rem;
       animation: bounce 2s infinite;
-      color: #00d4ff;
-      text-shadow: 0 0 5px #00d4ff;
-      transition: color 0.3s;
-    }
-
-    .scroll-down:hover {
-      color: #ff00ff;
-      text-shadow: 0 0 5px #ff00ff;
+      color: white;
     }
 
     @keyframes bounce {
@@ -132,27 +92,20 @@
     .section {
       padding: 80px 20px;
       text-align: center;
-      background: rgba(255, 255, 255, 0.9);
-      margin: 20px auto;
-      max-width: 1200px;
-      border-radius: 10px;
-      border: 1px solid #00d4ff;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     }
 
     .section:nth-of-type(odd) {
-      background: rgba(240, 240, 240, 0.9);
+      background-color: #f0f0f0;
     }
 
     .section:nth-of-type(even) {
-      background: rgba(232, 245, 233, 0.9);
+      background-color: #e8f5e9;
     }
 
     .section h1, .section h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
       color: #111;
-      text-shadow: 0 0 5px #00d4ff;
     }
 
     .section p {
@@ -186,13 +139,12 @@
       width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 5px #00d4ff;
-      transition: transform 0.3s ease, box-shadow 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 10px #ff00ff;
     }
 
     .members-grid, .roles-grid {
@@ -212,17 +164,6 @@
       flex-direction: column;
       align-items: center;
       min-height: 300px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #00d4ff;
-      box-shadow: 0 0 5px #00d4ff;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .member:hover, .role:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 10px #ff00ff;
     }
 
     .member img, .role img {
@@ -230,22 +171,19 @@
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 5px #00d4ff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       margin-bottom: 10px;
     }
 
     .member h3 {
       margin: 10px 0 5px;
       font-size: 1.2em;
-      color: #111;
-      text-shadow: 0 0 3px #00d4ff;
     }
 
     .member span {
       font-weight: bold;
-      color: #00d4ff;
+      color: #4caf50;
       display: block;
-      text-shadow: 0 0 3px #00d4ff;
     }
 
     .member p, .role p {
@@ -262,13 +200,12 @@
       margin: 10px 0 5px;
       font-size: 1.1em;
       color: #222;
-      text-shadow: 0 0 3px #00d4ff;
     }
 
     .role .tooltip {
       visibility: hidden;
       width: 200px;
-      background: rgba(34, 34, 34, 0.9);
+      background-color: #333;
       color: #fff;
       text-align: center;
       border-radius: 6px;
@@ -281,8 +218,6 @@
       opacity: 0;
       transition: opacity 0.3s;
       font-size: 0.9em;
-      border: 1px solid #00d4ff;
-      box-shadow: 0 0 5px #00d4ff;
     }
 
     .role:hover .tooltip {
@@ -300,11 +235,11 @@
 
     .event {
       text-align: left;
-      background: rgba(255, 255, 255, 0.9);
+      background-color: #fff;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 5px #00d4ff;
-      transition: transform 0.3s ease, box-shadow 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
     }
 
     .event:last-child {
@@ -313,7 +248,6 @@
 
     .event:hover {
       transform: scale(1.02);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 10px #ff00ff;
     }
 
     .event img {
@@ -322,14 +256,12 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      box-shadow: 0 0 5px #00d4ff;
     }
 
     .event h3 {
       font-size: 1.5em;
       margin: 0 0 10px;
       color: #111;
-      text-shadow: 0 0 3px #00d4ff;
     }
 
     .event p {
@@ -341,29 +273,21 @@
     .countdown {
       font-size: 2em;
       font-weight: bold;
-      color: #00d4ff;
+      color: #fff;
       margin-top: 20px;
-      text-shadow: 0 0 5px #00d4ff;
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      background: rgba(34, 34, 34, 0.9);
-      color: #fff;
-      border-top: 1px solid #00d4ff;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+      background-color: #222;
+      color: white;
     }
 
     .form-container {
       text-align: left;
       max-width: 500px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #00d4ff;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     }
 
     .form-container input,
@@ -373,132 +297,92 @@
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 5px;
-      border: 1px solid #00d4ff;
+      border: 1px solid #ccc;
       font-size: 1rem;
       box-sizing: border-box;
-      background: rgba(255, 255, 255, 0.1);
-      color: #222;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .form-container select {
-      color: #222;
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    .form-container select option {
-      color: #000;
-      background: #fff;
-    }
-
-    .form-container input:focus,
-    .form-container textarea:focus,
-    .form-container select:focus {
-      outline: none;
-      border-color: #ff00ff;
-      box-shadow: 0 0 5px #ff00ff;
     }
 
     .form-container button {
       padding: 12px 20px;
-      background: linear-gradient(45deg, #00d4ff, #ff00ff);
-      color: #fff;
+      background-color: #4caf50;
+      color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 1rem;
-      transition: transform 0.2s, box-shadow 0.3s;
-    }
-
-    .form-container button:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 10px #ff00ff;
     }
 
     .contact-lead {
       padding: 40px 20px;
-      background: rgba(34, 34, 34, 0.9);
-      color: #fff;
+      background-color: #111;
+      color: white;
       text-align: center;
-      border-top: 1px solid #00d4ff;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     }
 
     .contact-lead a {
-      color: #00d4ff;
+      color: #4caf50;
       font-size: 1.2em;
       text-decoration: none;
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-
-    .contact-lead a:hover {
-      color: #ff00ff;
-      text-shadow: 0 0 5px #ff00ff;
     }
 
     .submit-button {
       display: inline-block;
       padding: 12px 20px;
-      background: linear-gradient(45deg, #00d4ff, #ff00ff);
-      color: #fff;
+      background-color: #4caf50;
+      color: white;
       text-decoration: none;
       border-radius: 5px;
       font-size: 1rem;
-      transition: transform 0.2s, box-shadow 0.3s;
+      transition: background-color 0.3s;
     }
 
     .submit-button:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 10px #ff00ff;
+      background-color: #45a049;
     }
 
     .events-container, .members-container {
       max-width: 1200px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid #00d4ff;
+      background-color: #fff;
+      border: 2px solid #4caf50;
       border-radius: 10px;
       padding: 40px 20px;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .section#submit {
-      background: rgba(240, 240, 240, 0.9);
+      background-color: #f0f0f0;
     }
 
     .submit-section {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid #00d4ff;
+      background-color: transparent;
+      border: 2px solid #4caf50;
       padding: 20px;
       border-radius: 10px;
       max-width: 600px;
       margin: 40px auto 0 auto;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .newsletter-section {
       padding: 80px 20px;
-      background: rgba(240, 240, 240, 0.9);
+      background-color: #f0f0f0;
       text-align: center;
-      border: 1px solid #00d4ff;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     }
 
     .newsletter-container {
       max-width: 600px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid #00d4ff;
+      background-color: #fff;
+      border: 2px solid #4caf50;
       border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .newsletter-container h2 {
       font-size: 2em;
       margin-bottom: 15px;
       color: #111;
-      text-shadow: 0 0 3px #00d4ff;
     }
 
     .newsletter-container p {
@@ -525,7 +409,7 @@
         display: none;
         flex-direction: column;
         width: 100%;
-        background: rgba(34, 34, 34, 0.9);
+        background-color: rgba(34, 34, 34, 0.9);
         position: absolute;
         top: 50px;
         left: 0;
@@ -629,7 +513,7 @@
       }
 
       .submit-button {
-        font-size: 0.9em;
+        font-size: 0.9rem;
         padding: 10px 15px;
       }
 
@@ -710,12 +594,14 @@
   </nav>
 
   <header class="header">
-    <h1>Join Our Kiwiburn</h1>
+    <h1>Join Our Kiwiburn Camp</h1>
+    <h1>Join Our Kiwiburn </h1>
     <a href="#about" class="scroll-down">▼</a>
   </header>
 
   <section class="section" id="about">
     <h1>About Our Camp</h1>
+    <p>Join the Rejex... (update with actual camp info)</p>
     <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
     <div class="gallery">
       <img src="images/Campphoto1.jpg" alt="Camp Mates">
@@ -780,7 +666,7 @@
           <img src="images/member7.jpg" alt="Finn">
           <h3>Finn</h3>
           <span>Fire Spinner</span>
-          <p>Performs dazzling fire showsTangent: at sunset.</p>
+          <p>Performs dazzling fire shows at sunset.</p>
         </div>
         <div class="member">
           <img src="images/member8.jpg" alt="Nina">
