@@ -11,22 +11,17 @@
       padding: 0;
       font-family: 'Montserrat', sans-serif;
       scroll-behavior: smooth;
-      box-sizing: border-box;
-    }
-
-    *, *:before, *:after {
-      box-sizing: inherit;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background-color: rgba(34, 34, 34, 0.9);
+      background-color: rgba(34, 34, 34, 0.8);
       backdrop-filter: blur(10px);
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      padding: 10px 5px;
+      flex-wrap: wrap;
+      padding: 15px 10px;
       z-index: 1000;
     }
 
@@ -34,9 +29,9 @@
       color: #fff;
       text-decoration: none;
       font-weight: 500;
-      font-size: clamp(0.9rem, 3.5vw, 1rem);
-      margin: 5px 8px;
-      padding: 8px 12px;
+      font-size: 1rem;
+      margin: 5px 15px;
+      padding: 10px 15px;
       border-radius: 4px;
       transition: background 0.3s;
     }
@@ -47,7 +42,6 @@
 
     .header {
       background: url('images/coverphoto.png') center/cover no-repeat;
-      min-height: 60vh;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -58,18 +52,17 @@
     }
 
     .header h1 {
-      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-size: 4em;
       text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
       max-width: 90%;
-      margin: 0 10px;
     }
 
     .scroll-down {
       position: absolute;
-      bottom: 20px;
+      bottom: 30px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: clamp(1rem, 4vw, 1.5rem);
+      font-size: 1.5rem;
       animation: bounce 2s infinite;
       color: white;
     }
@@ -81,7 +74,7 @@
     }
 
     .section {
-      padding: clamp(40px, 10vw, 60px) 15px;
+      padding: 80px 20px;
       text-align: center;
     }
 
@@ -94,15 +87,15 @@
     }
 
     .section h1, .section h2 {
-      font-size: clamp(1.8rem, 6vw, 2.2rem);
-      margin-bottom: 15px;
+      font-size: 2.5em;
+      margin-bottom: 20px;
       color: #111;
     }
 
     .section p {
-      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-      max-width: 90%;
-      margin: 0 auto 20px auto;
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
       line-height: 1.6;
       color: #222;
     }
@@ -110,78 +103,77 @@
     ul {
       list-style: none;
       padding: 0;
-      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+      font-size: 1.1em;
     }
 
     li {
-      margin: 8px 0;
+      margin: 10px 0;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
       margin: 0 auto;
-      padding-top: 15px;
+      padding-top: 20px;
     }
 
     .gallery img {
       width: 100%;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
     }
 
     .gallery img:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
 
     .members-grid, .roles-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: 30px auto 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 40px auto 0 auto;
       justify-items: center;
       align-items: start;
     }
 
     .member, .role {
       text-align: center;
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 250px;
-      padding: 10px;
+      min-height: 300px;
     }
 
     .member img, .role img {
-      width: clamp(100px, 25vw, 120px);
-      height: clamp(100px, 25vw, 120px);
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      margin-bottom: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
     }
 
     .member h3 {
-      margin: 8px 0 4px;
-      font-size: clamp(1rem, 3.5vw, 1.15rem);
+      margin: 10px 0 5px;
+      font-size: 1.2em;
     }
 
     .member span {
       font-weight: bold;
       color: #4caf50;
       display: block;
-      font-size: clamp(0.9rem, 3vw, 1rem);
     }
 
     .member p, .role p {
-      font-size: clamp(0.85rem, 3vw, 0.95rem);
+      font-size: 0.95em;
       color: #444;
-      margin: 4px 0;
+      margin: 5px 0;
     }
 
     .role {
@@ -189,27 +181,27 @@
     }
 
     .role h3 {
-      margin: 8px 0 4px;
-      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+      margin: 10px 0 5px;
+      font-size: 1.1em;
       color: #222;
     }
 
     .role .tooltip {
       visibility: hidden;
-      width: clamp(150px, 40vw, 180px);
+      width: 200px;
       background-color: #333;
       color: #fff;
       text-align: center;
       border-radius: 6px;
-      padding: 8px;
+      padding: 10px;
       position: absolute;
       z-index: 10;
-      top: 100%;
+      bottom: 100%;
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
       transition: opacity 0.3s;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+      font-size: 0.9em;
     }
 
     .role:hover .tooltip {
@@ -219,19 +211,23 @@
 
     .events-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 800px;
-      margin: 30px auto 0 auto;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1000px;
+      margin: 40px auto 0 auto;
     }
 
     .event {
       text-align: left;
       background-color: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
+    }
+
+    .event:last-child {
+      grid-column: 2 / 3;
     }
 
     .event:hover {
@@ -240,42 +236,41 @@
 
     .event img {
       width: 100%;
-      height: auto;
-      max-height: 180px;
+      height: 200px;
       object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
     }
 
     .event h3 {
-      font-size: clamp(1.2rem, 4vw, 1.4rem);
-      margin: 0 0 8px;
+      font-size: 1.5em;
+      margin: 0 0 10px;
       color: #111;
     }
 
     .event p {
-      font-size: clamp(0.9rem, 3.5vw, 1rem);
+      font-size: 1em;
       color: #333;
       line-height: 1.5;
     }
 
     .countdown {
-      font-size: clamp(1.2rem, 5vw, 1.8rem);
+      font-size: 2em;
       font-weight: bold;
       color: #fff;
-      margin-top: 15px;
+      margin-top: 20px;
     }
 
     footer {
       text-align: center;
-      padding: clamp(20px, 5vw, 30px);
+      padding: 30px;
       background-color: #222;
       color: white;
     }
 
     .form-container {
       text-align: left;
-      max-width: 90%;
+      max-width: 500px;
       margin: 0 auto;
     }
 
@@ -283,26 +278,25 @@
     .form-container textarea,
     .form-container select {
       width: 100%;
-      padding: 8px;
-      margin-bottom: 8px;
-      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
       border: 1px solid #ccc;
-      font-size: clamp(0.9rem, 3.5vw, 1rem);
+      font-size: 1rem;
       box-sizing: border-box;
     }
 
     .form-container button {
-      padding: 10px 18px;
+      padding: 12px 20px;
       background-color: #4caf50;
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: clamp(0.9rem, 3.5vw, 1rem);
     }
 
     .contact-lead {
-      padding: clamp(30px, 8vw, 40px) 15px;
+      padding: 40px 20px;
       background-color: #111;
       color: white;
       text-align: center;
@@ -310,18 +304,18 @@
 
     .contact-lead a {
       color: #4caf50;
-      font-size: clamp(1rem, 4vw, 1.2rem);
+      font-size: 1.2em;
       text-decoration: none;
     }
 
     .submit-button {
       display: inline-block;
-      padding: 10px 18px;
+      padding: 12px 20px;
       background-color: #4caf50;
       color: white;
       text-decoration: none;
-      border-radius: 4px;
-      font-size: clamp(0.9rem, 3.5vw, 1rem);
+      border-radius: 5px;
+      font-size: 1rem;
       transition: background-color 0.3s;
     }
 
@@ -334,9 +328,9 @@
       margin: 0 auto;
       background-color: #fff;
       border: 2px solid #4caf50;
-      border-radius: 8px;
-      padding: clamp(20px, 5vw, 30px) 15px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .section#submit {
@@ -346,121 +340,174 @@
     .submit-section {
       background-color: transparent;
       border: 2px solid #4caf50;
-      padding: 15px;
-      border-radius: 8px;
-      max-width: 90%;
-      margin: 30px auto 0 auto;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .newsletter-section {
-      padding: clamp(40px, 10vw, 60px) 15px;
+      padding: 80px 20px;
       background-color: #f0f0f0;
       text-align: center;
     }
 
     .newsletter-container {
-      max-width: 90%;
+      max-width: 600px;
       margin: 0 auto;
       background-color: #fff;
       border: 2px solid #4caf50;
-      border-radius: 8px;
-      padding: 15px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .newsletter-container h2 {
-      font-size: clamp(1.5rem, 5vw, 1.8rem);
-      margin-bottom: 12px;
+      font-size: 2em;
+      margin-bottom: 15px;
       color: #111;
     }
 
     .newsletter-container p {
-      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-      margin-bottom: 15px;
+      font-size: 1.1em;
+      margin-bottom: 20px;
       color: #222;
     }
 
-    /* Mobile-specific adjustments */
-    @media (max-width: 768px) {
+    /* Mobile-specific styles */
+    @media only screen and (max-width: 768px) {
+      .header h1 {
+        font-size: 2.5em;
+      }
+
       nav {
         flex-direction: column;
-        align-items: center;
         padding: 10px;
       }
 
       nav a {
-        margin: 4px 0;
-        width: 90%;
-        text-align: center;
-      }
-
-      .header {
-        min-height: 50vh;
+        margin: 5px 0;
+        font-size: 0.9rem;
+        padding: 8px 12px;
       }
 
       .section {
-        padding: 30px 10px;
+        padding: 40px 15px;
+      }
+
+      .section h1, .section h2 {
+        font-size: 1.8em;
+      }
+
+      .section p {
+        font-size: 1em;
+        max-width: 90%;
       }
 
       .gallery {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 15px;
       }
 
       .members-grid, .roles-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 20px;
       }
 
-      .member, .role {
-        min-height: auto;
+      .member img, .role img {
+        width: 120px;
+        height: 120px;
       }
 
       .events-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
 
       .event:last-child {
         grid-column: auto;
       }
 
+      .event img {
+        height: 150px;
+      }
+
+      .event h3 {
+        font-size: 1.3em;
+      }
+
+      .event p {
+        font-size: 0.95em;
+      }
+
+      .countdown {
+        font-size: 1.5em;
+      }
+
       .form-container {
-        max-width: 95%;
+        max-width: 90%;
       }
 
       .submit-section, .newsletter-container {
-        max-width: 95%;
+        max-width: 90%;
+        padding: 15px;
+      }
+
+      .submit-button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+      }
+
+      .contact-lead {
+        padding: 30px 15px;
+      }
+
+      .contact-lead a {
+        font-size: 1em;
       }
 
       .role .tooltip {
-        width: 80vw;
-        top: auto;
-        bottom: 100%;
+        width: 150px;
+        font-size: 0.8em;
       }
     }
 
-    @media (max-width: 480px) {
+    @media only screen and (max-width: 480px) {
       .header h1 {
-        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        font-size: 2em;
+      }
+
+      .scroll-down {
+        font-size: 1.2rem;
       }
 
       .section h1, .section h2 {
-        font-size: clamp(1.5rem, 5.5vw, 1.8rem);
+        font-size: 1.5em;
       }
 
       .section p {
-        font-size: clamp(0.9rem, 4vw, 1rem);
+        font-size: 0.9em;
       }
 
-      .member img, .role img {
-        width: clamp(80px, 20vw, 100px);
-        height: clamp(80px, 20vw, 100px);
+      .member h3, .role h3 {
+        font-size: 1em;
       }
 
-      .submit-button, .form-container button {
-        width: 100%;
-        text-align: center;
+      .member p, .role p {
+        font-size: 0.85em;
+      }
+
+      .countdown {
+        font-size: 1.2em;
+      }
+
+      .newsletter-container h2 {
+        font-size: 1.5em;
+      }
+
+      .newsletter-container p {
+        font-size: 0.9em;
       }
     }
   </style>
@@ -483,6 +530,7 @@
 
   <section class="section" id="about">
     <h1>About Our Camp</h1>
+    <p>Join the Rejex... (update with actual camp info)</p>
     <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
     <div class="gallery">
       <img src="images/img1.jpg" alt="Camp Art">
@@ -531,7 +579,7 @@
           <p>Curates and coordinates the camp’s musical experience, ensuring smooth DJ scheduling and sound setup.</p>
         </div>
         <div class="member">
-          <img src "images/jarrodskiffington.jpg" alt="Jarrod Skiffington">
+          <img src="images/jarrodskiffington.jpg" alt="Jarrod Skiffington">
           <h3>Jarrod Skiffington</h3>
           <span>Transport Lead</span>
           <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
