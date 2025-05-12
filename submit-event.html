@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Your Event - Kiwiburn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #e8f5e9;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #111;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .form-container {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .form-container button {
+      padding: 12px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .form-container button:hover {
+      background-color: #45a049;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #4caf50;
+      text-decoration: none;
+      font-size: 1.1em;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Submit Your Event</h1>
+    <p>Fill out the form below to submit your event idea for Kiwiburn!</p>
+    <div class="form-container">
+      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="eventName" placeholder="Event Name" required>
+        <textarea name="eventDescription" rows="4" placeholder="Event Description" required></textarea>
+        <select name="eventType" required>
+          <option value="">Select Event Type</option>
+          <option>Art Installation</option>
+          <option>Performance (Music, Theater, Dance, etc.)</option>
+          <option>Workshop (Educational, Hands-on)</option>
+          <option>Theme Camp Activity (Interactive, Social)</option>
+          <option>Social Gathering (Community Meals, Social Hours)</option>
+          <option>Mutant Vehicle Event (Art Car, Mobile Experience)</option>
+          <option>Sound Camp (Music or DJ Set)</option>
+          <option>Other (Please Specify)</option>
+        </select>
+        <input type="text" name="eventTypeOther" placeholder="Specify Other Event Type (if applicable)">
+        <select name="ageAppropriateness" required>
+          <option value="">Select Age Appropriateness</option>
+          <option>All Ages</option>
+          <option>R18 (Mature Themes, Nudity, Adult Content)</option>
+          <option>Family-Friendly (Suitable for Kids)</option>
+          <option>Explicit Content Warning (Graphic Language, Themes)</option>
+        </select>
+        <select name="eventTone" required>
+          <option value="">Select Event Tone or Focus</option>
+          <option>Radical Self-Expression (Encouraging Creativity)</option>
+          <option>Radical Inclusion (Welcoming All Participants)</option>
+          <option>Decommodification (No Commercial Transactions)</option>
+          <option>Civic Responsibility (Sustainability, Community Care)</option>
+          <option>Gifting/Non-Transactional (Gift Economy Focus)</option>
+          <option>Other (Please Specify)</option>
+        </select>
+        <input type="text" name="eventToneOther" placeholder="Specify Other Tone (if applicable)">
+        <select name="interactivityLevel" required>
+          <option value="">Select Interactivity Level</option>
+          <option>Active Participation (Attendees Engage Directly)</option>
+          <option>Passive Viewing (Spectators, Observational)</option>
+          <option>Hybrid (Combination of Participation and Viewing)</option>
+        </select>
+        <select name="durationFrequency" required>
+          <option value="">Select Duration and Frequency</option>
+          <option>One-Time Event (Single Occurrence)</option>
+          <option>Ongoing (Multiple Times Throughout the Event)</option>
+        </select>
+        <select name="locationPreference" required>
+          <option value="">Select Location Preference</option>
+          <option>Open Playa (No Specific Location, Free-Roaming)</option>
+          <option>Theme Camp (Part of a Designated Camp)</option>
+          <option>Mutant Vehicle (Mobile Event)</option>
+          <option>Other (Please Specify)</option>
+        </select>
+        <input type="text" name="locationOther" placeholder="Specify Other Location (if applicable)">
+        <select name="eventSize" required>
+          <option value="">Select Event Size</option>
+          <option>Small (Under 20 People)</option>
+          <option>Medium (20-50 People)</option>
+          <option>Large (50+ People)</option>
+        </select>
+        <select name="equipmentSetup" multiple>
+          <option value="Sound System">Sound System</option>
+          <option value="Stage/Performance Area">Stage/Performance Area</option>
+          <option value="Lighting">Lighting</option>
+          <option value="Interactive Materials">Interactive Materials (Paint, Sculpting, etc.)</option>
+          <option value="Seating Area">Seating Area</option>
+          <option value="Shade Structures">Shade Structures</option>
+          <option value="Other">Other (Please Specify)</option>
+        </select>
+        <input type="text" name="equipmentOther" placeholder="Specify Other Equipment (if applicable)">
+        <textarea name="eventDescription" rows="6" placeholder="Enter Detailed Description of Event Idea" required></textarea>
+        <button type="submit">Submit Event</button>
+      </form>
+    </div>
+    <a href="index.html" class="back-link">Back to Main Page</a>
+  </div>
+</body>
+</html>
