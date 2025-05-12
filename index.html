@@ -200,17 +200,30 @@
       border: 3px solid #f39c12;
     }
 
-    .member.important-role {
+    .member.camp-lead, .member.deputy-lead {
       position: relative;
     }
 
-    .member.important-role img::before {
+    .member.camp-lead img::before {
       content: '👑';
       position: absolute;
       top: -20px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
+      color: #FFD700; /* Gold */
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .member.deputy-lead img::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #C0C0C0; /* Silver */
       z-index: 10;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
@@ -543,7 +556,7 @@
         height: 100px;
       }
 
-      .member.important-role img::before {
+      .member.camp-lead img::before, .member.deputy-lead img::before {
         font-size: 1.2rem;
         top: -15px;
       }
@@ -712,13 +725,13 @@
     <section class="section" id="members">
       <h1>Meet Our Core Camp Crew</h1>
       <div class="members-grid">
-        <div class="member important-role">
+        <div class="member camp-lead">
           <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
           <h3>Shanon Richards</h3>
           <span>Camp Lead</span>
           <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution.</p>
         </div>
-        <div class="member important-role">
+        <div class="member deputy-lead">
           <img src="images/MeganR.jpg" alt="Meghan-Louise Robson">
           <h3>Meghan Robson</h3>
           <span>Deputy Lead</span>
