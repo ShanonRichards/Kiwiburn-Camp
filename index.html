@@ -183,11 +183,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 300px;
+      min-height: 320px;
       background: rgba(255, 255, 255, 0.1);
       padding: 15px;
       border-radius: 8px;
       border: 1px solid #e67e22;
+      box-sizing: border-box;
     }
 
     .member img {
@@ -211,7 +212,7 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
-      color: #FFD700; /* Gold */
+      color: #FFD700;
       z-index: 10;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
@@ -223,7 +224,7 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
-      color: #C0C0C0; /* Silver */
+      color: #C0C0C0;
       z-index: 10;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
@@ -231,20 +232,26 @@
     .member h3 {
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.4em;
+      font-size: 1.5em;
       color: #2b1b0f;
+      line-height: 1.2;
     }
 
     .member span {
       font-weight: bold;
       color: #e67e22;
       display: block;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      line-height: 1.3;
     }
 
     .member p {
-      font-size: 0.95em;
+      font-size: 1em;
       color: #2b1b0f;
       margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
     }
 
     .role {
@@ -259,9 +266,10 @@
       border: 2px solid #e67e22;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      min-height: 200px;
+      min-height: 220px;
       width: 100%;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-sizing: border-box;
     }
 
     .role:hover {
@@ -283,7 +291,7 @@
     .role h3 {
       margin: 5px 0;
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.1em;
+      font-size: 1.3em;
       color: #2b1b0f;
       line-height: 1.2;
     }
@@ -303,7 +311,7 @@
       transform: translate(-50%, -100%);
       opacity: 0;
       transition: opacity 0.3s, transform 0.3s;
-      font-size: 0.95em;
+      font-size: 0.9em;
       font-family: 'Montserrat', sans-serif;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
@@ -562,7 +570,7 @@
       .member, .role {
         flex: 0 0 140px;
         scroll-snap-align: start;
-        min-height: 220px;
+        min-height: 240px;
         padding: 10px;
       }
 
@@ -582,12 +590,25 @@
         padding: 6px;
       }
 
-      .member h3, .role h3 {
-        font-size: 1em;
+      .member h3 {
+        font-size: 1.3em;
       }
 
-      .member p, .role p {
+      .member span {
+        font-size: 1.1em;
+      }
+
+      .member p {
         font-size: 0.9em;
+      }
+
+      .role h3 {
+        font-size: 1.1em;
+      }
+
+      .role .tooltip {
+        width: 140px;
+        font-size: 0.85em;
       }
 
       .events-grid {
@@ -632,11 +653,6 @@
 
       .contact-lead a {
         font-size: 1em;
-      }
-
-      .role .tooltip {
-        width: 140px;
-        font-size: 0.85em;
       }
 
       .about-container, .mission-container, .events-container, .members-container, .gallery-container, .newsletter-container {
@@ -688,11 +704,15 @@
         height: 60px;
       }
 
-      .member h3, .role h3 {
-        font-size: 0.95em;
+      .member h3 {
+        font-size: 1.1em;
       }
 
-      .member p, .role p {
+      .member span {
+        font-size: .nio;
+      }
+
+      .member p {
         font-size: 0.85em;
       }
 
@@ -705,6 +725,16 @@
         width: 45px;
         height: 45px;
         padding: 5px;
+      }
+
+      .role h3 {
+        font-size: 1em;
+      }
+
+      .role .tooltip {
+        width: 120px;
+        font-size: 0.8em;
+        padding: 8px;
       }
 
       .countdown {
@@ -725,12 +755,6 @@
 
       .hamburger {
         font-size: 1.2rem;
-      }
-
-      .role .tooltip {
-        width: 120px;
-        font-size: 0.8em;
-        padding: 8px;
       }
     }
   </style>
