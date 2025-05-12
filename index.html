@@ -3,85 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Cosmic Rejex - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <title>Join My Camp - Kiwiburn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(to bottom, #0a1a3a, #1a2a5a);
-      color: #e0e0e0;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background-color: rgba(10, 20, 50, 0.95);
-      backdrop-filter: blur(8px);
+      background-color: rgba(34, 34, 34, 0.8);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       padding: 15px 10px;
       z-index: 1000;
-      border-bottom: 1px solid #00f7ff;
     }
 
     nav a {
-      color: #00f7ff;
+      color: #fff;
       text-decoration: none;
-      font-family: 'Orbitron', sans-serif;
       font-weight: 500;
       font-size: 1rem;
       margin: 5px 15px;
       padding: 10px 15px;
       border-radius: 4px;
-      transition: background 0.3s, color 0.3s;
-      position: relative;
+      transition: background 0.3s;
     }
 
     nav a:hover {
-      background-color: #00f7ff;
-      color: #0a1a3a;
-    }
-
-    nav a::before {
-      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="2" fill="%2300f7ff"/></svg>');
-      position: absolute;
-      left: -18px;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    nav a:hover::before {
-      opacity: 1;
+      background-color: #4caf50;
     }
 
     .header {
-      background: url('images/coverphoto.png') center/cover no-repeat, linear-gradient(to bottom, rgba(10,20,50,0.8), rgba(10,20,50,1));
+      background: url('images/coverphoto.png') center/cover no-repeat;
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #00f7ff;
+      color: #fff;
       position: relative;
     }
 
     .header h1 {
-      font-family: 'Orbitron', sans-serif;
       font-size: 4em;
-      text-shadow: 0 0 10px rgba(0,247,255,0.5);
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
       max-width: 90%;
-      animation: pulse 3s infinite ease-in-out;
-    }
-
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 10px rgba(0,247,255,0.5); }
-      50% { text-shadow: 0 0 20px rgba(0,247,255,0.8); }
     }
 
     .scroll-down {
@@ -90,9 +63,8 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
-      color: #00f7ff;
       animation: bounce 2s infinite;
-      text-shadow: 0 0 5px #00f7ff;
+      color: white;
     }
 
     @keyframes bounce {
@@ -104,28 +76,20 @@
     .section {
       padding: 80px 20px;
       text-align: center;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><circle cx="25" cy="25" r="1" fill="rgba(0,247,255,0.2)"/></svg>') repeat;
     }
 
     .section:nth-of-type(odd) {
-      background-color: rgba(10, 20, 50, 0.9);
+      background-color: #f0f0f0;
     }
 
     .section:nth-of-type(even) {
-      background-color: rgba(20, 30, 70, 0.9);
+      background-color: #e8f5e9;
     }
 
     .section h1, .section h2 {
-      font-family: 'Orbitron', sans-serif;
       font-size: 2.5em;
       margin-bottom: 20px;
-      color: #00f7ff;
-      text-shadow: 0 0 5px rgba(0,247,255,0.5);
-    }
-
-    .section h1::before, .section h2::before {
-      content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><ellipse cx="10" cy="10" rx="8" ry="4" fill="none" stroke="%2300f7ff" stroke-width="1"/></svg>');
-      margin-right: 8px;
+      color: #111;
     }
 
     .section p {
@@ -133,7 +97,7 @@
       max-width: 800px;
       margin: 0 auto 30px auto;
       line-height: 1.6;
-      color: #d0d0d0;
+      color: #222;
     }
 
     ul {
@@ -159,13 +123,12 @@
       width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,247,255,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(0,247,255,0.5);
     }
 
     .members-grid {
@@ -185,27 +148,24 @@
       height: 180px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,247,255,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       margin-bottom: 10px;
-      border: 1px solid #00f7ff;
     }
 
     .member h3 {
       margin: 10px 0 5px;
-      font-family: 'Orbitron', sans-serif;
       font-size: 1.2em;
-      color: #00f7ff;
     }
 
     .member span {
-      font-weight: 500;
-      color: #00f7ff;
+      font-weight: bold;
+      color: #4caf50;
       display: block;
     }
 
     .member p {
       font-size: 0.95em;
-      color: #d0d0d0;
+      color: #444;
     }
 
     .events-grid {
@@ -218,16 +178,15 @@
 
     .event {
       text-align: left;
-      background-color: rgba(15, 25, 60, 0.9);
+      background-color: #fff;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,247,255,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
     }
 
     .event:hover {
       transform: scale(1.02);
-      box-shadow: 0 0 15px rgba(0,247,255,0.5);
     }
 
     .event img {
@@ -236,37 +195,32 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      border: 1px solid #00f7ff;
     }
 
     .event h3 {
-      font-family: 'Orbitron', sans-serif;
       font-size: 1.5em;
       margin: 0 0 10px;
-      color: #00f7ff;
+      color: #111;
     }
 
     .event p {
       font-size: 1em;
-      color: #d0d0d0;
+      color: #333;
       line-height: 1.5;
     }
 
     .countdown {
-      font-family: 'Orbitron', sans-serif;
       font-size: 2em;
-      font-weight: 500;
-      color: #00f7ff;
+      font-weight: bold;
+      color: #fff;
       margin-top: 20px;
-      text-shadow: 0 0 5px rgba(0,247,255,0.5);
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #0a1a3a;
-      color: #00f7ff;
-      border-top: 1px solid #00f7ff;
+      background-color: #222;
+      color: white;
     }
 
     .form-container {
@@ -282,56 +236,31 @@
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 5px;
-      border: 1px solid #00f7ff;
+      border: 1px solid #ccc;
       font-size: 1rem;
       box-sizing: border-box;
-      background-color: rgba(15, 25, 60, 0.9);
-      color: #e0e0e0;
-    }
-
-    .form-container input::placeholder,
-    .form-container textarea::placeholder {
-      color: #a0a0a0;
-    }
-
-    .form-container select {
-      appearance: none;
-      background: rgba(15, 25, 60, 0.9) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><polygon points="0,0 10,0 5,10" fill="%2300f7ff"/></svg>') no-repeat right 10px center;
     }
 
     .form-container button {
       padding: 12px 20px;
-      background-color: #00f7ff;
-      color: #0a1a3a;
+      background-color: #4caf50;
+      color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 500;
-      transition: box-shadow 0.3s ease;
-    }
-
-    .form-container button:hover {
-      box-shadow: 0 0 10px rgba(0,247,255,0.5);
     }
 
     .contact-lead {
       padding: 40px 20px;
-      background-color: #0a1a3a;
-      color: #00f7ff;
+      background-color: #111;
+      color: white;
       text-align: center;
-      border-top: 1px solid #00f7ff;
     }
 
     .contact-lead a {
-      color: #00f7ff;
+      color: #4caf50;
       font-size: 1.2em;
       text-decoration: none;
-      transition: text-shadow 0.3s ease;
-    }
-
-    .contact-lead a:hover {
-      text-shadow: 0 0 10px rgba(0,247,255,0.5);
     }
   </style>
 </head>
@@ -347,13 +276,13 @@
   </nav>
 
   <header class="header">
-    <h1>Join Cosmic Rejex</h1>
+    <h1>Join Our Kiwiburn Camp</h1>
     <a href="#about" class="scroll-down">▼</a>
   </header>
 
   <section class="section" id="about">
     <h1>About Our Camp</h1>
-    <p>Welcome to Cosmic Rejex, a stellar community at Kiwiburn where creative minds unite to craft extraordinary art, music, and experiences under the stars.</p>
+    <p>Join the Rejex... (update with actual camp info)</p>
     <div class="gallery">
       <img src="images/img1.jpg" alt="Camp Art">
       <img src="images/img2.jpg" alt="Team Fun">
@@ -362,136 +291,137 @@
   </section>
 
   <section class="section" id="join">
-    <h2>Request to Join</h2>
-    <p>Join our interstellar community by filling out the form below.</p>
-    <div class="form-container">
-      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <select name="role" required>
-          <option value="">Select a Role</option>
-          <optgroup label="Leadership & Logistics">
-            <option>Starship Captain</option>
-            <option>Logistics Navigator</option>
-            <option>Treasurer</option>
-            <option>Volunteer Coordinator</option>
-          </optgroup>
-          <optgroup label="Setup & Infrastructure">
-            <option>Build Crew</option>
-            <option>Sound & Lights Specialist</option>
-            <option>Kitchen Coordinator</option>
-            <option>Safety & Medical Officer</option>
-            <option>Fire & Rangers Lead</option>
-          </optgroup>
-          <optgroup label="Community & Experience">
-            <option>Art & Decor Director</option>
-            <option>Event & Theme Coordinator</option>
-          </optgroup>
-        </select>
-        <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
-        <button type="submit">Submit Request</button>
-      </form>
-    </div>
-  </section>
+   <h2>Request to Join</h2>
+  <p>Fill out the form below to request to join our amazing community!</p>
+  <div class="form-container">
+    <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <select name="role" required>
+        <option value="">Select a Camp Role</option>
+        <optgroup label="Leadership & Logistics">
+          <option>🛠️ Camp Lead</option>
+          <option>🚛 Logistics & Build Lead</option>
+          <option>💰 Finance & Budget Lead</option>
+          <option>📆 Volunteer Coordinator</option>
+        </optgroup>
+        <optgroup label="Setup & Infrastructure">
+          <option>🔨 Build Crew</option>
+          <option>🎶 Sound & Lights Lead</option>
+          <option>🥗 Kitchen Lead</option>
+          <option>⛑️ Safety & Medical Lead</option>
+          <option>🔥 Fire & Rangers Lead</option>
+        </optgroup>
+        <optgroup label="Community & Experience">
+          <option>🎨 Art & Decor Lead</option>
+          <option>🎭 Event & Theme Night Lead</option>
+        </optgroup>
+      </select>
+      <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+</section>
 
   <section class="section" id="mission">
     <h1>Our Mission</h1>
-    <p>We are dedicated to fostering creativity, connection, and cosmic experiences, bringing together visionaries to shape unforgettable moments at Kiwiburn.</p>
+    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
   </section>
 
   <section class="section" id="members">
-    <h1>Meet Our Crew</h1>
+    <h1>Meet Our Members</h1>
     <div class="members-grid">
       <div class="member">
         <img src="images/ShanonRichards.jpg" alt="Member 1">
         <h3>Shanon Richards</h3>
-        <span>Starship Captain</span>
-        <p>Guides camp planning, policies, and operations with a cosmic vision.</p>
+        <span>Camp Lead</span>
+        <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution.</p>
       </div>
       <div class="member">
         <img src="images/MeganR.jpg" alt="Member 2">
         <h3>Meghan-Louise Robson</h3>
-        <span>Starship Captain</span>
-        <p>Co-leads the camp, ensuring seamless execution and stellar vibes.</p>
+        <span>Camp Lead</span>
+        <p>Oversees planning, forms, and execution. Handles policies, resources, and conflict resolution</p>
       </div>
       <div class="member">
         <img src="images/RussellDuffield.jpg" alt="Member 3">
         <h3>Russell Duffield</h3>
-        <span>Vibe Coordinator</span>
-        <p>Creates inclusive, welcoming spaces for all campers.</p>
+        <span>Vibe Manager</span>
+        <p>Creates safe spaces and makes sure everyone’s feeling loved.</p>
       </div>
       <div class="member">
         <img src="images/michealdunstan.jpg" alt="Member 4">
         <h3>Micheal Dunstan</h3>
-        <span>Treasurer</span>
-        <p>Manages camp finances with transparency and responsibility.</p>
+        <span>Finance Coordinator</span>
+        <p>To manage camp finances transparently and responsibly, handling budgeting, and camp expenses.</p>
       </div>
       <div class="member">
         <img src="images/tomasshelby.jpg" alt="Member 5">
         <h3>Tomas Shelby</h3>
-        <span>Music Coordinator</span>
-        <p>Curates the camp’s soundscape, from DJs to live performances.</p>
+        <span>Music/DJ Coordinator</span>
+        <p>To curate and coordinate the camp’s musical experience, ensuring smooth DJ scheduling, sound setup.</p>
       </div>
       <div class="member">
         <img src="images/member6.jpg" alt="Member 6">
         <h3>Elle</h3>
-        <span>Costume Director</span>
-        <p>Manages the camp’s wardrobe, sparking creative expression.</p>
+        <span>Costume Queen</span>
+        <p>Runs the dress-up rack and slays every outfit change.</p>
         <img src="images/jarrodskiffington.jpg" alt="Member 6">
         <h3>Jarrod Skiffington</h3>
-        <span>Transport Coordinator</span>
-        <p>Oversees the safe transport of camp gear to and from Kiwiburn.</p>
+        <span>Transport Lead</span>
+        <p>To organize and manage the transport of camp gear, ensuring everything is picked up, packed, and delivered safely to and from the Kiwiburn site.</p>
       </div>
       <div class="member">
         <img src="images/member7.jpg" alt="Member 7">
         <h3>Finn</h3>
-        <span>Fire Performer</span>
-        <p>Delivers mesmerizing fire shows at sunset.</p>
+        <span>Fire Spinner</span>
+        <p>Performs dazzling fire shows at sunset.</p>
       </div>
       <div class="member">
         <img src="images/member8.jpg" alt="Member 8">
         <h3>Nina</h3>
-        <span>Workshop Coordinator</span>
-        <p>Leads breathwork, yoga, and sound healing sessions.</p>
+        <span>Workshop Lead</span>
+        <p>Hosts breathwork, yoga, and sound healing under the stars.</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="events">
     <h1>Past Events</h1>
-    <p>Explore our history of stellar events, from cosmic performances to collaborative art installations.</p>
+    <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
     <div class="events-grid">
       <div class="event">
         <img src="images/Eventposter.jpg" alt="Emo Night Poster">
-        <h3>Emo Night: A Tribute</h3>
-        <p>A nostalgic evening of emo vibes, themed drinks, and makeup stations, celebrating our cosmic community.</p>
+        <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
+        <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
       </div>
       <div class="event">
         <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
-        <h3>Pole in the Paddock</h3>
-        <p>A captivating pole performance showcasing strength, grace, and cosmic creativity.</p>
+        <h3>Pole in the paddock</h3>
+        <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
       </div>
       <div class="event">
         <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
         <h3>Cosmic Connections</h3>
-        <p>A storytelling event exploring extraterrestrial themes, uniting skeptics and believers.</p>
+        <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
       </div>
       <div class="event">
         <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
         <h3>DJ Showcase & Open Decks</h3>
-        <p>A vibrant open-deck party with local DJs, colorful lights, and a cosmic dance floor.</p>
+        <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
       </div>
     </div>
   </section>
 
   <section class="section" id="submit">
     <h1>Submit Your Event</h1>
-    <p>Propose your cosmic event idea to share with our stellar community.</p>
+    <p>Fill out the form below to submit your event idea!</p>
     <div class="form-container">
       <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="eventName" placeholder="Event Name" required>
+        <textarea name="eventDescription" rows="4" placeholder="Event Description" required></textarea>
         <select name="eventType" required>
           <option value="">Select Event Type</option>
           <option>Art Installation</option>
@@ -556,7 +486,7 @@
           <option value="Other">Other (Please Specify)</option>
         </select>
         <input type="text" name="equipmentOther" placeholder="Specify Other Equipment (if applicable)">
-        <textarea name="eventDescription" rows="6" placeholder="Describe Your Event Idea" required></textarea>
+        <textarea name="eventDescription" rows="6" placeholder="Enter Detailed Description of Event Idea" required></textarea>
         <button type="submit">Submit Event</button>
       </form>
     </div>
@@ -572,13 +502,13 @@
   </section>
 
   <section class="contact-lead">
-    <h2>Contact Us</h2>
-    <p>Reach out to our Starship Captain on Facebook:</p>
+    <h2>Need to reach out?</h2>
+    <p>Message the Camp Lead on Facebook:</p>
     <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
   </section>
 
   <footer class="footer">
-    <p>© 2025 Cosmic Rejex - Kiwiburn</p>
+    <p>© 2025 Kiwiburn Camp</p>
     <div class="countdown" id="countdown"></div>
   </footer>
 
@@ -590,14 +520,14 @@
       const now = new Date();
       const diff = targetDate - now;
       if (diff <= 0) {
-        countdown.textContent = "Kiwiburn is live!";
+        countdown.textContent = "Kiwiburn is happening now!";
         return;
       }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
-      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn`;
+      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
     }
 
     setInterval(updateCountdown, 1000);
