@@ -3,85 +3,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Our Camp - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <title>Join Our Cosmic Camp - Kiwiburn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Nova+Square&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #e8f5e9;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(180deg, #0a0a23 0%, #1a1a3d 100%);
+      color: #e0e0ff;
+      overflow-x: hidden;
     }
 
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 60px 20px;
       text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 0.15;
+      z-index: -1;
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       margin-bottom: 20px;
-      color: #111;
+      color: #ffffff;
+      text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
     p {
-      font-size: 1.1em;
-      margin-bottom: 30px;
-      color: #222;
-      line-height: 1.6;
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #d0d0ff;
+      line-height: 1.8;
+      font-family: 'Nova Square', sans-serif;
     }
 
     .form-container {
       text-align: left;
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
+      background: rgba(20, 20, 50, 0.85);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+      border: 1px solid #00d4ff;
     }
 
     .form-container input,
     .form-container textarea,
     .form-container select {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #00d4ff;
+      background: rgba(255, 255, 255, 0.1);
+      color: #e0e0ff;
       font-size: 1rem;
       box-sizing: border-box;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-container select {
+      color: #000000; /* Black text for dropdown */
+      background: rgba(255, 255, 255, 0.9); /* Slightly opaque white background for contrast */
+    }
+
+    .form-container select option {
+      color: #000000; /* Black text for options */
+      background: #ffffff; /* White background for options */
+    }
+
+    .form-container select:focus {
+      outline: none;
+      border-color: #ff00ff;
+      box-shadow: 0 0 10px #ff00ff;
+      color: #ffffff; /* White text when selected/focused */
+    }
+
+    .form-container input:focus,
+    .form-container textarea:focus {
+      outline: none;
+      border-color: #ff00ff;
+      box-shadow: 0 0 10px #ff00ff;
+    }
+
+    .form-container textarea {
+      resize: vertical;
     }
 
     .form-container button {
-      padding: 12px 20px;
-      background-color: #4caf50;
-      color: white;
+      padding: 14px 25px;
+      background: linear-gradient(45deg, #00d4ff, #ff00ff);
+      color: #ffffff;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      font-family: 'Orbitron', sans-serif;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .form-container button:hover {
-      background-color: #45a049;
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff00ff;
     }
 
     .back-link {
       display: inline-block;
-      margin-top: 20px;
-      color: #4caf50;
+      margin-top: 30px;
+      color: #00d4ff;
       text-decoration: none;
-      font-size: 1.1em;
+      font-size: 1.2em;
+      font-family: 'Nova Square', sans-serif;
+      transition: color 0.3s;
     }
 
     .back-link:hover {
+      color: #ff00ff;
       text-decoration: underline;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+      }
+      to {
+        text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+      }
+    }
+
+    /* Cosmic particle effect */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0.7; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
   </style>
 </head>
 <body>
+  <div class="particles" id="particles"></div>
   <div class="container">
-    <h1>Request to Join</h1>
-    <p>Fill out the form below to request to join our amazing Kiwiburn community!</p>
+    <h1>Join Our Cosmic Camp</h1>
+    <p>Embark on a stellar journey with the Kiwiburn community! Fill out the form below to request your place in our galactic camp.</p>
     <div class="form-container">
       <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
@@ -111,7 +207,23 @@
         <button type="submit">Submit Request</button>
       </form>
     </div>
-    <a href="index.html" class="back-link">Back to Main Page</a>
+    <a href="index.html" class="back-link">Return to Galactic Hub</a>
   </div>
+  <script>
+    // Particle effect for cosmic theme
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.width = `${Math.random() * 3 + 1}px`;
+      particle.style.height = particle.style.width;
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.animationDelay = `${Math.random() * 10}s`;
+      particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+      particlesContainer.appendChild(particle);
+    }
+  </script>
 </body>
 </html>
