@@ -272,7 +272,7 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.1);
       padding: 15px;
-      border W: 1px solid #e67e22;
+      border: 1px solid #e67e22;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
@@ -351,7 +351,7 @@
       max-width: 90%;
     }
 
-    .member .delete-button {
+    .member .delete-button, .role .delete-button {
       display: none;
       position: absolute;
       top: 5px;
@@ -367,12 +367,12 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
 
-    .member .delete-button:hover {
+    .member .delete-button:hover, .role .delete-button:hover {
       background: rgba(230, 126, 34, 0.9);
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .logged-in .member .delete-button {
+    .logged-in .member .delete-button, .logged-in .role .delete-button {
       display: block;
     }
 
@@ -819,7 +819,7 @@
         font-size: 0.9em;
       }
 
-      .member .delete-button {
+      .member .delete-button, .role .delete-button {
         width: 20px;
         height: 20px;
         font-size: 0.8em;
@@ -941,7 +941,7 @@
         top: -12px;
       }
 
-      .member .delete-button {
+      .member .delete-button, .role .delete-button {
         width: 18px;
         height: 18px;
         font-size: 0.7em;
@@ -1185,6 +1185,7 @@
           <div class="tooltip">
             <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
@@ -1193,6 +1194,7 @@
           <div class="tooltip">
             <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/build-crew.png" alt="Build Crew Icon">
@@ -1201,6 +1203,7 @@
           <div class="tooltip">
             <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
@@ -1209,6 +1212,7 @@
           <div class="tooltip">
             <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
@@ -1217,6 +1221,7 @@
           <div class="tooltip">
             <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
@@ -1225,6 +1230,7 @@
           <div class="tooltip">
             <p>Stocks first aid, provides harm reduction & emergency support.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
@@ -1233,6 +1239,7 @@
           <div class="tooltip">
             <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
@@ -1241,6 +1248,7 @@
           <div class="tooltip">
             <p>Oversees decor, signs, and interactive art.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
@@ -1249,6 +1257,7 @@
           <div class="tooltip">
             <p>Plans events, workshops, performances & group photos.</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
       </div>
       <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
@@ -1356,6 +1365,9 @@
         rolesGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
           arrow.addEventListener('click', handleScroll);
         });
+        rolesGrid.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteRole(button));
+        });
       }
     });
 
@@ -1437,6 +1449,13 @@
       }
     }
 
+    function deleteRole(button) {
+      if (!isLoggedIn) return;
+      if (confirm('Are you sure you want to delete this role?')) {
+        button.closest('.role').remove();
+      }
+    }
+
     function drag(event) {
       if (!isLoggedIn) return;
       draggedElement = event.target.closest('.member, .role');
@@ -1462,17 +1481,30 @@
       const targetGrid = event.target.closest('.members-grid, .roles-grid');
       if (!targetGrid) return;
 
+      const targetElement = event.target.closest('.member, .role');
       const isMember = event.dataTransfer.getData('is-member') === 'true';
       const roleTitle = event.dataTransfer.getData('role-title');
 
+      // Handle reordering within the same grid
+      if ((targetGrid.classList.contains('members-grid') && isMember) || 
+          (targetGrid.classList.contains('roles-grid') && !isMember)) {
+        if (targetElement && targetElement !== draggedElement) {
+          targetGrid.insertBefore(draggedElement, targetElement);
+        } else {
+          targetGrid.appendChild(draggedElement);
+        }
+        return;
+      }
+
+      // Handle moving a role to members-grid
       if (targetGrid.classList.contains('members-grid') && !isMember) {
         modal.style.display = 'flex';
         modal.dataset.roleTitle = roleTitle;
         modal.dataset.sourceGrid = 'roles-grid';
         modal.dataset.targetGrid = 'members-grid';
-      } else if (targetGrid.classList.contains('roles-grid') && isMember) {
-        const memberName = event.dataTransfer.getData('member-name');
-        const memberPhoto = event.dataTransfer.getData('member-photo');
+      } 
+      // Handle moving a member to roles-grid
+      else if (targetGrid.classList.contains('roles-grid') && isMember) {
         const memberDescription = event.dataTransfer.getData('member-description');
         const memberRole = event.dataTransfer.getData('member-role');
         const newRole = document.createElement('div');
@@ -1486,11 +1518,14 @@
           <div class="tooltip">
             <p>${memberDescription}</p>
           </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         `;
-        targetGrid.appendChild(newRole);
+        if (targetElement) {
+          targetGrid.insertBefore(newRole, targetElement);
+        } else {
+          targetGrid.appendChild(newRole);
+        }
         draggedElement.remove();
-      } else {
-        targetGrid.appendChild(draggedElement);
       }
     }
 
