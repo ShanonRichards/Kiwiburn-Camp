@@ -21,9 +21,9 @@
       background: rgba(44, 29, 15, 0.85);
       backdrop-filter: blur(10px);
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 15px 10px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
       z-index: 1000;
       border-bottom: 2px solid #e67e22;
     }
@@ -63,16 +63,18 @@
     }
 
     .login-container {
-      position: absolute;
-      top: 15px;
-      right: 15px;
       display: flex;
-      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      background: rgba(44, 29, 15, 0.85);
+      border-bottom: 1px solid #e67e22;
+      z-index: 999;
     }
 
     .login-container form {
       display: flex;
       gap: 10px;
+      align-items: center;
     }
 
     .login-container input {
@@ -415,6 +417,7 @@
       width: 90%;
       text-align: center;
       border: 2px solid #e67e22;
+      position: relative;
     }
 
     .modal-content h3 {
@@ -443,11 +446,21 @@
       font-family: 'Bebas Neue', cursive;
       font-size: 1em;
       transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 0 10px;
     }
 
     .modal-content button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      font-size: 1.2em;
+      padding: 5px 10px;
     }
 
     .events-grid {
@@ -528,7 +541,7 @@
       font-size: 1rem;
       box-sizing: border-box;
       background: rgba(255, 255, 255, 0.1);
-      color Thành viên: #2b1b0f;
+      color: #2b1b0f;
     }
 
     .form-container button {
@@ -621,16 +634,33 @@
       padding: 0;
     }
 
+    .save-button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .save-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
-        position: absolute;
-        top: 10px;
-        left: 10px;
       }
 
       nav {
-        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 10px;
       }
 
@@ -639,9 +669,6 @@
         flex-direction: column;
         width: 100%;
         background: rgba(44, 29, 15, 0.9);
-        position: absolute;
-        top: 50px;
-        left: 0;
         padding: 10px 0;
       }
 
@@ -657,10 +684,7 @@
       }
 
       .login-container {
-        top: 60px;
-        right: 10px;
-        flex-direction: column;
-        align-items: flex-end;
+        padding: 10px;
       }
 
       .login-container form {
@@ -671,6 +695,8 @@
       .login-container input, .login-container button {
         font-size: 0.8rem;
         padding: 6px;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .header {
@@ -813,7 +839,7 @@
       }
     }
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width::
       .header h1 {
         font-size: 2.2em;
       }
@@ -920,15 +946,16 @@
       <a href="#newsletter">Newsletter</a>
       <a href="#gallery">Gallery</a>
     </div>
-    <div class="login-container">
-      <form id="login-form">
-        <input type="text" id="username" placeholder="Username" required>
-        <input type="password" id="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
-      <button class="logout-button">Logout</button>
-    </div>
   </nav>
+
+  <div class="login-container">
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <button class="logout-button">Logout</button>
+  </div>
 
   <header class="header">
     <h1>Join Our Kiwiburn</h1>
@@ -937,6 +964,7 @@
 
   <div class="modal" id="member-modal">
     <div class="modal-content">
+      <button class="close-button" onclick="closeModal()">×</button>
       <h3>Add Member Details</h3>
       <input type="text" id="member-name" placeholder="Member Name" required>
       <input type="text" id="member-photo" placeholder="Photo URL" required>
@@ -964,7 +992,7 @@
   </div>
 
   <div class="members-container">
-    <section class="section" id="members">
+    <section class="section" idMembers">
       <h1>Meet Our Core Camp Crew</h1>
       <div class="members-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
         <div class="scroll-arrow left">◄</div>
@@ -1033,346 +1061,382 @@
           <img src="images/sarsha.jpg" alt="Sarsha">
           <h3>Sarsha Skiffington</h3>
           <span>Greeter</span>
-          <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right⁠—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
+          <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Gartah.jpg" alt="Gartah">
+          <h3>Gartah</h3>
+          <span>Strike Lead</span>
+          <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
+        </div>
+        <div class="member"ૈ
+          <img src="images/jackie.jpg" alt="Jackie">
+          <h3>Jackie Church</h3>
+          <span>Comms Lead</span>
+          <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/olivia.jpg" alt="Olivia">
+          <h3>Olivia Derewlany </h3>
+          <span>Safety Officer</span>
+          <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/wenyi.jpg" alt="Wenyi">
+          <h3>Wenyi Huang </h3>
+          <span>MOOP Manager</span>
+          <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/tina.jpg" alt="Tina">
+          <h3>Tina Lein </h3>
+          <span>Power/Tech Lead</span>
+          <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
+        </div>
       </div>
-      <div class="member" draggable="true" ondragstart="drag(event)">
-        <img src="images/Gartah.jpg" alt="Gartah">
-        <h3>Gartah</h3>
-        <span>Strike Lead</span>
-        <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
-      </div>
-      <div class="member" draggable="true" ondragstart="drag(event)">
-        <img src="images/jackie.jpg" alt="Jackie">
-        <h3>Jackie Church</h3>
-        <span>Comms Lead</span>
-        <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
-      </div>
-      <div class="member" draggable="true" ondragstart="drag(event)">
-        <img src="images/olivia.jpg" alt="Olivia">
-        <h3>Olivia Derewlany </h3>
-        <span>Safety Officer</span>
-        <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
-      </div>
-      <div class="member" draggable="true" ondragstart="drag(event)">
-        <img src="images/wenyi.jpg" alt="Wenyi">
-        <h3>Wenyi Huang </h3>
-        <span>MOOP Manager</span>
-        <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
-      </div>
-      <div class="member" draggable="true" ondragstart="drag(event)">
-        <img src="images/tina.jpg" alt="Tina">
-        <h3>Tina Lein </h3>
-        <span>Power/Tech Lead</span>
-        <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
-      </div>
-    </div>
+      <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
 
-    <h2>Roles to Be Filled</h2>
-    <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
-    <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
-      <div class="scroll-arrow left">◄</div>
-      <div class="scroll-arrow right">►</div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/trial.png" alt="Logistics Lead Icon">
-        <h3>Logistics & Build Lead</h3>
-        <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Plans camp layout, manages ride shares, carpools, and essential gear.
+      <h2>Roles to Be Filled</h2>
+      <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
+      <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
+        <div class="scroll-arrow left">◄</div>
+        <div class="scroll-arrow right">►</div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/trial.png" alt="Logistics Lead Icon">
+          <h3>Logistics & Build Lead</h3>
+          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Plans camp layout, manages ride shares, carpools, and essential gear.
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
+          <h3>Volunteer Coordinator</h3>
+          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/build-crew.png" alt="Build Crew Icon">
+          <h3>Build Crew</h3>
+          <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Builds shade, tents, and layout. Manages power, water, and camp infrastructure.
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
+          <h3>Sound & Lights Lead</h3>
+          <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Oversees DJ schedules, lighting, sound compliance, and power systems.
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
+          <h3>Kitchen Lead</h3>
+          <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
+          <h3>Safety & Medical Lead</h3>
+          <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Stocks first aid, provides harm reduction & emergency support.
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
+          <h3>Fire & Rangers Lead</h3>
+          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Manages fire safety, emergency exits & coordinates with Rangers.
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
+          <h3>Art & Decor Lead</h3>
+          <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Oversees decor, signs, and interactive art.
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
+          <h3>Event & Theme Night Lead</h3>
+          <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            Plans events, workshops, performances & group photos.
+          </div>
         </div>
       </div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
-        <h3>Volunteer Coordinator</h3>
-        <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.
+    </section>
+
+    <section class="section submit-section" id="join">
+      <h2>Request to Join</h2>
+      <p>Want to join our amazing community? Click below to submit your request!</p>
+      <a href="join-camp.html" class="submit-button">Click Here</a>
+    </section>
+  </div>
+
+  <div class="events-container">
+    <section class="section" id="events">
+      <h1>Past Events</h1>
+      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
+      <div class="events-grid">
+        <div class="event">
+          <img src="images/Eventposter.jpg" alt="Emo Night Poster">
+          <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
+          <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
+        </div>
+        <div class="event">
+          <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
+          <h3>Pole in the paddock</h3>
+          <p>Join us for an exciting pole performance showcasing strength, grace, and creatively. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+        </div>
+        <div class="event">
+          <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
+          <h3>Cosmic Connections</h3>
+          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
+        </div>
+        <div class="event">
+          <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
+          <h3>DJ Showcase & Open Decks</h3>
+          <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
         </div>
       </div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/build-crew.png" alt="Build Crew Icon">
-        <h3>Build Crew</h3>
-        <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Builds shade, tents, and layout. Manages power, water, and camp infrastructure.
-        </div>
+    </section>
+
+    <section class="section submit-section" id="submit">
+      <h1>Submit Your Event</h1>
+      <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
+      <a href="submit-event.html" class="submit-button">Click Here</a>
+    </section>
+  </div>
+
+  <div class="newsletter-container">
+    <section class="section" id="newsletter">
+      <h2>Updates & Newsletter</h2>
+      <p>Stay in the loop with the latest camp news, application updates, and camp fee information!</p>
+      <a href="newsletter.html" class="submit-button">Read Our Newsletter</a>
+    </section>
+  </div>
+
+  <div class="gallery-container">
+    <section class="section" id="gallery">
+      <h1>Camp Gallery</h1>
+      <div class="gallery">
+        <img src="images/photo1.jpg" alt="Gallery Image 1">
+        <img src="images/photo2.jpg" alt="Gallery Image 2">
+        <img src="images/photo3.jpg" alt="Gallery Image 3">
       </div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
-        <h3>Sound & Lights Lead</h3>
-        <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Oversees DJ schedules, lighting, sound compliance, and power systems.
-        </div>
-      </div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
-        <h3>Kitchen Lead</h3>
-        <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.
-        </div>
-      </div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
-        <h3>Safety & Medical Lead</h3>
-        <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Stocks first aid, provides harm reduction & emergency support.
-        </div>
-      </div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
-        <h3>Fire & Rangers Lead</h3>
-        <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Manages fire safety, emergency exits & coordinates with Rangers.
-        </div>
-      </div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
-        <h3>Art & Decor Lead</h3>
-        <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Oversees decor, signs, and interactive art.
-        </div>
-      </div>
-      <div class="role" draggable="true" ondragstart="drag(event)">
-        <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
-        <h3>Event & Theme Night Lead</h3>
-        <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          Plans events, workshops, performances & group photos.
-        </div>
-      </div>
-    </div>
+    </section>
+  </div>
+
+  <section class="contact-lead">
+    <h2>Need to reach out?</h2>
+    <p>Message the Camp Lead on Facebook:</p>
+    <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
   </section>
 
-  <section class="section submit-section" id="join">
-    <h2>Request to Join</h2>
-    <p>Want to join our amazing community? Click below to submit your request!</p>
-    <a href="join-camp.html" class="submit-button">Click Here</a>
-  </section>
-</div>
+  <footer class="footer">
+    <p>© 2025 Kiwiburn Camp</p>
+    <div class="countdown" id="countdown"></div>
+  </footer>
 
-<div class="events-container">
-  <section class="section" id="events">
-    <h1>Past Events</h1>
-    <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
-    <div class="events-grid">
-      <div class="event">
-        <img src="images/Eventposter.jpg" alt="Emo Night Poster">
-        <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-        <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
-      </div>
-      <div class="event">
-        <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
-        <h3>Pole in the paddock</h3>
-        <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
-      </div>
-      <div class="event">
-        <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
-        <h3>Cosmic Connections</h3>
-        <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
-      </div>
-      <div class="event">
-        <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
-        <h3>DJ Showcase & Open Decks</h3>
-        <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
-      </div>
-    </div>
-  </section>
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const loginForm = document.querySelector('#login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const membersGrid = document.querySelector('.members-grid');
+    const rolesGrid = document.querySelector('.roles-grid');
+    const modal = document.querySelector('#member-modal');
+    const saveButton = document.querySelector('.save-button');
+    let draggedElement = null;
+    let isLoggedIn = false;
 
-  <section class="section submit-section" id="submit">
-    <h1>Submit Your Event</h1>
-    <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
-    <a href="submit-event.html" class="submit-button">Click Here</a>
-  </section>
-</div>
-
-<div class="newsletter-container">
-  <section class="section" id="newsletter">
-    <h2>Updates & Newsletter</h2>
-    <p>Stay in the loop with the latest camp news, application updates, and camp fee information!</p>
-    <a href="newsletter.html" class="submit-button">Read Our Newsletter</a>
-  </section>
-</div>
-
-<div class="gallery-container">
-  <section class="section" id="gallery">
-    <h1>Camp Gallery</h1>
-    <div class="gallery">
-      <img src="images/photo1.jpg" alt="Gallery Image 1">
-      <img src="images/photo2.jpg" alt="Gallery Image 2">
-      <img src="images/photo3.jpg" alt="Gallery Image 3">
-    </div>
-  </section>
-</div>
-
-<section class="contact-lead">
-  <h2>Need to reach out?</h2>
-  <p>Message the Camp Lead on Facebook:</p>
-  <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
-</section>
-
-<footer class="footer">
-  <p>© 2025 Kiwiburn Camp</p>
-  <div class="countdown" id="countdown"></div>
-</footer>
-
-<script>
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  const loginForm = document.querySelector('#login-form');
-  const logoutButton = document.querySelector('.logout-button');
-  const membersGrid = document.querySelector('.members-grid');
-  const rolesGrid = document.querySelector('.roles-grid');
-  const modal = document.querySelector('#member-modal');
-  let draggedElement = null;
-  let isLoggedIn = false;
-
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.querySelector('#username').value;
-    const password = document.querySelector('#password').value;
-    if (username === 'shanon' && password === 'Audius1993!') {
-      isLoggedIn = true;
-      loginForm.style.display = 'none';
-      logoutButton.style.display = 'block';
-      membersGrid.classList.add('draggable');
-      rolesGrid.classList.add('draggable');
-      document.querySelectorAll('.member, .role').forEach(item => {
-        item.setAttribute('draggable', 'true');
-      });
-    } else {
-      alert('Invalid credentials');
-    }
-  });
-
-  logoutButton.addEventListener('click', () => {
-    isLoggedIn = false;
-    loginForm.style.display = 'flex';
-    logoutButton.style.display = 'none';
-    membersGrid.classList.remove('draggable');
-    rolesGrid.classList.remove('draggable');
-    document.querySelectorAll('.member, .role').forEach(item => {
-      item.setAttribute('draggable', 'false');
+    // Load saved data on page load
+    window.addEventListener('load', () => {
+      const savedMembers = localStorage.getItem('membersGrid');
+      const savedRoles = localStorage.getItem('rolesGrid');
+      if (savedMembers) {
+        membersGrid.innerHTML = savedMembers;
+        membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
+          arrow.addEventListener('click', handleScroll);
+        });
+      }
+      if (savedRoles) {
+        rolesGrid.innerHTML = savedRoles;
+        rolesGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
+          arrow.addEventListener('click', handleScroll);
+        });
+      }
     });
-  });
 
-  const countdown = document.getElementById('countdown');
-  const targetDate = new Date('2025-01-27T12:00:00');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
 
-  function updateCountdown() {
-    const now = new Date();
-    const diff = targetDate - now;
-    if (diff <= 0) {
-      countdown.textContent = "Kiwiburn is happening now!";
-      return;
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.querySelector('#username').value;
+      const password = document.querySelector('#password').value;
+      if (username === 'shanon' && password === 'Audius1993!') {
+        isLoggedIn = true;
+        loginForm.style.display = 'none';
+        logoutButton.style.display = 'block';
+        saveButton.style.display = 'block';
+        membersGrid.classList.add('draggable');
+        rolesGrid.classList.add('draggable');
+        document.querySelectorAll('.member, .role').forEach(item => {
+          item.setAttribute('draggable', 'true');
+        });
+      } else {
+        alert('Invalid credentials');
+      }
+    });
+
+    logoutButton.addEventListener('click', () => {
+      isLoggedIn = false;
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      saveButton.style.display = 'none';
+      membersGrid.classList.remove('draggable');
+      rolesGrid.classList.remove('draggable');
+      document.querySelectorAll('.member, .role').forEach(item => {
+        item.setAttribute('draggable', 'false');
+      });
+    });
+
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date('2025-01-27T12:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) {
+        countdown.textContent = "Kiwiburn is happening now!";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
     }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-    countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
-  }
 
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-  document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-    arrow.addEventListener('click', () => {
-      const grid = arrow.parentElement;
-      const isLeft = arrow.classList.contains('left');
+    function handleScroll() {
+      const grid = this.parentElement;
+      const isLeft = this.classList.contains('left');
       const scrollAmount = 150;
       grid.scrollBy({
         left: isLeft ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
       });
+    }
+
+    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+      arrow.addEventListener('click', handleScroll);
     });
-  });
 
-  function drag(event) {
-    if (!isLoggedIn) return;
-    draggedElement = event.target.closest('.member, .role');
-    event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
-    event.dataTransfer.setData('role-title', draggedElement.querySelector('h3').textContent);
-    event.dataTransfer.setData('is-member', draggedElement.classList.contains('member') ? 'true' : 'false');
-  }
-
-  function allowDrop(event) {
-    if (!isLoggedIn) return;
-    event.preventDefault();
-  }
-
-  function drop(event) {
-    if (!isLoggedIn) return;
-    event.preventDefault();
-    const targetGrid = event.target.closest('.members-grid, .roles-grid');
-    if (!targetGrid) return;
-
-    const isMember = event.dataTransfer.getData('is-member') === 'true';
-    const roleTitle = event.dataTransfer.getData('role-title');
-
-    if (targetGrid.classList.contains('members-grid') && !isMember) {
-      modal.style.display = 'flex';
-      modal.dataset.roleTitle = roleTitle;
-      modal.dataset.sourceGrid = 'roles-grid';
-      modal.dataset.targetGrid = 'members-grid';
-    } else if (targetGrid.classList.contains('roles-grid') && isMember) {
-      const memberElement = draggedElement;
-      const newRole = document.createElement('div');
-      newRole.className = 'role';
-      newRole.draggable = true;
-      newRole.ondragstart = drag;
-      newRole.innerHTML = `
-        <img src="${memberElement.querySelector('img').src}" alt="${roleTitle} Icon">
-        <h3>${roleTitle}</h3>
-        <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
-        <div class="tooltip">${memberElement.querySelector('.tooltip')?.textContent || ''}</div>
-      `;
-      targetGrid.appendChild(newRole);
-      draggedElement.remove();
-    } else {
-      targetGrid.appendChild(draggedElement);
-    }
-  }
-
-  window.saveMemberDetails = function() {
-    const name = document.querySelector('#member-name').value;
-    const photo = document.querySelector('#member-photo').value;
-    if (!name || !photo) {
-      alert('Please fill in all fields');
-      return;
+    function drag(event) {
+      if (!isLoggedIn) return;
+      draggedElement = event.target.closest('.member, .role');
+      event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
+      event.dataTransfer.setData('role-title', draggedElement.querySelector('h3').textContent);
+      event.dataTransfer.setData('is-member', draggedElement.classList.contains('member') ? 'true' : 'false');
     }
 
-    const roleTitle = modal.dataset.roleTitle;
-    const targetGrid = document.querySelector(`.${modal.dataset.targetGrid}`);
-    const sourceGrid = document.querySelector(`.${modal.dataset.sourceGrid}`);
-    const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
-
-    if (roleElement) {
-      const newMember = document.createElement('div');
-      newMember.className = 'member';
-      newMember.draggable = true;
-      newMember.ondragstart = drag;
-      newMember.innerHTML = `
-        <img src="${photo}" alt="${name}">
-        <h3>${name}</h3>
-        <span>${roleTitle}</span>
-        <p>${roleElement.parentElement.querySelector('.tooltip').textContent}</p>
-      `;
-      targetGrid.appendChild(newMember);
-      roleElement.parentElement.remove();
+    function allowDrop(event) {
+      if (!isLoggedIn) return;
+      event.preventDefault();
     }
 
-    modal.style.display = 'none';
-    document.querySelector('#member-name').value = '';
-    document.querySelector('#member-photo').value = '';
-  };
-</script>
+    function drop(event) {
+      if (!isLoggedIn) return;
+      event.preventDefault();
+      const targetGrid = event.target.closest('.members-grid, .roles-grid');
+      if (!targetGrid) return;
+
+      const isMember = event.dataTransfer.getData('is-member') === 'true';
+      const roleTitle = event.dataTransfer.getData('role-title');
+
+      if (targetGrid.classList.contains('members-grid') && !isMember) {
+        modal.style.display = 'flex';
+        modal.dataset.roleTitle = roleTitle;
+        modal.dataset.sourceGrid = 'roles-grid';
+        modal.dataset.targetGrid = 'members-grid';
+      } else if (targetGrid.classList.contains('roles-grid') && isMember) {
+        const memberElement = draggedElement;
+        const newRole = document.createElement('div');
+        newRole.className = 'role';
+        newRole.draggable = true;
+        newRole.ondragstart = drag;
+        newRole.innerHTML = `
+          <img src="${memberElement.querySelector('img').src}" alt="${roleTitle} Icon">
+          <h3>${roleTitle}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">${memberElement.querySelector('.tooltip')?.textContent || ''}</div>
+        `;
+        targetGrid.appendChild(newRole);
+        draggedElement.remove();
+      } else {
+        targetGrid.appendChild(draggedElement);
+      }
+    }
+
+    window.saveMemberDetails = function() {
+      const name = document.querySelector('#member-name').value;
+      const photo = document.querySelector('#member-photo').value;
+      if (!name || !photo) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      const roleTitle = modal.dataset.roleTitle;
+      const targetGrid = document.querySelector(`.${modal.dataset.targetGrid}`);
+      const sourceGrid = document.querySelector(`.${modal.dataset.sourceGrid}`);
+      const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
+
+      if (roleElement) {
+        const newMember = document.createElement('div');
+        newMember.className = 'member';
+        newMember.draggable = true;
+        newMember.ondragstart = drag;
+        newMember.innerHTML = `
+          <img src="${photo}" alt="${name}">
+          <h3>${name}</h3>
+          <span>${roleTitle}</span>
+          <p>${roleElement.parentElement.querySelector('.tooltip').textContent}</p>
+        `;
+        targetGrid.appendChild(newMember);
+        roleElement.parentElement.remove();
+      }
+
+      modal.style.display = 'none';
+      document.querySelector('#member-name').value = '';
+      document.querySelector('#member-photo').value = '';
+    };
+
+    window.closeModal = function() {
+      modal.style.display = 'none';
+      document.querySelector('#member-name').value = '';
+      document.querySelector('#member-photo').value = '';
+    };
+
+    window.saveChanges = function() {
+      localStorage.setItem('membersGrid', membersGrid.innerHTML);
+      localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
+      alert('Changes saved successfully!');
+    };
+  </script>
 </body>
 </html>
