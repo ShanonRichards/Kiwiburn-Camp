@@ -347,7 +347,15 @@
       line-height: 1.3;
     }
 
-    .member p, .role p {
+    .member p {
+      font-size: 1em;
+      color: #2b1b0f;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .role p {
       font-size: 1em;
       color: #ffffff;
       margin: 5px 0;
@@ -380,7 +388,7 @@
       display: block;
     }
 
-    .role .apply-button {
+    .role .apply-button, .role .create-role-button {
       display: inline-block;
       margin-top: 10px;
       padding: 8px 12px;
@@ -391,9 +399,11 @@
       font-family: 'Bebas Neue', cursive;
       font-size: 0.9em;
       transition: background-color 0.3s, box-shadow 0.3s;
+      border: none;
+      cursor: pointer;
     }
 
-    .role .apply-button:hover {
+    .role .apply-button:hover, .role .create-role-button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
@@ -811,7 +821,99 @@
         height: 80px;
       }
 
-_curriculum_redacted_for_brevity_
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1.2rem;
+        top: -15px;
+      }
+
+      .role img {
+        width: 50px;
+        height: 50px;
+        padding: 6px;
+      }
+
+      .member h3, .role h3 {
+        font-size: 1.3em;
+      }
+
+      .member span {
+        font-size: 1.1em;
+      }
+
+      .member p, .role p {
+        font-size: 0.9em;
+      }
+
+      .member .delete-button, .role .delete-button {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+      }
+
+      .role .tooltip {
+        width: 140px;
+        font-size: 0.85em;
+      }
+
+      .role .tooltip img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .role .apply-button, .role .create-role-button {
+        font-size: 0.8em;
+        padding: 6px 10px;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 95%;
+      }
+
+      .event img {
+        height: 150px;
+      }
+
+      .event h3 {
+        font-size: 1.4em;
+      }
+
+      .event p {
+        font-size: 0.95em;
+      }
+
+      .countdown {
+        font-size: 1.5em;
+      }
+
+      .form-container {
+        max-width: 95%;
+      }
+
+      .submit-section, .newsletter-container {
+        max-width: 95%;
+        padding: 15px;
+      }
+
+      .submit-button {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+
+      .contact-lead {
+        padding: 30px 15px;
+      }
+
+      .contact-lead a {
+        font-size: 1em;
+      }
+
+      .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
+        max-width: 95%;
+        padding: 20px 15px;
+      }
+    }
 
     @media only screen and (max-width: 480px) {
       .header h1 {
@@ -887,7 +989,7 @@ _curriculum_redacted_for_brevity_
         height: 50px;
       }
 
-      .role .apply-button {
+      .role .apply-button, .role .create-role-button {
         font-size: 0.7em;
         padding: 5px 8px;
       }
@@ -1196,7 +1298,7 @@ _curriculum_redacted_for_brevity_
         <div class="role" onclick="openRoleModal()">
           <img src="images/icons/add-role.png" alt="Add New Role Icon">
           <h3>Add New Role</h3>
-          <p>Create a new role for the camp.</p>
+          <button class="create-role-button" onclick="openRoleModal()">Create New Role</button>
         </div>
       </div>
 
@@ -1271,6 +1373,8 @@ _curriculum_redacted_for_brevity_
   </section>
 
   <footer class="footer">
+ännande
+
     <p>© 2025 Kiwiburn Camp</p>
     <div class="countdown" id="countdown"></div>
   </footer>
@@ -1317,7 +1421,7 @@ _curriculum_redacted_for_brevity_
           newRole.innerHTML = `
             <img src="images/icons/add-role.png" alt="Add New Role Icon">
             <h3>Add New Role</h3>
-            <p>Create a new role for the camp.</p>
+            <button class="create-role-button" onclick="openRoleModal()">Create New Role</button>
           `;
           rolesGrid.appendChild(newRole);
         }
@@ -1599,7 +1703,7 @@ _curriculum_redacted_for_brevity_
     };
 
     window.saveChanges = function() {
-      localStorage.setItem('membersGrid', membersGrid.innerHTML);
+      localStorage.setNode('membersGrid', membersGrid.innerHTML);
       localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
       alert('Changes saved successfully!');
     };
