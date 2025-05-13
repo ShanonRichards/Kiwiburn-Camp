@@ -272,8 +272,7 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.1);
       padding: 15px;
-      border-radius: 8px;
-      border: 1px solid #e67e22;
+      border W: 1px solid #e67e22;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
@@ -350,6 +349,31 @@
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
+    }
+
+    .member .delete-button {
+      display: none;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .member .delete-button:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .logged-in .member .delete-button {
+      display: block;
     }
 
     .role .apply-button {
@@ -795,6 +819,12 @@
         font-size: 0.9em;
       }
 
+      .member .delete-button {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+      }
+
       .role .tooltip {
         width: 140px;
         font-size: 0.85em;
@@ -911,6 +941,12 @@
         top: -12px;
       }
 
+      .member .delete-button {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7em;
+      }
+
       .role img {
         width: 45px;
         height: 45px;
@@ -1001,9 +1037,7 @@
   <div class="about-container">
     <section class="section" id="about">
       <h1>About Our Camp</h1>
-      <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp,
-
- you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
+      <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
       <div class="gallery">
         <img src="images/Campphoto1.jpg" alt="Camp Mates">
         <img src="images/Campphoto15.png" alt="Camp Mates">
@@ -1030,96 +1064,112 @@
           <h3>Shanon Richards</h3>
           <span>Camp Lead</span>
           <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
           <img src="images/MeganR.jpg" alt="Meghan">
           <h3>Meghan Robson</h3>
           <span>Deputy Lead</span>
           <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/RussellDuffield.jpg" alt="Russell">
           <h3>Russell Duffield</h3>
           <span>Build Lead</span>
           <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/Star Dust Bambi.jpg" alt="Star">
           <h3>Star Dust Bambi</h3>
           <span>Vibe Manager</span>
           <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/michealdunstan.jpg" alt="Micheal">
           <h3>Micheal Dunstan</h3>
           <span>Logistics Lead</span>
           <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/tomasshelby.jpg" alt="Tomas">
           <h3>Tomas Shelby</h3>
           <span>Sound Lead</span>
           <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/jarrodskiffington.jpg" alt="Jarrod">
           <h3>Jarrod Skiffington</h3>
           <span>Transport Lead</span>
           <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/alana.jpg" alt="Alana">
           <h3>Alana Stewart</h3>
           <span>Kitchen Lead</span>
           <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/tylerrowe.jpg" alt="Tyler">
           <h3>Tyler Rowe</h3>
           <span>Art & Workshop Lead</span>
           <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/Imogen.jpg" alt="Imogen">
           <h3>Imogen Olivia</h3>
           <span>Wellbeing Officer</span>
           <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/sarsha.jpg" alt="Sarsha">
           <h3>Sarsha Skiffington</h3>
           <span>Greeter</span>
           <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/Gartah.jpg" alt="Gartah">
           <h3>Gartah</h3>
           <span>Strike Lead</span>
           <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/jackie.jpg" alt="Jackie">
           <h3>Jackie Church</h3>
           <span>Comms Lead</span>
           <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/olivia.jpg" alt="Olivia">
           <h3>Olivia Derewlany</h3>
           <span>Safety Officer</span>
           <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/wenyi.jpg" alt="Wenyi">
           <h3>Wenyi Huang</h3>
           <span>MOOP Manager</span>
           <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/tina.jpg" alt="Tina">
           <h3>Tina Lein</h3>
           <span>Power/Tech Lead</span>
           <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
       </div>
 
@@ -1297,6 +1347,9 @@
         membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
           arrow.addEventListener('click', handleScroll);
         });
+        membersGrid.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteMember(button));
+        });
       }
       if (savedRoles) {
         rolesGrid.innerHTML = savedRoles;
@@ -1316,6 +1369,7 @@
       const password = document.querySelector('#password').value;
       if (username === 'shanon' && password === 'Audius1993!') {
         isLoggedIn = true;
+        document.body.classList.add('logged-in');
         loginForm.style.display = 'none';
         logoutButton.style.display = 'block';
         saveButton.style.display = 'block';
@@ -1331,6 +1385,7 @@
 
     logoutButton.addEventListener('click', () => {
       isLoggedIn = false;
+      document.body.classList.remove('logged-in');
       loginForm.style.display = 'flex';
       logoutButton.style.display = 'none';
       saveButton.style.display = 'none';
@@ -1375,6 +1430,13 @@
       arrow.addEventListener('click', handleScroll);
     });
 
+    function deleteMember(button) {
+      if (!isLoggedIn) return;
+      if (confirm('Are you sure you want to delete this member?')) {
+        button.closest('.member').remove();
+      }
+    }
+
     function drag(event) {
       if (!isLoggedIn) return;
       draggedElement = event.target.closest('.member, .role');
@@ -1413,25 +1475,20 @@
         const memberPhoto = event.dataTransfer.getData('member-photo');
         const memberDescription = event.dataTransfer.getData('member-description');
         const memberRole = event.dataTransfer.getData('member-role');
-        const targetRole = event.target.closest('.role');
-        if (targetRole) {
-          const newRole = document.createElement('div');
-          newRole.className = 'role';
-          newRole.draggable = true;
-          newRole.ondragstart = drag;
-          newRole.innerHTML = `
-            <img src="${targetRole.querySelector('img').src}" alt="${memberRole} Icon">
-            <h3>${memberRole}</h3>
-            <a href="join-camp.html?role=${encodeURIComponent(memberRole)}" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <img src="${memberPhoto}" alt="${memberName}">
-              <span>${memberName}</span>
-              <p>${memberDescription}</p>
-            </div>
-          `;
-          targetRole.replaceWith(newRole);
-          draggedElement.remove();
-        }
+        const newRole = document.createElement('div');
+        newRole.className = 'role';
+        newRole.draggable = true;
+        newRole.ondragstart = drag;
+        newRole.innerHTML = `
+          <img src="images/icons/generic-role.png" alt="${memberRole} Icon">
+          <h3>${memberRole}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(memberRole)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>${memberDescription}</p>
+          </div>
+        `;
+        targetGrid.appendChild(newRole);
+        draggedElement.remove();
       } else {
         targetGrid.appendChild(draggedElement);
       }
@@ -1460,6 +1517,7 @@
           <h3>${name}</h3>
           <span>${roleTitle}</span>
           <p>${roleElement.parentElement.querySelector('.tooltip p').textContent}</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         `;
         targetGrid.appendChild(newMember);
         roleElement.parentElement.remove();
