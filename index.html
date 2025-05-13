@@ -693,6 +693,72 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
+    .delete-section {
+      display: none;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+
+    .logged-in .delete-section {
+      display: block;
+    }
+
+    .delete-section h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      color: #2b1b0f;
+      margin-bottom: 15px;
+    }
+
+    .delete-list {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+    }
+
+    .delete-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid rgba(230, 126, 34, 0.3);
+    }
+
+    .delete-item input[type="checkbox"] {
+      margin-right: 10px;
+      accent-color: #e67e22;
+    }
+
+    .delete-item label {
+      font-size: 1em;
+      color: #2b1b0f;
+      flex-grow: 1;
+    }
+
+    .delete-section button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .delete-section button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
@@ -866,7 +932,7 @@
         max-width: 95%;
       }
 
-      .submit-section, .newsletter-container {
+      .submit-section, .newsletter-container, .delete-section {
         max-width: 95%;
         padding: 15px;
       }
@@ -887,6 +953,23 @@
       .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
         max-width: 95%;
         padding: 20px 15px;
+      }
+
+      .delete-section h3 {
+        font-size: 1.8em;
+      }
+
+      .delete-item {
+        padding: 8px;
+      }
+
+      .delete-item label {
+        font-size: 0.95em;
+      }
+
+      .delete-section button {
+        padding: 8px 15px;
+        font-size: 0.9em;
       }
     }
 
@@ -992,6 +1075,23 @@
       .login-container input, .login-container button {
         font-size: 0.7em;
         padding: 5px;
+      }
+
+      .delete-section h3 {
+        font-size: 1.5em;
+      }
+
+      .delete-item {
+        padding: 6px;
+      }
+
+      .delete-item label {
+        font-size: 0.9em;
+      }
+
+      .delete-section button {
+        padding: 6px 12px;
+        font-size: 0.8em;
       }
     }
   </style>
@@ -1260,6 +1360,15 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
       </div>
+
+      <div class="delete-section">
+        <h3>Manage Members & Roles</h3>
+        <div class="delete-list">
+          <!-- Members and roles will be dynamically populated here -->
+        </div>
+        <button onclick="deleteSelectedItems()">Delete Selected</button>
+      </div>
+
       <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
     </section>
 
@@ -1342,12 +1451,13 @@
     const logoutButton = document.querySelector('.logout-button');
     const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
+    const deleteList = document.querySelector('.delete-list');
     const modal = document.querySelector('#member-modal');
     const saveButton = document.querySelector('.save-button');
     let draggedElement = null;
     let isLoggedIn = false;
 
-    // Load saved data on page load
+    // Load saved data and populate delete section on page load
     window.addEventListener('load', () => {
       const savedMembers = localStorage.getItem('membersGrid');
       const savedRoles = localStorage.getItem('rolesGrid');
@@ -1369,6 +1479,7 @@
           button.addEventListener('click', () => deleteRole(button));
         });
       }
+      populateDeleteSection();
     });
 
     hamburger.addEventListener('click', () => {
@@ -1390,6 +1501,7 @@
         document.querySelectorAll('.member, .role').forEach(item => {
           item.setAttribute('draggable', 'true');
         });
+        populateDeleteSection();
       } else {
         alert('Invalid credentials');
       }
@@ -1406,6 +1518,7 @@
       document.querySelectorAll('.member, .role').forEach(item => {
         item.setAttribute('draggable', 'false');
       });
+      deleteList.innerHTML = '';
     });
 
     const countdown = document.getElementById('countdown');
@@ -1446,6 +1559,7 @@
       if (!isLoggedIn) return;
       if (confirm('Are you sure you want to delete this member?')) {
         button.closest('.member').remove();
+        populateDeleteSection();
       }
     }
 
@@ -1453,8 +1567,66 @@
       if (!isLoggedIn) return;
       if (confirm('Are you sure you want to delete this role?')) {
         button.closest('.role').remove();
+        populateDeleteSection();
       }
     }
+
+    function populateDeleteSection() {
+      if (!isLoggedIn) {
+        deleteList.innerHTML = '';
+        return;
+      }
+      deleteList.innerHTML = '';
+      const members = membersGrid.querySelectorAll('.member');
+      const roles = rolesGrid.querySelectorAll('.role');
+      
+      members.forEach((member, index) => {
+        const name = member.querySelector('h3').textContent;
+        const role = member.querySelector('span').textContent;
+        const item = document.createElement('div');
+        item.className = 'delete-item';
+        item.innerHTML = `
+          <input type="checkbox" id="member-${index}" data-type="member" data-name="${name}">
+          <label for="member-${index}">${name} (${role})</label>
+        `;
+        deleteList.appendChild(item);
+      });
+
+      roles.forEach((role, index) => {
+        const title = role.querySelector('h3').textContent;
+        const item = document.createElement('div');
+        item.className = 'delete-item';
+        item.innerHTML = `
+          <input type="checkbox" id="role-${index}" data-type="role" data-name="${title}">
+          <label for="role-${index}">${title} (Role)</label>
+        `;
+        deleteList.appendChild(item);
+      });
+    }
+
+    window.deleteSelectedItems = function() {
+      if (!isLoggedIn) return;
+      const checkedItems = deleteList.querySelectorAll('input[type="checkbox"]:checked');
+      if (checkedItems.length === 0) {
+        alert('Please select at least one item to delete.');
+        return;
+      }
+      if (!confirm(`Are you sure you want to delete ${checkedItems.length} selected item(s)?`)) {
+        return;
+      }
+      checkedItems.forEach(item => {
+        const type = item.dataset.type;
+        const name = item.dataset.name;
+        if (type === 'member') {
+          const member = membersGrid.querySelector(`.member h3:not(.role h3):not(.event h3)`);
+          if (member) member.closest('.member').remove();
+        } else if (type === 'role') {
+          const role = rolesGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
+          if (role) role.closest('.role').remove();
+        }
+      });
+      populateDeleteSection();
+    };
 
     function drag(event) {
       if (!isLoggedIn) return;
@@ -1493,6 +1665,7 @@
         } else {
           targetGrid.appendChild(draggedElement);
         }
+        populateDeleteSection();
         return;
       }
 
@@ -1526,6 +1699,7 @@
           targetGrid.appendChild(newRole);
         }
         draggedElement.remove();
+        populateDeleteSection();
       }
     }
 
@@ -1556,6 +1730,7 @@
         `;
         targetGrid.appendChild(newMember);
         roleElement.parentElement.remove();
+        populateDeleteSection();
       }
 
       modal.style.display = 'none';
