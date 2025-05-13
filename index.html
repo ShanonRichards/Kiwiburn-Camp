@@ -190,13 +190,19 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 2rem;
-      color: #f8s
+      color: #f8e1b4;
       background: rgba(44, 29, 15, 0.7);
       padding: 10px;
       border-radius: 50%;
       cursor: pointer;
       z-index: 10;
       transition: background 0.3s, box-shadow 0.3s;
+      animation: flash 1.5s infinite;
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
     }
 
     .scroll-arrow:hover {
@@ -307,7 +313,7 @@
       border: 2px solid #e67e22;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      min-height: 220px;
+      min-height: 280px;
       width: 100%;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       box-sizing: border-box;
@@ -322,7 +328,7 @@
       width: 60px;
       height: 60px;
       border-radius: 8px;
-      object-fit: contain;
+      object-fit: cover;
       margin-bottom: 10px;
       background-color: #f8e1b4;
       padding: 8px;
@@ -335,6 +341,24 @@
       font-size: 1.3em;
       color: #2b1b0f;
       line-height: 1.2;
+    }
+
+    .role .apply-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .role .apply-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .role .tooltip {
@@ -361,24 +385,6 @@
       visibility: visible;
       opacity: 1;
       transform: translate(-50%, -110%);
-    }
-
-    .tooltip .apply-button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 12px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      text-decoration: none;
-      border-radius: 5px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .tooltip .apply-button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .events-grid {
@@ -676,6 +682,11 @@
         font-size: 0.85em;
       }
 
+      .role .apply-button {
+        font-size: 0.8em;
+        padding: 6px 10px;
+      }
+
       .events-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -723,11 +734,6 @@
       .about-container, .mission-container, .events-container, .members-container, .gallery-container, .newsletter-container {
         max-width: 95%;
         padding: 20px 15px;
-      }
-
-      .tooltip .apply-button {
-        font-size: 0.8em;
-        padding: 6px 10px;
       }
     }
 
@@ -798,6 +804,11 @@
         padding: 8px;
       }
 
+      .role .apply-button {
+        font-size: 0.7em;
+        padding: 5px 8px;
+      }
+
       .countdown {
         font-size: 1.2em;
       }
@@ -816,11 +827,6 @@
 
       .hamburger {
         font-size: 1.2rem;
-      }
-
-      .tooltip .apply-button {
-        font-size: 0.7em;
-        padding: 5px 8px;
       }
     }
   </style>
@@ -975,73 +981,73 @@
         <div class="role">
           <img src="images/icons/trial.png" alt="Logistics Lead Icon">
           <h3>Logistics & Build Lead</h3>
+          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Plans camp layout, manages ride shares, carpools, and essential gear.
-            <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
           </div>
         </div>
         <div class="role">
           <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
+          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.
-            <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
           </div>
         </div>
         <div class="role">
           <img src="images/icons/build-crew.png" alt="Build Crew Icon">
           <h3>Build Crew</h3>
+          <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Builds shade, tents, and layout. Manages power, water, and camp infrastructure.
-            <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
           </div>
         </div>
         <div class="role">
           <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
           <h3>Sound & Lights Lead</h3>
+          <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Oversees DJ schedules, lighting, sound compliance, and power systems.
-            <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
           </div>
         </div>
         <div class="role">
           <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
           <h3>Kitchen Lead</h3>
+          <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.
-            <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
           </div>
         </div>
         <div class="role">
           <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
           <h3>Safety & Medical Lead</h3>
+          <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Stocks first aid, provides harm reduction & emergency support.
-            <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
           </div>
         </div>
         <div class="role">
           <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
           <h3>Fire & Rangers Lead</h3>
+          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Manages fire safety, emergency exits & coordinates with Rangers.
-            <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
           </div>
         </div>
         <div class="role">
           <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
           <h3>Art & Decor Lead</h3>
+          <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Oversees decor, signs, and interactive art.
-            <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
           </div>
         </div>
         <div class="role">
           <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
           <h3>Event & Theme Night Lead</h3>
+          <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             Plans events, workshops, performances & group photos.
-            <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
           </div>
         </div>
       </div>
