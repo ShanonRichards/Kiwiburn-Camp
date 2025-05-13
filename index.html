@@ -347,7 +347,7 @@
       line-height: 1.3;
     }
 
-    .member p {
+    .member p, .role p {
       font-size: 1em;
       color: #2b1b0f;
       margin: 5px 0;
@@ -356,11 +356,7 @@
     }
 
     .role p {
-      font-size: 1em;
       color: #ffffff;
-      margin: 5px 0;
-      line-height: 1.4;
-      max-width: 90%;
     }
 
     .member .delete-button, .role .delete-button {
@@ -491,6 +487,10 @@
       color: #2b1b0f;
     }
 
+    .modal-content input[type="file"] {
+      padding: 5px;
+    }
+
     .modal-content button {
       padding: 10px 20px;
       background-color: #e67e22;
@@ -602,7 +602,8 @@
     .form-container button {
       padding: 12px 20px;
       background-color: #e67e22;
-      color: #2b lament: none;
+      color: #2b1b0f;
+      border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
@@ -812,7 +813,7 @@
 
       .member.camp-lead::before, .member.deputy-lead::before {
         font-size: 1.2rem;
-        top: -YUpx;
+        top: -15px;
       }
 
       .role img {
@@ -1043,7 +1044,7 @@
       <button class="close-button" onclick="closeModal()">×</button>
       <h3>Add Member Details</h3>
       <input type="text" id="member-name" placeholder="Member Name" required>
-      <input type="file" id="member-photo" accept="image/*" required>
+      <input type="file" id="member-photo" accept="image/jpeg,image/png" required>
       <button onclick="saveMemberDetails()">Save</button>
     </div>
   </div>
@@ -1054,7 +1055,7 @@
       <h3>Create New Role</h3>
       <input type="text" id="role-title" placeholder="Role Title" required>
       <textarea id="role-description" placeholder="Role Description" required></textarea>
-      <input type="text" id="role-icon" placeholder="Icon URL (optional)">
+      <input type="file" id="role-icon" accept="image/jpeg,image/png">
       <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
@@ -1106,7 +1107,7 @@
           <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/StarDustBambi.jpg" alt="Star">
+          <img src="images/Star Dust Bambi.jpg" alt="Star">
           <h3>Star Dust Bambi</h3>
           <span>Vibe Manager</span>
           <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
@@ -1287,6 +1288,7 @@
         <div class="role" onclick="openRoleModal()">
           <img src="images/icons/add-role.png" alt="Add New Role Icon">
           <h3>Add New Role</h3>
+          <p>Create a new role for the camp.</p>
           <button class="create-role-button" onclick="openRoleModal()">Create New Role</button>
         </div>
       </div>
@@ -1309,10 +1311,12 @@
         <div class="event">
           <img src="images/Eventposter.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-          <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo }}}}
+          <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
+        </div>
+        <div class="event">
           <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
           <h3>Pole in the paddock</h3>
-          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+          <p>Join us for an exciting pole performance showcasing strength, grace, and creatively. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn ENERGY – don’t miss it!</p>
         </div>
         <div class="event">
           <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
@@ -1365,83 +1369,6 @@
   </footer>
 
   <script>
-    // GitHub configuration (replace with your details)
-    const GITHUB_TOKEN = 'YOUR_PERSONAL_ACCESS_TOKEN'; // **SECURITY WARNING**: Do not use in production; use a backend proxy
-    const REPO_OWNER = 'your-username'; // Replace with your GitHub username
-    const REPO_NAME = 'your-repo'; // Replace with your repository name
-    const REPO_BRANCH = 'main'; // Replace with your default branch (e.g., 'main' or 'master')
-    const IMAGE_PATH = 'images'; // Folder in your repo to store images
-
-    // Function to upload image to GitHub
-    async function uploadImageToGitHub(file, filename) {
-      try {
-        // Validate file size (GitHub API limit: 100MB)
-        if (file.size > 100 * 1024 * 1024) {
-          throw new Error('File size exceeds 100MB limit');
-        }
-
-        // Read the file as Base64
-        const reader = new FileReader();
-        const base64Content = await new Promise((resolve) => {
-          reader.onload = () => resolve(reader.result.split(',')[1]); // Remove data:image/...;base64, prefix
-          reader.readAsDataURL(file);
-        });
-
-        // GitHub API endpoint to create or update a file
-        const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${IMAGE_PATH}/${filename}`;
-
-        // Check if the file already exists to get its SHA (for updating)
-        let sha = null;
-        try {
-          const existingFileResponse = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-              'Authorization': `Bearer ${GITHUB_TOKEN}`,
-              'Accept': 'application/vnd.github.v3+json',
-            },
-          });
-          if (existingFileResponse.ok) {
-            const existingFile = await existingFileResponse.json();
-            sha = existingFile.sha;
-          }
-        } catch (error) {
-          // File doesn't exist, proceed with creating a new file
-        }
-
-        // Prepare the payload
-        const payload = {
-          message: `Add image ${filename}`,
-          content: base64Content,
-          branch: REPO_BRANCH,
-        };
-        if (sha) {
-          payload.sha = sha; // Include SHA for updating an existing file
-        }
-
-        // Upload the image
-        const response = await fetch(apiUrl, {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${GITHUB_TOKEN}`,
-            'Accept': 'application/vnd.github.v3+json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(payload),
-        });
-
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(`Failed to upload image: ${errorData.message || response.statusText}`);
-        }
-
-        // Return the raw URL for the uploaded image
-        return `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${REPO_BRANCH}/${IMAGE_PATH}/${filename}`;
-      } catch (error) {
-        console.error('Error uploading image:', error);
-        throw error;
-      }
-    }
-
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const loginForm = document.querySelector('#login-form');
@@ -1453,6 +1380,8 @@
     const saveButton = document.querySelector('.save-button');
     let draggedElement = null;
     let isLoggedIn = false;
+    let memberPhotoData = '';
+    let roleIconData = '';
 
     // Load saved data on page load
     window.addEventListener('load', () => {
@@ -1483,6 +1412,7 @@
           newRole.innerHTML = `
             <img src="images/icons/add-role.png" alt="Add New Role Icon">
             <h3>Add New Role</h3>
+            <p>Create a new role for the camp.</p>
             <button class="create-role-button" onclick="openRoleModal()">Create New Role</button>
           `;
           rolesGrid.appendChild(newRole);
@@ -1637,7 +1567,7 @@
       // Handle reordering within the same grid
       if ((targetGrid.classList.contains('members-grid') && isMember) || 
           (targetGrid.classList.contains('roles-grid') && !isMember)) {
-        if (targetElement && targetElement !== draggedElement) {
+        if (targetElement && target.academicsElement !== draggedElement) {
           targetGrid.insertBefore(draggedElement, targetElement);
         } else {
           targetGrid.insertBefore(draggedElement, targetGrid.lastElementChild);
@@ -1679,59 +1609,77 @@
       }
     }
 
-    window.saveMemberDetails = async function() {
-      const name = document.querySelector('#member-name').value;
-      const photoInput = document.querySelector('#member-photo');
-      const file = photoInput.files[0];
+    // Handle member photo upload
+    document.querySelector('#member-photo').addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          memberPhotoData = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please upload a valid JPG or PNG image.');
+        event.target.value = '';
+        memberPhotoData = '';
+      }
+    });
 
-      if (!name || !file) {
-        alert('Please fill in all fields and select an image');
+    // Handle role icon upload
+    document.querySelector('#role-icon').addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          roleIconData = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please upload a valid JPG or PNG image.');
+        event.target.value = '';
+        roleIconData = '';
+      }
+    });
+
+    window.saveMemberDetails = function() {
+      const name = document.querySelector('#member-name').value;
+      if (!name || !memberPhotoData) {
+        alert('Please fill in the member name and upload a valid image.');
         return;
       }
 
-      try {
-        // Generate a unique filename (e.g., timestamp + original filename)
-        const timestamp = Date.now();
-        const filename = `${timestamp}_${file.name.replace(/\s+/g, '_')}`;
-        
-        // Upload the image to GitHub
-        const photoUrl = await uploadImageToGitHub(file, filename);
+      const roleTitle = memberModal.dataset.roleTitle;
+      const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
+      const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
+      const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
 
-        const roleTitle = memberModal.dataset.roleTitle;
-        const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
-        const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
-        const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
-
-        if (roleElement) {
-          const newMember = document.createElement('div');
-          newMember.className = 'member';
-          newMember.draggable = true;
-          newMember.ondragstart = drag;
-          newMember.innerHTML = `
-            <img src="${photoUrl}" alt="${name}">
-            <h3>${name}</h3>
-            <span>${roleTitle}</span>
-            <p>${roleElement.parentElement.querySelector('.tooltip p').textContent}</p>
-            <button class="delete-button" onclick="deleteMember(this)">×</button>
-          `;
-          targetGrid.appendChild(newMember);
-          roleElement.parentElement.remove();
-        }
-
-        // Close the modal and reset inputs
-        memberModal.style.display = 'none';
-        document.querySelector('#member-name').value = '';
-        photoInput.value = '';
-      } catch (error) {
-        alert('Error uploading image. Please try again.');
-        console.error(error);
+      if (roleElement) {
+        const newMember = document.createElement('div');
+        newMember.className = 'member';
+        newMember.draggable = true;
+        newMember.ondragstart = drag;
+        newMember.innerHTML = `
+          <img src="${memberPhotoData}" alt="${name}">
+          <h3>${name}</h3>
+          <span>${roleTitle}</span>
+          <p>${roleElement.parentElement.querySelector('.tooltip p').textContent}</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        `;
+        targetGrid.appendChild(newMember);
+        roleElement.parentElement.remove();
       }
+
+      memberModal.style.display = 'none';
+      document.querySelector('#member-name').value = '';
+      document.querySelector('#member-photo').value = '';
+      memberPhotoData = '';
     };
 
     window.closeModal = function() {
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
-      document.query Villages('#member-photo').value = '';
+      document.querySelector('#member-photo').value = '';
+      memberPhotoData = '';
     };
 
     window.openRoleModal = function() {
@@ -1747,12 +1695,13 @@
       document.querySelector('#role-title').value = '';
       document.querySelector('#role-description').value = '';
       document.querySelector('#role-icon').value = '';
+      roleIconData = '';
     };
 
     window.saveRoleDetails = function() {
       const title = document.querySelector('#role-title').value;
       const description = document.querySelector('#role-description').value;
-      const icon = document.querySelector('#role-icon').value || 'images/icons/generic-role.png';
+      const icon = roleIconData || 'images/icons/generic-role.png';
       if (!title || !description) {
         alert('Please fill in the role title and description');
         return;
@@ -1777,6 +1726,7 @@
       document.querySelector('#role-title').value = '';
       document.querySelector('#role-description').value = '';
       document.querySelector('#role-icon').value = '';
+      roleIconData = '';
     };
 
     window.saveChanges = function() {
