@@ -190,7 +190,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 2rem;
-      color: #f8e1b4;
+      color: #f8s
       background: rgba(44, 29, 15, 0.7);
       padding: 10px;
       border-radius: 50%;
@@ -361,6 +361,24 @@
       visibility: visible;
       opacity: 1;
       transform: translate(-50%, -110%);
+    }
+
+    .tooltip .apply-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .tooltip .apply-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .events-grid {
@@ -706,6 +724,11 @@
         max-width: 95%;
         padding: 20px 15px;
       }
+
+      .tooltip .apply-button {
+        font-size: 0.8em;
+        padding: 6px 10px;
+      }
     }
 
     @media only screen and (max-width: 480px) {
@@ -794,6 +817,11 @@
       .hamburger {
         font-size: 1.2rem;
       }
+
+      .tooltip .apply-button {
+        font-size: 0.7em;
+        padding: 5px 8px;
+      }
     }
   </style>
 </head>
@@ -819,12 +847,7 @@
   <div class="about-container">
     <section class="section" id="about">
       <h1>About Our Camp</h1>
-      <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill彼此
-
-System: * The response was cut off due to length. Here's the continuation of the updated code, completing the artifact: *
-
-<xaiArtifact artifact_id="a07e19cf-6dfe-4699-86e6-22abd2739655" artifact_version_id="278bcff3-16a2-4ade-b1d3-c2110ec4f13d" title="index.html" contentType="text/html">
-        dance, chill, or just vibe out, you’re always welcome.</p>
+      <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
       <div class="gallery">
         <img src="images/Campphoto1.jpg" alt="Camp Mates">
         <img src="images/Campphoto15.png" alt="Camp Mates">
@@ -877,11 +900,6 @@ System: * The response was cut off due to length. Here's the continuation of the
           <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
         </div>
         <div class="member">
-
-
-System: * The response was cut off again due to length. Here's the continuation of the updated code, completing the members section and the rest of the artifact: *
-
-<xaiArtifact artifact_id="24891126-b6eb-41ff-9b24-abc452191bba" artifact_version_id="aee74745-9d96-435f-af04-59002b144c89" title="index.html" contentType="text/html">
           <img src="images/tomasshelby.jpg" alt="Tomas">
           <h3>Tomas Shelby</h3>
           <span>Sound Lead</span>
@@ -920,7 +938,6 @@ System: * The response was cut off again due to length. Here's the continuation 
         <div class="member">
           <img src="images/Gartah.jpg" alt="Gartah">
           <h3>Gartah</h3>
-          LR
           <span>Strike Lead</span>
           <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
         </div>
@@ -958,47 +975,74 @@ System: * The response was cut off again due to length. Here's the continuation 
         <div class="role">
           <img src="images/icons/trial.png" alt="Logistics Lead Icon">
           <h3>Logistics & Build Lead</h3>
-          <div class="tooltip">Plans camp layout, manages ride shares, carpools, and essential gear.</div>
+          <div class="tooltip">
+            Plans camp layout, manages ride shares, carpools, and essential gear.
+            <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+          </div>
         </div>
         <div class="role">
           <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
-          <div class="tooltip">Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</div>
+          <div class="tooltip">
+            Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.
+            <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
+          </div>
         </div>
         <div class="role">
           <img src="images/icons/build-crew.png" alt="Build Crew Icon">
           <h3>Build Crew</h3>
-          <div class="tooltip">Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</div>
+          <div class="tooltip">
+            Builds shade, tents, and layout. Manages power, water, and camp infrastructure.
+            <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
+          </div>
         </div>
         <div class="role">
           <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
           <h3>Sound & Lights Lead</h3>
-          <div class="tooltip">Oversees DJ schedules, lighting, sound compliance, and power systems.</div>
+          <div class="tooltip">
+            Oversees DJ schedules, lighting, sound compliance, and power systems.
+            <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
+          </div>
         </div>
         <div class="role">
           <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
           <h3>Kitchen Lead</h3>
-          <div class="tooltip">Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</div>
+          <div class="tooltip">
+            Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.
+            <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
+          </div>
         </div>
         <div class="role">
           <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
           <h3>Safety & Medical Lead</h3>
-          <div class="tooltip">Stocks first aid, provides harm reduction & emergency support.</div>
+          <div class="tooltip">
+            Stocks first aid, provides harm reduction & emergency support.
+            <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
+          </div>
         </div>
         <div class="role">
           <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
           <h3>Fire & Rangers Lead</h3>
-          <div class="tooltip">Manages fire safety, emergency exits & coordinates with Rangers.</div>
+          <div class="tooltip">
+            Manages fire safety, emergency exits & coordinates with Rangers.
+            <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
+          </div>
         </div>
         <div class="role">
           <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
           <h3>Art & Decor Lead</h3>
-          <div class="tooltip">Oversees decor, signs, and interactive art.</div>
+          <div class="tooltip">
+            Oversees decor, signs, and interactive art.
+            <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
+          </div>
         </div>
         <div class="role">
           <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
           <h3>Event & Theme Night Lead</h3>
-          <div class="tooltip">Plans events, workshops, performances & group photos.</div>
+          <div class="tooltip">
+            Plans events, workshops, performances & group photos.
+            <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
+          </div>
         </div>
       </div>
     </section>
@@ -1108,7 +1152,7 @@ System: * The response was cut off again due to length. Here's the continuation 
       arrow.addEventListener('click', () => {
         const grid = arrow.parentElement;
         const isLeft = arrow.classList.contains('left');
-        const scrollAmount = 150; // Adjust scroll distance as needed
+        const scrollAmount = 150;
         grid.scrollBy({
           left: isLeft ? -scrollAmount : scrollAmount,
           behavior: 'smooth'
