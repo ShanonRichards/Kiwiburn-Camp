@@ -481,17 +481,7 @@
       margin-bottom: 20px;
     }
 
-    .modal-content input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-    }
-
-    .modal-content textarea {
+    .modal-content input, .modal-content textarea {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -612,8 +602,7 @@
     .form-container button {
       padding: 12px 20px;
       background-color: #e67e22;
-      color: #2b1b0f;
-      border: none;
+      color: #2b lament: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
@@ -823,7 +812,7 @@
 
       .member.camp-lead::before, .member.deputy-lead::before {
         font-size: 1.2rem;
-        top: -15px;
+        top: -YUpx;
       }
 
       .role img {
@@ -1054,7 +1043,7 @@
       <button class="close-button" onclick="closeModal()">×</button>
       <h3>Add Member Details</h3>
       <input type="text" id="member-name" placeholder="Member Name" required>
-      <input type="text" id="member-photo" placeholder="Photo URL" required>
+      <input type="file" id="member-photo" accept="image/*" required>
       <button onclick="saveMemberDetails()">Save</button>
     </div>
   </div>
@@ -1117,7 +1106,7 @@
           <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Star Dust Bambi.jpg" alt="Star">
+          <img src="images/StarDustBambi.jpg" alt="Star">
           <h3>Star Dust Bambi</h3>
           <span>Vibe Manager</span>
           <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
@@ -1320,12 +1309,10 @@
         <div class="event">
           <img src="images/Eventposter.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-          <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
-        </div>
-        <div class="event">
+          <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo }}}}
           <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
           <h3>Pole in the paddock</h3>
-          <p>Join us for an exciting pole performance showcasing strength, grace, and creatively. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
         </div>
         <div class="event">
           <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
@@ -1373,13 +1360,88 @@
   </section>
 
   <footer class="footer">
-ännande
-
     <p>© 2025 Kiwiburn Camp</p>
     <div class="countdown" id="countdown"></div>
   </footer>
 
   <script>
+    // GitHub configuration (replace with your details)
+    const GITHUB_TOKEN = 'YOUR_PERSONAL_ACCESS_TOKEN'; // **SECURITY WARNING**: Do not use in production; use a backend proxy
+    const REPO_OWNER = 'your-username'; // Replace with your GitHub username
+    const REPO_NAME = 'your-repo'; // Replace with your repository name
+    const REPO_BRANCH = 'main'; // Replace with your default branch (e.g., 'main' or 'master')
+    const IMAGE_PATH = 'images'; // Folder in your repo to store images
+
+    // Function to upload image to GitHub
+    async function uploadImageToGitHub(file, filename) {
+      try {
+        // Validate file size (GitHub API limit: 100MB)
+        if (file.size > 100 * 1024 * 1024) {
+          throw new Error('File size exceeds 100MB limit');
+        }
+
+        // Read the file as Base64
+        const reader = new FileReader();
+        const base64Content = await new Promise((resolve) => {
+          reader.onload = () => resolve(reader.result.split(',')[1]); // Remove data:image/...;base64, prefix
+          reader.readAsDataURL(file);
+        });
+
+        // GitHub API endpoint to create or update a file
+        const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${IMAGE_PATH}/${filename}`;
+
+        // Check if the file already exists to get its SHA (for updating)
+        let sha = null;
+        try {
+          const existingFileResponse = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${GITHUB_TOKEN}`,
+              'Accept': 'application/vnd.github.v3+json',
+            },
+          });
+          if (existingFileResponse.ok) {
+            const existingFile = await existingFileResponse.json();
+            sha = existingFile.sha;
+          }
+        } catch (error) {
+          // File doesn't exist, proceed with creating a new file
+        }
+
+        // Prepare the payload
+        const payload = {
+          message: `Add image ${filename}`,
+          content: base64Content,
+          branch: REPO_BRANCH,
+        };
+        if (sha) {
+          payload.sha = sha; // Include SHA for updating an existing file
+        }
+
+        // Upload the image
+        const response = await fetch(apiUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${GITHUB_TOKEN}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(`Failed to upload image: ${errorData.message || response.statusText}`);
+        }
+
+        // Return the raw URL for the uploaded image
+        return `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${REPO_BRANCH}/${IMAGE_PATH}/${filename}`;
+      } catch (error) {
+        console.error('Error uploading image:', error);
+        throw error;
+      }
+    }
+
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const loginForm = document.querySelector('#login-form');
@@ -1617,44 +1679,59 @@
       }
     }
 
-    window.saveMemberDetails = function() {
+    window.saveMemberDetails = async function() {
       const name = document.querySelector('#member-name').value;
-      const photo = document.querySelector('#member-photo').value;
-      if (!name || !photo) {
-        alert('Please fill in all fields');
+      const photoInput = document.querySelector('#member-photo');
+      const file = photoInput.files[0];
+
+      if (!name || !file) {
+        alert('Please fill in all fields and select an image');
         return;
       }
 
-      const roleTitle = memberModal.dataset.roleTitle;
-      const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
-      const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
-      const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
+      try {
+        // Generate a unique filename (e.g., timestamp + original filename)
+        const timestamp = Date.now();
+        const filename = `${timestamp}_${file.name.replace(/\s+/g, '_')}`;
+        
+        // Upload the image to GitHub
+        const photoUrl = await uploadImageToGitHub(file, filename);
 
-      if (roleElement) {
-        const newMember = document.createElement('div');
-        newMember.className = 'member';
-        newMember.draggable = true;
-        newMember.ondragstart = drag;
-        newMember.innerHTML = `
-          <img src="${photo}" alt="${name}">
-          <h3>${name}</h3>
-          <span>${roleTitle}</span>
-          <p>${roleElement.parentElement.querySelector('.tooltip p').textContent}</p>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        `;
-        targetGrid.appendChild(newMember);
-        roleElement.parentElement.remove();
+        const roleTitle = memberModal.dataset.roleTitle;
+        const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
+        const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
+        const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
+
+        if (roleElement) {
+          const newMember = document.createElement('div');
+          newMember.className = 'member';
+          newMember.draggable = true;
+          newMember.ondragstart = drag;
+          newMember.innerHTML = `
+            <img src="${photoUrl}" alt="${name}">
+            <h3>${name}</h3>
+            <span>${roleTitle}</span>
+            <p>${roleElement.parentElement.querySelector('.tooltip p').textContent}</p>
+            <button class="delete-button" onclick="deleteMember(this)">×</button>
+          `;
+          targetGrid.appendChild(newMember);
+          roleElement.parentElement.remove();
+        }
+
+        // Close the modal and reset inputs
+        memberModal.style.display = 'none';
+        document.querySelector('#member-name').value = '';
+        photoInput.value = '';
+      } catch (error) {
+        alert('Error uploading image. Please try again.');
+        console.error(error);
       }
-
-      memberModal.style.display = 'none';
-      document.querySelector('#member-name').value = '';
-      document.querySelector('#member-photo').value = '';
     };
 
     window.closeModal = function() {
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
-      document.querySelector('#member-photo').value = '';
+      document.query Villages('#member-photo').value = '';
     };
 
     window.openRoleModal = function() {
@@ -1703,7 +1780,7 @@
     };
 
     window.saveChanges = function() {
-      localStorage.setNode('membersGrid', membersGrid.innerHTML);
+      localStorage.setItem('membersGrid', membersGrid.innerHTML);
       localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
       alert('Changes saved successfully!');
     };
