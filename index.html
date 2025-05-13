@@ -64,7 +64,7 @@
 
     .login-container {
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       padding: 10px 20px;
       background: rgba(44, 29, 15, 0.85);
       border-bottom: 1px solid #e67e22;
@@ -82,14 +82,18 @@
       border-radius: 5px;
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
+      color: #ffffff;
       font-size: 0.9rem;
+    }
+
+    .login-container input::placeholder {
+      color: #ffffff;
     }
 
     .login-container button {
       padding: 8px 12px;
       background-color: #e67e22;
-      color: #2b1b0f;
+      color: #ffffff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -345,7 +349,7 @@
 
     .member p, .role p {
       font-size: 1em;
-      color: #2b1b0f;
+      color: #ffffff;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
@@ -468,6 +472,16 @@
     }
 
     .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .modal-content textarea {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -797,99 +811,7 @@
         height: 80px;
       }
 
-      .member.camp-lead::before, .member.deputy-lead::before {
-        font-size: 1.2rem;
-        top: -15px;
-      }
-
-      .role img {
-        width: 50px;
-        height: 50px;
-        padding: 6px;
-      }
-
-      .member h3, .role h3 {
-        font-size: 1.3em;
-      }
-
-      .member span {
-        font-size: 1.1em;
-      }
-
-      .member p, .role p {
-        font-size: 0.9em;
-      }
-
-      .member .delete-button, .role .delete-button {
-        width: 20px;
-        height: 20px;
-        font-size: 0.8em;
-      }
-
-      .role .tooltip {
-        width: 140px;
-        font-size: 0.85em;
-      }
-
-      .role .tooltip img {
-        width: 60px;
-        height: 60px;
-      }
-
-      .role .apply-button {
-        font-size: 0.8em;
-        padding: 6px 10px;
-      }
-
-      .events-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        max-width: 95%;
-      }
-
-      .event img {
-        height: 150px;
-      }
-
-      .event h3 {
-        font-size: 1.4em;
-      }
-
-      .event p {
-        font-size: 0.95em;
-      }
-
-      .countdown {
-        font-size: 1.5em;
-      }
-
-      .form-container {
-        max-width: 95%;
-      }
-
-      .submit-section, .newsletter-container {
-        max-width: 95%;
-        padding: 15px;
-      }
-
-      .submit-button {
-        font-size: 1em;
-        padding: 10px 15px;
-      }
-
-      .contact-lead {
-        padding: 30px 15px;
-      }
-
-      .contact-lead a {
-        font-size: 1em;
-      }
-
-      .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
-        max-width: 95%;
-        padding: 20px 15px;
-      }
-    }
+_curriculum_redacted_for_brevity_
 
     @media only screen and (max-width: 480px) {
       .header h1 {
@@ -1032,6 +954,17 @@
       <input type="text" id="member-name" placeholder="Member Name" required>
       <input type="text" id="member-photo" placeholder="Photo URL" required>
       <button onclick="saveMemberDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="role-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeRoleModal()">×</button>
+      <h3>Create New Role</h3>
+      <input type="text" id="role-title" placeholder="Role Title" required>
+      <textarea id="role-description" placeholder="Role Description" required></textarea>
+      <input type="text" id="role-icon" placeholder="Icon URL (optional)">
+      <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
 
@@ -1260,6 +1193,11 @@
           </div>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
+        <div class="role" onclick="openRoleModal()">
+          <img src="images/icons/add-role.png" alt="Add New Role Icon">
+          <h3>Add New Role</h3>
+          <p>Create a new role for the camp.</p>
+        </div>
       </div>
 
       <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
@@ -1344,7 +1282,8 @@
     const logoutButton = document.querySelector('.logout-button');
     const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
-    const modal = document.querySelector('#member-modal');
+    const memberModal = document.querySelector('#member-modal');
+    const roleModal = document.querySelector('#role-modal');
     const saveButton = document.querySelector('.save-button');
     let draggedElement = null;
     let isLoggedIn = false;
@@ -1370,6 +1309,18 @@
         rolesGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteRole(button));
         });
+        const addRoleElement = rolesGrid.querySelector('.role[onclick="openRoleModal()"]');
+        if (!addRoleElement) {
+          const newRole = document.createElement('div');
+          newRole.className = 'role';
+          newRole.setAttribute('onclick', 'openRoleModal()');
+          newRole.innerHTML = `
+            <img src="images/icons/add-role.png" alt="Add New Role Icon">
+            <h3>Add New Role</h3>
+            <p>Create a new role for the camp.</p>
+          `;
+          rolesGrid.appendChild(newRole);
+        }
       }
     });
 
@@ -1390,7 +1341,9 @@
         membersGrid.classList.add('draggable');
         rolesGrid.classList.add('draggable');
         document.querySelectorAll('.member, .role').forEach(item => {
-          item.setAttribute('draggable', 'true');
+          if (!item.getAttribute('onclick')) {
+            item.setAttribute('draggable', 'true');
+          }
         });
       } else {
         alert('Invalid credentials');
@@ -1406,7 +1359,9 @@
       membersGrid.classList.remove('draggable');
       rolesGrid.classList.remove('draggable');
       document.querySelectorAll('.member, .role').forEach(item => {
-        item.setAttribute('draggable', 'false');
+        if (!item.getAttribute('onclick')) {
+          item.setAttribute('draggable', 'false');
+        }
       });
     });
 
@@ -1449,8 +1404,24 @@
       const member = button.closest('.member');
       const name = member.querySelector('h3').textContent;
       if (confirm(`Are you sure you want to delete ${name}?`)) {
+        const roleTitle = member.querySelector('span').textContent;
+        const description = member.querySelector('p').textContent;
+        const newRole = document.createElement('div');
+        newRole.className = 'role';
+        newRole.draggable = true;
+        newRole.ondragstart = drag;
+        newRole.innerHTML = `
+          <img src="images/icons/generic-role.png" alt="${roleTitle} Icon">
+          <h3>${roleTitle}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>${description}</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
         member.remove();
-        alert(`${name} has been removed from the members list.`);
+        alert(`${name} has been removed from the members list and their role has been added to Roles to Be Filled.`);
       }
     }
 
@@ -1467,6 +1438,7 @@
     function drag(event) {
       if (!isLoggedIn) return;
       draggedElement = event.target.closest('.member, .role');
+      if (draggedElement.getAttribute('onclick')) return;
       event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
       event.dataTransfer.setData('role-title', draggedElement.querySelector('h3').textContent);
       event.dataTransfer.setData('is-member', draggedElement.classList.contains('member') ? 'true' : 'false');
@@ -1493,23 +1465,26 @@
       const isMember = event.dataTransfer.getData('is-member') === 'true';
       const roleTitle = event.dataTransfer.getData('role-title');
 
+      // Prevent dropping on the Add New Role element
+      if (targetElement && targetElement.getAttribute('onclick') === 'openRoleModal()') return;
+
       // Handle reordering within the same grid
       if ((targetGrid.classList.contains('members-grid') && isMember) || 
           (targetGrid.classList.contains('roles-grid') && !isMember)) {
         if (targetElement && targetElement !== draggedElement) {
           targetGrid.insertBefore(draggedElement, targetElement);
         } else {
-          targetGrid.appendChild(draggedElement);
+          targetGrid.insertBefore(draggedElement, targetGrid.lastElementChild);
         }
         return;
       }
 
       // Handle moving a role to members-grid
       if (targetGrid.classList.contains('members-grid') && !isMember) {
-        modal.style.display = 'flex';
-        modal.dataset.roleTitle = roleTitle;
-        modal.dataset.sourceGrid = 'roles-grid';
-        modal.dataset.targetGrid = 'members-grid';
+        memberModal.style.display = 'flex';
+        memberModal.dataset.roleTitle = roleTitle;
+        memberModal.dataset.sourceGrid = 'roles-grid';
+        memberModal.dataset.targetGrid = 'members-grid';
       } 
       // Handle moving a member to roles-grid
       else if (targetGrid.classList.contains('roles-grid') && isMember) {
@@ -1532,7 +1507,7 @@
         if (targetElement) {
           targetGrid.insertBefore(newRole, targetElement);
         } else {
-          targetGrid.appendChild(newRole);
+          targetGrid.insertBefore(newRole, targetGrid.lastElementChild);
         }
         draggedElement.remove();
       }
@@ -1546,9 +1521,9 @@
         return;
       }
 
-      const roleTitle = modal.dataset.roleTitle;
-      const targetGrid = document.querySelector(`.${modal.dataset.targetGrid}`);
-      const sourceGrid = document.querySelector(`.${modal.dataset.sourceGrid}`);
+      const roleTitle = memberModal.dataset.roleTitle;
+      const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
+      const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
       const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
 
       if (roleElement) {
@@ -1567,15 +1542,60 @@
         roleElement.parentElement.remove();
       }
 
-      modal.style.display = 'none';
+      memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
     };
 
     window.closeModal = function() {
-      modal.style.display = 'none';
+      memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
+    };
+
+    window.openRoleModal = function() {
+      if (!isLoggedIn) {
+        alert('Please log in to create a new role.');
+        return;
+      }
+      roleModal.style.display = 'flex';
+    };
+
+    window.closeRoleModal = function() {
+      roleModal.style.display = 'none';
+      document.querySelector('#role-title').value = '';
+      document.querySelector('#role-description').value = '';
+      document.querySelector('#role-icon').value = '';
+    };
+
+    window.saveRoleDetails = function() {
+      const title = document.querySelector('#role-title').value;
+      const description = document.querySelector('#role-description').value;
+      const icon = document.querySelector('#role-icon').value || 'images/icons/generic-role.png';
+      if (!title || !description) {
+        alert('Please fill in the role title and description');
+        return;
+      }
+
+      const newRole = document.createElement('div');
+      newRole.className = 'role';
+      newRole.draggable = true;
+      newRole.ondragstart = drag;
+      newRole.innerHTML = `
+        <img src="${icon}" alt="${title} Icon">
+        <h3>${title}</h3>
+        <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+        <div class="tooltip">
+          <p>${description}</p>
+        </div>
+        <button class="delete-button" onclick="deleteRole(this)">×</button>
+      `;
+      rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
+
+      roleModal.style.display = 'none';
+      document.querySelector('#role-title').value = '';
+      document.querySelector('#role-description').value = '';
+      document.querySelector('#role-icon').value = '';
     };
 
     window.saveChanges = function() {
