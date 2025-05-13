@@ -218,7 +218,7 @@
       box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
     }
 
-    .members-grid, .roles-grid {
+    .roles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 20px;
@@ -264,7 +264,7 @@
       right: 10px;
     }
 
-    .member, .role {
+    .role {
       text-align: center;
       position: relative;
       display: flex;
@@ -278,56 +278,22 @@
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
-    .member:hover, .role:hover {
+    .role:hover {
       box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
-    }
-
-    .member img, .role img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      margin-bottom: 10px;
-      border: 3px solid #f39c12;
     }
 
     .role img {
       width: 60px;
       height: 60px;
       border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+      border: 3px solid #f39c12;
     }
 
-    .member.camp-lead, .member.deputy-lead {
-      position: relative;
-    }
-
-    .member.camp-lead::before {
-      content: '👑';
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      color: #FFD700;
-      z-index: 10;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .member.deputy-lead::before {
-      content: '👑';
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      color: #C0C0C0;
-      z-index: 10;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .member h3, .role h3 {
+    .role h3 {
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
@@ -335,16 +301,7 @@
       line-height: 1.2;
     }
 
-    .member span {
-      font-weight: bold;
-      color: #e67e22;
-      display: block;
-      font-size: 1.2em;
-      margin-bottom: 5px;
-      line-height: 1.3;
-    }
-
-    .member p, .role p {
+    .role p {
       font-size: 1em;
       color: #2b1b0f;
       margin: 5px 0;
@@ -376,7 +333,7 @@
       background-color: #2b1b0f;
       color: #f8e1b4;
       text-align: center;
-      border-radius: 8px;
+      border-radius:  vacaciones;
       padding: 12px;
       position: absolute;
       z-index: 10;
@@ -388,6 +345,17 @@
       font-size: 0.9em;
       font-family: 'Montserrat', sans-serif;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .role .tooltip img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #f39c12;
     }
 
     .role:hover .tooltip {
@@ -600,7 +568,7 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .about-container, .mission-container, .events-container, .members-container, .gallery-container, .newsletter-container {
+    .about-container, .mission-container, .events-container, .roles-container, .gallery-container, .newsletter-container {
       max-width: 1200px;
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.15);
@@ -730,7 +698,7 @@
         max-width: 95%;
       }
 
-      .members-grid, .roles-grid {
+      .roles-grid {
         display: flex;
         flex-direction: row;
         overflow-x: auto;
@@ -740,25 +708,15 @@
         scroll-snap-type: x mandatory;
       }
 
-      .members-grid .scroll-arrow, .roles-grid .scroll-arrow {
+      .roles-grid .scroll-arrow {
         display: block;
       }
 
-      .member, .role {
+      .role {
         flex: 0 0 140px;
         scroll-snap-align: start;
         min-height: 240px;
         padding: 10px;
-      }
-
-      .member img, .role img {
-        width: 80px;
-        height: 80px;
-      }
-
-      .member.camp-lead::before, .member.deputy-lead::before {
-        font-size: 1.2rem;
-        top: -15px;
       }
 
       .role img {
@@ -767,21 +725,22 @@
         padding: 6px;
       }
 
-      .member h3, .role h3 {
+      .role h3 {
         font-size: 1.3em;
       }
 
-      .member span {
-        font-size: 1.1em;
-      }
-
-      .member p, .role p {
+      .role p {
         font-size: 0.9em;
       }
 
       .role .tooltip {
         width: 140px;
         font-size: 0.85em;
+      }
+
+      .role .tooltip img {
+        width: 60px;
+        height: 60px;
       }
 
       .role .apply-button {
@@ -833,13 +792,13 @@
         font-size: 1em;
       }
 
-      .about-container, .mission-container, .events-container, .members-container, .gallery-container, .newsletter-container {
+      .about-container, .mission-container, .events-container, .roles-container, .gallery-container, .newsletter-container {
         max-width: 95%;
         padding: 20px 15px;
       }
     }
 
-    @media only screen and (max-width::
+    @media only screen and (max-width: 480px) {
       .header h1 {
         font-size: 2.2em;
       }
@@ -852,42 +811,19 @@
         font-size: 0.9em;
       }
 
-      .members-grid, .roles-grid {
+      .roles-grid {
         display: flex;
         flex-direction: row;
         overflow-x: auto;
         gap: 10px;
-        padding: 0 5px;
-        scroll-snap-type: x mandatory;
+        padding: "&gt;
       }
 
-      .member, .role {
+      .role {
         flex: 0 0 120px;
         scroll-snap-align: start;
         min-height: 200px;
         padding: 8px;
-      }
-
-      .member img, .role img {
-        width: 60px;
-        height: 60px;
-      }
-
-      .member h3, .role h3 {
-        font-size: 1.1em;
-      }
-
-      .member span {
-        font-size: 1em;
-      }
-
-      .member p, .role p {
-        font-size: 0.85em;
-      }
-
-      .member.camp-lead::before, .member.deputy-lead::before {
-        font-size: 1rem;
-        top: -12px;
       }
 
       .role img {
@@ -896,10 +832,23 @@
         padding: 5px;
       }
 
+      .role h3 {
+        font-size: 1.1em;
+      }
+
+      .role p {
+        font-size: 0.85em;
+      }
+
       .role .tooltip {
         width: 120px;
         font-size: 0.8em;
         padding: 8px;
+      }
+
+      .role .tooltip img {
+        width: 50px;
+        height: 50px;
       }
 
       .role .apply-button {
@@ -940,7 +889,7 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#mission">Mission</a>
-      <a href="#members">Members</a>
+      <a href="#roles">Roles</a>
       <a href="#events">Events</a>
       <a href="#submit">Submit Event</a>
       <a href="#newsletter">Newsletter</a>
@@ -962,13 +911,13 @@
     <a href="#about" class="scroll-down">▼</a>
   </header>
 
-  <div class="modal" id="member-modal">
+  <div class="modal" id="role-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeModal()">×</button>
-      <h3>Add Member Details</h3>
-      <input type="text" id="member-name" placeholder="Member Name" required>
-      <input type="text" id="member-photo" placeholder="Photo URL" required>
-      <button onclick="saveMemberDetails()">Save</button>
+      <h3>Add Role Details</h3>
+      <input type="text" id="role-name" placeholder="Assignee Name" required>
+      <input type="text" id="role-photo" placeholder="Photo URL" required>
+      <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
 
@@ -991,146 +940,81 @@
     </section>
   </div>
 
-  <div class="members-container">
-    <section class="section" idMembers">
-      <h1>Meet Our Core Camp Crew</h1>
-      <div class="members-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
-        <div class="scroll-arrow left">◄</div>
-        <div class="scroll-arrow right">►</div>
-        <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
-          <h3>Shanon Richards</h3>
-          <span>Camp Lead</span>
-          <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
-        </div>
-        <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/MeganR.jpg" alt="Meghan">
-          <h3>Meghan Robson</h3>
-          <span>Deputy Lead</span>
-          <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/RussellDuffield.jpg" alt="Russell">
-          <h3>Russell Duffield</h3>
-          <span>Build Lead</span>
-          <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Star Dust Bambi.jpg" alt="Star">
-          <h3>Star Dust Bambi</h3>
-          <span>Vibe Manager</span>
-          <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/michealdunstan.jpg" alt="Micheal">
-          <h3>Micheal Dunstan</h3>
-          <span>Logistics Lead</span>
-          <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/tomasshelby.jpg" alt="Tomas">
-          <h3>Tomas Shelby</h3>
-          <span>Sound Lead</span>
-          <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/jarrodskiffington.jpg" alt="Jarrod">
-          <h3>Jarrod Skiffington</h3>
-          <span>Transport Lead</span>
-          <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/alana.jpg" alt="Alana">
-          <h3>Alana Stewart</h3>
-          <span>Kitchen Lead</span>
-          <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/tylerrowe.jpg" alt="Tyler">
-          <h3>Tyler Rowe</h3>
-          <span>Art & Workshop Lead</span>
-          <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Imogen.jpg" alt="Imogen">
-          <h3>Imogen Olivia</h3>
-          <span>Wellbeing Officer</span>
-          <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/sarsha.jpg" alt="Sarsha">
-          <h3>Sarsha Skiffington</h3>
-          <span>Greeter</span>
-          <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Gartah.jpg" alt="Gartah">
-          <h3>Gartah</h3>
-          <span>Strike Lead</span>
-          <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
-        </div>
-        <div class="member"ૈ
-          <img src="images/jackie.jpg" alt="Jackie">
-          <h3>Jackie Church</h3>
-          <span>Comms Lead</span>
-          <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/olivia.jpg" alt="Olivia">
-          <h3>Olivia Derewlany </h3>
-          <span>Safety Officer</span>
-          <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/wenyi.jpg" alt="Wenyi">
-          <h3>Wenyi Huang </h3>
-          <span>MOOP Manager</span>
-          <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/tina.jpg" alt="Tina">
-          <h3>Tina Lein </h3>
-          <span>Power/Tech Lead</span>
-          <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
-        </div>
-      </div>
-      <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
-
-      <h2>Roles to Be Filled</h2>
-      <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
+  <div class="roles-container">
+    <section class="section" id="roles">
+      <h1>Camp Roles</h1>
+      <p>Hover over each role to learn more about the responsibilities and who’s currently assigned.</p>
       <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
         <div class="scroll-arrow left">◄</div>
         <div class="scroll-arrow right">►</div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/trial.png" alt="Logistics Lead Icon">
-          <h3>Logistics & Build Lead</h3>
-          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+          <img src="images/icons/camp-lead.png" alt="Camp Lead Icon">
+          <h3>Camp Lead</h3>
+          <a href="join-camp.html?role=Camp%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Plans camp layout, manages ride shares, carpools, and essential gear.
+            <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
+            <span>Shanon Richards</span>
+            <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
           </div>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
-          <h3>Volunteer Coordinator</h3>
-          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
+          <img src="images/icons/deputy-lead.png" alt="Deputy Lead Icon">
+          <h3>Deputy Lead</h3>
+          <a href="join-camp.html?role=Deputy%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.
+            <img src="images/MeganR.jpg" alt="Meghan Robson">
+            <span>Meghan Robson</span>
+            <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
           </div>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/build-crew.png" alt="Build Crew Icon">
-          <h3>Build Crew</h3>
-          <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
+          <img src="images/icons/build-lead.png" alt="Build Lead Icon">
+          <h3>Build Lead</h3>
+          <a href="join-camp.html?role=Build%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Builds shade, tents, and layout. Manages power, water, and camp infrastructure.
+            <img src="images/RussellDuffield.jpg" alt="Russell Duffield">
+            <span>Russell Duffield</span>
+            <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
           </div>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
-          <h3>Sound & Lights Lead</h3>
-          <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
+          <img src="images/icons/vibe-manager.png" alt="Vibe Manager Icon">
+          <h3>Vibe Manager</h3>
+          <a href="join-camp.html?role=Vibe%20Manager" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Oversees DJ schedules, lighting, sound compliance, and power systems.
+            <img src="images/Star Dust Bambi.jpg" alt="Star Dust Bambi">
+            <span>Star Dust Bambi</span>
+            <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/logistics-lead.png" alt="Logistics Lead Icon">
+          <h3>Logistics Lead</h3>
+          <a href="join-camp.html?role=Logistics%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/michealdunstan.jpg" alt="Micheal Dunstan">
+            <span>Micheal Dunstan</span>
+            <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/sound-lead.png" alt="Sound Lead Icon">
+          <h3>Sound Lead</h3>
+          <a href="join-camp.html?role=Sound%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/tomasshelby.jpg" alt="Tomas Shelby">
+            <span>Tomas Shelby</span>
+            <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/transport-lead.png" alt="Transport Lead Icon">
+          <h3>Transport Lead</h3>
+          <a href="join-camp.html?role=Transport%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/jarrodskiffington.jpg" alt="Jarrod Skiffington">
+            <span>Jarrod Skiffington</span>
+            <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
           </div>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1138,7 +1022,129 @@
           <h3>Kitchen Lead</h3>
           <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.
+            <img src="images/alana.jpg" alt="Alana Stewart">
+            <span>Alana Stewart</span>
+            <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/art-workshop-lead.png" alt="Art & Workshop Lead Icon">
+          <h3>Art & Workshop Lead</h3>
+          <a href="join-camp.html?role=Art%20%26%20Workshop%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/tylerrowe.jpg" alt="Tyler Rowe">
+            <span>Tyler Rowe</span>
+            <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/wellbeing-officer.png" alt="Wellbeing Officer Icon">
+          <h3>Wellbeing Officer</h3>
+          <a href="join-camp.html?role=Wellbeing%20Officer" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/Imogen.jpg" alt="Imogen Olivia">
+            <span>Imogen Olivia</span>
+            <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/greeter.png" alt="Greeter Icon">
+          <h3>Greeter</h3>
+          <a href="join-camp.html?role=Greeter" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/sarsha.jpg" alt="Sarsha Skiffington">
+            <span>Sarsha Skiffington</span>
+            <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/strike-lead.png" alt="Strike Lead Icon">
+          <h3>Strike Lead</h3>
+          <a href="join-camp.html?role=Strike%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/Gartah.jpg" alt="Gartah">
+            <span>Gartah</span>
+            <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/comms-lead.png" alt="Comms Lead Icon">
+          <h3>Comms Lead</h3>
+          <a href="join-camp.html?role=Comms%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/jackie.jpg" alt="Jackie Church">
+            <span>Jackie Church</span>
+            <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/safety-officer.png" alt="Safety Officer Icon">
+          <h3>Safety Officer</h3>
+          <a href="join-camp.html?role=Safety%20Officer" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/olivia.jpg" alt="Olivia Derewlany">
+            <span>Olivia Derewlany</span>
+            <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/moop-manager.png" alt="MOOP Manager Icon">
+          <h3>MOOP Manager</h3>
+          <a href="join-camp.html?role=MOOP%20Manager" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/wenyi.jpg" alt="Wenyi Huang">
+            <span>Wenyi Huang</span>
+            <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/power-tech-lead.png" alt="Power/Tech Lead Icon">
+          <h3>Power/Tech Lead</h3>
+          <a href="join-camp.html?role=Power%2FTech%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="images/tina.jpg" alt="Tina Lein">
+            <span>Tina Lein</span>
+            <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon">
+          <h3>Logistics & Build Lead</h3>
+          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
+          <h3>Volunteer Coordinator</h3>
+          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/build-crew.png" alt="Build Crew Icon">
+          <h3>Build Crew</h3>
+          <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
+          <h3>Sound & Lights Lead</h3>
+          <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
+          </div>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
+          <h3>Kitchen Lead</h3>
+          <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
           </div>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1146,7 +1152,7 @@
           <h3>Safety & Medical Lead</h3>
           <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Stocks first aid, provides harm reduction & emergency support.
+            <p>Stocks first aid, provides harm reduction & emergency support.</p>
           </div>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1154,7 +1160,7 @@
           <h3>Fire & Rangers Lead</h3>
           <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Manages fire safety, emergency exits & coordinates with Rangers.
+            <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
           </div>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1162,7 +1168,7 @@
           <h3>Art & Decor Lead</h3>
           <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Oversees decor, signs, and interactive art.
+            <p>Oversees decor, signs, and interactive art.</p>
           </div>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1170,10 +1176,11 @@
           <h3>Event & Theme Night Lead</h3>
           <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            Plans events, workshops, performances & group photos.
+            <p>Plans events, workshops, performances & group photos.</p>
           </div>
         </div>
       </div>
+      <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
     </section>
 
     <section class="section submit-section" id="join">
@@ -1253,23 +1260,15 @@
     const navLinks = document.querySelector('.nav-links');
     const loginForm = document.querySelector('#login-form');
     const logoutButton = document.querySelector('.logout-button');
-    const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
-    const modal = document.querySelector('#member-modal');
+    const modal = document.querySelector('#role-modal');
     const saveButton = document.querySelector('.save-button');
     let draggedElement = null;
     let isLoggedIn = false;
 
     // Load saved data on page load
     window.addEventListener('load', () => {
-      const savedMembers = localStorage.getItem('membersGrid');
       const savedRoles = localStorage.getItem('rolesGrid');
-      if (savedMembers) {
-        membersGrid.innerHTML = savedMembers;
-        membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
-          arrow.addEventListener('click', handleScroll);
-        });
-      }
       if (savedRoles) {
         rolesGrid.innerHTML = savedRoles;
         rolesGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
@@ -1291,9 +1290,8 @@
         loginForm.style.display = 'none';
         logoutButton.style.display = 'block';
         saveButton.style.display = 'block';
-        membersGrid.classList.add('draggable');
         rolesGrid.classList.add('draggable');
-        document.querySelectorAll('.member, .role').forEach(item => {
+        document.querySelectorAll('.role').forEach(item => {
           item.setAttribute('draggable', 'true');
         });
       } else {
@@ -1306,9 +1304,8 @@
       loginForm.style.display = 'flex';
       logoutButton.style.display = 'none';
       saveButton.style.display = 'none';
-      membersGrid.classList.remove('draggable');
       rolesGrid.classList.remove('draggable');
-      document.querySelectorAll('.member, .role').forEach(item => {
+      document.querySelectorAll('.role').forEach(item => {
         item.setAttribute('draggable', 'false');
       });
     });
@@ -1349,10 +1346,9 @@
 
     function drag(event) {
       if (!isLoggedIn) return;
-      draggedElement = event.target.closest('.member, .role');
+      draggedElement = event.target.closest('.role');
       event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
       event.dataTransfer.setData('role-title', draggedElement.querySelector('h3').textContent);
-      event.dataTransfer.setData('is-member', draggedElement.classList.contains('member') ? 'true' : 'false');
     }
 
     function allowDrop(event) {
@@ -1363,39 +1359,20 @@
     function drop(event) {
       if (!isLoggedIn) return;
       event.preventDefault();
-      const targetGrid = event.target.closest('.members-grid, .roles-grid');
+      const targetGrid = event.target.closest('.roles-grid');
       if (!targetGrid) return;
 
-      const isMember = event.dataTransfer.getData('is-member') === 'true';
       const roleTitle = event.dataTransfer.getData('role-title');
 
-      if (targetGrid.classList.contains('members-grid') && !isMember) {
-        modal.style.display = 'flex';
-        modal.dataset.roleTitle = roleTitle;
-        modal.dataset.sourceGrid = 'roles-grid';
-        modal.dataset.targetGrid = 'members-grid';
-      } else if (targetGrid.classList.contains('roles-grid') && isMember) {
-        const memberElement = draggedElement;
-        const newRole = document.createElement('div');
-        newRole.className = 'role';
-        newRole.draggable = true;
-        newRole.ondragstart = drag;
-        newRole.innerHTML = `
-          <img src="${memberElement.querySelector('img').src}" alt="${roleTitle} Icon">
-          <h3>${roleTitle}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
-          <div class="tooltip">${memberElement.querySelector('.tooltip')?.textContent || ''}</div>
-        `;
-        targetGrid.appendChild(newRole);
-        draggedElement.remove();
-      } else {
-        targetGrid.appendChild(draggedElement);
-      }
+      modal.style.display = 'flex';
+      modal.dataset.roleTitle = roleTitle;
+      modal.dataset.sourceGrid = 'roles-grid';
+      modal.dataset.targetGrid = 'roles-grid';
     }
 
-    window.saveMemberDetails = function() {
-      const name = document.querySelector('#member-name').value;
-      const photo = document.querySelector('#member-photo').value;
+    window.saveRoleDetails = function() {
+      const name = document.querySelector('#role-name').value;
+      const photo = document.querySelector('#role-photo').value;
       if (!name || !photo) {
         alert('Please fill in all fields');
         return;
@@ -1404,36 +1381,39 @@
       const roleTitle = modal.dataset.roleTitle;
       const targetGrid = document.querySelector(`.${modal.dataset.targetGrid}`);
       const sourceGrid = document.querySelector(`.${modal.dataset.sourceGrid}`);
-      const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
+      const roleElement = sourceGrid.querySelector(`.role h3:not(.event h3)`);
 
       if (roleElement) {
-        const newMember = document.createElement('div');
-        newMember.className = 'member';
-        newMember.draggable = true;
-        newMember.ondragstart = drag;
-        newMember.innerHTML = `
-          <img src="${photo}" alt="${name}">
-          <h3>${name}</h3>
-          <span>${roleTitle}</span>
-          <p>${roleElement.parentElement.querySelector('.tooltip').textContent}</p>
+        const newRole = document.createElement('div');
+        newRole.className = 'role';
+        newRole.draggable = true;
+        newRole.ondragstart = drag;
+        newRole.innerHTML = `
+          <img src="${roleElement.parentElement.querySelector('img').src}" alt="${roleTitle} Icon">
+          <h3>${roleTitle}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <img src="${photo}" alt="${name}">
+            <span>${name}</span>
+            <p>${roleElement.parentElement.querySelector('.tooltip p').textContent}</p>
+          </div>
         `;
-        targetGrid.appendChild(newMember);
+        targetGrid.appendChild(newRole);
         roleElement.parentElement.remove();
       }
 
       modal.style.display = 'none';
-      document.querySelector('#member-name').value = '';
-      document.querySelector('#member-photo').value = '';
+      document.querySelector('#role-name').value = '';
+      document.querySelector('#role-photo').value = '';
     };
 
     window.closeModal = function() {
       modal.style.display = 'none';
-      document.querySelector('#member-name').value = '';
-      document.querySelector('#member-photo').value = '';
+      document.querySelector('#role-name').value = '';
+      document.querySelector('#role-photo').value = '';
     };
 
     window.saveChanges = function() {
-      localStorage.setItem('membersGrid', membersGrid.innerHTML);
       localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
       alert('Changes saved successfully!');
     };
