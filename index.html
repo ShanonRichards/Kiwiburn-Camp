@@ -364,6 +364,18 @@
       max-width: 90%;
     }
 
+    .event p.event-date, .event p.event-time, .event p.event-end {
+      font-size: 0.95em;
+      color: #2b1b0f;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .event p.event-date strong, .event p.event-time strong, .event p.event-end strong {
+      color: #e67e22;
+    }
+
     .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
       display: none;
       position: absolute;
@@ -1043,6 +1055,9 @@
       <h3>Edit Event</h3>
       <input type="text" id="event-title" placeholder="Event Title" required>
       <textarea id="event-description" placeholder="Event Description" required></textarea>
+      <input type="text" id="event-date" placeholder="Event Date (e.g., January 28, 2025)" required>
+      <input type="text" id="event-time" placeholder="Event Time (e.g., 8:00 PM)" required>
+      <input type="text" id="event-end" placeholder="End Date & Time (e.g., January 29, 2025, 2:00 AM)" required>
       <input type="file" id="event-image" accept="image/*">
       <button onclick="saveEventDetails()">Save</button>
     </div>
@@ -1299,6 +1314,9 @@
           <img src="images/Eventposter.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
           <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
+          <p class="event-date"><strong>Date:</strong> January 28, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 2:00 AM</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
@@ -1306,6 +1324,9 @@
           <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
           <h3>Pole in the paddock</h3>
           <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+          <p class="event-date"><strong>Date:</strong> January 29, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 8:00 PM</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
@@ -1313,6 +1334,9 @@
           <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
           <h3>Cosmic Connections</h3>
           <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
+          <p class="event-date"><strong>Date:</strong> January 30, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 7:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> January 30, 2025, 10:00 PM</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
@@ -1320,8 +1344,11 @@
           <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
           <h3>DJ Showcase & Open Decks</h3>
           <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
+          <p class="event-date"><strong>Date:</strong> January 31, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> February 1, 2025, 3:00 AM</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+          < بگذارید class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
       </div>
     </section>
@@ -1656,10 +1683,16 @@
       if (!isLoggedIn) return;
       const event = button.closest('.event');
       const title = event.querySelector('h3').textContent;
-      const description = event.querySelector('p').textContent;
+      const description = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent;
+      const date = event.querySelector('.event-date')?.textContent.replace('Date: ', '') || '';
+      const time = event.querySelector('.event-time')?.textContent.replace('Time: ', '') || '';
+      const end = event.querySelector('.event-end')?.textContent.replace('End Date & Time: ', '') || '';
       const imageSrc = event.querySelector('img').src;
       document.querySelector('#event-title').value = title;
       document.querySelector('#event-description').value = description;
+      document.querySelector('#event-date').value = date;
+      document.querySelector('#event-time').value = time;
+      document.querySelector('#event-end').value = end;
       eventModal.dataset.eventElement = event.outerHTML;
       eventModal.dataset.imageSrc = imageSrc;
       eventModal.style.display = 'flex';
@@ -1669,6 +1702,9 @@
       eventModal.style.display = 'none';
       document.querySelector('#event-title').value = '';
       document.querySelector('#event-description').value = '';
+      document.querySelector('#event-date').value = '';
+      document.querySelector('#event-time').value = '';
+      document.querySelector('#event-end').value = '';
       document.querySelector('#event-image').value = '';
       delete eventModal.dataset.eventElement;
       delete eventModal.dataset.imageSrc;
@@ -1678,9 +1714,12 @@
       if (!isLoggedIn) return;
       const title = document.querySelector('#event-title').value;
       const description = document.querySelector('#event-description').value;
+      const date = document.querySelector('#event-date').value;
+      const time = document.querySelector('#event-time').value;
+      const end = document.querySelector('#event-end').value;
       const imageInput = document.querySelector('#event-image');
-      if (!title || !description) {
-        alert('Please fill in the event title and description');
+      if (!title || !description || !date || !time || !end) {
+        alert('Please fill in all event fields');
         return;
       }
 
@@ -1689,21 +1728,42 @@
         const reader = new FileReader();
         reader.onload = function(e) {
           imageSrc = e.target.result;
-          updateEventElement(title, description, imageSrc);
+          updateEventElement(title, description, date, time, end, imageSrc);
         };
         reader.readAsDataURL(imageInput.files[0]);
       } else {
-        updateEventElement(title, description, imageSrc);
+        updateEventElement(title, description, date, time, end, imageSrc);
       }
     }
 
-    function updateEventElement(title, description, imageSrc) {
+    function updateEventElement(title, description, date, time, end, imageSrc) {
       const eventHtml = eventModal.dataset.eventElement;
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = eventHtml;
       const eventElement = tempDiv.firstElementChild;
       eventElement.querySelector('h3').textContent = title;
-      eventElement.querySelector('p').textContent = description;
+      eventElement.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent = description;
+      let dateElement = eventElement.querySelector('.event-date');
+      if (!dateElement) {
+        dateElement = document.createElement('p');
+        dateElement.className = 'event-date';
+        eventElement.insertBefore(dateElement, eventElement.querySelector('.edit-button'));
+      }
+      dateElement.innerHTML = `<strong>Date:</strong> ${date}`;
+      let timeElement = eventElement.querySelector('.event-time');
+      if (!timeElement) {
+        timeElement = document.createElement('p');
+        timeElement.className = 'event-time';
+        eventElement.insertBefore(timeElement, eventElement.querySelector('.edit-button'));
+      }
+      timeElement.innerHTML = `<strong>Time:</strong> ${time}`;
+      let endElement = eventElement.querySelector('.event-end');
+      if (!endElement) {
+        endElement = document.createElement('p');
+        endElement.className = 'event-end';
+        eventElement.insertBefore(endElement, eventElement.querySelector('.edit-button'));
+      }
+      endElement.innerHTML = `<strong>End Date & Time:</strong> ${end}`;
       eventElement.querySelector('img').src = imageSrc;
       eventElement.querySelector('img').alt = `${title} Poster`;
       const oldEvent = eventsGrid.querySelector(`[data-event="${eventHtml}"]`) || eventsGrid.querySelector(`h3:contains('${eventElement.querySelector('h3').textContent}')`)?.closest('.event');
