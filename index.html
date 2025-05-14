@@ -111,6 +111,18 @@
       display: none;
     }
 
+    .login-toggle {
+      color: #f8e1b4;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-left: 10px;
+      text-decoration: underline;
+    }
+
+    .login-toggle:hover {
+      color: #f39c12;
+    }
+
     .header {
       background: url('images/coverphoto.png') center/cover no-repeat;
       height: 100vh;
@@ -152,7 +164,7 @@
     }
 
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      0%, 20%, 工作室50%, 80%, 100% { transform: translate(-50%, 0); }
       40% { transform: translate(-50%, -10px); }
       60% { transform: translate(-50%, -5px); }
     }
@@ -768,19 +780,24 @@
       }
 
       .login-container {
-        padding: 10px;
+        padding: 15px;
       }
 
       .login-container form {
         flex-direction: column;
-        gap: 5px;
+        gap: 8px;
       }
 
       .login-container input, .login-container button {
-        font-size: 0.8rem;
-        padding: 6px;
+        font-size: 0.85rem;
+        padding: 8px;
         width: 100%;
         box-sizing: border-box;
+      }
+
+      .login-toggle {
+        font-size: 0.85rem;
+        margin-top: 8px;
       }
 
       .header {
@@ -1038,15 +1055,19 @@
       }
 
       .login-container input, .login-container button {
-        font-size: 0.7em;
-        padding: 5px;
+        font-size: 0.75rem;
+        padding: 6px;
+      }
+
+      .login-toggle {
+        font-size: 0.75rem;
       }
     }
   </style>
 </head>
 <body>
   <nav>
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
+    <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#mission">Mission</a>
@@ -1060,11 +1081,17 @@
 
   <div class="login-container">
     <form id="login-form">
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Login</button>
+      <input type="text" id="username" placeholder="Username" required aria-label="Username">
+      <input type="password" id="password" placeholder="Password" required aria-label="Password">
+      <button type="submit" aria-label="Log in">Login</button>
     </form>
-    <button class="logout-button">Logout</button>
+    <form id="register-form" style="display: none;">
+      <input type="text" id="reg-username" placeholder="Username" required aria-label="New username">
+      <input type="password" id="reg-password" placeholder="Password (min 6 chars)" required aria-label="New password">
+      <button type="submit" aria-label="Register">Register</button>
+    </form>
+    <button class="logout-button" aria-label="Log out">Logout</button>
+    <span class="login-toggle" onclick="toggleLoginRegister()">Register</span>
   </div>
 
   <header class="header">
@@ -1074,45 +1101,45 @@
 
   <div class="modal" id="member-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeModal()">×</button>
+      <button class="close-button" onclick="closeModal()" aria-label="Close member modal">×</button>
       <h3>Add Member Details</h3>
-      <input type="text" id="member-name" placeholder="Member Name" required>
-      <input type="file" id="member-photo" accept="image/jpeg,image/png" required>
-      <button onclick="saveMemberDetails()">Save</button>
+      <input type="text" id="member-name" placeholder="Member Name" required aria-label="Member name">
+      <input type="file" id="member-photo" accept="image/jpeg,image/png" required aria-label="Member photo">
+      <button onclick="saveMemberDetails()" aria-label="Save member details">Save</button>
     </div>
   </div>
 
   <div class="modal" id="role-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeRoleModal()">×</button>
+      <button class="close-button" onclick="closeRoleModal()" aria-label="Close role modal">×</button>
       <h3>Create New Role</h3>
-      <input type="text" id="role-title" placeholder="Role Title" required>
-      <textarea id="role-description" placeholder="Role Description" required></textarea>
-      <input type="file" id="role-icon" accept="image/jpeg,image/png">
-      <button onclick="saveRoleDetails()">Save</button>
+      <input type="text" id="role-title" placeholder="Role Title" required aria-label="Role title">
+      <textarea id="role-description" placeholder="Role Description" required aria-label="Role description"></textarea>
+      <input type="file" id="role-icon" accept="image/jpeg,image/png" aria-label="Role icon">
+      <button onclick="saveRoleDetails()" aria-label="Save role details">Save</button>
     </div>
   </div>
 
   <div class="modal" id="event-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeEventModal()">×</button>
+      <button class="close-button" onclick="closeEventModal()" aria-label="Close event modal">×</button>
       <h3>Edit Event</h3>
-      <input type="text" id="event-title" placeholder="Event Title" required>
-      <textarea id="event-description" placeholder="Event Description" required></textarea>
-      <input type="file" id="event-photo" accept="image/jpeg,image/png">
-      <button onclick="saveEventDetails()">Save</button>
+      <input type="text" id="event-title" placeholder="Event Title" required aria-label="Event title">
+      <textarea id="event-description" placeholder="Event Description" required aria-label="Event description"></textarea>
+      <input type="file" id="event-photo" accept="image/jpeg,image/png" aria-label="Event photo">
+      <button onclick="saveEventDetails()" aria-label="Save event details">Save</button>
     </div>
   </div>
 
   <div class="modal" id="gear-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeGearModal()">×</button>
+      <button class="close-button" onclick="closeGearModal()" aria-label="Close gear modal">×</button>
       <h3>Add Gear Item</h3>
-      <input type="text" id="gear-name" placeholder="Gear Name" required>
-      <input type="text" id="gear-link" placeholder="Link to Product (optional)">
-      <input type="number" id="gear-quantity" placeholder="Quantity" min="1" required>
-      <input type="number" id="gear-cost" placeholder="Cost (NZD)" min="0" step="0.01" required>
-      <button onclick="saveGearDetails()">Save</button>
+      <input type="text" id="gear-name" placeholder="Gear Name" required aria-label="Gear name">
+      <input type="text" id="gear-link" placeholder="Link to Product (optional)" aria-label="Product link">
+      <input type="number" id="gear-quantity" placeholder="Quantity" min="1" required aria-label="Quantity">
+      <input type="number" id="gear-cost" placeholder="Cost (NZD)" min="0" step="0.01" required aria-label="Cost in NZD">
+      <button onclick="saveGearDetails()" aria-label="Save gear details">Save</button>
     </div>
   </div>
 
@@ -1441,7 +1468,9 @@
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const loginForm = document.querySelector('#login-form');
+    const registerForm = document.querySelector('#register-form');
     const logoutButton = document.querySelector('.logout-button');
+    const loginToggle = document.querySelector('.login-toggle');
     const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
     const memberModal = document.querySelector('#member-modal');
@@ -1457,69 +1486,18 @@
     let roleIconData = '';
     let eventPhotoData = '';
 
-    // Load saved data on page load
-    window.addEventListener('load', () => {
-      const savedMembers = localStorage.getItem('membersGrid');
-      const savedRoles = localStorage.getItem('rolesGrid');
-      const savedEvents = localStorage.getItem('eventsGrid');
-      const savedGear = localStorage.getItem('gearList');
-      if (savedMembers) {
-        membersGrid.innerHTML = savedMembers;
-        membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
-          arrow.addEventListener('click', handleScroll);
-        });
-        membersGrid.querySelectorAll('.delete-button').forEach(button => {
-          button.addEventListener('click', () => deleteMember(button));
-        });
-      }
-      if (savedRoles) {
-        rolesGrid.innerHTML = savedRoles;
-        rolesGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
-          arrow.addEventListener('click', handleScroll);
-        });
-        rolesGrid.querySelectorAll('.delete-button').forEach(button => {
-          button.addEventListener('click', () => deleteRole(button));
-        });
-      }
-      if (savedEvents) {
-        document.querySelector('.events-grid').innerHTML = savedEvents;
-        document.querySelectorAll('.edit-button').forEach(button => {
-          button.addEventListener('click', () => editEvent(button));
-        });
-      }
-      if (savedGear) {
-        gearList.innerHTML = savedGear;
-        gearList.querySelectorAll('.delete-gear-button').forEach(button => {
-          button.addEventListener('click', () => deleteGear(button));
-        });
-      }
-      // Add role and gear buttons for admin
-      if (isLoggedIn) {
-        const addRoleButton = document.createElement('div');
-        addRoleButton.className = 'role';
-        addRoleButton.innerHTML = `
-          <button class="create-role-button" onclick="openRoleModal()">Add Role</button>
-        `;
-        rolesGrid.appendChild(addRoleButton);
-        addGearButton.style.display = 'block';
-      }
-    });
-
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const username = document.querySelector('#username').value;
-      const password = document.querySelector('#password').value;
-      if (username === 'shanon' && password === 'Audius1993!') {
+    // Initialize UI based on login state
+    function initLoginState() {
+      const loggedInUser = localStorage.getItem('loggedInUser');
+      if (loggedInUser) {
         isLoggedIn = true;
         document.body.classList.add('logged-in');
         loginForm.style.display = 'none';
+        registerForm.style.display = 'none';
         logoutButton.style.display = 'block';
         saveButton.style.display = 'block';
         addGearButton.style.display = 'block';
+        loginToggle.style.display = 'none';
         membersGrid.classList.add('draggable');
         rolesGrid.classList.add('draggable');
         document.querySelectorAll('.member, .role').forEach(item => {
@@ -1527,25 +1505,173 @@
             item.setAttribute('draggable', 'true');
           }
         });
-        // Add role button when logged in
+        // Add role button
         const addRoleButton = document.createElement('div');
         addRoleButton.className = 'role';
         addRoleButton.innerHTML = `
           <button class="create-role-button" onclick="openRoleModal()">Add Role</button>
         `;
         rolesGrid.appendChild(addRoleButton);
-      } else {
-        alert('Invalid credentials');
       }
+    }
+
+    // Load saved data on page load
+    window.addEventListener('load', () => {
+      initLoginState();
+      const savedMembers = localStorage.getItem('membersGrid');
+      const savedRoles = localStorage.getItem('rolesGrid');
+      const savedEvents = localStorage.getItem('eventsGrid');
+      const savedGear = localStorage.getItem('gearList');
+      if (savedMembers) {
+        membersGrid.innerHTML = savedMembers;
+      }
+      if (savedRoles) {
+        rolesGrid.innerHTML = savedRoles;
+      }
+      if (savedEvents) {
+        document.querySelector('.events-grid').innerHTML = savedEvents;
+      }
+      if (savedGear) {
+        gearList.innerHTML = savedGear;
+      }
+      // Reattach event listeners for dynamic elements
+      reattachEventListeners();
     });
 
+    // Reattach event listeners for dynamically loaded elements
+    function reattachEventListeners() {
+      membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
+        arrow.removeEventListener('click', handleScroll); // Prevent duplicates
+        arrow.addEventListener('click', handleScroll);
+      });
+      rolesGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
+        arrow.removeEventListener('click', handleScroll);
+        arrow.addEventListener('click', handleScroll);
+      });
+      // Use event delegation for delete buttons
+      membersGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-button')) {
+          deleteMember(e.target);
+        }
+      });
+      rolesGrid.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-button')) {
+          deleteRole(e.target);
+        }
+      });
+      document.querySelector('.events-grid').addEventListener('click', (e) => {
+        if (e.target.classList.contains('edit-button')) {
+          editEvent(e.target);
+        }
+      });
+      gearList.addEventListener('click', (e) => {
+        if (e.target.classList.contains('delete-gear-button')) {
+          deleteGear(e.target);
+        }
+      });
+    }
+
+    // Hamburger menu toggle
+    hamburger.addEventListener('click', () => {
+      const isExpanded = navLinks.classList.toggle('active');
+      hamburger.setAttribute('aria-expanded', isExpanded);
+    });
+
+    // Toggle between login and register forms
+    window.toggleLoginRegister = function() {
+      if (loginForm.style.display !== 'none') {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'flex';
+        loginToggle.textContent = 'Back to Login';
+      } else {
+        loginForm.style.display = 'flex';
+        registerForm.style.display = 'none';
+        loginToggle.textContent = 'Register';
+      }
+    };
+
+    // Login form submission
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.querySelector('#username').value.trim();
+      const password = document.querySelector('#password').value;
+      if (!username || !password) {
+        alert('Please enter both username and password.');
+        return;
+      }
+      const users = JSON.parse(localStorage.getItem('users') || '{}');
+      if (!users[username]) {
+        alert('User not found. Please register.');
+        return;
+      }
+      if (users[username].password !== password) {
+        alert('Incorrect password.');
+        return;
+      }
+      isLoggedIn = true;
+      localStorage.setItem('loggedInUser', username);
+      document.body.classList.add('logged-in');
+      loginForm.style.display = 'none';
+      registerForm.style.display = 'none';
+      logoutButton.style.display = 'block';
+      saveButton.style.display = 'block';
+      addGearButton.style.display = 'block';
+      loginToggle.style.display = 'none';
+      membersGrid.classList.add('draggable');
+      rolesGrid.classList.add('draggable');
+      document.querySelectorAll('.member, .role').forEach(item => {
+        if (!item.querySelector('.create-role-button')) {
+          item.setAttribute('draggable', 'true');
+        }
+      });
+      // Add role button
+      const addRoleButton = document.createElement('div');
+      addRoleButton.className = 'role';
+      addRoleButton.innerHTML = `
+        <button class="create-role-button" onclick="openRoleModal()">Add Role</button>
+      `;
+      rolesGrid.appendChild(addRoleButton);
+      alert('Logged in successfully!');
+    });
+
+    // Register form submission
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.querySelector('#reg-username').value.trim();
+      const password = document.querySelector('#reg-password').value;
+      if (!username || !password) {
+        alert('Please enter both username and password.');
+        return;
+      }
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters long.');
+        return;
+      }
+      const users = JSON.parse(localStorage.getItem('users') || '{}');
+      if (users[username]) {
+        alert('Username already exists. Please choose another.');
+        return;
+      }
+      users[username] = { password };
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Registration successful! Please log in.');
+      toggleLoginRegister();
+      document.querySelector('#reg-username').value = '';
+      document.querySelector('#reg-password').value = '';
+    });
+
+    // Logout
     logoutButton.addEventListener('click', () => {
       isLoggedIn = false;
+      localStorage.removeItem('loggedInUser');
       document.body.classList.remove('logged-in');
       loginForm.style.display = 'flex';
+      registerForm.style.display = 'none';
       logoutButton.style.display = 'none';
       saveButton.style.display = 'none';
       addGearButton.style.display = 'none';
+      loginToggle.style.display = 'block';
+      loginToggle.textContent = 'Register';
       membersGrid.classList.remove('draggable');
       rolesGrid.classList.remove('draggable');
       document.querySelectorAll('.member, .role').forEach(item => {
@@ -1553,13 +1679,14 @@
           item.setAttribute('draggable', 'false');
         }
       });
-      // Remove add role button when logged out
       const addRoleButton = rolesGrid.querySelector('.role .create-role-button')?.parentElement;
       if (addRoleButton) {
         addRoleButton.remove();
       }
+      alert('Logged out successfully!');
     });
 
+    // Countdown timer
     const countdown = document.getElementById('countdown');
     const targetDate = new Date('2025-01-27T12:00:00');
 
@@ -1572,100 +1699,19 @@
       }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
       countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
     }
 
-    setInterval(updateCountdown, 1000);
     updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-    function handleScroll() {
-      const grid = this.parentElement;
-      const isLeft = this.classList.contains('left');
-      const scrollAmount = 150;
-      grid.scrollBy({
-        left: isLeft ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-
-    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-      arrow.addEventListener('click', handleScroll);
-    });
-
-    function deleteMember(button) {
-      if (!isLoggedIn) return;
-      const member = button.closest('.member');
-      const name = member.querySelector('h3').textContent;
-      if (confirm(`Are you sure you want to delete ${name}?`)) {
-        const roleTitle = member.querySelector('span').textContent;
-        const description = member.querySelector('p').textContent;
-        const newRole = document.createElement('div');
-        newRole.className = 'role';
-        newRole.draggable = true;
-        newRole.ondragstart = drag;
-        newRole.innerHTML = `
-          <img src="images/icons/generic-role.png" alt="${roleTitle} Icon">
-          <h3>${roleTitle}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>${description}</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        `;
-        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
-        member.remove();
-        alert(`${name} has been removed from the members list and their role has been added to Roles to Be Filled.`);
-      }
-    }
-
-    function deleteRole(button) {
-      if (!isLoggedIn) return;
-      const role = button.closest('.role');
-      const title = role.querySelector('h3').textContent;
-      if (confirm(`Are you sure you want to delete the ${title} role?`)) {
-        role.remove();
-        alert(`The ${title} role has been removed.`);
-      }
-    }
-
-    function editEvent(button) {
-      if (!isLoggedIn) return;
-      const event = button.closest('.event');
-      const title = event.querySelector('h3').textContent;
-      const description = event.querySelector('p').textContent;
-      const imgSrc = event.querySelector('img').src;
-
-      document.querySelector('#event-title').value = title;
-      document.querySelector('#event-description').value = description;
-      eventModal.dataset.eventElement = event.outerHTML;
-      eventModal.style.display = 'flex';
-    }
-
-    function deleteGear(button) {
-      if (!isLoggedIn) return;
-      const gearItem = button.closest('.gear-item');
-      const gearName = gearItem.querySelector('p').textContent.split(': ')[1];
-      if (confirm(`Are you sure you want to delete ${gearName}?`)) {
-        gearItem.remove();
-        alert(`${gearName} has been removed from the gear list.`);
-      }
-    }
-
+    // Drag and drop functionality
     function drag(event) {
-      if (!isLoggedIn) return;
-      draggedElement = event.target.closest('.member, .role');
-      if (draggedElement.querySelector('.create-role-button')) return;
-      event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
-      event.dataTransfer.setData('role-title', draggedElement.querySelector('h3').textContent);
-      event.dataTransfer.setData('is-member', draggedElement.classList.contains('member') ? 'true' : 'false');
-      if (draggedElement.classList.contains('member')) {
-        event.dataTransfer.setData('member-name', draggedElement.querySelector('h3').textContent);
-        event.dataTransfer.setData('member-photo', draggedElement.querySelector('img').src);
-        event.dataTransfer.setData('member-description', draggedElement.querySelector('p').textContent);
-        event.dataTransfer.setData('member-role', draggedElement.querySelector('span').textContent);
-      }
+      if (!isLoggedIn || event.target.querySelector('.create-role-button')) return;
+      draggedElement = event.target;
+      event.dataTransfer.setData('text/plain', ''); // Required for Firefox
     }
 
     function allowDrop(event) {
@@ -1674,273 +1720,305 @@
     }
 
     function drop(event) {
-      if (!isLoggedIn) return;
+      if (!isLoggedIn || !draggedElement) return;
       event.preventDefault();
-      const targetGrid = event.target.closest('.members-grid, .roles-grid');
-      if (!targetGrid) return;
+      const target = event.target.closest('.member, .role');
+      const grid = event.target.closest('.members-grid, .roles-grid');
+      if (!grid || grid.querySelector('.create-role-button')?.contains(event.target)) return;
 
-      const targetElement = event.target.closest('.member, .role');
-      const isMember = event.dataTransfer.getData('is-member') === 'true';
-      const roleTitle = event.dataTransfer.getData('role-title');
-
-      // Prevent dropping on the Add Role button
-      if (targetElement && targetElement.querySelector('.create-role-button')) return;
-
-      // Handle reordering within the same grid
-      if ((targetGrid.classList.contains('members-grid') && isMember) || 
-          (targetGrid.classList.contains('roles-grid') && !isMember)) {
-        if (targetElement && targetElement !== draggedElement) {
-          targetGrid.insertBefore(draggedElement, targetElement);
+      if (target && target !== draggedElement && !target.querySelector('.create-role-button')) {
+        const targetRect = target.getBoundingClientRect();
+        const targetIndex = Array.from(grid.children).indexOf(target);
+        const draggedIndex = Array.from(grid.children).indexOf(draggedElement);
+        if (targetIndex < draggedIndex) {
+          grid.insertBefore(draggedElement, target);
         } else {
-          targetGrid.insertBefore(draggedElement, targetGrid.lastElementChild);
+          grid.insertBefore(draggedElement, target.nextSibling);
         }
-        return;
+      } else if (!target) {
+        grid.appendChild(draggedElement);
       }
-
-      // Handle moving a role to members-grid
-      if (targetGrid.classList.contains('members-grid') && !isMember) {
-        memberModal.style.display = 'flex';
-        memberModal.dataset.roleTitle = roleTitle;
-        memberModal.dataset.sourceGrid = 'roles-grid';
-        memberModal.dataset.targetGrid = 'members-grid';
-      } 
-      // Handle moving a member to roles-grid
-      else if (targetGrid.classList.contains('roles-grid') && isMember) {
-        const memberDescription = event.dataTransfer.getData('member-description');
-        const memberRole = event.dataTransfer.getData('member-role');
-        const newRole = document.createElement('div');
-        newRole.className = 'role';
-        newRole.draggable = true;
-        newRole.ondragstart = drag;
-        newRole.innerHTML = `
-          <img src="images/icons/generic-role.png" alt="${memberRole} Icon">
-          <h3>${memberRole}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(memberRole)}" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <span>${memberRole}</span>
-            <p>${memberDescription}</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        `;
-        if (targetElement) {
-          targetGrid.insertBefore(newRole, targetElement);
-        } else {
-          targetGrid.insertBefore(newRole, targetGrid.lastElementChild);
-        }
-        draggedElement.remove();
-      }
+      draggedElement = null;
     }
 
-    // Handle member photo upload
-    document.querySelector('#member-photo').addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          memberPhotoData = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      } else {
-        alert('Please upload a valid JPG or PNG image.');
-        event.target.value = '';
-        memberPhotoData = '';
-      }
-    });
-
-    // Handle role icon upload
-    document.querySelector('#role-icon').addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          roleIconData = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      } else {
-        alert('Please upload a valid JPG or PNG image.');
-        event.target.value = '';
-        roleIconData = '';
-      }
-    });
-
-    // Handle event photo upload
-    document.querySelector('#event-photo').addEventListener('change', (event) => {
-      const file = event.target.files[0];
-      if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          eventPhotoData = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      } else {
-        alert('Please upload a valid JPG or PNG image.');
-        event.target.value = '';
-        eventPhotoData = '';
-      }
-    });
-
-    window.saveMemberDetails = function() {
-      const name = document.querySelector('#member-name').value;
-      if (!name || !memberPhotoData) {
-        alert('Please fill in the member name and upload a valid image.');
+    // Modal functions
+    function openModal() {
+      if (!isLoggedIn) {
+        alert('Please log in to add a member.');
         return;
       }
+      memberModal.style.display = 'flex';
+      document.querySelector('#member-name').value = '';
+      document.querySelector('#member-photo').value = '';
+      memberPhotoData = '';
+    }
 
-      const roleTitle = memberModal.dataset.roleTitle;
-      const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
-      const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
-      const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
-
-      if (roleElement) {
-        const newMember = document.createElement('div');
-        newMember.className = 'member';
-        newMember.draggable = true;
-        newMember.ondragstart = drag;
-        newMember.innerHTML = `
-          <img src="${memberPhotoData}" alt="${name}">
-          <h3>${name}</h3>
-          <span>${roleTitle}</span>
-          <p>${roleElement.parentElement.querySelector('.tooltip p').textContent}</p>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        `;
-        targetGrid.appendChild(newMember);
-        roleElement.parentElement.remove();
-      }
-
+    function closeModal() {
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
       memberPhotoData = '';
-    };
+    }
 
-    window.closeModal = function() {
-      memberModal.style.display = 'none';
-      document.querySelector('#member-name').value = '';
-      document.querySelector('#member-photo').value = '';
-      memberPhotoData = '';
-    };
-
-    window.openRoleModal = function() {
+    function openRoleModal() {
       if (!isLoggedIn) {
-        alert('Please log in to create a new role.');
+        alert('Please log in to add a role.');
         return;
       }
       roleModal.style.display = 'flex';
-    };
-
-    window.closeRoleModal = function() {
-      roleModal.style.display = 'none';
       document.querySelector('#role-title').value = '';
       document.querySelector('#role-description').value = '';
-      document.querySelector('#role-icon').
-    window.closeRoleModal = function() {
+      document.querySelector('#role-icon').value = '';
+      roleIconData = '';
+    }
+
+    function closeRoleModal() {
       roleModal.style.display = 'none';
       document.querySelector('#role-title').value = '';
       document.querySelector('#role-description').value = '';
       document.querySelector('#role-icon').value = '';
       roleIconData = '';
-    };
+    }
 
-    window.saveRoleDetails = function() {
-      const title = document.querySelector('#role-title').value;
-      const description = document.querySelector('#role-description').value;
-      if (!title || !description) {
-        alert('Please fill in the role title and description.');
+    function openEventModal() {
+      if (!isLoggedIn) {
+        alert('Please log in to edit an event.');
         return;
       }
+      eventModal.style.display = 'flex';
+    }
 
-      const newRole = document.createElement('div');
-      newRole.className = 'role';
-      newRole.draggable = true;
-      newRole.ondragstart = drag;
-      newRole.innerHTML = `
-        <img src="${roleIconData || 'images/icons/generic-role.png'}" alt="${title} Icon">
-        <h3>${title}</h3>
-        <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          <p>${description}</p>
-        </div>
-        <button class="delete-button" onclick="deleteRole(this)">×</button>
-      `;
-      rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
-      closeRoleModal();
-    };
-
-    window.closeEventModal = function() {
+    function closeEventModal() {
       eventModal.style.display = 'none';
       document.querySelector('#event-title').value = '';
       document.querySelector('#event-description').value = '';
       document.querySelector('#event-photo').value = '';
       eventPhotoData = '';
-    };
+      delete eventModal.dataset.eventIndex;
+    }
 
-    window.saveEventDetails = function() {
-      const title = document.querySelector('#event-title').value;
-      const description = document.querySelector('#event-description').value;
-      if (!title || !description) {
-        alert('Please fill in the event title and description.');
-        return;
-      }
-
-      const eventsGrid = document.querySelector('.events-grid');
-      const eventElement = document.createElement('div');
-      eventElement.className = 'event';
-      eventElement.innerHTML = `
-        <img src="${eventPhotoData || 'images/default-event.jpg'}" alt="${title}">
-        <h3>${title}</h3>
-        <p>${description}</p>
-        <button class="edit-button" onclick="editEvent(this)">✎</button>
-      `;
-      const oldEvent = eventsGrid.querySelector(`.event h3:not(.member h3):not(.role h3)`);
-      if (eventModal.dataset.eventElement) {
-        const oldEventElement = eventsGrid.querySelector(`.event h3:not(.member h3):not(.role h3)`).parentElement;
-        eventsGrid.replaceChild(eventElement, oldEventElement);
-      } else {
-        eventsGrid.appendChild(eventElement);
-      }
-      closeEventModal();
-    };
-
-    window.openGearModal = function() {
+    function openGearModal() {
       if (!isLoggedIn) {
         alert('Please log in to add gear.');
         return;
       }
       gearModal.style.display = 'flex';
-    };
+      document.querySelector('#gear-name').value = '';
+      document.querySelector('#gear-link').value = '';
+      document.querySelector('#gear-quantity').value = '';
+      document.querySelector('#gear-cost').value = '';
+    }
 
-    window.closeGearModal = function() {
+    function closeGearModal() {
       gearModal.style.display = 'none';
       document.querySelector('#gear-name').value = '';
       document.querySelector('#gear-link').value = '';
       document.querySelector('#gear-quantity').value = '';
       document.querySelector('#gear-cost').value = '';
-    };
+    }
 
-    window.saveGearDetails = function() {
-      const name = document.querySelector('#gear-name').value;
-      const link = document.querySelector('#gear-link').value;
-      const quantity = document.querySelector('#gear-quantity').value;
-      const cost = document.querySelector('#gear-cost').value;
-      if (!name || !quantity || !cost) {
-        alert('Please fill in the gear name, quantity, and cost.');
+    // Save member details
+    function saveMemberDetails() {
+      const name = document.querySelector('#member-name').value.trim();
+      const photoInput = document.querySelector('#member-photo');
+      if (!name) {
+        alert('Please enter a member name.');
         return;
       }
+      if (!memberPhotoData && !photoInput.files[0]) {
+        alert('Please upload a member photo.');
+        return;
+      }
+      if (photoInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          memberPhotoData = e.target.result;
+          const memberDiv = document.createElement('div');
+          memberDiv.className = 'member';
+          memberDiv.setAttribute('draggable', 'true');
+          memberDiv.innerHTML = `
+            <img src="${memberPhotoData}" alt="${name}">
+            <h3>${name}</h3>
+            <p>New member</p>
+            <button class="delete-button" onclick="deleteMember(this)">×</button>
+          `;
+          membersGrid.insertBefore(memberDiv, membersGrid.querySelector('.scroll-arrow.right'));
+          closeModal();
+        };
+        reader.readAsDataURL(photoInput.files[0]);
+      } else {
+        const memberDiv = document.createElement('div');
+        memberDiv.className = 'member';
+        memberDiv.setAttribute('draggable', 'true');
+        memberDiv.innerHTML = `
+          <img src="${memberPhotoData}" alt="${name}">
+          <h3>${name}</h3>
+          <p>New member</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        `;
+        membersGrid.insertBefore(memberDiv, membersGrid.querySelector('.scroll-arrow.right'));
+        closeModal();
+      }
+    }
 
+    // Save role details
+    function saveRoleDetails() {
+      const title = document.querySelector('#role-title').value.trim();
+      const description = document.querySelector('#role-description').value.trim();
+      const iconInput = document.querySelector('#role-icon');
+      if (!title || !description) {
+        alert('Please enter both role title and description.');
+        return;
+      }
+      const reader = new FileReader();
+      if (iconInput.files[0]) {
+        reader.onload = function(e) {
+          roleIconData = e.target.result;
+          const roleDiv = document.createElement('div');
+          roleDiv.className = 'role';
+          roleDiv.setAttribute('draggable', 'true');
+          roleDiv.innerHTML = `
+            <img src="${roleIconData}" alt="${title} Icon">
+            <h3>${title}</h3>
+            <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>${description}</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          `;
+          rolesGrid.insertBefore(roleDiv, rolesGrid.querySelector('.role .create-role-button')?.parentElement || rolesGrid.querySelector('.scroll-arrow.right'));
+          closeRoleModal();
+        };
+        reader.readAsDataURL(iconInput.files[0]);
+      } else {
+        const roleDiv = document.createElement('div');
+        roleDiv.className = 'role';
+        roleDiv.setAttribute('draggable', 'true');
+        roleDiv.innerHTML = `
+          <img src="images/icons/default.png" alt="${title} Icon">
+          <h3>${title}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>${description}</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        rolesGrid.insertBefore(roleDiv, rolesGrid.querySelector('.role .create-role-button')?.parentElement || rolesGrid.querySelector('.scroll-arrow.right'));
+        closeRoleModal();
+      }
+    }
+
+    // Save event details
+    function saveEventDetails() {
+      const title = document.querySelector('#event-title').value.trim();
+      const description = document.querySelector('#event-description').value.trim();
+      const photoInput = document.querySelector('#event-photo');
+      if (!title || !description) {
+        alert('Please enter both event title and description.');
+        return;
+      }
+      const eventsGrid = document.querySelector('.events-grid');
+      const eventIndex = eventModal.dataset.eventIndex;
+      if (photoInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          eventPhotoData = e.target.result;
+          const eventDiv = document.createElement('div');
+          eventDiv.className = 'event';
+          eventDiv.innerHTML = `
+            <img src="${eventPhotoData}" alt="${title}">
+            <h3>${title}</h3>
+            <p>${description}</p>
+            <button class="edit-button" onclick="editEvent(this)">✎</button>
+          `;
+          if (eventIndex && eventsGrid.children[eventIndex]) {
+            eventsGrid.replaceChild(eventDiv, eventsGrid.children[eventIndex]);
+          } else {
+            eventsGrid.appendChild(eventDiv);
+          }
+          closeEventModal();
+        };
+        reader.readAsDataURL(photoInput.files[0]);
+      } else {
+        const eventDiv = document.createElement('div');
+        eventDiv.className = 'event';
+        eventDiv.innerHTML = `
+          <img src="${eventPhotoData || 'images/default-event.jpg'}" alt="${title}">
+          <h3>${title}</h3>
+          <p>${description}</p>
+          <button class="edit-button" onclick="editEvent(this)">✎</button>
+        `;
+        if (eventIndex && eventsGrid.children[eventIndex]) {
+          eventsGrid.replaceChild(eventDiv, eventsGrid.children[eventIndex]);
+        } else {
+          eventsGrid.appendChild(eventDiv);
+        }
+        closeEventModal();
+      }
+    }
+
+    // Save gear details
+    function saveGearDetails() {
+      const name = document.querySelector('#gear-name').value.trim();
+      const link = document.querySelector('#gear-link').value.trim();
+      const quantity = parseInt(document.querySelector('#gear-quantity').value);
+      const cost = parseFloat(document.querySelector('#gear-cost').value);
+      if (!name || !quantity || !cost) {
+        alert('Please fill in all required gear fields.');
+        return;
+      }
       const gearItem = document.createElement('div');
       gearItem.className = 'gear-item';
       gearItem.innerHTML = `
         <p><strong>Name:</strong> ${name}</p>
+        ${link ? `<p><strong>Link:</strong> <a href="${link}" target="_blank">${link}</a></p>` : ''}
         <p><strong>Quantity:</strong> ${quantity}</p>
-        <p><strong>Cost:</strong> NZD ${parseFloat(cost).toFixed(2)}</p>
-        ${link ? `<p><strong>Link:</strong> <a href="${link}" target="_blank">View Product</a></p>` : ''}
+        <p><strong>Cost:</strong> NZD ${cost.toFixed(2)}</p>
         <button class="delete-gear-button" onclick="deleteGear(this)">×</button>
       `;
       gearList.appendChild(gearItem);
       closeGearModal();
-    };
+    }
 
-    window.saveChanges = function() {
+    // Delete functions
+    function deleteMember(button) {
+      if (!isLoggedIn) return;
+      if (confirm('Are you sure you want to delete this member?')) {
+        button.parentElement.remove();
+      }
+    }
+
+    function deleteRole(button) {
+      if (!isLoggedIn) return;
+      if (confirm('Are you sure you want to delete this role?')) {
+        button.parentElement.remove();
+      }
+    }
+
+    function editEvent(button) {
+      if (!isLoggedIn) return;
+      const eventDiv = button.parentElement;
+      const title = eventDiv.querySelector('h3').textContent;
+      const description = eventDiv.querySelector('p').textContent;
+      const photo = eventDiv.querySelector('img').src;
+      document.querySelector('#event-title').value = title;
+      document.querySelector('#event-description').value = description;
+      eventPhotoData = photo;
+      const eventsGrid = document.querySelector('.events-grid');
+      const eventIndex = Array.from(eventsGrid.children).indexOf(eventDiv);
+      eventModal.dataset.eventIndex = eventIndex;
+      openEventModal();
+    }
+
+    function deleteGear(button) {
+      if (!isLoggedIn) return;
+      if (confirm('Are you sure you want to delete this gear item?')) {
+        button.parentElement.remove();
+      }
+    }
+
+    // Save changes to localStorage
+    function saveChanges() {
       if (!isLoggedIn) {
         alert('Please log in to save changes.');
         return;
@@ -1950,7 +2028,49 @@
       localStorage.setItem('eventsGrid', document.querySelector('.events-grid').innerHTML);
       localStorage.setItem('gearList', gearList.innerHTML);
       alert('Changes saved successfully!');
-    };
+    }
+
+    // Scroll functionality for mobile
+    function handleScroll(event) {
+      const grid = event.target.closest('.members-grid, .roles-grid');
+      const direction = event.target.classList.contains('left') ? -1 : 1;
+      const scrollAmount = 150;
+      grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
+    // File input handling
+    document.querySelector('#member-photo')?.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          memberPhotoData = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.querySelector('#role-icon')?.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          roleIconData = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.querySelector('#event-photo')?.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          eventPhotoData = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
   </script>
 </body>
 </html>
