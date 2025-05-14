@@ -1615,6 +1615,100 @@
       }
     }
 
+    function openModal() {
+      if (!isLoggedIn) return;
+      memberModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      memberModal.style.display = 'none';
+      document.querySelector('#member-name').value = '';
+      document.querySelector('#member-photo').value = '';
+    }
+
+    function saveMemberDetails() {
+      if (!isLoggedIn) return;
+      const name = document.querySelector('#member-name').value;
+      const photoInput = document.querySelector('#member-photo');
+      if (name && photoInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const newMember = document.createElement('div');
+          newMember.className = 'member';
+          newMember.draggable = true;
+          newMember.ondragstart = drag;
+          newMember.innerHTML = `
+            <img src="${e.target.result}" alt="${name}">
+            <h3>${name}</h3>
+            <span>Member</span>
+            <p>New member of the camp.</p>
+            <button class="delete-button" onclick="deleteMember(this)">×</button>
+          `;
+          membersGrid.appendChild(newMember);
+          closeModal();
+        };
+        reader.readAsDataURL(photoInput.files[0]);
+      } else {
+        alert('Please fill in all fields');
+      }
+    }
+
+    function openRoleModal() {
+      if (!isLoggedIn) return;
+      roleModal.style.display = 'flex';
+    }
+
+    function closeRoleModal() {
+      roleModal.style.display = 'none';
+      document.querySelector('#role-title').value = '';
+      document.querySelector('#role-description').value = '';
+      document.querySelector('#role-icon').value = '';
+    }
+
+    function saveRoleDetails() {
+      if (!isLoggedIn) return;
+      const title = document.querySelector('#role-title').value;
+      const description = document.querySelector('#role-description').value;
+      const iconInput = document.querySelector('#role-icon');
+      if (title && description) {
+        const newRole = document.createElement('div');
+        newRole.className = 'role';
+        newRole.draggable = true;
+        newRole.ondragstart = drag;
+        if (iconInput.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            newRole.innerHTML = `
+              <img src="${e.target.result}" alt="${title} Icon">
+              <h3>${title}</h3>
+              <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+              <div class="tooltip">
+                <p>${description}</p>
+              </div>
+              <button class="delete-button" onclick="deleteRole(this)">×</button>
+            `;
+            rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
+            closeRoleModal();
+          };
+          reader.readAsDataURL(iconInput.files[0]);
+        } else {
+          newRole.innerHTML = `
+            <img src="images/icons/generic-role.png" alt="${title} Icon">
+            <h3>${title}</h3>
+            <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>${description}</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          `;
+          rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
+          closeRoleModal();
+        }
+      } else {
+        alert('Please fill in the role title and description');
+      }
+    }
+
     function openAboutModal() {
       if (!isLoggedIn) return;
       const title = document.querySelector('#about-title').textContent;
