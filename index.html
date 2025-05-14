@@ -215,7 +215,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 2px solid #e67e22;
-      loading: lazy;
     }
 
     .gallery img:hover {
@@ -280,33 +279,11 @@
       border: 1px solid #e67e22;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
-      border-radius: 8px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.5s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .event.edited {
-      animation: highlight 1s ease;
-    }
-
-    @keyframes highlight {
-      0% { background: rgba(230, 126, 34, 0.5); }
-      100% { background: rgba(255, 255, 255, 0.1); }
     }
 
     .member:hover, .role:hover, .event:hover {
       box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
-      transform: scale(1.03);
-      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
     }
 
     .member img, .role img {
@@ -317,7 +294,12 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       margin-bottom: 10px;
       border: 3px solid #f39c12;
-      loading: lazy;
+    }
+
+    .role img {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
     }
 
     .event img {
@@ -327,7 +309,6 @@
       border-radius: 8px;
       margin-bottom: 15px;
       border: 2px solid #f39c12;
-      loading: lazy;
     }
 
     .member.camp-lead, .member.deputy-lead {
@@ -366,13 +347,6 @@
       line-height: 1.2;
     }
 
-    .editable[contenteditable="true"] {
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.2);
-      padding: 5px;
-      border-radius: 5px;
-    }
-
     .member span {
       font-weight: bold;
       color: #e67e22;
@@ -388,34 +362,6 @@
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
-    }
-
-    .event-date {
-      font-size: 0.9em;
-      color: #e67e22;
-      margin-top: 10px;
-    }
-
-    .event-category {
-      display: inline-block;
-      background: #e67e22;
-      color: #2b1b0f;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.8em;
-      margin-top: 10px;
-    }
-
-    .event-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #f39c12;
-      color: #2b1b0f;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.8em;
-      font-family: 'Bebas Neue', cursive;
     }
 
     .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
@@ -467,8 +413,8 @@
 
     .role .tooltip {
       visibility: hidden;
-      width: 200px;
-      background-color: #2b1b0f;
+      width: 180px;
+      background-color: #000000;
       color: #f8e1b4;
       text-align: center;
       border-radius: 8px;
@@ -483,13 +429,23 @@
       font-size: 0.9em;
       font-family: 'Montserrat', sans-serif;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
       border: 2px solid #f39c12;
     }
 
-    .role .tooltip p {
-      color: #f8e1b4;
-      margin: 0;
-      line-height: 1.5;
+    .role .tooltip img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #f39c12;
+    }
+
+    .role .tooltip span {
+      font-weight: bold;
+      font-size: 1em;
     }
 
     .role:hover .tooltip {
@@ -529,7 +485,6 @@
     }
 
     .modal-content input, .modal-content textarea {
-    .modal-content input, .modal-content textarea, .modal-content select {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -572,60 +527,9 @@
       padding: 5px 10px;
     }
 
-    .event-preview {
-      margin-top: 20px;
-      padding: 15px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid #e67e22;
-      border-radius: 8px;
-      text-align: left;
-    }
-
-    .event-preview img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    .event-preview h3 {
-      font-size: 1.2em;
-      margin: 10px 0 5px;
-    }
-
-    .event-preview p {
-      font-size: 0.9em;
-      margin: 5px 0;
-    }
-
-    .event-preview .event-date {
-      font-size: 0.8em;
-      color: #e67e22;
-    }
-
-    .event-preview .event-category {
-      font-size: 0.8em;
-      background: #e67e22;
-      color: #2b1b0f;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-
     .events-grid {
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
-    }
-
-    #event-filter {
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1em;
     }
 
     .countdown {
@@ -702,7 +606,7 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .submit-button, .add-role-button {
+    .submit-button {
       display: inline-block;
       padding: 12px 20px;
       background-color: #e67e22;
@@ -714,26 +618,9 @@
       transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
     }
 
-    .submit-button:hover, .add-role-button:hover {
+    .submit-button:hover {
       background-color: #f39c12;
       color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .submit-section {
-      position: relative;
-    }
-
-    .submit-section .submit-button {
-      transition: all 0.3s ease;
-    }
-
-    .submit-section.sticky .submit-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      padding: 10px 20px;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
@@ -788,27 +675,6 @@
     .save-button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .roles-container {
-      max-width: 1200px;
-      margin: 40px auto 0 auto;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .roles-empty {
-      text-align: center;
-      padding: 20px;
-    }
-
-    .roles-empty p {
-      font-size: 1.1em;
-      color: #2b1b0f;
-      margin-bottom: 20px;
     }
 
     @media only screen and (max-width: 768px) {
@@ -919,6 +785,12 @@
         top: -15px;
       }
 
+      .role img {
+        width: 50px;
+        height: 50px;
+        padding: 6px;
+      }
+
       .member h3, .role h3 {
         font-size: 1.3em;
       }
@@ -942,8 +814,13 @@
       }
 
       .role .tooltip {
-        width: 160px;
+        width: 140px;
         font-size: 0.85em;
+      }
+
+      .role .tooltip img {
+        width: 60px;
+        height: 60px;
       }
 
       .role .apply-button {
@@ -982,7 +859,7 @@
         padding: 15px;
       }
 
-      .submit-button, .add-role-button {
+      .submit-button {
         font-size: 1em;
         padding: 10px 15px;
       }
@@ -995,13 +872,9 @@
         font-size: 1em;
       }
 
-      .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container, .roles-container {
+      .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
         max-width: 95%;
         padding: 20px 15px;
-      }
-
-      .event-preview img {
-        height: 80px;
       }
     }
 
@@ -1066,10 +939,21 @@
         right: 25px;
       }
 
+      .role img {
+        width: 45px;
+        height: 45px;
+        padding: 5px;
+      }
+
       .role .tooltip {
-        width: 140px;
+        width: 120px;
         font-size: 0.8em;
         padding: 8px;
+      }
+
+      .role .tooltip img {
+        width: 50px;
+        height: 50px;
       }
 
       .role .apply-button {
@@ -1100,10 +984,6 @@
       .login-container input, .login-container button {
         font-size: 0.7em;
         padding: 5px;
-      }
-
-      .event-preview img {
-        height: 60px;
       }
     }
   </style>
@@ -1141,7 +1021,7 @@
       <button class="close-button" onclick="closeModal()">×</button>
       <h3>Add Member Details</h3>
       <input type="text" id="member-name" placeholder="Member Name" required>
-      <input type="file" id="member-photo" accept="image/*" required>
+      <input type="text" id="member-photo" placeholder="Photo URL" required>
       <button onclick="saveMemberDetails()">Save</button>
     </div>
   </div>
@@ -1152,7 +1032,7 @@
       <h3>Create New Role</h3>
       <input type="text" id="role-title" placeholder="Role Title" required>
       <textarea id="role-description" placeholder="Role Description" required></textarea>
-      <input type="file" id="role-icon" accept="image/*">
+      <input type="text" id="role-icon" placeholder="Icon URL (optional)">
       <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
@@ -1163,21 +1043,7 @@
       <h3>Edit Event</h3>
       <input type="text" id="event-title" placeholder="Event Title" required>
       <textarea id="event-description" placeholder="Event Description" required></textarea>
-      <input type="datetime-local" id="event-datetime" required>
-      <select id="event-category" required>
-        <option value="Music">Music</option>
-        <option value="Workshop">Workshop</option>
-        <option value="Art">Art</option>
-        <option value="Other">Other</option>
-      </select>
       <input type="file" id="event-image" accept="image/*">
-      <div class="event-preview">
-        <img id="preview-image" src="images/icons/generic-event.png" alt="Preview">
-        <h3 id="preview-title">Event Title</h3>
-        <p id="preview-description">Event Description</p>
-        <p id="preview-date" class="event-date"></p>
-        <span id="preview-category" class="event-category"></span>
-      </div>
       <button onclick="saveEventDetails()">Save</button>
     </div>
   </div>
@@ -1190,9 +1056,6 @@
         <img src="images/Campphoto1.jpg" alt="Camp Mates">
         <img src="images/Campphoto15.png" alt="Camp Mates">
         <img src="images/Campphoto17.png" alt="Night Lights">
-        <img src="images/Campphoto1.jpg" alt="Camp Mates" loading="lazy">
-        <img src="images/Campphoto15.png" alt="Camp Mates" loading="lazy">
-        <img src="images/Campphoto17.png" alt="Night Lights" loading="lazy">
       </div>
     </section>
   </div>
@@ -1207,12 +1070,11 @@
   <div class="members-container">
     <section class="section" id="members">
       <h1>Meet Our Core Camp Crew</h1>
-      <div class="members-grid" ondragover="allowDrop(event)" ondrop="drop(event, 'members')">
+      <div class="members-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
         <div class="scroll-arrow left">◄</div>
         <div class="scroll-arrow right">►</div>
         <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
           <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
-          <img src="images/ShanonRichards.jpg" alt="Shanon Richards" loading="lazy">
           <h3>Shanon Richards</h3>
           <span>Camp Lead</span>
           <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
@@ -1220,7 +1082,6 @@
         </div>
         <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
           <img src="images/MeganR.jpg" alt="Meghan">
-          <img src="images/MeganR.jpg" alt="Meghan" loading="lazy">
           <h3>Meghan Robson</h3>
           <span>Deputy Lead</span>
           <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
@@ -1228,7 +1089,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/RussellDuffield.jpg" alt="Russell">
-          <img src="images/RussellDuffield.jpg" alt="Russell" loading="lazy">
           <h3>Russell Duffield</h3>
           <span>Build Lead</span>
           <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
@@ -1236,7 +1096,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/Star Dust Bambi.jpg" alt="Star">
-          <img src="images/Star Dust Bambi.jpg" alt="Star" loading="lazy">
           <h3>Star Dust Bambi</h3>
           <span>Vibe Manager</span>
           <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
@@ -1244,7 +1103,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/michealdunstan.jpg" alt="Micheal">
-          <img src="images/michealdunstan.jpg" alt="Micheal" loading="lazy">
           <h3>Micheal Dunstan</h3>
           <span>Logistics Lead</span>
           <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
@@ -1252,7 +1110,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/tomasshelby.jpg" alt="Tomas">
-          <img src="images/tomasshelby.jpg" alt="Tomas" loading="lazy">
           <h3>Tomas Shelby</h3>
           <span>Sound Lead</span>
           <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
@@ -1260,7 +1117,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/jarrodskiffington.jpg" alt="Jarrod">
-          <img src="images/jarrodskiffington.jpg" alt="Jarrod" loading="lazy">
           <h3>Jarrod Skiffington</h3>
           <span>Transport Lead</span>
           <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
@@ -1268,7 +1124,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/alana.jpg" alt="Alana">
-          <img src="images/alana.jpg" alt="Alana" loading="lazy">
           <h3>Alana Stewart</h3>
           <span>Kitchen Lead</span>
           <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
@@ -1276,7 +1131,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/tylerrowe.jpg" alt="Tyler">
-          <img src="images/tylerrowe.jpg" alt="Tyler" loading="lazy">
           <h3>Tyler Rowe</h3>
           <span>Art & Workshop Lead</span>
           <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
@@ -1284,7 +1138,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/Imogen.jpg" alt="Imogen">
-          <img src="images/Imogen.jpg" alt="Imogen" loading="lazy">
           <h3>Imogen Olivia</h3>
           <span>Wellbeing Officer</span>
           <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
@@ -1292,7 +1145,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/sarsha.jpg" alt="Sarsha">
-          <img src="images/sarsha.jpg" alt="Sarsha" loading="lazy">
           <h3>Sarsha Skiffington</h3>
           <span>Greeter</span>
           <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
@@ -1300,15 +1152,13 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/Gartah.jpg" alt="Gartah">
-          <img src="images/Gartah.jpg" alt="Gartah" loading="lazy">
           <h3>Gartah</h3>
           <span>Strike Lead</span>
           <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
           <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
-        <div filler-text="These are filler images and names, please replace with real photos and names for actual use." class="member" draggable="true" ondragstart="drag(event)">
+        <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/jackie.jpg" alt="Jackie">
-          <img src="images/jackie.jpg" alt="Jackie" loading="lazy">
           <h3>Jackie Church</h3>
           <span>Comms Lead</span>
           <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
@@ -1316,7 +1166,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/olivia.jpg" alt="Olivia">
-          <img src="images/olivia.jpg" alt="Olivia" loading="lazy">
           <h3>Olivia Derewlany</h3>
           <span>Safety Officer</span>
           <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
@@ -1324,7 +1173,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/wenyi.jpg" alt="Wenyi">
-          <img src="images/wenyi.jpg" alt="Wenyi" loading="lazy">
           <h3>Wenyi Huang</h3>
           <span>MOOP Manager</span>
           <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
@@ -1332,7 +1180,6 @@
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/tina.jpg" alt="Tina">
-          <img src="images/tina.jpg" alt="Tina" loading="lazy">
           <h3>Tina Lein</h3>
           <span>Power/Tech Lead</span>
           <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
@@ -1340,108 +1187,99 @@
         </div>
       </div>
 
-      <div class="roles-container">
-        <h2>Roles to Be Filled</h2>
-        <p>Ready to make a difference? Explore open roles and join our vibrant Cosmic Rejex crew. Hover over each role to discover its responsibilities and apply to contribute your unique skills!</p>
-        <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event, 'roles')">
-          <div class="scroll-arrow left">◄</div>
-          <div class="scroll-arrow right">►</div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon">
-            <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon" loading="lazy">
-            <h3>Logistics & Build Lead</h3>
-            <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
+      <h2>Roles to Be Filled</h2>
+      <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
+      <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
+        <div class="scroll-arrow left">◄</div>
+        <div class="scroll-arrow right">►</div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon">
+          <h3>Logistics & Build Lead</h3>
+          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
           </div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
-            <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon" loading="lazy">
-            <h3>Volunteer Coordinator</h3>
-            <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          </div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/build-crew.png" alt="Build Crew Icon">
-            <img src="images/icons/build-crew.png" alt="Build Crew Icon" loading="lazy">
-            <h3>Build Crew</h3>
-            <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          </div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
-            <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon" loading="lazy">
-            <h3>Sound & Lights Lead</h3>
-            <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          </div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
-            <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon" loading="lazy">
-            <h3>Kitchen Lead</h3>
-            <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          </div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
-            <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon" loading="lazy">
-            <h3>Safety & Medical Lead</h3>
-            <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Stocks first aid, provides harm reduction & emergency support.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          </div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
-            <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon" loading="lazy">
-            <h3>Fire & Rangers Lead</h3>
-            <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          </div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
-            <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon" loading="lazy">
-            <h3>Art & Decor Lead</h3>
-            <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Oversees decor, signs, and interactive art.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          </div>
-          <div class="role" draggable="true" ondragstart="drag(event)">
-            <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
-            <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon" loading="lazy">
-            <h3>Event & Theme Night Lead</h3>
-            <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>Plans events, workshops, performances & group photos.</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
-        <div class="roles-empty" style="display: none;">
-          <p>No open roles currently. Create a new role to get started!</p>
-          <button class="add-role-button" onclick="openRoleModal()">Add New Role</button>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
+          <h3>Volunteer Coordinator</h3>
+          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/build-crew.png" alt="Build Crew Icon">
+          <h3>Build Crew</h3>
+          <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
+          <h3>Sound & Lights Lead</h3>
+          <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
+          <h3>Kitchen Lead</h3>
+          <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
+          <h3>Safety & Medical Lead</h3>
+          <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Stocks first aid, provides harm reduction & emergency support.</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
+          <h3>Fire & Rangers Lead</h3>
+          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
+          <h3>Art & Decor Lead</h3>
+          <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Oversees decor, signs, and interactive art.</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
+          <h3>Event & Theme Night Lead</h3>
+          <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Plans events, workshops, performances & group photos.</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" onclick="openRoleModal()">
+          <img src="images/icons/add-role.png" alt="Add New Role Icon">
+          <h3>Add New Role</h3>
+          <p>Create a new role for the camp.</p>
         </div>
       </div>
+
       <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
     </section>
 
@@ -1456,75 +1294,34 @@
     <section class="section" id="events">
       <h1>Past Events</h1>
       <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
-      <select id="event-filter" onchange="filterEvents()">
-        <option value="all">All Events</option>
-        <option value="Music">Music</option>
-        <option value="Workshop">Workshop</option>
-        <option value="Art">Art</option>
-        <option value="Other">Other</option>
-        <option value="upcoming">Upcoming</option>
-        <option value="past">Past</option>
-      </select>
       <div class="events-grid">
         <div class="event">
-          <img src="images/EVENTS/Emo Night.jpg" alt="Emo Night Poster">
+          <img src="images/Eventposter.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
           <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        <div class="event" tabindex="0">
-          <img src="images/EVENTS/Emo Night.jpg" alt="Emo Night Poster" loading="lazy">
-          <h3 contenteditable="false" class="editable">Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-          <p contenteditable="false" class="editable">Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
-          <p class="event-date">1/27/2025, 8:00 PM</p>
-          <span class="event-category">Music</span>
-          <button class="edit-button" onclick="toggleInlineEdit(this)" aria-label="Edit event">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
         </div>
         <div class="event">
-          <img src="images/EVENTS/Pole in the paddock.jpg" alt="Pole in the paddock Poster">
+          <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
           <h3>Pole in the paddock</h3>
           <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        <div class="event" tabindex="0">
-          <img src="images/EVENTS/Pole in the paddock.jpg" alt="Pole in the paddock Poster" loading="lazy">
-          <h3 contenteditable="false" class="editable">Pole in the paddock</h3>
-          <p contenteditable="false" class="editable">Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
-          <p class="event-date">1/28/2025, 3:00 PM</p>
-          <span class="event-category">Art</span>
-          <button class="edit-button" onclick="toggleInlineEdit(this)" aria-label="Edit event">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
         </div>
         <div class="event">
-          <img src="images/EVENTS/Cosmic Connections.jpg" alt="Cosmic Connections Poster">
+          <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
           <h3>Cosmic Connections</h3>
           <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        <div class="event" tabindex="0">
-          <img src="images/EVENTS/Cosmic Connections.jpg" alt="Cosmic Connections Poster" loading="lazy">
-          <h3 contenteditable="false" class="editable">Cosmic Connections</h3>
-          <p contenteditable="false" class="editable">Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
-          <p class="event-date">1/29/2025, 7:00 PM</p>
-          <span class="event-category">Workshop</span>
-          <button class="edit-button" onclick="toggleInlineEdit(this)" aria-label="Edit event">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
         </div>
         <div class="event">
-          <img src="images/EVENTS/DJ Showcase & Open Decks.jpg" alt="DJ Showcase & Open Decks Poster">
+          <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
           <h3>DJ Showcase & Open Decks</h3>
           <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        <div class="event" tabindex="0">
-          <img src="images/EVENTS/DJ Showcase & Open Decks.jpg" alt="DJ Showcase & Open Decks Poster" loading="lazy">
-          <h3 contenteditable="false" class="editable">DJ Showcase & Open Decks</h3>
-          <p contenteditable="false" class="editable">An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
-          <p class="event-date">1/30/2025, 9:00 PM</p>
-          <span class="event-category">Music</span>
-          <button class="edit-button" onclick="toggleInlineEdit(this)" aria-label="Edit event">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
         </div>
       </div>
     </section>
@@ -1551,9 +1348,6 @@
         <img src="images/photo1.jpg" alt="Gallery Image 1">
         <img src="images/photo2.jpg" alt="Gallery Image 2">
         <img src="images/photo3.jpg" alt="Gallery Image 3">
-        <img src="images/photo1.jpg" alt="Gallery Image 1" loading="lazy">
-        <img src="images/photo2.jpg" alt="Gallery Image 2" loading="lazy">
-        <img src="images/photo3.jpg" alt="Gallery Image 3" loading="lazy">
       </div>
     </section>
   </div>
@@ -1576,7 +1370,6 @@
     const logoutButton = document.querySelector('.logout-button');
     const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
-    const rolesEmpty = document.querySelector('.roles-empty');
     const eventsGrid = document.querySelector('.events-grid');
     const memberModal = document.querySelector('#member-modal');
     const roleModal = document.querySelector('#role-modal');
@@ -1585,7 +1378,7 @@
     let draggedElement = null;
     let isLoggedIn = false;
 
-    // Load saved data and update roles visibility
+    // Load saved data on page load
     window.addEventListener('load', () => {
       const savedMembers = localStorage.getItem('membersGrid');
       const savedRoles = localStorage.getItem('rolesGrid');
@@ -1598,10 +1391,6 @@
         membersGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteMember(button));
         });
-        membersGrid.querySelectorAll('.member').forEach(member => {
-          member.draggable = true;
-          member.addEventListener('dragstart', drag);
-        });
       }
       if (savedRoles) {
         rolesGrid.innerHTML = savedRoles;
@@ -1611,32 +1400,28 @@
         rolesGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteRole(button));
         });
-        rolesGrid.querySelectorAll('.role').forEach(role => {
-          role.draggable = true;
-          role.addEventListener('dragstart', drag);
-        });
+        const addRoleElement = rolesGrid.querySelector('.role[onclick="openRoleModal()"]');
+        if (!addRoleElement) {
+          const newRole = document.createElement('div');
+          newRole.className = 'role';
+          newRole.setAttribute('onclick', 'openRoleModal()');
+          newRole.innerHTML = `
+            <img src="images/icons/add-role.png" alt="Add New Role Icon">
+            <h3>Add New Role</h3>
+            <p>Create a new role for the camp.</p>
+          `;
+          rolesGrid.appendChild(newRole);
+        }
       }
       if (savedEvents) {
         eventsGrid.innerHTML = savedEvents;
         eventsGrid.querySelectorAll('.edit-button').forEach(button => {
           button.addEventListener('click', () => openEventModal(button));
-          button.addEventListener('click', () => toggleInlineEdit(button));
         });
         eventsGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteEvent(button));
         });
-        eventsGrid.querySelectorAll('.event').forEach(event => {
-          event.setAttribute('tabindex', '0');
-          event.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && isLoggedIn) {
-              const editButton = event.querySelector('.edit-button');
-              if (editButton) editButton.click();
-            }
-          });
-        });
       }
-      updateRolesVisibility();
-      updateEventBadges();
     });
 
     hamburger.addEventListener('click', () => {
@@ -1656,8 +1441,9 @@
         membersGrid.classList.add('draggable');
         rolesGrid.classList.add('draggable');
         document.querySelectorAll('.member, .role').forEach(item => {
-          item.setAttribute('draggable', 'true');
-          item.addEventListener('dragstart', drag);
+          if (!item.getAttribute('onclick')) {
+            item.setAttribute('draggable', 'true');
+          }
         });
       } else {
         alert('Invalid credentials');
@@ -1673,8 +1459,9 @@
       membersGrid.classList.remove('draggable');
       rolesGrid.classList.remove('draggable');
       document.querySelectorAll('.member, .role').forEach(item => {
-        item.setAttribute('draggable', 'false');
-        item.removeEventListener('dragstart', drag);
+        if (!item.getAttribute('onclick')) {
+          item.setAttribute('draggable', 'false');
+        }
       });
     });
 
@@ -1716,7 +1503,6 @@
       if (!isLoggedIn) return;
       draggedElement = event.target.closest('.member, .role');
       event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
-      event.dataTransfer.setData('elementType', draggedElement.className.includes('member') ? 'member' : 'role');
     }
 
     function allowDrop(event) {
@@ -1724,63 +1510,20 @@
       event.preventDefault();
     }
 
-    function drop(event, targetGrid) {
+    function drop(event) {
       if (!isLoggedIn) return;
       event.preventDefault();
-      const elementType = event.dataTransfer.getData('elementType');
-      const grid = event.target.closest('.members-grid, .roles-grid');
       const target = event.target.closest('.member, .role');
-
-      if (grid.classList.contains('members-grid') && elementType === 'role') {
-        openMemberModalForRole(draggedElement, grid, target);
-      } else if (grid.classList.contains('roles-grid') && elementType === 'member') {
-        convertMemberToRole(draggedElement, grid, target);
-      } else if (grid.classList.contains('members-grid') && elementType === 'member' || 
-                 grid.classList.contains('roles-grid') && elementType === 'role') {
-        if (target && draggedElement !== target) {
-          const temp = document.createElement('div');
-          grid.insertBefore(temp, target);
-          grid.insertBefore(draggedElement, temp);
-          temp.remove();
-        } else if (!target) {
-          grid.appendChild(draggedElement);
-        }
+      const grid = event.target.closest('.members-grid, .roles-grid');
+      if (target && draggedElement !== target && !target.getAttribute('onclick')) {
+        const temp = document.createElement('div');
+        grid.insertBefore(temp, target);
+        grid.insertBefore(draggedElement, temp);
+        temp.remove();
+      } else if (!target) {
+        grid.appendChild(draggedElement);
       }
       draggedElement = null;
-      updateRolesVisibility();
-    }
-
-    function convertMemberToRole(member, grid, target) {
-      const roleTitle = member.querySelector('span').textContent;
-      const description = member.querySelector('p').textContent;
-      const newRole = document.createElement('div');
-      newRole.className = 'role';
-      newRole.draggable = true;
-      newRole.addEventListener('dragstart', drag);
-      newRole.innerHTML = `
-        <img src="images/icons/generic-role.png" alt="${roleTitle} Icon">
-        <img src="images/icons/generic-role.png" alt="${roleTitle} Icon" loading="lazy">
-        <h3>${roleTitle}</h3>
-        <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          <p>${description}</p>
-        </div>
-        <button class="delete-button" onclick="deleteRole(this)">×</button>
-      `;
-      if (target) {
-        grid.insertBefore(newRole, target);
-      } else {
-        grid.appendChild(newRole);
-      }
-      member.remove();
-      updateRolesVisibility();
-    }
-
-    function openMemberModalForRole(roleElement, grid, target) {
-      memberModal.style.display = 'flex';
-      memberModal.dataset.roleElement = roleElement.outerHTML;
-      memberModal.dataset.grid = grid.className;
-      memberModal.dataset.target = target ? target.outerHTML : '';
     }
 
     function saveChanges() {
@@ -1800,82 +1543,29 @@
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
-      delete memberModal.dataset.roleElement;
-      delete memberModal.dataset.grid;
-      delete memberModal.dataset.target;
     }
 
     function saveMemberDetails() {
       if (!isLoggedIn) return;
       const name = document.querySelector('#member-name').value;
-      const photoInput = document.querySelector('#member-photo');
-      const roleElement = memberModal.dataset.roleElement;
-      const gridClass = memberModal.dataset.grid;
-      const targetHtml = memberModal.dataset.target;
-
-      if (!name || !photoInput.files || !photoInput.files[0]) {
-        alert('Please fill in all fields');
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const photoSrc = e.target.result;
-        const grid = document.querySelector(`.${gridClass}`);
-        let newMember;
-
-        if (roleElement) {
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = roleElement;
-          const role = tempDiv.firstElementChild;
-          const roleTitle = role.querySelector('h3').textContent;
-          const description = role.querySelector('.tooltip p').textContent;
-
-          newMember = document.createElement('div');
-          newMember.className = 'member';
-          newMember.draggable = true;
-          newMember.addEventListener('dragstart', drag);
-          newMember.innerHTML = `
-            <img src="${photoSrc}" alt="${name}">
-            <img src="${photoSrc}" alt="${name}" loading="lazy">
-            <h3>${name}</h3>
-            <span>${roleTitle}</span>
-            <p>${description}</p>
-            <button class="delete-button" onclick="deleteMember(this)">×</button>
-          `;
-          rolesGrid.querySelector(`h3:contains('${roleTitle}')`)?.closest('.role').remove();
-        } else {
-          newMember = document.createElement('div');
-          newMember.className = 'member';
-          newMember.draggable = true;
-          newMember.addEventListener('dragstart', drag);
-          newMember.innerHTML = `
-            <img src="${photoSrc}" alt="${name}">
-            <img src="${photoSrc}" alt="${name}" loading="lazy">
-            <h3>${name}</h3>
-            <span>Member</span>
-            <p>New member of the camp.</p>
-            <button class="delete-button" onclick="deleteMember(this)">×</button>
-          `;
-        }
-
-        if (targetHtml) {
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = targetHtml;
-          const target = grid.querySelector(`h3:contains('${tempDiv.firstElementChild.querySelector('h3').textContent}')`)?.closest('.member, .role');
-          if (target) {
-            grid.insertBefore(newMember, target);
-          } else {
-            grid.appendChild(newMember);
-          }
-        } else {
-          grid.appendChild(newMember);
-        }
-
+      const photo = document.querySelector('#member-photo').value;
+      if (name && photo) {
+        const newMember = document.createElement('div');
+        newMember.className = 'member';
+        newMember.draggable = true;
+        newMember.ondragstart = drag;
+        newMember.innerHTML = `
+          <img src="${photo}" alt="${name}">
+          <h3>${name}</h3>
+          <span>Member</span>
+          <p>New member of the camp.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        `;
+        membersGrid.appendChild(newMember);
         closeModal();
-        updateRolesVisibility();
-      };
-      reader.readAsDataURL(photoInput.files[0]);
+      } else {
+        alert('Please fill in all fields');
+      }
     }
 
     function openRoleModal() {
@@ -1894,61 +1584,26 @@
       if (!isLoggedIn) return;
       const title = document.querySelector('#role-title').value;
       const description = document.querySelector('#role-description').value;
-      const iconInput = document.querySelector('#role-icon');
-
-      if (!title || !description) {
-        alert('Please fill in the role title and description');
-        alert('Please fill in all fields');
-        return;
-      }
-
-      let iconSrc = 'images/icons/generic-role.png';
-      const newRole = document.createElement('div');
-      newRole.className = 'role';
-      newRole.draggable = true;
-      newRole.addEventListener('dragstart', drag);
-
-      if (iconInput.files && iconInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          iconSrc = e.target.result;
-          createNewRole(title, description, iconSrc);
-          newRole.innerHTML = `
-            <img src="${e.target.result}" alt="${title} Icon" loading="lazy">
-            <h3>${title}</h3>
-            <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>${description}</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          `;
-          rolesGrid.appendChild(newRole);
-          closeRoleModal();
-          updateRolesVisibility();
-        };
-        reader.readAsDataURL(iconInput.files[0]);
+      const icon = document.querySelector('#role-icon').value || 'images/icons/generic-role.png';
+      if (title && description) {
+        const newRole = document.createElement('div');
+        newRole.className = 'role';
+        newRole.draggable = true;
+        newRole.ondragstart = drag;
+        newRole.innerHTML = `
+          <img src="${icon}" alt="${title} Icon">
+          <h3>${title}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>${description}</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
+        closeRoleModal();
       } else {
-        createNewRole(title, description, iconSrc);
+        alert('Please fill in the role title and description');
       }
-    }
-
-    function createNewRole(title, description, iconSrc) {
-      const newRole = document.createElement('div');
-      newRole.className = 'role';
-      newRole.draggable = true;
-      newRole.addEventListener('dragstart', drag);
-      newRole.innerHTML = `
-        <img src="${iconSrc}" alt="${title} Icon">
-        <h3>${title}</h3>
-        <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          <p>${description}</p>
-        </div>
-        <button class="delete-button" onclick="deleteRole(this)">×</button>
-      `;
-      rolesGrid.appendChild(newRole);
-      closeRoleModal();
-      updateRolesVisibility();
     }
 
     function deleteMember(button) {
@@ -1961,61 +1616,39 @@
         const newRole = document.createElement('div');
         newRole.className = 'role';
         newRole.draggable = true;
-        newRole.addEventListener('dragstart', drag);
+        newRole.ondragstart = drag;
         newRole.innerHTML = `
           <img src="images/icons/generic-role.png" alt="${roleTitle} Icon">
           <h3>${roleTitle}</h3>
           <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
-          <img src="images/icons/generic-role.png" alt="${title} Icon" loading="lazy">
-          <h3>${title}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             <p>${description}</p>
           </div>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         `;
-        rolesGrid.appendChild(newRole);
+        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
         member.remove();
         alert(`${name} has been removed from the members list and their role has been added to Roles to Be Filled.`);
-        closeRoleModal();
-        updateRolesVisibility();
       }
     }
 
     function deleteRole(button) {
-    function deleteMember(button) {
       if (!isLoggedIn) return;
       const role = button.closest('.role');
       const title = role.querySelector('h3').textContent;
       if (confirm(`Are you sure you want to delete the ${title} role?`)) {
         role.remove();
         alert(`The ${title} role has been removed.`);
-        updateRolesVisibility();
       }
-      button.closest('.member').remove();
-      updateRolesVisibility();
     }
 
     function deleteEvent(button) {
-    function deleteRole(button) {
       if (!isLoggedIn) return;
       const event = button.closest('.event');
       const title = event.querySelector('h3').textContent;
       if (confirm(`Are you sure you want to delete the ${title} event?`)) {
         event.remove();
         alert(`The ${title} event has been removed.`);
-      button.closest('.role').remove();
-      updateRolesVisibility();
-    }
-
-    function updateRolesVisibility() {
-      const roles = rolesGrid.querySelectorAll('.role');
-      if (roles.length === 0) {
-        rolesEmpty.style.display = 'block';
-        rolesGrid.style.display = 'none';
-      } else {
-        rolesEmpty.style.display = 'none';
-        rolesGrid.style.display = 'grid';
       }
     }
 
@@ -2024,19 +1657,11 @@
       const event = button.closest('.event');
       const title = event.querySelector('h3').textContent;
       const description = event.querySelector('p').textContent;
-      const description = event.querySelector('p:not(.event-date)').textContent;
-      const datetime = event.querySelector('.event-date') ? new Date(event.querySelector('.event-date').textContent).toISOString().slice(0, 16) : '';
-      const category = event.querySelector('.event-category')?.textContent || 'Other';
       const imageSrc = event.querySelector('img').src;
-
       document.querySelector('#event-title').value = title;
       document.querySelector('#event-description').value = description;
-      document.querySelector('#event-datetime').value = datetime;
-      document.querySelector('#event-category').value = category;
       eventModal.dataset.eventElement = event.outerHTML;
       eventModal.dataset.imageSrc = imageSrc;
-
-      updatePreview();
       eventModal.style.display = 'flex';
     }
 
@@ -2044,14 +1669,7 @@
       eventModal.style.display = 'none';
       document.querySelector('#event-title').value = '';
       document.querySelector('#event-description').value = '';
-      document.querySelector('#event-datetime').value = '';
-      document.querySelector('#event-category').value = 'Music';
       document.querySelector('#event-image').value = '';
-      document.querySelector('#preview-image').src = 'images/icons/generic-event.png';
-      document.querySelector('#preview-title').textContent = 'Event Title';
-      document.querySelector('#preview-description').textContent = 'Event Description';
-      document.querySelector('#preview-date').textContent = '';
-      document.querySelector('#preview-category').textContent = '';
       delete eventModal.dataset.eventElement;
       delete eventModal.dataset.imageSrc;
     }
@@ -2060,14 +1678,9 @@
       if (!isLoggedIn) return;
       const title = document.querySelector('#event-title').value;
       const description = document.querySelector('#event-description').value;
-      const datetime = document.querySelector('#event-datetime').value;
-      const category = document.querySelector('#event-category').value;
       const imageInput = document.querySelector('#event-image');
       if (!title || !description) {
         alert('Please fill in the event title and description');
-
-      if (!title || !description || !datetime) {
-        alert('Please fill in all fields');
         return;
       }
 
@@ -2077,17 +1690,14 @@
         reader.onload = function(e) {
           imageSrc = e.target.result;
           updateEventElement(title, description, imageSrc);
-          updateEventElement(title, description, datetime, imageSrc, category);
         };
         reader.readAsDataURL(imageInput.files[0]);
       } else {
         updateEventElement(title, description, imageSrc);
-        updateEventElement(title, description, datetime, imageSrc, category);
       }
     }
 
     function updateEventElement(title, description, imageSrc) {
-    function updateEventElement(title, description, datetime, imageSrc, category) {
       const eventHtml = eventModal.dataset.eventElement;
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = eventHtml;
@@ -2096,267 +1706,16 @@
       eventElement.querySelector('p').textContent = description;
       eventElement.querySelector('img').src = imageSrc;
       eventElement.querySelector('img').alt = `${title} Poster`;
-      const oldEvent = eventsGrid.querySelector(`h3:contains('${eventElement.querySelector('h3').textContent}')`)?.closest('.event');
+      const oldEvent = eventsGrid.querySelector(`[data-event="${eventHtml}"]`) || eventsGrid.querySelector(`h3:contains('${eventElement.querySelector('h3').textContent}')`)?.closest('.event');
       if (oldEvent) {
-      const eventElement = tempDiv.firstElementChild || document.createElement('div');
-      eventElement.className = 'event';
-      eventElement.setAttribute('tabindex', '0');
-
-      const now = new Date();
-      const eventDate = new Date(datetime);
-      let badgeHtml = '';
-      if (eventDate > now) {
-        badgeHtml = '<span class="event-badge">Upcoming</span>';
-      }
-
-      eventElement.innerHTML = `
-        ${badgeHtml}
-        <img src="${imageSrc}" alt="${title} Poster" loading="lazy">
-        <h3 contenteditable="false" class="editable">${title}</h3>
-        <p contenteditable="false" class="editable">${description}</p>
-        <p class="event-date">${new Date(datetime).toLocaleString()}</p>
-        <span class="event-category">${category}</span>
-        <button class="edit-button" onclick="toggleInlineEdit(this)" aria-label="Edit event">✎</button>
-        <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
-      `;
-      eventElement.classList.add('edited');
-      setTimeout(() => eventElement.classList.remove('edited'), 1000);
-
-      eventElement.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && isLoggedIn) {
-          const editButton = eventElement.querySelector('.edit-button');
-          if (editButton) editButton.click();
-        }
-      });
-
-      const oldEvent = eventsGrid.querySelector(`h3:contains('${title}')`)?.closest('.event');
-      if (oldEvent && eventHtml) {
         eventsGrid.replaceChild(eventElement, oldEvent);
       } else {
         eventsGrid.appendChild(eventElement);
       }
-
+      eventElement.querySelector('.edit-button').addEventListener('click', () => openEventModal(eventElement.querySelector('.edit-button')));
+      eventElement.querySelector('.delete-button').addEventListener('click', () => deleteEvent(eventElement.querySelector('.delete-button')));
       closeEventModal();
-      filterEvents();
     }
-
-    function updateRolesVisibility() {
-      const roles = rolesGrid.querySelectorAll('.role');
-      if (roles.length === 0) {
-        rolesGrid.style.display = 'none';
-        rolesEmpty.style.display = 'block';
-    function toggleInlineEdit(button) {
-      if (!isLoggedIn) return;
-      const event = button.closest('.event');
-      const title = event.querySelector('h3');
-      const description = event.querySelector('p:not(.event-date)');
-      const isEditing = title.contentEditable === 'true';
-
-      if (isEditing) {
-        title.contentEditable = false;
-        description.contentEditable = false;
-        button.textContent = '✎';
-        saveChanges();
-      } else {
-        rolesGrid.style.display = 'grid';
-        rolesEmpty.style.display = 'none';
-        title.contentEditable = true;
-        description.contentEditable = true;
-        title.focus();
-        button.textContent = '💾';
-      }
-    }
-
-    // Custom jQuery-like :contains selector for compatibility
-    HTMLElement.prototype.matches = HTMLElement.prototype.matches || function(selector) {
-      const matches = document.querySelectorAll(selector);
-      return Array.from(matches).includes(this);
-    };
-
-    // Initialize grid scrolling for mobile
-    function initializeGridScroll(grid) {
-      const leftArrow = grid.querySelector('.scroll-arrow.left');
-      const rightArrow = grid.querySelector('.scroll-arrow.right');
-      if (leftArrow && rightArrow) {
-        leftArrow.addEventListener('click', () => grid.scrollBy({ left: -150, behavior: 'smooth' }));
-        rightArrow.addEventListener('click', () => grid.scrollBy({ left: 150, behavior: 'smooth' }));
-      }
-    function deleteEvent(button) {
-      if (!isLoggedIn) return;
-      button.closest('.event').remove();
-      saveChanges();
-      filterEvents();
-    }
-
-    initializeGridScroll(membersGrid);
-    initializeGridScroll(rolesGrid);
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 60,
-            behavior: 'smooth'
-          });
-                    // Close mobile menu if open
-          if (navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-    function updateEventBadges() {
-      const events = eventsGrid.querySelectorAll('.event');
-      const now = new Date();
-      events.forEach(event => {
-        const dateElement = event.querySelector('.event-date');
-        if (dateElement) {
-          const eventDate = new Date(dateElement.textContent);
-          let badge = event.querySelector('.event-badge');
-          if (eventDate > now) {
-            if (!badge) {
-              badge = document.createElement('span');
-              badge.className = 'event-badge';
-              badge.textContent = 'Upcoming';
-              event.prepend(badge);
-            }
-          } else if (badge) {
-            badge.remove();
-          }
-        }
-      });
-    });
-
-    // Ensure roles visibility is updated on page load
-    updateRolesVisibility();
-    }
-
-    // Prevent default drag behavior for non-logged-in users
-    document.querySelectorAll('.member, .role').forEach(item => {
-      item.addEventListener('dragstart', (e) => {
-        if (!isLoggedIn) {
-          e.preventDefault();
-    function filterEvents() {
-      const filter = document.querySelector('#event-filter').value;
-      const events = eventsGrid.querySelectorAll('.event');
-      const now = new Date();
-      events.forEach(event => {
-        const category = event.querySelector('.event-category')?.textContent;
-        const date = event.querySelector('.event-date') ? new Date(event.querySelector('.event-date').textContent) : null;
-        if (filter === 'all') {
-          event.style.display = '';
-        } else if (filter === 'upcoming' && date && date > now) {
-          event.style.display = '';
-        } else if (filter === 'past' && date && date <= now) {
-          event.style.display = '';
-        } else if (category === filter) {
-          event.style.display = '';
-        } else {
-          event.style.display = 'none';
-        }
-      });
-    });
-    }
-
-    // Handle window resize for grid scrolling visibility
-    window.addEventListener('resize', () => {
-      initializeGridScroll(membersGrid);
-      initializeGridScroll(rolesGrid);
-    });
-    document.querySelector('#event-title').addEventListener('input', updatePreview);
-    document.querySelector('#event-description').addEventListener('input', updatePreview);
-    document.querySelector('#event-datetime').addEventListener('input', updatePreview);
-    document.querySelector('#event-category').addEventListener('change', updatePreview);
-    document.querySelector('#event-image').addEventListener('change', updatePreview);
-
-    // Prevent text selection during drag
-    document.addEventListener('dragstart', (e) => {
-      if (e.target.classList.contains('member') || e.target.classList.contains('role')) {
-        e.target.style.userSelect = 'none';
-    function updatePreview() {
-      document.querySelector('#preview-title').textContent = document.querySelector('#event-title').value || 'Event Title';
-      document.querySelector('#preview-description').textContent = document.querySelector('#event-description').value || 'Event Description';
-      document.querySelector('#preview-date').textContent = document.querySelector('#event-datetime').value ? new Date(document.querySelector('#event-datetime').value).toLocaleString() : '';
-      document.querySelector('#preview-category').textContent = document.querySelector('#event-category').value || '';
-      const imageInput = document.querySelector('#event-image');
-      if (imageInput.files && imageInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          document.querySelector('#preview-image').src = e.target.result;
-        };
-        reader.readAsDataURL(imageInput.files[0]);
-      } else {
-        document.querySelector('#preview-image').src = eventModal.dataset.imageSrc || 'images/icons/generic-event.png';
-      }
-    });
-    }
-
-    document.addEventListener('dragend', (e) => {
-      if (e.target.classList.contains('member') || e.target.classList.contains('role')) {
-        e.target.style.userSelect = '';
-      }
-    });
-    function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-
-    // Handle keyboard accessibility for modals
-    document.querySelectorAll('.modal').forEach(modal => {
-      modal.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          if (modal.id === 'member-modal') closeModal();
-          if (modal.id === 'role-modal') closeRoleModal();
-          if (modal.id === 'event-modal') closeEventModal();
-        }
-      });
-    });
-    window.addEventListener('scroll', debounce(() => {
-      const submitSection = document.querySelector('#submit');
-      const rect = submitSection.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        submitSection.classList.add('sticky');
-      } else {
-        submitSection.classList.remove('sticky');
-      }
-    }, 100));
-
-    // Focus management for modals
-    function trapFocus(modal) {
-      const focusableElements = modal.querySelectorAll('input, textarea, button, [tabindex]:not([tabindex="-1"])');
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      modal.addEventListener('keydown', (e) => {
-        if (e.key === 'Tab') {
-          if (e.shiftKey && document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-          } else if (!e.shiftKey && document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
-          }
-        }
-      });
-    // Polyfill for :contains selector
-    if (!Element.prototype.matches) {
-      Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-    }
-
-    [memberModal, roleModal, eventModal].forEach(modal => trapFocus(modal));
-
-    document.querySelectorAll('h3').forEach(h3 => {
-      h3.contains = function(text) {
-        return this.textContent.includes(text);
-      };
-    });
   </script>
 </body>
 </html>
