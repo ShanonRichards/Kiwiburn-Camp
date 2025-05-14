@@ -64,6 +64,7 @@
 
     .login-container {
       display: flex;
+      justify-content: center;
       justify-content: flex-end;
       padding: 10px 20px;
       background: rgba(44, 29, 15, 0.85);
@@ -82,6 +83,7 @@
       border-radius: 5px;
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
       color: #ffffff;
       font-size: 0.9rem;
     }
@@ -93,6 +95,7 @@
     .login-container button {
       padding: 8px 12px;
       background-color: #e67e22;
+      color: #2b1b0f;
       color: #ffffff;
       border: none;
       border-radius: 5px;
@@ -348,16 +351,8 @@
     }
 
     .member p, .role p {
-    .member p {
       font-size: 1em;
       color: #2b1b0f;
-      margin: 5px 0;
-      line-height: 1.4;
-      max-width: 90%;
-    }
-
-    .role p {
-      font-size: 1em;
       color: #ffffff;
       margin: 5px 0;
       line-height: 1.4;
@@ -390,7 +385,6 @@
     }
 
     .role .apply-button {
-    .role .apply-button, .role .create-role-button {
       display: inline-block;
       margin-top: 10px;
       padding: 8px 12px;
@@ -401,12 +395,9 @@
       font-family: 'Bebas Neue', cursive;
       font-size: 0.9em;
       transition: background-color 0.3s, box-shadow 0.3s;
-      border: none;
-      cursor: pointer;
     }
 
     .role .apply-button:hover {
-    .role .apply-button:hover, .role .create-role-button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
@@ -824,7 +815,6 @@
         height: 80px;
       }
 
-_curriculum_redacted_for_brevity_
       .member.camp-lead::before, .member.deputy-lead::before {
         font-size: 1.2rem;
         top: -15px;
@@ -864,7 +854,7 @@ _curriculum_redacted_for_brevity_
         height: 60px;
       }
 
-      .role .apply-button, .role .create-role-button {
+      .role .apply-button {
         font-size: 0.8em;
         padding: 6px 10px;
       }
@@ -918,6 +908,7 @@ _curriculum_redacted_for_brevity_
         padding: 20px 15px;
       }
     }
+_curriculum_redacted_for_brevity_
 
     @media only screen and (max-width: 480px) {
       .header h1 {
@@ -994,7 +985,6 @@ _curriculum_redacted_for_brevity_
       }
 
       .role .apply-button {
-      .role .apply-button, .role .create-role-button {
         font-size: 0.7em;
         padding: 5px 8px;
       }
@@ -1304,7 +1294,6 @@ _curriculum_redacted_for_brevity_
           <img src="images/icons/add-role.png" alt="Add New Role Icon">
           <h3>Add New Role</h3>
           <p>Create a new role for the camp.</p>
-          <button class="create-role-button" onclick="openRoleModal()">Create New Role</button>
         </div>
       </div>
 
@@ -1379,8 +1368,6 @@ _curriculum_redacted_for_brevity_
   </section>
 
   <footer class="footer">
-ännande
-
     <p>© 2025 Kiwiburn Camp</p>
     <div class="countdown" id="countdown"></div>
   </footer>
@@ -1392,6 +1379,7 @@ _curriculum_redacted_for_brevity_
     const logoutButton = document.querySelector('.logout-button');
     const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
+    const modal = document.querySelector('#member-modal');
     const memberModal = document.querySelector('#member-modal');
     const roleModal = document.querySelector('#role-modal');
     const saveButton = document.querySelector('.save-button');
@@ -1428,7 +1416,6 @@ _curriculum_redacted_for_brevity_
             <img src="images/icons/add-role.png" alt="Add New Role Icon">
             <h3>Add New Role</h3>
             <p>Create a new role for the camp.</p>
-            <button class="create-role-button" onclick="openRoleModal()">Create New Role</button>
           `;
           rolesGrid.appendChild(newRole);
         }
@@ -1452,6 +1439,7 @@ _curriculum_redacted_for_brevity_
         membersGrid.classList.add('draggable');
         rolesGrid.classList.add('draggable');
         document.querySelectorAll('.member, .role').forEach(item => {
+          item.setAttribute('draggable', 'true');
           if (!item.getAttribute('onclick')) {
             item.setAttribute('draggable', 'true');
           }
@@ -1470,6 +1458,7 @@ _curriculum_redacted_for_brevity_
       membersGrid.classList.remove('draggable');
       rolesGrid.classList.remove('draggable');
       document.querySelectorAll('.member, .role').forEach(item => {
+        item.setAttribute('draggable', 'false');
         if (!item.getAttribute('onclick')) {
           item.setAttribute('draggable', 'false');
         }
@@ -1532,6 +1521,7 @@ _curriculum_redacted_for_brevity_
         `;
         rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
         member.remove();
+        alert(`${name} has been removed from the members list.`);
         alert(`${name} has been removed from the members list and their role has been added to Roles to Be Filled.`);
       }
     }
@@ -1585,6 +1575,7 @@ _curriculum_redacted_for_brevity_
         if (targetElement && targetElement !== draggedElement) {
           targetGrid.insertBefore(draggedElement, targetElement);
         } else {
+          targetGrid.appendChild(draggedElement);
           targetGrid.insertBefore(draggedElement, targetGrid.lastElementChild);
         }
         return;
@@ -1592,6 +1583,10 @@ _curriculum_redacted_for_brevity_
 
       // Handle moving a role to members-grid
       if (targetGrid.classList.contains('members-grid') && !isMember) {
+        modal.style.display = 'flex';
+        modal.dataset.roleTitle = roleTitle;
+        modal.dataset.sourceGrid = 'roles-grid';
+        modal.dataset.targetGrid = 'members-grid';
         memberModal.style.display = 'flex';
         memberModal.dataset.roleTitle = roleTitle;
         memberModal.dataset.sourceGrid = 'roles-grid';
@@ -1618,6 +1613,7 @@ _curriculum_redacted_for_brevity_
         if (targetElement) {
           targetGrid.insertBefore(newRole, targetElement);
         } else {
+          targetGrid.appendChild(newRole);
           targetGrid.insertBefore(newRole, targetGrid.lastElementChild);
         }
         draggedElement.remove();
@@ -1632,6 +1628,9 @@ _curriculum_redacted_for_brevity_
         return;
       }
 
+      const roleTitle = modal.dataset.roleTitle;
+      const targetGrid = document.querySelector(`.${modal.dataset.targetGrid}`);
+      const sourceGrid = document.querySelector(`.${modal.dataset.sourceGrid}`);
       const roleTitle = memberModal.dataset.roleTitle;
       const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
       const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
@@ -1653,12 +1652,14 @@ _curriculum_redacted_for_brevity_
         roleElement.parentElement.remove();
       }
 
+      modal.style.display = 'none';
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
     };
 
     window.closeModal = function() {
+      modal.style.display = 'none';
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
@@ -1711,7 +1712,6 @@ _curriculum_redacted_for_brevity_
 
     window.saveChanges = function() {
       localStorage.setItem('membersGrid', membersGrid.innerHTML);
-      localStorage.setNode('membersGrid', membersGrid.innerHTML);
       localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
       alert('Changes saved successfully!');
     };
