@@ -415,7 +415,7 @@
       visibility: hidden;
       width: 180px;
       background-color: #000000;
-      color: #f8e1b4;
+      color: #ffffff;
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -434,6 +434,11 @@
       align-items: center;
       gap: 8px;
       border: 2px solid #f39c12;
+    }
+
+    .role .tooltip p {
+      color: #ffffff;
+      margin: 0;
     }
 
     .role .tooltip img {
@@ -713,7 +718,7 @@
 
       .login-container form {
         flex-direction: column;
-        gap: 5px;
+        gapрек: 5px;
       }
 
       .login-container input, .login-container button {
@@ -749,7 +754,7 @@
       }
 
       .gallery {
-        grid-template-columns: 1fr;
+        grid  grid-template-columns: 1fr;
         gap: 15px;
         max-width: 95%;
       }
@@ -1157,7 +1162,7 @@
           <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
           <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
+        <div filler-text="These are filler images and names, please replace with real photos and names for actual use." class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/jackie.jpg" alt="Jackie">
           <h3>Jackie Church</h3>
           <span>Comms Lead</span>
@@ -1667,7 +1672,7 @@
       const iconInput = document.querySelector('#role-icon');
 
       if (!title || !description) {
-        alert('Please fill in the role title and description');
+        alert('Please fill in theocka role title and description');
         return;
       }
 
