@@ -222,7 +222,7 @@
       box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
     }
 
-    .members-grid, .roles-grid {
+    .members-grid, .roles-grid, .events-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 20px;
@@ -268,7 +268,7 @@
       right: 10px;
     }
 
-    .member, .role {
+    .member, .role, .event {
       text-align: center;
       position: relative;
       display: flex;
@@ -281,7 +281,7 @@
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
-    .member:hover, .role:hover {
+    .member:hover, .role:hover, .event:hover {
       box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
     }
@@ -300,6 +300,15 @@
       width: 60px;
       height: 60px;
       border-radius: 8px;
+    }
+
+    .event img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 2px solid #f39c12;
     }
 
     .member.camp-lead, .member.deputy-lead {
@@ -330,7 +339,7 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
-    .member h3, .role h3 {
+    .member h3, .role h3, .event h3 {
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
@@ -347,7 +356,7 @@
       line-height: 1.3;
     }
 
-    .member p, .role p {
+    .member p, .role p, .event p {
       font-size: 1em;
       color: #000000;
       margin: 5px 0;
@@ -355,7 +364,7 @@
       max-width: 90%;
     }
 
-    .member .delete-button, .role .delete-button {
+    .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
       display: none;
       position: absolute;
       top: 5px;
@@ -371,12 +380,16 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
 
-    .member .delete-button:hover, .role .delete-button:hover {
+    .event .edit-button {
+      right: 35px;
+    }
+
+    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover {
       background: rgba(230, 126, 34, 0.9);
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .logged-in .member .delete-button, .logged-in .role .delete-button {
+    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button, .logged-in .event .delete-button {
       display: block;
     }
 
@@ -471,7 +484,7 @@
       margin-bottom: 20px;
     }
 
-    .modal-content input {
+    .modal-content input, .modal-content textarea {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -481,14 +494,10 @@
       color: #2b1b0f;
     }
 
-    .modal-content textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
+    .modal-content input[type="file"] {
+      background: none;
+      border: none;
+      padding: 5px;
     }
 
     .modal-content button {
@@ -519,48 +528,8 @@
     }
 
     .events-grid {
-      display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
-      max-width: 1200px;
-      margin: 40px auto 0 auto;
-    }
-
-    .event {
-      text-align: left;
-      background-color: rgba(255, 255, 255, 0.2);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #e67e22;
-    }
-
-    .event:hover {
-      transform: scale(1.02);
-      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
-    }
-
-    .event img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      border: 2px solid #f39c12;
-    }
-
-    .event h3 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.6em;
-      margin: 0 0 10px;
-      color: #2b1b0f;
-    }
-
-    .event p {
-      font-size: 1em;
-      color: #2b1b0f;
-      line-height: 1.5;
     }
 
     .countdown {
@@ -834,10 +803,14 @@
         font-size: 0.9em;
       }
 
-      .member .delete-button, .role .delete-button {
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
         width: 20px;
         height: 20px;
         font-size: 0.8em;
+      }
+
+      .event .edit-button {
+        right: 30px;
       }
 
       .role .tooltip {
@@ -906,7 +879,7 @@
     }
 
     @media only screen and (max-width: 480px) {
-      .header operativa h1 {
+      .header h1 {
         font-size: 2.2em;
       }
 
@@ -956,10 +929,14 @@
         top: -12px;
       }
 
-      .member .delete-button, .role .delete-button {
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
         width: 18px;
         height: 18px;
         font-size: 0.7em;
+      }
+
+      .event .edit-button {
+        right: 25px;
       }
 
       .role img {
@@ -1057,6 +1034,17 @@
       <textarea id="role-description" placeholder="Role Description" required></textarea>
       <input type="text" id="role-icon" placeholder="Icon URL (optional)">
       <button onclick="saveRoleDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="event-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeEventModal()">×</button>
+      <h3>Edit Event</h3>
+      <input type="text" id="event-title" placeholder="Event Title" required>
+      <textarea id="event-description" placeholder="Event Description" required></textarea>
+      <input type="file" id="event-image" accept="image/*">
+      <button onclick="saveEventDetails()">Save</button>
     </div>
   </div>
 
@@ -1311,21 +1299,29 @@
           <img src="images/Eventposter.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
           <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event">
           <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
           <h3>Pole in the paddock</h3>
-          <p>Join us for an exciting pole performance showcasing strength, grace, and creatively. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event">
           <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
           <h3>Cosmic Connections</h3>
           <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event">
           <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
           <h3>DJ Showcase & Open Decks</h3>
           <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
       </div>
     </section>
@@ -1374,8 +1370,10 @@
     const logoutButton = document.querySelector('.logout-button');
     const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
+    const eventsGrid = document.querySelector('.events-grid');
     const memberModal = document.querySelector('#member-modal');
     const roleModal = document.querySelector('#role-modal');
+    const eventModal = document.querySelector('#event-modal');
     const saveButton = document.querySelector('.save-button');
     let draggedElement = null;
     let isLoggedIn = false;
@@ -1384,6 +1382,7 @@
     window.addEventListener('load', () => {
       const savedMembers = localStorage.getItem('membersGrid');
       const savedRoles = localStorage.getItem('rolesGrid');
+      const savedEvents = localStorage.getItem('eventsGrid');
       if (savedMembers) {
         membersGrid.innerHTML = savedMembers;
         membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
@@ -1413,6 +1412,15 @@
           `;
           rolesGrid.appendChild(newRole);
         }
+      }
+      if (savedEvents) {
+        eventsGrid.innerHTML = savedEvents;
+        eventsGrid.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openEventModal(button));
+        });
+        eventsGrid.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteEvent(button));
+        });
       }
     });
 
@@ -1491,6 +1499,113 @@
       arrow.addEventListener('click', handleScroll);
     });
 
+    function drag(event) {
+      if (!isLoggedIn) return;
+      draggedElement = event.target.closest('.member, .role');
+      event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
+    }
+
+    function allowDrop(event) {
+      if (!isLoggedIn) return;
+      event.preventDefault();
+    }
+
+    function drop(event) {
+      if (!isLoggedIn) return;
+      event.preventDefault();
+      const target = event.target.closest('.member, .role');
+      const grid = event.target.closest('.members-grid, .roles-grid');
+      if (target && draggedElement !== target && !target.getAttribute('onclick')) {
+        const temp = document.createElement('div');
+        grid.insertBefore(temp, target);
+        grid.insertBefore(draggedElement, temp);
+        temp.remove();
+      } else if (!target) {
+        grid.appendChild(draggedElement);
+      }
+      draggedElement = null;
+    }
+
+    function saveChanges() {
+      if (!isLoggedIn) return;
+      localStorage.setItem('membersGrid', membersGrid.innerHTML);
+      localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
+      localStorage.setItem('eventsGrid', eventsGrid.innerHTML);
+      alert('Changes saved!');
+    }
+
+    function openModal() {
+      if (!isLoggedIn) return;
+      memberModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      memberModal.style.display = 'none';
+      document.querySelector('#member-name').value = '';
+      document.querySelector('#member-photo').value = '';
+    }
+
+    function saveMemberDetails() {
+      if (!isLoggedIn) return;
+      const name = document.querySelector('#member-name').value;
+      const photo = document.querySelector('#member-photo').value;
+      if (name && photo) {
+        const newMember = document.createElement('div');
+        newMember.className = 'member';
+        newMember.draggable = true;
+        newMember.ondragstart = drag;
+        newMember.innerHTML = `
+          <img src="${photo}" alt="${name}">
+          <h3>${name}</h3>
+          <span>Member</span>
+          <p>New member of the camp.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        `;
+        membersGrid.appendChild(newMember);
+        closeModal();
+      } else {
+        alert('Please fill in all fields');
+      }
+    }
+
+    function openRoleModal() {
+      if (!isLoggedIn) return;
+      roleModal.style.display = 'flex';
+    }
+
+    function closeRoleModal() {
+      roleModal.style.display = 'none';
+      document.querySelector('#role-title').value = '';
+      document.querySelector('#role-description').value = '';
+      document.querySelector('#role-icon').value = '';
+    }
+
+    function saveRoleDetails() {
+      if (!isLoggedIn) return;
+      const title = document.querySelector('#role-title').value;
+      const description = document.querySelector('#role-description').value;
+      const icon = document.querySelector('#role-icon').value || 'images/icons/generic-role.png';
+      if (title && description) {
+        const newRole = document.createElement('div');
+        newRole.className = 'role';
+        newRole.draggable = true;
+        newRole.ondragstart = drag;
+        newRole.innerHTML = `
+          <img src="${icon}" alt="${title} Icon">
+          <h3>${title}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>${description}</p>
+          </div>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
+        closeRoleModal();
+      } else {
+        alert('Please fill in the role title and description');
+      }
+    }
+
     function deleteMember(button) {
       if (!isLoggedIn) return;
       const member = button.closest('.member');
@@ -1527,174 +1642,80 @@
       }
     }
 
-    function drag(event) {
+    function deleteEvent(button) {
       if (!isLoggedIn) return;
-      draggedElement = event.target.closest('.member, .role');
-      if (draggedElement.getAttribute('onclick')) return;
-      event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
-      event.dataTransfer.setData('role-title', draggedElement.querySelector('h3').textContent);
-      event.dataTransfer.setData('is-member', draggedElement.classList.contains('member') ? 'true' : 'false');
-      if (draggedElement.classList.contains('member')) {
-        event.dataTransfer.setData('member-name', draggedElement.querySelector('h3').textContent);
-        event.dataTransfer.setData('member-photo', draggedElement.querySelector('img').src);
-        event.dataTransfer.setData('member-description', draggedElement.querySelector('p').textContent);
-        event.dataTransfer.setData('member-role', draggedElement.querySelector('span').textContent);
+      const event = button.closest('.event');
+      const title = event.querySelector('h3').textContent;
+      if (confirm(`Are you sure you want to delete the ${title} event?`)) {
+        event.remove();
+        alert(`The ${title} event has been removed.`);
       }
     }
 
-    function allowDrop(event) {
+    function openEventModal(button) {
       if (!isLoggedIn) return;
-      event.preventDefault();
+      const event = button.closest('.event');
+      const title = event.querySelector('h3').textContent;
+      const description = event.querySelector('p').textContent;
+      const imageSrc = event.querySelector('img').src;
+      document.querySelector('#event-title').value = title;
+      document.querySelector('#event-description').value = description;
+      eventModal.dataset.eventElement = event.outerHTML;
+      eventModal.dataset.imageSrc = imageSrc;
+      eventModal.style.display = 'flex';
     }
 
-    function drop(event) {
-      if (!isLoggedIn) return;
-      event.preventDefault();
-      const targetGrid = event.target.closest('.members-grid, .roles-grid');
-      if (!targetGrid) return;
-
-      const targetElement = event.target.closest('.member, .role');
-      const isMember = event.dataTransfer.getData('is-member') === 'true';
-      const roleTitle = event.dataTransfer.getData('role-title');
-
-      // Prevent dropping on the Add New Role element
-      if (targetElement && targetElement.getAttribute('onclick') === 'openRoleModal()') return;
-
-      // Handle reordering within the same grid
-      if ((targetGrid.classList.contains('members-grid') && isMember) || 
-          (targetGrid.classList.contains('roles-grid') && !isMember)) {
-        if (targetElement && targetElement !== draggedElement) {
-          targetGrid.insertBefore(draggedElement, targetElement);
-        } else {
-          targetGrid.insertBefore(draggedElement, targetGrid.lastElementChild);
-        }
-        return;
-      }
-
-      // Handle moving a role to members-grid
-      if (targetGrid.classList.contains('members-grid') && !isMember) {
-        memberModal.style.display = 'flex';
-        memberModal.dataset.roleTitle = roleTitle;
-        memberModal.dataset.sourceGrid = 'roles-grid';
-        memberModal.dataset.targetGrid = 'members-grid';
-      } 
-      // Handle moving a member to roles-grid
-      else if (targetGrid.classList.contains('roles-grid') && isMember) {
-        const memberDescription = event.dataTransfer.getData('member-description');
-        const memberRole = event.dataTransfer.getData('member-role');
-        const newRole = document.createElement('div');
-        newRole.className = 'role';
-        newRole.draggable = true;
-        newRole.ondragstart = drag;
-        newRole.innerHTML = `
-          <img src="images/icons/generic-role.png" alt="${memberRole} Icon">
-          <h3>${memberRole}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(memberRole)}" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <span>${memberRole}</span>
-            <p>${memberDescription}</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        `;
-        if (targetElement) {
-          targetGrid.insertBefore(newRole, targetElement);
-        } else {
-          targetGrid.insertBefore(newRole, targetGrid.lastElementChild);
-        }
-        draggedElement.remove();
-      }
+    function closeEventModal() {
+      eventModal.style.display = 'none';
+      document.querySelector('#event-title').value = '';
+      document.querySelector('#event-description').value = '';
+      document.querySelector('#event-image').value = '';
+      delete eventModal.dataset.eventElement;
+      delete eventModal.dataset.imageSrc;
     }
 
-    window.saveMemberDetails = function() {
-      const name = document.querySelector('#member-name').value;
-      const photo = document.querySelector('#member-photo').value;
-      if (!name || !photo) {
-        alert('Please fill in all fields');
-        return;
-      }
-
-      const roleTitle = memberModal.dataset.roleTitle;
-      const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
-      const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
-      const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)[textContent="${roleTitle}"]`);
-
-      if (roleElement) {
-        const newMember = document.createElement('div');
-        newMember.className = 'member';
-        newMember.draggable = true;
-        newMember.ondragstart = drag;
-        newMember.innerHTML = `
-          <img src="${photo}" alt="${name}">
-          <h3>${name}</h3>
-          <span>${roleTitle}</span>
-          <p>${roleElement.parentElement.querySelector('.tooltip p').textContent}</p>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        `;
-        targetGrid.appendChild(newMember);
-        roleElement.parentElement.remove();
-      }
-
-      memberModal.style.display = 'none';
-      document.querySelector('#member-name').value = '';
-      document.querySelector('#member-photo').value = '';
-    };
-
-    window.closeModal = function() {
-      memberModal.style.display = 'none';
-      document.querySelector('#member-name').value = '';
-      document.querySelector('#member-photo').value = '';
-    };
-
-    window.openRoleModal = function() {
-      if (!isLoggedIn) {
-        alert('Please log in to create a new role.');
-        return;
-      }
-      roleModal.style.display = 'flex';
-    };
-
-    window.closeRoleModal = function() {
-      roleModal.style.display = 'none';
-      document.querySelector('#role-title').value = '';
-      document.querySelector('#role-description').value = '';
-      document.querySelector('#role-icon').value = '';
-    };
-
-    window.saveRoleDetails = function() {
-      const title = document.querySelector('#role-title').value;
-      const description = document.querySelector('#role-description').value;
-      const icon = document.querySelector('#role-icon').value || 'images/icons/generic-role.png';
+    function saveEventDetails() {
+      if (!isLoggedIn) return;
+      const title = document.querySelector('#event-title').value;
+      const description = document.querySelector('#event-description').value;
+      const imageInput = document.querySelector('#event-image');
       if (!title || !description) {
-        alert('Please fill in the role title and description');
+        alert('Please fill in the event title and description');
         return;
       }
 
-      const newRole = document.createElement('div');
-      newRole.className = 'role';
-      newRole.draggable = true;
-      newRole.ondragstart = drag;
-      newRole.innerHTML = `
-        <img src="${icon}" alt="${title} Icon">
-        <h3>${title}</h3>
-        <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          <p>${description}</p>
-        </div>
-        <button class="delete-button" onclick="deleteRole(this)">×</button>
-      `;
-      rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
+      let imageSrc = eventModal.dataset.imageSrc || 'images/icons/generic-event.png';
+      if (imageInput.files && imageInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          imageSrc = e.target.result;
+          updateEventElement(title, description, imageSrc);
+        };
+        reader.readAsDataURL(imageInput.files[0]);
+      } else {
+        updateEventElement(title, description, imageSrc);
+      }
+    }
 
-      roleModal.style.display = 'none';
-      document.querySelector('#role-title').value = '';
-      document.querySelector('#role-description').value = '';
-      document.querySelector('#role-icon').value = '';
-    };
-
-    window.saveChanges = function() {
-      localStorage.setItem('membersGrid', membersGrid.innerHTML);
-      localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
-      alert('Changes saved successfully!');
-    };
+    function updateEventElement(title, description, imageSrc) {
+      const eventHtml = eventModal.dataset.eventElement;
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = eventHtml;
+      const eventElement = tempDiv.firstElementChild;
+      eventElement.querySelector('h3').textContent = title;
+      eventElement.querySelector('p').textContent = description;
+      eventElement.querySelector('img').src = imageSrc;
+      eventElement.querySelector('img').alt = `${title} Poster`;
+      const oldEvent = eventsGrid.querySelector(`[data-event="${eventHtml}"]`) || eventsGrid.querySelector(`h3:contains('${eventElement.querySelector('h3').textContent}')`)?.closest('.event');
+      if (oldEvent) {
+        eventsGrid.replaceChild(eventElement, oldEvent);
+      } else {
+        eventsGrid.appendChild(eventElement);
+      }
+      eventElement.querySelector('.edit-button').addEventListener('click', () => openEventModal(eventElement.querySelector('.edit-button')));
+      eventElement.querySelector('.delete-button').addEventListener('click', () => deleteEvent(eventElement.querySelector('.delete-button')));
+      closeEventModal();
+    }
   </script>
 </body>
 </html>
