@@ -462,8 +462,8 @@
     .role .tooltip {
       visibility: hidden;
       width: 180px;
-      background-color: rgba(255, 255, 255, 0.95);
-      color: #2b1b0f;
+      background-color: rgba(44, 29, 15, 0.95);
+      color: #f8e1b4;
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -589,26 +589,18 @@
     }
 
     .countdown-container {
-      text-align: center;
       padding: 20px;
       background: rgba(44, 29, 15, 0.85);
+      text-align: center;
       border-top: 2px solid #e67e22;
-      color: #f8e1b4;
     }
 
-    .countdown-container h2 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-
-    .countdown-container input[type="date"] {
+    .countdown-container input {
       padding: 8px;
       border-radius: 5px;
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
       color: #ffffff;
-      font-size: 0.9rem;
       margin: 10px;
     }
 
@@ -627,14 +619,6 @@
     .countdown-container button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .countdown-container .edit-countdown {
-      display: none;
-    }
-
-    .logged-in .countdown-container .edit-countdown {
-      display: inline-block;
     }
 
     footer {
@@ -830,7 +814,7 @@
         padding: 10px;
       }
 
-      .login-container form {
+      .login-container slams {
         flex-direction: column;
         gap: 5px;
       }
@@ -1143,10 +1127,10 @@
 
   <div class="modal" id="member-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeMemberModal()">×</button>
-      <h3 id="member-modal-title">Edit Member Details</h3>
+      <button class="close-button" onclick="closeModal()">×</button>
+      <h3 id="member-modal-title">Add Member Details</h3>
       <input type="text" id="member-name" placeholder="Member Name" required>
-      <input type="text" id="member-role" placeholder="Role (e.g., Camp Lead)" required>
+      <input type="text" id="member-role" placeholder="Member Role" required>
       <textarea id="member-description" placeholder="Member Description" required></textarea>
       <input type="file" id="member-photo" accept="image/*">
       <button onclick="saveMemberDetails()">Save</button>
@@ -1194,7 +1178,7 @@
       <h3>Edit Mission Section</h3>
       <input type="text" id="mission-title" placeholder="Section Title" required>
       <textarea id="mission-description" placeholder="Section Description" required></textarea>
-      <input type="file" id="mission-image" accept="image/*" multiple>
+      <input type="file" id="mission-image" accept="image/*">
       <button onclick="saveMissionDetails()">Save</button>
     </div>
   </div>
@@ -1241,6 +1225,7 @@
       <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
       <button class="edit-section-button" onclick="openMissionModal()">Edit Section</button>
       <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)"></div>
+      <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
     </section>
   </div>
 
@@ -1413,7 +1398,7 @@
             <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
           </div>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)"> personally</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
@@ -1442,131 +1427,135 @@
           <div class="tooltip">
             <p>Stocks first aid, provides harm reduction & emergency support.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</ Linking to external stylesheet for better maintainability
-<link rel="stylesheet" href="styles.css">
-
-<!-- Ensuring responsive meta tags -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta charset="UTF-8">
-
-<!-- SEO Improvements -->
-<meta name="description" content="Join Cosmic Rejex at Kiwiburn, a welcoming camp for emos, rockers, and bass-heads. Enjoy music, art, and community in a safe, inclusive space.">
-<meta name="keywords" content="Kiwiburn, Cosmic Rejex, sound camp, emo, rock, drum and bass, inclusive community">
-<meta name="author" content="Cosmic Rejex Team">
-
-<!-- Favicon for branding -->
-<link rel="icon" type="image/png" href="images/favicon.png">
-
-<!-- Open Graph for social media sharing -->
-<meta property="og:title" content="Join Cosmic Rejex at Kiwiburn">
-<meta property="og:description" content="A vibrant camp at Kiwiburn for music lovers and creative souls. Join us for unforgettable moments!">
-<meta property="og:image" content="images/coverphoto.png">
-<meta property="og:url" content="https://www.cosmicrejex.kiwiburn.com">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card for better Twitter sharing -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Join Cosmic Rejex at Kiwiburn">
-<meta name="twitter:description" content="A vibrant camp at Kiwiburn for music lovers and creative souls. Join us for unforgettable moments!">
-<meta name="twitter:image" content="images/coverphoto.png">
-
-<title>Join Cosmic Rejex - Kiwiburn</title>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
+          <h3>Fire & Rangers Lead</h3>
+          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" ..apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
+          <h3>Art & Decor Lead</h3>
+          <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Oversees decor, signs, and interactive art.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
+          <h3>Event & Theme Night Lead</h3>
+          <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Plans events, workshops, performances & group photos.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" onclick="openRoleModal()">
+          <img src="images/icons/add-role.png" alt="Add New Role Icon">
+          <h3>Add New Role</h3>
+          <p>Create a new role for the camp.</p>
+        </div>
       </div>
-      <button class="save-button" onclick="openRoleModal('create')">Add New Role</button>
+
+      <button class="save-button" onclick="saveChanges()">Save Changes</button>
+    </section>
+
+    <section class="section submit-section" id="join">
+      <h2>Request to Join</h2>
+      <p>Want to join our amazing community? Click below to submit your request!</p>
+      <a href="join-camp.html" class="submit-button">Click Here</a>
     </section>
   </div>
 
   <div class="events-container">
     <section class="section" id="events">
-      <h1>Upcoming Events</h1>
-      <p>Check out our camp’s events at Kiwiburn—join us for music, workshops, and good vibes!</p>
-      <div class="events-grid" ondragover="allowDrop(event)" ondrop="dropEvent(event)">
-        <div class="event" draggable="true" ondragstart="dragEvent(event)">
-          <img src="images/event1.jpg" alt="Emo Night">
-          <h3>Emo Night</h3>
-          <p class="event-date"><strong>Date:</strong> January 15, 2026</p>
+       <h1>Past Events</h1>
+      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
+      <div class="events-grid">
+        <div class="event">
+          <img src="images/Eventposter.jpg" alt="Emo Night Poster">
+          <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
+          <p>Emo night is back! Join us for a tribute to RAT camp as⠀we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
+          <p class="event-date"><strong>Date:</strong> January 28, 2025</p>
           <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 16, 2026, 2:00 AM</p>
-          <p>Relive the 2000s with emo anthems and heartfelt sing-alongs under the stars.</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 2:00 AM</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
-        <div class="event" draggable="true" ondragstart="dragEvent(event)">
-          <img src="images/event2.jpg" alt="Drum & Bass Rave">
-          <h3>Drum & Bass Rave</h3>
-          <p class="event-date"><strong>Date:</strong> January 16, 2026</p>
-          <p class="event-time"><strong>Time:</strong> 10:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 17, 2026, 4:00 AM</p>
-          <p>High-energy beats and rolling basslines to keep you dancing all night.</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+        <div class="event">
+          <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
+          <h3>Pole in the paddock</h3>
+          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+          <p class="event-date"><strong>Date:</strong> January 29, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 8:00 PM</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
-        <div class="event" draggable="true" ondragstart="dragEvent(event)">
-          <img src="images/event3.jpg" alt="Art Workshop">
-          <h3>Art Workshop</h3>
-          <p class="event-date"><strong>Date:</strong> January 17, 2026</p>
-          <p class="event-time"><strong>Time:</strong> 2:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 17, 2026, 4:00 PM</p>
-          <p>Create weird and wonderful art with our crew—supplies provided!</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+        <div class="event">
+          <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
+          <h3>Cosmic Connections</h3>
+          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
+          <p class="event-date"><strong>Date:</strong> January 30, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 7:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> January 30, 2025, 10:00 PM</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+        <div class="event">
+          <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
+          <h3>DJ Showcase & Open Decks</h3>
+          <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
+          <p class="event-date"><strong>Date:</strong> January 31, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> February 1, 2025, 3:00 AM</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
       </div>
-      <button class="save-button" onclick="openEventModal()">Add New Event</button>
     </section>
-  </div>
 
-  <div class="submit-section">
-    <section class="section" id="submit">
-      <h1>Submit an Event</h1>
-      <p>Got an idea for a camp event? Submit it below, and we’ll get in touch!</p>
-      <div class="form-container">
-        <form id="event-submit-form">
-          <input type="text" id="submit-title" placeholder="Event Title" required>
-          <textarea id="submit-description" placeholder="Event Description" required></textarea>
-          <input type="date" id="submit-date" required>
-          <input type="time" id="submit-time" required>
-          <input type="datetime-local" id="submit-end" required>
-          <input type="file" id="submit-image" accept="image/*">
-          <button type="submit" class="submit-button">Submit Event</button>
-        </form>
-      </div>
+    <section class="section submit-section" id="submit">
+      <h1>Submit Your Event</h1>
+      <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
+      <a href="submit-event.html" class="submit-button">Click Here</a>
     </section>
   </div>
 
   <div class="newsletter-container">
-    <section class="section newsletter-section" id="newsletter">
-      <h1>Join Our Newsletter</h1>
-      <p>Stay updated on camp news, events, and Kiwiburn prep—sign up below!</p>
-      <div class="form-container">
-        <form id="newsletter-form">
-          <input type="email" id="newsletter-email" placeholder="Your Email" required>
-          <button type="submit" class="submit-button">Subscribe</button>
-        </form>
-      </div>
+    <section class="section" id="newsletter">
+      <h2>Updates & Newsletter</h2>
+      <p>Stay in the loop with the latest camp news, application updates, and camp fee information!</p>
+      <a href="newsletter.html" class="submit-button">Read Our Newsletter</a>
     </section>
   </div>
 
   <div class="gallery-container">
     <section class="section" id="gallery">
       <h1>Camp Gallery</h1>
-      <p>A glimpse of our Cosmic Rejex moments—vibes, art, and community.</p>
-      <div class="gallery" id="main-gallery" ondragover="allowDrop(event)" ondrop="dropGalleryImage(event)">
+      <div class="gallery" id="camp-gallery" ondragover="allowDrop(event)" ondrop="dropGalleryImage(event)">
         <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-          <img src="images/gallery1.jpg" alt="Camp Fire">
+          <img src="images/photo1.jpg" alt="Gallery Image 1">
           <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
           <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
         </div>
         <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-          <img src="images/gallery2.jpg" alt="Night Dance">
+          <img src="images/photo2.jpg" alt="Gallery Image 2">
           <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
           <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
         </div>
         <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-          <img src="images/gallery3.jpg" alt="Art Installation">
+          <img src="images/photo3.jpg" alt="Gallery Image 3">
           <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
           <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
         </div>
@@ -1575,21 +1564,909 @@
     </section>
   </div>
 
-  <div class="countdown-container">
-    <h2>Countdown to Kiwiburn</h2>
-    <div class="countdown" id="countdown">Loading...</div>
-    <input type="date" id="countdown-date" style="display: none;">
-    <button class="edit-countdown" onclick="setCountdownDate()">Set Event Date</button>
-  </div>
+  <section class="contact-lead">
+    <h2>Need to reach out?</h2>
+    <p>Message the Camp Lead on Facebook:</p>
+    <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
+  </section>
 
-  <div class="contact-lead">
-    <h2>Contact Our Leads</h2>
-    <p>Reach out to our Camp Lead, Shanon Richards, at <a href="mailto:shanon@cosmicrejex.kiwiburn.com">shanon@cosmicrejex.kiwiburn.com</a> or Deputy Lead, Meghan Robson, at <a href="mailto:meghan@cosmicrejex.kiwiburn.com">meghan@cosmicrejex.kiwiburn.com</a>.</p>
-  </div>
+  <section class="countdown-container">
+    <h2>Kiwiburn Countdown</h2>
+    <input type="datetime-local" id="countdown-date" value="2025-01-27T12:00:00">
+    <button onclick="updateTargetDate()">Set Date</button>
+    <div class="countdown" id="countdown"></div>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 Cosmic Rejex | Kiwiburn | Designed with ❤️ by the Rejex Crew</p>
+  <footer class="footer">
+    <p>© 2025 Kiwiburn Camp</p>
   </footer>
 
   <script>
-    // Authentication
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const loginForm = document.querySelector('#login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const membersGrid = document.querySelector('.members-grid');
+    const rolesGrid = document.querySelector('.roles-grid');
+    const eventsGrid = document.querySelector('.events-grid');
+    const memberModal = document.querySelector('#member-modal');
+    const roleModal = document.querySelector('#role-modal');
+    const eventModal = document.querySelector('#event-modal');
+    const aboutModal = document.querySelector('#about-modal');
+    const missionModal = document.querySelector('#mission-modal');
+    const galleryImageModal = document.querySelector('#gallery-image-modal');
+    const aboutGallery = document.querySelector('#about-gallery');
+    const missionGallery = document.querySelector('#mission-gallery');
+    const campGallery = document.querySelector('#camp-gallery');
+    let draggedElement = null;
+    let draggedImage = null;
+    let isLoggedIn = false;
+    let targetDate = new Date('2025-01-27T12:00:00');
+
+    // Load saved data on page load
+    window.addEventListener('load', () => {
+      const savedMembers = localStorage.getItem('membersGrid');
+      const savedRoles = localStorage.getItem('rolesGrid');
+      const savedEvents = localStorage.getItem('eventsGrid');
+      const savedAbout = localStorage.getItem('aboutSection');
+      const savedMission = localStorage.getItem('missionSection');
+      const savedGallery = localStorage.getItem('campGallery');
+      const savedTargetDate = localStorage.getItem('targetDate');
+      if (savedMembers) {
+        membersGrid.innerHTML = savedMembers;
+        membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
+          arrow.addEventListener('click', handleScroll);
+        });
+        membersGrid.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteMember(button));
+        });
+        membersGrid.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openEditMemberModal(button));
+        });
+      }
+      if (savedRoles) {
+        rolesGrid.innerHTML = savedRoles;
+        rolesGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
+          arrow.addEventListener('click', handleScroll);
+        });
+        rolesGrid.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteRole(button));
+        });
+        rolesGrid.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openEditRoleModal(button));
+        });
+        ensureAddRoleElement();
+      }
+      if (savedEvents) {
+        eventsGrid.innerHTML = savedEvents;
+        eventsGrid.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openEventModal(button));
+        });
+        eventsGrid.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteEvent(button));
+        });
+      }
+      if (savedAbout) {
+        const aboutSection = document.querySelector('#about');
+        aboutSection.innerHTML = savedAbout;
+        aboutSection.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteAboutImage(button));
+        });
+        aboutSection.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openGalleryImageModal(button, 'about'));
+        });
+        aboutSection.querySelector('.edit-section-button')?.addEventListener('click', openAboutModal);
+      }
+      if (savedMission) {
+        const missionSection = document.querySelector('#mission');
+        missionSection.innerHTML = savedMission;
+        missionSection.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteMissionImage(button));
+        });
+        missionSection.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openGalleryImageModal(button, 'mission'));
+        });
+        missionSection.querySelector('.edit-section-button')?.addEventListener('click', openMissionModal);
+      }
+      if (savedGallery) {
+        campGallery.innerHTML = savedGallery;
+        campGallery.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteGalleryImage(button));
+        });
+        campGallery.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openGalleryImageModal(button, 'gallery'));
+        });
+      }
+      if (savedTargetDate) {
+        targetDate = new Date(savedTargetDate);
+        document.querySelector('#countdown-date').value = targetDate.toISOString().slice(0, 16);
+      }
+      updateButtonVisibility();
+    });
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.querySelector('#username').value;
+      const password = document.querySelector('#password').value;
+      if (username === 'shanon' && password === 'Audius1993!') {
+        isLoggedIn = true;
+        document.body.classList.add('logged-in');
+        loginForm.style.display = 'none';
+        logoutButton.style.display = 'block';
+        membersGrid.classList.add('draggable');
+        rolesGrid.classList.add('draggable');
+        aboutGallery.classList.add('draggable');
+        missionGallery.classList.add('draggable');
+        campGallery.classList.add('draggable');
+        document.querySelectorAll('.member, .role, .image-container').forEach(item => {
+          if (!item.getAttribute('onclick')) {
+            item.setAttribute('draggable', 'true');
+          }
+        });
+        updateButtonVisibility();
+      } else {
+        alert('Invalid credentials');
+      }
+    });
+
+    logoutButton.addEventListener('click', () => {
+      isLoggedIn = false;
+      document.body.classList.remove('logged-in');
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      membersGrid.classList.remove('draggable');
+      rolesGrid.classList.remove('draggable');
+      aboutGallery.classList.remove('draggable');
+      missionGallery.classList.remove('draggable');
+      campGallery.classList.remove('draggable');
+      document.querySelectorAll('.member, .role, .image-container').forEach(item => {
+        if (!item.getAttribute('onclick')) {
+          item.setAttribute('draggable', 'false');
+        }
+      });
+      updateButtonVisibility();
+    });
+
+function updateCountdown() {
+    const countdown = document.getElementById('countdown');
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+        countdown.textContent = "Kiwiburn is happening now!";
+        return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
+}
+
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+
+// Update target date for countdown
+function updateTargetDate() {
+    const dateInput = document.querySelector('#countdown-date').value;
+    if (dateInput) {
+        targetDate = new Date(dateInput);
+        localStorage.setItem('targetDate', targetDate.toISOString());
+        updateCountdown();
+    }
+}
+
+// Drag and drop for members and roles
+function drag(event) {
+    draggedElement = event.target.closest('.member, .role');
+    event.dataTransfer.setData('text/plain', '');
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    if (draggedElement && isLoggedIn) {
+        const container = event.target.closest('.members-grid, .roles-grid');
+        if (container) {
+            const items = container.querySelectorAll('.member, .role:not([onclick])');
+            let closestItem = null;
+            let minDistance = Infinity;
+            const mouseX = event.clientX;
+
+            items.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const distance = Math.abs(mouseX - centerX);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestItem = item;
+                }
+            });
+
+            if (closestItem && closestItem !== draggedElement) {
+                const rect = closestItem.getBoundingClientRect();
+                const isLeft = mouseX < rect.left + rect.width / 2;
+                if (isLeft) {
+                    container.insertBefore(draggedElement, closestItem);
+                } else {
+                    container.insertBefore(draggedElement, closestItem.nextSibling);
+                }
+                saveChanges();
+            }
+        }
+    }
+    draggedElement = null;
+}
+
+// Drag and drop for gallery images
+function dragGalleryImage(event) {
+    draggedImage = event.target.closest('.image-container');
+    event.dataTransfer.setData('text/plain', '');
+}
+
+function dragAboutImage(event) {
+    draggedImage = event.target.closest('.image-container');
+    event.dataTransfer.setData('text/plain', '');
+}
+
+function dragMissionImage(event) {
+    draggedImage = event.target.closest('.image-container');
+    event.dataTransfer.setData('text/plain', '');
+}
+
+function dropGalleryImage(event) {
+    event.preventDefault();
+    if (draggedImage && isLoggedIn) {
+        const gallery = event.target.closest('#camp-gallery');
+        if (gallery) {
+            const images = gallery.querySelectorAll('.image-container');
+            let closestImage = null;
+            let minDistance = Infinity;
+            const mouseX = event.clientX;
+
+            images.forEach(image => {
+                const rect = image.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const distance = Math.abs(mouseX - centerX);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestImage = image;
+                }
+            });
+
+            if (closestImage && closestImage !== draggedImage) {
+                const rect = closestImage.getBoundingClientRect();
+                const isLeft = mouseX < rect.left + rect.width / 2;
+                if (isLeft) {
+                    gallery.insertBefore(draggedImage, closestImage);
+                } else {
+                    gallery.insertBefore(draggedImage, closestImage.nextSibling);
+                }
+                localStorage.setItem('campGallery', campGallery.innerHTML);
+            }
+        }
+    }
+    draggedImage = null;
+}
+
+function dropAboutImage(event) {
+    event.preventDefault();
+    if (draggedImage && isLoggedIn) {
+        const gallery = event.target.closest('#about-gallery');
+        if (gallery) {
+            const images = gallery.querySelectorAll('.image-container');
+            let closestImage = null;
+            let minDistance = Infinity;
+            const mouseX = event.clientX;
+
+            images.forEach(image => {
+                const rect = image.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const distance = Math.abs(mouseX - centerX);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestImage = image;
+                }
+            });
+
+            if (closestImage && closestImage !== draggedImage) {
+                const rect = closestImage.getBoundingClientRect();
+                const isLeft = mouseX < rect.left + rect.width / 2;
+                if (isLeft) {
+                    gallery.insertBefore(draggedImage, closestImage);
+                } else {
+                    gallery.insertBefore(draggedImage, closestImage.nextSibling);
+                }
+                localStorage.setItem('aboutSection', document.querySelector('#about').innerHTML);
+            }
+        }
+    }
+    draggedImage = null;
+}
+
+function dropMissionImage(event) {
+    event.preventDefault();
+    if (draggedImage && isLoggedIn) {
+        const gallery = event.target.closest('#mission-gallery');
+        if (gallery) {
+            const images = gallery.querySelectorAll('.image-container');
+            let closestImage = null;
+            let minDistance = Infinity;
+            const mouseX = event.clientX;
+
+            images.forEach(image => {
+                const rect = image.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const distance = Math.abs(mouseX - centerX);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestImage = image;
+                }
+            });
+
+            if (closestImage && closestImage !== draggedImage) {
+                const rect = closestImage.getBoundingClientRect();
+                const isLeft = mouseX < rect.left + rect.width / 2;
+                if (isLeft) {
+                    gallery.insertBefore(draggedImage, closestImage);
+                } else {
+                    gallery.insertBefore(draggedImage, closestImage.nextSibling);
+                }
+                localStorage.setItem('missionSection', document.querySelector('#mission').innerHTML);
+            }
+        }
+    }
+    draggedImage = null;
+}
+
+// Modal handlers
+function openModal() {
+    memberModal.style.display = 'flex';
+    document.querySelector('#member-modal-title').textContent = 'Add Member Details';
+    document.querySelector('#member-name').value = '';
+    document.querySelector('#member-role').value = '';
+    document.querySelector('#member-description').value = '';
+    document.querySelector('#member-photo').value = '';
+}
+
+function closeModal() {
+    memberModal.style.display = 'none';
+}
+
+function openEditMemberModal(button) {
+    const member = button.closest('.member');
+    const name = member.querySelector('h3').textContent;
+    const role = member.querySelector('span').textContent;
+    const description = member.querySelector('p').textContent;
+    const imgSrc = member.querySelector('img').src;
+
+    document.querySelector('#member-modal-title').textContent = 'Edit Member Details';
+    document.querySelector('#member-name').value = name;
+    document.querySelector('#member-role').value = role;
+    document.querySelector('#member-description').value = description;
+    document.querySelector('#member-photo').dataset.currentSrc = imgSrc;
+    memberModal.style.display = 'flex';
+    memberModal.dataset.editing = member.dataset.id || member.querySelector('img').src;
+}
+
+function saveMemberDetails() {
+    const name = document.querySelector('#member-name').value;
+    const role = document.querySelector('#member-role').value;
+    const description = document.querySelector('#member-description').value;
+    const photo = document.querySelector('#member-photo').files[0];
+    const editingId = memberModal.dataset.editing;
+
+    if (name && role && description) {
+        let imgSrc = document.querySelector('#member-photo').dataset.currentSrc || 'images/default-member.jpg';
+        if (photo) {
+            imgSrc = URL.createObjectURL(photo);
+        }
+
+        if (editingId) {
+            const member = Array.from(membersGrid.querySelectorAll('.member')).find(
+                m => (m.dataset.id || m.querySelector('img').src) === editingId
+            );
+            if (member) {
+                member.querySelector('img').src = imgSrc;
+                member.querySelector('h3').textContent = name;
+                member.querySelector('span').textContent = role;
+                member.querySelector('p').textContent = description;
+                member.className = `member ${role.toLowerCase().replace(/\s/g, '-')}`;
+            }
+        } else {
+            const newMember = document.createElement('div');
+            newMember.className = `member ${role.toLowerCase().replace(/\s/g, '-')}`;
+            newMember.setAttribute('draggable', 'true');
+            newMember.dataset.id = Date.now();
+            newMember.innerHTML = `
+                <img src="${imgSrc}" alt="${name}">
+                <h3>${name}</h3>
+                <span>${role}</span>
+                <p>${description}</p>
+                <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+                <button class="delete-button" onclick="deleteMember(this)">×</button>
+            `;
+            newMember.addEventListener('dragstart', drag);
+            membersGrid.appendChild(newMember);
+        }
+
+        localStorage.setItem('membersGrid', membersGrid.innerHTML);
+        closeModal();
+    } else {
+        alert('Please fill in all fields');
+    }
+}
+
+function deleteMember(button) {
+    if (isLoggedIn && confirm('Are you sure you want to delete this member?')) {
+        button.closest('.member').remove();
+        localStorage.setItem('membersGrid', membersGrid.innerHTML);
+    }
+}
+
+function openRoleModal() {
+    roleModal.style.display = 'flex';
+    document.querySelector('#role-modal-title').textContent = 'Create New Role';
+    document.querySelector('#role-title').value = '';
+    document.querySelector('#role-description').value = '';
+    document.querySelector('#role-icon').value = '';
+    delete roleModal.dataset.editing;
+}
+
+function closeRoleModal() {
+    roleModal.style.display = 'none';
+}
+
+function openEditRoleModal(button) {
+    const role = button.closest('.role');
+    const title = role.querySelector('h3').textContent;
+    const description = role.querySelector('.tooltip p').textContent;
+    const iconSrc = role.querySelector('img').src;
+
+    document.querySelector('#role-modal-title').textContent = 'Edit Role';
+    document.querySelector('#role-title').value = title;
+    document.querySelector('#role-description').value = description;
+    document.querySelector('#role-icon').dataset.currentSrc = iconSrc;
+    roleModal.style.display = 'flex';
+    roleModal.dataset.editing = role.dataset.id || role.querySelector('img').src;
+}
+
+function saveRoleDetails() {
+    const title = document.querySelector('#role-title').value;
+    const description = document.querySelector('#role-description').value;
+    const icon = document.querySelector('#role-icon').files[0];
+    const editingId = roleModal.dataset.editing;
+
+    if (title && description) {
+        let iconSrc = document.querySelector('#role-icon').dataset.currentSrc || 'images/icons/default-role.png';
+        if (icon) {
+            iconSrc = URL.createObjectURL(icon);
+        }
+
+        if (editingId) {
+            const role = Array.from(rolesGrid.querySelectorAll('.role')).find(
+                r => (r.dataset.id || r.querySelector('img').src) === editingId
+            );
+            if (role) {
+                role.querySelector('img').src = iconSrc;
+                role.querySelector('h3').textContent = title;
+                role.querySelector('.tooltip p').textContent = description;
+                role.querySelector('.apply-button').href = `join-camp.html?role=${encodeURIComponent(title)}`;
+            }
+        } else {
+            const newRole = document.createElement('div');
+            newRole.className = 'role';
+            newRole.setAttribute('draggable', 'true');
+            newRole.dataset.id = Date.now();
+            newRole.innerHTML = `
+                <img src="${iconSrc}" alt="${title} Icon">
+                <h3>${title}</h3>
+                <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+                <div class="tooltip">
+                    <p>${description}</p>
+                </div>
+                <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+                <button class="delete-button" onclick="deleteRole(this)">×</button>
+            `;
+            newRole.addEventListener('dragstart', drag);
+            rolesGrid.insertBefore(newRole, rolesGrid.querySelector('.role[onclick]'));
+        }
+
+        localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
+        closeRoleModal();
+    } else {
+        alert('Please fill in all fields');
+    }
+}
+
+function deleteRole(button) {
+    if (isLoggedIn && confirm('Are you sure you want to delete this role?')) {
+        button.closest('.role').remove();
+        localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
+        ensureAddRoleElement();
+    }
+}
+
+function ensureAddRoleElement() {
+    if (!rolesGrid.querySelector('.role[onclick]')) {
+        const addRole = document.createElement('div');
+        addRole.className = 'role';
+        addRole.setAttribute('onclick', 'openRoleModal()');
+        addRole.innerHTML = `
+            <img src="images/icons/add-role.png" alt="Add New Role Icon">
+            <h3>Add New Role</h3>
+            <p>Create a new role for the camp.</p>
+        `;
+        rolesGrid.appendChild(addRole);
+    }
+}
+
+function openEventModal(button) {
+    const event = button.closest('.event');
+    const title = event.querySelector('h3').textContent;
+    const description = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent;
+    const date = event.querySelector('.event-date').textContent.replace('Date: ', '');
+    const time = event.querySelector('.event-time').textContent.replace('Time: ', '');
+    const end = event.querySelector('.event-end').textContent.replace('End Date & Time: ', '');
+    const imgSrc = event.querySelector('img').src;
+
+    document.querySelector('#event-title').value = title;
+    document.querySelector('#event-description').value = description;
+    document.querySelector('#event-date').value = new Date(date).toISOString().split('T')[0];
+    document.querySelector('#event-time').value = time;
+    document.querySelector('#event-end').value = new Date(end).toISOString().slice(0, 16);
+    document.querySelector('#event-image').dataset.currentSrc = imgSrc;
+    eventModal.style.display = 'flex';
+    eventModal.dataset.editing = event.dataset.id || event.querySelector('img').src;
+}
+
+function closeEventModal() {
+    eventModal.style.display = 'none';
+}
+
+function saveEventDetails() {
+    const title = document.querySelector('#event-title').value;
+    const description = document.querySelector('#event-description').value;
+    const date = document.querySelector('#event-date').value;
+    const time = document.querySelector('#event-time').value;
+    const end = document.querySelector('#event-end').value;
+    const image = document.querySelector('#event-image').files[0];
+    const editingId = eventModal.dataset.editing;
+
+    if (title && description && date && time && end) {
+        let imgSrc = document.querySelector('#event-image').dataset.currentSrc || 'images/default-event.jpg';
+        if (image) {
+            imgSrc = URL.createObjectURL(image);
+        }
+
+        const formattedDate = new Date(date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        const formattedEnd = new Date(end).toLocaleString('en-US', {
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        });
+
+        if (editingId) {
+            const event = Array.from(eventsGrid.querySelectorAll('.event')).find(
+                e => (e.dataset.id || e.querySelector('img').src) === editingId
+            );
+            if (event) {
+                event.querySelector('img').src = imgSrc;
+                event.querySelector('h3').textContent = title;
+                event.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent = description;
+                event.querySelector('.event-date').innerHTML = `<strong>Date:</strong> ${formattedDate}`;
+                event.querySelector('.event-time').innerHTML = `<strong>Time:</strong> ${time}`;
+                event.querySelector('.event-end').innerHTML = `<strong>End Date & Time:</strong> ${formattedEnd}`;
+            }
+        } else {
+            const newEvent = document.createElement('div');
+            newEvent.className = 'event';
+            newEvent.dataset.id = Date.now();
+            newEvent.innerHTML = `
+                <img src="${imgSrc}" alt="${title}">
+                <h3>${title}</h3>
+                <p>${description}</p>
+                <p class="event-date"><strong>Date:</strong> ${formattedDate}</p>
+                <p class="event-time"><strong>Time:</strong> ${time}</p>
+                <p class="event-end"><strong>End Date & Time:</strong> ${formattedEnd}</p>
+                <button class="edit-button" onclick="openEventModal(this)">✎</button>
+                <button class="delete-button" onclick="deleteEvent(this)">×</button>
+            `;
+            eventsGrid.appendChild(newEvent);
+        }
+
+        localStorage.setItem('eventsGrid', eventsGrid.innerHTML);
+        closeEventModal();
+    } else {
+        alert('Please fill in all fields');
+    }
+}
+
+function deleteEvent(button) {
+    if (isLoggedIn && confirm('Are you sure you want to delete this event?')) {
+        button.closest('.event').remove();
+        localStorage.setItem('eventsGrid', eventsGrid.innerHTML);
+    }
+}
+
+function openAboutModal() {
+    const section = document.querySelector('#about');
+    const title = section.querySelector('h1').textContent;
+    const description = section.querySelector('p').textContent;
+
+    document.querySelector('#about-title').value = title;
+    document.querySelector('#about-description').value = description;
+    aboutModal.style.display = 'flex';
+}
+
+function closeAboutModal() {
+    aboutModal.style.display = 'none';
+}
+
+function saveAboutDetails() {
+    const title = document.querySelector('#about-title').value;
+    const description = document.querySelector('#about-description').value;
+
+    if (title && description) {
+        const section = document.querySelector('#about');
+        section.querySelector('h1').textContent = title;
+        section.querySelector('p').textContent = description;
+        localStorage.setItem('aboutSection', section.innerHTML);
+        closeAboutModal();
+    } else {
+        alert('Please fill in all fields');
+    }
+}
+
+function openMissionModal() {
+    const section = document.querySelector('#mission');
+    const title = section.querySelector('h1').textContent;
+    const description = section.querySelector('p').textContent;
+
+    document.querySelector('#mission-title').value = title;
+    document.querySelector('#mission-description').value = description;
+    missionModal.style.display = 'flex';
+}
+
+function closeMissionModal() {
+    missionModal.style.display = 'none';
+}
+
+function saveMissionDetails() {
+    const title = document.querySelector('#mission-title').value;
+    const description = document.querySelector('#mission-description').value;
+    const image = document.querySelector('#mission-image').files[0];
+
+    if (title && description) {
+        const section = document.querySelector('#mission');
+        section.querySelector('h1').textContent = title;
+        section.querySelector('p').textContent = description;
+
+        if (image) {
+            const imgSrc = URL.createObjectURL(image);
+            const gallery = document.querySelector('#mission-gallery');
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            imageContainer.setAttribute('draggable', 'true');
+            imageContainer.innerHTML = `
+                <img src="${imgSrc}" alt="${title}">
+                <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+                <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+            `;
+            imageContainer.addEventListener('dragstart', dragMissionImage);
+            gallery.appendChild(imageContainer);
+        }
+
+        localStorage.setItem('missionSection', section.innerHTML);
+        closeMissionModal();
+    } else {
+        alert('Please fill in all fields');
+    }
+}
+
+function openGalleryImageModal(button, type) {
+    const imageContainer = button.closest('.image-container');
+    const alt = imageContainer.querySelector('img').alt;
+    const src = imageContainer.querySelector('img').src;
+
+    document.querySelector('#gallery-image-alt').value = alt;
+    document.querySelector('#gallery-image-file').dataset.currentSrc = src;
+    galleryImageModal.style.display = 'flex';
+    galleryImageModal.dataset.type = type;
+    galleryImageModal.dataset.editing = src;
+}
+
+function closeGalleryImageModal() {
+    galleryImageModal.style.display = 'none';
+}
+
+function saveGalleryImageDetails() {
+    const alt = document.querySelector('#gallery-image-alt').value;
+    const file = document.querySelector('#gallery-image-file').files[0];
+    const type = galleryImageModal.dataset.type;
+    const editingSrc = galleryImageModal.dataset.editing;
+
+    if (alt) {
+        let gallery;
+        let storageKey;
+        if (type === 'about') {
+            gallery = document.querySelector('#about-gallery');
+            storageKey = 'aboutSection';
+        } else if (type === 'mission') {
+            gallery = document.querySelector('#mission-gallery');
+            storageKey = 'missionSection';
+        } else {
+            gallery = document.querySelector('#camp-gallery');
+            storageKey = 'campGallery';
+        }
+
+        const imageContainer = Array.from(gallery.querySelectorAll('.image-container')).find(
+            container => container.querySelector('img').src === editingSrc
+        );
+
+        if (imageContainer) {
+            const img = imageContainer.querySelector('img');
+            img.alt = alt;
+            if (file) {
+                img.src = URL.createObjectURL(file);
+            }
+            localStorage.setItem(storageKey, gallery.closest('.section').innerHTML || gallery.innerHTML);
+            closeGalleryImageModal();
+        }
+    } else {
+        alert('Please provide alt text');
+    }
+}
+
+function uploadAboutImage() {
+    if (!isLoggedIn) return;
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const imgSrc = URL.createObjectURL(file);
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            imageContainer.setAttribute('draggable', 'true');
+            imageContainer.innerHTML = `
+                <img src="${imgSrc}" alt="New Image">
+                <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
+                <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
+            `;
+            imageContainer.addEventListener('dragstart', dragAboutImage);
+            aboutGallery.appendChild(imageContainer);
+            localStorage.setItem('aboutSection', document.querySelector('#about').innerHTML);
+        }
+    };
+    input.click();
+}
+
+function deleteAboutImage(button) {
+    if (isLoggedIn && confirm('Are you sure you want to delete this image?')) {
+        button.closest('.image-container').remove();
+        localStorage.setItem('aboutSection', document.querySelector('#about').innerHTML);
+    }
+}
+
+function uploadMissionImage() {
+    if (!isLoggedIn) return;
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const imgSrc = URL.createObjectURL(file);
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            imageContainer.setAttribute('draggable', 'true');
+            imageContainer.innerHTML = `
+                <img src="${imgSrc}" alt="New Image">
+                <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+                <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+            `;
+            imageContainer.addEventListener('dragstart', dragMissionImage);
+            missionGallery.appendChild(imageContainer);
+            localStorage.setItem('missionSection', document.querySelector('#mission').innerHTML);
+        }
+    };
+    input.click();
+}
+
+function deleteMissionImage(button) {
+    if (isLoggedIn && confirm('Are you sure you want to delete this image?')) {
+        button.closest('.image-container').remove();
+        localStorage.setItem('missionSection', document.querySelector('#mission').innerHTML);
+    }
+}
+
+function uploadGalleryImage() {
+    if (!isLoggedIn) return;
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const imgSrc = URL.createObjectURL(file);
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image-container';
+            imageContainer.setAttribute('draggable', 'true');
+            imageContainer.innerHTML = `
+                <img src="${imgSrc}" alt="New Image">
+                <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
+                <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+            `;
+            imageContainer.addEventListener('dragstart', dragGalleryImage);
+            campGallery.appendChild(imageContainer);
+            localStorage.setItem('campGallery', campGallery.innerHTML);
+        }
+    };
+    input.click();
+}
+
+function deleteGalleryImage(button) {
+    if (isLoggedIn && confirm('Are you sure you want to delete this image?')) {
+        button.closest('.image-container').remove();
+        localStorage.setItem('campGallery', campGallery.innerHTML);
+    }
+}
+
+function saveChanges() {
+    localStorage.setItem('membersGrid', membersGrid.innerHTML);
+    localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
+}
+
+function handleScroll(event) {
+    const container = event.target.closest('.members-grid, .roles-grid');
+    const direction = event.target.classList.contains('left') ? -1 : 1;
+    const scrollAmount = container.clientWidth * 0.8;
+    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+}
+
+function updateButtonVisibility() {
+    document.querySelectorAll('.save-button, .edit-section-button').forEach(button => {
+        button.style.display = isLoggedIn ? 'block' : 'none';
+    });
+    document.querySelectorAll('.delete-button, .edit-button').forEach(button => {
+        button.style.display = isLoggedIn ? 'block' : 'none';
+    });
+}
+
+// Initialize scroll arrows
+document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+    arrow.addEventListener('click', handleScroll);
+});
+
+// Smooth scrolling for nav links
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+        if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+        }
+    });
+});
+
+// Initialize countdown
+updateCountdown();
+  </script>
+</body>
+</html>
