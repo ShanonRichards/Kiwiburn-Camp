@@ -376,7 +376,7 @@
       color: #e67e22;
     }
 
-    .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
+    .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button {
       display: none;
       position: absolute;
       top: 5px;
@@ -396,12 +396,16 @@
       right: 35px;
     }
 
-    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover {
+    .role .edit-button {
+      right: 35px;
+    }
+
+    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover, .role .edit-button:hover {
       background: rgba(230, 126, 34, 0.9);
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button, .logged-in .event .delete-button {
+    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button, .logged-in .event .delete-button, .logged-in .role .edit-button {
       display: block;
     }
 
@@ -427,7 +431,7 @@
       visibility: hidden;
       width: 180px;
       background-color: #000000;
-      color: #f8e1b4;
+      color: #ffffff; /* Changed to white for better visibility */
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -815,13 +819,17 @@
         font-size: 0.9em;
       }
 
-      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button {
         width: 20px;
         height: 20px;
         font-size: 0.8em;
       }
 
       .event .edit-button {
+        right: 30px;
+      }
+
+      .role .edit-button {
         right: 30px;
       }
 
@@ -938,16 +946,20 @@
 
       .member.camp-lead::before, .member.deputy-lead::before {
         font-size: 1rem;
-        top: -12px;
+        top: -12 Muirpx;
       }
 
-      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button {
         width: 18px;
         height: 18px;
         font-size: 0.7em;
       }
 
       .event .edit-button {
+        right: 25px;
+      }
+
+      .role .edit-button {
         right: 25px;
       }
 
@@ -1041,10 +1053,10 @@
   <div class="modal" id="role-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeRoleModal()">×</button>
-      <h3>Create New Role</h3>
+      <h3 id="role-modal-title">Create New Role</h3>
       <input type="text" id="role-title" placeholder="Role Title" required>
       <textarea id="role-description" placeholder="Role Description" required></textarea>
-      <input type="text" id="role-icon" placeholder="Icon URL (optional)">
+      <input type="file" id="role-icon" accept="image/*">
       <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
@@ -1055,9 +1067,9 @@
       <h3>Edit Event</h3>
       <input type="text" id="event-title" placeholder="Event Title" required>
       <textarea id="event-description" placeholder="Event Description" required></textarea>
-      <input type="text" id="event-date" placeholder="Event Date (e.g., January 28, 2025)" required>
-      <input type="text" id="event-time" placeholder="Event Time (e.g., 8:00 PM)" required>
-      <input type="text" id="event-end" placeholder="End Date & Time (e.g., January 29, 2025, 2:00 AM)" required>
+      <input type="date" id="event-date" required>
+      <input type="time" id="event-time" required>
+      <input type="datetime-local" id="event-end" required>
       <input type="file" id="event-image" accept="image/*">
       <button onclick="saveEventDetails()">Save</button>
     </div>
@@ -1214,6 +1226,7 @@
           <div class="tooltip">
             <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1223,6 +1236,7 @@
           <div class="tooltip">
             <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1232,6 +1246,7 @@
           <div class="tooltip">
             <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1241,6 +1256,7 @@
           <div class="tooltip">
             <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1250,6 +1266,7 @@
           <div class="tooltip">
             <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1259,6 +1276,7 @@
           <div class="tooltip">
             <p>Stocks first aid, provides harm reduction & emergency support.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1268,6 +1286,7 @@
           <div class="tooltip">
             <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1277,6 +1296,7 @@
           <div class="tooltip">
             <p>Oversees decor, signs, and interactive art.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1286,6 +1306,7 @@
           <div class="tooltip">
             <p>Plans events, workshops, performances & group photos.</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" onclick="openRoleModal()">
@@ -1313,7 +1334,7 @@
         <div class="event">
           <img src="images/Eventposter.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-          <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
+          <p>Emo night is back! Join us for a tribute to RAT camp as⠀we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
           <p class="event-date"><strong>Date:</strong> January 28, 2025</p>
           <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
           <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 2:00 AM</p>
@@ -1348,7 +1369,7 @@
           <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
           <p class="event-end"><strong>End Date & Time:</strong> February 1, 2025, 3:00 AM</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
-          < بگذارید class="delete-button" onclick="deleteEvent(this)">×</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
       </div>
     </section>
@@ -1426,6 +1447,9 @@
         });
         rolesGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteRole(button));
+        });
+        rolesGrid.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openEditRoleModal(button));
         });
         const addRoleElement = rolesGrid.querySelector('.role[onclick="openRoleModal()"]');
         if (!addRoleElement) {
@@ -1590,6 +1614,7 @@
         `;
         membersGrid.appendChild(newMember);
         closeModal();
+        saveChanges();
       } else {
         alert('Please fill in all fields');
       }
@@ -1597,7 +1622,24 @@
 
     function openRoleModal() {
       if (!isLoggedIn) return;
+      document.querySelector('#role-modal-title').textContent = 'Create New Role';
       roleModal.style.display = 'flex';
+      roleModal.dataset.mode = 'create';
+    }
+
+    function openEditRoleModal(button) {
+      if (!isLoggedIn) return;
+      const role = button.closest('.role');
+      const title = role.querySelector('h3').textContent;
+      const description = role.querySelector('.tooltip p').textContent;
+      const iconSrc = role.querySelector('img').src;
+      document.querySelector('#role-title').value = title;
+      document.querySelector('#role-description').value = description;
+      document.querySelector('#role-icon').value = '';
+      document.querySelector('#role-modal-title').textContent = 'Edit Role';
+      roleModal.style.display = 'flex';
+      roleModal.dataset.mode = 'edit';
+      roleModal.dataset.roleElement = role.outerHTML;
     }
 
     function closeRoleModal() {
@@ -1605,32 +1647,63 @@
       document.querySelector('#role-title').value = '';
       document.querySelector('#role-description').value = '';
       document.querySelector('#role-icon').value = '';
+      delete roleModal.dataset.mode;
+      delete roleModal.dataset.roleElement;
     }
 
     function saveRoleDetails() {
       if (!isLoggedIn) return;
       const title = document.querySelector('#role-title').value;
       const description = document.querySelector('#role-description').value;
-      const icon = document.querySelector('#role-icon').value || 'images/icons/generic-role.png';
-      if (title && description) {
-        const newRole = document.createElement('div');
-        newRole.className = 'role';
-        newRole.draggable = true;
-        newRole.ondragstart = drag;
-        newRole.innerHTML = `
-          <img src="${icon}" alt="${title} Icon">
-          <h3>${title}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>${description}</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        `;
-        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
-        closeRoleModal();
-      } else {
+      const iconInput = document.querySelector('#role-icon');
+      const mode = roleModal.dataset.mode;
+
+      if (!title || !description) {
         alert('Please fill in the role title and description');
+        return;
       }
+
+      let iconSrc = mode === 'edit' ? rolesGrid.querySelector(`h3:contains('${title}')`)?.closest('.role')?.querySelector('img').src || 'images/icons/generic-role.png' : 'images/icons/generic-role.png';
+
+      if (iconInput.files && iconInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          iconSrc = e.target.result;
+          updateRoleElement(title, description, iconSrc, mode);
+        };
+        reader.readAsDataURL(iconInput.files[0]);
+      } else {
+        updateRoleElement(title, description, iconSrc, mode);
+      }
+    }
+
+    function updateRoleElement(title, description, iconSrc, mode) {
+      const newRole = document.createElement('div');
+      newRole.className = 'role';
+      newRole.draggable = true;
+      newRole.ondragstart = drag;
+      newRole.innerHTML = `
+        <img src="${iconSrc}" alt="${title} Icon">
+        <h3>${title}</h3>
+        <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+        <div class="tooltip">
+          <p>${description}</p>
+        </div>
+        <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteRole(this)">×</button>
+      `;
+
+      if (mode === 'edit') {
+        const oldRole = rolesGrid.querySelector(`[data-role="${roleModal.dataset.roleElement}"]`) || rolesGrid.querySelector(`h3:contains('${title}')`)?.closest('.role');
+        if (oldRole) {
+          rolesGrid.replaceChild(newRole, oldRole);
+        }
+      } else {
+        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
+      }
+
+      closeRoleModal();
+      saveChanges();
     }
 
     function deleteMember(button) {
@@ -1651,11 +1724,13 @@
           <div class="tooltip">
             <p>${description}</p>
           </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         `;
         rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
         member.remove();
         alert(`${name} has been removed from the members list and their role has been added to Roles to Be Filled.`);
+        saveChanges();
       }
     }
 
@@ -1666,6 +1741,7 @@
       if (confirm(`Are you sure you want to delete the ${title} role?`)) {
         role.remove();
         alert(`The ${title} role has been removed.`);
+        saveChanges();
       }
     }
 
@@ -1676,6 +1752,7 @@
       if (confirm(`Are you sure you want to delete the ${title} event?`)) {
         event.remove();
         alert(`The ${title} event has been removed.`);
+        saveChanges();
       }
     }
 
@@ -1684,15 +1761,31 @@
       const event = button.closest('.event');
       const title = event.querySelector('h3').textContent;
       const description = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent;
-      const date = event.querySelector('.event-date')?.textContent.replace('Date: ', '') || '';
-      const time = event.querySelector('.event-time')?.textContent.replace('Time: ', '') || '';
-      const end = event.querySelector('.event-end')?.textContent.replace('End Date & Time: ', '') || '';
+      const dateText = event.querySelector('.event-date')?.textContent.replace('Date: ', '') || '';
+      const timeText = event.querySelector('.event-time')?.textContent.replace('Time: ', '') || '';
+      const endText = event.querySelector('.event-end')?.textContent.replace('End Date & Time: ', '') || '';
       const imageSrc = event.querySelector('img').src;
+
+      // Parse date and time for input fields
+      const date = new Date(dateText);
+      const dateValue = isNaN(date) ? '' : date.toISOString().split('T')[0];
+      const timeMatch = timeText.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      let timeValue = '';
+      if (timeMatch) {
+        let [_, hours, minutes, period] = timeMatch;
+        hours = parseInt(hours);
+        if (period.toUpperCase() === 'PM' && hours !== 12) hours += 12;
+        if (period.toUpperCase() === 'AM' && hours === 12) hours = 0;
+        timeValue = `${hours.toString().padStart(2, '0')}:${minutes}`;
+      }
+      const endDateTime = new Date(endText);
+      const endValue = isNaN(endDateTime) ? '' : endDateTime.toISOString().slice(0, 16);
+
       document.querySelector('#event-title').value = title;
       document.querySelector('#event-description').value = description;
-      document.querySelector('#event-date').value = date;
-      document.querySelector('#event-time').value = time;
-      document.querySelector('#event-end').value = end;
+      document.querySelector('#event-date').value = dateValue;
+      document.querySelector('#event-time').value = timeValue;
+      document.querySelector('#event-end').value = endValue;
       eventModal.dataset.eventElement = event.outerHTML;
       eventModal.dataset.imageSrc = imageSrc;
       eventModal.style.display = 'flex';
@@ -1705,77 +1798,241 @@
       document.querySelector('#event-date').value = '';
       document.querySelector('#event-time').value = '';
       document.querySelector('#event-end').value = '';
-      document.querySelector('#event-image').value = '';
+      document.querySelector('#event-image').value  = '';
       delete eventModal.dataset.eventElement;
       delete eventModal.dataset.imageSrc;
     }
 
-    function saveEventDetails() {
-      if (!isLoggedIn) return;
-      const title = document.querySelector('#event-title').value;
-      const description = document.querySelector('#event-description').value;
-      const date = document.querySelector('#event-date').value;
-      const time = document.querySelector('#event-time').value;
-      const end = document.querySelector('#event-end').value;
-      const imageInput = document.querySelector('#event-image');
-      if (!title || !description || !date || !time || !end) {
-        alert('Please fill in all event fields');
-        return;
-      }
+function saveEventDetails() {
+  if (!isLoggedIn) return;
+  const title = document.querySelector('#event-title').value;
+  const description = document.querySelector('#event-description').value;
+  const date = document.querySelector('#event-date').value;
+  const time = document.querySelector('#event-time').value;
+  const end = document.querySelector('#event-end').value;
+  const imageInput = document.querySelector('#event-image');
+  const oldEventHTML = eventModal.dataset.eventElement;
+  let imageSrc = eventModal.dataset.imageSrc || 'images/default-event.jpg';
 
-      let imageSrc = eventModal.dataset.imageSrc || 'images/icons/generic-event.png';
-      if (imageInput.files && imageInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          imageSrc = e.target.result;
-          updateEventElement(title, description, date, time, end, imageSrc);
-        };
-        reader.readAsDataURL(imageInput.files[0]);
-      } else {
-        updateEventElement(title, description, date, time, end, imageSrc);
-      }
-    }
+  if (!title || !description || !date || !time || !end) {
+    alert('Please fill in all fields');
+    return;
+  }
 
-    function updateEventElement(title, description, date, time, end, imageSrc) {
-      const eventHtml = eventModal.dataset.eventElement;
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = eventHtml;
-      const eventElement = tempDiv.firstElementChild;
-      eventElement.querySelector('h3').textContent = title;
-      eventElement.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent = description;
-      let dateElement = eventElement.querySelector('.event-date');
-      if (!dateElement) {
-        dateElement = document.createElement('p');
-        dateElement.className = 'event-date';
-        eventElement.insertBefore(dateElement, eventElement.querySelector('.edit-button'));
-      }
-      dateElement.innerHTML = `<strong>Date:</strong> ${date}`;
-      let timeElement = eventElement.querySelector('.event-time');
-      if (!timeElement) {
-        timeElement = document.createElement('p');
-        timeElement.className = 'event-time';
-        eventElement.insertBefore(timeElement, eventElement.querySelector('.edit-button'));
-      }
-      timeElement.innerHTML = `<strong>Time:</strong> ${time}`;
-      let endElement = eventElement.querySelector('.event-end');
-      if (!endElement) {
-        endElement = document.createElement('p');
-        endElement.className = 'event-end';
-        eventElement.insertBefore(endElement, eventElement.querySelector('.edit-button'));
-      }
-      endElement.innerHTML = `<strong>End Date & Time:</strong> ${end}`;
-      eventElement.querySelector('img').src = imageSrc;
-      eventElement.querySelector('img').alt = `${title} Poster`;
-      const oldEvent = eventsGrid.querySelector(`[data-event="${eventHtml}"]`) || eventsGrid.querySelector(`h3:contains('${eventElement.querySelector('h3').textContent}')`)?.closest('.event');
-      if (oldEvent) {
-        eventsGrid.replaceChild(eventElement, oldEvent);
-      } else {
-        eventsGrid.appendChild(eventElement);
-      }
-      eventElement.querySelector('.edit-button').addEventListener('click', () => openEventModal(eventElement.querySelector('.edit-button')));
-      eventElement.querySelector('.delete-button').addEventListener('click', () => deleteEvent(eventElement.querySelector('.delete-button')));
-      closeEventModal();
+  // Format date and time for display
+  const dateObj = new Date(date);
+  const formattedDate = dateObj.toLocaleDateString('en-NZ', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+  const timeObj = new Date(`1970-01-01T${time}`);
+  const formattedTime = timeObj.toLocaleTimeString('en-NZ', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
+  const endObj = new Date(end);
+  const formattedEnd = endObj.toLocaleString('en-NZ', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
+
+  // Handle image upload
+  if (imageInput.files && imageInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      imageSrc = e.target.result;
+      updateEventElement(title, description, formattedDate, formattedTime, formattedEnd, imageSrc, oldEventHTML);
+    };
+    reader.readAsDataURL(imageInput.files[0]);
+  } else {
+    updateEventElement(title, description, formattedDate, formattedTime, formattedEnd, imageSrc, oldEventHTML);
+  }
+}
+
+function updateEventElement(title, description, formattedDate, formattedTime, formattedEnd, imageSrc, oldEventHTML) {
+  const newEvent = document.createElement('div');
+  newEvent.className = 'event';
+  newEvent.innerHTML = `
+    <img src="${imageSrc}" alt="${title} Poster">
+    <h3>${title}</h3>
+    <p>${description}</p>
+    <p class="event-date"><strong>Date:</strong> ${formattedDate}</p>
+    <p class="event-time"><strong>Time:</strong> ${formattedTime}</p>
+    <p class="event-end"><strong>End Date & Time:</strong> ${formattedEnd}</p>
+    <button class="edit-button" onclick="openEventModal(this)">✎</button>
+    <button class="delete-button" onclick="deleteEvent(this)">×</button>
+  `;
+
+  if (oldEventHTML) {
+    const oldEvent = Array.from(eventsGrid.children).find(
+      (child) => child.outerHTML === oldEventHTML
+    );
+    if (oldEvent) {
+      eventsGrid.replaceChild(newEvent, oldEvent);
+    } else {
+      eventsGrid.appendChild(newEvent);
     }
-  </script>
+  } else {
+    eventsGrid.appendChild(newEvent);
+  }
+
+  closeEventModal();
+  saveChanges();
+}
+
+// jQuery-like :contains selector for pure JavaScript
+// Used in saveRoleDetails for finding roles by title
+function containsSelector(selector, text) {
+  const elements = document.querySelectorAll(selector);
+  return Array.from(elements).filter((element) =>
+    element.textContent.includes(text)
+  );
+}
+
+// Ensure edit and delete buttons are only visible when logged in
+function updateButtonVisibility() {
+  document.querySelectorAll('.delete-button, .edit-button').forEach((button) => {
+    button.style.display = isLoggedIn ? 'block' : 'none';
+  });
+}
+
+// Update button visibility on page load and login/logout
+document.addEventListener('DOMContentLoaded', updateButtonVisibility);
+logoutButton.addEventListener('click', updateButtonVisibility);
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = document.querySelector('#username').value;
+  const password = document.querySelector('#password').value;
+  if (username === 'shanon' && password === 'Audius1993!') {
+    updateButtonVisibility();
+  }
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Close modals when clicking outside
+document.querySelectorAll('.modal').forEach((modal) => {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      if (modal.id === 'member-modal') closeModal();
+      if (modal.id === 'role-modal') closeRoleModal();
+      if (modal.id === 'event-modal') closeEventModal();
+    }
+  });
+});
+
+// Handle window resize for responsive adjustments
+window.addEventListener('resize', () => {
+  // Adjust scroll arrows visibility based on grid overflow
+  const grids = [membersGrid, rolesGrid];
+  grids.forEach((grid) => {
+    const leftArrow = grid.querySelector('.scroll-arrow.left');
+    const rightArrow = grid.querySelector('.scroll-arrow.right');
+    if (grid.scrollWidth > grid.clientWidth) {
+      leftArrow.style.display = 'block';
+      rightArrow.style.display = 'block';
+    } else {
+      leftArrow.style.display = 'none';
+      rightArrow.style.display = 'none';
+    }
+  });
+});
+
+// Trigger resize event on load to set initial scroll arrow visibility
+window.dispatchEvent(new Event('resize'));
+
+// Prevent default form submission for any forms (e.g., newsletter, join)
+document.querySelectorAll('form').forEach((form) => {
+  form.addEventListener('submit', (e) => {
+    if (form.id !== 'login-form') {
+      e.preventDefault();
+      alert('Form submitted! (This is a demo; no data is sent.)');
+    }
+  });
+});
+
+// Add hover effects for gallery images
+document.querySelectorAll('.gallery img').forEach((img) => {
+  img.addEventListener('mouseenter', () => {
+    img.style.transform = 'scale(1.05)';
+    img.style.boxShadow = '0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12';
+  });
+  img.addEventListener('mouseleave', () => {
+    img.style.transform = 'scale(1)';
+    img.style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+  });
+});
+
+// Add click event for roles to open modal only for the "Add New Role" element
+rolesGrid.addEventListener('click', (e) => {
+  const role = e.target.closest('.role');
+  if (role && role.querySelector('h3').textContent === 'Add New Role') {
+    openRoleModal();
+  }
+});
+
+// Ensure roles grid maintains the "Add New Role" element after modifications
+function ensureAddRoleElement() {
+  const addRoleElement = Array.from(rolesGrid.children).find(
+    (child) => child.querySelector('h3')?.textContent === 'Add New Role'
+  );
+  if (!addRoleElement) {
+    const newRole = document.createElement('div');
+    newRole.className = 'role';
+    newRole.setAttribute('onclick', 'openRoleModal()');
+    newRole.innerHTML = `
+      <img src="images/icons/add-role.png" alt="Add New Role Icon">
+      <h3>Add New Role</h3>
+      <p>Create a new role for the camp.</p>
+    `;
+    rolesGrid.appendChild(newRole);
+  }
+}
+
+// Call ensureAddRoleElement after role modifications
+document.addEventListener('DOMContentLoaded', ensureAddRoleElement);
+rolesGrid.addEventListener('DOMSubtreeModified', ensureAddRoleElement);
+
+// Initialize tooltips for roles
+function initializeTooltips() {
+  document.querySelectorAll('.role').forEach((role) => {
+    const tooltip = role.querySelector('.tooltip');
+    if (tooltip) {
+      role.addEventListener('mouseenter', () => {
+        tooltip.style.visibility = 'visible';
+        tooltip.style.opacity = '1';
+        tooltip.style.transform = 'translate(-50%, -110%)';
+      });
+      role.addEventListener('mouseleave', () => {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+        tooltip.style.transform = 'translate(-50%, -100%)';
+      });
+    }
+  });
+}
+
+// Initialize tooltips on load and after roles grid changes
+document.addEventListener('DOMContentLoaded', initializeTooltips);
+rolesGrid.addEventListener('DOMSubtreeModified', initializeTooltips);
+</script>
+
 </body>
 </html>
