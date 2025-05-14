@@ -64,7 +64,6 @@
 
     .login-container {
       display: flex;
-      justify-content: center;
       justify-content: flex-end;
       padding: 10px 20px;
       background: rgba(44, 29, 15, 0.85);
@@ -83,7 +82,6 @@
       border-radius: 5px;
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
       color: #ffffff;
       font-size: 0.9rem;
     }
@@ -95,7 +93,6 @@
     .login-container button {
       padding: 8px 12px;
       background-color: #e67e22;
-      color: #2b1b0f;
       color: #ffffff;
       border: none;
       border-radius: 5px;
@@ -337,7 +334,7 @@
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
-      color: #000000; /* Changed to black */
+      color: #000000;
       line-height: 1.2;
     }
 
@@ -352,7 +349,7 @@
 
     .member p, .role p {
       font-size: 1em;
-      color: #000000; /* Changed to black */
+      color: #000000;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
@@ -405,7 +402,6 @@
       visibility: hidden;
       width: 180px;
       background-color: #000000;
- builtin_function_or_method object at 0x7f4d6e6c3e30>
       color: #f8e1b4;
       text-align: center;
       border-radius: 8px;
@@ -650,7 +646,7 @@
       border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2em;
-      transition: background-color 0.3s, color 0.3s, box-shadow: 0.3s;
+      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
     }
 
     .submit-button:hover {
@@ -910,7 +906,7 @@
     }
 
     @media only screen and (max-width: 480px) {
-      .header h1 {
+      .header operativa h1 {
         font-size: 2.2em;
       }
 
@@ -1142,7 +1138,7 @@
           <img src="images/alana.jpg" alt="Alana">
           <h3>Alana Stewart</h3>
           <span>Kitchen Lead</span>
-          <p>Plans shared meals and food storage. Overse  Oversees cooking, cleaning, and food rosters effectively.</p>
+          <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
           <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
@@ -1164,7 +1160,7 @@
           <h3>Sarsha Skiffington</h3>
           <span>Greeter</span>
           <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
-          <button class="delete-button" onclick="deleteMember(event)">×</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
           <img src="images/Gartah.jpg" alt="Gartah">
@@ -1378,7 +1374,6 @@
     const logoutButton = document.querySelector('.logout-button');
     const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
-    const modal = document.querySelector('#member-modal');
     const memberModal = document.querySelector('#member-modal');
     const roleModal = document.querySelector('#role-modal');
     const saveButton = document.querySelector('.save-button');
@@ -1438,7 +1433,6 @@
         membersGrid.classList.add('draggable');
         rolesGrid.classList.add('draggable');
         document.querySelectorAll('.member, .role').forEach(item => {
-          item.setAttribute('draggable', 'true');
           if (!item.getAttribute('onclick')) {
             item.setAttribute('draggable', 'true');
           }
@@ -1457,7 +1451,6 @@
       membersGrid.classList.remove('draggable');
       rolesGrid.classList.remove('draggable');
       document.querySelectorAll('.member, .role').forEach(item => {
-        item.setAttribute('draggable', 'false');
         if (!item.getAttribute('onclick')) {
           item.setAttribute('draggable', 'false');
         }
@@ -1520,7 +1513,6 @@
         `;
         rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
         member.remove();
-        alert(`${name} has been removed from the members list.`);
         alert(`${name} has been removed from the members list and their role has been added to Roles to Be Filled.`);
       }
     }
@@ -1574,7 +1566,6 @@
         if (targetElement && targetElement !== draggedElement) {
           targetGrid.insertBefore(draggedElement, targetElement);
         } else {
-          targetGrid.appendChild(draggedElement);
           targetGrid.insertBefore(draggedElement, targetGrid.lastElementChild);
         }
         return;
@@ -1582,10 +1573,6 @@
 
       // Handle moving a role to members-grid
       if (targetGrid.classList.contains('members-grid') && !isMember) {
-        modal.style.display = 'flex';
-        modal.dataset.roleTitle = roleTitle;
-        modal.dataset.sourceGrid = 'roles-grid';
-        modal.dataset.targetGrid = 'members-grid';
         memberModal.style.display = 'flex';
         memberModal.dataset.roleTitle = roleTitle;
         memberModal.dataset.sourceGrid = 'roles-grid';
@@ -1612,7 +1599,6 @@
         if (targetElement) {
           targetGrid.insertBefore(newRole, targetElement);
         } else {
-          targetGrid.appendChild(newRole);
           targetGrid.insertBefore(newRole, targetGrid.lastElementChild);
         }
         draggedElement.remove();
@@ -1627,13 +1613,10 @@
         return;
       }
 
-      const roleTitle = modal.dataset.roleTitle;
-      const targetGrid = document.querySelector(`.${modal.dataset.targetGrid}`);
-      const sourceGrid = document.querySelector(`.${modal.dataset.sourceGrid}`);
       const roleTitle = memberModal.dataset.roleTitle;
       const targetGrid = document.querySelector(`.${memberModal.dataset.targetGrid}`);
       const sourceGrid = document.querySelector(`.${memberModal.dataset.sourceGrid}`);
-      const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)`);
+      const roleElement = sourceGrid.querySelector(`.role h3:not(.member h3):not(.event h3)[textContent="${roleTitle}"]`);
 
       if (roleElement) {
         const newMember = document.createElement('div');
@@ -1651,14 +1634,12 @@
         roleElement.parentElement.remove();
       }
 
-      modal.style.display = 'none';
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
     };
 
     window.closeModal = function() {
-      modal.style.display = 'none';
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
