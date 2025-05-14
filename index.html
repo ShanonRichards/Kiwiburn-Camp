@@ -606,7 +606,7 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .submit-button {
+    .submit-button, .add-role-button {
       display: inline-block;
       padding: 12px 20px;
       background-color: #e67e22;
@@ -618,7 +618,7 @@
       transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
     }
 
-    .submit-button:hover {
+    .submit-button:hover, .add-role-button:hover {
       background-color: #f39c12;
       color: #2b1b0f;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
@@ -859,7 +859,7 @@
         padding: 15px;
       }
 
-      .submit-button {
+      .submit-button, .add-role-button {
         font-size: 1em;
         padding: 10px 15px;
       }
@@ -1021,7 +1021,7 @@
       <button class="close-button" onclick="closeModal()">×</button>
       <h3>Add Member Details</h3>
       <input type="text" id="member-name" placeholder="Member Name" required>
-      <input type="text" id="member-photo" placeholder="Photo URL" required>
+      <input type="file" id="member-photo" accept="image/*" required>
       <button onclick="saveMemberDetails()">Save</button>
     </div>
   </div>
@@ -1032,7 +1032,7 @@
       <h3>Create New Role</h3>
       <input type="text" id="role-title" placeholder="Role Title" required>
       <textarea id="role-description" placeholder="Role Description" required></textarea>
-      <input type="text" id="role-icon" placeholder="Icon URL (optional)">
+      <input type="file" id="role-icon" accept="image/*">
       <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
@@ -1070,7 +1070,7 @@
   <div class="members-container">
     <section class="section" id="members">
       <h1>Meet Our Core Camp Crew</h1>
-      <div class="members-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
+      <div class="members-grid" ondragover="allowDrop(event)" ondrop="drop(event, 'members')">
         <div class="scroll-arrow left">◄</div>
         <div class="scroll-arrow right">►</div>
         <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
@@ -1189,7 +1189,7 @@
 
       <h2>Roles to Be Filled</h2>
       <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
-      <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
+      <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event, 'roles')">
         <div class="scroll-arrow left">◄</div>
         <div class="scroll-arrow right">►</div>
         <div class="role" draggable="true" ondragstart="drag(event)">
@@ -1273,13 +1273,8 @@
           </div>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
-        <div class="role" onclick="openRoleModal()">
-          <img src="images/icons/add-role.png" alt="Add New Role Icon">
-          <h3>Add New Role</h3>
-          <p>Create a new role for the camp.</p>
-        </div>
       </div>
-
+      <button class="add-role-button" onclick="openRoleModal()">Add New Role</button>
       <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
     </section>
 
@@ -1296,28 +1291,28 @@
       <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
       <div class="events-grid">
         <div class="event">
-          <img src="images/Eventposter.jpg" alt="Emo Night Poster">
+          <img src="images/EVENTS/Emo Night.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
           <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event">
-          <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
+          <img src="images/EVENTS/Pole in the paddock.jpg" alt="Pole in the paddock Poster">
           <h3>Pole in the paddock</h3>
           <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event">
-          <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
+          <img src="images/EVENTS/Cosmic Connections.jpg" alt="Cosmic Connections Poster">
           <h3>Cosmic Connections</h3>
           <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event">
-          <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
+          <img src="images/EVENTS/DJ Showcase & Open Decks.jpg" alt="DJ Showcase & Open Decks Poster">
           <h3>DJ Showcase & Open Decks</h3>
           <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
@@ -1391,6 +1386,10 @@
         membersGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteMember(button));
         });
+        membersGrid.querySelectorAll('.member').forEach(member => {
+          member.draggable = true;
+          member.addEventListener('dragstart', drag);
+        });
       }
       if (savedRoles) {
         rolesGrid.innerHTML = savedRoles;
@@ -1400,18 +1399,10 @@
         rolesGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteRole(button));
         });
-        const addRoleElement = rolesGrid.querySelector('.role[onclick="openRoleModal()"]');
-        if (!addRoleElement) {
-          const newRole = document.createElement('div');
-          newRole.className = 'role';
-          newRole.setAttribute('onclick', 'openRoleModal()');
-          newRole.innerHTML = `
-            <img src="images/icons/add-role.png" alt="Add New Role Icon">
-            <h3>Add New Role</h3>
-            <p>Create a new role for the camp.</p>
-          `;
-          rolesGrid.appendChild(newRole);
-        }
+        rolesGrid.querySelectorAll('.role').forEach(role => {
+          role.draggable = true;
+          role.addEventListener('dragstart', drag);
+        });
       }
       if (savedEvents) {
         eventsGrid.innerHTML = savedEvents;
@@ -1441,9 +1432,8 @@
         membersGrid.classList.add('draggable');
         rolesGrid.classList.add('draggable');
         document.querySelectorAll('.member, .role').forEach(item => {
-          if (!item.getAttribute('onclick')) {
-            item.setAttribute('draggable', 'true');
-          }
+          item.setAttribute('draggable', 'true');
+          item.addEventListener('dragstart', drag);
         });
       } else {
         alert('Invalid credentials');
@@ -1459,9 +1449,8 @@
       membersGrid.classList.remove('draggable');
       rolesGrid.classList.remove('draggable');
       document.querySelectorAll('.member, .role').forEach(item => {
-        if (!item.getAttribute('onclick')) {
-          item.setAttribute('draggable', 'false');
-        }
+        item.setAttribute('draggable', 'false');
+        item.removeEventListener('dragstart', drag);
       });
     });
 
@@ -1503,6 +1492,7 @@
       if (!isLoggedIn) return;
       draggedElement = event.target.closest('.member, .role');
       event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
+      event.dataTransfer.setData('elementType', draggedElement.className.includes('member') ? 'member' : 'role');
     }
 
     function allowDrop(event) {
@@ -1510,20 +1500,60 @@
       event.preventDefault();
     }
 
-    function drop(event) {
+    function drop(event, targetGrid) {
       if (!isLoggedIn) return;
       event.preventDefault();
-      const target = event.target.closest('.member, .role');
+      const elementType = event.dataTransfer.getData('elementType');
       const grid = event.target.closest('.members-grid, .roles-grid');
-      if (target && draggedElement !== target && !target.getAttribute('onclick')) {
-        const temp = document.createElement('div');
-        grid.insertBefore(temp, target);
-        grid.insertBefore(draggedElement, temp);
-        temp.remove();
-      } else if (!target) {
-        grid.appendChild(draggedElement);
+      const target = event.target.closest('.member, .role');
+
+      if (grid.classList.contains('members-grid') && elementType === 'role') {
+        openMemberModalForRole(draggedElement, grid, target);
+      } else if (grid.classList.contains('roles-grid') && elementType === 'member') {
+        convertMemberToRole(draggedElement, grid, target);
+      } else if (grid.classList.contains('members-grid') && elementType === 'member' || 
+                 grid.classList.contains('roles-grid') && elementType === 'role') {
+        if (target && draggedElement !== target) {
+          const temp = document.createElement('div');
+          grid.insertBefore(temp, target);
+          grid.insertBefore(draggedElement, temp);
+          temp.remove();
+        } else if (!target) {
+          grid.appendChild(draggedElement);
+        }
       }
       draggedElement = null;
+    }
+
+    function convertMemberToRole(member, grid, target) {
+      const roleTitle = member.querySelector('span').textContent;
+      const description = member.querySelector('p').textContent;
+      const newRole = document.createElement('div');
+      newRole.className = 'role';
+      newRole.draggable = true;
+      newRole.addEventListener('dragstart', drag);
+      newRole.innerHTML = `
+        <img src="images/icons/generic-role.png" alt="${roleTitle} Icon">
+        <h3>${roleTitle}</h3>
+        <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
+        <div class="tooltip">
+          <p>${description}</p>
+        </div>
+        <button class="delete-button" onclick="deleteRole(this)">×</button>
+      `;
+      if (target) {
+        grid.insertBefore(newRole, target);
+      } else {
+        grid.appendChild(newRole);
+      }
+      member.remove();
+    }
+
+    function openMemberModalForRole(roleElement, grid, target) {
+      memberModal.style.display = 'flex';
+      memberModal.dataset.roleElement = roleElement.outerHTML;
+      memberModal.dataset.grid = grid.className;
+      memberModal.dataset.target = target ? target.outerHTML : '';
     }
 
     function saveChanges() {
@@ -1543,29 +1573,79 @@
       memberModal.style.display = 'none';
       document.querySelector('#member-name').value = '';
       document.querySelector('#member-photo').value = '';
+      delete memberModal.dataset.roleElement;
+      delete memberModal.dataset.grid;
+      delete memberModal.dataset.target;
     }
 
     function saveMemberDetails() {
       if (!isLoggedIn) return;
       const name = document.querySelector('#member-name').value;
-      const photo = document.querySelector('#member-photo').value;
-      if (name && photo) {
-        const newMember = document.createElement('div');
-        newMember.className = 'member';
-        newMember.draggable = true;
-        newMember.ondragstart = drag;
-        newMember.innerHTML = `
-          <img src="${photo}" alt="${name}">
-          <h3>${name}</h3>
-          <span>Member</span>
-          <p>New member of the camp.</p>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        `;
-        membersGrid.appendChild(newMember);
-        closeModal();
-      } else {
+      const photoInput = document.querySelector('#member-photo');
+      const roleElement = memberModal.dataset.roleElement;
+      const gridClass = memberModal.dataset.grid;
+      const targetHtml = memberModal.dataset.target;
+
+      if (!name || !photoInput.files || !photoInput.files[0]) {
         alert('Please fill in all fields');
+        return;
       }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const photoSrc = e.target.result;
+        const grid = document.querySelector(`.${gridClass}`);
+        let newMember;
+
+        if (roleElement) {
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = roleElement;
+          const role = tempDiv.firstElementChild;
+          const roleTitle = role.querySelector('h3').textContent;
+          const description = role.querySelector('.tooltip p').textContent;
+
+          newMember = document.createElement('div');
+          newMember.className = 'member';
+          newMember.draggable = true;
+          newMember.addEventListener('dragstart', drag);
+          newMember.innerHTML = `
+            <img src="${photoSrc}" alt="${name}">
+            <h3>${name}</h3>
+            <span>${roleTitle}</span>
+            <p>${description}</p>
+            <button class="delete-button" onclick="deleteMember(this)">×</button>
+          `;
+          rolesGrid.querySelector(`h3:contains('${roleTitle}')`)?.closest('.role').remove();
+        } else {
+          newMember = document.createElement('div');
+          newMember.className = 'member';
+          newMember.draggable = true;
+          newMember.addEventListener('dragstart', drag);
+          newMember.innerHTML = `
+            <img src="${photoSrc}" alt="${name}">
+            <h3>${name}</h3>
+            <span>Member</span>
+            <p>New member of the camp.</p>
+            <button class="delete-button" onclick="deleteMember(this)">×</button>
+          `;
+        }
+
+        if (targetHtml) {
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = targetHtml;
+          const target = grid.querySelector(`h3:contains('${tempDiv.firstElementChild.querySelector('h3').textContent}')`)?.closest('.member, .role');
+          if (target) {
+            grid.insertBefore(newMember, target);
+          } else {
+            grid.appendChild(newMember);
+          }
+        } else {
+          grid.appendChild(newMember);
+        }
+
+        closeModal();
+      };
+      reader.readAsDataURL(photoInput.files[0]);
     }
 
     function openRoleModal() {
@@ -1584,26 +1664,42 @@
       if (!isLoggedIn) return;
       const title = document.querySelector('#role-title').value;
       const description = document.querySelector('#role-description').value;
-      const icon = document.querySelector('#role-icon').value || 'images/icons/generic-role.png';
-      if (title && description) {
-        const newRole = document.createElement('div');
-        newRole.className = 'role';
-        newRole.draggable = true;
-        newRole.ondragstart = drag;
-        newRole.innerHTML = `
-          <img src="${icon}" alt="${title} Icon">
-          <h3>${title}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>${description}</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        `;
-        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
-        closeRoleModal();
-      } else {
+      const iconInput = document.querySelector('#role-icon');
+
+      if (!title || !description) {
         alert('Please fill in the role title and description');
+        return;
       }
+
+      let iconSrc = 'images/icons/generic-role.png';
+      if (iconInput.files && iconInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          iconSrc = e.target.result;
+          createNewRole(title, description, iconSrc);
+        };
+        reader.readAsDataURL(iconInput.files[0]);
+      } else {
+        createNewRole(title, description, iconSrc);
+      }
+    }
+
+    function createNewRole(title, description, iconSrc) {
+      const newRole = document.createElement('div');
+      newRole.className = 'role';
+      newRole.draggable = true;
+      newRole.addEventListener('dragstart', drag);
+      newRole.innerHTML = `
+        <img src="${iconSrc}" alt="${title} Icon">
+        <h3>${title}</h3>
+        <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+        <div class="tooltip">
+          <p>${description}</p>
+        </div>
+        <button class="delete-button" onclick="deleteRole(this)">×</button>
+      `;
+      rolesGrid.appendChild(newRole);
+      closeRoleModal();
     }
 
     function deleteMember(button) {
@@ -1616,7 +1712,7 @@
         const newRole = document.createElement('div');
         newRole.className = 'role';
         newRole.draggable = true;
-        newRole.ondragstart = drag;
+        newRole.addEventListener('dragstart', drag);
         newRole.innerHTML = `
           <img src="images/icons/generic-role.png" alt="${roleTitle} Icon">
           <h3>${roleTitle}</h3>
@@ -1626,7 +1722,7 @@
           </div>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         `;
-        rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
+        rolesGrid.appendChild(newRole);
         member.remove();
         alert(`${name} has been removed from the members list and their role has been added to Roles to Be Filled.`);
       }
