@@ -905,7 +905,7 @@
     @media only screen and (max-width: 480px) {
       .header h1 {
         font-size: 2.2em;
-      }
+ SySTEM;
     }
   </style>
 </head>
@@ -954,7 +954,7 @@
       <input type="text" id="role-title" placeholder="Role Title" required>
       <textarea id="role-description" placeholder="Role Description" required></textarea>
       <input type="file" id="role-icon" accept="image/*">
-      <button onclick="saveRole teaspoonDetails()">Save</button>
+      <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
 
@@ -970,12 +970,6 @@
         <option value="Performance">Performance</option>
         <option value="Workshop">Workshop</option>
         <option value="Party">Party</option>
-        <option value="Art Installation">Art Installation</option>
-        <option value="Fire Performance">Fire Performance</option>
-        <option value="Meditation">Meditation</option>
-        <option value="Costume Party">Costume Party</option>
-        <option value="Skill Share">Skill Share</option>
-        <option value="Interactive Game">Interactive Game</option>
         <option value="Other">Other</option>
       </select>
       <input type="file" id="event-image" accept="image/*">
@@ -1022,7 +1016,7 @@
         <div class="scroll-arrow right">►</div>
         <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
           <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
-          <h3>Shanon Richards</h3>
+          <h3>Shanon Richards</h2>
           <span>Camp Lead</span>
           <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
           <button class="delete-button" onclick="deleteMember(this)">×</button>
@@ -1409,80 +1403,42 @@
       navLinks.classList.toggle('active');
     });
 
-loginForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const username = document.querySelector('#username').value;
-  const password = document.querySelector('#password').value;
-
-  try {
-    // Send login request to backend
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      // Store token (e.g., JWT) in localStorage or cookies
-      localStorage.setItem('token', data.token);
-      isLoggedIn = true;
-      document.body.classList.add('logged-in');
-      loginForm.style.display = 'none';
-      logoutButton.style.display = 'block';
-      saveButton.style.display = 'block';
-      membersGrid.classList.add('draggable');
-      rolesGrid.classList.add('draggable');
-      document.querySelectorAll('.member, .role').forEach(item => {
-        if (!item.getAttribute('onclick')) {
-          item.setAttribute('draggable', 'true');
-        }
-      });
-      alert('Login successful!');
-    } else {
-      alert(data.message || 'Invalid credentials');
-    }
-  } catch (error) {
-    console.error('Login error:', error);
-    alert('An error occurred. Please try again later.');
-  }
-});
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.querySelector('#username').value;
+      const password = document.querySelector('#password').value;
+      if (username === 'shanon' && password === 'Audius1993!') {
+        isLoggedIn = true;
+        document.body.classList.add('logged-in');
+        loginForm.style.display = 'none';
+        logoutButton.style.display = 'block';
+        saveButton.style.display = 'block';
+        membersGrid.classList.add('draggable');
+        rolesGrid.classList.add('draggable');
+        document.querySelectorAll('.member, .role').forEach(item => {
+          if (!item.getAttribute('onclick')) {
+            item.setAttribute('draggable', 'true');
+          }
+        });
       } else {
         alert('Invalid credentials');
       }
     });
 
-logoutButton.addEventListener('click', async () => {
-  try {
-    // Optionally notify backend to invalidate session
-    await fetch('/api/logout', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      },
+    logoutButton.addEventListener('click', () => {
+      isLoggedIn = false;
+      document.body.classList.remove('logged-in');
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      saveButton.style.display = 'none';
+      membersGrid.classList.remove('draggable');
+      rolesGrid.classList.remove('draggable');
+      document.querySelectorAll('.member, .role').forEach(item => {
+        if (!item.getAttribute('onclick')) {
+          item.setAttribute('draggable', 'false');
+        }
+      });
     });
-  } catch (error) {
-    console.error('Logout error:', error);
-  }
-
-  // Clear token and reset UI
-  localStorage.removeItem('token');
-  isLoggedIn = false;
-  document.body.classList.remove('logged-in');
-  loginForm.style.display = 'flex';
-  logoutButton.style.display = 'none';
-  saveButton.style.display = 'none';
-  membersGrid.classList.remove('draggable');
-  rolesGrid.classList.remove('draggable');
-  document.querySelectorAll('.member, .role').forEach(item => {
-    if (!item.getAttribute('onclick')) {
-      item.setAttribute('draggable', 'false');
-    }
-  });
-});
 
     const countdown = document.getElementById('countdown');
     const targetDate = new Date('2025-01-27T12:00:00');
@@ -1653,104 +1609,10 @@ logoutButton.addEventListener('click', async () => {
       }
     }
 
-    function openModal() {
-      if (!isLoggedIn) return;
-      memberModal.style.display = 'flex';
-    }
-
-    function closeModal() {
-      memberModal.style.display = 'none';
-      document.querySelector('#member-name').value = '';
-      document.querySelector('#member-photo').value = '';
-    }
-
-    function saveMemberDetails() {
-      if (!isLoggedIn) return;
-      const name = document.querySelector('#member-name').value;
-      const photoInput = document.querySelector('#member-photo');
-      if (name && photoInput.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const newMember = document.createElement('div');
-          newMember.className = 'member';
-          newMember.draggable = true;
-          newMember.ondragstart = drag;
-          newMember.innerHTML = `
-            <img src="${e.target.result}" alt="${name}">
-            <h3>${name}</h3>
-            <span>Member</span>
-            <p>New member of the camp.</p>
-            <button class="delete-button" onclick="deleteMember(this)">×</button>
-          `;
-          membersGrid.appendChild(newMember);
-          closeModal();
-        };
-        reader.readAsDataURL(photoInput.files[0]);
-      } else {
-        alert('Please fill in all fields');
-      }
-    }
-
-    function openRoleModal() {
-      if (!isLoggedIn) return;
-      roleModal.style.display = 'flex';
-    }
-
-    function closeRoleModal() {
-      roleModal.style.display = 'none';
-      document.querySelector('#role-title').value = '';
-      document.querySelector('#role-description').value = '';
-      document.querySelector('#role-icon').value = '';
-    }
-
-    function saveRoleDetails() {
-      if (!isLoggedIn) return;
-      const title = document.querySelector('#role-title').value;
-      const description = document.querySelector('#role-description').value;
-      const iconInput = document.querySelector('#role-icon');
-      if (title && description) {
-        const newRole = document.createElement('div');
-        newRole.className = 'role';
-        newRole.draggable = true;
-        newRole.ondragstart = drag;
-        if (iconInput.files[0]) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            newRole.innerHTML = `
-              <img src="${e.target.result}" alt="${title} Icon">
-              <h3>${title}</h3>
-              <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-              <div class="tooltip">
-                <p>${description}</p>
-              </div>
-              <button class="delete-button" onclick="deleteRole(this)">×</button>
-            `;
-            rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
-            closeRoleModal();
-          };
-          reader.readAsDataURL(iconInput.files[0]);
-        } else {
-          newRole.innerHTML = `
-            <img src="images/icons/generic-role.png" alt="${title} Icon">
-            <h3>${title}</h3>
-            <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-            <div class="tooltip">
-              <p>${description}</p>
-            </div>
-            <button class="delete-button" onclick="deleteRole(this)">×</button>
-          `;
-          rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
-          closeRoleModal();
-        }
-      } else {
-        alert('Please fill in the role title and description');
-      }
-    }
-
     function openAboutModal() {
       if (!isLoggedIn) return;
       const title = document.querySelector('#about-title').textContent;
-      const description = document.query  document.querySelector('#about-description').textContent;
+      const description = document.querySelector('#about-description').textContent;
       document.querySelector('#about-title').value = title;
       document.querySelector('#about-description').value = description;
       aboutModal.style.display = 'flex';
@@ -1810,7 +1672,7 @@ logoutButton.addEventListener('click', async () => {
 
     function deletePhoto(button) {
       if (!isLoggedIn) return;
-      const galleryItem = button.closest('.gallery-item');
+      const galleryItem = button.closest('.okeh');
       if (confirm('Are you sure you want to delete this photo?')) {
         galleryItem.remove();
         saveChanges();
@@ -1859,7 +1721,6 @@ logoutButton.addEventListener('click', async () => {
       const title = event.querySelector('h3').textContent;
       if (confirm(`Are you sure you want to delete the ${title} event?`)) {
         event.remove();
-        saveChanges();
         alert(`The ${title} event has been removed.`);
       }
     }
@@ -1879,7 +1740,7 @@ logoutButton.addEventListener('click', async () => {
       document.querySelector('#event-type').value = type;
       document.querySelector('#event-start').value = start;
       document.querySelector('#event-end').value = end;
-      eventModal.dataset.eventTitle = title;
+      eventModal.dataset.eventElement = event.outerHTML;
       eventModal.dataset.imageSrc = imageSrc;
       eventModal.style.display = 'flex';
     }
@@ -1892,7 +1753,7 @@ logoutButton.addEventListener('click', async () => {
       document.querySelector('#event-start').value = '';
       document.querySelector('#event-end').value = '';
       document.querySelector('#event-image').value = '';
-      delete eventModal.dataset.eventTitle;
+      delete eventModal.dataset.eventElement;
       delete eventModal.dataset.imageSrc;
     }
 
@@ -1904,67 +1765,92 @@ logoutButton.addEventListener('click', async () => {
       const start = document.querySelector('#event-start').value;
       const end = document.querySelector('#event-end').value;
       const imageInput = document.querySelector('#event-image');
-      const originalTitle = eventModal.dataset.eventTitle;
-
       if (!title || !description) {
         alert('Please fill in the event title and description');
         return;
       }
 
-      let imageSrc = eventModal.dataset.imageSrc;
-      if (imageInput.files[0]) {
+      let imageSrc = eventModal.dataset.imageSrc || 'images/icons/generic-event.png';
+      if (imageInput.files && imageInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
           imageSrc = e.target.result;
-          updateEventElement(originalTitle, title, description, type, start, end, imageSrc);
-          closeEventModal();
+          updateEventElement(title, description, imageSrc, type, start, end);
         };
         reader.readAsDataURL(imageInput.files[0]);
       } else {
-        updateEventElement(originalTitle, title, description, type, start, end, imageSrc);
-        closeEventModal();
+        updateEventElement(title, description, imageSrc, type, start, end);
       }
     }
 
-    function updateEventElement(originalTitle, title, description, type, start, end, imageSrc) {
-      const events = eventsGrid.querySelectorAll('.event');
-      let eventFound = false;
-
-      events.forEach(event => {
-        if (event.querySelector('h3').textContent === originalTitle) {
-          event.querySelector('img').src = imageSrc;
-          event.querySelector('img').alt = `${title} Poster`;
-          event.querySelector('.event-details').innerHTML = `
-            <span>Type: ${type}</span><br>
-            <span>Start: ${start || 'TBA'}</span><br>
-            <span>End: ${end || 'TBA'}</span>
-          `;
-          event.querySelector('h3').textContent = title;
-          event.querySelector('p').textContent = description;
-          eventFound = true;
-        }
-      });
-
-      if (!eventFound) {
-        const newEvent = document.createElement('div');
-        newEvent.className = 'event';
-        newEvent.innerHTML = `
-          <img src="${imageSrc || 'images/default-event.jpg'}" alt="${title} Poster">
-          <div class="event-details">
-            <span>Type: ${type}</span><br>
-            <span>Start: ${start || 'TBA'}</span><br>
-            <span>End: ${end || 'TBA'}</span>
-          </div>
-          <h3>${title}</h3>
-          <p>${description}</p>
-          <button class="edit-button" onclick="openEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        `;
-        eventsGrid.appendChild(newEvent);
+     function updateEventElement(title, description, imageSrc, type, start, end) {
+      const eventHtml = eventModal.dataset.eventElement;
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = eventHtml;
+      const eventElement = tempDiv.firstElementChild;
+      eventElement.querySelector('h3').textContent = title;
+      eventElement.querySelector('p').textContent = description;
+      eventElement.querySelector('img').src = imageSrc;
+      eventElement.querySelector('img').alt = `${title} Poster`;
+      
+      let details = eventElement.querySelector('.event-details');
+      if (!details) {
+        details = document.createElement('div');
+        details.className = 'event-details';
+        eventElement.insertBefore(details, eventElement.querySelector('h3'));
       }
+      details.innerHTML = `
+        <span>Type: ${type}</span><br>
+        <span>Start: ${start || 'TBC'}</span><br>
+        <span>End: ${end || 'TBC'}</span>
+      `;
 
+      const oldEvent = eventsGrid.querySelector(`[data-event="${eventHtml}"]`) || 
+                       eventsGrid.querySelector(`h3:contains('${eventElement.querySelector('h3').textContent}')`)?.closest('.event');
+      if (oldEvent) {
+        eventsGrid.replaceChild(eventElement, oldEvent);
+      } else {
+        eventsGrid.appendChild(eventElement);
+      }
+      eventElement.querySelector('.edit-button').addEventListener('click', () => openEventModal(eventElement.querySelector('.edit-button')));
+      eventElement.querySelector('.delete-button').addEventListener('click', () => deleteEvent(eventElement.querySelector('.delete-button')));
       saveChanges();
+      closeEventModal();
     }
+
+    // jQuery-like :contains selector for compatibility
+    if (!Element.prototype.matches) {
+      Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+    }
+
+    if (!Element.prototype.closest) {
+      Element.prototype.closest = function(s) {
+        let el = this;
+        do {
+          if (el.matches(s)) return el;
+          el = el.parentElement || el.parentNode;
+        } while (el !== null && el.nodeType === 1);
+        return null;
+      };
+    }
+
+    // Custom :contains selector
+    function contains(selector, text) {
+      const elements = document.querySelectorAll(selector);
+      return Array.from(elements).filter(element => {
+        return RegExp(text).test(element.textContent);
+      });
+    }
+
+    // Add contains to querySelector
+    document.querySelectorAll = function(selector) {
+      if (selector.includes(':contains')) {
+        const [baseSelector, text] = selector.split(':contains(');
+        const cleanText = text.replace(')', '').replace(/['"]/g, '');
+        return contains(baseSelector, cleanText);
+      }
+      return NodeList.prototype.slice.call(document.querySelectorAll(selector));
+    };
   </script>
 </body>
 </html>
