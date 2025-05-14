@@ -326,7 +326,7 @@
       transform: translateX(-50%);
       font-size: 1.5rem;
       color: #C0C0C0;
-      z-index: 10 0.3s;
+      z-index: 10;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
@@ -359,7 +359,7 @@
       color: #ffffff;
     }
 
-    .member .delete-button, .role .delete-button, .event .edit-button {
+    .member .delete-button, .role .delete-button, .event .edit-button, .gear-item .delete-gear-button {
       display: none;
       position: absolute;
       top: 5px;
@@ -375,12 +375,12 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
 
-    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover {
+    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .gear-item .delete-gear-button:hover {
       background: rgba(230, 126, 34, 0.9);
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button {
+    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button, .logged-in .gear-item .delete-gear-button {
       display: block;
     }
 
@@ -709,6 +709,34 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
+    .gear-list {
+      max-width: 800px;
+      margin: 40px auto 0 auto;
+      text-align: left;
+    }
+
+    .gear-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border: 1px solid #e67e22;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .gear-item p {
+      margin: 5px 0;
+    }
+
+    .gear-item a {
+      color: #f39c12;
+      text-decoration: none;
+    }
+
+    .gear-item a:hover {
+      text-decoration: underline;
+    }
+
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
@@ -835,7 +863,7 @@
         font-size: 0.9em;
       }
 
-      .member .delete-button, .role .delete-button, .event .edit-button {
+      .member .delete-button, .role .delete-button, .event .edit-button, .gear-item .delete-gear-button {
         width: 20px;
         height: 20px;
         font-size: 0.8em;
@@ -904,6 +932,10 @@
         max-width: 95%;
         padding: 20px 15px;
       }
+
+      .gear-list {
+        max-width: 95%;
+      }
     }
 
     @media only screen and (max-width: 480px) {
@@ -957,7 +989,7 @@
         top: -12px;
       }
 
-      .member .delete-button, .role .delete-button, .event .edit-button {
+      .member .delete-button, .role .delete-button, .event .edit-button, .gear-item .delete-gear-button {
         width: 18px;
         height: 18px;
         font-size: 0.7em;
@@ -1072,6 +1104,18 @@
     </div>
   </div>
 
+  <div class="modal" id="gear-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeGearModal()">×</button>
+      <h3>Add Gear Item</h3>
+      <input type="text" id="gear-name" placeholder="Gear Name" required>
+      <input type="text" id="gear-link" placeholder="Link to Product (optional)">
+      <input type="number" id="gear-quantity" placeholder="Quantity" min="1" required>
+      <input type="number" id="gear-cost" placeholder="Cost (NZD)" min="0" step="0.01" required>
+      <button onclick="saveGearDetails()">Save</button>
+    </div>
+  </div>
+
   <div class="about-container">
     <section class="section" id="about">
       <h1>About Our Camp</h1>
@@ -1086,8 +1130,23 @@
 
   <div class="mission-container">
     <section class="section" id="mission">
-      <h1>Our Mission</h1>
-      <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
+      <h1>Camp Mission & Gear Contribution</h1>
+      <p>We aim to keep both our camp fees and shared gear costs as low as possible, while still creating a comfortable, fun, and functional space for all camp members. To maintain transparency, we’ll provide a clear breakdown of the camp fee and associated costs, so everyone can see exactly where contributions are going.</p>
+      <p>As part of our updated mission, we want to highlight what the camp provides to support the community experience:</p>
+      <ul>
+        <li>🌟 <strong>Sheltered Kitchen Area</strong><br>Equipped with gas cookers and a functional prep space. Gas canisters are included as part of your camp fee.</li>
+        <li><strong>Large Communal Shelter</strong><br>A 12x19m Star Tent and additional gazebo/marquee provide plenty of shade and shelter for meals, workshops, and social hangouts.</li>
+        <li><strong>Chill Zone</strong><br>A cozy, shaded area for rest, recovery, and connecting with campmates.</li>
+        <li><strong>Generator & Fuel</strong><br>Power for charging personal devices, running the DJ setup, lighting, and essential camp equipment—operational for most of the event.</li>
+        <li><strong>Maintenance & Replacement Gear</strong><br>Includes upkeep of shared furniture (like inflatable couches) and other essential communal gear.</li>
+        <li><strong>Event Decor & Ambience</strong><br>Decorations and lighting to create a welcoming and playful atmosphere throughout the camp.</li>
+      </ul>
+      <h2>Gear Contributions</h2>
+      <p>Below is a transparent list of gear purchased for the camp, including costs and quantities. Admins can log in to update this list.</p>
+      <button class="save-button add-gear-button" onclick="openGearModal()" style="display: none;">Add Gear</button>
+      <div class="gear-list" id="gear-list">
+        <!-- Gear items will be dynamically added here -->
+      </div>
     </section>
   </div>
 
@@ -1388,7 +1447,10 @@
     const memberModal = document.querySelector('#member-modal');
     const roleModal = document.querySelector('#role-modal');
     const eventModal = document.querySelector('#event-modal');
+    const gearModal = document.querySelector('#gear-modal');
+    const gearList = document.querySelector('#gear-list');
     const saveButton = document.querySelector('.save-button');
+    const addGearButton = document.querySelector('.add-gear-button');
     let draggedElement = null;
     let isLoggedIn = false;
     let memberPhotoData = '';
@@ -1400,6 +1462,7 @@
       const savedMembers = localStorage.getItem('membersGrid');
       const savedRoles = localStorage.getItem('rolesGrid');
       const savedEvents = localStorage.getItem('eventsGrid');
+      const savedGear = localStorage.getItem('gearList');
       if (savedMembers) {
         membersGrid.innerHTML = savedMembers;
         membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
@@ -1424,7 +1487,13 @@
           button.addEventListener('click', () => editEvent(button));
         });
       }
-      // Add role button for admin
+      if (savedGear) {
+        gearList.innerHTML = savedGear;
+        gearList.querySelectorAll('.delete-gear-button').forEach(button => {
+          button.addEventListener('click', () => deleteGear(button));
+        });
+      }
+      // Add role and gear buttons for admin
       if (isLoggedIn) {
         const addRoleButton = document.createElement('div');
         addRoleButton.className = 'role';
@@ -1432,6 +1501,7 @@
           <button class="create-role-button" onclick="openRoleModal()">Add Role</button>
         `;
         rolesGrid.appendChild(addRoleButton);
+        addGearButton.style.display = 'block';
       }
     });
 
@@ -1449,6 +1519,7 @@
         loginForm.style.display = 'none';
         logoutButton.style.display = 'block';
         saveButton.style.display = 'block';
+        addGearButton.style.display = 'block';
         membersGrid.classList.add('draggable');
         rolesGrid.classList.add('draggable');
         document.querySelectorAll('.member, .role').forEach(item => {
@@ -1474,6 +1545,7 @@
       loginForm.style.display = 'flex';
       logoutButton.style.display = 'none';
       saveButton.style.display = 'none';
+      addGearButton.style.display = 'none';
       membersGrid.classList.remove('draggable');
       rolesGrid.classList.remove('draggable');
       document.querySelectorAll('.member, .role').forEach(item => {
@@ -1569,6 +1641,16 @@
       document.querySelector('#event-description').value = description;
       eventModal.dataset.eventElement = event.outerHTML;
       eventModal.style.display = 'flex';
+    }
+
+    function deleteGear(button) {
+      if (!isLoggedIn) return;
+      const gearItem = button.closest('.gear-item');
+      const gearName = gearItem.querySelector('p').textContent.split(': ')[1];
+      if (confirm(`Are you sure you want to delete ${gearName}?`)) {
+        gearItem.remove();
+        alert(`${gearName} has been removed from the gear list.`);
+      }
     }
 
     function drag(event) {
@@ -1750,6 +1832,11 @@
       roleModal.style.display = 'none';
       document.querySelector('#role-title').value = '';
       document.querySelector('#role-description').value = '';
+      document.querySelector('#role-icon').
+    window.closeRoleModal = function() {
+      roleModal.style.display = 'none';
+      document.querySelector('#role-title').value = '';
+      document.querySelector('#role-description').value = '';
       document.querySelector('#role-icon').value = '';
       roleIconData = '';
     };
@@ -1757,9 +1844,8 @@
     window.saveRoleDetails = function() {
       const title = document.querySelector('#role-title').value;
       const description = document.querySelector('#role-description').value;
-      const icon = roleIconData || 'images/icons/generic-role.png';
       if (!title || !description) {
-        alert('Please fill in the role title and description');
+        alert('Please fill in the role title and description.');
         return;
       }
 
@@ -1768,7 +1854,7 @@
       newRole.draggable = true;
       newRole.ondragstart = drag;
       newRole.innerHTML = `
-        <img src="${icon}" alt="${title} Icon">
+        <img src="${roleIconData || 'images/icons/generic-role.png'}" alt="${title} Icon">
         <h3>${title}</h3>
         <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
         <div class="tooltip">
@@ -1777,12 +1863,7 @@
         <button class="delete-button" onclick="deleteRole(this)">×</button>
       `;
       rolesGrid.insertBefore(newRole, rolesGrid.lastElementChild);
-
-      roleModal.style.display = 'none';
-      document.querySelector('#role-title').value = '';
-      document.querySelector('#role-description').value = '';
-      document.querySelector('#role-icon').value = '';
-      roleIconData = '';
+      closeRoleModal();
     };
 
     window.closeEventModal = function() {
@@ -1796,41 +1877,78 @@
     window.saveEventDetails = function() {
       const title = document.querySelector('#event-title').value;
       const description = document.querySelector('#event-description').value;
-      const event = document.createElement('div');
-      event.className = 'event';
-      const imgSrc = eventPhotoData || document.querySelector('.event img')?.src || 'images/icons/generic-event.png';
-      
       if (!title || !description) {
-        alert('Please fill in the event title and description');
+        alert('Please fill in the event title and description.');
         return;
       }
 
-      event.innerHTML = `
-        <img src="${imgSrc}" alt="${title} Poster">
+      const eventsGrid = document.querySelector('.events-grid');
+      const eventElement = document.createElement('div');
+      eventElement.className = 'event';
+      eventElement.innerHTML = `
+        <img src="${eventPhotoData || 'images/default-event.jpg'}" alt="${title}">
         <h3>${title}</h3>
         <p>${description}</p>
         <button class="edit-button" onclick="editEvent(this)">✎</button>
       `;
-
-      const eventGrid = document.querySelector('.events-grid');
-      const oldEvent = eventGrid.querySelector(`.event:has(h3:contains("${document.querySelector('#event-title').value}"))`);
-      if (oldEvent) {
-        eventGrid.replaceChild(event, oldEvent);
+      const oldEvent = eventsGrid.querySelector(`.event h3:not(.member h3):not(.role h3)`);
+      if (eventModal.dataset.eventElement) {
+        const oldEventElement = eventsGrid.querySelector(`.event h3:not(.member h3):not(.role h3)`).parentElement;
+        eventsGrid.replaceChild(eventElement, oldEventElement);
       } else {
-        eventGrid.appendChild(event);
+        eventsGrid.appendChild(eventElement);
+      }
+      closeEventModal();
+    };
+
+    window.openGearModal = function() {
+      if (!isLoggedIn) {
+        alert('Please log in to add gear.');
+        return;
+      }
+      gearModal.style.display = 'flex';
+    };
+
+    window.closeGearModal = function() {
+      gearModal.style.display = 'none';
+      document.querySelector('#gear-name').value = '';
+      document.querySelector('#gear-link').value = '';
+      document.querySelector('#gear-quantity').value = '';
+      document.querySelector('#gear-cost').value = '';
+    };
+
+    window.saveGearDetails = function() {
+      const name = document.querySelector('#gear-name').value;
+      const link = document.querySelector('#gear-link').value;
+      const quantity = document.querySelector('#gear-quantity').value;
+      const cost = document.querySelector('#gear-cost').value;
+      if (!name || !quantity || !cost) {
+        alert('Please fill in the gear name, quantity, and cost.');
+        return;
       }
 
-      eventModal.style.display = 'none';
-      document.querySelector('#event-title').value = '';
-      document.querySelector('#event-description').value = '';
-      document.querySelector('#event-photo').value = '';
-      eventPhotoData = '';
+      const gearItem = document.createElement('div');
+      gearItem.className = 'gear-item';
+      gearItem.innerHTML = `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Quantity:</strong> ${quantity}</p>
+        <p><strong>Cost:</strong> NZD ${parseFloat(cost).toFixed(2)}</p>
+        ${link ? `<p><strong>Link:</strong> <a href="${link}" target="_blank">View Product</a></p>` : ''}
+        <button class="delete-gear-button" onclick="deleteGear(this)">×</button>
+      `;
+      gearList.appendChild(gearItem);
+      closeGearModal();
     };
 
     window.saveChanges = function() {
+      if (!isLoggedIn) {
+        alert('Please log in to save changes.');
+        return;
+      }
       localStorage.setItem('membersGrid', membersGrid.innerHTML);
       localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
       localStorage.setItem('eventsGrid', document.querySelector('.events-grid').innerHTML);
+      localStorage.setItem('gearList', gearList.innerHTML);
       alert('Changes saved successfully!');
     };
   </script>
