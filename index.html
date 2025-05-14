@@ -1,8 +1,305 @@
-‎index.html
-+463
--319
-Original file line number	Diff line number	Diff line change
-@@ -303,6 +303,8 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join My Camp - Kiwiburn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(44, 29, 15, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+      border-bottom: 2px solid #e67e22;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      margin: 5px 15px;
+      padding: 10px 15px;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      background-color: #e67e22;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      color: #f8e1b4;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 20px;
+      background: rgba(44, 29, 15, 0.85);
+      border-bottom: 1px solid #e67e22;
+      z-index: 999;
+    }
+
+    .login-container form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .login-container input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .login-container input::placeholder {
+      color: #ffffff;
+    }
+
+    .login-container button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .login-container .logout-button {
+      display: none;
+    }
+
+    .header {
+      background: url('images/coverphoto.png') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #f8e1b4;
+      position: relative;
+      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    .header h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 5em;
+      max-width: 90%;
+      letter-spacing: 2px;
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400; }
+      to { text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22; }
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+      color: #f8e1b4;
+      transition: box-shadow 0.3s;
+    }
+
+    .scroll-down:hover {
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      background: url('images/dusty-texture.png') center/cover;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
+    }
+
+    .section:nth-of-type(odd) {
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .section:nth-of-type(even) {
+      background-color: rgba(217, 185, 155, 0.8);
+    }
+
+    .section h1, .section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #2b1b0f;
+      letter-spacing: 1px;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+      color: #2b1b0f;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1em;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #e67e22;
+      loading: lazy;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+    }
+
+    .members-grid, .roles-grid, .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      justify-items: center;
+      align-items: start;
+      position: relative;
+      min-height: 200px;
+    }
+
+    .scroll-arrow {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #f8e1b4;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.3s, box-shadow 0.3s;
+      animation: flash 1.5s infinite;
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .scroll-arrow:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .scroll-arrow.left {
+      left: 10px;
+    }
+
+    .scroll-arrow.right {
+      right: 10px;
+    }
+
+    .member, .role, .event {
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border: 1px solid #e67e22;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      border-radius: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .event.edited {
+      animation: highlight 1s ease;
+    }
+
+    @keyframes highlight {
+      0% { background: rgba(230, 126, 34, 0.5); }
+      100% { background: rgba(255, 255, 255, 0.1); }
     }
 
     .member:hover, .role:hover, .event:hover {
@@ -11,7 +308,181 @@ Original file line number	Diff line number	Diff line change
       transform: scale(1.03);
       box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
     }
-@@ -484,6 +486,12 @@
+
+    .member img, .role img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+      border: 3px solid #f39c12;
+      loading: lazy;
+    }
+
+    .event img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 2px solid #f39c12;
+      loading: lazy;
+    }
+
+    .member.camp-lead, .member.deputy-lead {
+      position: relative;
+    }
+
+    .member.camp-lead::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #FFD700;
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .member.deputy-lead::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #C0C0C0;
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .member h3, .role h3, .event h3 {
+      margin: 10px 0 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5em;
+      color: #000000;
+      line-height: 1.2;
+    }
+
+    .editable[contenteditable="true"] {
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .member span {
+      font-weight: bold;
+      color: #e67e22;
+      display: block;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .member p, .role p, .event p {
+      font-size: 1em;
+      color: #000000;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .event-date {
+      font-size: 0.9em;
+      color: #e67e22;
+      margin-top: 10px;
+    }
+
+    .event-category {
+      display: inline-block;
+      background: #e67e22;
+      color: #2b1b0f;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8em;
+      margin-top: 10px;
+    }
+
+    .event-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #f39c12;
+      color: #2b1b0f;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8em;
+      font-family: 'Bebas Neue', cursive;
+    }
+
+    .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
+      display: none;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .event .edit-button {
+      right: 35px;
+    }
+
+    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button, .logged-in .event .delete-button {
+      display: block;
+    }
+
+    .role .apply-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .role .apply-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .role .tooltip {
+      visibility: hidden;
+      width: 200px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      text-align: center;
+      border-radius: 8px;
+      padding: 12px;
+      position: absolute;
+      z-index: 10;
+      top: -10px;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      font-size: 0.9em;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       border: 2px solid #f39c12;
     }
 
@@ -20,10 +491,40 @@ Original file line number	Diff line number	Diff line change
       margin: 0;
       line-height: 1.5;
     }
+
     .role:hover .tooltip {
       visibility: visible;
       opacity: 1;
-@@ -520,6 +528,7 @@
+      transform: translate(-50%, -110%);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      border: 2px solid #e67e22;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      font-family: 'Bebas Neue', cursive;
+      color: #2b1b0f;
       margin-bottom: 20px;
     }
 
@@ -31,7 +532,173 @@ Original file line number	Diff line number	Diff line change
     .modal-content input, .modal-content textarea, .modal-content select {
       width: 100%;
       padding: 10px;
-@@ -693,7 +702,7 @@
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .modal-content input[type="file"] {
+      background: none;
+      border: none;
+      padding: 5px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 0 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      font-size: 1.2em;
+      padding: 5px 10px;
+    }
+
+    .event-preview {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #e67e22;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .event-preview img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .event-preview h3 {
+      font-size: 1.2em;
+      margin: 10px 0 5px;
+    }
+
+    .event-preview p {
+      font-size: 0.9em;
+      margin: 5px 0;
+    }
+
+    .event-preview .event-date {
+      font-size: 0.8em;
+      color: #e67e22;
+    }
+
+    .event-preview .event-category {
+      font-size: 0.8em;
+      background: #e67e22;
+      color: #2b1b0f;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .events-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    #event-filter {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
+    }
+
+    .countdown {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      font-weight: bold;
+      color: #f8e1b4;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    .form-container {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .form-container button {
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .contact-lead {
+      padding: 40px 20px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      text-align: center;
+      border-top: 2px solid #e67e22;
+      border-bottom: 2px solid #e67e22;
+    }
+
+    .contact-lead a {
+      color: #f39c12;
+      font-size: 1.2em;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      transition: box-shadow 0.3s;
+    }
+
+    .contact-lead a:hover {
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
@@ -40,7 +707,9 @@ Original file line number	Diff line number	Diff line change
       display: inline-block;
       padding: 12px 20px;
       background-color: #e67e22;
-@@ -703,18 +712,29 @@
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2em;
       transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
@@ -58,9 +727,11 @@ Original file line number	Diff line number	Diff line change
       position: relative;
       text-align: center;
     }
+
     .submit-section .submit-button {
       transition: all 0.3s ease;
     }
+
     .submit-section.sticky .submit-button {
       position: fixed;
       bottom: 20px;
@@ -71,30 +742,255 @@ Original file line number	Diff line number	Diff line change
     }
 
     .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
-@@ -727,6 +747,10 @@
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .section#submit {
       background-color: rgba(244, 228, 188, 0.8);
     }
+
     .submit-section {
       background: rgba(255, 255, 255, 0.15);
       border: 2px solid #e67e22;
-@@ -787,14 +811,6 @@
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .newsletter-section {
+      padding: 80px 20px;
+      background-color: rgba(244, 228, 188, 0.8);
+      text-align: center;
+    }
+
+    .newsletter-container .section {
+      padding: 0;
+    }
+
+    .save-button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .save-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .roles-container {
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .roles-empty {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .roles-empty p {
+      font-size: 1.1em;
+      color: #2b1b0f;
       margin-bottom: 20px;
     }
 
     .admin-only {
       display: none;
     }
+
     .logged-in .admin-only {
       display: block;
     }
+
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
-@@ -966,7 +982,7 @@
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      nav a {
+        margin: 5px 0;
+        font-size: 1rem;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .login-container {
+        padding: 10px;
+      }
+
+      .login-container form {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .login-container input, .login-container button {
+        font-size: 0.8rem;
+        padding: 6px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .header {
+        height: 70vh;
+      }
+
+      .header h1 {
+        font-size: 3em;
+      }
+
+      .scroll-down {
+        font-size: 1.2rem;
+      }
+
+      .section {
+        padding: 40px 15px;
+      }
+
+      .section h1, .section h2 {
+        font-size: 2em;
+      }
+
+      .section p {
+        font-size: 1em;
+        max-width: 95%;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 95%;
+      }
+
+      .members-grid, .roles-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 15px;
+        max-width: 95%;
+        padding: 0 10px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .members-grid .scroll-arrow, .roles-grid .scroll-arrow {
+        display: block;
+      }
+
+      .member, .role {
+        flex: 0 0 140px;
+        scroll-snap-align: start;
+        min-height: 240px;
+        padding: 10px;
+      }
+
+      .member img, .role img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1.2rem;
+        top: -15px;
+      }
+
+      .member h3, .role h3 {
+        font-size: 1.3em;
+      }
+
+      .member span {
+        font-size: 1.1em;
+      }
+
+      .member p, .role p {
+        font-size: 0.9em;
+      }
+
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+      }
+
+      .event .edit-button {
+        right: 30px;
+      }
+
+      .role .tooltip {
+        width: 160px;
+        font-size: 0.85em;
+      }
+
+      .role .apply-button {
+        font-size: 0.8em;
+        padding: 6px 10px;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 95%;
+      }
+
+      .event img {
+        height: 150px;
+      }
+
+      .event h3 {
+        font-size: 1.4em;
+      }
+
+      .event p {
+        font-size: 0.95em;
+      }
+
+      .countdown {
+        font-size: 1.5em;
+      }
+
+      .form-container {
+        max-width: 95%;
+      }
+
+      .submit-section, .newsletter-container {
+        max-width: 95%;
         padding: 15px;
       }
 
@@ -103,7 +999,199 @@ Original file line number	Diff line number	Diff line change
         font-size: 1em;
         padding: 10px 15px;
       }
-@@ -1166,34 +1182,18 @@
+
+      .contact-lead {
+        padding: 30px 15px;
+      }
+
+      .contact-lead a {
+        font-size: 1em;
+      }
+
+      .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container, .roles-container {
+        max-width: 95%;
+        padding: 20px 15px;
+      }
+
+      .event-preview img {
+        height: 80px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .header h1 {
+        font-size: 2.2em;
+      }
+
+      .section h1, .section h2 {
+        font-size: 1.6em;
+      }
+
+      .section p {
+        font-size: 0.9em;
+      }
+
+      .members-grid, .roles-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 0 5px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .member, .role {
+        flex: 0 0 120px;
+        scroll-snap-align: start;
+        min-height: 200px;
+        padding: 8px;
+      }
+
+      .member img, .role img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .member h3, .role h3 {
+        font-size: 1.1em;
+      }
+
+      .member span {
+        font-size: 1em;
+      }
+
+      .member p, .role p {
+        font-size: 0.85em;
+      }
+
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1rem;
+        top: -12px;
+      }
+
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7em;
+      }
+
+      .event .edit-button {
+        right: 25px;
+      }
+
+      .role .tooltip {
+        width: 140px;
+        font-size: 0.8em;
+        padding: 8px;
+      }
+
+      .role .apply-button {
+        font-size: 0.7em;
+        padding: 5px 8px;
+      }
+
+      .countdown {
+        font-size: 1.2em;
+      }
+
+      .newsletter-container h2 {
+        font-size: 1.5em;
+      }
+
+      .newsletter-container p {
+        font-size: 0.9em;
+      }
+
+      .event img {
+        height: 120px;
+      }
+
+      .hamburger {
+        font-size: 1.2rem;
+      }
+
+      .login-container input, .login-container button {
+        font-size: 0.7em;
+        padding: 5px;
+      }
+
+      .event-preview img {
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <button class="hamburger" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#mission">Mission</a>
+      <a href="#members">Members</a>
+      <a href="#events">Events</a>
+      <a href="#submit">Submit Event</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+  </nav>
+
+  <div class="login-container">
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <button class="logout-button">Logout</button>
+  </div>
+
+  <header class="header">
+    <h1>Join Our Kiwiburn</h1>
+    <a href="#about" class="scroll-down">▼</a>
+  </header>
+
+  <div class="modal" id="member-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal()">×</button>
+      <h3>Add Member Details</h3>
+      <input type="text" id="member-name" placeholder="Member Name" required>
+      <input type="file" id="member-photo" accept="image/*" required>
+      <button onclick="saveMemberDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="role-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeRoleModal()">×</button>
+      <h3>Create New Role</h3>
+      <input type="text" id="role-title" placeholder="Role Title" required>
+      <textarea id="role-description" placeholder="Role Description" required></textarea>
+      <input type="file" id="role-icon" accept="image/*">
+      <button onclick="saveRoleDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="event-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeEventModal()">×</button>
+      <h3>Edit Event</h3>
+      <input type="text" id="event-title" placeholder="Event Title" required>
+      <textarea id="event-description" placeholder="Event Description" required></textarea>
+      <input type="datetime-local" id="event-datetime" required>
+      <select id="event-category" required>
+        <option value="Music">Music</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Art">Art</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="file" id="event-image" accept="image/*">
+      <div class="event-preview">
+        <img id="preview-image" src="images/icons/generic-event.png" alt="Preview">
+        <h3 id="preview-title">Event Title</h3>
+        <p id="preview-description">Event Description</p>
+        <p id="preview-date" class="event-date"></p>
+        <span id="preview-category" class="event-category"></span>
+      </div>
+      <button onclick="saveEventDetails()">Save</button>
     </div>
   </div>
 
@@ -115,6 +1203,7 @@ Original file line number	Diff line number	Diff line change
       <button onclick="saveGalleryImages()">Save</button>
     </div>
   </div>
+
   <div class="modal" id="about-gallery-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeAboutGalleryModal()">×</button>
@@ -123,6 +1212,7 @@ Original file line number	Diff line number	Diff line change
       <button onclick="saveAboutGalleryImages()">Save</button>
     </div>
   </div>
+
   <div class="about-container">
     <section class="section" id="about">
       <h1>About Our Camp</h1>
@@ -140,7 +1230,17 @@ Original file line number	Diff line number	Diff line change
     </section>
   </div>
 
-@@ -1211,111 +1211,127 @@
+  <div class="mission-container">
+    <section class="section" id="mission">
+      <h1>Our Mission</h1>
+      <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
+    </section>
+  </div>
+
+  <div class="members-container">
+    <section class="section" id="members">
+      <h1>Meet Our Core Camp Crew</h1>
+      <div class="members-grid" ondragover="allowDrop(event)" ondrop="drop(event, 'members')">
         <div class="scroll-arrow left">◄</div>
         <div class="scroll-arrow right">►</div>
         <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
@@ -268,7 +1368,11 @@ Original file line number	Diff line number	Diff line change
           <img src="images/tina.jpg" alt="Tina" loading="lazy">
           <h3>Tina Lein</h3>
           <span>Power/Tech Lead</span>
-@@ -1327,10 +1343,11 @@
+          <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+      </div>
+
       <div class="roles-container">
         <h2>Roles to Be Filled</h2>
         <p>Ready to make a difference? Explore open roles and join our vibrant Cosmic Rejex crew. Hover over each role to discover its responsibilities and apply to contribute your unique skills!</p>
@@ -281,7 +1385,9 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon" loading="lazy">
             <h3>Logistics & Build Lead</h3>
             <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
-@@ -1340,6 +1357,7 @@
+            <div class="tooltip">
+              <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
+            </div>
             <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
           <div class="role" draggable="true" ondragstart="drag(event)">
@@ -289,7 +1395,9 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon" loading="lazy">
             <h3>Volunteer Coordinator</h3>
             <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
-@@ -1349,6 +1367,7 @@
+            <div class="tooltip">
+              <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
+            </div>
             <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
           <div class="role" draggable="true" ondragstart="drag(event)">
@@ -297,7 +1405,9 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/build-crew.png" alt="Build Crew Icon" loading="lazy">
             <h3>Build Crew</h3>
             <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
-@@ -1358,6 +1377,7 @@
+            <div class="tooltip">
+              <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
+            </div>
             <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
           <div class="role" draggable="true" ondragstart="drag(event)">
@@ -305,7 +1415,9 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon" loading="lazy">
             <h3>Sound & Lights Lead</h3>
             <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
-@@ -1367,6 +1387,7 @@
+            <div class="tooltip">
+              <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
+            </div>
             <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
           <div class="role" draggable="true" ondragstart="drag(event)">
@@ -313,7 +1425,9 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon" loading="lazy">
             <h3>Kitchen Lead</h3>
             <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
-@@ -1376,6 +1397,7 @@
+            <div class="tooltip">
+              <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
+            </div>
             <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
           <div class="role" draggable="true" ondragstart="drag(event)">
@@ -321,7 +1435,9 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon" loading="lazy">
             <h3>Safety & Medical Lead</h3>
             <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
-@@ -1385,6 +1407,7 @@
+            <div class="tooltip">
+              <p>Stocks first aid, provides harm reduction & emergency support.</p>
+            </div>
             <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
           <div class="role" draggable="true" ondragstart="drag(event)">
@@ -329,7 +1445,9 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon" loading="lazy">
             <h3>Fire & Rangers Lead</h3>
             <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
-@@ -1394,6 +1417,7 @@
+            <div class="tooltip">
+              <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
+            </div>
             <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
           <div class="role" draggable="true" ondragstart="drag(event)">
@@ -337,7 +1455,9 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon" loading="lazy">
             <h3>Art & Decor Lead</h3>
             <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
-@@ -1403,6 +1427,7 @@
+            <div class="tooltip">
+              <p>Oversees decor, signs, and interactive art.</p>
+            </div>
             <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
           <div class="role" draggable="true" ondragstart="drag(event)">
@@ -345,7 +1465,10 @@ Original file line number	Diff line number	Diff line change
             <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon" loading="lazy">
             <h3>Event & Theme Night Lead</h3>
             <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
-@@ -1413,11 +1438,11 @@
+            <div class="tooltip">
+              <p>Plans events, workshops, performances & group photos.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
         </div>
         <div class="roles-empty" style="display: none;">
@@ -360,7 +1483,23 @@ Original file line number	Diff line number	Diff line change
     </section>
 
     <section class="section submit-section" id="join">
-@@ -1441,40 +1466,64 @@
+      <h2>Request to Join</h2>
+      <p>Want to join our amazing community? Click below to submit your request!</p>
+      <a href="join-camp.html" class="submit-button">Click Here</a>
+    </section>
+  </div>
+
+  <div class="events-container">
+    <section class="section" id="events">
+      <h1>Past Events</h1>
+      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
+      <select id="event-filter" onchange="filterEvents()">
+        <option value="all">All Events</option>
+        <option value="Music">Music</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Art">Art</option>
+        <option value="Other">Other</option>
+        <option value="upcoming">Upcoming</option>
         <option value="past">Past</option>
       </select>
       <div class="events-grid">
@@ -429,7 +1568,23 @@ Original file line number	Diff line number	Diff line change
           <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
         </div>
       </div>
-@@ -1498,12 +1547,14 @@
+    </section>
+
+    <section class="section submit-section" id="submit">
+      <h1>Submit Your Event</h1>
+      <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
+      <a href="submit-event.html" class="submit-button">Click Here</a>
+    </section>
+  </div>
+
+  <div class="newsletter-container">
+    <section class="section" id="newsletter">
+      <h2>Updates & Newsletter</h2>
+      <p>Stay in the loop with the latest camp news, application updates, and camp fee information!</p>
+      <a href="newsletter.html" class="submit-button">Read Our Newsletter</a>
+    </section>
+  </div>
+
   <div class="gallery-container">
     <section class="section" id="gallery">
       <h1>Camp Gallery</h1>
@@ -446,7 +1601,20 @@ Original file line number	Diff line number	Diff line change
     </section>
   </div>
 
-@@ -1524,25 +1575,21 @@
+  <section class="contact-lead">
+    <h2>Need to reach out?</h2>
+    <p>Message the Camp Lead on Facebook:</p>
+    <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 Kiwiburn Camp</p>
+    <div class="countdown" id="countdown"></div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
     const loginForm = document.querySelector('#login-form');
     const logoutButton = document.querySelector('.logout-button');
     const membersGrid = document.querySelector('.members-grid');
@@ -474,7 +1642,30 @@ Original file line number	Diff line number	Diff line change
       if (savedMembers) {
         membersGrid.innerHTML = savedMembers;
         membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
-@@ -1573,6 +1620,7 @@
+          arrow.addEventListener('click', handleScroll);
+        });
+        membersGrid.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteMember(button));
+        });
+        membersGrid.querySelectorAll('.member').forEach(member => {
+          member.draggable = true;
+          member.addEventListener('dragstart', drag);
+        });
+      }
+      if (savedRoles) {
+        rolesGrid.innerHTML = savedRoles;
+        rolesGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
+          arrow.addEventListener('click', handleScroll);
+        });
+        rolesGrid.querySelectorAll('.delete-button').forEach(button => {
+          button.addEventListener('click', () => deleteRole(button));
+        });
+        rolesGrid.querySelectorAll('.role').forEach(role => {
+          role.draggable = true;
+          role.addEventListener('dragstart', drag);
+        });
+      }
+      if (savedEvents) {
         eventsGrid.innerHTML = savedEvents;
         eventsGrid.querySelectorAll('.edit-button').forEach(button => {
           button.addEventListener('click', () => openEventModal(button));
@@ -482,7 +1673,14 @@ Original file line number	Diff line number	Diff line change
         });
         eventsGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteEvent(button));
-@@ -1587,12 +1635,6 @@
+        });
+        eventsGrid.querySelectorAll('.event').forEach(event => {
+          event.setAttribute('tabindex', '0');
+          event.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && isLoggedIn) {
+              const editButton = event.querySelector('.edit-button');
+              if (editButton) editButton.click();
+            }
           });
         });
       }
@@ -495,7 +1693,24 @@ Original file line number	Diff line number	Diff line change
       updateRolesVisibility();
       updateEventBadges();
     });
-@@ -1617,7 +1659,6 @@
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.querySelector('#username').value;
+      const password = document.querySelector('#password').value;
+      if (username === 'shanon' && password === 'Audius1993!') {
+        isLoggedIn = true;
+        document.body.classList.add('logged-in');
+        loginForm.style.display = 'none';
+        logoutButton.style.display = 'block';
+        saveButton.style.display = 'block';
+        membersGrid.classList.add('draggable');
+        rolesGrid.classList.add('draggable');
+        document.querySelectorAll('.member, .role').forEach(item => {
           item.setAttribute('draggable', 'true');
           item.addEventListener('dragstart', drag);
         });
@@ -503,7 +1718,17 @@ Original file line number	Diff line number	Diff line change
       } else {
         alert('Invalid credentials');
       }
-@@ -1635,7 +1676,6 @@
+    });
+
+    logoutButton.addEventListener('click', () => {
+      isLoggedIn = false;
+      document.body.classList.remove('logged-in');
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      saveButton.style.display = 'none';
+      membersGrid.classList.remove('draggable');
+      rolesGrid.classList.remove('draggable');
+      document.querySelectorAll('.member, .role').forEach(item => {
         item.setAttribute('draggable', 'false');
         item.removeEventListener('dragstart', drag);
       });
@@ -511,7 +1736,82 @@ Original file line number	Diff line number	Diff line change
     });
 
     const countdown = document.getElementById('countdown');
-@@ -1718,6 +1758,7 @@
+    const targetDate = new Date('2025-01-27T12:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) {
+        countdown.textContent = "Kiwiburn is happening now!";
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function handleScroll() {
+      const grid = this.parentElement;
+      const isLeft = this.classList.contains('left');
+      const scrollAmount = 150;
+      grid.scrollBy({
+        left: isLeft ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+      arrow.addEventListener('click', handleScroll);
+    });
+
+    function drag(event) {
+      if (!isLoggedIn) return;
+      draggedElement = event.target.closest('.member, .role');
+      event.dataTransfer.setData('text/plain', draggedElement.outerHTML);
+      event.dataTransfer.setData('elementType', draggedElement.className.includes('member') ? 'member' : 'role');
+    }
+
+    function allowDrop(event) {
+      if (!isLoggedIn) return;
+      event.preventDefault();
+    }
+
+    function drop(event, targetGrid) {
+      if (!isLoggedIn) return;
+      event.preventDefault();
+      const elementType = event.dataTransfer.getData('elementType');
+      const grid = event.target.closest('.members-grid, .roles-grid');
+      const target = event.target.closest('.member, .role');
+
+      if (grid.classList.contains('members-grid') && elementType === 'role') {
+        openMemberModalForRole(draggedElement, grid, target);
+      } else if (grid.classList.contains('roles-grid') && elementType === 'member') {
+        convertMemberToRole(draggedElement, grid, target);
+      } else if (grid.classList.contains('members-grid') && elementType === 'member' || 
+                 grid.classList.contains('roles-grid') && elementType === 'role') {
+        if (target && draggedElement !== target) {
+          const temp = document.createElement('div');
+          grid.insertBefore(temp, target);
+          grid.insertBefore(draggedElement, temp);
+          temp.remove();
+        } else if (!target) {
+          grid.appendChild(draggedElement);
+        }
+      }
+      draggedElement = null;
+      updateRolesVisibility();
+    }
+
+    function convertMemberToRole(member, grid, target) {
+      const roleTitle = member.querySelector('span').textContent;
+      const description = member.querySelector('p').textContent;
+      const newRole = document.createElement('div');
+      newRole.className = 'role';
       newRole.draggable = true;
       newRole.addEventListener('dragstart', drag);
       newRole.innerHTML = `
@@ -519,7 +1819,29 @@ Original file line number	Diff line number	Diff line change
         <img src="images/icons/generic-role.png" alt="${roleTitle} Icon" loading="lazy">
         <h3>${roleTitle}</h3>
         <a href="join-camp.html?role=${encodeURIComponent(roleTitle)}" class="apply-button">Apply for Role</a>
-@@ -1747,8 +1788,6 @@
+        <div class="tooltip">
+          <p>${description}</p>
+        </div>
+        <button class="delete-button" onclick="deleteRole(this)">×</button>
+      `;
+      if (target) {
+        grid.insertBefore(newRole, target);
+      } else {
+        grid.appendChild(newRole);
+      }
+      member.remove();
+      updateRolesVisibility();
+    }
+
+    function openMemberModalForRole(roleElement, grid, target) {
+      memberModal.style.display = 'flex';
+      memberModal.dataset.roleElement = roleElement.outerHTML;
+      memberModal.dataset.grid = grid.className;
+      memberModal.dataset.target = target ? target.outerHTML : '';
+    }
+
+    function saveChanges() {
+      if (!isLoggedIn) return;
       localStorage.setItem('membersGrid', membersGrid.innerHTML);
       localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
       localStorage.setItem('eventsGrid', eventsGrid.innerHTML);
@@ -528,7 +1850,36 @@ Original file line number	Diff line number	Diff line change
       alert('Changes saved!');
     }
 
-@@ -1785,7 +1824,7 @@
+    function openModal() {
+      if (!isLoggedIn) return;
+      memberModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      memberModal.style.display = 'none';
+      document.querySelector('#member-name').value = '';
+      document.querySelector('#member-photo').value = '';
+      delete memberModal.dataset.roleElement;
+      delete memberModal.dataset.grid;
+      delete memberModal.dataset.target;
+    }
+
+    function saveMemberDetails() {
+      if (!isLoggedIn) return;
+      const name = document.querySelector('#member-name').value;
+      const photoInput = document.querySelector('#member-photo');
+      const roleElement = memberModal.dataset.roleElement;
+      const gridClass = memberModal.dataset.grid;
+      const targetHtml = memberModal.dataset.target;
+
+      if (!name || !photoInput.files || !photoInput.files[0]) {
+        alert('Please fill in all fields');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const photoSrc = e.target.result;
         const grid = document.querySelector(`.${gridClass}`);
         let newMember;
 
@@ -537,7 +1888,11 @@ if (roleElement) {
           const tempDiv = document.createElement('div');
           tempDiv.innerHTML = roleElement;
           const role = tempDiv.firstElementChild;
-@@ -1797,34 +1836,35 @@
+          const roleTitle = role.querySelector('h3').textContent;
+          const description = role.querySelector('.tooltip p').textContent;
+
+          newMember = document.createElement('div');
+          newMember.className = 'member';
           newMember.draggable = true;
           newMember.addEventListener('dragstart', drag);
           newMember.innerHTML = `
@@ -580,7 +1935,13 @@ if (roleElement) {
           } else {
             grid.appendChild(newMember);
           }
-@@ -1838,14 +1878,6 @@
+        } else {
+          grid.appendChild(newMember);
+        }
+
+        closeModal();
+        updateRolesVisibility();
+      };
       reader.readAsDataURL(photoInput.files[0]);
     }
 
@@ -591,10 +1952,23 @@ if (roleElement) {
         updateRolesVisibility();
       }
     }
+
     function openRoleModal() {
       if (!isLoggedIn) return;
       roleModal.style.display = 'flex';
-@@ -1865,17 +1897,76 @@
+    }
+
+    function closeRoleModal() {
+      roleModal.style.display = 'none';
+      document.querySelector('#role-title').value = '';
+      document.querySelector('#role-description').value = '';
+      document.querySelector('#role-icon').value = '';
+    }
+
+    function saveRoleDetails() {
+      if (!isLoggedIn) return;
+      const title = document.querySelector('#role-title').value;
+      const description = document.querySelector('#role-description').value;
       const iconInput = document.querySelector('#role-icon');
 
       if (!title || !description) {
@@ -610,6 +1984,7 @@ if (roleElement) {
       newRole.className = 'role';
       newRole.draggable = true;
       newRole.addEventListener('dragstart', drag);
+
       if (iconInput.files && iconInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -633,6 +2008,7 @@ if (roleElement) {
         createNewRole(title, description, iconSrc);
       }
     }
+
     function createNewRole(title, description, iconSrc) {
       const newRole = document.createElement('div');
       newRole.className = 'role';
@@ -651,6 +2027,7 @@ if (roleElement) {
       closeRoleModal();
       updateRolesVisibility();
     }
+
     function deleteMember(button) {
       if (!isLoggedIn) return;
       const member = button.closest('.member');
@@ -671,7 +2048,8 @@ if (roleElement) {
           <h3>${title}</h3>
           <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-@@ -1884,50 +1975,68 @@
+            <p>${description}</p>
+          </div>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         `;
         rolesGrid.appendChild(newRole);
@@ -680,6 +2058,7 @@ if (roleElement) {
         closeRoleModal();
         updateRolesVisibility();
       };
+
       if (iconInput.files && iconInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -706,6 +2085,7 @@ if (roleElement) {
       button.closest('.member').remove();
       updateRolesVisibility();
     }
+
     function deleteEvent(button) {
     function deleteRole(button) {
       if (!isLoggedIn) return;
@@ -751,17 +2131,20 @@ if (roleElement) {
       const datetime = event.querySelector('.event-date') ? new Date(event.querySelector('.event-date').textContent).toISOString().slice(0, 16) : '';
       const category = event.querySelector('.event-category')?.textContent || 'Other';
       const imageSrc = event.querySelector('img').src;
+
       document.querySelector('#event-title').value = title;
       document.querySelector('#event-description').value = description;
       document.querySelector('#event-datetime').value = datetime;
       document.querySelector('#event-category').value = category;
       eventModal.dataset.eventElement = event.outerHTML;
       eventModal.dataset.imageSrc = imageSrc;
+
       updatePreview();
       eventModal.style.display = 'flex';
     }
 
-@@ -1936,10 +2045,15 @@
+    function closeEventModal() {
+      eventModal.style.display = 'none';
       document.querySelector('#event-title').value = '';
       document.querySelector('#event-description').value = '';
       document.querySelector('#event-datetime').value = '';
@@ -778,7 +2161,9 @@ if (roleElement) {
     }
 
     function saveEventDetails() {
-@@ -1949,269 +2063,299 @@
+      if (!isLoggedIn) return;
+      const title = document.querySelector('#event-title').value;
+      const description = document.querySelector('#event-description').value;
       const datetime = document.querySelector('#event-datetime').value;
       const category = document.querySelector('#event-category').value;
       const imageInput = document.querySelector('#event-image');
@@ -797,6 +2182,7 @@ if (roleElement) {
         const eventDate = new Date(datetime);
         const formattedDate = eventDate.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' }) + ', ' + eventDate.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
         let eventElement;
+
         if (eventElementHtml) {
           const tempDiv = document.createElement('div');
           tempDiv.innerHTML = eventElementHtml;
@@ -832,10 +2218,12 @@ if (roleElement) {
           });
           eventsGrid.appendChild(eventElement);
         }
+
         closeEventModal();
         updateEventBadges();
         saveChanges(); // Save to localStorage
       };
+
       let imageSrc = eventModal.dataset.imageSrc || 'images/icons/generic-event.png';
       if (imageInput.files && imageInput.files[0]) {
         const reader = new FileReader();
@@ -855,6 +2243,7 @@ if (roleElement) {
         updateEventElement(title, description, datetime, imageSrc, category);
       }
     }
+
     function updateEventElement(title, description, imageSrc) {
     function updateEventElement(title, description, datetime, imageSrc, category) {
       const eventHtml = eventModal.dataset.eventElement;
@@ -884,6 +2273,7 @@ if (roleElement) {
       if (eventDate > now) {
         badgeHtml = '<span class="event-badge">Upcoming</span>';
       }
+
       eventElement.innerHTML = `
         ${badgeHtml}
         <img src="${imageSrc}" alt="${title} Poster" loading="lazy">
@@ -933,6 +2323,7 @@ if (roleElement) {
       closeEventModal();
       filterEvents();
     }
+
     function updateRolesVisibility() {
       const roles = rolesGrid.querySelectorAll('.role');
       if (roles.length === 0) {
@@ -944,6 +2335,7 @@ if (roleElement) {
       const title = event.querySelector('h3');
       const description = event.querySelector('p:not(.event-date)');
       const isEditing = title.contentEditable === 'true';
+
       if (isEditing) {
         title.contentEditable = false;
         description.contentEditable = false;
@@ -986,8 +2378,10 @@ if (roleElement) {
       saveChanges();
       filterEvents();
     }
+
     initializeGridScroll(membersGrid);
     initializeGridScroll(rolesGrid);
+
     // Smooth scroll for nav links
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -1005,11 +2399,13 @@ if (roleElement) {
     function updateEventBadges() {
       const events = eventsGrid.querySelectorAll('.event');
       const now = new Date();
+
       events.forEach(event => {
         const category = event.querySelector('.event-category').textContent;
         const dateText = event.querySelector('.event-date').textContent.split(', ')[0];
         const timeText = event.querySelector('.event-date').textContent.split(', ')[1];
         const eventDate = new Date(`${dateText} ${timeText}`);
+
         if (filter === 'all') {
           event.style.display = 'block';
         } else if (filter === 'upcoming' && eventDate >= now) {
@@ -1037,6 +2433,7 @@ if (roleElement) {
         }
       });
     });
+
     // Ensure roles visibility is updated on page load
     updateRolesVisibility();
     }
@@ -1084,20 +2481,25 @@ if (roleElement) {
       if (!isLoggedIn) return;
       galleryModal.style.display = 'flex';
     }
+
     function closeGalleryModal() {
       galleryModal.style.display = 'none';
       document.querySelector('#gallery-images').value = '';
     }
+
     function saveGalleryImages() {
       if (!isLoggedIn) return;
       const galleryImagesInput = document.querySelector('#gallery-images');
       const gallery = document.querySelector('#camp-gallery');
+
       if (!galleryImagesInput.files || galleryImagesInput.files.length === 0) {
         alert('Please select at least one image');
         return;
       }
+
       const files = Array.from(galleryImagesInput.files);
       gallery.innerHTML = ''; // Clear existing images
+
       files.forEach(file => {
     // Handle window resize for grid scrolling visibility
     window.addEventListener('resize', () => {
@@ -1109,6 +2511,7 @@ if (roleElement) {
     document.querySelector('#event-datetime').addEventListener('input', updatePreview);
     document.querySelector('#event-category').addEventListener('change', updatePreview);
     document.querySelector('#event-image').addEventListener('change', updatePreview);
+
     // Prevent text selection during drag
     document.addEventListener('dragstart', (e) => {
       if (e.target.classList.contains('member') || e.target.classList.contains('role')) {
@@ -1134,12 +2537,15 @@ if (roleElement) {
         };
         reader.readAsDataURL(file);
       });
+
       closeGalleryModal();
     }
+
     function openAboutGalleryModal() {
       if (!isLoggedIn) return;
       aboutGalleryModal.style.display = 'flex';
     }
+
     function closeAboutGalleryModal() {
       aboutGalleryModal.style.display = 'none';
       document.querySelector('#about-gallery-images').value = '';
@@ -1154,6 +2560,7 @@ if (roleElement) {
       if (!isLoggedIn) return;
       const aboutGalleryImagesInput = document.querySelector('#about-gallery-images');
       const aboutGallery = document.querySelector('#about-gallery');
+
       if (!aboutGalleryImagesInput.files || aboutGalleryImagesInput.files.length === 0) {
         alert('Please select at least one image');
         return;
@@ -1161,8 +2568,10 @@ if (roleElement) {
       if (e.target.classList.contains('member') || e.target.classList.contains('role')) {
         e.target.style.userSelect = '';
       }
+
       const files = Array.from(aboutGalleryImagesInput.files);
       aboutGallery.innerHTML = ''; // Clear existing images
+
       files.forEach(file => {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -1184,6 +2593,7 @@ if (roleElement) {
         };
         reader.readAsDataURL(file);
       });
+
       closeAboutGalleryModal();
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
@@ -1210,11 +2620,13 @@ if (roleElement) {
         submitSection.classList.remove('sticky');
       }
     }, 100));
+
     // Focus management for modals
     function trapFocus(modal) {
       const focusableElements = modal.querySelectorAll('input, textarea, button, [tabindex]:not([tabindex="-1"])');
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
+
       modal.addEventListener('keydown', (e) => {
         if (e.key === 'Tab') {
           if (e.shiftKey && document.activeElement === firstElement) {
@@ -1247,10 +2659,12 @@ if (roleElement) {
         this.contentEditable = true;
         this.focus();
       });
+
       element.addEventListener('blur', function() {
         this.contentEditable = false;
         saveChanges();
       });
+
       element.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -1264,3 +2678,4 @@ if (roleElement) {
     });
   </script>
 </body>
+</html>
