@@ -83,7 +83,7 @@
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
       color: #ffffff;
-      font-size: 0.9 TRANSACTION
+      font-size: 0.9rem;
     }
 
     .login-container input::placeholder {
@@ -151,7 +151,7 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    @ GFkeyframes bounce {
+    @keyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
       40% { transform: translate(-50%, -10px); }
       60% { transform: translate(-50%, -5px); }
@@ -279,6 +279,7 @@
       border: 1px solid #e67e22;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
+      border-radius: 8px;
     }
 
     .member:hover, .role:hover, .event:hover {
@@ -289,16 +290,6 @@
     .member img, .role img {
       width: 140px;
       height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      margin-bottom: 10px;
-      border: 3px solid #f39c12;
-    }
-
-    .role img {
-      width: 80px;
-      height: 80px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -417,9 +408,9 @@
 
     .role .tooltip {
       visibility: hidden;
-      width: 180px;
-      background-color: #000000;
-      color: #ffffff;
+      width: 200px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -433,23 +424,13 @@
       font-size: 0.9em;
       font-family: 'Montserrat', sans-serif;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
       border: 2px solid #f39c12;
     }
 
     .role .tooltip p {
-      color: #ffffff;
+      color: #f8e1b4;
       margin: 0;
-    }
-
-    .role .tooltip img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid #f39c12;
+      line-height: 1.5;
     }
 
     .role:hover .tooltip {
@@ -681,6 +662,27 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
+    .roles-container {
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .roles-empty {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .roles-empty p {
+      font-size: 1.1em;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
@@ -789,16 +791,6 @@
         top: -15px;
       }
 
-      .role img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        margin-bottom: 10px;
-        border: 3px solid #f39c12;
-      }
-
       .member h3, .role h3 {
         font-size: 1.3em;
       }
@@ -822,13 +814,8 @@
       }
 
       .role .tooltip {
-        width: 140px;
+        width: 160px;
         font-size: 0.85em;
-      }
-
-      .role .tooltip img {
-        width: 60px;
-        height: 60px;
       }
 
       .role .apply-button {
@@ -880,7 +867,7 @@
         font-size: 1em;
       }
 
-      .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
+      .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container, .roles-container {
         max-width: 95%;
         padding: 20px 15px;
       }
@@ -947,25 +934,10 @@
         right: 25px;
       }
 
-      .role img {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        margin-bottom: 10px;
-        border: 3px solid #f39c12;
-      }
-
       .role .tooltip {
-        width: 120px;
+        width: 140px;
         font-size: 0.8em;
         padding: 8px;
-      }
-
-      .role .tooltip img {
-        width: 50px;
-        height: 50px;
       }
 
       .role .apply-button {
@@ -1166,7 +1138,7 @@
           <img src="images/Gartah.jpg" alt="Gartah">
           <h3>Gartah</h3>
           <span>Strike Lead</span>
-          <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well nisso.</p>
+          <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
           <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div filler-text="These are filler images and names, please replace with real photos and names for actual use." class="member" draggable="true" ondragstart="drag(event)">
@@ -1199,94 +1171,99 @@
         </div>
       </div>
 
-      <h2>Roles to Be Filled</h2>
-      <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
-      <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event, 'roles')">
-        <div class="scroll-arrow left">◄</div>
-        <div class="scroll-arrow right">►</div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon">
-          <h3>Logistics & Build Lead</h3>
-          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
+      <div class="roles-container">
+        <h2>Roles to Be Filled</h2>
+        <p>Ready to make a difference? Explore open roles and join our vibrant Cosmic Rejex crew. Hover over each role to discover its responsibilities and apply to contribute your unique skills!</p>
+        <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event, 'roles')">
+          <div class="scroll-arrow left">◄</div>
+          <div class="scroll-arrow right">►</div>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon">
+            <h3>Logistics & Build Lead</h3>
+            <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
           </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
+            <h3>Volunteer Coordinator</h3>
+            <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          </div>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/build-crew.png" alt="Build Crew Icon">
+            <h3>Build Crew</h3>
+            <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          </div>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
+            <h3>Sound & Lights Lead</h3>
+            <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          </div>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
+            <h3>Kitchen Lead</h3>
+            <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          </div>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
+            <h3>Safety & Medical Lead</h3>
+            <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Stocks first aid, provides harm reduction & emergency support.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          </div>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
+            <h3>Fire & Rangers Lead</h3>
+            <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          </div>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
+            <h3>Art & Decor Lead</h3>
+            <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Oversees decor, signs, and interactive art.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          </div>
+          <div class="role" draggable="true" ondragstart="drag(event)">
+            <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
+            <h3>Event & Theme Night Lead</h3>
+            <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
+            <div class="tooltip">
+              <p>Plans events, workshops, performances & group photos.</p>
+            </div>
+            <button class="delete-button" onclick="deleteRole(this)">×</button>
+          </div>
         </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
-          <h3>Volunteer Coordinator</h3>
-          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
-          <div class="apply-button">
-            <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/build-crew.png" alt="Build Crew Icon">
-          <h3>Build Crew</h3>
-          <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
-          <h3>Sound & Lights Lead</h3>
-          <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
-          <h3>Kitchen Lead</h3>
-          <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
-          <h3>Safety & Medical Lead</h3>
-          <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Stocks first aid, provides harm reduction & emergency support.</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
-          <h3>Fire & Rangers Lead</h3>
-          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
-          <h3>Art & Decor Lead</h3>
-          <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Oversees decor, signs, and interactive art.</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
-          <h3>Event & Theme Night Lead</h3>
-          <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Plans events, workshops, performances & group photos.</p>
-          </div>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        <div class="roles-empty" style="display: none;">
+          <p>No open roles currently. Create a new role to get started!</p>
+          <button class="add-role-button" onclick="openRoleModal()">Add New Role</button>
         </div>
       </div>
-      <button class="add-role-button" onclick="openRoleModal()">Add New Role</button>
       <button class="save-button" onclick="saveChanges()" style="display: none;">Save Changes</button>
     </section>
 
@@ -1377,6 +1354,7 @@
     const logoutButton = document.querySelector('.logout-button');
     const membersGrid = document.querySelector('.members-grid');
     const rolesGrid = document.querySelector('.roles-grid');
+    const rolesEmpty = document.querySelector('.roles-empty');
     const eventsGrid = document.querySelector('.events-grid');
     const memberModal = document.querySelector('#member-modal');
     const roleModal = document.querySelector('#role-modal');
@@ -1385,7 +1363,7 @@
     let draggedElement = null;
     let isLoggedIn = false;
 
-    // Load saved data on page load
+    // Load saved data and update roles visibility
     window.addEventListener('load', () => {
       const savedMembers = localStorage.getItem('membersGrid');
       const savedRoles = localStorage.getItem('rolesGrid');
@@ -1425,6 +1403,7 @@
           button.addEventListener('click', () => deleteEvent(button));
         });
       }
+      updateRolesVisibility();
     });
 
     hamburger.addEventListener('click', () => {
@@ -1535,6 +1514,7 @@
         }
       }
       draggedElement = null;
+      updateRolesVisibility();
     }
 
     function convertMemberToRole(member, grid, target) {
@@ -1559,6 +1539,7 @@
         grid.appendChild(newRole);
       }
       member.remove();
+      updateRolesVisibility();
     }
 
     function openMemberModalForRole(roleElement, grid, target) {
@@ -1656,6 +1637,7 @@
         }
 
         closeModal();
+        updateRolesVisibility();
       };
       reader.readAsDataURL(photoInput.files[0]);
     }
@@ -1712,6 +1694,7 @@
       `;
       rolesGrid.appendChild(newRole);
       closeRoleModal();
+      updateRolesVisibility();
     }
 
     function deleteMember(button) {
@@ -1737,6 +1720,7 @@
         rolesGrid.appendChild(newRole);
         member.remove();
         alert(`${name} has been removed from the members list and their role has been added to Roles to Be Filled.`);
+        updateRolesVisibility();
       }
     }
 
@@ -1747,6 +1731,7 @@
       if (confirm(`Are you sure you want to delete the ${title} role?`)) {
         role.remove();
         alert(`The ${title} role has been removed.`);
+        updateRolesVisibility();
       }
     }
 
@@ -1808,20 +1793,30 @@
     function updateEventElement(title, description, imageSrc) {
       const eventHtml = eventModal.dataset.eventElement;
       const tempDiv = document.createElement('div');
-      tempDiv.inner新能源
       tempDiv.innerHTML = eventHtml;
       const eventElement = tempDiv.firstElementChild;
       eventElement.querySelector('h3').textContent = title;
       eventElement.querySelector('p').textContent = description;
       eventElement.querySelector('img').src = imageSrc;
       eventElement.querySelector('img').alt = `${title} Poster`;
-      const oldEvent = eventsGrid.querySelector(`[data-event="${eventHtml}"]`) || eventsGrid.querySelector(`h3:contains('${eventElement.querySelector('h3').textContent}')`)?.closest('.event');
+      const oldEvent = eventsGrid.querySelector(`h3:contains('${eventElement.querySelector('h3').textContent}')`)?.closest('.event');
       if (oldEvent) {
         eventsGrid.replaceChild(eventElement, oldEvent);
       } else {
         eventsGrid.appendChild(eventElement);
       }
       closeEventModal();
+    }
+
+    function updateRolesVisibility() {
+      const roles = rolesGrid.querySelectorAll('.role');
+      if (roles.length === 0) {
+        rolesGrid.style.display = 'none';
+        rolesEmpty.style.display = 'block';
+      } else {
+        rolesGrid.style.display = 'grid';
+        rolesEmpty.style.display = 'none';
+      }
     }
 
     // Custom jQuery-like :contains selector for compatibility
@@ -1854,31 +1849,77 @@
             top: targetElement.offsetTop - 60,
             behavior: 'smooth'
           });
-          if (window.innerWidth <= 768) {
+                    // Close mobile menu if open
+          if (navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
           }
         }
       });
     });
 
-    // Handle window resize for grid adjustments
+    // Ensure roles visibility is updated on page load
+    updateRolesVisibility();
+
+    // Prevent default drag behavior for non-logged-in users
+    document.querySelectorAll('.member, .role').forEach(item => {
+      item.addEventListener('dragstart', (e) => {
+        if (!isLoggedIn) {
+          e.preventDefault();
+        }
+      });
+    });
+
+    // Handle window resize for grid scrolling visibility
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        membersGrid.style.overflowX = 'visible';
-        rolesGrid.style.overflowX = 'visible';
-      } else {
-        membersGrid.style.overflowX = 'auto';
-        rolesGrid.style.overflowX = 'auto';
+      initializeGridScroll(membersGrid);
+      initializeGridScroll(rolesGrid);
+    });
+
+    // Prevent text selection during drag
+    document.addEventListener('dragstart', (e) => {
+      if (e.target.classList.contains('member') || e.target.classList.contains('role')) {
+        e.target.style.userSelect = 'none';
       }
     });
 
-    // Initialize draggable state based on login status
-    if (!isLoggedIn) {
-      document.querySelectorAll('.member, .role').forEach(item => {
-        item.setAttribute('draggable', 'false');
+    document.addEventListener('dragend', (e) => {
+      if (e.target.classList.contains('member') || e.target.classList.contains('role')) {
+        e.target.style.userSelect = '';
+      }
+    });
+
+    // Handle keyboard accessibility for modals
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (modal.id === 'member-modal') closeModal();
+          if (modal.id === 'role-modal') closeRoleModal();
+          if (modal.id === 'event-modal') closeEventModal();
+        }
+      });
+    });
+
+    // Focus management for modals
+    function trapFocus(modal) {
+      const focusableElements = modal.querySelectorAll('input, textarea, button, [tabindex]:not([tabindex="-1"])');
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          if (e.shiftKey && document.activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          } else if (!e.shiftKey && document.activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          }
+        }
       });
     }
+
+    [memberModal, roleModal, eventModal].forEach(modal => trapFocus(modal));
+
   </script>
 </body>
 </html>
-</xaiArtifact>
