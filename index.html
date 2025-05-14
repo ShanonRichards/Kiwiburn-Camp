@@ -209,9 +209,15 @@
       position: relative;
     }
 
+    .gallery-item {
+      position: relative;
+      cursor: move;
+    }
+
     .gallery img {
       width: 100%;
-      height: auto;
+      height: 200px;
+      object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -360,7 +366,7 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
-      color: #C0C0C0;
+      color: #C95625;
       z-index: 10;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
@@ -798,6 +804,10 @@
         max-width: 95%;
       }
 
+      .gallery img {
+        height: 150px;
+      }
+
       .members-grid, .roles-grid {
         display: flex;
         flex-direction: row;
@@ -978,8 +988,8 @@
       <h3>Edit Event</h3>
       <input type="text" id="event-title" placeholder="Event Title" required>
       <textarea id="event-description" placeholder="Event Description" required></textarea>
-      <input type="datetime-local" id="event-start" placeholder="Start Date & Time">
-      <input type="datetime-local" id="event-end" placeholder="End Date & Time">
+      <input type="datetime-local" id="event-start" placeholder="Start Date & Time" required>
+      <input type="datetime-local" id="event-end" placeholder="End Date & Time" required>
       <select id="event-type">
         <option value="Performance">Performance</option>
         <option value="Workshop">Workshop</option>
@@ -1019,9 +1029,9 @@
       <h1 id="about-title">About Our Camp</h1>
       <p id="about-description">Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
       <div class="gallery" id="about-gallery">
-        <div class="gallery-item"><img src="images/Campphoto1.jpg" alt="Camp Mates"><button class="delete-photo-button" onclick="deletePhoto(this, 'about-gallery')">×</button></div>
-        <div class="gallery-item"><img src="images/Campphoto15.png" alt="Camp Mates"><button class="delete-photo-button" onclick="deletePhoto(this, 'about-gallery')">×</button></div>
-        <div class="gallery-item"><img src="images/Campphoto17.png" alt="Night Lights"><button class="delete-photo-button" onclick="deletePhoto(this, 'about-gallery')">×</button></div>
+        <div class="gallery-item" draggable="true"><img src="images/Campphoto1.jpg" alt="Camp Mates"><button class="delete-photo-button" onclick="deletePhoto(this, 'about-gallery')">×</button></div>
+        <div class="gallery-item" draggable="true"><img src="images/Campphoto15.png" alt="Camp Mates"><button class="delete-photo-button" onclick="deletePhoto(this, 'about-gallery')">×</button></div>
+        <div class="gallery-item" draggable="true"><img src="images/Campphoto17.png" alt="Night Lights"><button class="delete-photo-button" onclick="deletePhoto(this, 'about-gallery')">×</button></div>
       </div>
       <button class="edit-about-button" onclick="openAboutModal()">Edit About Section</button>
     </section>
@@ -1283,7 +1293,7 @@
         </select>
       </div>
       <div class="events-grid">
-        <div class="event" data-type="Party">
+        <div class="event" data-type="Party" data-start="2024-01-25T20:00" data-end="2024-01-26T02:00">
           <img src="images/Eventposter.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
           <p>Emo night is back! Join us for a tribute to RAT camp as we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
@@ -1295,7 +1305,7 @@
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
-        <div class="event" data-type="Performance">
+        <div class="event" data-type="Performance" data-start="2024-01-24T15:00" data-end="2024-01-24T16:30">
           <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
           <h3>Pole in the paddock</h3>
           <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
@@ -1307,7 +1317,7 @@
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
-        <div class="event" data-type="Workshop">
+        <div class="event" data-type="Workshop" data-start="2024-01-23T18:00" data-end="2024-01-23T20:00">
           <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
           <h3>Cosmic Connections</h3>
           <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
@@ -1319,7 +1329,7 @@
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
-        <div class="event" data-type="Party">
+        <div class="event" data-type="Party" data-start="2024-01-26T21:00" data-end="2024-01-27T03:00">
           <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
           <h3>DJ Showcase & Open Decks</h3>
           <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
@@ -1349,13 +1359,22 @@
     </section>
   </div>
 
-  <div class="gallery-container">
+<div class="gallery-container">
     <section class="section" id="gallery">
       <h1>Camp Gallery</h1>
-      <div class="gallery" id="camp-gallery">
-        <div class="gallery-item"><img src="images/photo1.jpg" alt="Gallery Image 1"><button class="delete-photo-button" onclick="deletePhoto(this, 'camp-gallery')">×</button></div>
-        <div class="gallery-item"><img src="images/photo2.jpg" alt="Gallery Image 2"><button class="delete-photo-button" onclick="deletePhoto(this, 'camp-gallery')">×</button></div>
-        <div class="gallery-item"><img src="images/photo3.jpg" alt="Gallery Image 3"><button class="delete-photo-button" onclick="deletePhoto(this, 'camp-gallery')">×</button></div>
+      <div class="gallery" id="camp-gallery" ondragover="allowDrop(event)" ondrop="dropGallery(event)">
+        <div class="gallery-item" draggable="true" ondragstart="dragGallery(event)">
+          <img src="images/photo1.jpg" alt="Gallery Image 1">
+          <button class="delete-photo-button" onclick="deletePhoto(this, 'camp-gallery')">×</button>
+        </div>
+        <div class="gallery-item" draggable="true" ondragstart="dragGallery(event)">
+          <img src="images/photo2.jpg" alt="Gallery Image 2">
+          <button class="delete-photo-button" onclick="deletePhoto(this, 'camp-gallery')">×</button>
+        </div>
+        <div class="gallery-item" draggable="true" ondragstart="dragGallery(event)">
+          <img src="images/photo3.jpg" alt="Gallery Image 3">
+          <button class="delete-photo-button" onclick="deletePhoto(this, 'camp-gallery')">×</button>
+        </div>
       </div>
       <button class="edit-gallery-button" onclick="openGalleryModal()">Edit Gallery</button>
     </section>
@@ -1387,6 +1406,7 @@
     const galleryModal = document.querySelector('#gallery-modal');
     const saveButton = document.querySelector('.save-button');
     let draggedElement = null;
+    let draggedGalleryItem = null;
     let isLoggedIn = false;
 
     // Load saved data on page load
@@ -1438,7 +1458,12 @@
           button.addEventListener('click', () => deleteEvent(button));
         });
         eventsGrid.querySelectorAll('.event').forEach(event => {
-          event.dataset.type = event.querySelector('.event-details span:first-child').textContent.replace('Type: ', '');
+          const typeSpan = event.querySelector('.event-details span:first-child');
+          event.dataset.type = typeSpan ? typeSpan.textContent.replace('Type: ', '') : 'Other';
+          const startSpan = event.querySelector('.event-details span:nth-child(2)');
+          const endSpan = event.querySelector('.event-details span:nth-child(3)');
+          event.dataset.start = startSpan ? startSpan.textContent.replace('Start: ', '') : '';
+          event.dataset.end = endSpan ? endSpan.textContent.replace('End: ', '') : '';
         });
       }
       if (savedAbout) {
@@ -1447,7 +1472,7 @@
         document.querySelector('#about-description').textContent = aboutData.description;
         const gallery = document.querySelector('#about-gallery');
         gallery.innerHTML = aboutData.gallery.map((src, index) => `
-          <div class="gallery-item">
+          <div class="gallery-item" draggable="true" ondragstart="dragGallery(event)">
             <img src="${src}" alt="Camp Image ${index + 1}">
             <button class="delete-photo-button" onclick="deletePhoto(this, 'about-gallery')">×</button>
           </div>
@@ -1457,13 +1482,14 @@
         const galleryData = JSON.parse(savedGallery);
         const gallery = document.querySelector('#camp-gallery');
         gallery.innerHTML = galleryData.map((src, index) => `
-          <div class="gallery-item">
+          <div class="gallery-item" draggable="true" ondragstart="dragGallery(event)">
             <img src="${src}" alt="Gallery Image ${index + 1}">
             <button class="delete-photo-button" onclick="deletePhoto(this, 'camp-gallery')">×</button>
           </div>
         `).join('');
       }
       filterEvents();
+      initializeGalleryDrag();
     });
 
     hamburger.addEventListener('click', () => {
@@ -1486,6 +1512,9 @@
           if (!item.getAttribute('onclick')) {
             item.setAttribute('draggable', 'true');
           }
+        });
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          item.setAttribute('draggable', 'true');
         });
         alert('Login successful!');
       } else {
