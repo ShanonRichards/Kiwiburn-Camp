@@ -83,7 +83,7 @@
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
       color: #ffffff;
-      font-size: 0.9rem;
+      font-size: 0.9 TRANSACTION
     }
 
     .login-container input::placeholder {
@@ -151,7 +151,7 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    @keyframes bounce {
+    @ GFkeyframes bounce {
       0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
       40% { transform: translate(-50%, -10px); }
       60% { transform: translate(-50%, -5px); }
@@ -297,9 +297,13 @@
     }
 
     .role img {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+      border: 3px solid #f39c12;
     }
 
     .event img {
@@ -446,11 +450,6 @@
       height: 80px;
       border-radius: 50%;
       border: 2px solid #f39c12;
-    }
-
-    .role .tooltip span {
-      font-weight: bold;
-      font-size: 1em;
     }
 
     .role:hover .tooltip {
@@ -718,7 +717,7 @@
 
       .login-container form {
         flex-direction: column;
-        gapрек: 5px;
+        gap: 5px;
       }
 
       .login-container input, .login-container button {
@@ -754,7 +753,7 @@
       }
 
       .gallery {
-        grid  grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
         gap: 15px;
         max-width: 95%;
       }
@@ -791,9 +790,13 @@
       }
 
       .role img {
-        width: 50px;
-        height: 50px;
-        padding: 6px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        margin-bottom: 10px;
+        border: 3px solid #f39c12;
       }
 
       .member h3, .role h3 {
@@ -945,9 +948,13 @@
       }
 
       .role img {
-        width: 45px;
-        height: 45px;
-        padding: 5px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        margin-bottom: 10px;
+        border: 3px solid #f39c12;
       }
 
       .role .tooltip {
@@ -1159,7 +1166,7 @@
           <img src="images/Gartah.jpg" alt="Gartah">
           <h3>Gartah</h3>
           <span>Strike Lead</span>
-          <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
+          <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well nisso.</p>
           <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
         <div filler-text="These are filler images and names, please replace with real photos and names for actual use." class="member" draggable="true" ondragstart="drag(event)">
@@ -1210,7 +1217,7 @@
           <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
           <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
+          <div class="apply-button">
             <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
           </div>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
@@ -1672,7 +1679,7 @@
       const iconInput = document.querySelector('#role-icon');
 
       if (!title || !description) {
-        alert('Please fill in theocka role title and description');
+        alert('Please fill in the role title and description');
         return;
       }
 
@@ -1801,6 +1808,7 @@
     function updateEventElement(title, description, imageSrc) {
       const eventHtml = eventModal.dataset.eventElement;
       const tempDiv = document.createElement('div');
+      tempDiv.inner新能源
       tempDiv.innerHTML = eventHtml;
       const eventElement = tempDiv.firstElementChild;
       eventElement.querySelector('h3').textContent = title;
@@ -1813,10 +1821,64 @@
       } else {
         eventsGrid.appendChild(eventElement);
       }
-      eventElement.querySelector('.edit-button').addEventListener('click', () => openEventModal(eventElement.querySelector('.edit-button')));
-      eventElement.querySelector('.delete-button').addEventListener('click', () => deleteEvent(eventElement.querySelector('.delete-button')));
       closeEventModal();
+    }
+
+    // Custom jQuery-like :contains selector for compatibility
+    HTMLElement.prototype.matches = HTMLElement.prototype.matches || function(selector) {
+      const matches = document.querySelectorAll(selector);
+      return Array.from(matches).includes(this);
+    };
+
+    // Initialize grid scrolling for mobile
+    function initializeGridScroll(grid) {
+      const leftArrow = grid.querySelector('.scroll-arrow.left');
+      const rightArrow = grid.querySelector('.scroll-arrow.right');
+      if (leftArrow && rightArrow) {
+        leftArrow.addEventListener('click', () => grid.scrollBy({ left: -150, behavior: 'smooth' }));
+        rightArrow.addEventListener('click', () => grid.scrollBy({ left: 150, behavior: 'smooth' }));
+      }
+    }
+
+    initializeGridScroll(membersGrid);
+    initializeGridScroll(rolesGrid);
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 60,
+            behavior: 'smooth'
+          });
+          if (window.innerWidth <= 768) {
+            navLinks.classList.remove('active');
+          }
+        }
+      });
+    });
+
+    // Handle window resize for grid adjustments
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        membersGrid.style.overflowX = 'visible';
+        rolesGrid.style.overflowX = 'visible';
+      } else {
+        membersGrid.style.overflowX = 'auto';
+        rolesGrid.style.overflowX = 'auto';
+      }
+    });
+
+    // Initialize draggable state based on login status
+    if (!isLoggedIn) {
+      document.querySelectorAll('.member, .role').forEach(item => {
+        item.setAttribute('draggable', 'false');
+      });
     }
   </script>
 </body>
 </html>
+</xaiArtifact>
