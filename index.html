@@ -1325,7 +1325,7 @@
   <div class="modal" id="event-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeEventModal()">×</button>
-      <h3>Edit Event</h3>
+      <h3 id="event-modal-title">Edit Event</h3>
       <input type="text" id="event-title" placeholder="Event Title" required>
       <textarea id="event-description" placeholder="Event Description" required></textarea>
       <input type="date" id="event-date" required>
@@ -1741,7 +1741,7 @@
           <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
           <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 2:00 AM</p>
           <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event" data-category="Performance">
@@ -1752,7 +1752,7 @@
           <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
           <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 8:00 PM</p>
           <p class="event-category"><strong>Category:</strong> Performance</p>
-          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event" data-category="Workshop">
@@ -1763,7 +1763,7 @@
           <p class="event-time"><strong>Time:</strong> 7:00 PM</p>
           <p class="event-end"><strong>End Date & Time:</strong> January 30, 2025, 10:00 PM</p>
           <p class="event-category"><strong>Category:</strong> Workshop</p>
-          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
         <div class="event" data-category="Music">
@@ -1774,7 +1774,7 @@
           <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
           <p class="event-end"><strong>End Date & Time:</strong> February 1, 2025, 3:00 AM</p>
           <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
       </div>
@@ -1788,264 +1788,726 @@
     </section>
   </div>
 
-  <div class="newsletter-container">
-    <section class="section newsletter-section" id="newsletter">
-      <h1>Stay in the Loop</h1>
-      <p>Sign up for our newsletter to get the latest updates on events, camp news, and more!</p>
-      <button class="edit-section-button" onclick="openNewsletterModal()">Edit Section</button>
-      <div class="form-container">
-        <form id="newsletter-form">
-          <input type="email" id="newsletter-email" placeholder="Your Email" required>
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-    </section>
-  </div>
-
-  <section class="contact-lead" id="contact">
-    <h1>Contact Our Lead</h1>
-    <p>Have questions or want to connect? Reach out to our Camp Lead, Shanon Richards.</p>
-    <button class="edit-section-button" onclick="openContactModal()">Edit Section</button>
-    <a href="mailto:shanon@cosmicrejex.com">Email Shanon</a>
+<div class="newsletter-container">
+  <section class="section newsletter-section" id="newsletter">
+    <h1>Stay in the Loop</h1>
+    <p>Sign up for our newsletter to get the latest updates on events, camp news, and more!</p>
+    <button class="edit-section-button" onclick="openNewsletterModal()">Edit Section</button>
+    <div class="form-container">
+      <form id="newsletter-form">
+        <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+        <button type="submit" class="submit-button">Subscribe</button>
+      </form>
+    </div>
   </section>
+</div>
 
-  <div class="countdown-container">
-    <h2>Kiwiburn Countdown</h2>
-    <div class="countdown" id="countdown">Loading...</div>
-    <input type="datetime-local" id="countdown-date" style="display: none;">
-    <button onclick="updateCountdown()" style="display: none;">Update Countdown</button>
-  </div>
+<div class="gallery-container">
+  <section class="section" id="gallery">
+    <h1>Gallery</h1>
+    <p>A glimpse into the magic we’ve created together at Kiwiburn.</p>
+    <button class="edit-section-button" onclick="openGalleryModal()">Edit Section</button>
+    <div class="gallery" id="main-gallery" ondragover="allowDrop(event)" ondrop="dropGalleryImage(event)">
+      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+        <img src="images/gallery1.jpg" alt="Kiwiburn Moment 1" onclick="openImageZoomModal(this)">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
+        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+      </div>
+      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+        <img src="images/gallery2.jpg" alt="Kiwiburn Moment 2" onclick="openImageZoomModal(this)">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
+        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+      </div>
+      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+        <img src="images/gallery3.jpg" alt="Kiwiburn Moment 3" onclick="openImageZoomModal(this)">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
+        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+      </div>
+    </div>
+    <button class="save-button" onclick="uploadGalleryImage()">Upload New Image</button>
+  </section>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Cosmic Rejex | Kiwiburn | All Rights Reserved</p>
-  </footer>
+<div class="countdown-container">
+  <h2>Countdown to Kiwiburn 2026</h2>
+  <div class="countdown" id="countdown">Loading...</div>
+  <input type="date" id="countdown-date" style="display: none;">
+  <button onclick="updateCountdown()" style="display: none;">Update</button>
+</div>
 
-  <button class="back-to-top" aria-label="Back to top">↑</button>
+<section class="contact-lead" id="contact">
+  <h2>Contact Our Lead</h2>
+  <p>Got questions? Reach out to our camp lead!</p>
+  <button class="edit-section-button" onclick="openContactModal()">Edit Section</button>
+  <a href="mailto:camp@cosmicrejex.com">camp@cosmicrejex.com</a>
+</section>
 
-  <script>
-    // Theme Toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    themeToggle.addEventListener('click', () => {
-      document.documentElement.setAttribute('data-theme',
-        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-      );
-      localStorage.setItem('theme', document.documentElement.getAttribute('data-theme'));
-      themeToggle.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
-    });
+<footer>
+  <p>&copy; 2025 Cosmic Rejex. All rights reserved.</p>
+</footer>
 
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+<button class="back-to-top" aria-label="Back to top">↑</button>
 
-    // Hamburger Menu
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
-    });
+<script>
+// Theme Toggle
+const themeToggle = document.querySelector('.theme-toggle');
+themeToggle.addEventListener('click', () => {
+  document.documentElement.setAttribute('data-theme',
+    document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+  );
+});
 
-    // Back to Top Button
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 300);
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+// Hamburger Menu
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
 
-    // Login/Logout
-    const loginForm = document.getElementById('login-form');
-    const logoutButton = document.querySelector('.logout-button');
-    const loginContainer = document.querySelector('.login-container');
-    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+// Login Functionality
+const loginForm = document.getElementById('login-form');
+const logoutButton = document.querySelector('.logout-button');
+const loginContainer = document.querySelector('.login-container');
 
-    function updateLoginState() {
-      document.body.classList.toggle('logged-in', isLoggedIn);
-      loginForm.style.display = isLoggedIn ? 'none' : 'flex';
-      logoutButton.style.display = isLoggedIn ? 'block' : 'none';
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  if (username === 'admin' && password === 'kiwi2025') {
+    document.body.classList.add('logged-in');
+    loginForm.style.display = 'none';
+    logoutButton.style.display = 'block';
+    alert('Logged in successfully!');
+  } else {
+    alert('Invalid credentials');
+  }
+});
+
+logoutButton.addEventListener('click', () => {
+  document.body.classList.remove('logged-in');
+  loginForm.style.display = 'flex';
+  logoutButton.style.display = 'none';
+  loginForm.reset();
+});
+
+// Scroll to Top Button
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 300);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Modal Functions
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = 'flex';
+}
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+}
+
+// Header Modal
+function openHeaderModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('header-modal');
+    document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
+  }
+}
+function closeHeaderModal() {
+  closeModal('header-modal');
+}
+function saveHeaderDetails() {
+  const title = document.getElementById('header-title').value;
+  document.querySelector('.header h1').textContent = title;
+  closeHeaderModal();
+}
+
+// About Modal
+function openAboutModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('about-modal');
+    document.getElementById('about-title').value = document.querySelector('#about h1').textContent;
+    document.getElementById('about-description').value = document.querySelector('#about p').textContent;
+  }
+}
+function closeAboutModal() {
+  closeModal('about-modal');
+}
+function saveAboutDetails() {
+  const title = document.getElementById('about-title').value;
+  const description = document.getElementById('about-description').value;
+  document.querySelector('#about h1').textContent = title;
+  document.querySelector('#about p').textContent = description;
+  closeAboutModal();
+}
+
+// Mission Modal
+function openMissionModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('mission-modal');
+    document.getElementById('mission-title').value = document.querySelector('#mission h1').textContent;
+    document.getElementById('mission-description').value = document.querySelector('#mission p').textContent;
+  }
+}
+function closeMissionModal() {
+  closeModal('mission-modal');
+}
+function saveMissionDetails() {
+  const title = document.getElementById('mission-title').value;
+  const description = document.getElementById('mission-description').value;
+  const image = document.getElementById('mission-image').files[0];
+  document.querySelector('#mission h1').textContent = title;
+  document.querySelector('#mission p').textContent = description;
+  if (image) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.alt = 'Mission Image';
+      const gallery = document.getElementById('mission-gallery');
+      gallery.innerHTML = '';
+      gallery.appendChild(img);
+    };
+    reader.readAsDataURL(image);
+  }
+  closeMissionModal();
+}
+
+// Gallery Modal
+function openGalleryModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('gallery-modal');
+    document.getElementById('gallery-title').value = document.querySelector('#gallery h1').textContent;
+    document.getElementById('gallery-description').value = document.querySelector('#gallery p').textContent;
+  }
+}
+function closeGalleryModal() {
+  closeModal('gallery-modal');
+}
+function saveGalleryDetails() {
+  const title = document.getElementById('gallery-title').value;
+  const description = document.getElementById('gallery-description').value;
+  document.querySelector('#gallery h1').textContent = title;
+  document.querySelector('#gallery p').textContent = description;
+  closeGalleryModal();
+}
+
+// Gallery Image Functions
+function openGalleryImageModal(button, galleryType) {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('gallery-image-modal');
+    const img = button.parentElement.querySelector('img');
+    document.getElementById('gallery-image-alt').value = img.alt;
+    document.getElementById('gallery-image-modal').dataset.imageElement = button.parentElement.outerHTML;
+    document.getElementById('gallery-image-modal').dataset.galleryType = galleryType;
+  }
+}
+function closeGalleryImageModal() {
+  closeModal('gallery-image-modal');
+}
+function saveGalleryImageDetails() {
+  const altText = document.getElementById('gallery-image-alt').value;
+  const file = document.getElementById('gallery-image-file').files[0];
+  const modal = document.getElementById('gallery-image-modal');
+  const galleryType = modal.dataset.galleryType;
+  const oldImageContainer = new DOMParser().parseFromString(modal.dataset.imageElement, 'text/html').body.firstChild;
+  const gallery = galleryType === 'about' ? document.getElementById('about-gallery') : document.getElementById('main-gallery');
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const newImageContainer = document.createElement('div');
+      newImageContainer.className = 'image-container';
+      newImageContainer.draggable = true;
+      newImageContainer.ondragstart = (ev) => dragGalleryImage(ev);
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.alt = altText;
+      img.onclick = () => openImageZoomModal(img);
+      const editButton = document.createElement('button');
+      editButton.className = 'edit-button';
+      editButton.textContent = '✎';
+      editButton.onclick = () => openGalleryImageModal(editButton, galleryType);
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'delete-button';
+      deleteButton.textContent = '×';
+      deleteButton.onclick = () => deleteGalleryImage(deleteButton);
+      newImageContainer.append(img, editButton, deleteButton);
+      gallery.replaceChild(newImageContainer, oldImageContainer);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    oldImageContainer.querySelector('img').alt = altText;
+    gallery.replaceChild(oldImageContainer, oldImageContainer);
+  }
+  closeGalleryImageModal();
+}
+function uploadGalleryImage() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('gallery-image-modal');
+    document.getElementById('gallery-image-alt').value = '';
+    document.getElementById('gallery-image-file').value = '';
+    document.getElementById('gallery-image-modal').dataset.galleryType = 'main';
+    document.getElementById('gallery-image-modal').dataset.imageElement = '';
+  }
+}
+function deleteGalleryImage(button) {
+  if (confirm('Are you sure you want to delete this image?')) {
+    button.parentElement.remove();
+  }
+}
+function dragGalleryImage(event) {
+  event.dataTransfer.setData('text/html', event.target.outerHTML);
+}
+function dropGalleryImage(event) {
+  event.preventDefault();
+  const data = event.dataTransfer.getData('text/html');
+  const draggedElement = new DOMParser().parseFromString(data, 'text/html').body.firstChild;
+  const gallery = document.getElementById('main-gallery');
+  const dropZone = event.target.closest('.image-container') || gallery;
+  if (dropZone !== gallery) {
+    gallery.insertBefore(draggedElement, dropZone);
+  } else {
+    gallery.appendChild(draggedElement);
+  }
+}
+
+// Event Modal
+function openEventModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('event-modal');
+    document.getElementById('event-modal-title').textContent = 'Add New Event';
+    document.getElementById('event-title').value = '';
+    document.getElementById('event-description').value = '';
+    document.getElementById('event-date').value = '';
+    document.getElementById('event-time').value = '';
+    document.getElementById('event-end').value = '';
+    document.getElementById('event-category').value = '';
+    document.getElementById('event-image').value = '';
+  }
+}
+function openEditEventModal(button) {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('event-modal');
+    document.getElementById('event-modal-title').textContent = 'Edit Event';
+    const event = button.parentElement;
+    document.getElementById('event-title').value = event.querySelector('h3').textContent;
+    document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
+    document.getElementById('event-date').value = event.querySelector('.event-date').textContent.match(/\d{4}-\d{2}-\d{2}/)[0];
+    document.getElementById('event-time').value = event.querySelector('.event-time').textContent.match(/\d{1,2}:\d{2} (AM|PM)/)[0];
+    document.getElementById('event-end').value = event.querySelector('.event-end').textContent.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/)[0];
+    document.getElementById('event-category').value = event.dataset.category;
+    document.getElementById('event-modal').dataset.eventElement = event.outerHTML;
+  }
+}
+function closeEventModal() {
+  closeModal('event-modal');
+}
+function saveEventDetails() {
+  const title = document.getElementById('event-title').value;
+  const description = document.getElementById('event-description').value;
+  const date = document.getElementById('event-date').value;
+  const time = document.getElementById('event-time').value;
+  const end = document.getElementById('event-end').value;
+  const category = document.getElementById('event-category').value;
+  const image = document.getElementById('event-image').files[0];
+  const modal = document.getElementById('event-modal');
+  const eventsGrid = document.querySelector('.events-grid');
+
+  const eventDiv = document.createElement('div');
+  eventDiv.className = 'event';
+  eventDiv.dataset.category = category;
+
+  const img = document.createElement('img');
+  img.alt = title;
+  if (image) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(image);
+  } else {
+    img.src = modal.dataset.eventElement ? new DOMParser().parseFromString(modal.dataset.eventElement, 'text/html').body.firstChild.querySelector('img').src : 'images/default-event.jpg';
+  }
+
+  const h3 = document.createElement('h3');
+  h3.textContent = title;
+  const descP = document.createElement('p');
+  descP.textContent = description;
+  const dateP = document.createElement('p');
+  dateP.className = 'event-date';
+  dateP.innerHTML = `<strong>Date:</strong> ${date}`;
+  const timeP = document.createElement('p');
+  timeP.className = 'event-time';
+  timeP.innerHTML = `<strong>Time:</strong> ${time}`;
+  const endP = document.createElement('p');
+  endP.className = 'event-end';
+  endP.innerHTML = `<strong>End Date & Time:</strong> ${end.replace('T', ', ')}`;
+  const catP = document.createElement('p');
+  catP.className = 'event-category';
+  catP.innerHTML = `<strong>Category:</strong> ${category}`;
+  const editButton = document.createElement('button');
+  editButton.className = 'edit-button';
+  editButton.textContent = '✎';
+  editButton.onclick = () => openEditEventModal(editButton);
+  const deleteButton = document.createElement('button');
+  deleteButton.className = 'delete-button';
+  deleteButton.textContent = '×';
+  deleteButton.onclick = () => deleteEvent(deleteButton);
+
+  eventDiv.append(img, h3, descP, dateP, timeP, endP, catP, editButton, deleteButton);
+
+  if (modal.dataset.eventElement) {
+    const oldEvent = new DOMParser().parseFromString(modal.dataset.eventElement, 'text/html').body.firstChild;
+    eventsGrid.replaceChild(eventDiv, eventsGrid.querySelector(`[data-category="${oldEvent.dataset.category}"]`));
+  } else {
+    eventsGrid.appendChild(eventDiv);
+  }
+
+  closeEventModal();
+}
+function deleteEvent(button) {
+  if (confirm('Are you sure you want to delete this event?')) {
+    button.parentElement.remove();
+  }
+}
+
+// Image Zoom Modal
+function openImageZoomModal(img) {
+  openModal('image-zoom-modal');
+  document.getElementById('zoom-image').src = img.src;
+  document.getElementById('zoom-caption').textContent = img.alt;
+}
+function closeImageZoomModal() {
+  closeModal('image-zoom-modal');
+}
+
+// Newsletter Modal
+function openNewsletterModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('newsletter-modal');
+    document.getElementById('newsletter-title').value = document.querySelector('#newsletter h1').textContent;
+    document.getElementById('newsletter-description').value = document.querySelector('#newsletter p').textContent;
+  }
+}
+function closeNewsletterModal() {
+  closeModal('newsletter-modal');
+}
+function saveNewsletterDetails() {
+  const title = document.getElementById('newsletter-title').value;
+  const description = document.getElementById('newsletter-description').value;
+  document.querySelector('#newsletter h1').textContent = title;
+  document.querySelector('#newsletter p').textContent = description;
+  closeNewsletterModal();
+}
+
+// Contact Modal
+function openContactModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('contact-modal');
+    document.getElementById('contact-title').value = document.querySelector('#contact h2').textContent;
+    document.getElementById('contact-description').value = document.querySelector('#contact p').textContent;
+    document.getElementById('contact-link').value = document.querySelector('#contact a').href;
+  }
+}
+function closeContactModal() {
+  closeModal('contact-modal');
+}
+function saveContactDetails() {
+  const title = document.getElementById('contact-title').value;
+  const description = document.getElementById('contact-description').value;
+  const link = document.getElementById('contact-link').value;
+  document.querySelector('#contact h2').textContent = title;
+  document.querySelector('#contact p').textContent = description;
+  document.querySelector('#contact a').href = link;
+  document.querySelector('#contact a').textContent = link.replace('mailto:', '');
+  closeContactModal();
+}
+
+// Countdown
+function updateCountdown() {
+  const countdownDateInput = document.getElementById('countdown-date').value;
+  if (countdownDateInput) {
+    localStorage.setItem('countdownDate', countdownDateInput);
+  }
+  const countdownDate = new Date(localStorage.getItem('countdownDate') || '2026-01-28T00:00:00').getTime();
+  const countdownElement = document.getElementById('countdown');
+
+  const interval = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    if (distance < 0) {
+      countdownElement.textContent = 'Kiwiburn has started!';
+      clearInterval(interval);
+      return;
     }
 
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      isLoggedIn = true;
-      localStorage.setItem('isLoggedIn', 'true');
-      updateLoginState();
-    });
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    logoutButton.addEventListener('click', () => {
-      isLoggedIn = false;
-      localStorage.setItem('isLoggedIn', 'false');
-      updateLoginState();
-    });
+    countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }, 1000);
+}
+updateCountdown();
 
-    updateLoginState();
+// Drag and Drop
+function allowDrop(event) {
+  event.preventDefault();
+}
+function drag(event) {
+  event.dataTransfer.setData('text/html', event.target.outerHTML);
+}
+function drop(event) {
+  event.preventDefault();
+  const data = event.dataTransfer.getData('text/html');
+  const draggedElement = new DOMParser().parseFromString(data, 'text/html').body.firstChild;
+  const container = event.target.closest('.members-grid, .roles-grid, .gallery');
+  const dropZone = event.target.closest('.member, .role, .image-container') || container;
+  if (dropZone !== container) {
+    container.insertBefore(draggedElement, dropZone);
+  } else {
+    container.appendChild(draggedElement);
+  }
+}
 
-    // Countdown
-    let countdownDate = new Date('2025-01-28T00:00:00').getTime();
-    function updateCountdownDisplay() {
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-      if (distance < 0) {
-        document.getElementById('countdown').innerHTML = "Kiwiburn has started!";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
+// Scroll Arrows
+document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+  arrow.addEventListener('click', () => {
+    const grid = arrow.parentElement;
+    const isLeft = arrow.classList.contains('left');
+    grid.scrollBy({ left: isLeft ? -200 : 200, behavior: 'smooth' });
+  });
+});
 
-    setInterval(updateCountdownDisplay, 1000);
-    function updateCountdown() {
-      const newDate = document.getElementById('countdown-date').value;
-      if (newDate) {
-        countdownDate = new Date(newDate).getTime();
-        updateCountdownDisplay();
-      }
-    }
+// Event Filter
+function filterEvents() {
+  const filter = document.getElementById('event-filter').value;
+  document.querySelectorAll('.event').forEach(event => {
+    event.style.display = filter === 'all' || event.dataset.category === filter ? 'block' : 'none';
+  });
+}
 
-    // Modal Handlers
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = 'flex';
-    }
+// Newsletter Form Submission
+document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const email = document.getElementById('newsletter-email').value;
+  alert(`Subscribed with ${email}!`);
+  document.getElementById('newsletter-form').reset();
+});
 
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-    }
+// Member Modal
+function openMemberModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('member-modal');
+    document.getElementById('member-modal-title').textContent = 'Add Member Details';
+    document.getElementById('member-name').value = '';
+    document.getElementById('member-role').value = '';
+    document.getElementById('member-description').value = '';
+    document.getElementById('member-photo').value = '';
+  }
+}
+function openEditMemberModal(button) {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('member-modal');
+    document.getElementById('member-modal-title').textContent = 'Edit Member Details';
+    const member = button.parentElement;
+    document.getElementById('member-name').value = member.querySelector('h3').textContent;
+    document.getElementById('member-role').value = member.querySelector('span').textContent;
+    document.getElementById('member-description').value = member.querySelector('p').textContent;
+    document.getElementById('member-modal').dataset.memberElement = member.outerHTML;
+  }
+}
+function closeMemberModal() {
+  closeModal('member-modal');
+}
+function saveMemberDetails() {
+  const name = document.getElementById('member-name').value;
+  const role = document.getElementById('member-role').value;
+  const description = document.getElementById('member-description').value;
+  const photo = document.getElementById('member-photo').files[0];
+  const modal = document.getElementById('member-modal');
+  const membersGrid = document.querySelector('.members-grid');
 
-    function openHeaderModal() { openModal('header-modal'); }
-    function closeHeaderModal() { closeModal('header-modal'); }
-    function openMemberModal() { openModal('member-modal'); }
-    function closeMemberModal() { closeModal('member-modal'); }
-    function openRoleModal() { openModal('role-modal'); }
-    function closeRoleModal() { closeModal('role-modal'); }
-    function openEventModal(element) {
-      const event = element.closest('.event');
-      document.getElementById('event-title').value = event.querySelector('h3').textContent;
-      document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
-      document.getElementById('event-date').value = event.querySelector('.event-date').textContent.match(/\d{4}-\d{2}-\d{2}/)[0];
-      document.getElementById('event-time').value = event.querySelector('.event-time').textContent.match(/\d{1,2}:\d{2} [AP]M/)[0].replace(' ', '');
-      document.getElementById('event-end').value = event.querySelector('.event-end').textContent.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/)[0];
-      document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
-      openModal('event-modal');
-    }
-    function closeEventModal() { closeModal('event-modal'); }
-    function openAboutModal() { openModal('about-modal'); }
-    function closeAboutModal() { closeModal('about-modal'); }
-    function openMissionModal() { openModal('mission-modal'); }
-    function closeMissionModal() { closeModal('mission-modal'); }
-    function openGalleryImageModal() { openModal('gallery-image-modal'); }
-    function closeGalleryImageModal() { closeModal('gallery-image-modal'); }
-    function openImageZoomModal(img) {
-      const modal = document.getElementById('image-zoom-modal');
-      document.getElementById('zoom-image').src = img.src;
-      document.getElementById('zoom-caption').textContent = img.alt;
-      modal.style.display = 'flex';
-    }
-    function closeImageZoomModal() { closeModal('image-zoom-modal'); }
-    function openEventsModal() { openModal('events-modal'); }
-    function closeEventsModal() { closeModal('events-modal'); }
-    function openNewsletterModal() { openModal('newsletter-modal'); }
-    function closeNewsletterModal() { closeModal('newsletter-modal'); }
-    function openContactModal() { openModal('contact-modal'); }
-    function closeContactModal() { closeModal('contact-modal'); }
-    function openJoinModal() { openModal('join-modal'); }
-    function closeJoinModal() { closeModal('join-modal'); }
-    function openSubmitModal() { openModal('submit-modal'); }
-    function closeSubmitModal() { closeModal('submit-modal'); }
+  const memberDiv = document.createElement('div');
+  memberDiv.className = `member ${role.toLowerCase().includes('camp lead') ? 'camp-lead' : role.toLowerCase().includes('deputy lead') ? 'deputy-lead' : ''}`;
+  memberDiv.drnilable = true;
+  memberDiv.ondragstart = (ev) => drag(ev);
 
-    // Save Functions (Placeholder)
-    function saveHeaderDetails() { closeHeaderModal(); }
-    function saveMemberDetails() { closeMemberModal(); }
-    function saveRoleDetails() { closeRoleModal(); }
-    function saveEventDetails() { closeEventModal(); }
-    function saveAboutDetails() { closeAboutModal(); }
-    function saveMissionDetails() { closeMissionModal(); }
-    function saveGalleryImageDetails() { closeGalleryImageModal(); }
-    function saveEventsDetails() { closeEventsModal(); }
-    function saveNewsletterDetails() { closeNewsletterModal(); }
-    function saveContactDetails() { closeContactModal(); }
-    function saveJoinDetails() { closeJoinModal(); }
-    function saveSubmitDetails() { closeSubmitModal(); }
+  const img = document.createElement('img');
+  img.alt = name;
+  if (photo) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(photo);
+  } else {
+    img.src = modal.dataset.memberElement ? new DOMParser().parseFromString(modal.dataset.memberElement, 'text/html').body.firstChild.querySelector('img').src : 'images/default-member.jpg';
+  }
 
-    // Delete Functions
-    function deleteMember(button) { button.closest('.member').remove(); }
-    function deleteRole(button) { button.closest('.role').remove(); }
-    function deleteEvent(button) { button.closest('.event').remove(); }
-    function deleteAboutImage(button) { button.closest('.image-container').remove(); }
+  const h3 = document.createElement('h3');
+  h3.textContent = name;
+  const span = document.createElement('span');
+  span.textContent = role;
+  const p = document.createElement('p');
+  p.textContent = description;
+  const editButton = document.createElement('button');
+  editButton.className = 'edit-button';
+  editButton.textContent = '✎';
+  editButton.onclick = () => openEditMemberModal(editButton);
+  const deleteButton = document.createElement('button');
+  deleteButton.className = 'delete-button';
+  deleteButton.textContent = '×';
+  deleteButton.onclick = () => deleteMember(deleteButton);
 
-    // Edit Member Modal
-    function openEditMemberModal(button) {
-      const member = button.closest('.member');
-      document.getElementById('member-modal-title').textContent = 'Edit Member Details';
-      document.getElementById('member-name').value = member.querySelector('h3').textContent;
-      document.getElementById('member-role').value = member.querySelector('span').textContent;
-      document.getElementById('member-description').value = member.querySelector('p').textContent;
-      openModal('member-modal');
-    }
+  memberDiv.append(img, h3, span, p, editButton, deleteButton);
 
-    // Edit Role Modal
-    function openEditRoleModal(button) {
-      const role = button.closest('.role');
-      document.getElementById('role-modal-title').textContent = 'Edit Role';
-      document.getElementById('role-title').value = role.querySelector('h3').textContent;
-      document.getElementById('role-description').value = role.querySelector('.tooltip p').textContent;
-      openModal('role-modal');
-    }
+  if (modal.dataset.memberElement) {
+    const oldMember = new DOMParser().parseFromString(modal.dataset.memberElement, 'text/html').body.firstChild;
+    membersGrid.replaceChild(memberDiv, membersGrid.querySelector(`[data-name="${oldMember.querySelector('h3').textContent}"]`) || oldMember);
+  } else {
+    membersGrid.appendChild(memberDiv);
+  }
 
-    // Drag and Drop
-    let draggedElement = null;
-    function drag(event) { draggedElement = event.target.closest('.member, .role, .image-container'); }
-    function allowDrop(event) { event.preventDefault(); }
-    function drop(event) {
-      event.preventDefault();
-      const dropTarget = event.target.closest('.members-grid, .roles-grid, .gallery');
-      if (dropTarget && draggedElement) {
-        dropTarget.appendChild(draggedElement);
-        draggedElement = null;
-      }
-    }
-    function dragAboutImage(event) { draggedElement = event.target.closest('.image-container'); }
-    function dropAboutImage(event) {
-      event.preventDefault();
-      const dropTarget = event.target.closest('#about-gallery');
-      if (dropTarget && draggedElement) {
-        dropTarget.appendChild(draggedElement);
-        draggedElement = null;
-      }
-    }
-    function dropMissionImage(event) {
-      event.preventDefault();
-      const dropTarget = event.target.closest('#mission-gallery');
-      if (dropTarget && draggedElement) {
-        dropTarget.appendChild(draggedElement);
-        draggedElement = null;
-      }
-    }
+  closeMemberModal();
+}
+function deleteMember(button) {
+  if (confirm('Are you sure you want to delete this member?')) {
+    button.parentElement.remove();
+  }
+}
 
-    // Placeholder Upload Functions
-    function uploadAboutImage() { console.log('Upload About Image'); }
-    function uploadMissionImage() { console.log('Upload Mission Image'); }
-    function saveChanges() { console.log('Save Changes'); }
+// Role Modal
+function openRoleModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('role-modal');
+    document.getElementById('role-modal-title').textContent = 'Create New Role';
+    document.getElementById('role-title').value = '';
+    document.getElementById('role-description').value = '';
+    document.getElementById('role-icon').value = '';
+  }
+}
+function openEditRoleModal(button) {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('role-modal');
+    document.getElementById('role-modal-title').textContent = 'Edit Role';
+    const role = button.parentElement;
+    document.getElementById('role-title').value = role.querySelector('h3').textContent;
+    document.getElementById('role-description').value = role.querySelector('.tooltip p').textContent;
+    document.getElementById('role-modal').dataset.roleElement = role.outerHTML;
+  }
+}
+function closeRoleModal() {
+  closeModal('role-modal');
+}
+function saveRoleDetails() {
+  const title = document.getElementById('role-title').value;
+  const description = document.getElementById('role-description').value;
+  const icon = document.getElementById('role-icon').files[0];
+  const modal = document.getElementById('role-modal');
+  const rolesGrid = document.querySelector('.roles-grid');
 
-    // Event Filter
-    function filterEvents() {
-      const filter = document.getElementById('event-filter').value;
-      const events = document.querySelectorAll('.event');
-      events.forEach(event => {
-        event.style.display = filter === 'all' || event.dataset.category === filter ? 'block' : 'none';
-      });
-    }
+  const roleDiv = document.createElement('div');
+  roleDiv.className = 'role';
+  roleDiv.draggable = true;
+  roleDiv.ondragstart = (ev) => drag(ev);
 
-    // Newsletter Form Submission
-    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Subscribed to newsletter!');
-      e.target.reset();
-    });
-  </script>
+  const img = document.createElement('img');
+  img.alt = `${title} Icon`;
+  if (icon) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(icon);
+  } else {
+    img.src = modal.dataset.roleElement ? new DOMParser().parseFromString(modal.dataset.roleElement, 'text/html').body.firstChild.querySelector('img').src : 'images/icons/default-role.png';
+  }
+
+  const h3 = document.createElement('h3');
+  h3.textContent = title;
+  const applyButton = document.createElement('a');
+  applyButton.href = `join-camp.html?role=${encodeURIComponent(title)}`;
+  applyButton.className = 'apply-button';
+  applyButton.textContent = 'Apply for Role';
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tooltip';
+  const tooltipP = document.createElement('p');
+  tooltipP.textContent = description;
+  tooltip.append(tooltipP);
+  const editButton = document.createElement('button');
+  editButton.className = 'edit-button';
+  editButton.textContent = '✎';
+  editButton.onclick = () => openEditRoleModal(editButton);
+  const deleteButton = document.createElement('button');
+  deleteButton.className = 'delete-button';
+  deleteButton.textContent = '×';
+  deleteButton.onclick = () => deleteRole(deleteButton);
+
+  roleDiv.append(img, h3, applyButton, tooltip, editButton, deleteButton);
+
+  if (modal.dataset.roleElement) {
+    const oldRole = new DOMParser().parseFromString(modal.dataset.roleElement, 'text/html').body.firstChild;
+    rolesGrid.replaceChild(roleDiv, rolesGrid.querySelector(`[data-title="${oldRole.querySelector('h3').textContent}"]`) || oldRole);
+  } else {
+    rolesGrid.insertBefore(roleDiv, rolesGrid.lastElementChild);
+  }
+
+  closeRoleModal();
+}
+function deleteRole(button) {
+  if (confirm('Are you sure you want to delete this role?')) {
+    button.parentElement.remove();
+  }
+}
+
+// Join Modal
+function openJoinModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('join-modal');
+    document.getElementById('join-title').value = document.querySelector('#join h2').textContent;
+    document.getElementById('join-description').value = document.querySelector('#join p').textContent;
+  }
+}
+function closeJoinModal() {
+  closeModal('join-modal');
+}
+function saveJoinDetails() {
+  const title = document.getElementById('join-title').value;
+  const description = document.getElementById('join-description').value;
+  document.querySelector('#join h2').textContent = title;
+  document.querySelector('#join p').textContent = description;
+  closeJoinModal();
+}
+
+// Submit Modal
+function openSubmitModal() {
+  if (document.body.classList.contains('logged-in')) {
+    openModal('submit-modal');
+    document.getElementById('submit-title').value = document.querySelector('#submit h1').textContent;
+    document.getElementById('submit-description').value = document.querySelector('#submit p').textContent;
+  }
+}
+function closeSubmitModal() {
+  closeModal('submit-modal');
+}
+function saveSubmitDetails() {
+  const title = document.getElementById('submit-title').value;
+  const description = document.getElementById('submit-description').value;
+  document.querySelector('#submit h1').textContent = title;
+  document.querySelector('#submit p').textContent = description;
+  closeSubmitModal();
+}
+
+// Save Changes
+function saveChanges() {
+  alert('Changes saved successfully!');
+}
+</script>
 </body>
 </html>
