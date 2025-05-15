@@ -6,117 +6,79 @@
   <title>Join My Camp - Kiwiburn</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --background-start: #f4e4bc;
-      --background-end: #d9b99b;
-      --text-color: #2b1b0f;
-      --nav-bg: rgba(44, 29, 15, 0.85);
-      --nav-text: #f8e1b4;
-      --accent: #e67e22;
-      --accent-hover: #f39c12;
-      --section-odd: rgba(244, 228, 188, 0.8);
-      --section-even: rgba(217, 185, 155, 0.8);
-      --container-bg: rgba(255, 255, 255, 0.15);
-      --footer-bg: #2b1b0f;
-      --modal-bg: rgba(255, 255, 255, 0.9);
-      --input-bg: rgba(255, 255, 255, 0.1);
-    }
-
-    [data-theme="dark"] {
-      --background-start: #2b1b0f;
-      --background-end: #4a3723;
-      --text-color: #f8e1b4;
-      --nav-bg: rgba(20, 13, 7, 0.85);
-      --nav-text: #f8e1b4;
-      --accent: #e67e22;
-      --accent-hover: #f39c12;
-      --section-odd: rgba(44, 29, 15, 0.8);
-      --section-even: rgba(66, 44, 22, 0.8);
-      --container-bg: rgba(44, 29, 15, 0.3);
-      --footer-bg: #1a120b;
-      --modal-bg: rgba(44, 29, 15, 0.9);
-      --input-bg: rgba(44, 29, 15, 0.3);
-    }
-
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(180deg, var(--background-start) 0%, var(--background-end) 100%);
-      color: var(--text-color);
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
       transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background: linear-gradient(180deg, #3a2f1e 0%, #5a4630 100%);
+      color: #f8e1b4;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background: var(--nav-bg);
+      background: rgba(44, 29, 15, 0.85);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 20px;
       z-index: 1000;
-      border-bottom: 2px solid var(--accent);
+      border-bottom: 2px solid #e67e22;
     }
 
     .nav-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
     }
 
     nav a {
-      color: var(--nav-text);
+      color: #f8e1b4;
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
       margin: 5px 15px;
       padding: 10px 15px;
       border-radius: 4px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
     }
 
     nav a:hover {
-      background-color: var(--accent);
-      color: var(--text-color);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
-    }
-
-    .theme-toggle {
-      background: none;
-      border: none;
-      color: var(--nav-text);
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 10px;
-      transition: color 0.3s, box-shadow 0.3s;
-    }
-
-    .theme-toggle:hover {
-      color: var(--accent);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #e67e22;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .hamburger {
       display: none;
       font-size: 1.5rem;
-      color: var(--nav-text);
+      color: #f8e1b4;
       background: none;
       border: none;
       cursor: pointer;
       padding: 10px;
+      transition: transform 0.3s;
+    }
+
+    .hamburger.active {
+      transform: rotate(90deg);
     }
 
     .login-container {
       display: flex;
       justify-content: flex-end;
       padding: 10px 20px;
-      background: var(--nav-bg);
-      border-bottom: 1px solid var(--accent);
+      background: rgba(44, 29, 15, 0.85);
+      border-bottom: 1px solid #e67e22;
       z-index: 999;
     }
 
@@ -129,35 +91,51 @@
     .login-container input {
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid var(--accent);
-      background: var(--input-bg);
-      color: var(--nav-text);
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
       font-size: 0.9rem;
     }
 
     .login-container input::placeholder {
-      color: var(--nav-text);
+      color: #ffffff;
     }
 
     .login-container button {
       padding: 8px 12px;
-      background-color: var(--accent);
-      color: var(--nav-text);
+      background-color: #e67e22;
+      color: #ffffff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
       font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
     }
 
     .login-container button:hover {
-      background-color: var(--accent-hover);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
-    .login-container .logout-button {
-      display: none;
+    .dark-mode-toggle {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      margin-left: 10px;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .dark-mode-toggle:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .header {
@@ -167,7 +145,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: var(--nav-text);
+      color: #f8e1b4;
       position: relative;
       text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
     }
@@ -181,8 +159,8 @@
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px #d35400; }
-      to { text-shadow: 0 0 20px var(--accent-hover), 0 0 30px var(--accent-hover), 0 0 40px var(--accent); }
+      from { text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400; }
+      to { text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22; }
     }
 
     .scroll-down {
@@ -192,12 +170,13 @@
       transform: translateX(-50%);
       font-size: 1.5rem;
       animation: bounce 2s infinite;
-      color: var(--nav-text);
-      transition: box-shadow 0.3s;
+      color: #f8e1b4;
+      transition: box-shadow 0.3s, transform 0.2s;
     }
 
     .scroll-down:hover {
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: translate(-50%, -5px);
     }
 
     @keyframes bounce {
@@ -210,24 +189,36 @@
       padding: 80px 20px;
       text-align: center;
       background: url('images/dusty-texture.png') center/cover;
-      border-top: 1px solid var(--accent);
-      border-bottom: 1px solid var(--accent);
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
     }
 
     .section:nth-of-type(odd) {
-      background-color: var(--section-odd);
+      background-color: rgba(244, 228, 188, 0.8);
     }
 
     .section:nth-of-type(even) {
-      background-color: var(--section-even);
+      background-color: rgba(217, 185, 155, 0.8);
+    }
+
+    body.dark-mode .section:nth-of-type(odd) {
+      background-color: rgba(60, 48, 30, 0.8);
+    }
+
+    body.dark-mode .section:nth-of-type(even) {
+      background-color: rgba(80, 64, 40, 0.8);
     }
 
     .section h1, .section h2 {
       font-family: 'Bebas Neue', cursive;
       font-size: 3em;
       margin-bottom: 20px;
-      color: var(--text-color);
+      color: #2b1b0f;
       letter-spacing: 1px;
+    }
+
+    body.dark-mode .section h1, body.dark-mode .section h2 {
+      color: #f8e1b4;
     }
 
     .section p {
@@ -235,7 +226,11 @@
       max-width: 800px;
       margin: 0 auto 30px auto;
       line-height: 1.6;
-      color: var(--text-color);
+      color: #2b1b0f;
+    }
+
+    body.dark-mode .section p {
+      color: #f8e1b4;
     }
 
     ul {
@@ -263,13 +258,13 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid var(--accent);
-      cursor: pointer;
+      border: 2px solid #e67e22;
+      loading: lazy;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px var(--accent), 0 0 25px var(--accent-hover);
+      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
     }
 
     .gallery .image-container {
@@ -280,32 +275,25 @@
       display: none;
       position: absolute;
       top: 5px;
-      background: var(--nav-bg);
-      color: var(--nav-text);
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
       border: none;
       border-radius: 50%;
       width: 24px;
       height: 24px;
       font-size: 0.9em;
       cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .gallery .delete-button {
-      right: 5px;
-    }
-
-    .gallery .edit-button {
-      right: 35px;
-    }
-
-    .logged-in .gallery .delete-button, .logged-in .gallery .edit-button {
-      display: block;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
     }
 
     .gallery .delete-button:hover, .gallery .edit-button:hover {
       background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.1);
+    }
+
+    .logged-in .gallery .delete-button, .logged-in .gallery .edit-button {
+      display: block;
     }
 
     .members-grid, .roles-grid, .events-grid {
@@ -326,8 +314,8 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 2rem;
-      color: var(--nav-text);
-      background: var(--nav-bg);
+      color: #f8e1b4;
+      background: rgba(44, 29, 15, 0.7);
       padding: 10px;
       border-radius: 50%;
       cursor: pointer;
@@ -343,7 +331,7 @@
 
     .scroll-arrow:hover {
       background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .scroll-arrow.left {
@@ -360,15 +348,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: var(--input-bg);
+      background: rgba(255, 255, 255, 0.1);
       padding: 15px;
-      border: 1px solid var(--accent);
+      border: 1px solid #e67e22;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     .member:hover, .role:hover, .event:hover {
-      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px var(--accent), 0 0 25px var(--accent-hover);
+      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
     }
 
@@ -379,7 +367,8 @@
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       margin-bottom: 10px;
-      border: 3px solid var(--accent-hover);
+      border: 3px solid #f39c12;
+      loading: lazy;
     }
 
     .role img {
@@ -394,7 +383,8 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      border: 2px solid var(--accent-hover);
+      border: 2px solid #f39c12;
+      loading: lazy;
     }
 
     .member.camp-lead, .member.deputy-lead {
@@ -429,13 +419,17 @@
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
-      color: var(--text-color);
+      color: #000000;
       line-height: 1.2;
+    }
+
+    body.dark-mode .member h3, body.dark-mode .role h3, body.dark-mode .event h3 {
+      color: #f8e1b4;
     }
 
     .member span {
       font-weight: bold;
-      color: var(--accent);
+      color: #e67e22;
       display: block;
       font-size: 1.2em;
       margin-bottom: 5px;
@@ -444,15 +438,19 @@
 
     .member p, .event p {
       font-size: 1em;
-      color: var(--text-color);
+      color: #000000;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
     }
 
+    body.dark-mode .member p, body.dark-mode .event p {
+      color: #f8e1b4;
+    }
+
     .role p {
       font-size: 1em;
-      color: var(--nav-text);
+      color: #ffffff;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
@@ -460,14 +458,18 @@
 
     .event p.event-date, .event p.event-time, .event p.event-end, .event p.event-category {
       font-size: 0.95em;
-      color: var(--text-color);
+      color: #2b1b0f;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
     }
 
+    body.dark-mode .event p.event-date, body.dark-mode .event p.event-time, body.dark-mode .event p.event-end, body.dark-mode .event p.event-category {
+      color: #f8e1b4;
+    }
+
     .event p.event-date strong, .event p.event-time strong, .event p.event-end strong, .event p.event-category strong {
-      color: var(--accent);
+      color: #e67e22;
     }
 
     .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
@@ -475,15 +477,15 @@
       position: absolute;
       top: 5px;
       right: 5px;
-      background: var(--nav-bg);
-      color: var(--nav-text);
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
       border: none;
       border-radius: 50%;
       width: 24px;
       height: 24px;
       font-size: 0.9em;
       cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
     }
 
     .event .edit-button, .role .edit-button, .member .edit-button {
@@ -496,32 +498,34 @@
 
     .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover, .role .edit-button:hover, .member .edit-button:hover {
       background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.1);
     }
 
     .role .apply-button {
       display: inline-block;
       margin-top: 10px;
       padding: 8px 12px;
-      background-color: var(--accent);
-      color: var(--text-color);
+      background-color: #e67e22;
+      color: #2b1b0f;
       text-decoration: none;
       border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 0.9em;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
     }
 
     .role .apply-button:hover {
-      background-color: var(--accent-hover);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .role .tooltip {
       visibility: hidden;
       width: 180px;
-      background-color: var(--nav-bg);
-      color: var(--nav-text);
+      background-color: rgba(44, 29, 15, 0.95);
+      color: #f8e1b4;
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -539,19 +543,7 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      border: 2px solid var(--accent-hover);
-    }
-
-    .role .tooltip img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      border: 2px solid var(--accent-hover);
-    }
-
-    .role .tooltip span {
-      font-weight: bold;
-      font-size: 1em;
+      border: 2px solid #f39c12;
     }
 
     .role:hover .tooltip {
@@ -574,21 +566,29 @@
     }
 
     .modal-content {
-      background: var(--modal-bg);
+      background: rgba(255, 255, 255, 0.9);
       padding: 20px;
       border-radius: 10px;
       max-width: 400px;
       width: 90%;
       text-align: center;
-      border: 2px solid var(--accent);
+      border: 2px solid #e67e22;
       position: relative;
-      color: var(--text-color);
+    }
+
+    body.dark-mode .modal-content {
+      background: rgba(60, 48, 30, 0.9);
+      color: #f8e1b4;
     }
 
     .modal-content h3 {
       font-family: 'Bebas Neue', cursive;
-      color: var(--text-color);
+      color: #2b1b0f;
       margin-bottom: 20px;
+    }
+
+    body.dark-mode .modal-content h3 {
+      color: #f8e1b4;
     }
 
     .modal-content input, .modal-content textarea, .modal-content select {
@@ -596,9 +596,14 @@
       padding: 10px;
       margin-bottom: 15px;
       border-radius: 5px;
-      border: 1px solid var(--accent);
-      background: var(--input-bg);
-      color: var(--text-color);
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    body.dark-mode .modal-content input, body.dark-mode .modal-content textarea, body.dark-mode .modal-content select {
+      background: rgba(255, 255, 255, 0.2);
+      color: #f8e1b4;
     }
 
     .modal-content input[type="file"] {
@@ -609,20 +614,21 @@
 
     .modal-content button {
       padding: 10px 20px;
-      background-color: var(--accent);
-      color: var(--text-color);
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
       font-size: 1em;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
       margin: 0 10px;
     }
 
     .modal-content button:hover {
-      background-color: var(--accent-hover);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .modal-content .close-button {
@@ -634,53 +640,38 @@
       padding: 5px 10px;
     }
 
-    .image-zoom-modal .modal-content {
-      max-width: 90%;
-      max-height: 90vh;
-      padding: 0;
-      background: none;
-      border: none;
-    }
-
-    .image-zoom-modal img {
-      max-width: 100%;
-      max-height: 80vh;
-      border-radius: 10px;
-      border: 2px solid var(--accent);
-    }
-
-    .image-zoom-modal .caption {
-      background: var(--modal-bg);
-      color: var(--text-color);
-      padding: 10px;
-      border-radius: 0 0 10px 10px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1em;
-      text-align: center;
-    }
-
     .events-grid {
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
     }
 
     .event-filter {
-      max-width: 200px;
       margin: 20px auto;
-      padding: 10px;
+      max-width: 600px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .event-filter select {
+      padding: 8px;
       border-radius: 5px;
-      border: 1px solid var(--accent);
-      background: var(--input-bg);
-      color: var(--text-color);
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1em;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+      font-size: 1rem;
+    }
+
+    body.dark-mode .event-filter select {
+      background: rgba(255, 255, 255, 0.2);
+      color: #f8e1b4;
     }
 
     .countdown-container {
       padding: 20px;
-      background: var(--nav-bg);
+      background: rgba(44, 29, 15, 0.85);
       text-align: center;
-      border-top: 2px solid var(--accent);
+      border-top: 2px solid #e67e22;
       border-radius: 10px;
       margin: 40px auto;
       max-width: 600px;
@@ -690,7 +681,7 @@
     .countdown-container h2 {
       font-family: 'Bebas Neue', cursive;
       font-size: 2.5em;
-      color: var(--nav-text);
+      color: #f8e1b4;
       margin-bottom: 20px;
     }
 
@@ -698,20 +689,20 @@
       font-family: 'Bebas Neue', cursive;
       font-size: 2em;
       font-weight: bold;
-      color: var(--nav-text);
+      color: #f8e1b4;
       margin-top: 20px;
       background: rgba(230, 126, 34, 0.2);
       padding: 15px;
       border-radius: 8px;
-      border: 1px solid var(--accent);
+      border: 1px solid #e67e22;
     }
 
     .countdown-container input {
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid var(--accent);
-      background: var(--input-bg);
-      color: var(--nav-text);
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
       margin: 10px;
       display: none;
     }
@@ -722,14 +713,14 @@
 
     .countdown-container button {
       padding: 8px 12px;
-      background-color: var(--accent);
-      color: var(--nav-text);
+      background-color: #e67e22;
+      color: #ffffff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
       font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
       display: none;
     }
 
@@ -738,16 +729,35 @@
     }
 
     .countdown-container button:hover {
-      background-color: var(--accent-hover);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      background-color: var(--footer-bg);
-      color: var(--nav-text);
-      border-top: 2px solid var(--accent);
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    .social-links {
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: #f39c12;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      margin: 0 10px;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+
+    .social-links a:hover {
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .form-container {
@@ -763,86 +773,99 @@
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 5px;
-      border: 1px solid var(--accent);
+      border: 1px solid #e67e22;
       font-size: 1rem;
       box-sizing: border-box;
-      background: var(--input-bg);
-      color: var(--text-color);
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    body.dark-mode .form-container input,
+    body.dark-mode .form-container textarea,
+    body.dark-mode .form-container select {
+      background: rgba(255, 255, 255, 0.2);
+      color: #f8e1b4;
     }
 
     .form-container button {
       padding: 12px 20px;
-      background-color: var(--accent);
-      color: var(--text-color);
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2em;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
     }
 
     .form-container button:hover {
-      background-color: var(--accent-hover);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .contact-lead {
       padding: 40px 20px;
-      background-color: var(--footer-bg);
-      color: var(--nav-text);
+      background-color: #2b1b0f;
+      color: #f8e1b4;
       text-align: center;
-      border-top: 2px solid var(--accent);
-      border-bottom: 2px solid var(--accent);
+      border-top: 2px solid #e67e22;
+      border-bottom: 2px solid #e67e22;
     }
 
     .contact-lead a {
-      color: var(--accent-hover);
+      color: #f39c12;
       font-size: 1.2em;
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
-      transition: box-shadow 0.3s;
+      transition: box-shadow 0.3s, transform 0.2s;
     }
 
     .contact-lead a:hover {
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .submit-button {
       display: inline-block;
       padding: 12px 20px;
-      background-color: var(--accent);
-      color: var(--text-color);
+      background-color: #e67e22;
+      color: #2b1b0f;
       text-decoration: none;
       border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2em;
-      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
     }
 
     .submit-button:hover {
-      background-color: var(--accent-hover);
-      color: var(--text-color);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
       max-width: 1200px;
       margin: 0 auto;
-      background: var(--container-bg);
-      border: 2px solid var(--accent);
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
       border-radius: 10px;
       padding: 40px 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .section#submit {
-      background-color: var(--section-odd);
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    body.dark-mode .section#submit {
+      background-color: rgba(60, 48, 30, 0.8);
     }
 
     .submit-section {
-      background: var(--container-bg);
-      border: 2px solid var(--accent);
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
       padding: 20px;
       border-radius: 10px;
       max-width: 600px;
@@ -852,23 +875,23 @@
 
     .newsletter-section {
       padding: 80px 20px;
-      background-color: var(--section-odd);
+      background-color: rgba(244, 228, 188, 0.8);
     }
 
-    .newsletter-container .section {
-      padding: 0;
+    body.dark-mode .newsletter-section {
+      background-color: rgba(60, 48, 30, 0.8);
     }
 
     .save-button {
       padding: 10px 20px;
-      background-color: var(--accent);
-      color: var(--text-color);
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
       font-size: 1em;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
       margin: 20px auto;
       display: none;
     }
@@ -880,14 +903,14 @@
     .edit-section-button {
       display: none;
       padding: 8px 12px;
-      background-color: var(--accent);
-      color: var(--text-color);
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
       font-size: 0.9em;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
       margin: 10px auto;
     }
 
@@ -896,16 +919,17 @@
     }
 
     .edit-section-button:hover {
-      background-color: var(--accent-hover);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
     }
 
     .back-to-top {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: var(--accent);
-      color: var(--nav-text);
+      background: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 50%;
       width: 50px;
@@ -913,18 +937,30 @@
       font-size: 1.5em;
       cursor: pointer;
       display: none;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
       z-index: 1000;
-      transition: background-color 0.3s, box-shadow 0.3s, opacity 0.3s;
     }
 
     .back-to-top:hover {
-      background-color: var(--accent-hover);
-      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.1);
     }
 
-    .back-to-top.visible {
-      display: block;
-      opacity: 1;
+    .loading-spinner {
+      display: none;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #e67e22;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 10px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     @media only screen and (max-width: 768px) {
@@ -942,7 +978,7 @@
         display: none;
         flex-direction: column;
         width: 100%;
-        background: var(--nav-bg);
+        background: rgba(44, 29, 15, 0.9);
         padding: 10px 0;
       }
 
@@ -950,7 +986,7 @@
         display: flex;
       }
 
-      nav a, .theme-toggle {
+      nav a {
         margin: 5px 0;
         font-size: 1rem;
         padding: 10px;
@@ -1068,11 +1104,6 @@
         font-size: 0.85em;
       }
 
-      .role .tooltip img {
-        width: 60px;
-        height: 60px;
-      }
-
       .role .apply-button {
         font-size: 0.8em;
         padding: 6px 10px;
@@ -1125,12 +1156,6 @@
       .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
         max-width: 95%;
         padding: 20px 15px;
-      }
-
-      .back-to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2em;
       }
     }
 
@@ -1201,21 +1226,10 @@
         right: 25px;
       }
 
-      .role img {
-        width: 45px;
-        height: 45px;
-        padding: 5px;
-      }
-
       .role .tooltip {
         width: 120px;
         font-size: 0.8em;
         padding: 8px;
-      }
-
-      .role .tooltip img {
-        width: 50px;
-        height: 50px;
       }
 
       .role .apply-button {
@@ -1247,16 +1261,6 @@
         font-size: 0.7em;
         padding: 5px;
       }
-
-      .event-filter {
-        max-width: 150px;
-      }
-
-      .back-to-top {
-        width: 35px;
-        height: 35px;
-        font-size: 1em;
-      }
     }
   </style>
 </head>
@@ -1271,67 +1275,70 @@
       <a href="#submit">Submit Event</a>
       <a href="#newsletter">Newsletter</a>
       <a href="#gallery">Gallery</a>
-      <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
   </nav>
 
   <div class="login-container">
-    <form id="login-form">
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
+    <form id="login-form" aria-label="Login form">
+      <input type="text" id="username" placeholder="Username" required aria-label="Username">
+      <input type="password" id="password" placeholder="Password" required aria-label="Password">
       <button type="submit">Login</button>
     </form>
-    <button class="logout-button">Logout</button>
+    <button class="logout-button" aria-label="Logout">Logout</button>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode">🌙</button>
   </div>
 
   <header class="header">
     <h1>Join Our Kiwiburn</h1>
-    <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
-    <a href="#about" class="scroll-down">▼</a>
+    <button class="edit-section-button" onclick="openHeaderModal()" aria-label="Edit header section">Edit Section</button>
+    <a href="#about" class="scroll-down" aria-label="Scroll to about section">▼</a>
   </header>
 
   <div class="modal" id="header-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeHeaderModal()">×</button>
+      <button class="close-button" onclick="closeHeaderModal()" aria-label="Close modal">×</button>
       <h3>Edit Header Section</h3>
-      <input type="text" id="header-title" placeholder="Header Title" required>
+      <input type="text" id="header-title" placeholder="Header Title" required aria-label="Header title">
+      <div class="loading-spinner"></div>
       <button onclick="saveHeaderDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="member-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeMemberModal()">×</button>
+      <button class="close-button" onclick="closeMemberModal()" aria-label="Close modal">×</button>
       <h3 id="member-modal-title">Add Member Details</h3>
-      <input type="text" id="member-name" placeholder="Member Name" required>
-      <input type="text" id="member-role" placeholder="Member Role" required>
-      <textarea id="member-description" placeholder="Member Description" required></textarea>
-      <input type="file" id="member-photo" accept="image/*">
+      <input type="text" id="member-name" placeholder="Member Name" required aria-label="Member name">
+      <input type="text" id="member-role" placeholder="Member Role" required aria-label="Member role">
+      <textarea id="member-description" placeholder="Member Description" required aria-label="Member description"></textarea>
+      <input type="file" id="member-photo" accept="image/*" aria-label="Member photo">
+      <div class="loading-spinner"></div>
       <button onclick="saveMemberDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="role-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeRoleModal()">×</button>
+      <button class="close-button" onclick="closeRoleModal()" aria-label="Close modal">×</button>
       <h3 id="role-modal-title">Create New Role</h3>
-      <input type="text" id="role-title" placeholder="Role Title" required>
-      <textarea id="role-description" placeholder="Role Description" required></textarea>
-      <input type="file" id="role-icon" accept="image/*">
+      <input type="text" id="role-title" placeholder="Role Title" required aria-label="Role title">
+      <textarea id="role-description" placeholder="Role Description" required aria-label="Role description"></textarea>
+      <input type="file" id="role-icon" accept="image/*" aria-label="Role icon">
+      <div class="loading-spinner"></div>
       <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="event-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeEventModal()">×</button>
-      <h3 id="event-modal-title">Edit Event</h3>
-      <input type="text" id="event-title" placeholder="Event Title" required>
-      <textarea id="event-description" placeholder="Event Description" required></textarea>
-      <input type="date" id="event-date" required>
-      <input type="time" id="event-time" required>
-      <input type="datetime-local" id="event-end" required>
-      <select id="event-category" required>
+      <button class="close-button" onclick="closeEventModal()" aria-label="Close modal">×</button>
+      <h3>Edit Event</h3>
+      <input type="text" id="event-title" placeholder="Event Title" required aria-label="Event title">
+      <textarea id="event-description" placeholder="Event Description" required aria-label="Event description"></textarea>
+      <input type="date" id="event-date" required aria-label="Event date">
+      <input type="time" id="event-time" required aria-label="Event time">
+      <input type="datetime-local" id="event-end" required aria-label="Event end date and time">
+      <select id="event-category" required aria-label="Event category">
         <option value="" disabled selected>Select Category</option>
         <option value="Music">Music</option>
         <option value="Art">Art</option>
@@ -1339,97 +1346,98 @@
         <option value="Workshop">Workshop</option>
         <option value="Other">Other</option>
       </select>
-      <input type="file" id="event-image" accept="image/*">
+      <input type="file" id="event-image" accept="image/*" aria-label="Event image">
+      <div class="loading-spinner"></div>
       <button onclick="saveEventDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="about-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeAboutModal()">×</button>
+      <button class="close-button" onclick="closeAboutModal()" aria-label="Close modal">×</button>
       <h3>Edit About Section</h3>
-      <input type="text" id="about-title" placeholder="Section Title" required>
-      <textarea id="about-description" placeholder="Section Description" required></textarea>
+      <input type="text" id="about-title" placeholder="Section Title" required aria-label="About section title">
+      <textarea id="about-description" placeholder="Section Description" required aria-label="About section description"></textarea>
+      <div class="loading-spinner"></div>
       <button onclick="saveAboutDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="mission-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeMissionModal()">×</button>
+      <button class="close-button" onclick="closeMissionModal()" aria-label="Close modal">×</button>
       <h3>Edit Mission Section</h3>
-      <input type="text" id="mission-title" placeholder="Section Title" required>
-      <textarea id="mission-description" placeholder="Section Description" required></textarea>
-      <input type="file" id="mission-image" accept="image/*">
+      <input type="text" id="mission-title" placeholder="Section Title" required aria-label="Mission section title">
+      <textarea id="mission-description" placeholder="Section Description" required aria-label="Mission section description"></textarea>
+      <input type="file" id="mission-image" accept="image/*" aria-label="Mission image">
+      <div class="loading-spinner"></div>
       <button onclick="saveMissionDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="gallery-image-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeGalleryImageModal()">×</button>
+      <button class="close-button" onclick="closeGalleryImageModal()" aria-label="Close modal">×</button>
       <h3>Edit Gallery Image</h3>
-      <input type="text" id="gallery-image-alt" placeholder="Image Alt Text" required>
-      <input type="file" id="gallery-image-file" accept="image/*">
+      <input type="text" id="gallery-image-alt" placeholder="Image Alt Text" required aria-label="Gallery image alt text">
+      <input type="file" id="gallery-image-file" accept="image/*" aria-label="Gallery image file">
+      <div class="loading-spinner"></div>
       <button onclick="saveGalleryImageDetails()">Save</button>
-    </div>
-  </div>
-
-  <div class="modal image-zoom-modal" id="image-zoom-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeImageZoomModal()">×</button>
-      <img id="zoom-image" src="" alt="">
-      <div class="caption" id="zoom-caption"></div>
     </div>
   </div>
 
   <div class="modal" id="events-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeEventsModal()">×</button>
+      <button class="close-button" onclick="closeEventsModal()" aria-label="Close modal">×</button>
       <h3>Edit Events Section</h3>
-      <input type="text" id="events-title" placeholder="Section Title" required>
-      <textarea id="events-description" placeholder="Section Description" required></textarea>
+      <input type="text" id="events-title" placeholder="Section Title" required aria-label="Events section title">
+      <textarea id="events-description" placeholder="Section Description" required aria-label="Events section description"></textarea>
+      <div class="loading-spinner"></div>
       <button onclick="saveEventsDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="newsletter-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeNewsletterModal()">×</button>
+      <button class="close-button" onclick="closeNewsletterModal()" aria-label="Close modal">×</button>
       <h3>Edit Newsletter Section</h3>
-      <input type="text" id="newsletter-title" placeholder="Section Title" required>
-      <textarea id="newsletter-description" placeholder="Section Description" required></textarea>
+      <input type="text" id="newsletter-title" placeholder="Section Title" required aria-label="Newsletter section title">
+      <textarea id="newsletter-description" placeholder="Section Description" required aria-label="Newsletter section description"></textarea>
+      <div class="loading-spinner"></div>
       <button onclick="saveNewsletterDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="contact-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeContactModal()">×</button>
+      <button class="close-button" onclick="closeContactModal()" aria-label="Close modal">×</button>
       <h3>Edit Contact Section</h3>
-      <input type="text" id="contact-title" placeholder="Section Title" required>
-      <textarea id="contact-description" placeholder="Section Description" required></textarea>
-      <input type="text" id="contact-link" placeholder="Contact Link" required>
+      <input type="text" id="contact-title" placeholder="Section Title" required aria-label="Contact section title">
+      <textarea id="contact-description" placeholder="Section Description" required aria-label="Contact section description"></textarea>
+      <input type="text" id="contact-link" placeholder="Contact Link" required aria-label="Contact link">
+      <div class="loading-spinner"></div>
       <button onclick="saveContactDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="join-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeJoinModal()">×</button>
+      <button class="close-button" onclick="closeJoinModal()" aria-label="Close modal">×</button>
       <h3>Edit Join Section</h3>
-      <input type="text" id="join-title" placeholder="Section Title" required>
-      <textarea id="join-description" placeholder="Section Description" required></textarea>
+      <input type="text" id="join-title" placeholder="Section Title" required aria-label="Join section title">
+      <textarea id="join-description" placeholder="Section Description" required aria-label="Join section description"></textarea>
+      <div class="loading-spinner"></div>
       <button onclick="saveJoinDetails()">Save</button>
     </div>
   </div>
 
   <div class="modal" id="submit-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeSubmitModal()">×</button>
+      <button class="close-button" onclick="closeSubmitModal()" aria-label="Close modal">×</button>
       <h3>Edit Submit Event Section</h3>
-      <input type="text" id="submit-title" placeholder="Section Title" required>
-      <textarea id="submit-description" placeholder="Section Description" required></textarea>
+      <input type="text" id="submit-title" placeholder="Section Title" required aria-label="Submit event section title">
+      <textarea id="submit-description" placeholder="Section Description" required aria-label="Submit event section description"></textarea>
+      <div class="loading-spinner"></div>
       <button onclick="saveSubmitDetails()">Save</button>
     </div>
   </div>
@@ -1438,25 +1446,25 @@
     <section class="section" id="about">
       <h1>About Our Camp</h1>
       <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
-      <button class="edit-section-button" onclick="openAboutModal()">Edit Section</button>
+      <button class="edit-section-button" onclick="openAboutModal()" aria-label="Edit about section">Edit Section</button>
       <div class="gallery" id="about-gallery" ondragover="allowDrop(event)" ondrop="dropAboutImage(event)">
         <div class="image-container" draggable="true" ondragstart="dragAboutImage(event)">
-          <img src="images/Campphoto1.jpg" alt="Camp Mates" onclick="openImageZoomModal(this)">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
-          <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
+          <img src="images/Campphoto1.jpg" alt="Camp Mates Gathering" loading="lazy">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'about')" aria-label="Edit image">✎</button>
+          <button class="delete-button" onclick="deleteAboutImage(this)" aria-label="Delete image">×</button>
         </div>
         <div class="image-container" draggable="true" ondragstart="dragAboutImage(event)">
-          <img src="images/Campphoto15.png" alt="Camp Mates" onclick="openImageZoomModal(this)">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
-          <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
+          <img src="images/Campphoto15.png" alt="Camp Art Installation" loading="lazy">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'about')" aria-label="Edit image">✎</button>
+          <button class="delete-button" onclick="deleteAboutImage(this)" aria-label="Delete image">×</button>
         </div>
         <div class="image-container" draggable="true" ondragstart="dragAboutImage(event)">
-          <img src="images/Campphoto17.png" alt="Night Lights" onclick="openImageZoomModal(this)">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
-          <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
+          <img src="images/Campphoto17.png" alt="Night Lights Display" loading="lazy">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'about')" aria-label="Edit image">✎</button>
+          <button class="delete-button" onclick="deleteAboutImage(this)" aria-label="Delete image">×</button>
         </div>
       </div>
-      <button class="save-button" onclick="uploadAboutImage()">Upload New Image</button>
+      <button class="save-button" onclick="uploadAboutImage()" aria-label="Upload new image">Upload New Image</button>
     </section>
   </div>
 
@@ -1464,9 +1472,9 @@
     <section class="section" id="mission">
       <h1>Our Mission</h1>
       <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
-      <button class="edit-section-button" onclick="openMissionModal()">Edit Section</button>
+      <button class="edit-section-button" onclick="openMissionModal()" aria-label="Edit mission section">Edit Section</button>
       <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)"></div>
-      <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
+      <button class="save-button" onclick="uploadMissionImage()" aria-label="Upload new image">Upload New Image</button>
     </section>
   </div>
 
@@ -1474,257 +1482,236 @@
     <section class="section" id="members">
       <h1>Meet Our Core Camp Crew</h1>
       <div class="members-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
-        <div class="scroll-arrow left">◄</div>
-        <div class="scroll-arrow right">►</div>
+        <div class="scroll-arrow left" aria-label="Scroll left">◄</div>
+        <div class="scroll-arrow right" aria-label="Scroll right">►</div>
         <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
+          <img src="images/ShanonRichards.jpg" alt="Shanon Richards" loading="lazy">
           <h3>Shanon Richards</h3>
           <span>Camp Lead</span>
           <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/MeganR.jpg" alt="Meghan">
+          <img src="images/MeganR.jpg" alt="Meghan Robson" loading="lazy">
           <h3>Meghan Robson</h3>
           <span>Deputy Lead</span>
           <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/RussellDuffield.jpg" alt="Russell">
+          <img src="images/RussellDuffield.jpg" alt="Russell Duffield" loading="lazy">
           <h3>Russell Duffield</h3>
           <span>Build Lead</span>
           <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Star Dust Bambi.jpg" alt="Star">
+          <img src="images/Star Dust Bambi.jpg" alt="Star Dust Bambi" loading="lazy">
           <h3>Star Dust Bambi</h3>
           <span>Vibe Manager</span>
           <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/michealdunstan.jpg" alt="Micheal">
+          <img src="images/michealdunstan.jpg" alt="Micheal Dunstan" loading="lazy">
           <h3>Micheal Dunstan</h3>
           <span>Logistics Lead</span>
           <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/tomasshelby.jpg" alt="Tomas">
+          <img src="images/tomasshelby.jpg" alt="Tomas Shelby" loading="lazy">
           <h3>Tomas Shelby</h3>
           <span>Sound Lead</span>
           <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/jarrodskiffington.jpg" alt="Jarrod">
+          <img src="images/jarrodskiffington.jpg" alt="Jarrod Skiffington" loading="lazy">
           <h3>Jarrod Skiffington</h3>
           <span>Transport Lead</span>
           <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/alana.jpg" alt="Alana">
+          <img src="images/alana.jpg" alt="Alana Stewart" loading="lazy">
           <h3>Alana Stewart</h3>
           <span>Kitchen Lead</span>
           <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/tylerrowe.jpg" alt="Tyler">
+          <img src="images/tylerrowe.jpg" alt="Tyler Rowe" loading="lazy">
           <h3>Tyler Rowe</h3>
           <span>Art & Workshop Lead</span>
           <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Imogen.jpg" alt="Imogen">
+          <img src="images/Imogen.jpg" alt="Imogen Olivia" loading="lazy">
           <h3>Imogen Olivia</h3>
           <span>Wellbeing Officer</span>
           <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/sarsha.jpg" alt="Sarsha">
+          <img src="images/sarsha.jpg" alt="Sarsha Skiffington" loading="lazy">
           <h3>Sarsha Skiffington</h3>
           <span>Greeter</span>
-          <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <p>Welcomes arrivals, gives orientations, and helps everyone feel at home—all wrapped in a cozy, laid-back vibe.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Gartah.jpg" alt="Gartah">
+          <img src="images/Gartah.jpg" alt="Gartah" loading="lazy">
           <h3>Gartah</h3>
           <span>Strike Lead</span>
           <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/jackie.jpg" alt="Jackie">
+          <img src="images/jackie.jpg" alt="Jackie Church" loading="lazy">
           <h3>Jackie Church</h3>
           <span>Comms Lead</span>
           <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/olivia.jpg" alt="Olivia">
+          <img src="images/olivia.jpg" alt="Olivia Derewlany" loading="lazy">
           <h3>Olivia Derewlany</h3>
           <span>Safety Officer</span>
           <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/wenyi.jpg" alt="Wenyi">
+          <img src="images/wenyi.jpg" alt="Wenyi Huang" loading="lazy">
           <h3>Wenyi Huang</h3>
           <span>MOOP Manager</span>
           <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
         <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/tina.jpg" alt="Tina">
+          <img src="images/tina.jpg" alt="Tina Lein" loading="lazy">
           <h3>Tina Lein</h3>
           <span>Power/Tech Lead</span>
           <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+          <button class="edit-button" onclick="openEditMemberModal(this)" aria-label="Edit member">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)" aria-label="Delete member">×</button>
         </div>
       </div>
 
       <h2>Roles to Be Filled</h2>
       <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
       <div class="roles-grid" ondragover="allowDrop(event)" ondrop="drop(event)">
-        <div class="scroll-arrow left">◄</div>
-        <div class="scroll-arrow right">►</div>
+        <div class="scroll-arrow left" aria-label="Scroll left">◄</div>
+        <div class="scroll-arrow right" aria-label="Scroll right">►</div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon">
+          <img src="images/icons/trial.png" alt="Logistics & Build Lead Icon" loading="lazy">
           <h3>Logistics & Build Lead</h3>
-          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button" aria-label="Apply for Logistics & Build Lead">Apply for Role</a>
           <div class="tooltip">
             <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="edit-button" onclick="openEditRoleModal(this)" aria-label="Edit role">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)" aria-label="Delete role">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon">
+          <img src="images/icons/volunteer-coordinator.png" alt="Volunteer Coordinator Icon" loading="lazy">
           <h3>Volunteer Coordinator</h3>
-          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
+          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button" aria-label="Apply for Volunteer Coordinator">Apply for Role</a>
           <div class="tooltip">
             <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="edit-button" onclick="openEditRoleModal(this)" aria-label="Edit role">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)" aria-label="Delete role">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/build-crew.png" alt="Build Crew Icon">
+          <img src="images/icons/build-crew.png" alt="Build Crew Icon" loading="lazy">
           <h3>Build Crew</h3>
-          <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
+          <a href="join-camp.html?role=Build%20Crew" class="apply-button" aria-label="Apply for Build Crew">Apply for Role</a>
           <div class="tooltip">
             <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="edit-button" onclick="openEditRoleModal(this)" aria-label="Edit role">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)" aria-label="Delete role">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
+          <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon" loading="lazy">
           <h3>Sound & Lights Lead</h3>
-          <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button">Apply for Role</a>
+          <a href="join-camp.html?role=Sound%20%26%20Lights%20Lead" class="apply-button" aria-label="Apply for Sound & Lights Lead">Apply for Role</a>
           <div class="tooltip">
             <p>Oversees DJ schedules, lighting, sound compliance, and power systems.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="edit-button" onclick="openEditRoleModal(this)" aria-label="Edit role">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)" aria-label="Delete role">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon">
+          <img src="images/icons/kitchen-lead.png" alt="Kitchen Lead Icon" loading="lazy">
           <h3>Kitchen Lead</h3>
-          <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
+          <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button" aria-label="Apply for Kitchen Lead">Apply for Role</a>
           <div class="tooltip">
             <p>Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="edit-button" onclick="openEditRoleModal(this)" aria-label="Edit role">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)" aria-label="Delete role">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon">
+          <img src="images/icons/safety-medical-lead.png" alt="Safety & Medical Lead Icon" loading="lazy">
           <h3>Safety & Medical Lead</h3>
-          <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button">Apply for Role</a>
+          <a href="join-camp.html?role=Safety%20%26%20Medical%20Lead" class="apply-button" aria-label="Apply for Safety & Medical Lead">Apply for Role</a>
           <div class="tooltip">
             <p>Stocks first aid, provides harm reduction & emergency support.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="edit-button" onclick="openEditRoleModal(this)" aria-label="Edit role">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)" aria-label="Delete role">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
+          <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon" loading="lazy">
           <h3>Fire & Rangers Lead</h3>
-          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
+          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button" aria-label="Apply for Fire & Rangers Lead
+                    <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button" aria-label="Apply for Fire & Rangers Lead">Apply for Role</a>
           <div class="tooltip">
-            <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
+            <p>Manages fire safety protocols and coordinates with Kiwiburn rangers.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="edit-button" onclick="openEditRoleModal(this)" aria-label="Edit role">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)" aria-label="Delete role">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/art-decor-lead.png" alt="Art & Decor Lead Icon">
-          <h3>Art & Decor Lead</h3>
-          <a href="join-camp.html?role=Art%20%26%20Decor%20Lead" class="apply-button">Apply for Role</a>
+          <img src="images/icons/art-lead.png" alt="Art Lead Icon" loading="lazy">
+          <h3>Art Lead</h3>
+          <a href="join-camp.html?role=Art%20Lead" class="apply-button" aria-label="Apply for Art Lead">Apply for Role</a>
           <div class="tooltip">
-            <p>Oversees decor, signs, and interactive art.</p>
+            <p>Coordinates art installations and creative projects for the camp.</p>
           </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" draggable="true" ondragstart="drag(event)">
-          <img src="images/icons/event-theme-night-lead.png" alt="Event & Theme Night Lead Icon">
-          <h3>Event & Theme Night Lead</h3>
-          <a href="join-camp.html?role=Event%20%26%20Theme%20Night%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Plans events, workshops, performances & group photos.</p>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" onclick="openRoleModal()">
-          <img src="images/icons/add-role.png" alt="Add New Role Icon">
-          <h3>Add New Role</h3>
-          <p>Create a new role for the camp.</p>
+          <button class="edit-button" onclick="openEditRoleModal(this)" aria-label="Edit role">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)" aria-label="Delete role">×</button>
         </div>
       </div>
-
-      <button class="save-button" onclick="saveChanges()">Save Changes</button>
-    </section>
-
-    <section class="section submit-section" id="join">
-      <h2>Request to Join</h2>
-      <p>Want to join our amazing community? Click below to submit your request!</p>
-      <button class="edit-section-button" onclick="openJoinModal()">Edit Section</button>
-      <a href="join-camp.html" class="submit-button">Click Here</a>
+      <button class="save-button" onclick="openRoleModal()" aria-label="Create new role">Create New Role</button>
+      <button class="save-button" onclick="addMember()" aria-label="Add new member">Add New Member</button>
     </section>
   </div>
 
-  <div class="events-container">
-    <section class="section" id="events">
-      <h1>Past Events</h1>
-      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
-      <button class="edit-section-button" onclick="openEventsModal()">Edit Section</button>
-      <select class="event-filter" id="event-filter" onchange="filterEvents()">
+  <section class="section" id="events">
+    <h1>Upcoming Events</h1>
+    <p>Check out our exciting lineup of events at Kiwiburn. Filter by category to find your vibe!</p>
+    <button class="edit-section-button" onclick="openEventsModal()" aria-label="Edit events section">Edit Section</button>
+    <div class="event-filter">
+      <select id="event-category-filter" aria-label="Filter events by category">
         <option value="all">All Categories</option>
         <option value="Music">Music</option>
         <option value="Art">Art</option>
@@ -1732,782 +1719,628 @@
         <option value="Workshop">Workshop</option>
         <option value="Other">Other</option>
       </select>
-      <div class="events-grid">
-        <div class="event" data-category="Music">
-          <img src="images/Eventposter.jpg" alt="Emo Night Poster">
-          <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-          <p>Emo night is back! Join us for a tribute to RAT camp as⠀we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
-          <p class="event-date"><strong>Date:</strong> January 28, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
-          <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 2:00 AM</p>
-          <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event" data-category="Performance">
-          <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
-          <h3>Pole in the paddock</h3>
-          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
-          <p class="event-date"><strong>Date:</strong> January 29, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
-          <p class="event-end"><strong>End Date & Time:</strong> January 29, 2025, 8:00 PM</p>
-          <p class="event-category"><strong>Category:</strong> Performance</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event" data-category="Workshop">
-          <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
-          <h3>Cosmic Connections</h3>
-          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
-          <p class="event-date"><strong>Date:</strong> January 30, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 7:00 PM</p>
-          <p class="event-end"><strong>End Date & Time:</strong> January 30, 2025, 10:00 PM</p>
-          <p class="event-category"><strong>Category:</strong> Workshop</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event" data-category="Music">
-          <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
-          <h3>DJ Showcase & Open Decks</h3>
-          <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
-          <p class="event-date"><strong>Date:</strong> January 31, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
-          <p class="event-end"><strong>End Date & Time:</strong> February 1, 2025, 3:00 AM</p>
-          <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
+    </div>
+    <div class="events-grid" id="events-grid">
+      <div class="event">
+        <img src="images/event1.jpg" alt="Emo Night Event" loading="lazy">
+        <h3>Emo Night</h3>
+        <p class="event-date"><strong>Date:</strong> January 15, 2026</p>
+        <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
+        <p class="event-end"><strong>End:</strong> January 16, 2026, 2:00 AM</p>
+        <p class="event-category"><strong>Category:</strong> Music</p>
+        <p>Relive the 2000s with our Emo Night, featuring classic anthems and heartfelt sing-alongs.</p>
+        <button class="edit-button" onclick="openEditEventModal(this)" aria-label="Edit event">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
       </div>
-    </section>
+      <div class="event">
+        <img src="images/event2.jpg" alt="Drum and Bass Rave Event" loading="lazy">
+        <h3>Drum & Bass Rave</h3>
+        <p class="event-date"><strong>Date:</strong> January 16, 2026</p>
+        <p class="event-time"><strong>Time:</strong> 10:00 PM</p>
+        <p class="event-end"><strong>End:</strong> January 17, 2026, 4:00 AM</p>
+        <p class="event-category"><strong>Category:</strong> Music</p>
+        <p>Get ready for high-energy beats and non-stop dancing at our D&B rave.</p>
+        <button class="edit-button" onclick="openEditEventModal(this)" aria-label="Edit event">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
+      </div>
+      <div class="event">
+        <img src="images/event3.jpg" alt="Art Workshop Event" loading="lazy">
+        <h3>Art Workshop</h3>
+        <p class="event-date"><strong>Date:</strong> January 17, 2026</p>
+        <p class="event-time"><strong>Time:</strong> 2:00 PM</p>
+        <p class="event-end"><strong>End:</strong> January 17, 2026, 5:00 PM</p>
+        <p class="event-category"><strong>Category:</strong> Workshop</p>
+        <p>Join us to create unique art pieces inspired by the Kiwiburn spirit.</p>
+        <button class="edit-button" onclick="openEditEventModal(this)" aria-label="Edit event">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)" aria-label="Delete event">×</button>
+      </div>
+    </div>
+    <button class="save-button" onclick="openEventModal()" aria-label="Add new event">Add New Event</button>
+  </section>
 
-    <section class="section submit-section" id="submit">
-      <h1>Submit Your Event</h1>
-      <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
-      <button class="edit-section-button" onclick="openSubmitModal()">Edit Section</button>
-      <a href="submit-event.html" class="submit-button">Click Here</a>
-    </section>
+  <div class="countdown-container">
+    <h2>Kiwiburn Countdown</h2>
+    <div class="countdown" id="countdown">Loading...</div>
+    <input type="datetime-local" id="countdown-date" aria-label="Set countdown date">
+    <button onclick="setCountdownDate()" aria-label="Set countdown">Set Date</button>
   </div>
 
-<div class="newsletter-container">
-  <section class="section newsletter-section" id="newsletter">
-    <h1>Stay in the Loop</h1>
-    <p>Sign up for our newsletter to get the latest updates on events, camp news, and more!</p>
-    <button class="edit-section-button" onclick="openNewsletterModal()">Edit Section</button>
-    <div class="form-container">
-      <form id="newsletter-form">
-        <input type="email" id="newsletter-email" placeholder="Enter your email" required>
-        <button type="submit" class="submit-button">Subscribe</button>
+  <section class="section" id="submit">
+    <h1>Submit an Event</h1>
+    <p>Got an idea for an event? Submit it here to share your creativity with the camp!</p>
+    <button class="edit-section-button" onclick="openSubmitModal()" aria-label="Edit submit event section">Edit Section</button>
+    <div class="submit-section">
+      <form class="form-container" id="event-submit-form" aria-label="Event submission form">
+        <input type="text" id="submit-event-title" placeholder="Event Title" required aria-label="Event title">
+        <textarea id="submit-event-description" placeholder="Event Description" required aria-label="Event description"></textarea>
+        <input type="date" id="submit-event-date" required aria-label="Event date">
+        <input type="time" id="submit-event-time" required aria-label="Event time">
+        <input type="datetime-local" id="submit-event-end" required aria-label="Event end date and time">
+        <select id="submit-event-category" required aria-label="Event category">
+          <option value="" disabled selected>Select Category</option>
+          <option value="Music">Music</option>
+          <option value="Art">Art</option>
+          <option value="Performance">Performance</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="file" id="submit-event-image" accept="image/*" aria-label="Event image">
+        <button type="submit" class="submit-button" aria-label="Submit event">Submit Event</button>
       </form>
     </div>
   </section>
-</div>
 
-<div class="gallery-container">
-  <section class="section" id="gallery">
-    <h1>Gallery</h1>
-    <p>A glimpse into the magic we’ve created together at Kiwiburn.</p>
-    <button class="edit-section-button" onclick="openGalleryModal()">Edit Section</button>
-    <div class="gallery" id="main-gallery" ondragover="allowDrop(event)" ondrop="dropGalleryImage(event)">
-      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-        <img src="images/gallery1.jpg" alt="Kiwiburn Moment 1" onclick="openImageZoomModal(this)">
-        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
-        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+  <div class="newsletter-container">
+    <section class="newsletter-section" id="newsletter">
+      <h1>Stay in the Loop</h1>
+      <p>Sign up for our newsletter to get the latest updates on events, roles, and camp news.</p>
+      <button class="edit-section-button" onclick="openNewsletterModal()" aria-label="Edit newsletter section">Edit Section</button>
+      <form class="form-container" id="newsletter-form" aria-label="Newsletter signup form">
+        <input type="email" id="newsletter-email" placeholder="Your Email" required aria-label="Email address">
+        <button type="submit" class="submit-button" aria-label="Subscribe to newsletter">Subscribe</button>
+      </form>
+    </section>
+  </div>
+
+  <div class="gallery-container">
+    <section class="section" id="gallery">
+      <h1>Camp Gallery</h1>
+      <p>A glimpse into the moments that make Cosmic Rejex unforgettable.</p>
+      <div class="gallery" id="gallery-images" ondragover="allowDrop(event)" ondrop="dropGalleryImage(event)">
+        <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+          <img src="images/gallery1.jpg" alt="Campfire Gathering" loading="lazy">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')" aria-label="Edit image">✎</button>
+          <button class="delete-button" onclick="deleteGalleryImage(this)" aria-label="Delete image">×</button>
+        </div>
+        <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+          <img src="images/gallery2.jpg" alt="Art Installation at Night" loading="lazy">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')" aria-label="Edit image">✎</button>
+          <button class="delete-button" onclick="deleteGalleryImage(this)" aria-label="Delete image">×</button>
+        </div>
+        <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+          <img src="images/gallery3.jpg" alt="Group Dance Party" loading="lazy">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')" aria-label="Edit image">✎</button>
+          <button class="delete-button" onclick="deleteGalleryImage(this)" aria-label="Delete image">×</button>
+        </div>
       </div>
-      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-        <img src="images/gallery2.jpg" alt="Kiwiburn Moment 2" onclick="openImageZoomModal(this)">
-        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
-        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
-      </div>
-      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-        <img src="images/gallery3.jpg" alt="Kiwiburn Moment 3" onclick="openImageZoomModal(this)">
-        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
-        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
-      </div>
-    </div>
-    <button class="save-button" onclick="uploadGalleryImage()">Upload New Image</button>
+      <button class="save-button" onclick="uploadGalleryImage()" aria-label="Upload new image">Upload New Image</button>
+    </section>
+  </div>
+
+  <section class="contact-lead">
+    <h2>Contact Our Lead</h2>
+    <p>Have questions or want to join? Reach out to our Camp Lead, Shanon Richards.</p>
+    <a href="mailto:shanon@cosmicrejex.com" aria-label="Email Shanon Richards">Email Shanon</a>
+    <button class="edit-section-button" onclick="openContactModal()" aria-label="Edit contact section">Edit Section</button>
   </section>
-</div>
 
-<div class="countdown-container">
-  <h2>Countdown to Kiwiburn 2026</h2>
-  <div class="countdown" id="countdown">Loading...</div>
-  <input type="date" id="countdown-date" style="display: none;">
-  <button onclick="updateCountdown()" style="display: none;">Update</button>
-</div>
+  <footer>
+    <p>&copy; 2025 Cosmic Rejex. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://facebook.com/cosmicrejex" aria-label="Facebook">Facebook</a>
+      <a href="https://instagram.com/cosmicrejex" aria-label="Instagram">Instagram</a>
+      <a href="https://x.com/cosmicrejex" aria-label="X">X</a>
+    </div>
+  </footer>
 
-<section class="contact-lead" id="contact">
-  <h2>Contact Our Lead</h2>
-  <p>Got questions? Reach out to our camp lead!</p>
-  <button class="edit-section-button" onclick="openContactModal()">Edit Section</button>
-  <a href="mailto:camp@cosmicrejex.com">camp@cosmicrejex.com</a>
-</section>
+  <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to top">↑</button>
 
-<footer>
-  <p>&copy; 2025 Cosmic Rejex. All rights reserved.</p>
-</footer>
+  <script>
+    // Toggle hamburger menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
 
-<button class="back-to-top" aria-label="Back to top">↑</button>
-
-<script>
-// Theme Toggle
-const themeToggle = document.querySelector('.theme-toggle');
-themeToggle.addEventListener('click', () => {
-  document.documentElement.setAttribute('data-theme',
-    document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
-  );
-});
-
-// Hamburger Menu
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
-
-// Login Functionality
-const loginForm = document.getElementById('login-form');
-const logoutButton = document.querySelector('.logout-button');
-const loginContainer = document.querySelector('.login-container');
-
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  if (username === 'admin' && password === 'kiwi2025') {
-    document.body.classList.add('logged-in');
-    loginForm.style.display = 'none';
-    logoutButton.style.display = 'block';
-    alert('Logged in successfully!');
-  } else {
-    alert('Invalid credentials');
-  }
-});
-
-logoutButton.addEventListener('click', () => {
-  document.body.classList.remove('logged-in');
-  loginForm.style.display = 'flex';
-  logoutButton.style.display = 'none';
-  loginForm.reset();
-});
-
-// Scroll to Top Button
-const backToTop = document.querySelector('.back-to-top');
-window.addEventListener('scroll', () => {
-  backToTop.classList.toggle('visible', window.scrollY > 300);
-});
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// Modal Functions
-function openModal(modalId) {
-  document.getElementById(modalId).style.display = 'flex';
-}
-function closeModal(modalId) {
-  document.getElementById(modalId).style.display = 'none';
-}
-
-// Header Modal
-function openHeaderModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('header-modal');
-    document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
-  }
-}
-function closeHeaderModal() {
-  closeModal('header-modal');
-}
-function saveHeaderDetails() {
-  const title = document.getElementById('header-title').value;
-  document.querySelector('.header h1').textContent = title;
-  closeHeaderModal();
-}
-
-// About Modal
-function openAboutModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('about-modal');
-    document.getElementById('about-title').value = document.querySelector('#about h1').textContent;
-    document.getElementById('about-description').value = document.querySelector('#about p').textContent;
-  }
-}
-function closeAboutModal() {
-  closeModal('about-modal');
-}
-function saveAboutDetails() {
-  const title = document.getElementById('about-title').value;
-  const description = document.getElementById('about-description').value;
-  document.querySelector('#about h1').textContent = title;
-  document.querySelector('#about p').textContent = description;
-  closeAboutModal();
-}
-
-// Mission Modal
-function openMissionModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('mission-modal');
-    document.getElementById('mission-title').value = document.querySelector('#mission h1').textContent;
-    document.getElementById('mission-description').value = document.querySelector('#mission p').textContent;
-  }
-}
-function closeMissionModal() {
-  closeModal('mission-modal');
-}
-function saveMissionDetails() {
-  const title = document.getElementById('mission-title').value;
-  const description = document.getElementById('mission-description').value;
-  const image = document.getElementById('mission-image').files[0];
-  document.querySelector('#mission h1').textContent = title;
-  document.querySelector('#mission p').textContent = description;
-  if (image) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      img.alt = 'Mission Image';
-      const gallery = document.getElementById('mission-gallery');
-      gallery.innerHTML = '';
-      gallery.appendChild(img);
-    };
-    reader.readAsDataURL(image);
-  }
-  closeMissionModal();
-}
-
-// Gallery Modal
-function openGalleryModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('gallery-modal');
-    document.getElementById('gallery-title').value = document.querySelector('#gallery h1').textContent;
-    document.getElementById('gallery-description').value = document.querySelector('#gallery p').textContent;
-  }
-}
-function closeGalleryModal() {
-  closeModal('gallery-modal');
-}
-function saveGalleryDetails() {
-  const title = document.getElementById('gallery-title').value;
-  const description = document.getElementById('gallery-description').value;
-  document.querySelector('#gallery h1').textContent = title;
-  document.querySelector('#gallery p').textContent = description;
-  closeGalleryModal();
-}
-
-// Gallery Image Functions
-function openGalleryImageModal(button, galleryType) {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('gallery-image-modal');
-    const img = button.parentElement.querySelector('img');
-    document.getElementById('gallery-image-alt').value = img.alt;
-    document.getElementById('gallery-image-modal').dataset.imageElement = button.parentElement.outerHTML;
-    document.getElementById('gallery-image-modal').dataset.galleryType = galleryType;
-  }
-}
-function closeGalleryImageModal() {
-  closeModal('gallery-image-modal');
-}
-function saveGalleryImageDetails() {
-  const altText = document.getElementById('gallery-image-alt').value;
-  const file = document.getElementById('gallery-image-file').files[0];
-  const modal = document.getElementById('gallery-image-modal');
-  const galleryType = modal.dataset.galleryType;
-  const oldImageContainer = new DOMParser().parseFromString(modal.dataset.imageElement, 'text/html').body.firstChild;
-  const gallery = galleryType === 'about' ? document.getElementById('about-gallery') : document.getElementById('main-gallery');
-
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const newImageContainer = document.createElement('div');
-      newImageContainer.className = 'image-container';
-      newImageContainer.draggable = true;
-      newImageContainer.ondragstart = (ev) => dragGalleryImage(ev);
-      const img = document.createElement('img');
-      img.src = e.target.result;
-      img.alt = altText;
-      img.onclick = () => openImageZoomModal(img);
-      const editButton = document.createElement('button');
-      editButton.className = 'edit-button';
-      editButton.textContent = '✎';
-      editButton.onclick = () => openGalleryImageModal(editButton, galleryType);
-      const deleteButton = document.createElement('button');
-      deleteButton.className = 'delete-button';
-      deleteButton.textContent = '×';
-      deleteButton.onclick = () => deleteGalleryImage(deleteButton);
-      newImageContainer.append(img, editButton, deleteButton);
-      gallery.replaceChild(newImageContainer, oldImageContainer);
-    };
-    reader.readAsDataURL(file);
-  } else {
-    oldImageContainer.querySelector('img').alt = altText;
-    gallery.replaceChild(oldImageContainer, oldImageContainer);
-  }
-  closeGalleryImageModal();
-}
-function uploadGalleryImage() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('gallery-image-modal');
-    document.getElementById('gallery-image-alt').value = '';
-    document.getElementById('gallery-image-file').value = '';
-    document.getElementById('gallery-image-modal').dataset.galleryType = 'main';
-    document.getElementById('gallery-image-modal').dataset.imageElement = '';
-  }
-}
-function deleteGalleryImage(button) {
-  if (confirm('Are you sure you want to delete this image?')) {
-    button.parentElement.remove();
-  }
-}
-function dragGalleryImage(event) {
-  event.dataTransfer.setData('text/html', event.target.outerHTML);
-}
-function dropGalleryImage(event) {
-  event.preventDefault();
-  const data = event.dataTransfer.getData('text/html');
-  const draggedElement = new DOMParser().parseFromString(data, 'text/html').body.firstChild;
-  const gallery = document.getElementById('main-gallery');
-  const dropZone = event.target.closest('.image-container') || gallery;
-  if (dropZone !== gallery) {
-    gallery.insertBefore(draggedElement, dropZone);
-  } else {
-    gallery.appendChild(draggedElement);
-  }
-}
-
-// Event Modal
-function openEventModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('event-modal');
-    document.getElementById('event-modal-title').textContent = 'Add New Event';
-    document.getElementById('event-title').value = '';
-    document.getElementById('event-description').value = '';
-    document.getElementById('event-date').value = '';
-    document.getElementById('event-time').value = '';
-    document.getElementById('event-end').value = '';
-    document.getElementById('event-category').value = '';
-    document.getElementById('event-image').value = '';
-  }
-}
-function openEditEventModal(button) {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('event-modal');
-    document.getElementById('event-modal-title').textContent = 'Edit Event';
-    const event = button.parentElement;
-    document.getElementById('event-title').value = event.querySelector('h3').textContent;
-    document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
-    document.getElementById('event-date').value = event.querySelector('.event-date').textContent.match(/\d{4}-\d{2}-\d{2}/)[0];
-    document.getElementById('event-time').value = event.querySelector('.event-time').textContent.match(/\d{1,2}:\d{2} (AM|PM)/)[0];
-    document.getElementById('event-end').value = event.querySelector('.event-end').textContent.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/)[0];
-    document.getElementById('event-category').value = event.dataset.category;
-    document.getElementById('event-modal').dataset.eventElement = event.outerHTML;
-  }
-}
-function closeEventModal() {
-  closeModal('event-modal');
-}
-function saveEventDetails() {
-  const title = document.getElementById('event-title').value;
-  const description = document.getElementById('event-description').value;
-  const date = document.getElementById('event-date').value;
-  const time = document.getElementById('event-time').value;
-  const end = document.getElementById('event-end').value;
-  const category = document.getElementById('event-category').value;
-  const image = document.getElementById('event-image').files[0];
-  const modal = document.getElementById('event-modal');
-  const eventsGrid = document.querySelector('.events-grid');
-
-  const eventDiv = document.createElement('div');
-  eventDiv.className = 'event';
-  eventDiv.dataset.category = category;
-
-  const img = document.createElement('img');
-  img.alt = title;
-  if (image) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(image);
-  } else {
-    img.src = modal.dataset.eventElement ? new DOMParser().parseFromString(modal.dataset.eventElement, 'text/html').body.firstChild.querySelector('img').src : 'images/default-event.jpg';
-  }
-
-  const h3 = document.createElement('h3');
-  h3.textContent = title;
-  const descP = document.createElement('p');
-  descP.textContent = description;
-  const dateP = document.createElement('p');
-  dateP.className = 'event-date';
-  dateP.innerHTML = `<strong>Date:</strong> ${date}`;
-  const timeP = document.createElement('p');
-  timeP.className = 'event-time';
-  timeP.innerHTML = `<strong>Time:</strong> ${time}`;
-  const endP = document.createElement('p');
-  endP.className = 'event-end';
-  endP.innerHTML = `<strong>End Date & Time:</strong> ${end.replace('T', ', ')}`;
-  const catP = document.createElement('p');
-  catP.className = 'event-category';
-  catP.innerHTML = `<strong>Category:</strong> ${category}`;
-  const editButton = document.createElement('button');
-  editButton.className = 'edit-button';
-  editButton.textContent = '✎';
-  editButton.onclick = () => openEditEventModal(editButton);
-  const deleteButton = document.createElement('button');
-  deleteButton.className = 'delete-button';
-  deleteButton.textContent = '×';
-  deleteButton.onclick = () => deleteEvent(deleteButton);
-
-  eventDiv.append(img, h3, descP, dateP, timeP, endP, catP, editButton, deleteButton);
-
-  if (modal.dataset.eventElement) {
-    const oldEvent = new DOMParser().parseFromString(modal.dataset.eventElement, 'text/html').body.firstChild;
-    eventsGrid.replaceChild(eventDiv, eventsGrid.querySelector(`[data-category="${oldEvent.dataset.category}"]`));
-  } else {
-    eventsGrid.appendChild(eventDiv);
-  }
-
-  closeEventModal();
-}
-function deleteEvent(button) {
-  if (confirm('Are you sure you want to delete this event?')) {
-    button.parentElement.remove();
-  }
-}
-
-// Image Zoom Modal
-function openImageZoomModal(img) {
-  openModal('image-zoom-modal');
-  document.getElementById('zoom-image').src = img.src;
-  document.getElementById('zoom-caption').textContent = img.alt;
-}
-function closeImageZoomModal() {
-  closeModal('image-zoom-modal');
-}
-
-// Newsletter Modal
-function openNewsletterModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('newsletter-modal');
-    document.getElementById('newsletter-title').value = document.querySelector('#newsletter h1').textContent;
-    document.getElementById('newsletter-description').value = document.querySelector('#newsletter p').textContent;
-  }
-}
-function closeNewsletterModal() {
-  closeModal('newsletter-modal');
-}
-function saveNewsletterDetails() {
-  const title = document.getElementById('newsletter-title').value;
-  const description = document.getElementById('newsletter-description').value;
-  document.querySelector('#newsletter h1').textContent = title;
-  document.querySelector('#newsletter p').textContent = description;
-  closeNewsletterModal();
-}
-
-// Contact Modal
-function openContactModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('contact-modal');
-    document.getElementById('contact-title').value = document.querySelector('#contact h2').textContent;
-    document.getElementById('contact-description').value = document.querySelector('#contact p').textContent;
-    document.getElementById('contact-link').value = document.querySelector('#contact a').href;
-  }
-}
-function closeContactModal() {
-  closeModal('contact-modal');
-}
-function saveContactDetails() {
-  const title = document.getElementById('contact-title').value;
-  const description = document.getElementById('contact-description').value;
-  const link = document.getElementById('contact-link').value;
-  document.querySelector('#contact h2').textContent = title;
-  document.querySelector('#contact p').textContent = description;
-  document.querySelector('#contact a').href = link;
-  document.querySelector('#contact a').textContent = link.replace('mailto:', '');
-  closeContactModal();
-}
-
-// Countdown
-function updateCountdown() {
-  const countdownDateInput = document.getElementById('countdown-date').value;
-  if (countdownDateInput) {
-    localStorage.setItem('countdownDate', countdownDateInput);
-  }
-  const countdownDate = new Date(localStorage.getItem('countdownDate') || '2026-01-28T00:00:00').getTime();
-  const countdownElement = document.getElementById('countdown');
-
-  const interval = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = countdownDate - now;
-
-    if (distance < 0) {
-      countdownElement.textContent = 'Kiwiburn has started!';
-      clearInterval(interval);
-      return;
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    // Load dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+    }
 
-    countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }, 1000);
-}
-updateCountdown();
+    // Login/Logout functionality
+    const loginForm = document.getElementById('login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    logoutButton.style.display = 'none';
 
-// Drag and Drop
-function allowDrop(event) {
-  event.preventDefault();
-}
-function drag(event) {
-  event.dataTransfer.setData('text/html', event.target.outerHTML);
-}
-function drop(event) {
-  event.preventDefault();
-  const data = event.dataTransfer.getData('text/html');
-  const draggedElement = new DOMParser().parseFromString(data, 'text/html').body.firstChild;
-  const container = event.target.closest('.members-grid, .roles-grid, .gallery');
-  const dropZone = event.target.closest('.member, .role, .image-container') || container;
-  if (dropZone !== container) {
-    container.insertBefore(draggedElement, dropZone);
-  } else {
-    container.appendChild(draggedElement);
-  }
-}
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.body.classList.add('logged-in');
+      loginForm.style.display = 'none';
+      logoutButton.style.display = 'block';
+    });
 
-// Scroll Arrows
-document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-  arrow.addEventListener('click', () => {
-    const grid = arrow.parentElement;
-    const isLeft = arrow.classList.contains('left');
-    grid.scrollBy({ left: isLeft ? -200 : 200, behavior: 'smooth' });
-  });
-});
+    logoutButton.addEventListener('click', () => {
+      document.body.classList.remove('logged-in');
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      loginForm.reset();
+    });
 
-// Event Filter
-function filterEvents() {
-  const filter = document.getElementById('event-filter').value;
-  document.querySelectorAll('.event').forEach(event => {
-    event.style.display = filter === 'all' || event.dataset.category === filter ? 'block' : 'none';
-  });
-}
+    // Modal functions
+    function openHeaderModal() {
+      document.getElementById('header-modal').style.display = 'flex';
+      document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
+    }
 
-// Newsletter Form Submission
-document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const email = document.getElementById('newsletter-email').value;
-  alert(`Subscribed with ${email}!`);
-  document.getElementById('newsletter-form').reset();
-});
+    function closeHeaderModal() {
+      document.getElementById('header-modal').style.display = 'none';
+    }
 
-// Member Modal
-function openMemberModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('member-modal');
-    document.getElementById('member-modal-title').textContent = 'Add Member Details';
-    document.getElementById('member-name').value = '';
-    document.getElementById('member-role').value = '';
-    document.getElementById('member-description').value = '';
-    document.getElementById('member-photo').value = '';
-  }
-}
-function openEditMemberModal(button) {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('member-modal');
-    document.getElementById('member-modal-title').textContent = 'Edit Member Details';
-    const member = button.parentElement;
-    document.getElementById('member-name').value = member.querySelector('h3').textContent;
-    document.getElementById('member-role').value = member.querySelector('span').textContent;
-    document.getElementById('member-description').value = member.querySelector('p').textContent;
-    document.getElementById('member-modal').dataset.memberElement = member.outerHTML;
-  }
-}
-function closeMemberModal() {
-  closeModal('member-modal');
-}
-function saveMemberDetails() {
-  const name = document.getElementById('member-name').value;
-  const role = document.getElementById('member-role').value;
-  const description = document.getElementById('member-description').value;
-  const photo = document.getElementById('member-photo').files[0];
-  const modal = document.getElementById('member-modal');
-  const membersGrid = document.querySelector('.members-grid');
+    function saveHeaderDetails() {
+      const spinner = document.querySelector('#header-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        document.querySelector('.header h1').textContent = document.getElementById('header-title').value;
+        closeHeaderModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
 
-  const memberDiv = document.createElement('div');
-  memberDiv.className = `member ${role.toLowerCase().includes('camp lead') ? 'camp-lead' : role.toLowerCase().includes('deputy lead') ? 'deputy-lead' : ''}`;
-  memberDiv.drnilable = true;
-  memberDiv.ondragstart = (ev) => drag(ev);
+    function openMemberModal() {
+      document.getElementById('member-modal').style.display = 'flex';
+      document.getElementById('member-modal-title').textContent = 'Add Member Details';
+      document.getElementById('member-name').value = '';
+      document.getElementById('member-role').value = '';
+      document.getElementById('member-description').value = '';
+      document.getElementById('member-photo').value = '';
+    }
 
-  const img = document.createElement('img');
-  img.alt = name;
-  if (photo) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(photo);
-  } else {
-    img.src = modal.dataset.memberElement ? new DOMParser().parseFromString(modal.dataset.memberElement, 'text/html').body.firstChild.querySelector('img').src : 'images/default-member.jpg';
-  }
+    function closeMemberModal() {
+      document.getElementById('member-modal').style.display = 'none';
+    }
 
-  const h3 = document.createElement('h3');
-  h3.textContent = name;
-  const span = document.createElement('span');
-  span.textContent = role;
-  const p = document.createElement('p');
-  p.textContent = description;
-  const editButton = document.createElement('button');
-  editButton.className = 'edit-button';
-  editButton.textContent = '✎';
-  editButton.onclick = () => openEditMemberModal(editButton);
-  const deleteButton = document.createElement('button');
-  deleteButton.className = 'delete-button';
-  deleteButton.textContent = '×';
-  deleteButton.onclick = () => deleteMember(deleteButton);
+    function openEditMemberModal(button) {
+      const member = button.parentElement;
+      document.getElementById('member-modal').style.display = 'flex';
+      document.getElementById('member-modal-title').textContent = 'Edit Member Details';
+      document.getElementById('member-name').value = member.querySelector('h3').textContent;
+      document.getElementById('member-role').value = member.querySelector('span').textContent;
+      document.getElementById('member-description').value = member.querySelector('p').textContent;
+    }
 
-  memberDiv.append(img, h3, span, p, editButton, deleteButton);
+    function saveMemberDetails() {
+      const spinner = document.querySelector('#member-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        closeMemberModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
 
-  if (modal.dataset.memberElement) {
-    const oldMember = new DOMParser().parseFromString(modal.dataset.memberElement, 'text/html').body.firstChild;
-    membersGrid.replaceChild(memberDiv, membersGrid.querySelector(`[data-name="${oldMember.querySelector('h3').textContent}"]`) || oldMember);
-  } else {
-    membersGrid.appendChild(memberDiv);
-  }
+    function openRoleModal() {
+      document.getElementById('role-modal').style.display = 'flex';
+      document.getElementById('role-modal-title').textContent = 'Create New Role';
+      document.getElementById('role-title').value = '';
+      document.getElementById('role-description').value = '';
+      document.getElementById('role-icon').value = '';
+    }
 
-  closeMemberModal();
-}
-function deleteMember(button) {
-  if (confirm('Are you sure you want to delete this member?')) {
-    button.parentElement.remove();
-  }
-}
+    function closeRoleModal() {
+      document.getElementById('role-modal').style.display = 'none';
+    }
 
-// Role Modal
-function openRoleModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('role-modal');
-    document.getElementById('role-modal-title').textContent = 'Create New Role';
-    document.getElementById('role-title').value = '';
-    document.getElementById('role-description').value = '';
-    document.getElementById('role-icon').value = '';
-  }
-}
-function openEditRoleModal(button) {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('role-modal');
-    document.getElementById('role-modal-title').textContent = 'Edit Role';
-    const role = button.parentElement;
-    document.getElementById('role-title').value = role.querySelector('h3').textContent;
-    document.getElementById('role-description').value = role.querySelector('.tooltip p').textContent;
-    document.getElementById('role-modal').dataset.roleElement = role.outerHTML;
-  }
-}
-function closeRoleModal() {
-  closeModal('role-modal');
-}
-function saveRoleDetails() {
-  const title = document.getElementById('role-title').value;
-  const description = document.getElementById('role-description').value;
-  const icon = document.getElementById('role-icon').files[0];
-  const modal = document.getElementById('role-modal');
-  const rolesGrid = document.querySelector('.roles-grid');
+    function openEditRoleModal(button) {
+      const role = button.parentElement;
+      document.getElementById('role-modal').style.display = 'flex';
+      document.getElementById('role-modal-title').textContent = 'Edit Role';
+      document.getElementById('role-title').value = role.querySelector('h3').textContent;
+      document.getElementById('role-description').value = role.querySelector('.tooltip p').textContent;
+    }
 
-  const roleDiv = document.createElement('div');
-  roleDiv.className = 'role';
-  roleDiv.draggable = true;
-  roleDiv.ondragstart = (ev) => drag(ev);
+    function saveRoleDetails() {
+      const spinner = document.querySelector('#role-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        closeRoleModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
 
-  const img = document.createElement('img');
-  img.alt = `${title} Icon`;
-  if (icon) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(icon);
-  } else {
-    img.src = modal.dataset.roleElement ? new DOMParser().parseFromString(modal.dataset.roleElement, 'text/html').body.firstChild.querySelector('img').src : 'images/icons/default-role.png';
-  }
+    function openEventModal() {
+      document.getElementById('event-modal').style.display = 'flex';
+      document.getElementById('event-title').value = '';
+      document.getElementById('event-description').value = '';
+      document.getElementById('event-date').value = '';
+      document.getElementById('event-time').value = '';
+      document.getElementById('event-end').value = '';
+      document.getElementById('event-category').value = '';
+      document.getElementById('event-image').value = '';
+    }
 
-  const h3 = document.createElement('h3');
-  h3.textContent = title;
-  const applyButton = document.createElement('a');
-  applyButton.href = `join-camp.html?role=${encodeURIComponent(title)}`;
-  applyButton.className = 'apply-button';
-  applyButton.textContent = 'Apply for Role';
-  const tooltip = document.createElement('div');
-  tooltip.className = 'tooltip';
-  const tooltipP = document.createElement('p');
-  tooltipP.textContent = description;
-  tooltip.append(tooltipP);
-  const editButton = document.createElement('button');
-  editButton.className = 'edit-button';
-  editButton.textContent = '✎';
-  editButton.onclick = () => openEditRoleModal(editButton);
-  const deleteButton = document.createElement('button');
-  deleteButton.className = 'delete-button';
-  deleteButton.textContent = '×';
-  deleteButton.onclick = () => deleteRole(deleteButton);
+    function closeEventModal() {
+      document.getElementById('event-modal').style.display = 'none';
+    }
 
-  roleDiv.append(img, h3, applyButton, tooltip, editButton, deleteButton);
+    function openEditEventModal(button) {
+      const event = button.parentElement;
+      document.getElementById('event-modal').style.display = 'flex';
+      document.getElementById('event-title').value = event.querySelector('h3').textContent;
+      document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
+      document.getElementById('event-date').value = event.querySelector('.event-date').textContent.split(': ')[1];
+      document.getElementById('event-time').value = event.querySelector('.event-time').textContent.split(': ')[1];
+      document.getElementById('event-end').value = event.querySelector('.event-end').textContent.split(': ')[1];
+      document.getElementById('event-category').value = event.querySelector('.event-category').textContent.split(': ')[1];
+    }
 
-  if (modal.dataset.roleElement) {
-    const oldRole = new DOMParser().parseFromString(modal.dataset.roleElement, 'text/html').body.firstChild;
-    rolesGrid.replaceChild(roleDiv, rolesGrid.querySelector(`[data-title="${oldRole.querySelector('h3').textContent}"]`) || oldRole);
-  } else {
-    rolesGrid.insertBefore(roleDiv, rolesGrid.lastElementChild);
-  }
+    function saveEventDetails() {
+      const spinner = document.querySelector('#event-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        closeEventModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
 
-  closeRoleModal();
-}
-function deleteRole(button) {
-  if (confirm('Are you sure you want to delete this role?')) {
-    button.parentElement.remove();
-  }
-}
+    function openAboutModal() {
+      document.getElementById('about-modal').style.display = 'flex';
+      document.getElementById('about-title').value = document.querySelector('#about h1').textContent;
+      document.getElementById('about-description').value = document.querySelector('#about p').textContent;
+    }
 
-// Join Modal
-function openJoinModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('join-modal');
-    document.getElementById('join-title').value = document.querySelector('#join h2').textContent;
-    document.getElementById('join-description').value = document.querySelector('#join p').textContent;
-  }
-}
-function closeJoinModal() {
-  closeModal('join-modal');
-}
-function saveJoinDetails() {
-  const title = document.getElementById('join-title').value;
-  const description = document.getElementById('join-description').value;
-  document.querySelector('#join h2').textContent = title;
-  document.querySelector('#join p').textContent = description;
-  closeJoinModal();
-}
+    function closeAboutModal() {
+      document.getElementById('about-modal').style.display = 'none';
+    }
 
-// Submit Modal
-function openSubmitModal() {
-  if (document.body.classList.contains('logged-in')) {
-    openModal('submit-modal');
-    document.getElementById('submit-title').value = document.querySelector('#submit h1').textContent;
-    document.getElementById('submit-description').value = document.querySelector('#submit p').textContent;
-  }
-}
-function closeSubmitModal() {
-  closeModal('submit-modal');
-}
-function saveSubmitDetails() {
-  const title = document.getElementById('submit-title').value;
-  const description = document.getElementById('submit-description').value;
-  document.querySelector('#submit h1').textContent = title;
-  document.querySelector('#submit p').textContent = description;
-  closeSubmitModal();
-}
+    function saveAboutDetails() {
+      const spinner = document.querySelector('#about-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        document.querySelector('#about h1').textContent = document.getElementById('about-title').value;
+        document.querySelector('#about p').textContent = document.getElementById('about-description').value;
+        closeAboutModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
 
-// Save Changes
-function saveChanges() {
-  alert('Changes saved successfully!');
-}
-</script>
+    function openMissionModal() {
+      document.getElementById('mission-modal').style.display = 'flex';
+      document.getElementById('mission-title').value = document.querySelector('#mission h1').textContent;
+      document.getElementById('mission-description').value = document.querySelector('#mission p').textContent;
+    }
+
+    function closeMissionModal() {
+      document.getElementById('mission-modal').style.display = 'none';
+    }
+
+    function saveMissionDetails() {
+      const spinner = document.querySelector('#mission-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        closeMissionModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
+
+    function openGalleryImageModal(button, section) {
+      const image = button.parentElement.querySelector('img');
+      document.getElementById('gallery-image-modal').style.display = 'flex';
+      document.getElementById('gallery-image-alt').value = image.alt;
+    }
+
+    function closeGalleryImageModal() {
+      document.getElementById('gallery-image-modal').style.display = 'none';
+    }
+
+    function saveGalleryImageDetails() {
+      const spinner = document.querySelector('#gallery-image-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        closeGalleryImageModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
+
+    function openEventsModal() {
+      document.getElementById('events-modal').style.display = 'flex';
+      document.getElementById('events-title').value = document.querySelector('#events h1').textContent;
+      document.getElementById('events-description').value = document.querySelector('#events p').textContent;
+    }
+
+    function closeEventsModal() {
+      document.getElementById('events-modal').style.display = 'none';
+    }
+
+    function saveEventsDetails() {
+      const spinner = document.querySelector('#events-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        document.querySelector('#events h1').textContent = document.getElementById('events-title').value;
+        document.querySelector('#events p').textContent = document.getElementById('events-description').value;
+        closeEventsModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
+
+    function openNewsletterModal() {
+      document.getElementById('newsletter-modal').style.display = 'flex';
+      document.getElementById('newsletter-title').value = document.querySelector('#newsletter h1').textContent;
+      document.getElementById('newsletter-description').value = document.querySelector('#newsletter p').textContent;
+    }
+
+    function closeNewsletterModal() {
+      document.getElementById('newsletter-modal').style.display = 'none';
+    }
+
+    function saveNewsletterDetails() {
+      const spinner = document.querySelector('#newsletter-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        document.querySelector('#newsletter h1').textContent = document.getElementById('newsletter-title').value;
+        document.querySelector('#newsletter p').textContent = document.getElementById('newsletter-description').value;
+        closeNewsletterModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
+
+    function openContactModal() {
+      document.getElementById('contact-modal').style.display = 'flex';
+      document.getElementById('contact-title').value = document.querySelector('.contact-lead h2').textContent;
+      document.getElementById('contact-description').value = document.querySelector('.contact-lead p').textContent;
+      document.getElementById('contact-link').value = document.querySelector('.contact-lead a').href;
+    }
+
+    function closeContactModal() {
+      document.getElementById('contact-modal').style.display = 'none';
+    }
+
+    function saveContactDetails() {
+      const spinner = document.querySelector('#contact-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        document.querySelector('.contact-lead h2').textContent = document.getElementById('contact-title').value;
+        document.querySelector('.contact-lead p').textContent = document.getElementById('contact-description').value;
+        document.querySelector('.contact-lead a').href = document.getElementById('contact-link').value;
+        closeContactModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
+
+    function openSubmitModal() {
+      document.getElementById('submit-modal').style.display = 'flex';
+      document.getElementById('submit-title').value = document.querySelector('#submit h1').textContent;
+      document.getElementById('submit-description').value = document.querySelector('#submit p').textContent;
+    }
+
+    function closeSubmitModal() {
+      document.getElementById('submit-modal').style.display = 'none';
+    }
+
+    function saveSubmitDetails() {
+      const spinner = document.querySelector('#submit-modal .loading-spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        document.querySelector('#submit h1').textContent = document.getElementById('submit-title').value;
+        document.querySelector('#submit p').textContent = document.getElementById('submit-description').value;
+        closeSubmitModal();
+        spinner.style.display = 'none';
+      }, 1000);
+    }
+
+    // Delete functions
+    function deleteMember(button) {
+      button.parentElement.remove();
+    }
+
+    function deleteRole(button) {
+      button.parentElement.remove();
+    }
+
+    function deleteEvent(button) {
+      button.parentElement.remove();
+    }
+
+    function deleteAboutImage(button) {
+      button.parentElement.remove();
+    }
+
+    function deleteGalleryImage(button) {
+      button.parentElement.remove();
+    }
+
+    // Drag and drop
+    let draggedElement = null;
+
+    function drag(event) {
+      draggedElement = event.target;
+      event.dataTransfer.setData('text/plain', '');
+    }
+
+    function dragAboutImage(event) {
+      draggedElement = event.target.closest('.image-container');
+      event.dataTransfer.setData('text/plain', '');
+    }
+
+    function dragGalleryImage(event) {
+      draggedElement = event.target.closest('.image-container');
+      event.dataTransfer.setData('text/plain', '');
+    }
+
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function drop(event) {
+      event.preventDefault();
+      const target = event.target.closest('.member, .role');
+      if (target && draggedElement !== target) {
+        const parent = target.parentElement;
+        const draggedIndex = Array.from(parent.children).indexOf(draggedElement);
+        const targetIndex = Array.from(parent.children).indexOf(target);
+        if (draggedIndex < targetIndex) {
+          parent.insertBefore(draggedElement, target.nextSibling);
+        } else {
+          parent.insertBefore(draggedElement, target);
+        }
+      }
+    }
+
+    function dropAboutImage(event) {
+      event.preventDefault();
+      const target = event.target.closest('.image-container');
+      const parent = document.getElementById('about-gallery');
+      if (target && draggedElement !== target) {
+        const draggedIndex = Array.from(parent.children).indexOf(draggedElement);
+        const targetIndex = Array.from(parent.children).indexOf(target);
+        if (draggedIndex < targetIndex) {
+          parent.insertBefore(draggedElement, target.nextSibling);
+        } else {
+          parent.insertBefore(draggedElement, target);
+        }
+      }
+    }
+
+    function dropGalleryImage(event) {
+      event.preventDefault();
+      const target = event.target.closest('.image-container');
+      const parent = document.getElementById('gallery-images');
+      if (target && draggedElement !== target) {
+        const draggedIndex = Array.from(parent.children).indexOf(draggedElement);
+        const targetIndex = Array.from(parent.children).indexOf(target);
+        if (draggedIndex < targetIndex) {
+          parent.insertBefore(draggedElement, target.nextSibling);
+        } else {
+          parent.insertBefore(draggedElement, target);
+        }
+      }
+    }
+
+    // Countdown timer
+    function updateCountdown() {
+      const countdownDate = new Date(localStorage.getItem('countdownDate') || '2026-01-15T00:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        document.getElementById('countdown').textContent = 'Kiwiburn has started!';
+      }
+    }
+
+    function setCountdownDate() {
+      const date = document.getElementById('countdown-date').value;
+      if (date) {
+        localStorage.setItem('countdownDate', new Date(date).toISOString());
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    // Event filtering
+    document.getElementById('event-category-filter').addEventListener('change', (e) => {
+      const category = e.target.value;
+      const events = document.querySelectorAll('.event');
+      events.forEach(event => {
+        const eventCategory = event.querySelector('.event-category').textContent.split(': ')[1];
+        if (category === 'all' || eventCategory === category) {
+          event.style.display = 'block';
+        } else {
+          event.style.display = 'none';
+        }
+      });
+    });
+
+    // Scroll arrows for members and roles
+    const membersGrid = document.querySelector('.members-grid');
+    const rolesGrid = document.querySelector('.roles-grid');
+    const leftArrowMembers = membersGrid.querySelector('.scroll-arrow.left');
+    const rightArrowMembers = membersGrid.querySelector('.scroll-arrow.right');
+    const leftArrowRoles = rolesGrid.querySelector('.scroll-arrow.left');
+    const rightArrowRoles = rolesGrid.querySelector('.scroll-arrow.right');
+
+    leftArrowMembers.addEventListener('click', () => {
+      membersGrid.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+
+    rightArrowMembers.addEventListener('click', () => {
+      membersGrid.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+
+    leftArrowRoles.addEventListener('click', () => {
+      rolesGrid.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+
+    rightArrowRoles.addEventListener('click', () => {
+      rolesGrid.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Placeholder upload functions
+    function uploadAboutImage() {
+      alert('Upload functionality to be implemented');
+    }
+
+    function uploadMissionImage() {
+      alert('Upload functionality to be implemented');
+    }
+
+    function uploadGalleryImage() {
+      alert('Upload functionality to be implemented');
+    }
+
+    function addMember() {
+      openMemberModal();
+    }
+
+    // Newsletter form submission
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Subscribed! Thank you for joining our newsletter.');
+      e.target.reset();
+    });
+
+    // Event submission form
+    document.getElementById('event-submit-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Event submitted! Thank you for your contribution.');
+      e.target.reset();
+    });
+  </script>
 </body>
 </html>
