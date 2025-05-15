@@ -6,42 +6,70 @@
   <title>Join My Camp - Kiwiburn</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --background-start: #f4e4bc;
+      --background-end: #d9b99b;
+      --text-color: #2b1b0f;
+      --nav-bg: rgba(44, 29, 15, 0.85);
+      --nav-text: #f8e1b4;
+      --accent: #e67e22;
+      --accent-hover: #f39c12;
+      --section-odd: rgba(244, 228, 188, 0.8);
+      --section-even: rgba(217, 185, 155, 0.8);
+      --container-bg: rgba(255, 255, 255, 0.15);
+      --footer-bg: #2b1b0f;
+      --modal-bg: rgba(255, 255, 255, 0.9);
+      --input-bg: rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme="dark"] {
+      --background-start: #2b1b0f;
+      --background-end: #4a3723;
+      --text-color: #f8e1b4;
+      --nav-bg: rgba(20, 13, 7, 0.85);
+      --nav-text: #f8e1b4;
+      --accent: #e67e22;
+      --accent-hover: #f39c12;
+      --section-odd: rgba(44, 29, 15, 0.8);
+      --section-even: rgba(66, 44, 22, 0.8);
+      --container-bg: rgba(44, 29, 15, 0.3);
+      --footer-bg: #1a120b;
+      --modal-bg: rgba(44, 29, 15, 0.9);
+      --input-bg: rgba(44, 29, 15, 0.3);
+    }
+
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
-      color: #2b1b0f;
+      background: linear-gradient(180deg, var(--background-start) 0%, var(--background-end) 100%);
+      color: var(--text-color);
       transition: background 0.3s, color 0.3s;
-    }
-
-    body.dark-mode {
-      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
-      color: #f8e1b4;
     }
 
     nav {
       position: sticky;
       top: 0;
-      background: rgba(44, 29, 15, 0.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 20px;
       z-index: 1000;
-      border-bottom: 2px solid #e67e22;
+      border-bottom: 2px solid var(--accent);
     }
 
     .nav-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
     }
 
     nav a {
-      color: #f8e1b4;
+      color: var(--nav-text);
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
@@ -53,15 +81,30 @@
     }
 
     nav a:hover {
-      background-color: #e67e22;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      background-color: var(--accent);
+      color: var(--text-color);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--nav-text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 10px;
+      transition: color 0.3s, box-shadow 0.3s;
+    }
+
+    .theme-toggle:hover {
+      color: var(--accent);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .hamburger {
       display: none;
       font-size: 1.5rem;
-      color: #f8e1b4;
+      color: var(--nav-text);
       background: none;
       border: none;
       cursor: pointer;
@@ -72,8 +115,8 @@
       display: flex;
       justify-content: flex-end;
       padding: 10px 20px;
-      background: rgba(44, 29, 15, 0.85);
-      border-bottom: 1px solid #e67e22;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--accent);
       z-index: 999;
     }
 
@@ -86,20 +129,20 @@
     .login-container input {
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
+      border: 1px solid var(--accent);
+      background: var(--input-bg);
+      color: var(--nav-text);
       font-size: 0.9rem;
     }
 
     .login-container input::placeholder {
-      color: #ffffff;
+      color: var(--nav-text);
     }
 
     .login-container button {
       padding: 8px 12px;
-      background-color: #e67e22;
-      color: #ffffff;
+      background-color: var(--accent);
+      color: var(--nav-text);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -109,30 +152,12 @@
     }
 
     .login-container button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      background-color: var(--accent-hover);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .login-container .logout-button {
       display: none;
-    }
-
-    .theme-toggle {
-      padding: 8px 12px;
-      background-color: #e67e22;
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin-left: 10px;
-    }
-
-    .theme-toggle:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .header {
@@ -142,7 +167,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #f8e1b4;
+      color: var(--nav-text);
       position: relative;
       text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
     }
@@ -156,8 +181,8 @@
     }
 
     @keyframes glow {
-      from { text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400; }
-      to { text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22; }
+      from { text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px #d35400; }
+      to { text-shadow: 0 0 20px var(--accent-hover), 0 0 30px var(--accent-hover), 0 0 40px var(--accent); }
     }
 
     .scroll-down {
@@ -167,12 +192,12 @@
       transform: translateX(-50%);
       font-size: 1.5rem;
       animation: bounce 2s infinite;
-      color: #f8e1b4;
+      color: var(--nav-text);
       transition: box-shadow 0.3s;
     }
 
     .scroll-down:hover {
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     @keyframes bounce {
@@ -185,36 +210,24 @@
       padding: 80px 20px;
       text-align: center;
       background: url('images/dusty-texture.png') center/cover;
-      border-top: 1px solid #e67e22;
-      border-bottom: 1px solid #e67e22;
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent);
     }
 
     .section:nth-of-type(odd) {
-      background-color: rgba(244, 228, 188, 0.8);
+      background-color: var(--section-odd);
     }
 
     .section:nth-of-type(even) {
-      background-color: rgba(217, 185, 155, 0.8);
-    }
-
-    body.dark-mode .section:nth-of-type(odd) {
-      background-color: rgba(44, 29, 15, 0.8);
-    }
-
-    body.dark-mode .section:nth-of-type(even) {
-      background-color: rgba(74, 55, 35, 0.8);
+      background-color: var(--section-even);
     }
 
     .section h1, .section h2 {
       font-family: 'Bebas Neue', cursive;
       font-size: 3em;
       margin-bottom: 20px;
-      color: #2b1b0f;
+      color: var(--text-color);
       letter-spacing: 1px;
-    }
-
-    body.dark-mode .section h1, body.dark-mode .section h2 {
-      color: #f8e1b4;
     }
 
     .section p {
@@ -222,11 +235,7 @@
       max-width: 800px;
       margin: 0 auto 30px auto;
       line-height: 1.6;
-      color: #2b1b0f;
-    }
-
-    body.dark-mode .section p {
-      color: #f8e1b4;
+      color: var(--text-color);
     }
 
     ul {
@@ -254,12 +263,13 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid #e67e22;
+      border: 2px solid var(--accent);
+      cursor: pointer;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px var(--accent), 0 0 25px var(--accent-hover);
     }
 
     .gallery .image-container {
@@ -270,8 +280,8 @@
       display: none;
       position: absolute;
       top: 5px;
-      background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
+      background: var(--nav-bg);
+      color: var(--nav-text);
       border: none;
       border-radius: 50%;
       width: 24px;
@@ -295,7 +305,7 @@
 
     .gallery .delete-button:hover, .gallery .edit-button:hover {
       background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .members-grid, .roles-grid, .events-grid {
@@ -316,8 +326,8 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 2rem;
-      color: #f8e1b4;
-      background: rgba(44, 29, 15, 0.7);
+      color: var(--nav-text);
+      background: var(--nav-bg);
       padding: 10px;
       border-radius: 50%;
       cursor: pointer;
@@ -333,7 +343,7 @@
 
     .scroll-arrow:hover {
       background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .scroll-arrow.left {
@@ -350,19 +360,15 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--input-bg);
       padding: 15px;
-      border: 1px solid #e67e22;
+      border: 1px solid var(--accent);
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
-    body.dark-mode .member, body.dark-mode .role, body.dark-mode .event {
-      background: rgba(44, 29, 15, 0.5);
-    }
-
     .member:hover, .role:hover, .event:hover {
-      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px var(--accent), 0 0 25px var(--accent-hover);
       transform: translateY(-5px);
     }
 
@@ -373,7 +379,7 @@
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       margin-bottom: 10px;
-      border: 3px solid #f39c12;
+      border: 3px solid var(--accent-hover);
     }
 
     .role img {
@@ -388,7 +394,7 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      border: 2px solid #f39c12;
+      border: 2px solid var(--accent-hover);
     }
 
     .member.camp-lead, .member.deputy-lead {
@@ -423,17 +429,13 @@
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
-      color: #000000;
+      color: var(--text-color);
       line-height: 1.2;
-    }
-
-    body.dark-mode .member h3, body.dark-mode .role h3, body.dark-mode .event h3 {
-      color: #f8e1b4;
     }
 
     .member span {
       font-weight: bold;
-      color: #e67e22;
+      color: var(--accent);
       display: block;
       font-size: 1.2em;
       margin-bottom: 5px;
@@ -442,42 +444,30 @@
 
     .member p, .event p {
       font-size: 1em;
-      color: #000000;
+      color: var(--text-color);
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
-    }
-
-    body.dark-mode .member p, body.dark-mode .event p {
-      color: #f8e1b4;
     }
 
     .role p {
       font-size: 1em;
-      color: #ffffff;
+      color: var(--nav-text);
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
-    }
-
-    body.dark-mode .role p {
-      color: #f8e1b4;
     }
 
     .event p.event-date, .event p.event-time, .event p.event-end, .event p.event-category {
       font-size: 0.95em;
-      color: #2b1b0f;
+      color: var(--text-color);
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
     }
 
-    body.dark-mode .event p.event-date, body.dark-mode .event p.event-time, body.dark-mode .event p.event-end, body.dark-mode .event p.event-category {
-      color: #f8e1b4;
-    }
-
     .event p.event-date strong, .event p.event-time strong, .event p.event-end strong, .event p.event-category strong {
-      color: #e67e22;
+      color: var(--accent);
     }
 
     .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
@@ -485,8 +475,8 @@
       position: absolute;
       top: 5px;
       right: 5px;
-      background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
+      background: var(--nav-bg);
+      color: var(--nav-text);
       border: none;
       border-radius: 50%;
       width: 24px;
@@ -506,15 +496,15 @@
 
     .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover, .role .edit-button:hover, .member .edit-button:hover {
       background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .role .apply-button {
       display: inline-block;
       margin-top: 10px;
       padding: 8px 12px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: var(--accent);
+      color: var(--text-color);
       text-decoration: none;
       border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
@@ -523,15 +513,15 @@
     }
 
     .role .apply-button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      background-color: var(--accent-hover);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .role .tooltip {
       visibility: hidden;
       width: 180px;
-      background-color: rgba(44, 29, 15, 0.95);
-      color: #f8e1b4;
+      background-color: var(--nav-bg);
+      color: var(--nav-text);
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -549,14 +539,14 @@
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      border: 2px solid #f39c12;
+      border: 2px solid var(--accent-hover);
     }
 
     .role .tooltip img {
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      border: 2px solid #f39c12;
+      border: 2px solid var(--accent-hover);
     }
 
     .role .tooltip span {
@@ -584,29 +574,21 @@
     }
 
     .modal-content {
-      background: rgba(255, 255, 255, 0.9);
+      background: var(--modal-bg);
       padding: 20px;
       border-radius: 10px;
       max-width: 400px;
       width: 90%;
       text-align: center;
-      border: 2px solid #e67e22;
+      border: 2px solid var(--accent);
       position: relative;
-    }
-
-    body.dark-mode .modal-content {
-      background: rgba(44, 29, 15, 0.9);
-      color: #f8e1b4;
+      color: var(--text-color);
     }
 
     .modal-content h3 {
       font-family: 'Bebas Neue', cursive;
-      color: #2b1b0f;
+      color: var(--text-color);
       margin-bottom: 20px;
-    }
-
-    body.dark-mode .modal-content h3 {
-      color: #f8e1b4;
     }
 
     .modal-content input, .modal-content textarea, .modal-content select {
@@ -614,14 +596,9 @@
       padding: 10px;
       margin-bottom: 15px;
       border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-    }
-
-    body.dark-mode .modal-content input, body.dark-mode .modal-content textarea, body.dark-mode .modal-content select {
-      background: rgba(255, 255, 255, 0.2);
-      color: #f8e1b4;
+      border: 1px solid var(--accent);
+      background: var(--input-bg);
+      color: var(--text-color);
     }
 
     .modal-content input[type="file"] {
@@ -632,8 +609,8 @@
 
     .modal-content button {
       padding: 10px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: var(--accent);
+      color: var(--text-color);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -644,8 +621,8 @@
     }
 
     .modal-content button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      background-color: var(--accent-hover);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .modal-content .close-button {
@@ -657,37 +634,53 @@
       padding: 5px 10px;
     }
 
+    .image-zoom-modal .modal-content {
+      max-width: 90%;
+      max-height: 90vh;
+      padding: 0;
+      background: none;
+      border: none;
+    }
+
+    .image-zoom-modal img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 10px;
+      border: 2px solid var(--accent);
+    }
+
+    .image-zoom-modal .caption {
+      background: var(--modal-bg);
+      color: var(--text-color);
+      padding: 10px;
+      border-radius: 0 0 10px 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
+      text-align: center;
+    }
+
     .events-grid {
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
     }
 
-    .event-search {
-      max-width: 600px;
+    .event-filter {
+      max-width: 200px;
       margin: 20px auto;
       padding: 10px;
-    }
-
-    .event-search input {
-      width: 100%;
-      padding: 10px;
       border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-      font-size: 1rem;
-    }
-
-    body.dark-mode .event-search input {
-      background: rgba(255, 255, 255, 0.2);
-      color: #f8e1b4;
+      border: 1px solid var(--accent);
+      background: var(--input-bg);
+      color: var(--text-color);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1em;
     }
 
     .countdown-container {
       padding: 20px;
-      background: rgba(44, 29, 15, 0.85);
+      background: var(--nav-bg);
       text-align: center;
-      border-top: 2px solid #e67e22;
+      border-top: 2px solid var(--accent);
       border-radius: 10px;
       margin: 40px auto;
       max-width: 600px;
@@ -697,7 +690,7 @@
     .countdown-container h2 {
       font-family: 'Bebas Neue', cursive;
       font-size: 2.5em;
-      color: #f8e1b4;
+      color: var(--nav-text);
       margin-bottom: 20px;
     }
 
@@ -705,20 +698,20 @@
       font-family: 'Bebas Neue', cursive;
       font-size: 2em;
       font-weight: bold;
-      color: #f8e1b4;
+      color: var(--nav-text);
       margin-top: 20px;
       background: rgba(230, 126, 34, 0.2);
       padding: 15px;
       border-radius: 8px;
-      border: 1px solid #e67e22;
+      border: 1px solid var(--accent);
     }
 
     .countdown-container input {
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
+      border: 1px solid var(--accent);
+      background: var(--input-bg);
+      color: var(--nav-text);
       margin: 10px;
       display: none;
     }
@@ -729,8 +722,8 @@
 
     .countdown-container button {
       padding: 8px 12px;
-      background-color: #e67e22;
-      color: #ffffff;
+      background-color: var(--accent);
+      color: var(--nav-text);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -745,20 +738,16 @@
     }
 
     .countdown-container button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      background-color: var(--accent-hover);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #2b1b0f;
-      color: #f8e1b4;
-      border-top: 2px solid #e67e22;
-    }
-
-    body.dark-mode footer {
-      background-color: #1a120b;
+      background-color: var(--footer-bg);
+      color: var(--nav-text);
+      border-top: 2px solid var(--accent);
     }
 
     .form-container {
@@ -774,24 +763,17 @@
       padding: 10px;
       margin-bottom: 10px;
       border-radius: 5px;
-      border: 1px solid #e67e22;
+      border: 1px solid var(--accent);
       font-size: 1rem;
       box-sizing: border-box;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-    }
-
-    body.dark-mode .form-container input,
-    body.dark-mode .form-container textarea,
-    body.dark-mode .form-container select {
-      background: rgba(255, 255, 255, 0.2);
-      color: #f8e1b4;
+      background: var(--input-bg);
+      color: var(--text-color);
     }
 
     .form-container button {
       padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: var(--accent);
+      color: var(--text-color);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -801,25 +783,21 @@
     }
 
     .form-container button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      background-color: var(--accent-hover);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .contact-lead {
       padding: 40px 20px;
-      background-color: #2b1b0f;
-      color: #f8e1b4;
+      background-color: var(--footer-bg);
+      color: var(--nav-text);
       text-align: center;
-      border-top: 2px solid #e67e22;
-      border-bottom: 2px solid #e67e22;
-    }
-
-    body.dark-mode .contact-lead {
-      background-color: #1a120b;
+      border-top: 2px solid var(--accent);
+      border-bottom: 2px solid var(--accent);
     }
 
     .contact-lead a {
-      color: #f39c12;
+      color: var(--accent-hover);
       font-size: 1.2em;
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
@@ -827,14 +805,14 @@
     }
 
     .contact-lead a:hover {
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .submit-button {
       display: inline-block;
       padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: var(--accent);
+      color: var(--text-color);
       text-decoration: none;
       border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
@@ -843,36 +821,28 @@
     }
 
     .submit-button:hover {
-      background-color: #f39c12;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      background-color: var(--accent-hover);
+      color: var(--text-color);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
     .about-container, .mission-container, .members-container, .gallery-container, .newsletter-container {
       max-width: 1200px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
+      background: var(--container-bg);
+      border: 2px solid var(--accent);
       border-radius: 10px;
       padding: 40px 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    body.dark-mode .about-container, body.dark-mode .mission-container, body.dark-mode .members-container, body.dark-mode .gallery-container, body.dark-mode .newsletter-container {
-      background: rgba(44, 29, 15, 0.3);
-    }
-
     .section#submit {
-      background-color: rgba(244, 228, 188, 0.8);
-    }
-
-    body.dark-mode .section#submit {
-      background-color: rgba(44, 29, 15, 0.8);
+      background-color: var(--section-odd);
     }
 
     .submit-section {
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
+      background: var(--container-bg);
+      border: 2px solid var(--accent);
       padding: 20px;
       border-radius: 10px;
       max-width: 600px;
@@ -880,23 +850,19 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    body.dark-mode .submit-section {
-      background: rgba(44, 29, 15, 0.3);
-    }
-
     .newsletter-section {
       padding: 80px 20px;
-      background-color: rgba(244, 228, 188, 0.8);
+      background-color: var(--section-odd);
     }
 
-    body.dark-mode .newsletter-section {
-      background-color: rgba(44, 29, 15, 0.8);
+    .newsletter-container .section {
+      padding: 0;
     }
 
     .save-button {
       padding: 10px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: var(--accent);
+      color: var(--text-color);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -914,8 +880,8 @@
     .edit-section-button {
       display: none;
       padding: 8px 12px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      background-color: var(--accent);
+      color: var(--text-color);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -930,66 +896,35 @@
     }
 
     .edit-section-button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      background-color: var(--accent-hover);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
     }
 
-    .admin-dashboard {
-      display: none;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: 40px auto;
-      text-align: center;
-    }
-
-    body.dark-mode .admin-dashboard {
-      background: rgba(44, 29, 15, 0.3);
-    }
-
-    .logged-in .admin-dashboard {
-      display: block;
-    }
-
-    .admin-dashboard h2 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2em;
-      color: #2b1b0f;
-      margin-bottom: 20px;
-    }
-
-    body.dark-mode .admin-dashboard h2 {
-      color: #f8e1b4;
-    }
-
-    .admin-dashboard ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .admin-dashboard li {
-      margin: 10px 0;
-      font-size: 1.1em;
-    }
-
-    .admin-dashboard button {
-      padding: 10px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: var(--nav-text);
       border: none;
-      border-radius: 5px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5em;
       cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin: 10px;
+      display: none;
+      z-index: 1000;
+      transition: background-color 0.3s, box-shadow 0.3s, opacity 0.3s;
     }
 
-    .admin-dashboard button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    .back-to-top:hover {
+      background-color: var(--accent-hover);
+      box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent-hover);
+    }
+
+    .back-to-top.visible {
+      display: block;
+      opacity: 1;
     }
 
     @media only screen and (max-width: 768px) {
@@ -1007,7 +942,7 @@
         display: none;
         flex-direction: column;
         width: 100%;
-        background: rgba(44, 29, 15, 0.9);
+        background: var(--nav-bg);
         padding: 10px 0;
       }
 
@@ -1015,7 +950,7 @@
         display: flex;
       }
 
-      nav a {
+      nav a, .theme-toggle {
         margin: 5px 0;
         font-size: 1rem;
         padding: 10px;
@@ -1036,11 +971,6 @@
         padding: 6px;
         width: 100%;
         box-sizing: border-box;
-      }
-
-      .theme-toggle {
-        font-size: 0.8rem;
-        padding: 6px;
       }
 
       .header {
@@ -1197,9 +1127,10 @@
         padding: 20px 15px;
       }
 
-      .admin-dashboard {
-        max-width: 95%;
-        padding: 15px;
+      .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
       }
     }
 
@@ -1317,9 +1248,14 @@
         padding: 5px;
       }
 
-      .theme-toggle {
-        font-size: 0.7em;
-        padding: 5px;
+      .event-filter {
+        max-width: 150px;
+      }
+
+      .back-to-top {
+        width: 35px;
+        height: 35px;
+        font-size: 1em;
       }
     }
   </style>
@@ -1335,7 +1271,7 @@
       <a href="#submit">Submit Event</a>
       <a href="#newsletter">Newsletter</a>
       <a href="#gallery">Gallery</a>
-      <a href="#admin" class="admin-nav" style="display: none;">Admin Dashboard</a>
+      <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
   </nav>
 
@@ -1346,7 +1282,6 @@
       <button type="submit">Login</button>
     </form>
     <button class="logout-button">Logout</button>
-    <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
   </div>
 
   <header class="header">
@@ -1440,6 +1375,14 @@
     </div>
   </div>
 
+  <div class="modal image-zoom-modal" id="image-zoom-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeImageZoomModal()">×</button>
+      <img id="zoom-image" src="" alt="">
+      <div class="caption" id="zoom-caption"></div>
+    </div>
+  </div>
+
   <div class="modal" id="events-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeEventsModal()">×</button>
@@ -1498,17 +1441,17 @@
       <button class="edit-section-button" onclick="openAboutModal()">Edit Section</button>
       <div class="gallery" id="about-gallery" ondragover="allowDrop(event)" ondrop="dropAboutImage(event)">
         <div class="image-container" draggable="true" ondragstart="dragAboutImage(event)">
-          <img src="images/Campphoto1.jpg" alt="Camp Mates">
+          <img src="images/Campphoto1.jpg" alt="Camp Mates" onclick="openImageZoomModal(this)">
           <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
           <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
         </div>
         <div class="image-container" draggable="true" ondragstart="dragAboutImage(event)">
-          <img src="images/Campphoto15.png" alt="Camp Mates">
+          <img src="images/Campphoto15.png" alt="Camp Mates" onclick="openImageZoomModal(this)">
           <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
           <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
         </div>
         <div class="image-container" draggable="true" ondragstart="dragAboutImage(event)">
-          <img src="images/Campphoto17.png" alt="Night Lights">
+          <img src="images/Campphoto17.png" alt="Night Lights" onclick="openImageZoomModal(this)">
           <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
           <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
         </div>
@@ -1781,11 +1724,16 @@
       <h1>Past Events</h1>
       <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
       <button class="edit-section-button" onclick="openEventsModal()">Edit Section</button>
-      <div class="event-search">
-        <input type="text" id="event-search-input" placeholder="Search events by title or category..." oninput="searchEvents()">
-      </div>
-      <div class="events-grid" id="events-grid">
-        <div class="event">
+      <select class="event-filter" id="event-filter" onchange="filterEvents()">
+        <option value="all">All Categories</option>
+        <option value="Music">Music</option>
+        <option value="Art">Art</option>
+        <option value="Performance">Performance</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Other">Other</option>
+      </select>
+      <div class="events-grid">
+        <div class="event" data-category="Music">
           <img src="images/Eventposter.jpg" alt="Emo Night Poster">
           <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
           <p>Emo night is back! Join us for a tribute to RAT camp as⠀we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!</p>
@@ -1796,7 +1744,7 @@
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
-        <div class="event">
+        <div class="event" data-category="Performance">
           <img src="images/Pole.jpg" alt="Pole in the paddock Poster">
           <h3>Pole in the paddock</h3>
           <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
@@ -1807,1278 +1755,297 @@
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
-        <div class="event">
-          <img src="images/Workshop.jpg" alt="Art Workshop Poster">
-          <h3>Communal Art Build</h3>
-          <p>Get your hands dirty in our communal art workshop! Collaborate with campmates to create a unique installation that captures the spirit of Kiwiburn. All materials provided, just bring your creativity!</p>
+        <div class="event" data-category="Workshop">
+          <img src="images/cosmicconnections.jpg" alt="Cosmic Connections Poster">
+          <h3>Cosmic Connections</h3>
+          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
           <p class="event-date"><strong>Date:</strong> January 30, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 2:00 PM</p>
-          <p class="event-end"><strong>End Date & Time:</strong> January 30, 2025, 5:00 PM</p>
+          <p class="event-time"><strong>Time:</strong> 7:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> January 30, 2025, 10:00 PM</p>
           <p class="event-category"><strong>Category:</strong> Workshop</p>
           <button class="edit-button" onclick="openEventModal(this)">✎</button>
           <button class="delete-button" onclick="deleteEvent(this)">×</button>
         </div>
+        <div class="event" data-category="Music">
+          <img src="images/opendeck.jpg" alt="DJ Showcase & Open Decks Poster">
+          <h3>DJ Showcase & Open Decks</h3>
+          <p>An open-deck party featuring local DJs and campers spinning tracks, with colorful lights and a dance floor that kept the energy high all night.</p>
+          <p class="event-date"><strong>Date:</strong> January 31, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
+          <p class="event-end"><strong>End Date & Time:</strong> February 1, 2025, 3:00 AM</p>
+          <p class="event-category"><strong>Category:</strong> Music</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
       </div>
-      <button class="save-button" onclick="openEventModal()">Add New Event</button>
     </section>
-  </div>
 
-  <div class="submit-section">
-    <section class="section" id="submit">
-      <h1>Submit an Event</h1>
-      <p>Got an idea for an epic event? Submit it here and let’s make it happen!</p>
+    <section class="section submit-section" id="submit">
+      <h1>Submit Your Event</h1>
+      <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
       <button class="edit-section-button" onclick="openSubmitModal()">Edit Section</button>
-      <div class="form-container">
-        <form id="event-form" onsubmit="submitEvent(event)">
-          <input type="text" id="submit-event-title" placeholder="Event Title" required>
-          <textarea id="submit-event-description" placeholder="Event Description" required></textarea>
-          <input type="date" id="submit-event-date" required>
-          <input type="time" id="submit-event-time" required>
-          <input type="datetime-local" id="submit-event-end" required>
-          <select id="submit-event-category" required>
-            <option value="" disabled selected>Select Category</option>
-            <option value="Music">Music</option>
-            <option value="Art">Art</option>
-            <option value="Performance">Performance</option>
-            <option value="Workshop">Workshop</option>
-            <option value="Other">Other</option>
-          </select>
-          <input type="file" id="submit-event-image" accept="image/*">
-          <button type="submit" class="submit-button">Submit Event</button>
-        </form>
-      </div>
+      <a href="submit-event.html" class="submit-button">Click Here</a>
     </section>
   </div>
 
   <div class="newsletter-container">
     <section class="section newsletter-section" id="newsletter">
       <h1>Stay in the Loop</h1>
-      <p>Sign up for our newsletter to get updates on events, roles, and camp vibes!</p>
+      <p>Sign up for our newsletter to get the latest updates on events, camp news, and more!</p>
       <button class="edit-section-button" onclick="openNewsletterModal()">Edit Section</button>
       <div class="form-container">
-        <form id="newsletter-form" onsubmit="submitNewsletter(event)">
+        <form id="newsletter-form">
           <input type="email" id="newsletter-email" placeholder="Your Email" required>
-          <button type="submit" class="submit-button">Subscribe</button>
+          <button type="submit">Subscribe</button>
         </form>
       </div>
     </section>
   </div>
 
-  <div class="countdown-container">
-    <h2>Countdown to Kiwiburn 2026</h2>
-    <div class="countdown" id="countdown">Loading...</div>
-    <input type="date" id="countdown-date" style="display: none;">
-    <button onclick="updateCountdownDate()" style="display: none;">Update Date</button>
-  </div>
-
-  <section class="contact-lead">
-    <h2>Contact Our Camp Lead</h2>
-    <p>Got questions? Reach out to our Camp Lead, Shanon!</p>
+  <section class="contact-lead" id="contact">
+    <h1>Contact Our Lead</h1>
+    <p>Have questions or want to connect? Reach out to our Camp Lead, Shanon Richards.</p>
     <button class="edit-section-button" onclick="openContactModal()">Edit Section</button>
-    <a href="mailto:shanon@cosmicrejex.com">shanon@cosmicrejex.com</a>
+    <a href="mailto:shanon@cosmicrejex.com">Email Shanon</a>
   </section>
 
-  <div class="gallery-container">
-    <section class="section" id="gallery">
-      <h1>Gallery</h1>
-      <p>A glimpse into our camp’s vibe—art, music, and unforgettable moments.</p>
-      <button class="edit-section-button" onclick="openGalleryModal()">Edit Section</button>
-      <div class="gallery" id="gallery-images" ondragover="allowDrop(event)" ondrop="dropGalleryImage(event)">
-        <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-          <img src="images/Campphoto1.jpg" alt="Camp Setup">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
-          <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
-        </div>
-        <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-          <img src="images/Campphoto15.png" alt="Night Vibes">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
-          <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
-        </div>
-        <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
-          <img src="images/Campphoto17.png" alt="Art Installation">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
-          <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
-        </div>
-      </div>
-      <button class="save-button" onclick="uploadGalleryImage()">Upload New Image</button>
-    </section>
-  </div>
-
-  <div class="admin-dashboard" id="admin">
-    <h2>Admin Dashboard</h2>
-    <ul>
-      <li>Total Members: <span id="total-members">16</span></li>
-      <li>Total Roles: <span id="total-roles">9</span></li>
-      <li>Total Events: <span id="total-events">3</span></li>
-      <li>Newsletter Subscribers: <span id="total-subscribers">0</span></li>
-    </ul>
-    <button onclick="exportData()">Export Data</button>
-    <button onclick="resetData()">Reset Data</button>
+  <div class="countdown-container">
+    <h2>Kiwiburn Countdown</h2>
+    <div class="countdown" id="countdown">Loading...</div>
+    <input type="datetime-local" id="countdown-date" style="display: none;">
+    <button onclick="updateCountdown()" style="display: none;">Update Countdown</button>
   </div>
 
   <footer>
-    <p>© 2025 Cosmic Rejex. All rights reserved.</p>
+    <p>&copy; 2025 Cosmic Rejex | Kiwiburn | All Rights Reserved</p>
   </footer>
 
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+
   <script>
-    // Initialize data from localStorage or set defaults
-    let members = JSON.parse(localStorage.getItem('members')) || [
-      { id: '1', name: 'Shanon Richards', role: 'Camp Lead', description: 'Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.', photo: 'images/ShanonRichards.jpg', class: 'camp-lead' },
-      { id: '2', name: 'Meghan Robson', role: 'Deputy Lead', description: 'Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.', photo: 'images/MeganR.jpg', class: 'deputy-lead' },
-      { id: '3', name: 'Russell Duffield', role: 'Build Lead', description: 'Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.', photo: 'images/RussellDuffield.jpg' },
-      { id: '4', name: 'Star Dust Bambi', role: 'Vibe Manager', description: 'Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.', photo: 'images/Star Dust Bambi.jpg' },
-      { id: '5', name: 'Micheal Dunstan', role: 'Logistics Lead', description: 'Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.', photo: 'images/michealdunstan.jpg' },
-      { id: '6', name: 'Tomas Shelby', role: 'Sound Lead', description: 'Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.', photo: 'images/tomasshelby.jpg' },
-      { id: '7', name: 'Jarrod Skiffington', role: 'Transport Lead', description: 'Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.', photo: 'images/jarrodskiffington.jpg' },
-      { id: '8', name: 'Alana Stewart', role: 'Kitchen Lead', description: 'Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.', photo: 'images/alana.jpg' },
-      { id: '9', name: 'Tyler Rowe', role: 'Art & Workshop Lead', description: 'Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.', photo: 'images/tylerrowe.jpg' },
-      { id: '10', name: 'Imogen Olivia', role: 'Wellbeing Officer', description: 'Checks mental health and group dynamics. Provides active listening and support consistently.', photo: 'images/Imogen.jpg' },
-      { id: '11', name: 'Sarsha Skiffington', role: 'Greeter', description: 'Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.', photo: 'images/sarsha.jpg' },
-      { id: '12', name: 'Gartah', role: 'Strike Lead', description: 'Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.', photo: 'images/Gartah.jpg' },
-      { id: '13', name: 'Jackie Church', role: 'Comms Lead', description: 'Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.', photo: 'images/jackie.jpg' },
-      { id: '14', name: 'Olivia Derewlany', role: 'Safety Officer', description: 'Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.', photo: 'images/olivia.jpg' },
-      { id: '15', name: 'Wenyi Huang', role: 'MOOP Manager', description: 'Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.', photo: 'images/wenyi.jpg' },
-      { id: '16', name: 'Tina Lein', role: 'Power/Tech Lead', description: 'Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.', photo: 'images/tina.jpg' }
-    ];
-
-    let roles = JSON.parse(localStorage.getItem('roles')) || [
-      { id: '1', title: 'Logistics & Build Lead', description: 'Plans camp layout, manages ride shares, carpools, and essential gear.', icon: 'images/icons/trial.png' },
-      { id: '2', title: 'Volunteer Coordinator', description: 'Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.', icon: 'images/icons/volunteer-coordinator.png' },
-      { id: '3', title: 'Build Crew', description: 'Builds shade, tents, and layout. Manages power, water, and camp infrastructure.', icon: 'images/icons/build-crew.png' },
-      { id: '4', title: 'Sound & Lights Lead', description: 'Oversees DJ schedules, lighting, sound compliance, and power systems.', icon: 'images/icons/sound-lights-lead.png' },
-      { id: '5', title: 'Kitchen Lead', description: 'Plans meals, organizes shifts, maintains food storage & kitchen cleanliness.', icon: 'images/icons/kitchen-lead.png' },
-      { id: '6', title: 'Safety & Medical Lead', description: 'Stocks first aid, provides harm reduction & emergency support.', icon: 'images/icons/safety-medical-lead.png' },
-      { id: '7', title: 'Fire & Rangers Lead', description: 'Manages fire safety, emergency exits & coordinates with Rangers.', icon: 'images/icons/fire-rangers-lead.png' },
-      { id: '8', title: 'Art & Decor Lead', description: 'Oversees decor, signs, and interactive art.', icon: 'images/icons/art-decor-lead.png' },
-      { id: '9', title: 'Event & Theme Night Lead', description: 'Plans events, workshops, performances & group photos.', icon: 'images/icons/event-theme-night-lead.png' }
-    ];
-
-    let events = JSON.parse(localStorage.getItem('events')) || [
-      {
-        id: '1',
-        title: 'Emo Night: "It\'s not a phase mom! It\'s a tribute!"',
-        description: 'Emo night is back! Join us for a tribute to RAT camp as⠀we revive the tears, emo vibes, and your teenage passion! Find a dark corner, sip on our emo-inspired drinks, and get your makeup done just right! Plus more!',
-        date: '2025-01-28',
-        time: '20:00',
-        end: '2025-01-29T02:00',
-        category: 'Music',
-        image: 'images/Eventposter.jpg'
-      },
-      {
-        id: '2',
-        title: 'Pole in the paddock',
-        description: 'Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that\'ll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!',
-        date: '2025-01-29',
-        time: '18:00',
-        end: '2025-01-29T20:00',
-        category: 'Performance',
-        image: 'images/Pole.jpg'
-      },
-      {
-        id: '3',
-        title: 'Communal Art Build',
-        description: 'Get your hands dirty in our communal art workshop! Collaborate with campmates to create a unique installation that captures the spirit of Kiwiburn. All materials provided, just bring your creativity!',
-        date: '2025-01-30',
-        time: '14:00',
-        end: '2025-01-30T17:00',
-        category: 'Workshop',
-        image: 'images/Workshop.jpg'
-      }
-    ];
-
-    let aboutGallery = JSON.parse(localStorage.getItem('aboutGallery')) || [
-      { id: '1', src: 'images/Campphoto1.jpg', alt: 'Camp Mates' },
-      { id: '2', src: 'images/Campphoto15.png', alt: 'Camp Mates' },
-      { id: '3', src: 'images/Campphoto17.png', alt: 'Night Lights' }
-    ];
-
-    let missionGallery = JSON.parse(localStorage.getItem('missionGallery')) || [];
-    let galleryImages = JSON.parse(localStorage.getItem('galleryImages')) || [
-      { id: '1', src: 'images/Campphoto1.jpg', alt: 'Camp Setup' },
-      { id: '2', src: 'images/Campphoto15.png', alt: 'Night Vibes' },
-      { id: '3', src: 'images/Campphoto17.png', alt: 'Art Installation' }
-    ];
-
-    let sections = JSON.parse(localStorage.getItem('sections')) || {
-      header: { title: 'Join Our Kiwiburn' },
-      about: { title: 'About Our Camp', description: 'Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.' },
-      mission: { title: 'Our Mission', description: 'We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.' },
-      events: { title: 'Past Events', description: 'From silent discos to communal art builds, here’s a taste of what we’ve created together.' },
-      submit: { title: 'Submit an Event', description: 'Got an idea for an epic event? Submit it here and let’s make it happen!' },
-      newsletter: { title: 'Stay in the Loop', description: 'Sign up for our newsletter to get updates on events, roles, and camp vibes!' },
-      contact: { title: 'Contact Our Camp Lead', description: 'Got questions? Reach out to our Camp Lead, Shanon!', link: 'mailto:shanon@cosmicrejex.com' },
-      join: { title: 'Request to Join', description: 'Want to join our amazing community? Click below to submit your request!' },
-      gallery: { title: 'Gallery', description: 'A glimpse into our camp’s vibe—art, music, and unforgettable moments.' }
-    };
-
-    let subscribers = JSON.parse(localStorage.getItem('subscribers')) || [];
-    let countdownDate = localStorage.getItem('cićountdownDate') || '2026-01-27';
-
-    let isLoggedIn = false;
-    let draggedItem = null;
-    let draggedSection = '';
-
-    // Hamburger menu toggle
-    document.querySelector('.hamburger').addEventListener('click', () => {
-      document.querySelector('.nav-links').classList.toggle('active');
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.setAttribute('data-theme',
+        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'
+      );
+      localStorage.setItem('theme', document.documentElement.getAttribute('data-theme'));
+      themeToggle.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
     });
-
-    // Login functionality
-    document.getElementById('login-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      if (username === 'admin' && password === 'kiwi2025') {
-        isLoggedIn = true;
-        document.body.classList.add('logged-in');
-        document.getElementById('login-form').style.display = 'none';
-        document.querySelector('.logout-button').style.display = 'block';
-        document.querySelector('.admin-nav').style.display = 'block';
-        document.querySelector('#countdown-date').style.display = 'inline-block';
-        document.querySelector('.countdown-container button').style.display = 'inline-block';
-        updateAdminDashboard();
-      } else {
-        alert('Invalid credentials');
-      }
-    });
-
-    // Logout functionality
-    document.querySelector('.logout-button').addEventListener('click', () => {
-      isLoggedIn = false;
-      document.body.classList.remove('logged-in');
-      document.getElementById('login-form').style.display = 'flex';
-      document.querySelector('.logout-button').style.display = 'none';
-      document.querySelector('.admin-nav').style.display = 'none';
-      document.querySelector('#countdown-date').style.display = 'none';
-      document.querySelector('.countdown-container button').style.display = 'none';
-    });
-
-    // Theme toggle
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      const button = document.querySelector('.theme-toggle');
-      button.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
-      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-    }
 
     // Load theme from localStorage
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-mode');
-      document.querySelector('.theme-toggle').textContent = 'Light Mode';
-    }
-
-    // Modal functions
-    function openHeaderModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('header-modal');
-      modal.style.display = 'flex';
-      document.getElementById('header-title').value = sections.header.title;
-    }
-
-    function closeHeaderModal() {
-      document.getElementById('header-modal').style.display = 'none';
-    }
-
-    function saveHeaderDetails() {
-      sections.header.title = document.getElementById('header-title').value;
-      document.querySelector('.header h1').textContent = sections.header.title;
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeHeaderModal();
-    }
-
-    function openMemberModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('member-modal');
-      modal.style.display = 'flex';
-      document.getElementById('member-modal-title').textContent = 'Add Member Details';
-      document.getElementById('member-name').value = '';
-      document.getElementById('member-role').value = '';
-      document.getElementById('member-description').value = '';
-      document.getElementById('member-photo').value = '';
-    }
-
-    function openEditMemberModal(button) {
-      if (!isLoggedIn) return;
-      const memberDiv = button.parentElement;
-      const modal = document.getElementById('member-modal');
-      modal.style.display = 'flex';
-      document.getElementById('member-modal-title').textContent = 'Edit Member Details';
-      document.getElementById('member-name').value = memberDiv.querySelector('h3').textContent;
-      document.getElementById('member-role').value = memberDiv.querySelector('span')?.textContent || '';
-      document.getElementById('member-description').value = memberDiv.querySelector('p').textContent;
-      modal.dataset.memberId = memberDiv.dataset.id;
-    }
-
-    function closeMemberModal() {
-      document.getElementById('member-modal').style.display = 'none';
-      delete document.getElementById('member-modal').dataset.memberId;
-    }
-
-    function saveMemberDetails() {
-      const id = document.getElementById('member-modal').dataset.memberId || Date.now().toString();
-      const name = document.getElementById('member-name').value;
-      const role = document.getElementById('member-role').value;
-      const description = document.getElementById('member-description').value;
-      const photoFile = document.getElementById('member-photo').files[0];
-      let photo = members.find(m => m.id === id)?.photo || 'images/default.jpg';
-
-      if (photoFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          photo = e.target.result;
-          updateMember(id, name, role, description, photo);
-        };
-        reader.readAsDataURL(photoFile);
-      } else {
-        updateMember(id, name, role, description, photo);
-      }
-      closeMemberModal();
-    }
-
-    function updateMember(id, name, role, description, photo) {
-      const memberClass = role === 'Camp Lead' ? 'camp-lead' : role === 'Deputy Lead' ? 'deputy-lead' : '';
-      const index = members.findIndex(m => m.id === id);
-      const memberData = { id, name, role, description, photo, class: memberClass };
-
-      if (index >= 0) {
-        members[index] = memberData;
-      } else {
-        members.push(memberData);
-      }
-
-      localStorage.setItem('members', JSON.stringify(members));
-      renderMembers();
-      updateAdminDashboard();
-    }
-
-    function deleteMember(button) {
-      if (!isLoggedIn) return;
-      const memberDiv = button.parentElement;
-      members = members.filter(m => m.id !== memberDiv.dataset.id);
-      localStorage.setItem('members', JSON.stringify(members));
-      renderMembers();
-      updateAdminDashboard();
-    }
-
-    function openRoleModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('role-modal');
-      modal.style.display = 'flex';
-      document.getElementById('role-modal-title').textContent = 'Create New Role';
-      document.getElementById('role-title').value = '';
-      document.getElementById('role-description').value = '';
-      document.getElementById('role-icon').value = '';
-    }
-
-    function openEditRoleModal(button) {
-      if (!isLoggedIn) return;
-      const roleDiv = button.parentElement;
-      const modal = document.getElementById('role-modal');
-      modal.style.display = 'flex';
-      document.getElementById('role-modal-title').textContent = 'Edit Role';
-      document.getElementById('role-title').value = roleDiv.querySelector('h3').textContent;
-      document.getElementById('role-description').value = roleDiv.querySelector('.tooltip p').textContent;
-      modal.dataset.roleId = roleDiv.dataset.id;
-    }
-
-    function closeRoleModal() {
-      document.getElementById('role-modal').style.display = 'none';
-      delete document.getElementById('role-modal').dataset.roleId;
-    }
-
-    function saveRoleDetails() {
-      const id = document.getElementById('role-modal').dataset.roleId || Date.now().toString();
-      const title = document.getElementById('role-title').value;
-      const description = document.getElementById('role-description').value;
-      const iconFile = document.getElementById('role-icon').files[0];
-      let icon = roles.find(r => r.id === id)?.icon || 'images/icons/default.png';
-
-      if (iconFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          icon = e.target.result;
-          updateRole(id, title, description, icon);
-        };
-        reader.readAsDataURL(iconFile);
-      } else {
-        updateRole(id, title, description, icon);
-      }
-      closeRoleModal();
-    }
-
-    function updateRole(id, title, description, icon) {
-      const index = roles.findIndex(r => r.id === id);
-      const roleData = { id, title, description, icon };
-
-      if (index >= 0) {
-        roles[index] = roleData;
-      } else {
-        roles.push(roleData);
-      }
-
-      localStorage.setItem('roles', JSON.stringify(roles));
-      renderRoles();
-      updateAdminDashboard();
-    }
-
-    function deleteRole(button) {
-      if (!isLoggedIn) return;
-      const roleDiv = button.parentElement;
-      roles = roles.filter(r => r.id !== roleDiv.dataset.id);
-      localStorage.setItem('roles', JSON.stringify(roles));
-      renderRoles();
-      updateAdminDashboard();
-    }
-
-    function openEventModal(button) {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('event-modal');
-      modal.style.display = 'flex';
-      if (button) {
-        const eventDiv = button.parentElement;
-        document.getElementById('event-title').value = eventDiv.querySelector('h3').textContent;
-        document.getElementById('event-description').value = eventDiv.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
-        document.getElementById('event-date').value = eventDiv.querySelector('.event-date').textContent.replace('Date: ', '');
-        document.getElementById('event-time').value = eventDiv.querySelector('.event-time').textContent.replace('Time: ', '');
-        document.getElementById('event-end').value = eventDiv.querySelector('.event-end').textContent.replace('End Date & Time: ', '').replace(', ', 'T');
-        document.getElementById('event-category').value = eventDiv.querySelector('.event-category').textContent.replace('Category: ', '');
-        modal.dataset.eventId = eventDiv.dataset.id;
-      } else {
-        document.getElementById('event-title').value = '';
-        document.getElementById('event-description').value = '';
-        document.getElementById('event-date').value = '';
-        document.getElementById('event-time').value = '';
-        document.getElementById('event-end').value = '';
-        document.getElementById('event-category').value = '';
-        delete modal.dataset.eventId;
-      }
-    }
-
-    function closeEventModal() {
-      document.getElementById('event-modal').style.display = 'none';
-      delete document.getElementById('event-modal').dataset.eventId;
-    }
-
-    function saveEventDetails() {
-      const id = document.getElementById('event-modal').dataset.eventId || Date.now().toString();
-      const title = document.getElementById('event-title').value;
-      const description = document.getElementById('event-description').value;
-      const date = document.getElementById('event-date').value;
-      const time = document.getElementById('event-time').value;
-      const end = document.getElementById('event-end').value;
-      const category = document.getElementById('event-category').value;
-      const imageFile = document.getElementById('event-image').files[0];
-      let image = events.find(e => e.id === id)?.image || 'images/default-event.jpg';
-
-      if (imageFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          image = e.target.result;
-          updateEvent(id, title, description, date, time, end, category, image);
-        };
-        reader.readAsDataURL(imageFile);
-      } else {
-        updateEvent(id, title, description, date, time, end, category, image);
-      }
-      closeEventModal();
-    }
-
-    function updateEvent(id, title, description, date, time, end, category, image) {
-      const index = events.findIndex(e => e.id === id);
-      const eventData = { id, title, description, date, time, end, category, image };
-
-      if (index >= 0) {
-        events[index] = eventData;
-      } else {
-        events.push(eventData);
-      }
-
-      localStorage.setItem('events', JSON.stringify(events));
-      renderEvents();
-      updateAdminDashboard();
-    }
-
-    function deleteEvent(button) {
-      if (!isLoggedIn) return;
-      const eventDiv = button.parentElement;
-      events = events.filter(e => e.id !== eventDiv.dataset.id);
-      localStorage.setItem('events', JSON.stringify(events));
-      renderEvents();
-      updateAdminDashboard();
-    }
-
-    function openAboutModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('about-modal');
-      modal.style.display = 'flex';
-      document.getElementById('about-title').value = sections.about.title;
-      document.getElementById('about-description').value = sections.about.description;
-    }
-
-    function closeAboutModal() {
-      document.getElementById('about-modal').style.display = 'none';
-    }
-
-    function saveAboutDetails() {
-      sections.about.title = document.getElementById('about-title').value;
-      sections.about.description = document.getElementById('about-description').value;
-      document.querySelector('#about h1').textContent = sections.about.title;
-      document.querySelector('#about p').textContent = sections.about.description;
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeAboutModal();
-    }
-
-    function openMissionModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('mission-modal');
-      modal.style.display = 'flex';
-      document.getElementById('mission-title').value = sections.mission.title;
-      document.getElementById('mission-description').value = sections.mission.description;
-    }
-
-    function closeMissionModal() {
-      document.getElementById('mission-modal').style.display = 'none';
-    }
-
-    function saveMissionDetails() {
-      sections.mission.title = document.getElementById('mission-title').value;
-      sections.mission.description = document.getElementById('mission-description').value;
-      document.querySelector('#mission h1').textContent = sections.mission.title;
-      document.querySelector('#mission p').textContent = sections.mission.description;
-      const imageFile = document.getElementById('mission-image').files[0];
-      if (imageFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          missionGallery = [{ id: Date.now().toString(), src: e.target.result, alt: 'Mission Image' }];
-          localStorage.setItem('missionGallery', JSON.stringify(missionGallery));
-          renderMissionGallery();
-        };
-        reader.readAsDataURL(imageFile);
-      }
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeMissionModal();
-    }
-
-    function openGalleryImageModal(button, section) {
-      if (!isLoggedIn) return;
-      const imageDiv = button.parentElement;
-      const modal = document.getElementById('gallery-image-modal');
-      modal.style.display = 'flex';
-      document.getElementById('gallery-image-alt').value = imageDiv.querySelector('img').alt;
-      modal.dataset.imageId = imageDiv.dataset.id;
-      modal.dataset.section = section;
-    }
-
-    function closeGalleryImageModal() {
-      document.getElementById('gallery-image-modal').style.display = 'none';
-      delete document.getElementById('gallery-image-modal').dataset.imageId;
-      delete document.getElementById('gallery-image-modal').dataset.section;
-    }
-
-    function saveGalleryImageDetails() {
-      const id = document.getElementById('gallery-image-modal').dataset.imageId;
-      const section = document.getElementById('gallery-image-modal').dataset.section;
-      const alt = document.getElementById('gallery-image-alt').value;
-      const imageFile = document.getElementById('gallery-image-file').files[0];
-      let gallery = section === 'about' ? aboutGallery : section === 'gallery' ? galleryImages : missionGallery;
-      let storageKey = section === 'about' ? 'aboutGallery' : section === 'gallery' ? 'galleryImages' : 'missionGallery';
-
-      const index = gallery.findIndex(img => img.id === id);
-      if (index >= 0) {
-        gallery[index].alt = alt;
-        if (imageFile) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            gallery[index].src = e.target.result;
-            localStorage.setItem(storageKey, JSON.stringify(gallery));
-            if (section === 'about') renderAboutGallery();
-            else if (section === 'gallery') renderGalleryImages();
-            else renderMissionGallery();
-          };
-          reader.readAsDataURL(imageFile);
-        } else {
-          localStorage.setItem(storageKey, JSON.stringify(gallery));
-          if (section === 'about') renderAboutGallery();
-          else if (section === 'gallery') renderGalleryImages();
-          else renderMissionGallery();
-        }
-      }
-      closeGalleryImageModal();
-    }
-
-    function openEventsModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('events-modal');
-      modal.style.display = 'flex';
-      document.getElementById('events-title').value = sections.events.title;
-      document.getElementById('events-description').value = sections.events.description;
-    }
-
-    function closeEventsModal() {
-      document.getElementById('events-modal').style.display = 'none';
-    }
-
-    function saveEventsDetails() {
-      sections.events.title = document.getElementById('events-title').value;
-      sections.events.description = document.getElementById('events-description').value;
-      document.querySelector('#events h1').textContent = sections.events.title;
-      document.querySelector('#events p').textContent = sections.events.description;
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeEventsModal();
-    }
-
-    function openNewsletterModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('newsletter-modal');
-      modal.style.display = 'flex';
-      document.getElementById('newsletter-title').value = sections.newsletter.title;
-      document.getElementById('newsletter-description').value = sections.newsletter.description;
-    }
-
-    function closeNewsletterModal() {
-      document.getElementById('newsletter-modal').style.display = 'none';
-    }
-
-    function saveNewsletterDetails() {
-      sections.newsletter.title = document.getElementById('newsletter-title').value;
-      sections.newsletter.description = document.getElementById('newsletter-description').value;
-      document.querySelector('#newsletter h1').textContent = sections.newsletter.title;
-      document.querySelector('#newsletter p').textContent = sections.newsletter.description;
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeNewsletterModal();
-    }
-
-    function openContactModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('contact-modal');
-      modal.style.display = 'flex';
-      document.getElementById('contact-title').value = sections.contact.title;
-      document.getElementById('contact-description').value = sections.contact.description;
-      document.getElementById('contact-link').value = sections.contact.link;
-    }
-
-    function closeContactModal() {
-      document.getElementById('contact-modal').style.display = 'none';
-    }
-
-    function saveContactDetails() {
-      sections.contact.title = document.getElementById('contact-title').value;
-      sections.contact.description = document.getElementById('contact-description').value;
-      sections.contact.link = document.getElementById('contact-link').value;
-      document.querySelector('.contact-lead h2').textContent = sections.contact.title;
-      document.querySelector('.contact-lead p').textContent = sections.contact.description;
-      document.querySelector('.contact-lead a').href = sections.contact.link;
-      document.querySelector('.contact-lead a').textContent = sections.contact.link.replace('mailto:', '');
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeContactModal();
-    }
-
-    function openJoinModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('join-modal');
-      modal.style.display = 'flex';
-      document.getElementById('join-title').value = sections.join.title;
-      document.getElementById('join-description').value = sections.join.description;
-    }
-
-    function closeJoinModal() {
-      document.getElementById('join-modal').style.display = 'none';
-    }
-
-    function saveJoinDetails() {
-      sections.join.title = document.getElementById('join-title').value;
-      sections.join.description = document.getElementById('join-description').value;
-      document.querySelector('#join h2').textContent = sections.join.title;
-      document.querySelector('#join p').textContent = sections.join.description;
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeJoinModal();
-    }
-
-    function openSubmitModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('submit-modal');
-      modal.style.display = 'flex';
-      document.getElementById('submit-title').value = sections.submit.title;
-      document.getElementById('submit-description').value = sections.submit.description;
-    }
-
-    function closeSubmitModal() {
-      document.getElementById('submit-modal').style.display = 'none';
-    }
-
-    function saveSubmitDetails() {
-      sections.submit.title = document.getElementById('submit-title').value;
-      sections.submit.description = document.getElementById('submit-description').value;
-      document.querySelector('#submit h1').textContent = sections.submit.title;
-      document.querySelector('#submit p').textContent = sections.submit.description;
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeSubmitModal();
-    }
-
-    function openGalleryModal() {
-      if (!isLoggedIn) return;
-      const modal = document.getElementById('gallery-modal');
-      modal.style.display = 'flex';
-      document.getElementById('gallery-title').value = sections.gallery.title;
-      document.getElementById('gallery-description').value = sections.gallery.description;
-    }
-
-    function closeGalleryModal() {
-      document.getElementById('gallery-modal').style.display = 'none';
-    }
-
-    function saveGalleryDetails() {
-      sections.gallery.title = document.getElementById('gallery-title').value;
-      sections.gallery.description = document.getElementById('gallery-description').value;
-      document.querySelector('#gallery h1').textContent = sections.gallery.title;
-      document.querySelector('#gallery p').textContent = sections.gallery.description;
-      localStorage.setItem('sections', JSON.stringify(sections));
-      closeGalleryModal();
-    }
-
-    // Render functions
-    function renderMembers() {
-      const membersGrid = document.querySelector('.members-grid');
-      membersGrid.innerHTML = `
-        <div class="scroll-arrow left">◄</div>
-        <div class="scroll-arrow right">►</div>
-      `;
-      members.forEach(member => {
-        const div = document.createElement('div');
-        div.className = `member ${member.class || ''}`;
-        div.dataset.id = member.id;
-        div.draggable = true;
-        div.ondragstart = drag;
-        div.innerHTML = `
-          <img src="${member.photo}" alt="${member.name}">
-          <h3>${member.name}</h3>
-          ${member.role ? `<span>${member.role}</span>` : ''}
-          <p>${member.description}</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        `;
-        membersGrid.appendChild(div);
-      });
-      addScrollListeners('.members-grid');
-    }
-
-    function renderRoles() {
-      const rolesGrid = document.querySelector('.roles-grid');
-      rolesGrid.innerHTML = `
-        <div class="scroll-arrow left">◄</div>
-        <div class="scroll-arrow right">►</div>
-      `;
-      roles.forEach(role => {
-        const div = document.createElement('div');
-        div.className = 'role';
-        div.dataset.id = role.id;
-        div.draggable = true;
-        div.ondragstart = drag;
-        div.innerHTML = `
-          <img src="${role.icon}" alt="${role.title} Icon">
-          <h3>${role.title}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(role.title)}" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>${role.description}</p>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        `;
-        rolesGrid.appendChild(div);
-      });
-      const addRoleDiv = document.createElement('div');
-      addRoleDiv.className = 'role';
-      addRoleDiv.onclick = openRoleModal;
-      addRoleDiv.innerHTML = `
-        <img src="images/icons/add-role.png" alt="Add New Role Icon">
-        <h3>Add New Role</h3>
-        <p>Create a new role for the camp.</p>
-      `;
-      rolesGrid.appendChild(addRoleDiv);
-      addScrollListeners('.roles-grid');
-    }
-
-    function renderEvents() {
-      const eventsGrid = document.getElementById('events-grid');
-      eventsGrid.innerHTML = '';
-      events.forEach(event => {
-        const div = document.createElement('div');
-        div.className = 'event';
-        div.dataset.id = event.id;
-        div.innerHTML = `
-          <img src="${event.image}" alt="${event.title} Poster">
-          <h3>${event.title}</h3>
-          <p>${event.description}</p>
-          <p class="event-date"><strong>Date:</strong> ${event.date}</p>
-          <p class="event-time"><strong>Time:</strong> ${event.time}</p>
-          <p class="event-end"><strong>End Date & Time:</strong> ${event.end.replace('T', ', ')}</p>
-          <p class="event-category"><strong>Category:</strong> ${event.category}</p>
-          <button class="edit-button" onclick="openEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        `;
-        eventsGrid.appendChild(div);
-      });
-    }
-
-    function renderAboutGallery() {
-      const gallery = document.getElementById('about-gallery');
-      gallery.innerHTML = '';
-      aboutGallery.forEach(image => {
-        const div = document.createElement('div');
-        div.className = 'image-container';
-        div.dataset.id = image.id;
-        div.draggable = true;
-        div.ondragstart = dragAboutImage;
-        div.innerHTML = `
-          <img src="${image.src}" alt="${image.alt}">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
-          <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
-        `;
-        gallery.appendChild(div);
-      });
-    }
-
-    function renderMissionGallery() {
-      const gallery = document.getElementById('mission-gallery');
-      gallery.innerHTML = '';
-      missionGallery.forEach(image => {
-        const div = document.createElement('div');
-        div.className = 'image-container';
-        div.dataset.id = image.id;
-        div.draggable = true;
-        div.ondragstart = dragMissionImage;
-        div.innerHTML = `
-          <img src="${image.src}" alt="${image.alt}">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-          <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
-        `;
-        gallery.appendChild(div);
-      });
-    }
-
-    function renderGalleryImages() {
-      const gallery = document.getElementById('gallery-images');
-      gallery.innerHTML = '';
-      galleryImages.forEach(image => {
-        const div = document.createElement('div');
-        div.className = 'image-container';
-        div.dataset.id = image.id;
-        div.draggable = true;
-        div.ondragstart = dragGalleryImage;
-        div.innerHTML = `
-          <img src="${image.src}" alt="${image.alt}">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
-          <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
-        `;
-        gallery.appendChild(div);
-      });
-    }
-
-    // Drag and drop functions
-    function drag(event) {
-      draggedItem = event.target;
-      draggedSection = draggedItem.classList.contains('member') ? 'members' : 'roles';
-    }
-
-    function dragAboutImage(event) {
-      draggedItem = event.target.parentElement;
-      draggedSection = 'aboutGallery';
-    }
-
-    function dragMissionImage(event) {
-      draggedItem = event.target.parentElement;
-      draggedSection = 'missionGallery';
-    }
-
-    function dragGalleryImage(event) {
-      draggedItem = event.target.parentElement;
-      draggedSection = 'galleryImages';
-    }
-
-    function allowDrop(event) {
-      event.preventDefault();
-    }
-
-    function drop(event) {
-      event.preventDefault();
-      if (!draggedItem) return;
-      const target = event.target.closest('.member, .role');
-      if (!target || draggedSection !== (target.classList.contains('member') ? 'members' : 'roles')) return;
-
-      const grid = target.parentElement;
-      const items = draggedSection === 'members' ? members : roles;
-      const draggedIndex = items.findIndex(item => item.id === draggedItem.dataset.id);
-      const targetIndex = items.findIndex(item => item.id === target.dataset.id);
-
-      if (draggedIndex !== -1 && targetIndex !== -1) {
-        const [dragged] = items.splice(draggedIndex, 1);
-        items.splice(targetIndex, 0, dragged);
-        localStorage.setItem(draggedSection, JSON.stringify(items));
-        draggedSection === 'members' ? renderMembers() : renderRoles();
-      }
-    }
-
-    function dropAboutImage(event) {
-      event.preventDefault();
-      if (draggedSection !== 'aboutGallery') return;
-      const target = event.target.closest('.image-container');
-      if (!target) return;
-
-      const draggedIndex = aboutGallery.findIndex(img => img.id === draggedItem.dataset.id);
-      const targetIndex = aboutGallery.findIndex(img => img.id === target.dataset.id);
-
-      if (draggedIndex !== -1 && targetIndex !== -1) {
-        const [dragged] = aboutGallery.splice(draggedIndex, 1);
-        aboutGallery.splice(targetIndex, 0, dragged);
-        localStorage.setItem('aboutGallery', JSON.stringify(aboutGallery));
-        renderAboutGallery();
-      }
-    }
-
-    function dropMissionImage(event) {
-      event.preventDefault();
-      if (draggedSection !== 'missionGallery') return;
-      const target = event.target.closest('.image-container');
-      if (!target) return;
-
-      const draggedIndex = missionGallery.findIndex(img => img.id === draggedItem.dataset.id);
-      const targetIndex = missionGallery.findIndex(img => img.id === target.dataset.id);
-
-      if (draggedIndex !== -1 && targetIndex !== -1) {
-        const [dragged] = missionGallery.splice(draggedIndex, 1);
-        missionGallery.splice(targetIndex, 0, dragged);
-        localStorage.setItem('missionGallery', JSON.stringify(missionGallery));
-        renderMissionGallery();
-      }
-    }
-
-    function dropGalleryImage(event) {
-      event.preventDefault();
-      if (draggedSection !== 'galleryImages') return;
-      const target = event.target.closest('.image-container');
-      if (!target) return;
-
-      const draggedIndex = galleryImages.findIndex(img => img.id === draggedItem.dataset.id);
-      const targetIndex = galleryImages.findIndex(img => img.id === target.dataset.id);
-
-      if (draggedIndex !== -1 && targetIndex !== -1) {
-        const [dragged] = galleryImages.splice(draggedIndex, 1);
-        galleryImages.splice(targetIndex, 0, dragged);
-        localStorage.setItem('galleryImages', JSON.stringify(galleryImages));
-        renderGalleryImages();
-      }
-    }
-
-    // Image upload functions
-    function uploadAboutImage() {
-      if (!isLoggedIn) return;
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.onchange = function(e) {
-        const file = e.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            aboutGallery.push({ id: Date.now().toString(), src: e.target.result, alt: 'New Image' });
-            localStorage.setItem('aboutGallery', JSON.stringify(aboutGallery));
-            renderAboutGallery();
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-      input.click();
-    }
-
-    function uploadMissionImage() {
-      if (!isLoggedIn) return;
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.onchange = function(e) {
-        const file = e.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            missionGallery.push({ id: Date.now().toString(), src: e.target.result, alt: 'New Image' });
-            localStorage.setItem('missionGallery', JSON.stringify(missionGallery));
-            renderMissionGallery();
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-      input.click();
-    }
-
-    function uploadGalleryImage() {
-      if (!isLoggedIn) return;
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.onchange = function(e) {
-        const file = e.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            galleryImages.push({ id: Date.now().toString(), src: e.target.result, alt: 'New Image' });
-            localStorage.setItem('galleryImages', JSON.stringify(galleryImages));
-            renderGalleryImages();
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-      input.click();
-    }
-
-    function deleteAboutImage(button) {
-      if (!isLoggedIn) return;
-      const imageDiv = button.parentElement;
-      aboutGallery = aboutGallery.filter(img => img.id !== imageDiv.dataset.id);
-      localStorage.setItem('aboutGallery', JSON.stringify(aboutGallery));
-      renderAboutGallery();
-    }
-
-    function deleteMissionImage(button) {
-      if (!isLoggedIn) return;
-      const imageDiv = button.parentElement;
-      missionGallery = missionGallery.filter(img => img.id !== imageDiv.dataset.id);
-      localStorage.setItem('missionGallery', JSON.stringify(missionGallery));
-      renderMissionGallery();
-    }
-
-    function deleteGalleryImage(button) {
-      if (!isLoggedIn) return;
-      const imageDiv = button.parentElement;
-      galleryImages = galleryImages.filter(img => img.id !== imageDiv.dataset.id);
-      localStorage.setItem('galleryImages', JSON.stringify(galleryImages));
-      renderGalleryImages();
-    }
-
-    // Event submission
-    function submitEvent(event) {
-      event.preventDefault();
-      const title = document.getElementById('submit-event-title').value;
-      const description = document.getElementById('submit-event-description').value;
-      const date = document.getElementById('submit-event-date').value;
-      const time = document.getElementById('submit-event-time').value;
-      const end = document.getElementById('submit-event-end').value;
-      const category = document.getElementById('submit-event-category').value;
-      const imageFile = document.getElementById('submit-event-image').files[0];
-      const id = Date.now().toString();
-
-      if (imageFile) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          events.push({ id, title, description, date, time, end, category, image: e.target.result });
-          localStorage.setItem('events', JSON.stringify(events));
-          renderEvents();
-          updateAdminDashboard();
-          document.getElementById('event-form').reset();
-          alert('Event submitted successfully!');
-        };
-        reader.readAsDataURL(imageFile);
-      } else {
-        events.push({ id, title, description, date, time, end, category, image: 'images/default-event.jpg' });
-        localStorage.setItem('events', JSON.stringify(events));
-        renderEvents();
-        updateAdminDashboard();
-        document.getElementById('event-form').reset();
-        alert('Event submitted successfully!');
-      }
-    }
-
-    // Newsletter subscription
-    function submitNewsletter(event) {
-      event.preventDefault();
-      const email = document.getElementById('newsletter-email').value;
-      if (!subscribers.includes(email)) {
-        subscribers.push(email);
-        localStorage.setItem('subscribers', JSON.stringify(subscribers));
-        updateAdminDashboard();
-        document.getElementById('newsletter-form').reset();
-        alert('Subscribed successfully!');
-      } else {
-        alert('You are already subscribed!');
-      }
-    }
-
-    // Countdown timer
-    function updateCountdown() {
-      const now = new Date();
-      const target = new Date(countdownDate);
-      const diff = target - now;
-
-      if (diff <= 0) {
-        document.getElementById('countdown').textContent = 'Kiwiburn has started!';
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+    });
+
+    // Back to Top Button
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Login/Logout
+    const loginForm = document.getElementById('login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const loginContainer = document.querySelector('.login-container');
+    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    function updateLoginState() {
+      document.body.classList.toggle('logged-in', isLoggedIn);
+      loginForm.style.display = isLoggedIn ? 'none' : 'flex';
+      logoutButton.style.display = isLoggedIn ? 'block' : 'none';
+    }
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      isLoggedIn = true;
+      localStorage.setItem('isLoggedIn', 'true');
+      updateLoginState();
+    });
+
+    logoutButton.addEventListener('click', () => {
+      isLoggedIn = false;
+      localStorage.setItem('isLoggedIn', 'false');
+      updateLoginState();
+    });
+
+    updateLoginState();
+
+    // Countdown
+    let countdownDate = new Date('2025-01-28T00:00:00').getTime();
+    function updateCountdownDisplay() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = "Kiwiburn has started!";
         return;
       }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById('countdown').textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    function updateCountdownDate() {
-      if (!isLoggedIn) return;
+    setInterval(updateCountdownDisplay, 1000);
+    function updateCountdown() {
       const newDate = document.getElementById('countdown-date').value;
       if (newDate) {
-        countdownDate = newDate;
-        localStorage.setItem('countdownDate', countdownDate);
-        updateCountdown();
+        countdownDate = new Date(newDate).getTime();
+        updateCountdownDisplay();
       }
     }
 
-    // Admin dashboard
-    function updateAdminDashboard() {
-      document.getElementById('total-members').textContent = members.length;
-      document.getElementById('total-roles').textContent = roles.length;
-      document.getElementById('total-events').textContent = events.length;
-      document.getElementById('total-subscribers').textContent = subscribers.length;
+    // Modal Handlers
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
     }
 
-    function exportData() {
-      if (!isLoggedIn) return;
-      const data = {
-        members,
-        roles,
-        events,
-        aboutGallery,
-        missionGallery,
-        galleryImages,
-        sections,
-        subscribers,
-        countdownDate
-      };
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'camp-data.json';
-      a.click();
-      URL.revokeObjectURL(url);
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
     }
 
-    function resetData() {
-      if (!isLoggedIn) return;
-      if (confirm('Are you sure you want to reset all data? This cannot be undone.')) {
-        localStorage.clear();
-        members = [];
-        roles = [];
-        events = [];
-        aboutGallery = [];
-        missionGallery = [];
-        galleryImages = [];
-        sections = {
-          header: { title: 'Join Our Kiwiburn' },
-          about: { title: 'About Our Camp', description: '' },
-          mission: { title: 'Our Mission', description: '' },
-          events: { title: 'Past Events', description: '' },
-          submit: { title: 'Submit an Event', description: '' },
-          newsletter: { title: 'Stay in the Loop', description: '' },
-          contact: { title: 'Contact Our Camp Lead', description: '', link: '' },
-          join: { title: 'Request to Join', description: '' },
-          gallery: { title: 'Gallery', description: '' }
-        };
-        subscribers = [];
-        countdownDate = '2026-01-27';
-        renderMembers();
-        renderRoles();
-        renderEvents();
-        renderAboutGallery();
-        renderMissionGallery();
-        renderGalleryImages();
-        updateAdminDashboard();
-        document.querySelector('.header h1').textContent = sections.header.title;
-        document.querySelector('#about h1').textContent = sections.about.title;
-        document.querySelector('#about p').textContent = sections.about.description;
-        document.querySelector('#mission h1').textContent = sections.mission.title;
-        document.querySelector('#mission p').textContent = sections.mission.description;
-        document.querySelector('#events h1').textContent = sections.events.title;
-        document.querySelector('#events p').textContent = sections.events.description;
-        document.querySelector('#submit h1').textContent = sections.submit.title;
-        document.querySelector('#submit p').textContent = sections.submit.description;
-        document.querySelector('#newsletter h1').textContent = sections.newsletter.title;
-        document.querySelector('#newsletter p').textContent = sections.newsletter.description;
-        document.querySelector('.contact-lead h2').textContent = sections.contact.title;
-        document.querySelector('.contact-lead p').textContent = sections.contact.description;
-        document.querySelector('.contact-lead a').href = sections.contact.link;
-        document.querySelector('#join h2').textContent = sections.join.title;
-        document.querySelector('#join p').textContent = sections.join.description;
-        document.querySelector('#gallery h1').textContent = sections.gallery.title;
-        document.querySelector('#gallery p').textContent = sections.gallery.description;
+    function openHeaderModal() { openModal('header-modal'); }
+    function closeHeaderModal() { closeModal('header-modal'); }
+    function openMemberModal() { openModal('member-modal'); }
+    function closeMemberModal() { closeModal('member-modal'); }
+    function openRoleModal() { openModal('role-modal'); }
+    function closeRoleModal() { closeModal('role-modal'); }
+    function openEventModal(element) {
+      const event = element.closest('.event');
+      document.getElementById('event-title').value = event.querySelector('h3').textContent;
+      document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
+      document.getElementById('event-date').value = event.querySelector('.event-date').textContent.match(/\d{4}-\d{2}-\d{2}/)[0];
+      document.getElementById('event-time').value = event.querySelector('.event-time').textContent.match(/\d{1,2}:\d{2} [AP]M/)[0].replace(' ', '');
+      document.getElementById('event-end').value = event.querySelector('.event-end').textContent.match(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/)[0];
+      document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
+      openModal('event-modal');
+    }
+    function closeEventModal() { closeModal('event-modal'); }
+    function openAboutModal() { openModal('about-modal'); }
+    function closeAboutModal() { closeModal('about-modal'); }
+    function openMissionModal() { openModal('mission-modal'); }
+    function closeMissionModal() { closeModal('mission-modal'); }
+    function openGalleryImageModal() { openModal('gallery-image-modal'); }
+    function closeGalleryImageModal() { closeModal('gallery-image-modal'); }
+    function openImageZoomModal(img) {
+      const modal = document.getElementById('image-zoom-modal');
+      document.getElementById('zoom-image').src = img.src;
+      document.getElementById('zoom-caption').textContent = img.alt;
+      modal.style.display = 'flex';
+    }
+    function closeImageZoomModal() { closeModal('image-zoom-modal'); }
+    function openEventsModal() { openModal('events-modal'); }
+    function closeEventsModal() { closeModal('events-modal'); }
+    function openNewsletterModal() { openModal('newsletter-modal'); }
+    function closeNewsletterModal() { closeModal('newsletter-modal'); }
+    function openContactModal() { openModal('contact-modal'); }
+    function closeContactModal() { closeModal('contact-modal'); }
+    function openJoinModal() { openModal('join-modal'); }
+    function closeJoinModal() { closeModal('join-modal'); }
+    function openSubmitModal() { openModal('submit-modal'); }
+    function closeSubmitModal() { closeModal('submit-modal'); }
+
+    // Save Functions (Placeholder)
+    function saveHeaderDetails() { closeHeaderModal(); }
+    function saveMemberDetails() { closeMemberModal(); }
+    function saveRoleDetails() { closeRoleModal(); }
+    function saveEventDetails() { closeEventModal(); }
+    function saveAboutDetails() { closeAboutModal(); }
+    function saveMissionDetails() { closeMissionModal(); }
+    function saveGalleryImageDetails() { closeGalleryImageModal(); }
+    function saveEventsDetails() { closeEventsModal(); }
+    function saveNewsletterDetails() { closeNewsletterModal(); }
+    function saveContactDetails() { closeContactModal(); }
+    function saveJoinDetails() { closeJoinModal(); }
+    function saveSubmitDetails() { closeSubmitModal(); }
+
+    // Delete Functions
+    function deleteMember(button) { button.closest('.member').remove(); }
+    function deleteRole(button) { button.closest('.role').remove(); }
+    function deleteEvent(button) { button.closest('.event').remove(); }
+    function deleteAboutImage(button) { button.closest('.image-container').remove(); }
+
+    // Edit Member Modal
+    function openEditMemberModal(button) {
+      const member = button.closest('.member');
+      document.getElementById('member-modal-title').textContent = 'Edit Member Details';
+      document.getElementById('member-name').value = member.querySelector('h3').textContent;
+      document.getElementById('member-role').value = member.querySelector('span').textContent;
+      document.getElementById('member-description').value = member.querySelector('p').textContent;
+      openModal('member-modal');
+    }
+
+    // Edit Role Modal
+    function openEditRoleModal(button) {
+      const role = button.closest('.role');
+      document.getElementById('role-modal-title').textContent = 'Edit Role';
+      document.getElementById('role-title').value = role.querySelector('h3').textContent;
+      document.getElementById('role-description').value = role.querySelector('.tooltip p').textContent;
+      openModal('role-modal');
+    }
+
+    // Drag and Drop
+    let draggedElement = null;
+    function drag(event) { draggedElement = event.target.closest('.member, .role, .image-container'); }
+    function allowDrop(event) { event.preventDefault(); }
+    function drop(event) {
+      event.preventDefault();
+      const dropTarget = event.target.closest('.members-grid, .roles-grid, .gallery');
+      if (dropTarget && draggedElement) {
+        dropTarget.appendChild(draggedElement);
+        draggedElement = null;
+      }
+    }
+    function dragAboutImage(event) { draggedElement = event.target.closest('.image-container'); }
+    function dropAboutImage(event) {
+      event.preventDefault();
+      const dropTarget = event.target.closest('#about-gallery');
+      if (dropTarget && draggedElement) {
+        dropTarget.appendChild(draggedElement);
+        draggedElement = null;
+      }
+    }
+    function dropMissionImage(event) {
+      event.preventDefault();
+      const dropTarget = event.target.closest('#mission-gallery');
+      if (dropTarget && draggedElement) {
+        dropTarget.appendChild(draggedElement);
+        draggedElement = null;
       }
     }
 
-    // Event search
-    function searchEvents() {
-      const query = document.getElementById('event-search-input').value.toLowerCase();
-      const filteredEvents = events.filter(event =>
-        event.title.toLowerCase().includes(query) ||
-        event.category.toLowerCase().includes(query)
-      );
-      const eventsGrid = document.getElementById('events-grid');
-      eventsGrid.innerHTML = '';
-      filteredEvents.forEach(event => {
-        const div = document.createElement('div');
-        div.className = 'event';
-        div.dataset.id = event.id;
-        div.innerHTML = `
-          <img src="${event.image}" alt="${event.title} Poster">
-          <h3>${event.title}</h3>
-          <p>${event.description}</p>
-          <p class="event-date"><strong>Date:</strong> ${event.date}</p>
-          <p class="event-time"><strong>Time:</strong> ${event.time}</p>
-          <p class="event-end"><strong>End Date & Time:</strong> ${event.end.replace('T', ', ')}</p>
-          <p class="event-category"><strong>Category:</strong> ${event.category}</p>
-          <button class="edit-button" onclick="openEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        `;
-        eventsGrid.appendChild(div);
+    // Placeholder Upload Functions
+    function uploadAboutImage() { console.log('Upload About Image'); }
+    function uploadMissionImage() { console.log('Upload Mission Image'); }
+    function saveChanges() { console.log('Save Changes'); }
+
+    // Event Filter
+    function filterEvents() {
+      const filter = document.getElementById('event-filter').value;
+      const events = document.querySelectorAll('.event');
+      events.forEach(event => {
+        event.style.display = filter === 'all' || event.dataset.category === filter ? 'block' : 'none';
       });
     }
 
-    // Scroll arrows for members and roles
-    function addScrollListeners(selector) {
-      const grid = document.querySelector(selector);
-      const leftArrow = grid.querySelector('.scroll-arrow.left');
-      const rightArrow = grid.querySelector('.scroll-arrow.right');
-
-      leftArrow.addEventListener('click', () => {
-        grid.scrollBy({ left: -150, behavior: 'smooth' });
-      });
-
-      rightArrow.addEventListener('click', () => {
-        grid.scrollBy({ left: 150, behavior: 'smooth' });
-      });
-    }
-
-    // Save changes
-    function saveChanges() {
-      localStorage.setItem('members', JSON.stringify(members));
-      localStorage.setItem('roles', JSON.stringify(roles));
-      localStorage.setItem('events', JSON.stringify(events));
-      localStorage.setItem('aboutGallery', JSON.stringify(aboutGallery));
-      localStorage.setItem('missionGallery', JSON.stringify(missionGallery));
-      localStorage.setItem('galleryImages', JSON.stringify(galleryImages));
-      localStorage.setItem('sections', JSON.stringify(sections));
-      localStorage.setItem('subscribers', JSON.stringify(subscribers));
-      localStorage.setItem('countdownDate', countdownDate);
-      alert('Changes saved successfully!');
-    }
-
-    // Initialize
-    renderMembers();
-    renderRoles();
-    renderEvents();
-    renderAboutGallery();
-    renderMissionGallery();
-    renderGalleryImages();
-    updateAdminDashboard();
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    // Newsletter Form Submission
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Subscribed to newsletter!');
+      e.target.reset();
+    });
   </script>
 </body>
 </html>
