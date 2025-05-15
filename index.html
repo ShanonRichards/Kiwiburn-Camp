@@ -392,9 +392,17 @@
       line-height: 1.3;
     }
 
-    .member p, .role p, .event p {
+    .member p, .event p {
       font-size: 1em;
       color: #000000;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .role p {
+      font-size: 1em;
+      color: #ffffff;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
@@ -580,19 +588,34 @@
       gap: 30px;
     }
 
+    .countdown-container {
+      padding: 20px;
+      background: rgba(44, 29, 15, 0.85);
+      text-align: center;
+      border-top: 2px solid #e67e22;
+      border-radius: 10px;
+      margin: 40px auto;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .countdown-container h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5em;
+      color: #f8e1b4;
+      margin-bottom: 20px;
+    }
+
     .countdown {
       font-family: 'Bebas Neue', cursive;
       font-size: 2em;
       font-weight: bold;
       color: #f8e1b4;
       margin-top: 20px;
-    }
-
-    .countdown-container {
-      padding: 20px;
-      background: rgba(44, 29, 15, 0.85);
-      text-align: center;
-      border-top: 2px solid #e67e22;
+      background: rgba(230, 126, 34, 0.2);
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #e67e22;
     }
 
     .countdown-container input {
@@ -602,6 +625,11 @@
       background: rgba(255, 255, 255, 0.1);
       color: #ffffff;
       margin: 10px;
+      display: none;
+    }
+
+    .logged-in .countdown-container input {
+      display: inline-block;
     }
 
     .countdown-container button {
@@ -614,6 +642,11 @@
       font-family: 'Bebas Neue', cursive;
       font-size: 0.9rem;
       transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    .logged-in .countdown-container button {
+      display: inline-block;
     }
 
     .countdown-container button:hover {
@@ -814,7 +847,7 @@
         padding: 10px;
       }
 
-      .login-container slams {
+      .login-container form {
         flex-direction: column;
         gap: 5px;
       }
@@ -1122,8 +1155,18 @@
 
   <header class="header">
     <h1>Join Our Kiwiburn</h1>
+    <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
     <a href="#about" class="scroll-down">▼</a>
   </header>
+
+  <div class="modal" id="header-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeHeaderModal()">×</button>
+      <h3>Edit Header Section</h3>
+      <input type="text" id="header-title" placeholder="Header Title" required>
+      <button onclick="saveHeaderDetails()">Save</button>
+    </div>
+  </div>
 
   <div class="modal" id="member-modal">
     <div class="modal-content">
@@ -1190,6 +1233,57 @@
       <input type="text" id="gallery-image-alt" placeholder="Image Alt Text" required>
       <input type="file" id="gallery-image-file" accept="image/*">
       <button onclick="saveGalleryImageDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="events-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeEventsModal()">×</button>
+      <h3>Edit Events Section</h3>
+      <input type="text" id="events-title" placeholder="Section Title" required>
+      <textarea id="events-description" placeholder="Section Description" required></textarea>
+      <button onclick="saveEventsDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="newsletter-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeNewsletterModal()">×</button>
+      <h3>Edit Newsletter Section</h3>
+      <input type="text" id="newsletter-title" placeholder="Section Title" required>
+      <textarea id="newsletter-description" placeholder="Section Description" required></textarea>
+      <button onclick="saveNewsletterDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="contact-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeContactModal()">×</button>
+      <h3>Edit Contact Section</h3>
+      <input type="text" id="contact-title" placeholder="Section Title" required>
+      <textarea id="contact-description" placeholder="Section Description" required></textarea>
+      <input type="text" id="contact-link" placeholder="Contact Link" required>
+      <button onclick="saveContactDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="join-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeJoinModal()">×</button>
+      <h3>Edit Join Section</h3>
+      <input type="text" id="join-title" placeholder="Section Title" required>
+      <textarea id="join-description" placeholder="Section Description" required></textarea>
+      <button onclick="saveJoinDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="submit-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeSubmitModal()">×</button>
+      <h3>Edit Submit Event Section</h3>
+      <input type="text" id="submit-title" placeholder="Section Title" required>
+      <textarea id="submit-description" placeholder="Section Description" required></textarea>
+      <button onclick="saveSubmitDetails()">Save</button>
     </div>
   </div>
 
@@ -1398,7 +1492,7 @@
             <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
           </div>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)"> personally</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/sound-lights-lead.png" alt="Sound & Lights Lead Icon">
@@ -1433,7 +1527,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/fire-rangers-lead.png" alt="Fire & Rangers Lead Icon">
           <h3>Fire & Rangers Lead</h3>
-          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" ..apply-button">Apply for Role</a>
+          <a href="join-camp.html?role=Fire%20%26%20Rangers%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             <p>Manages fire safety, emergency exits & coordinates with Rangers.</p>
           </div>
@@ -1473,6 +1567,7 @@
     <section class="section submit-section" id="join">
       <h2>Request to Join</h2>
       <p>Want to join our amazing community? Click below to submit your request!</p>
+      <button class="edit-section-button" onclick="openJoinModal()">Edit Section</button>
       <a href="join-camp.html" class="submit-button">Click Here</a>
     </section>
   </div>
@@ -1481,6 +1576,7 @@
     <section class="section" id="events">
        <h1>Past Events</h1>
       <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
+      <button class="edit-section-button" onclick="openEventsModal()">Edit Section</button>
       <div class="events-grid">
         <div class="event">
           <img src="images/Eventposter.jpg" alt="Emo Night Poster">
@@ -1528,6 +1624,7 @@
     <section class="section submit-section" id="submit">
       <h1>Submit Your Event</h1>
       <p>Got an idea for an amazing event? Click below to submit your proposal!</p>
+      <button class="edit-section-button" onclick="openSubmitModal()">Edit Section</button>
       <a href="submit-event.html" class="submit-button">Click Here</a>
     </section>
   </div>
@@ -1536,6 +1633,7 @@
     <section class="section" id="newsletter">
       <h2>Updates & Newsletter</h2>
       <p>Stay in the loop with the latest camp news, application updates, and camp fee information!</p>
+      <button class="edit-section-button" onclick="openNewsletterModal()">Edit Section</button>
       <a href="newsletter.html" class="submit-button">Read Our Newsletter</a>
     </section>
   </div>
@@ -1568,6 +1666,7 @@
     <h2>Need to reach out?</h2>
     <p>Message the Camp Lead on Facebook:</p>
     <a href="https://www.facebook.com/shanonrichards" target="_blank">facebook.com/shanonrichards</a>
+    <button class="edit-section-button" onclick="openContactModal()">Edit Section</button>
   </section>
 
   <section class="countdown-container">
@@ -1595,6 +1694,12 @@
     const aboutModal = document.querySelector('#about-modal');
     const missionModal = document.querySelector('#mission-modal');
     const galleryImageModal = document.querySelector('#gallery-image-modal');
+    const headerModal = document.querySelector('#header-modal');
+    const eventsModal = document.querySelector('#events-modal');
+    const newsletterModal = document.querySelector('#newsletter-modal');
+    const contactModal = document.querySelector('#contact-modal');
+    const joinModal = document.querySelector('#join-modal');
+    const submitModal = document.querySelector('#submit-modal');
     const aboutGallery = document.querySelector('#about-gallery');
     const missionGallery = document.querySelector('#mission-gallery');
     const campGallery = document.querySelector('#camp-gallery');
@@ -1611,7 +1716,14 @@
       const savedAbout = localStorage.getItem('aboutSection');
       const savedMission = localStorage.getItem('missionSection');
       const savedGallery = localStorage.getItem('campGallery');
+      const savedHeader = localStorage.getItem('headerSection');
+      const savedEventsSection = localStorage.getItem('eventsSection');
+      const savedNewsletter = localStorage.getItem('newsletterSection');
+      const savedContact = localStorage.getItem('contactSection');
+      const savedJoin = localStorage.getItem('joinSection');
+      const savedSubmit = localStorage.getItem('submitSection');
       const savedTargetDate = localStorage.getItem('targetDate');
+
       if (savedMembers) {
         membersGrid.innerHTML = savedMembers;
         membersGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
@@ -1624,6 +1736,7 @@
           button.addEventListener('click', () => openEditMemberModal(button));
         });
       }
+
       if (savedRoles) {
         rolesGrid.innerHTML = savedRoles;
         rolesGrid.querySelectorAll('.scroll-arrow').forEach(arrow => {
@@ -1635,39 +1748,48 @@
         rolesGrid.querySelectorAll('.edit-button').forEach(button => {
           button.addEventListener('click', () => openEditRoleModal(button));
         });
-        ensureAddRoleElement();
       }
+
       if (savedEvents) {
         eventsGrid.innerHTML = savedEvents;
-        eventsGrid.querySelectorAll('.edit-button').forEach(button => {
-          button.addEventListener('click', () => openEventModal(button));
-        });
         eventsGrid.querySelectorAll('.delete-button').forEach(button => {
           button.addEventListener('click', () => deleteEvent(button));
         });
+        eventsGrid.querySelectorAll('.edit-button').forEach(button => {
+          button.addEventListener('click', () => openEventModal(button));
+        });
       }
+
       if (savedAbout) {
-        const aboutSection = document.querySelector('#about');
-        aboutSection.innerHTML = savedAbout;
-        aboutSection.querySelectorAll('.delete-button').forEach(button => {
-          button.addEventListener('click', () => deleteAboutImage(button));
-        });
-        aboutSection.querySelectorAll('.edit-button').forEach(button => {
-          button.addEventListener('click', () => openGalleryImageModal(button, 'about'));
-        });
-        aboutSection.querySelector('.edit-section-button')?.addEventListener('click', openAboutModal);
+        const aboutSection = JSON.parse(savedAbout);
+        document.querySelector('#about h1').textContent = aboutSection.title;
+        document.querySelector('#about p').textContent = aboutSection.description;
+        if (aboutSection.gallery) {
+          aboutGallery.innerHTML = aboutSection.gallery;
+          aboutGallery.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', () => deleteAboutImage(button));
+          });
+          aboutGallery.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', () => openGalleryImageModal(button, 'about'));
+          });
+        }
       }
+
       if (savedMission) {
-        const missionSection = document.querySelector('#mission');
-        missionSection.innerHTML = savedMission;
-        missionSection.querySelectorAll('.delete-button').forEach(button => {
-          button.addEventListener('click', () => deleteMissionImage(button));
-        });
-        missionSection.querySelectorAll('.edit-button').forEach(button => {
-          button.addEventListener('click', () => openGalleryImageModal(button, 'mission'));
-        });
-        missionSection.querySelector('.edit-section-button')?.addEventListener('click', openMissionModal);
+        const missionSection = JSON.parse(savedMission);
+        document.querySelector('#mission h1').textContent = missionSection.title;
+        document.querySelector('#mission p').textContent = missionSection.description;
+        if (missionSection.gallery) {
+          missionGallery.innerHTML = missionSection.gallery;
+          missionGallery.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', () => deleteMissionImage(button));
+          });
+          missionGallery.querySelectorAll('.edit-button').forEach(button => {
+            button.addEventListener('click', () => openGalleryImageModal(button, 'mission'));
+          });
+        }
       }
+
       if (savedGallery) {
         campGallery.innerHTML = savedGallery;
         campGallery.querySelectorAll('.delete-button').forEach(button => {
@@ -1677,796 +1799,880 @@
           button.addEventListener('click', () => openGalleryImageModal(button, 'gallery'));
         });
       }
+
+      if (savedHeader) {
+        const headerSection = JSON.parse(savedHeader);
+        document.querySelector('.header h1').textContent = headerSection.title;
+      }
+
+      if (savedEventsSection) {
+        const eventsSection = JSON.parse(savedEventsSection);
+        document.querySelector('#events h1').textContent = eventsSection.title;
+        document.querySelector('#events p').textContent = eventsSection.description;
+      }
+
+      if (savedNewsletter) {
+        const newsletterSection = JSON.parse(savedNewsletter);
+        document.querySelector('#newsletter h2').textContent = newsletterSection.title;
+        document.querySelector('#newsletter p').textContent = newsletterSection.description;
+      }
+
+      if (savedContact) {
+        const contactSection = JSON.parse(savedContact);
+        document.querySelector('.contact-lead h2').textContent = contactSection.title;
+        document.querySelector('.contact-lead p').textContent = contactSection.description;
+        document.querySelector('.contact-lead a').href = contactSection.link;
+        document.querySelector('.contact-lead a').textContent = contactSection.link;
+      }
+
+      if (savedJoin) {
+        const joinSection = JSON.parse(savedJoin);
+        document.querySelector('#join h2').textContent = joinSection.title;
+        document.querySelector('#join p').textContent = joinSection.description;
+      }
+
+      if (savedSubmit) {
+        const submitSection = JSON.parse(savedSubmit);
+        document.querySelector('#submit h1').textContent = submitSection.title;
+        document.querySelector('#submit p').textContent = submitSection.description;
+      }
+
       if (savedTargetDate) {
         targetDate = new Date(savedTargetDate);
         document.querySelector('#countdown-date').value = targetDate.toISOString().slice(0, 16);
       }
-      updateButtonVisibility();
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+      checkLoginStatus();
     });
 
+    // Hamburger menu toggle
     hamburger.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
 
+    // Login handling
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const username = document.querySelector('#username').value;
       const password = document.querySelector('#password').value;
-      if (username === 'shanon' && password === 'Audius1993!') {
+
+      // Simple login check (replace with actual authentication in production)
+      if (username === 'admin' && password === 'password') {
         isLoggedIn = true;
         document.body.classList.add('logged-in');
         loginForm.style.display = 'none';
         logoutButton.style.display = 'block';
-        membersGrid.classList.add('draggable');
-        rolesGrid.classList.add('draggable');
-        aboutGallery.classList.add('draggable');
-        missionGallery.classList.add('draggable');
-        campGallery.classList.add('draggable');
-        document.querySelectorAll('.member, .role, .image-container').forEach(item => {
-          if (!item.getAttribute('onclick')) {
-            item.setAttribute('draggable', 'true');
-          }
-        });
-        updateButtonVisibility();
+        alert('Login successful!');
       } else {
         alert('Invalid credentials');
       }
     });
 
+    // Logout handling
     logoutButton.addEventListener('click', () => {
       isLoggedIn = false;
       document.body.classList.remove('logged-in');
       loginForm.style.display = 'flex';
       logoutButton.style.display = 'none';
-      membersGrid.classList.remove('draggable');
-      rolesGrid.classList.remove('draggable');
-      aboutGallery.classList.remove('draggable');
-      missionGallery.classList.remove('draggable');
-      campGallery.classList.remove('draggable');
-      document.querySelectorAll('.member, .role, .image-container').forEach(item => {
-        if (!item.getAttribute('onclick')) {
-          item.setAttribute('draggable', 'false');
-        }
-      });
-      updateButtonVisibility();
+      alert('Logged out successfully!');
     });
 
-function updateCountdown() {
-    const countdown = document.getElementById('countdown');
-    const now = new Date();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-        countdown.textContent = "Kiwiburn is happening now!";
-        return;
+    // Check login status
+    function checkLoginStatus() {
+      if (isLoggedIn) {
+        document.body.classList.add('logged-in');
+        loginForm.style.display = 'none';
+        logoutButton.style.display = 'block';
+      } else {
+        document.body.classList.remove('logged-in');
+        loginForm.style.display = 'flex';
+        logoutButton.style.display = 'none';
+      }
     }
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s until Kiwiburn!`;
-}
-
-// Update countdown every second
-setInterval(updateCountdown, 1000);
-
-// Update target date for countdown
-function updateTargetDate() {
-    const dateInput = document.querySelector('#countdown-date').value;
-    if (dateInput) {
-        targetDate = new Date(dateInput);
-        localStorage.setItem('targetDate', targetDate.toISOString());
-        updateCountdown();
+    // Drag and drop handling
+    function allowDrop(e) {
+      e.preventDefault();
     }
-}
 
-// Drag and drop for members and roles
-function drag(event) {
-    draggedElement = event.target.closest('.member, .role');
-    event.dataTransfer.setData('text/plain', '');
-}
-
-function allowDrop(event) {
-    event.preventDefault();
-}
-
-function drop(event) {
-    event.preventDefault();
-    if (draggedElement && isLoggedIn) {
-        const container = event.target.closest('.members-grid, .roles-grid');
-        if (container) {
-            const items = container.querySelectorAll('.member, .role:not([onclick])');
-            let closestItem = null;
-            let minDistance = Infinity;
-            const mouseX = event.clientX;
-
-            items.forEach(item => {
-                const rect = item.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const distance = Math.abs(mouseX - centerX);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestItem = item;
-                }
-            });
-
-            if (closestItem && closestItem !== draggedElement) {
-                const rect = closestItem.getBoundingClientRect();
-                const isLeft = mouseX < rect.left + rect.width / 2;
-                if (isLeft) {
-                    container.insertBefore(draggedElement, closestItem);
-                } else {
-                    container.insertBefore(draggedElement, closestItem.nextSibling);
-                }
-                saveChanges();
-            }
-        }
+    function drag(e) {
+      draggedElement = e.target.closest('.member, .role');
+      e.dataTransfer.setData('text', draggedElement.outerHTML);
     }
-    draggedElement = null;
-}
 
-// Drag and drop for gallery images
-function dragGalleryImage(event) {
-    draggedImage = event.target.closest('.image-container');
-    event.dataTransfer.setData('text/plain', '');
-}
-
-function dragAboutImage(event) {
-    draggedImage = event.target.closest('.image-container');
-    event.dataTransfer.setData('text/plain', '');
-}
-
-function dragMissionImage(event) {
-    draggedImage = event.target.closest('.image-container');
-    event.dataTransfer.setData('text/plain', '');
-}
-
-function dropGalleryImage(event) {
-    event.preventDefault();
-    if (draggedImage && isLoggedIn) {
-        const gallery = event.target.closest('#camp-gallery');
-        if (gallery) {
-            const images = gallery.querySelectorAll('.image-container');
-            let closestImage = null;
-            let minDistance = Infinity;
-            const mouseX = event.clientX;
-
-            images.forEach(image => {
-                const rect = image.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const distance = Math.abs(mouseX - centerX);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestImage = image;
-                }
-            });
-
-            if (closestImage && closestImage !== draggedImage) {
-                const rect = closestImage.getBoundingClientRect();
-                const isLeft = mouseX < rect.left + rect.width / 2;
-                if (isLeft) {
-                    gallery.insertBefore(draggedImage, closestImage);
-                } else {
-                    gallery.insertBefore(draggedImage, closestImage.nextSibling);
-                }
-                localStorage.setItem('campGallery', campGallery.innerHTML);
-            }
-        }
+    function dragAboutImage(e) {
+      draggedImage = e.target.closest('.image-container');
+      e.dataTransfer.setData('text', draggedImage.outerHTML);
     }
-    draggedImage = null;
-}
 
-function dropAboutImage(event) {
-    event.preventDefault();
-    if (draggedImage && isLoggedIn) {
-        const gallery = event.target.closest('#about-gallery');
-        if (gallery) {
-            const images = gallery.querySelectorAll('.image-container');
-            let closestImage = null;
-            let minDistance = Infinity;
-            const mouseX = event.clientX;
-
-            images.forEach(image => {
-                const rect = image.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const distance = Math.abs(mouseX - centerX);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestImage = image;
-                }
-            });
-
-            if (closestImage && closestImage !== draggedImage) {
-                const rect = closestImage.getBoundingClientRect();
-                const isLeft = mouseX < rect.left + rect.width / 2;
-                if (isLeft) {
-                    gallery.insertBefore(draggedImage, closestImage);
-                } else {
-                    gallery.insertBefore(draggedImage, closestImage.nextSibling);
-                }
-                localStorage.setItem('aboutSection', document.querySelector('#about').innerHTML);
-            }
-        }
+    function dragMissionImage(e) {
+      draggedImage = e.target.closest('.image-container');
+      e.dataTransfer.setData('text', draggedImage.outerHTML);
     }
-    draggedImage = null;
-}
 
-function dropMissionImage(event) {
-    event.preventDefault();
-    if (draggedImage && isLoggedIn) {
-        const gallery = event.target.closest('#mission-gallery');
-        if (gallery) {
-            const images = gallery.querySelectorAll('.image-container');
-            let closestImage = null;
-            let minDistance = Infinity;
-            const mouseX = event.clientX;
-
-            images.forEach(image => {
-                const rect = image.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const distance = Math.abs(mouseX - centerX);
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestImage = image;
-                }
-            });
-
-            if (closestImage && closestImage !== draggedImage) {
-                const rect = closestImage.getBoundingClientRect();
-                const isLeft = mouseX < rect.left + rect.width / 2;
-                if (isLeft) {
-                    gallery.insertBefore(draggedImage, closestImage);
-                } else {
-                    gallery.insertBefore(draggedImage, closestImage.nextSibling);
-                }
-                localStorage.setItem('missionSection', document.querySelector('#mission').innerHTML);
-            }
-        }
+    function dragGalleryImage(e) {
+      draggedImage = e.target.closest('.image-container');
+      e.dataTransfer.setData('text', draggedImage.outerHTML);
     }
-    draggedImage = null;
-}
 
-// Modal handlers
-function openModal() {
-    memberModal.style.display = 'flex';
-    document.querySelector('#member-modal-title').textContent = 'Add Member Details';
-    document.querySelector('#member-name').value = '';
-    document.querySelector('#member-role').value = '';
-    document.querySelector('#member-description').value = '';
-    document.querySelector('#member-photo').value = '';
-}
-
-function closeModal() {
-    memberModal.style.display = 'none';
-}
-
-function openEditMemberModal(button) {
-    const member = button.closest('.member');
-    const name = member.querySelector('h3').textContent;
-    const role = member.querySelector('span').textContent;
-    const description = member.querySelector('p').textContent;
-    const imgSrc = member.querySelector('img').src;
-
-    document.querySelector('#member-modal-title').textContent = 'Edit Member Details';
-    document.querySelector('#member-name').value = name;
-    document.querySelector('#member-role').value = role;
-    document.querySelector('#member-description').value = description;
-    document.querySelector('#member-photo').dataset.currentSrc = imgSrc;
-    memberModal.style.display = 'flex';
-    memberModal.dataset.editing = member.dataset.id || member.querySelector('img').src;
-}
-
-function saveMemberDetails() {
-    const name = document.querySelector('#member-name').value;
-    const role = document.querySelector('#member-role').value;
-    const description = document.querySelector('#member-description').value;
-    const photo = document.querySelector('#member-photo').files[0];
-    const editingId = memberModal.dataset.editing;
-
-    if (name && role && description) {
-        let imgSrc = document.querySelector('#member-photo').dataset.currentSrc || 'images/default-member.jpg';
-        if (photo) {
-            imgSrc = URL.createObjectURL(photo);
-        }
-
-        if (editingId) {
-            const member = Array.from(membersGrid.querySelectorAll('.member')).find(
-                m => (m.dataset.id || m.querySelector('img').src) === editingId
-            );
-            if (member) {
-                member.querySelector('img').src = imgSrc;
-                member.querySelector('h3').textContent = name;
-                member.querySelector('span').textContent = role;
-                member.querySelector('p').textContent = description;
-                member.className = `member ${role.toLowerCase().replace(/\s/g, '-')}`;
-            }
+    function drop(e) {
+      e.preventDefault();
+      const target = e.target.closest('.member, .role');
+      if (draggedElement && target && draggedElement !== target) {
+        const parent = target.parentNode;
+        const draggedIndex = Array.from(parent.children).indexOf(draggedElement);
+        const targetIndex = Array.from(parent.children).indexOf(target);
+        if (draggedIndex < targetIndex) {
+          parent.insertBefore(draggedElement, target.nextSibling);
         } else {
-            const newMember = document.createElement('div');
-            newMember.className = `member ${role.toLowerCase().replace(/\s/g, '-')}`;
-            newMember.setAttribute('draggable', 'true');
-            newMember.dataset.id = Date.now();
-            newMember.innerHTML = `
-                <img src="${imgSrc}" alt="${name}">
-                <h3>${name}</h3>
-                <span>${role}</span>
-                <p>${description}</p>
-                <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-                <button class="delete-button" onclick="deleteMember(this)">×</button>
-            `;
-            newMember.addEventListener('dragstart', drag);
-            membersGrid.appendChild(newMember);
+          parent.insertBefore(draggedElement, target);
         }
-
-        localStorage.setItem('membersGrid', membersGrid.innerHTML);
-        closeModal();
-    } else {
-        alert('Please fill in all fields');
+        saveChanges();
+      }
     }
-}
 
-function deleteMember(button) {
-    if (isLoggedIn && confirm('Are you sure you want to delete this member?')) {
-        button.closest('.member').remove();
-        localStorage.setItem('membersGrid', membersGrid.innerHTML);
-    }
-}
-
-function openRoleModal() {
-    roleModal.style.display = 'flex';
-    document.querySelector('#role-modal-title').textContent = 'Create New Role';
-    document.querySelector('#role-title').value = '';
-    document.querySelector('#role-description').value = '';
-    document.querySelector('#role-icon').value = '';
-    delete roleModal.dataset.editing;
-}
-
-function closeRoleModal() {
-    roleModal.style.display = 'none';
-}
-
-function openEditRoleModal(button) {
-    const role = button.closest('.role');
-    const title = role.querySelector('h3').textContent;
-    const description = role.querySelector('.tooltip p').textContent;
-    const iconSrc = role.querySelector('img').src;
-
-    document.querySelector('#role-modal-title').textContent = 'Edit Role';
-    document.querySelector('#role-title').value = title;
-    document.querySelector('#role-description').value = description;
-    document.querySelector('#role-icon').dataset.currentSrc = iconSrc;
-    roleModal.style.display = 'flex';
-    roleModal.dataset.editing = role.dataset.id || role.querySelector('img').src;
-}
-
-function saveRoleDetails() {
-    const title = document.querySelector('#role-title').value;
-    const description = document.querySelector('#role-description').value;
-    const icon = document.querySelector('#role-icon').files[0];
-    const editingId = roleModal.dataset.editing;
-
-    if (title && description) {
-        let iconSrc = document.querySelector('#role-icon').dataset.currentSrc || 'images/icons/default-role.png';
-        if (icon) {
-            iconSrc = URL.createObjectURL(icon);
-        }
-
-        if (editingId) {
-            const role = Array.from(rolesGrid.querySelectorAll('.role')).find(
-                r => (r.dataset.id || r.querySelector('img').src) === editingId
-            );
-            if (role) {
-                role.querySelector('img').src = iconSrc;
-                role.querySelector('h3').textContent = title;
-                role.querySelector('.tooltip p').textContent = description;
-                role.querySelector('.apply-button').href = `join-camp.html?role=${encodeURIComponent(title)}`;
-            }
+    function dropAboutImage(e) {
+      e.preventDefault();
+      const target = e.target.closest('.image-container');
+      if (draggedImage && target && draggedImage !== target) {
+        const parent = target.parentNode;
+        const draggedIndex = Array.from(parent.children).indexOf(draggedImage);
+        const targetIndex = Array.from(parent.children).indexOf(target);
+        if (draggedIndex < targetIndex) {
+          parent.insertBefore(draggedImage, target.nextSibling);
         } else {
-            const newRole = document.createElement('div');
-            newRole.className = 'role';
-            newRole.setAttribute('draggable', 'true');
-            newRole.dataset.id = Date.now();
-            newRole.innerHTML = `
-                <img src="${iconSrc}" alt="${title} Icon">
-                <h3>${title}</h3>
-                <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-                <div class="tooltip">
-                    <p>${description}</p>
-                </div>
-                <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-                <button class="delete-button" onclick="deleteRole(this)">×</button>
-            `;
-            newRole.addEventListener('dragstart', drag);
-            rolesGrid.insertBefore(newRole, rolesGrid.querySelector('.role[onclick]'));
+          parent.insertBefore(draggedImage, target);
         }
-
-        localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
-        closeRoleModal();
-    } else {
-        alert('Please fill in all fields');
+        saveAboutDetails();
+      }
     }
-}
 
-function deleteRole(button) {
-    if (isLoggedIn && confirm('Are you sure you want to delete this role?')) {
-        button.closest('.role').remove();
-        localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
-        ensureAddRoleElement();
+    function dropMissionImage(e) {
+      e.preventDefault();
+      const target = e.target.closest('.image-container');
+      if (draggedImage && target && draggedImage !== target) {
+        const parent = target.parentNode;
+        const draggedIndex = Array.from(parent.children).indexOf(draggedImage);
+        const targetIndex = Array.from(parent.children).indexOf(target);
+        if (draggedIndex < targetIndex) {
+          parent.insertBefore(draggedImage, target.nextSibling);
+        } else {
+          parent.insertBefore(draggedImage, target);
+        }
+        saveMissionDetails();
+      }
     }
-}
 
-function ensureAddRoleElement() {
-    if (!rolesGrid.querySelector('.role[onclick]')) {
-        const addRole = document.createElement('div');
-        addRole.className = 'role';
-        addRole.setAttribute('onclick', 'openRoleModal()');
-        addRole.innerHTML = `
-            <img src="images/icons/add-role.png" alt="Add New Role Icon">
-            <h3>Add New Role</h3>
-            <p>Create a new role for the camp.</p>
+    function dropGalleryImage(e) {
+      e.preventDefault();
+      const target = e.target.closest('.image-container');
+      if (draggedImage && target && draggedImage !== target) {
+        const parent = target.parentNode;
+        const draggedIndex = Array.from(parent.children).indexOf(draggedImage);
+        const targetIndex = Array.from(parent.children).indexOf(target);
+        if (draggedIndex < targetIndex) {
+          parent.insertBefore(draggedImage, target.nextSibling);
+        } else {
+          parent.insertBefore(draggedImage, target);
+        }
+        localStorage.setItem('campGallery', campGallery.innerHTML);
+      }
+    }
+
+    // Scroll handling for members and roles
+    function handleScroll(e) {
+      const grid = e.target.closest('.members-grid, .roles-grid');
+      const isLeft = e.target.classList.contains('left');
+      grid.scrollBy({
+        left: isLeft ? -150 : 150,
+        behavior: 'smooth'
+      });
+    }
+
+    // Modal handling
+    function openModal(modal) {
+      modal.style.display = 'flex';
+    }
+
+    function closeModal(modal) {
+      modal.style.display = 'none';
+    }
+
+    function openHeaderModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('.header h1').textContent;
+      document.querySelector('#header-title').value = title;
+      openModal(headerModal);
+    }
+
+    function closeHeaderModal() {
+      closeModal(headerModal);
+    }
+
+    function openMemberModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      document.querySelector('#member-modal-title').textContent = 'Add Member Details';
+      document.querySelector('#member-name').value = '';
+      document.querySelector('#member-role').value = '';
+      document.querySelector('#member-description').value = '';
+      document.querySelector('#member-photo').value = '';
+      openModal(memberModal);
+    }
+
+    function closeMemberModal() {
+      closeModal(memberModal);
+    }
+
+    function openEditMemberModal(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const member = button.closest('.member');
+      document.querySelector('#member-modal-title').textContent = 'Edit Member Details';
+      document.querySelector('#member-name').value = member.querySelector('h3').textContent;
+      document.querySelector('#member-role').value = member.querySelector('span').textContent;
+      document.querySelector('#member-description').value = member.querySelector('p').textContent;
+      document.querySelector('#member-photo').value = '';
+      memberModal.dataset.editTarget = member.outerHTML;
+      openModal(memberModal);
+    }
+
+    function openRoleModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      document.querySelector('#role-modal-title').textContent = 'Create New Role';
+      document.querySelector('#role-title').value = '';
+      document.querySelector('#role-description').value = '';
+      document.querySelector('#role-icon').value = '';
+      openModal(roleModal);
+    }
+
+    function closeRoleModal() {
+      closeModal(roleModal);
+    }
+
+    function openEditRoleModal(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const role = button.closest('.role');
+      document.querySelector('#role-modal-title').textContent = 'Edit Role';
+      document.querySelector('#role-title').value = role.querySelector('h3').textContent;
+      document.querySelector('#role-description').value = role.querySelector('.tooltip p').textContent;
+      document.querySelector('#role-icon').value = '';
+      roleModal.dataset.editTarget = role.outerHTML;
+      openModal(roleModal);
+    }
+
+    function openEventModal(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const event = button.closest('.event');
+      document.querySelector('#event-title').value = event.querySelector('h3').textContent;
+      document.querySelector('#event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent;
+      const date = event.querySelector('.event-date').textContent.match(/\d{4}-\d{2}-\d{2}/)[0];
+      const time = event.querySelector('.event-time').textContent.match(/\d{1,2}:\d{2} [AP]M/)[0];
+      const end = event.querySelector('.event-end').textContent.match(/\d{4}-\d{2}-\d{2}, \d{1,2}:\d{2} [AP]M/)[0];
+      document.querySelector('#event-date').value = date;
+      document.querySelector('#event-time').value = convertTo24Hour(time);
+      document.querySelector('#event-end').value = convertToDateTimeLocal(end);
+      document.querySelector('#event-image').value = '';
+      eventModal.dataset.editTarget = event.outerHTML;
+      openModal(eventModal);
+    }
+
+    function closeEventModal() {
+      closeModal(eventModal);
+    }
+
+    function openAboutModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#about h1').textContent;
+      const description = document.querySelector('#about p').textContent;
+      document.querySelector('#about-title').value = title;
+      document.querySelector('#about-description').value = description;
+      openModal(aboutModal);
+    }
+
+    function closeAboutModal() {
+      closeModal(aboutModal);
+    }
+
+    function openMissionModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#mission h1').textContent;
+      const description = document.querySelector('#mission p').textContent;
+      document.querySelector('#mission-title').value = title;
+      document.querySelector('#mission-description').value = description;
+      document.querySelector('#mission-image').value = '';
+      openModal(missionModal);
+    }
+
+    function closeMissionModal() {
+      closeModal(missionModal);
+    }
+
+    function openGalleryImageModal(button, section) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const imageContainer = button.closest('.image-container');
+      const img = imageContainer.querySelector('img');
+      document.querySelector('#gallery-image-alt').value = img.alt;
+      document.querySelector('#gallery-image-file').value = '';
+      galleryImageModal.dataset.section = section;
+      galleryImageModal.dataset.editTarget = imageContainer.outerHTML;
+      openModal(galleryImageModal);
+    }
+
+    function closeGalleryImageModal() {
+      closeModal(galleryImageModal);
+    }
+
+    function openEventsModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#events h1').textContent;
+      const description = document.querySelector('#events p').textContent;
+      document.querySelector('#events-title').value = title;
+      document.querySelector('#events-description').value = description;
+      openModal(eventsModal);
+    }
+
+    function closeEventsModal() {
+      closeModal(eventsModal);
+    }
+
+    function openNewsletterModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#newsletter h2').textContent;
+      const description = document.querySelector('#newsletter p').textContent;
+      document.querySelector('#newsletter-title').value = title;
+      document.querySelector('#newsletter-description').value = description;
+      openModal(newsletterModal);
+    }
+
+    function closeNewsletterModal() {
+      closeModal(newsletterModal);
+    }
+
+    function openContactModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('.contact-lead h2').textContent;
+      const description = document.querySelector('.contact-lead p').textContent;
+      const link = document.querySelector('.contact-lead a').href;
+      document.querySelector('#contact-title').value = title;
+      document.querySelector('#contact-description').value = description;
+      document.querySelector('#contact-link').value = link;
+      openModal(contactModal);
+    }
+
+    function closeContactModal() {
+      closeModal(contactModal);
+    }
+
+    function openJoinModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#join h2').textContent;
+      const description = document.querySelector('#join p').textContent;
+      document.querySelector('#join-title').value = title;
+      document.querySelector('#join-description').value = description;
+      openModal(joinModal);
+    }
+
+    function closeJoinModal() {
+      closeModal(joinModal);
+    }
+
+    function openSubmitModal() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#submit h1').textContent;
+      const description = document.querySelector('#submit p').textContent;
+      document.querySelector('#submit-title').value = title;
+      document.querySelector('#submit-description').value = description;
+      openModal(submitModal);
+    }
+
+    function closeSubmitModal() {
+      closeModal(submitModal);
+    }
+
+    // Save functions
+    function saveMemberDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const name = document.querySelector('#member-name').value;
+      const role = document.querySelector('#member-role').value;
+      const description = document.querySelector('#member-description').value;
+      const photo = document.querySelector('#member-photo').files[0];
+      const editTarget = memberModal.dataset.editTarget;
+
+      let imgSrc = 'images/default.jpg';
+      if (photo) {
+        imgSrc = URL.createObjectURL(photo);
+      } else if (editTarget) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(editTarget, 'text/html');
+        imgSrc = doc.querySelector('.member img').src;
+      }
+
+      const memberHTML = `
+        <div class="member${role.toLowerCase().includes('camp lead') ? ' camp-lead' : role.toLowerCase().includes('deputy lead') ? ' deputy-lead' : ''}" draggable="true" ondragstart="drag(event)">
+          <img src="${imgSrc}" alt="${name}">
+          <h3>${name}</h3>
+          <span>${role}</span>
+          <p>${description}</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+      `;
+
+      if (editTarget) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(editTarget, 'text/html');
+        const oldMember = membersGrid.querySelector(`[data-html="${doc.querySelector('.member').outerHTML.replace(/"/g, '&quot;')}"]`) || 
+                         Array.from(membersGrid.querySelectorAll('.member')).find(m => m.outerHTML === editTarget);
+        if (oldMember) {
+          oldMember.outerHTML = memberHTML;
+        }
+      } else {
+        membersGrid.insertAdjacentHTML('beforeend', memberHTML);
+      }
+
+      saveChanges();
+      closeMemberModal();
+    }
+
+    function saveRoleDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#role-title').value;
+      const description = document.querySelector('#role-description').value;
+      const icon = document.querySelector('#role-icon').files[0];
+      const editTarget = roleModal.dataset.editTarget;
+
+      let iconSrc = 'images/icons/default.png';
+      if (icon) {
+        iconSrc = URL.createObjectURL(icon);
+      } else if (editTarget) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(editTarget, 'text/html');
+        iconSrc = doc.querySelector('.role img').src;
+      }
+
+      const roleHTML = `
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="${iconSrc}" alt="${title} Icon">
+          <h3>${title}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>${description}</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+      `;
+
+      if (editTarget) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(editTarget, 'text/html');
+        const oldRole = rolesGrid.querySelector(`[data-html="${doc.querySelector('.role').outerHTML.replace(/"/g, '&quot;')}"]`) || 
+                       Array.from(rolesGrid.querySelectorAll('.role')).find(r => r.outerHTML === editTarget);
+        if (oldRole) {
+          oldRole.outerHTML = roleHTML;
+        }
+      } else {
+        rolesGrid.insertAdjacentHTML('beforeend', roleHTML);
+      }
+
+      saveChanges();
+      closeRoleModal();
+    }
+
+    function saveEventDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#event-title').value;
+      const description = document.querySelector('#event-description').value;
+      const date = document.querySelector('#event-date').value;
+      const time = document.querySelector('#event-time').value;
+      const end = document.querySelector('#event-end').value;
+      const image = document.querySelector('#event-image').files[0];
+      const editTarget = eventModal.dataset.editTarget;
+
+      let imgSrc = 'images/event-default.jpg';
+      if (image) {
+        imgSrc = URL.createObjectURL(image);
+      } else if (editTarget) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(editTarget, 'text/html');
+        imgSrc = doc.querySelector('.event img').src;
+      }
+
+      const formattedTime = convertTo12Hour(time);
+      const formattedEnd = formatEndDateTime(end);
+
+      const eventHTML = `
+        <div class="event">
+          <img src="${imgSrc}" alt="${title} Poster">
+          <h3>${title}</h3>
+          <p>${description}</p>
+          <p class="event-date"><strong>Date:</strong> ${formatDate(date)}</p>
+          <p class="event-time"><strong>Time:</strong> ${formattedTime}</p>
+          <p class="event-end"><strong>End Date & Time:</strong> ${formattedEnd}</p>
+          <button class="edit-button" onclick="openEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+      `;
+
+      if (editTarget) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(editTarget, 'text/html');
+        const oldEvent = eventsGrid.querySelector(`[data-html="${doc.querySelector('.event').outerHTML.replace(/"/g, '&quot;')}"]`) || 
+                        Array.from(eventsGrid.querySelectorAll('.event')).find(e => e.outerHTML === editTarget);
+        if (oldEvent) {
+          oldEvent.outerHTML = eventHTML;
+        }
+      } else {
+        eventsGrid.insertAdjacentHTML('beforeend', eventHTML);
+      }
+
+      localStorage.setItem('eventsGrid', eventsGrid.innerHTML);
+      closeEventModal();
+    }
+
+    function saveAboutDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#about-title').value;
+      const description = document.querySelector('#about-description').value;
+      document.querySelector('#about h1').textContent = title;
+      document.querySelector('#about p').textContent = description;
+      localStorage.setItem('aboutSection', JSON.stringify({
+        title,
+        description,
+        gallery: aboutGallery.innerHTML
+      }));
+      closeAboutModal();
+    }
+
+    function saveMissionDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#mission-title').value;
+      const description = document.querySelector('#mission-description').value;
+      const image = document.querySelector('#mission-image').files[0];
+      document.querySelector('#mission h1').textContent = title;
+      document.querySelector('#mission p').textContent = description;
+      if (image) {
+        const imgSrc = URL.createObjectURL(image);
+        const imageHTML = `
+          <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
+            <img src="${imgSrc}" alt="Mission Image">
+            <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+            <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+          </div>
         `;
-        rolesGrid.appendChild(addRole);
+        missionGallery.insertAdjacentHTML('beforeend', imageHTML);
+      }
+      localStorage.setItem('missionSection', JSON.stringify({
+        title,
+        description,
+        gallery: missionGallery.innerHTML
+      }));
+      closeMissionModal();
     }
-}
 
-function openEventModal(button) {
-    const event = button.closest('.event');
-    const title = event.querySelector('h3').textContent;
-    const description = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent;
-    const date = event.querySelector('.event-date').textContent.replace('Date: ', '');
-    const time = event.querySelector('.event-time').textContent.replace('Time: ', '');
-    const end = event.querySelector('.event-end').textContent.replace('End Date & Time: ', '');
-    const imgSrc = event.querySelector('img').src;
+    function saveGalleryImageDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const alt = document.querySelector('#gallery-image-alt').value;
+      const file = document.querySelector('#gallery-image-file').files[0];
+      const section = galleryImageModal.dataset.section;
+      const editTarget = galleryImageModal.dataset.editTarget;
 
-    document.querySelector('#event-title').value = title;
-    document.querySelector('#event-description').value = description;
-    document.querySelector('#event-date').value = new Date(date).toISOString().split('T')[0];
-    document.querySelector('#event-time').value = time;
-    document.querySelector('#event-end').value = new Date(end).toISOString().slice(0, 16);
-    document.querySelector('#event-image').dataset.currentSrc = imgSrc;
-    eventModal.style.display = 'flex';
-    eventModal.dataset.editing = event.dataset.id || event.querySelector('img').src;
-}
+      let imgSrc = '';
+      if (file) {
+        imgSrc = URL.createObjectURL(file);
+      } else {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(editTarget, 'text/html');
+        imgSrc = doc.querySelector('img').src;
+      }
 
-function closeEventModal() {
-    eventModal.style.display = 'none';
-}
+      const imageHTML = `
+        <div class="image-container" draggable="true" ondragstart="drag${section.charAt(0).toUpperCase() + section.slice(1)}Image(event)">
+          <img src="${imgSrc}" alt="${alt}">
+          <button class="edit-button" onclick="openGalleryImageModal(this, '${section}')">✎</button>
+          <button class="delete-button" onclick="delete${section.charAt(0).toUpperCase() + section.slice(1)}Image(this)">×</button>
+        </div>
+      `;
 
-function saveEventDetails() {
-    const title = document.querySelector('#event-title').value;
-    const description = document.querySelector('#event-description').value;
-    const date = document.querySelector('#event-date').value;
-    const time = document.querySelector('#event-time').value;
-    const end = document.querySelector('#event-end').value;
-    const image = document.querySelector('#event-image').files[0];
-    const editingId = eventModal.dataset.editing;
+      const gallery = section === 'about' ? aboutGallery : section === 'mission' ? missionGallery : campGallery;
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(editTarget, 'text/html');
+      const oldImage = gallery.querySelector(`[data-html="${doc.querySelector('.image-container').outerHTML.replace(/"/g, '&quot;')}"]`) || 
+                      Array.from(gallery.querySelectorAll('.image-container')).find(i => i.outerHTML === editTarget);
+      if (oldImage) {
+        oldImage.outerHTML = imageHTML;
+      } else {
+        gallery.insertAdjacentHTML('beforeend', imageHTML);
+      }
 
-    if (title && description && date && time && end) {
-        let imgSrc = document.querySelector('#event-image').dataset.currentSrc || 'images/default-event.jpg';
-        if (image) {
-            imgSrc = URL.createObjectURL(image);
-        }
-
-        const formattedDate = new Date(date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-        const formattedEnd = new Date(end).toLocaleString('en-US', {
-            month: 'long',
-            day: 'numeric',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true
-        });
-
-        if (editingId) {
-            const event = Array.from(eventsGrid.querySelectorAll('.event')).find(
-                e => (e.dataset.id || e.querySelector('img').src) === editingId
-            );
-            if (event) {
-                event.querySelector('img').src = imgSrc;
-                event.querySelector('h3').textContent = title;
-                event.querySelector('p:not(.event-date):not(.event-time):not(.event-end)').textContent = description;
-                event.querySelector('.event-date').innerHTML = `<strong>Date:</strong> ${formattedDate}`;
-                event.querySelector('.event-time').innerHTML = `<strong>Time:</strong> ${time}`;
-                event.querySelector('.event-end').innerHTML = `<strong>End Date & Time:</strong> ${formattedEnd}`;
-            }
-        } else {
-            const newEvent = document.createElement('div');
-            newEvent.className = 'event';
-            newEvent.dataset.id = Date.now();
-            newEvent.innerHTML = `
-                <img src="${imgSrc}" alt="${title}">
-                <h3>${title}</h3>
-                <p>${description}</p>
-                <p class="event-date"><strong>Date:</strong> ${formattedDate}</p>
-                <p class="event-time"><strong>Time:</strong> ${time}</p>
-                <p class="event-end"><strong>End Date & Time:</strong> ${formattedEnd}</p>
-                <button class="edit-button" onclick="openEventModal(this)">✎</button>
-                <button class="delete-button" onclick="deleteEvent(this)">×</button>
-            `;
-            eventsGrid.appendChild(newEvent);
-        }
-
-        localStorage.setItem('eventsGrid', eventsGrid.innerHTML);
-        closeEventModal();
-    } else {
-        alert('Please fill in all fields');
+      if (section === 'about') {
+        saveAboutDetails();
+      } else if (section === 'mission') {
+        saveMissionDetails();
+      } else {
+        localStorage.setItem('campGallery', campGallery.innerHTML);
+      }
+      closeGalleryImageModal();
     }
-}
 
-function deleteEvent(button) {
-    if (isLoggedIn && confirm('Are you sure you want to delete this event?')) {
+    function saveHeaderDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#header-title').value;
+      document.querySelector('.header h1').textContent = title;
+      localStorage.setItem('headerSection', JSON.stringify({ title }));
+      closeHeaderModal();
+    }
+
+    function saveEventsDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#events-title').value;
+      const description = document.querySelector('#events-description').value;
+      document.querySelector('#events h1').textContent = title;
+      document.querySelector('#events p').textContent = description;
+      localStorage.setItem('eventsSection', JSON.stringify({ title, description }));
+      closeEventsModal();
+    }
+
+    function saveNewsletterDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#newsletter-title').value;
+      const description = document.querySelector('#newsletter-description').value;
+      document.querySelector('#newsletter h2').textContent = title;
+      document.querySelector('#newsletter p').textContent = description;
+      localStorage.setItem('newsletterSection', JSON.stringify({ title, description }));
+      closeNewsletterModal();
+    }
+
+    function saveContactDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#contact-title').value;
+      const description = document.querySelector('#contact-description').value;
+      const link = document.querySelector('#contact-link').value;
+      document.querySelector('.contact-lead h2').textContent = title;
+      document.querySelector('.contact-lead p').textContent = description;
+      document.querySelector('.contact-lead a').href = link;
+      document.querySelector('.contact-lead a').textContent = link;
+      localStorage.setItem('contactSection', JSON.stringify({ title, description, link }));
+      closeContactModal();
+    }
+
+    function saveJoinDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#join-title').value;
+      const description = document.querySelector('#join-description').value;
+      document.querySelector('#join h2').textContent = title;
+      document.querySelector('#join p').textContent = description;
+      localStorage.setItem('joinSection', JSON.stringify({ title, description }));
+      closeJoinModal();
+    }
+
+    function saveSubmitDetails() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const title = document.querySelector('#submit-title').value;
+      const description = document.querySelector('#submit-description').value;
+      document.querySelector('#submit h1').textContent = title;
+      document.querySelector('#submit p').textContent = description;
+      localStorage.setItem('submitSection', JSON.stringify({ title, description }));
+      closeSubmitModal();
+    }
+
+    function saveChanges() {
+      localStorage.setItem('membersGrid', membersGrid.innerHTML);
+      localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
+      localStorage.setItem('eventsGrid', eventsGrid.innerHTML);
+    }
+
+    // Delete functions
+    function deleteMember(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      if (confirm('Are you sure you want to delete this member?')) {
+        button.closest('.member').remove();
+        saveChanges();
+      }
+    }
+
+    function deleteRole(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      if (confirm('Are you sure you want to delete this role?')) {
+        button.closest('.role').remove();
+        saveChanges();
+      }
+    }
+
+    function deleteEvent(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      if (confirm('Are you sure you want to delete this event?')) {
         button.closest('.event').remove();
-        localStorage.setItem('eventsGrid', eventsGrid.innerHTML);
+        saveChanges();
+      }
     }
-}
 
-function openAboutModal() {
-    const section = document.querySelector('#about');
-    const title = section.querySelector('h1').textContent;
-    const description = section.querySelector('p').textContent;
-
-    document.querySelector('#about-title').value = title;
-    document.querySelector('#about-description').value = description;
-    aboutModal.style.display = 'flex';
-}
-
-function closeAboutModal() {
-    aboutModal.style.display = 'none';
-}
-
-function saveAboutDetails() {
-    const title = document.querySelector('#about-title').value;
-    const description = document.querySelector('#about-description').value;
-
-    if (title && description) {
-        const section = document.querySelector('#about');
-        section.querySelector('h1').textContent = title;
-        section.querySelector('p').textContent = description;
-        localStorage.setItem('aboutSection', section.innerHTML);
-        closeAboutModal();
-    } else {
-        alert('Please fill in all fields');
-    }
-}
-
-function openMissionModal() {
-    const section = document.querySelector('#mission');
-    const title = section.querySelector('h1').textContent;
-    const description = section.querySelector('p').textContent;
-
-    document.querySelector('#mission-title').value = title;
-    document.querySelector('#mission-description').value = description;
-    missionModal.style.display = 'flex';
-}
-
-function closeMissionModal() {
-    missionModal.style.display = 'none';
-}
-
-function saveMissionDetails() {
-    const title = document.querySelector('#mission-title').value;
-    const description = document.querySelector('#mission-description').value;
-    const image = document.querySelector('#mission-image').files[0];
-
-    if (title && description) {
-        const section = document.querySelector('#mission');
-        section.querySelector('h1').textContent = title;
-        section.querySelector('p').textContent = description;
-
-        if (image) {
-            const imgSrc = URL.createObjectURL(image);
-            const gallery = document.querySelector('#mission-gallery');
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image-container';
-            imageContainer.setAttribute('draggable', 'true');
-            imageContainer.innerHTML = `
-                <img src="${imgSrc}" alt="${title}">
-                <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-                <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
-            `;
-            imageContainer.addEventListener('dragstart', dragMissionImage);
-            gallery.appendChild(imageContainer);
-        }
-
-        localStorage.setItem('missionSection', section.innerHTML);
-        closeMissionModal();
-    } else {
-        alert('Please fill in all fields');
-    }
-}
-
-function openGalleryImageModal(button, type) {
-    const imageContainer = button.closest('.image-container');
-    const alt = imageContainer.querySelector('img').alt;
-    const src = imageContainer.querySelector('img').src;
-
-    document.querySelector('#gallery-image-alt').value = alt;
-    document.querySelector('#gallery-image-file').dataset.currentSrc = src;
-    galleryImageModal.style.display = 'flex';
-    galleryImageModal.dataset.type = type;
-    galleryImageModal.dataset.editing = src;
-}
-
-function closeGalleryImageModal() {
-    galleryImageModal.style.display = 'none';
-}
-
-function saveGalleryImageDetails() {
-    const alt = document.querySelector('#gallery-image-alt').value;
-    const file = document.querySelector('#gallery-image-file').files[0];
-    const type = galleryImageModal.dataset.type;
-    const editingSrc = galleryImageModal.dataset.editing;
-
-    if (alt) {
-        let gallery;
-        let storageKey;
-        if (type === 'about') {
-            gallery = document.querySelector('#about-gallery');
-            storageKey = 'aboutSection';
-        } else if (type === 'mission') {
-            gallery = document.querySelector('#mission-gallery');
-            storageKey = 'missionSection';
-        } else {
-            gallery = document.querySelector('#camp-gallery');
-            storageKey = 'campGallery';
-        }
-
-        const imageContainer = Array.from(gallery.querySelectorAll('.image-container')).find(
-            container => container.querySelector('img').src === editingSrc
-        );
-
-        if (imageContainer) {
-            const img = imageContainer.querySelector('img');
-            img.alt = alt;
-            if (file) {
-                img.src = URL.createObjectURL(file);
-            }
-            localStorage.setItem(storageKey, gallery.closest('.section').innerHTML || gallery.innerHTML);
-            closeGalleryImageModal();
-        }
-    } else {
-        alert('Please provide alt text');
-    }
-}
-
-function uploadAboutImage() {
-    if (!isLoggedIn) return;
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.onchange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const imgSrc = URL.createObjectURL(file);
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image-container';
-            imageContainer.setAttribute('draggable', 'true');
-            imageContainer.innerHTML = `
-                <img src="${imgSrc}" alt="New Image">
-                <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
-                <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
-            `;
-            imageContainer.addEventListener('dragstart', dragAboutImage);
-            aboutGallery.appendChild(imageContainer);
-            localStorage.setItem('aboutSection', document.querySelector('#about').innerHTML);
-        }
-    };
-    input.click();
-}
-
-function deleteAboutImage(button) {
-    if (isLoggedIn && confirm('Are you sure you want to delete this image?')) {
+    function deleteAboutImage(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      if (confirm('Are you sure you want to delete this image?')) {
         button.closest('.image-container').remove();
-        localStorage.setItem('aboutSection', document.querySelector('#about').innerHTML);
+        saveAboutDetails();
+      }
     }
-}
 
-function uploadMissionImage() {
-    if (!isLoggedIn) return;
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.onchange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const imgSrc = URL.createObjectURL(file);
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image-container';
-            imageContainer.setAttribute('draggable', 'true');
-            imageContainer.innerHTML = `
-                <img src="${imgSrc}" alt="New Image">
-                <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-                <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
-            `;
-            imageContainer.addEventListener('dragstart', dragMissionImage);
-            missionGallery.appendChild(imageContainer);
-            localStorage.setItem('missionSection', document.querySelector('#mission').innerHTML);
-        }
-    };
-    input.click();
-}
-
-function deleteMissionImage(button) {
-    if (isLoggedIn && confirm('Are you sure you want to delete this image?')) {
+    function deleteMissionImage(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      if (confirm('Are you sure you want to delete this image?')) {
         button.closest('.image-container').remove();
-        localStorage.setItem('missionSection', document.querySelector('#mission').innerHTML);
+        saveMissionDetails();
+      }
     }
-}
 
-function uploadGalleryImage() {
-    if (!isLoggedIn) return;
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    input.onchange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const imgSrc = URL.createObjectURL(file);
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image-container';
-            imageContainer.setAttribute('draggable', 'true');
-            imageContainer.innerHTML = `
-                <img src="${imgSrc}" alt="New Image">
-                <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
-                <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
-            `;
-            imageContainer.addEventListener('dragstart', dragGalleryImage);
-            campGallery.appendChild(imageContainer);
-            localStorage.setItem('campGallery', campGallery.innerHTML);
-        }
-    };
-    input.click();
-}
-
-function deleteGalleryImage(button) {
-    if (isLoggedIn && confirm('Are you sure you want to delete this image?')) {
+    function deleteGalleryImage(button) {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      if (confirm('Are you sure you want to delete this image?')) {
         button.closest('.image-container').remove();
         localStorage.setItem('campGallery', campGallery.innerHTML);
+      }
     }
-}
 
-function saveChanges() {
-    localStorage.setItem('membersGrid', membersGrid.innerHTML);
-    localStorage.setItem('rolesGrid', rolesGrid.innerHTML);
-}
-
-function handleScroll(event) {
-    const container = event.target.closest('.members-grid, .roles-grid');
-    const direction = event.target.classList.contains('left') ? -1 : 1;
-    const scrollAmount = container.clientWidth * 0.8;
-    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
-}
-
-function updateButtonVisibility() {
-    document.querySelectorAll('.save-button, .edit-section-button').forEach(button => {
-        button.style.display = isLoggedIn ? 'block' : 'none';
-    });
-    document.querySelectorAll('.delete-button, .edit-button').forEach(button => {
-        button.style.display = isLoggedIn ? 'block' : 'none';
-    });
-}
-
-// Initialize scroll arrows
-document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-    arrow.addEventListener('click', handleScroll);
-});
-
-// Smooth scrolling for nav links
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-        if (window.innerWidth <= 768) {
-            navLinks.classList.remove('active');
+    // Image upload functions
+    function uploadAboutImage() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const imgSrc = URL.createObjectURL(file);
+          const imageHTML = `
+            <div class="image-container" draggable="true" ondragstart="dragAboutImage(event)">
+              <img src="${imgSrc}" alt="New Image">
+              <button class="edit-button" onclick="openGalleryImageModal(this, 'about')">✎</button>
+              <button class="delete-button" onclick="deleteAboutImage(this)">×</button>
+            </div>
+          `;
+          aboutGallery.insertAdjacentHTML('beforeend', imageHTML);
+          saveAboutDetails();
         }
-    });
-});
+      };
+      input.click();
+    }
 
-// Initialize countdown
-updateCountdown();
+    function uploadMissionImage() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const imgSrc = URL.createObjectURL(file);
+          const imageHTML = `
+            <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
+              <img src="${imgSrc}" alt="New Image">
+              <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+              <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+            </div>
+          `;
+          missionGallery.insertAdjacentHTML('beforeend', imageHTML);
+          saveMissionDetails();
+        }
+      };
+      input.click();
+    }
+
+    function uploadGalleryImage() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const imgSrc = URL.createObjectURL(file);
+          const imageHTML = `
+            <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+              <img src="${imgSrc}" alt="New Image">
+              <button class="edit-button" onclick="openGalleryImageModal(this, 'gallery')">✎</button>
+              <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+            </div>
+          `;
+          campGallery.insertAdjacentHTML('beforeend', imageHTML);
+          localStorage.setItem('campGallery', campGallery.innerHTML);
+        }
+      };
+      input.click();
+    }
+
+    // Countdown timer
+    function updateTargetDate() {
+      if (!isLoggedIn) return alert('Please log in to edit.');
+      const dateInput = document.querySelector('#countdown-date').value;
+      targetDate = new Date(dateInput);
+      localStorage.setItem('targetDate', targetDate.toISOString());
+      updateCountdown();
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const timeDiff = targetDate - now;
+
+      if (timeDiff <= 0) {
+        document.querySelector('#countdown').textContent = 'Event has started!';
+        return;
+      }
+
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      document.querySelector('#countdown').textContent = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Utility functions
+    function convertTo24Hour(time) {
+      const [hour, min, period] = time.match(/(\d+):(\d+)\s*([AP]M)/i).slice(1);
+      let hour24 = parseInt(hour);
+      if (period.toUpperCase() === 'PM' && hour24 !== 12) hour24 += 12;
+      if (period.toUpperCase() === 'AM' && hour24 === 12) hour24 = 0;
+      return `${hour24.toString().padStart(2, '0')}:${min}`;
+    }
+
+    function convertTo12Hour(time) {
+      const [hour, min] = time.split(':');
+      let hour12 = parseInt(hour);
+      const period = hour12 >= 12 ? 'PM' : 'AM';
+      if (hour12 > 12) hour12 -= 12;
+      if (hour12 === 0) hour12 = 12;
+      return `${hour12}:${min} ${period}`;
+    }
+
+    function formatDate(date) {
+      return new Date(date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    function convertToDateTimeLocal(end) {
+      const [date, time] = end.split(', ');
+      const [year, month, day] = date.match(/\d{4}-\d{2}-\d{2}/)[0].split('-');
+      const time24 = convertTo24Hour(time);
+      return `${year}-${month}-${day}T${time24}`;
+    }
+
+    function formatEndDateTime(end) {
+      const date = new Date(end);
+      return date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      });
+    }
   </script>
 </body>
 </html>
