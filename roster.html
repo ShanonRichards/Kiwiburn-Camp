@@ -1,0 +1,247 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camp Roster - Cosmic Rejex</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+      cursor: url('images/ufo-cursor.png'), auto;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    body.night-mode {
+      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
+      color: #f8e1b4;
+    }
+
+    body.night-mode .section {
+      background-color: rgba(44, 29, 15, 0.8);
+    }
+
+    body.night-mode .section h1,
+    body.night-mode .section p,
+    body.night-mode .roster-list li {
+      color: #f8e1b4;
+    }
+
+    a, button {
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(44, 29, 15, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+      border-bottom: 2px solid #e67e22;
+    }
+
+    body.night-mode nav {
+      background: rgba(74, 55, 35, 0.85);
+    }
+
+    .nav-links a {
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      margin: 0 15px;
+      padding: 10px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: #e67e22;
+      color: #2b1b0f;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: #f8e1b4;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      background: rgba(244, 228, 188, 0.8);
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
+    }
+
+    .section h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #2b1b0f;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+      color: #2b1b0f;
+    }
+
+    .roster-list {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .roster-list li {
+      font-size: 1.1em;
+      margin: 10px 0;
+      color: #2b1b0f;
+    }
+
+    .roster-list li strong {
+      color: #e67e22;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin-top: 20px;
+    }
+
+    .back-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 40px 15px;
+      }
+
+      .section h1 {
+        font-size: 2em;
+      }
+
+      .section p, .roster-list li {
+        font-size: 1em;
+      }
+
+      .back-button {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+  </nav>
+
+  <section class="section">
+    <h1>Camp Roster</h1>
+    <p>Meet the crew bringing Cosmic Rejex to life at Kiwiburn 2026!</p>
+    <ul class="roster-list">
+      <li><strong>Shanon Richards</strong> - Camp Lead</li>
+      <li><strong>Meghan Robson</strong> - Deputy Lead</li>
+      <li><strong>Russell Duffield</strong> - Build Lead</li>
+      <li><strong>Star Dust Bambi</strong> - Vibe Manager</li>
+      <li><strong>Micheal Dunstan</strong> - Logistics Lead</li>
+      <li><strong>Tomas Shelby</strong> - Sound Lead</li>
+      <li><strong>Jarrod Skiffington</strong> - Transport Lead</li>
+      <li><strong>Alana Stewart</strong> - Kitchen Lead</li>
+      <li><strong>Tyler Rowe</strong> - Art & Workshop Lead</li>
+      <li><strong>Imogen Olivia</strong> - Wellbeing Officer</li>
+      <li><strong>Sarsha Skiffington</strong> - Greeter</li>
+      <li><strong>Gartah</strong> - Strike Lead</li>
+      <li><strong>Jackie Church</strong> - Comms Lead</li>
+      <li><strong>Olivia Derewlany</strong> - Safety Officer</li>
+      <li><strong>Wenyi Huang</strong> - MOOP Manager</li>
+      <li><strong>Tina Lein</strong> - Power/Tech Lead</li>
+    </ul>
+    <a href="index.html" class="back-button">Back to Home</a>
+  </section>
+
+  <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'night' : 'day');
+      themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+    });
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'night') {
+      document.body.classList.add('night-mode');
+      themeToggle.textContent = '☀️';
+    } else {
+      themeToggle.textContent = '🌙';
+    }
+  </script>
+</body>
+</html>
