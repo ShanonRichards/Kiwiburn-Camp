@@ -1399,15 +1399,21 @@
     </section>
   </div>
 
-  <div class="mission-container">
-    <section class="section" id="mission">
-      <h1>Our Mission</h1>
-      <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
-      <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
-      <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)"></div>
-      <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
-    </section>
-  </div>
+<div class="mission-container">
+  <section class="section" id="mission">
+    <h1>Our Mission</h1>
+    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
+    <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
+    <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
+      <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
+        <img src="images/Our-Mission/Camp-Photo.jpg" alt="Our Mission Camp Photo">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+        <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+      </div>
+    </div>
+    <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
+  </section>
+</div>
 
   <div class="members-container">
     <section class="section" id="members">
