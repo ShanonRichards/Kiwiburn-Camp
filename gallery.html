@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - Cosmic Rejex</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> <!-- Assume shared CSS from main page -->
+</head>
+<body>
+  <nav>
+    <button class="hamburger" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#mission">Mission</a>
+      <a href="index.html#members">Members</a>
+      <a href="index.html#events">Events</a>
+      <a href="index.html#submit">Submit Event</a>
+      <a href="index.html#newsletter">Newsletter</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="roster.html">Roster</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+  </nav>
+
+  <div class="login-container">
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required aria-label="Username">
+      <input type="password" id="password" placeholder="Password" required aria-label="Password">
+      <button type="submit">Login</button>
+    </form>
+    <button class="logout-button" aria-label="Logout">Logout</button>
+  </div>
+
+  <section class="section" id="gallery">
+    <h1>Our Gallery</h1>
+    <p>Explore moments captured from our Cosmic Rejex camp at Kiwiburn!</p>
+    <div class="gallery" id="main-gallery" ondragover="allowDrop(event)" ondrop="dropGalleryImage(event)">
+      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+        <img src="images/Campphoto1.jpg" alt="Camp Mates">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
+        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+      </div>
+      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+        <img src="images/Campphoto15.png" alt="Camp Mates">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
+        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+      </div>
+      <div class="image-container" draggable="true" ondragstart="dragGalleryImage(event)">
+        <img src="images/Campphoto17.png" alt="Night Lights">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'main')">✎</button>
+        <button class="delete-button" onclick="deleteGalleryImage(this)">×</button>
+      </div>
+    </div>
+    <button class="save-button" onclick="uploadGalleryImage()">Upload New Image</button>
+  </section>
+
+  <footer>
+    <p>© 2025 Cosmic Rejex. All rights reserved.</p>
+  </footer>
+
+  <script src="scripts.js"></script> <!-- Assume shared JS from main page -->
+</body>
+</html>
