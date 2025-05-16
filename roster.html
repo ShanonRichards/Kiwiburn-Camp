@@ -5,7 +5,568 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Roster - Cosmic Rejex</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+      cursor: url('images/ufo-cursor.png'), auto;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    body.night-mode {
+      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
+      color: #f8e1b4;
+    }
+
+    body.night-mode .section {
+      background-color: rgba(44, 29, 15, 0.8);
+    }
+
+    body.night-mode .section h1,
+    body.night-mode .section p,
+    body.night-mode .roster-container,
+    body.night-mode .members-grid .member {
+      color: #f8e1b4;
+      background: rgba(44, 29, 15, 0.3);
+    }
+
+    body.night-mode .modal-content,
+    body.night-mode .modal-content input,
+    body.night-mode .modal-content select {
+      background: rgba(44, 29, 15, 0.9);
+      color: #f8e1b4;
+    }
+
+    a, button, input, select {
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(44, 29, 15, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+      border-bottom: 2px solid #e67e22;
+    }
+
+    body.night-mode nav {
+      background: rgba(74, 55, 35, 0.85);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      margin: 5px 15px;
+      padding: 10px 15px;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      background-color: #e67e22;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: #f8e1b4;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      padding: 10px;
+      cursor: pointer;
+      transition: color 0.3s, box-shadow 0.3s;
+    }
+
+    .theme-toggle:hover {
+      color: #f39c12;
+      box-shadow: 0 0 10px #e67e22;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      color: #f8e1b4;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 20px;
+      background: rgba(44, 29, 15, 0.85);
+      border-bottom: 1px solid #e67e22;
+      z-index: 999;
+    }
+
+    body.night-mode .login-container {
+      background: rgba(74, 55, 35, 0.85);
+    }
+
+    .login-container form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .login-container input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .login-container input::placeholder {
+      color: #ffffff;
+    }
+
+    .login-container button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .login-container .logout-button {
+      display: none;
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      background: url('images/dusty-texture.png') center/cover;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .section h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #2b1b0f;
+      letter-spacing: 1px;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+      color: #2b1b0f;
+    }
+
+    .roster-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .role-selector {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .role-selector select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      width: 200px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.night-mode .role-selector select {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      padding: 20px;
+    }
+
+    .member {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #e67e22;
+      position: relative;
+    }
+
+    .member:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+    }
+
+    .member img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #e67e22;
+    }
+
+    .member h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5em;
+      color: #2b1b0f;
+      margin: 10px 0 5px;
+    }
+
+    .member span {
+      font-size: 1em;
+      color: #e67e22;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .member p {
+      font-size: 0.9em;
+      color: #2b1b0f;
+      margin: 0 0 10px;
+    }
+
+    .member .edit-button, .member .delete-button {
+      display: none;
+      position: absolute;
+      top: 5px;
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .member .edit-button {
+      right: 35px;
+    }
+
+    .member .delete-button {
+      right: 5px;
+    }
+
+    .logged-in .member .edit-button, .logged-in .member .delete-button {
+      display: block;
+    }
+
+    .member .edit-button:hover, .member .delete-button:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .scroll-arrow {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .scroll-arrow:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .scroll-arrow.left {
+      left: 10px;
+    }
+
+    .scroll-arrow.right {
+      right: 10px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      border: 2px solid #e67e22;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      font-family: 'Bebas Neue', cursive;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input, .modal-content select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .modal-content input[type="file"] {
+      background: none;
+      border: none;
+      padding: 5px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 0 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      font-size: 1.2em;
+      padding: 5px 10px;
+    }
+
+    .save-button {
+      padding: 10px 20px;
+      background посел: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 20px auto;
+      display: none;
+    }
+
+    .logged-in .save-button {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    body.night-mode footer {
+      background-color: #4a3723;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+      }
+
+      body.night-mode .nav-links {
+        background: rgba(74, 55, 35, 0.9);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      nav a {
+        margin: 5px 0;
+        font-size: 1rem;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .theme-toggle {
+        font-size: 0.9rem;
+        padding: 5px;
+      }
+
+      .login-container {
+        padding: 10px;
+      }
+
+      .login-container form {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .login-container input, .login-container button {
+        font-size: 0.8rem;
+        padding: 6px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .section {
+        padding: 40px 15px;
+      }
+
+      .section h1 {
+        font-size: 2em;
+      }
+
+      .section p {
+        font-size: 1em;
+        max-width: 95%;
+      }
+
+      .roster-container {
+        max-width: 95%;
+        padding: 20px 15px;
+      }
+
+      .members-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 95%;
+      }
+
+      .role-selector select {
+        width: 150px;
+        font-size: 0.9rem;
+      }
+
+      .scroll-arrow {
+        width: 25px;
+        height: 25px;
+        font-size: 1em;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .section h1 {
+        font-size: 1.6em;
+      }
+
+      .section p {
+        font-size: 0.9em;
+      }
+
+      .role-selector select {
+        width: 120px;
+        font-size: 0.8rem;
+      }
+
+      .member h3 {
+        font-size: 1.2em;
+      }
+
+      .member span {
+        font-size: 0.9em;
+      }
+
+      .member p {
+        font-size: 0.8em;
+      }
+
+      .hamburger {
+        font-size: 1.2rem;
+      }
+
+      .login-container input, .login-container button {
+        font-size: 0.7em;
+        padding: 5px;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -33,37 +594,236 @@
     <button class="logout-button" aria-label="Logout">Logout</button>
   </div>
 
-  <section class="section" id="roster">
-    <h1>Camp Roster</h1>
-    <p>Meet the full crew of Cosmic Rejex, including all campmates contributing to our vibe.</p>
-    <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
-      <div class="scroll-arrow left" data-grid="members">◄</div>
-      <div class="scroll-arrow right" data-grid="members">►</div>
-      <!-- Example roster members (can be expanded) -->
-      <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
-        <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
-        <h3>Shanon Richards</h3>
-        <span>Camp Lead</span>
-        <p>Oversees planning, forms, and execution.</p>
-        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteMember(this)">×</button>
+  <div class="roster-container">
+    <section class="section" id="roster">
+      <h1>Camp Roster</h1>
+      <p>Meet the full crew of Cosmic Rejex, including all campmates contributing to our vibe.</p>
+      <div class="role-selector">
+        <select id="role-select" aria-label="Select Role">
+          <option value="all">All Roles</option>
+          <option value="camp-lead">Camp Lead</option>
+          <option value="deputy-lead">Deputy Lead</option>
+          <option value="member">Member</option>
+        </select>
       </div>
-      <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
-        <img src="images/MeganR.jpg" alt="Meghan">
-        <h3>Meghan Robson</h3>
-        <span>Deputy Lead</span>
-        <p>Supports Camp Lead, tracks tasks.</p>
-        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteMember(this)">×</button>
+      <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
+        <div class="scroll-arrow left" data-grid="members">◄</div>
+        <div class="scroll-arrow right" data-grid="members">►</div>
+        <div class="member camp-lead" data-role="camp-lead" draggable="true" ondragstart="drag(event)">
+          <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
+          <h3>Shanon Richards</h3>
+          <span>Camp Lead</span>
+          <p>Oversees planning, forms, and execution.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member deputy-lead" data-role="deputy-lead" draggable="true" ondragstart="drag(event)">
+          <img src="images/MeganR.jpg" alt="Meghan Robson">
+          <h3>Meghan Robson</h3>
+          <span>Deputy Lead</span>
+          <p>Supports Camp Lead, tracks tasks.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" data-role="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/placeholder.jpg" alt="Alex Carter">
+          <h3>Alex Carter</h3>
+          <span>Member</span>
+          <p>Brings the cosmic vibes and art installations.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
       </div>
+      <button class="save-button" onclick="addNewMember()">Add New Member</button>
+    </section>
+  </div>
+
+  <div class="modal" id="edit-member-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('edit-member-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Member</h3>
+      <input type="text" id="member-name" placeholder="Member Name" required aria-label="Member Name">
+      <input type="text" id="member-alt" placeholder="Image Alt Text" required aria-label="Image Alt Text">
+      <input type="file" id="member-image" accept="image/*" aria-label="Member Image">
+      <select id="member-role" required aria-label="Member Role">
+        <option value="camp-lead">Camp Lead</option>
+        <option value="deputy-lead">Deputy Lead</option>
+        <option value="member">Member</option>
+      </select>
+      <input type="text" id="member-description" placeholder="Description" required aria-label="Member Description">
+      <button onclick="saveMemberDetails()">Save</button>
     </div>
-    <button class="save-button" onclick="saveChanges()">Save Changes</button>
-  </section>
+  </div>
 
   <footer>
     <p>© 2025 Cosmic Rejex. All rights reserved.</p>
   </footer>
 
-  <script src="scripts.js"></script>
+  <script>
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('night-mode');
+      themeToggle.textContent = '☀️';
+    }
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+    });
+
+    // Login Functionality
+    const loginForm = document.getElementById('login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const loginContainer = document.querySelector('.login-container');
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginContainer.classList.add('logged-in');
+      logoutButton.style.display = 'block';
+      loginForm.style.display = 'none';
+      document.body.classList.add('logged-in');
+    });
+
+    logoutButton.addEventListener('click', () => {
+      loginContainer.classList.remove('logged-in');
+      logoutButton.style.display = 'none';
+      loginForm.style.display = 'flex';
+      document.body.classList.remove('logged-in');
+    });
+
+    // Role Selector
+    const roleSelect = document.getElementById('role-select');
+    roleSelect.addEventListener('change', () => {
+      const selectedRole = roleSelect.value;
+      document.querySelectorAll('.member').forEach(member => {
+        member.style.display = selectedRole === 'all' || member.dataset.role === selectedRole ? 'block' : 'none';
+      });
+    });
+
+    // Initialize roster to show all roles
+    roleSelect.value = 'all';
+    roleSelect.dispatchEvent(new Event('change'));
+
+    // Modal Functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Member Modal
+    function openEditMemberModal(button) {
+      const member = button.parentElement;
+      const img = member.querySelector('img');
+      const name = member.querySelector('h3').textContent;
+      const role = member.dataset.role;
+      const description = member.querySelector('p').textContent;
+      document.getElementById('member-name').value = name;
+      document.getElementById('member-alt').value = img.alt;
+      document.getElementById('member-role').value = role;
+      document.getElementById('member-description').value = description;
+      document.getElementById('edit-member-modal').dataset.editIndex = Array.from(member.parentElement.children).indexOf(member);
+      openModal('edit-member-modal');
+    }
+
+    function saveMemberDetails() {
+      const name = document.getElementById('member-name').value;
+      const alt = document.getElementById('member-alt').value;
+      const file = document.getElementById('member-image').files[0];
+      const role = document.getElementById('member-role').value;
+      const description = document.getElementById('member-description').value;
+      const editIndex = document.getElementById('edit-member-modal').dataset.editIndex;
+      const membersGrid = document.querySelector('.members-grid');
+      const member = membersGrid.children[editIndex];
+
+      member.querySelector('h3').textContent = name;
+      member.querySelector('img').alt = alt;
+      member.querySelector('span').textContent = role.charAt(0).toUpperCase() + role.slice(1).replace('-', ' ');
+      member.querySelector('p').textContent = description;
+      member.dataset.role = role;
+      member.className = `member ${role}`;
+      if (file) {
+        member.querySelector('img').src = URL.createObjectURL(file);
+      }
+      closeModal('edit-member-modal');
+      roleSelect.dispatchEvent(new Event('change')); // Refresh roster
+    }
+
+    // Drag and Drop
+    let draggedElement = null;
+
+    function drag(event) {
+      draggedElement = event.target.closest('.member');
+      event.dataTransfer.setData('text/plain', '');
+    }
+
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function dropMembers(event) {
+      event.preventDefault();
+      const membersGrid = document.querySelector('.members-grid');
+      if (draggedElement && draggedElement.classList.contains('member')) {
+        membersGrid.appendChild(draggedElement);
+      }
+    }
+
+    // Add New Member
+    function addNewMember() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        const membersGrid = document.querySelector('.members-grid');
+        const member = document.createElement('div');
+        member.classList.add('member');
+        member.dataset.role = 'member';
+        member.draggable = true;
+        member.ondragstart = drag;
+        member.innerHTML = `
+          <img src="${file ? URL.createObjectURL(file) : 'images/placeholder.jpg'}" alt="New Member">
+          <h3>New Member</h3>
+          <span>Member</span>
+          <p>Contributes to the camp vibe.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        `;
+        membersGrid.appendChild(member);
+        roleSelect.dispatchEvent(new Event('change')); // Refresh roster
+      };
+      input.click();
+    }
+
+    // Delete Member
+    function deleteMember(button) {
+      button.parentElement.remove();
+      roleSelect.dispatchEvent(new Event('change')); // Refresh roster
+    }
+
+    // Scroll Arrows
+    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+      arrow.addEventListener('click', () => {
+        const grid = document.querySelector(`.members-grid`);
+        const scrollAmount = grid.offsetWidth * 0.8;
+        grid.scrollBy({
+          left: arrow.classList.contains('left') ? -scrollAmount : scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
