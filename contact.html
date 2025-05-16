@@ -5,7 +5,413 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact - Cosmic Rejex</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+      cursor: url('images/ufo-cursor.png'), auto;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    body.night-mode {
+      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
+      color: #f8e1b4;
+    }
+
+    body.night-mode .section {
+      background-color: rgba(44, 29, 15, 0.8);
+    }
+
+    body.night-mode .section h1,
+    body.night-mode .section p,
+    body.night-mode .contact-container,
+    body.night-mode .social-links a {
+      color: #f8e1b4;
+    }
+
+    body.night-mode .contact-container {
+      background: rgba(44, 29, 15, 0.3);
+    }
+
+    body.night-mode .form-container input,
+    body.night-mode .form-container textarea {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+    }
+
+    a, button, input, textarea {
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(44, 29, 15, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+      border-bottom: 2px solid #e67e22;
+    }
+
+    body.night-mode nav {
+      background: rgba(74, 55, 35, 0.85);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      margin: 5px 15px;
+      padding: 10px 15px;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      background-color: #e67e22;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: #f8e1b4;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      padding: 10px;
+      cursor: pointer;
+      transition: color 0.3s, box-shadow 0.3s;
+    }
+
+    .theme-toggle:hover {
+      color: #f39c12;
+      box-shadow: 0 0 10px #e67e22;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      color: #f8e1b4;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 20px;
+      background: rgba(44, 29, 15, 0.85);
+      border-bottom: 1px solid #e67e22;
+      z-index: 999;
+    }
+
+    body.night-mode .login-container {
+      background: rgba(74, 55, 35, 0.85);
+    }
+
+    .login-container form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .login-container input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .login-container input::placeholder {
+      color: #ffffff;
+    }
+
+    .login-container button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .login-container .logout-button {
+      display: none;
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      background: url('images/dusty-texture.png') center/cover;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .section h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #2b1b0f;
+      letter-spacing: 1px;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+      color: #2b1b0f;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .contact-info, .form-container {
+      flex: 1;
+      min-width: 300px;
+      text-align: left;
+    }
+
+    .contact-info h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      color: #2b1b0f;
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      font-size: 1em;
+      color: #2b1b0f;
+      margin: 10px 0;
+    }
+
+    .social-links {
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #2b1b0f;
+      font-size: 1.5em;
+      transition: color 0.3s, box-shadow 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #e67e22;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .form-container textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    .form-container button {
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    body.night-mode footer {
+      background-color: #4a3723;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+      }
+
+      body.night-mode .nav-links {
+        background: rgba(74, 55, 35, 0.9);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      nav a {
+        margin: 5px 0;
+        font-size: 1rem;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .theme-toggle {
+        font-size: 0.9rem;
+        padding: 5px;
+      }
+
+      .login-container {
+        padding: 10px;
+      }
+
+      .login-container form {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .login-container input, .login-container button {
+        font-size: 0.8rem;
+        padding: 6px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .section {
+        padding: 40px 15px;
+      }
+
+      .section h1 {
+        font-size: 2em;
+      }
+
+      .section p {
+        font-size: 1em;
+        max-width: 95%;
+      }
+
+      .contact-container {
+        flex-direction: column;
+        gap: 20px;
+        max-width: 95%;
+        padding: 20px 15px;
+      }
+
+      .contact-info h2 {
+        font-size: 1.6em;
+      }
+
+      .social-links a {
+        font-size: 1.2em;
+        margin: 0 8px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .section h1 {
+        font-size: 1.6em;
+      }
+
+      .section p {
+        font-size: 0.9em;
+      }
+
+      .contact-info h2 {
+        font-size: 1.4em;
+      }
+
+      .form-container input,
+      .form-container textarea {
+        font-size: 0.9em;
+      }
+
+      .form-container button {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+
+      .social-links a {
+        font-size: 1em;
+        margin: 0 6px;
+      }
+
+      .hamburger {
+        font-size: 1.2rem;
+      }
+
+      .login-container input, .login-container button {
+        font-size: 0.7em;
+        padding: 5px;
+      }
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -33,25 +439,80 @@
     <button class="logout-button" aria-label="Logout">Logout</button>
   </div>
 
-  <section class="section" id="contact">
-    <h1>Contact Us</h1>
-    <p>Have questions or want to get in touch? Fill out the form below!</p>
-    <div class="form-container">
-      <form id="contact-form">
-        <input type="text" id="contact-name" placeholder="Your Name" required aria-label="Your Name">
-        <input type="email" id="contact-email" placeholder="Your Email" required aria-label="Your Email">
-        <textarea id="contact-message" placeholder="Your Message" required aria-label="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
+  <div class="contact-container">
+    <section class="section" id="contact">
+      <h1>Contact Us</h1>
+      <p>Have questions or want to get in touch? Fill out the form or reach out directly!</p>
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p><strong>Email:</strong> info@cosmicrejex.com</p>
+        <p><strong>Phone:</strong> +64 123 456 789</p>
+        <p><strong>Address:</strong> Kiwiburn Festival, Hunterville, New Zealand</p>
+        <div class="social-links">
+          <a href="https://facebook.com/cosmicrejex" target="_blank" aria-label="Facebook">📘</a>
+          <a href="https://instagram.com/cosmicrejex" target="_blank" aria-label="Instagram">📷</a>
+          <a href="https://twitter.com/cosmicrejex" target="_blank" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+      <div class="form-container">
+        <form id="contact-form">
+          <input type="text" id="contact-name" placeholder="Your Name" required aria-label="Your Name">
+          <input type="email" id="contact-email" placeholder="Your
+
+ Email" required aria-label="Your Email">
+          <textarea id="contact-message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </div>
 
   <footer>
     <p>© 2025 Cosmic Rejex. All rights reserved.</p>
   </footer>
 
-  <script src="scripts.js"></script>
   <script>
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+    });
+
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('night-mode');
+      themeToggle.textContent = '☀️';
+    }
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+    });
+
+    // Login Functionality
+    const loginForm = document.getElementById('login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const loginContainer = document.querySelector('.login-container');
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginContainer.classList.add('logged-in');
+      logoutButton.style.display = 'block';
+      loginForm.style.display = 'none';
+      document.body.classList.add('logged-in');
+    });
+
+    logoutButton.addEventListener('click', () => {
+      loginContainer.classList.remove('logged-in');
+      logoutButton.style.display = 'none';
+      loginForm.style.display = 'flex';
+      document.body.classList.remove('logged-in');
+    });
+
+    // Contact Form
     document.getElementById('contact-form').addEventListener('submit', (e) => {
       e.preventDefault();
       alert('Message sent!');
