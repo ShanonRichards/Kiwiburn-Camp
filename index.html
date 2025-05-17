@@ -364,6 +364,11 @@
       min-height: 200px;
     }
 
+    .roles-grid {
+      justify-content: center; /* Center the grid items horizontally */
+      width: 100%; /* Ensure the grid takes full width of its container */
+    }
+
     .scroll-arrow {
       display: none;
       position: absolute;
@@ -994,6 +999,7 @@
         max-width: 95%;
         padding: 0 10px;
         scroll-snap-type: x mandatory;
+        justify-content: flex-start; /* Align items to start for smooth scrolling */
       }
 
       .members-grid .scroll-arrow, .roles-grid .scroll-arrow {
@@ -1126,6 +1132,7 @@
         gap: 10px;
         padding: 0 5px;
         scroll-snap-type: x mandatory;
+        justify-content: flex-start; /* Align items to start for smooth scrolling */
       }
 
       .member, .role {
@@ -1356,7 +1363,7 @@
   <div class="modal" id="join-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeModal('join-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Join Section</h3>
+      <h3>Edit Header Section</h3>
       <input type="text" id="join-title" placeholder="Section Title" required aria-label="Section Title">
       <textarea id="join-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
       <button onclick="saveJoinDetails()">Save</button>
