@@ -986,75 +986,62 @@
         max-width: 95%;
       }
 
-.roles-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 30px;
-  max-width: 1080px;
-  margin: 0 auto;
-  justify-items: center;
-  align-items: stretch;
-  padding: 20px;
-}
+      .members-grid, .roles-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 15px;
+        max-width: 95%;
+        padding: 0 10px;
+        scroll-snap-type: x mandatory;
+      }
 
-.role {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 12px;
-  border: 1px solid #e67e22;
-  border-radius: 10px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  min-height: 220px;
-}
+      .members-grid .scroll-arrow, .roles-grid .scroll-arrow {
+        display: block;
+      }
 
-.role img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-  border: 3px solid #f39c12;
-}
+      .member, .role {
+        flex: 0 0 140px;
+        scroll-snap-align: start;
+        min-height: 240px;
+        padding: 10px;
+      }
 
-.role h3 {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 1.4em;
-  margin: 8px 0;
-}
+      .member img, .role img {
+        width: 80px;
+        height: 80px;
+      }
 
-.role .apply-button {
-  margin-top: auto;
-  background-color: #e67e22;
-  color: #2b1b0f;
-  padding: 8px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 1em;
-}
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1.2rem;
+        top: -15px;
+      }
 
-.role .tooltip {
-  display: none;
-}
+      .member h3, .role h3 {
+        font-size: 1.3em;
+      }
 
-.role:hover .tooltip {
-  display: block;
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translate(-50%, -110%);
-  background-color: rgba(44, 29, 15, 0.95);
-  color: #f8e1b4;
-  padding: 10px;
-  border-radius: 8px;
-  width: 180px;
-  font-size: 0.9em;
-  z-index: 10;
-}
+      .member span {
+        font-size: 1.1em;
+      }
 
+      .member p, .role p {
+        font-size: 0.9em;
+      }
+
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+      }
+
+      .event .edit-button, .role .edit-button, .member .edit-button {
+        right: 30px;
+      }
+
+      .role .tooltip {
+        width: 140px;
+        font-size: 0.85em;
       }
 
       .role .apply-button {
@@ -1430,7 +1417,7 @@
 
   <div class="members-container">
     <section class="section" id="members">
-      <h1>Meet Our Core Camp Crew</h1>
+      <h1>Meet Our Core Camp Crew (2026)</h1>
       <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
         <div class="scroll-arrow left" data-grid="members">◄</div>
         <div class="scroll-arrow right" data-grid="members">►</div>
@@ -1483,40 +1470,21 @@
           <button class="delete-button" onclick="deleteMember(this)">×</button>
       </div>
 
-<h2>Roles to Be Filled</h2>
-<p>...</p>
-<div class="roles-grid">
-  ...
-</div>
-    <img src="images/icons/Logistics-Build-Lead.png" alt="Logistics & Build Lead Icon">
-    <h3>Logistics & Build Lead</h3>
-    <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
-    <div class="tooltip">
-      <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
-    </div>
-  </div>
-
-  <div class="role">
-    <img src="images/icons/Volunteer-Coordinator.png" alt="Volunteer Coordinator Icon">
-    <h3>Volunteer Coordinator</h3>
-    <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
-    <div class="tooltip">
-      <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
-    </div>
-  </div>
-
-  <div class="role">
-    <img src="images/icons/Build-Crew.png" alt="Build Crew Icon">
-    <h3>Build Crew</h3>
-    <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
-    <div class="tooltip">
-      <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
-    </div>
-  </div>
-
-  <!-- Add more roles as needed in same structure -->
-
-</div>
+      <h2>Roles to Be Filled</h2>
+      <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
+      <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
+        <div class="scroll-arrow left" data-grid="roles">◄</div>
+        <div class="scroll-arrow right" data-grid="roles">►</div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/icons/Logistics-Build-Lead.png" alt="Logistics & Build Lead Icon">
+          <h3>Logistics & Build Lead</h3>
+          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/icons/Volunteer-Coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
