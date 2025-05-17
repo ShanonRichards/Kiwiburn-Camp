@@ -1,315 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Cosmic Rejex for inquiries, event submissions, or general questions.">
+  <meta name="keywords" content="Cosmic Rejex, contact, festival, community">
+  <meta name="author" content="Cosmic Rejex">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="index, follow">
   <title>Contact - Cosmic Rejex</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <style>
-    html, body {
+    :root {
+      --primary-color: #e67e22;
+      --secondary-color: #f39c12;
+      --text-dark: #2b1b0f;
+      --text-light: #f8e1b4;
+      --bg-dark: rgba(44, 29, 15, 0.95);
+      --bg-dark-alt: rgba(60, 45, 30, 0.95);
+      --bg-light: rgba(255, 255, 255, 0.15);
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      --transition: all 0.3s ease;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Roboto', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
-      color: #2b1b0f;
-      cursor: url('images/ufo-cursor.png'), auto;
-      transition: background 0.5s, color 0.5s;
+      background: linear-gradient(180deg, #fff7e6 0%, #f5e6c6 100%);
+      color: var(--text-dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     body.night-mode {
-      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
-      color: #f8e1b4;
-    }
-
-    body.night-mode .section {
-      background-color: rgba(44, 29, 15, 0.8);
-    }
-
-    body.night-mode .section h1,
-    body.night-mode .section p,
-    body.night-mode .contact-container,
-    body.night-mode .social-links a {
-      color: #f8e1b4;
-    }
-
-    body.night-mode .contact-container {
-      background: rgba(44, 29, 15, 0.3);
-    }
-
-    body.night-mode .form-container input,
-    body.night-mode .form-container textarea {
-      background: rgba(255, 255, 255, 0.1);
-      color: #f8e1b4;
+      background: linear-gradient(180deg, #1a120b 0%, #3a2b1f 100%);
+      color: var(--text-light);
     }
 
     a, button, input, textarea {
-      cursor: pointer;
+      transition: var(--transition);
     }
 
+    /* Navigation */
     nav {
       position: sticky;
       top: 0;
-      background: rgba(44, 29, 15, 0.85);
-      backdrop-filter: blur(10px);
+      background: var(--bg-dark);
+      backdrop-filter: blur(12px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      padding: 1rem 3rem;
       z-index: 1000;
-      border-bottom: 2px solid #e67e22;
+      box-shadow: var(--shadow);
     }
 
     body.night-mode nav {
-      background: rgba(74, 55, 35, 0.85);
+      background: var(--bg-dark-alt);
     }
 
     .nav-links {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: 1.5rem;
     }
 
     nav a {
-      color: #f8e1b4;
+      color: var(--text-light);
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      margin: 5px 15px;
-      padding: 10px 15px;
-      border-radius: 4px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.25rem;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    nav a:hover {
-      background-color: #e67e22;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    nav a:hover, nav a:focus {
+      background-color: var(--primary-color);
+      color: #fff;
     }
 
     .theme-toggle {
       background: none;
       border: none;
-      color: #f8e1b4;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      padding: 10px;
+      color: var(--text-light);
+      font-size: 1.2rem;
       cursor: pointer;
-      transition: color 0.3s, box-shadow 0.3s;
     }
 
-    .theme-toggle:hover {
-      color: #f39c12;
-      box-shadow: 0 0 10px #e67e22;
+    .theme-toggle:hover, .theme-toggle:focus {
+      color: var(--secondary-color);
     }
 
     .hamburger {
       display: none;
       font-size: 1.5rem;
-      color: #f8e1b4;
+      color: var(--text-light);
       background: none;
       border: none;
       cursor: pointer;
-      padding: 10px;
     }
 
+    /* Login Container */
     .login-container {
+      padding: 0.75rem 3rem;
+      background: var(--bg-dark);
       display: flex;
       justify-content: flex-end;
-      padding: 10px 20px;
-      background: rgba(44, 29, 15, 0.85);
-      border-bottom: 1px solid #e67e22;
-      z-index: 999;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
     body.night-mode .login-container {
-      background: rgba(74, 55, 35, 0.85);
+      background: var(--bg-dark-alt);
     }
 
     .login-container form {
       display: flex;
-      gap: 10px;
+      gap: 0.75rem;
       align-items: center;
     }
 
     .login-container input {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      font-size: 0.9rem;
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      border: 1px solid var(--primary-color);
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-size: 0.95rem;
+      width: 10rem;
     }
 
     .login-container input::placeholder {
-      color: #ffffff;
+      color: #ccc;
+    }
+
+    .login-container input:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 8px rgba(230, 126, 34, 0.3);
     }
 
     .login-container button {
-      padding: 8px 12px;
-      background-color: #e67e22;
-      color: #ffffff;
+      padding: 0.75rem 1rem;
+      background-color: var(--primary-color);
+      color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 0.375rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
       cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s;
     }
 
-    .login-container button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    .login-container button:hover, .login-container button:focus {
+      background-color: var(--secondary-color);
     }
 
     .login-container .logout-button {
       display: none;
     }
 
-    .section {
-      padding: 80px 20px;
+    /* Contact Section */
+    .contact-section {
+      padding: 5rem 3rem;
+      max-width: 75rem;
+      margin: 0 auto;
       text-align: center;
-      background: url('images/dusty-texture.png') center/cover;
-      border-top: 1px solid #e67e22;
-      border-bottom: 1px solid #e67e22;
-      background-color: rgba(244, 228, 188, 0.8);
+      position: relative;
+      flex: 1;
     }
 
-    .section h1 {
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(230, 126, 34, 0.1) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .contact-section h1 {
       font-family: 'Bebas Neue', cursive;
-      font-size: 3em;
-      margin-bottom: 20px;
-      color: #2b1b0f;
-      letter-spacing: 1px;
+      font-size: 3rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
     }
 
-    .section p {
-      font-size: 1.1em;
-      max-width: 800px;
-      margin: 0 auto 30px auto;
-      line-height: 1.6;
-      color: #2b1b0f;
+    .contact-section h1::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 0.25rem;
+      background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    }
+
+    body.night-mode .contact-section h1 {
+      color: var(--text-light);
+    }
+
+    .contact-section p {
+      font-size: 1.2rem;
+      max-width: 43.75rem;
+      margin: 0 auto 2.5rem;
+      color: var(--text-dark);
+      font-weight: 300;
+    }
+
+    body.night-mode .contact-section p {
+      color: var(--text-light);
     }
 
     .contact-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      background: var(--bg-light);
+      border-radius: 1rem;
+      padding: 3rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(230, 126, 34, 0.2) 0%, transparent 50%);
+      animation: rotate 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    body.night-mode .contact-container {
+      background: rgba(44, 29, 15, 0.4);
     }
 
     .contact-info, .form-container {
-      flex: 1;
-      min-width: 300px;
-      text-align: left;
+      min-width: 18.75rem;
     }
 
     .contact-info h2 {
       font-family: 'Bebas Neue', cursive;
-      font-size: 2em;
-      color: #2b1b0f;
-      margin-bottom: 15px;
+      font-size: 2rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    body.night-mode .contact-info h2 {
+      color: var(--text-light);
     }
 
     .contact-info p {
-      font-size: 1em;
-      color: #2b1b0f;
-      margin: 10px 0;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    body.night-mode .contact-info p {
+      color: var(--text-light);
+    }
+
+    .contact-info i {
+      color: var(--primary-color);
+      font-size: 1.4rem;
+    }
+
+    .contact-info a {
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    body.night-mode .contact-info a {
+      color: var(--text-light);
+    }
+
+    .contact-info a:hover, .contact-info a:focus {
+      color: var(--primary-color);
     }
 
     .social-links {
-      margin-top: 20px;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
     }
 
     .social-links a {
-      display: inline-block;
-      margin: 0 10px;
-      color: #2b1b0f;
-      font-size: 1.5em;
-      transition: color 0.3s, box-shadow 0.3s;
+      color: var(--text-dark);
+      font-size: 1.8rem;
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 50%;
+      background: rgba(230, 126, 34, 0.1);
     }
 
-    .social-links a:hover {
-      color: #e67e22;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    body.night-mode .social-links a {
+      color: var(--text-light);
+      background: rgba(230, 126, 34, 0.2);
+    }
+
+    .social-links a:hover, .social-links a:focus {
+      color: #fff;
+      background: var(--primary-color);
+      transform: scale(1.1);
+    }
+
+    .form-container {
+      position: relative;
     }
 
     .form-container input,
     .form-container textarea {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      font-size: 1rem;
-      box-sizing: border-box;
+      padding: 0.875rem;
+      margin-bottom: 1.25rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--primary-color);
       background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
+      color: var(--text-dark);
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body.night-mode .form-container input,
+    body.night-mode .form-container textarea {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--text-light);
+    }
+
+    .form-container input:focus,
+    .form-container textarea:focus {
+      outline: none;
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 8px rgba(230, 126, 34, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .form-container input::placeholder,
+    .form-container textarea::placeholder {
+      color: #999;
+      font-style: italic;
     }
 
     .form-container textarea {
-      height: 150px;
+      height: 11.25rem;
       resize: vertical;
     }
 
     .form-container button {
-      padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
+      padding: 0.875rem 2rem;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 0.5rem;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
       cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2em;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
     }
 
-    .form-container button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    .form-container button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
     }
 
+    .form-container button:hover::before {
+      left: 100%;
+    }
+
+    .form-container button:hover, .form-container button:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
+    }
+
+    .success-message, .error-message {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      animation: fadeInOut 3s ease-in-out;
+      z-index: 10;
+    }
+
+    .error-message {
+      background: rgba(200, 0, 0, 0.95);
+    }
+
+    body.night-mode .success-message, body.night-mode .error-message {
+      background: var(--bg-dark-alt);
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translate(-50%, -60%); }
+      20% { opacity: 1; transform: translate(-50%, -50%); }
+      80% { opacity: 1; transform: translate(-50%, -50%); }
+      100% { opacity: 0; transform: translate(-50%, -40%); }
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 30px;
-      background-color: #2b1b0f;
-      color: #f8e1b4;
-      border-top: 2px solid #e67e22;
+      padding: 2.5rem;
+      background-color: var(--text-dark);
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-top: auto;
     }
 
     body.night-mode footer {
-      background-color: #4a3723;
+      background-color: #3a2b1f;
     }
 
-    @media only screen and (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-
+    /* Responsive Design */
+    @media (max-width: 768px) {
       nav {
+        padding: 0.75rem 1.25rem;
         flex-direction: column;
         align-items: flex-start;
-        padding: 10px;
+      }
+
+      .hamburger {
+        display: block;
       }
 
       .nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: rgba(44, 29, 15, 0.9);
-        padding: 10px 0;
+        background: var(--bg-dark);
+        padding: 0.75rem 0;
       }
 
       body.night-mode .nav-links {
-        background: rgba(74, 55, 35, 0.9);
+        background: var(--bg-dark-alt);
       }
 
       .nav-links.active {
@@ -317,180 +487,172 @@
       }
 
       nav a {
-        margin: 5px 0;
         font-size: 1rem;
-        padding: 10px;
+        padding: 0.625rem;
         text-align: center;
       }
 
-      .theme-toggle {
-        font-size: 0.9rem;
-        padding: 5px;
-      }
-
       .login-container {
-        padding: 10px;
+        padding: 0.75rem 1.25rem;
       }
 
       .login-container form {
         flex-direction: column;
-        gap: 5px;
+        gap: 0.5rem;
       }
 
       .login-container input, .login-container button {
-        font-size: 0.8rem;
-        padding: 6px;
         width: 100%;
-        box-sizing: border-box;
+        font-size: 0.9rem;
       }
 
-      .section {
-        padding: 40px 15px;
-      }
-
-      .section h1 {
-        font-size: 2em;
-      }
-
-      .section p {
-        font-size: 1em;
-        max-width: 95%;
+      .contact-section {
+        padding: 2.5rem 1.25rem;
       }
 
       .contact-container {
-        flex-direction: column;
-        gap: 20px;
-        max-width: 95%;
-        padding: 20px 15px;
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 2rem;
+      }
+
+      .contact-section h1 {
+        font-size: 2.4rem;
       }
 
       .contact-info h2 {
-        font-size: 1.6em;
+        font-size: 1.8rem;
       }
 
-      .social-links a {
-        font-size: 1.2em;
-        margin: 0 8px;
+      .success-message, .error-message {
+        width: 90%;
       }
     }
 
-    @media only screen and (max-width: 480px) {
-      .section h1 {
-        font-size: 1.6em;
+    @media (max-width: 480px) {
+      .contact-section h1 {
+        font-size: 2rem;
       }
 
-      .section p {
-        font-size: 0.9em;
+      .contact-section p {
+        font-size: 1.1rem;
       }
 
       .contact-info h2 {
-        font-size: 1.4em;
+        font-size: 1.6rem;
       }
 
       .form-container input,
       .form-container textarea {
-        font-size: 0.9em;
+        font-size: 0.95rem;
       }
 
       .form-container button {
-        font-size: 1em;
-        padding: 10px 15px;
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
       }
 
       .social-links a {
-        font-size: 1em;
-        margin: 0 6px;
-      }
-
-      .hamburger {
-        font-size: 1.2rem;
-      }
-
-      .login-container input, .login-container button {
-        font-size: 0.7em;
-        padding: 5px;
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
-    <div class="nav-links">
-      <a href="index.html#about">About</a>
-      <a href="index.html#mission">Mission</a>
-      <a href="index.html#members">Members</a>
-      <a href="index.html#events">Events</a>
-      <a href="index.html#submit">Submit Event</a>
-      <a href="index.html#newsletter">Newsletter</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="roster.html">Roster</a>
-      <a href="contact.html">Contact</a>
+  <header>
+    <nav aria-label="Main navigation">
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      <div class="nav-links" role="navigation">
+        <a href="index.html#about">About</a>
+        <a href="index.html#mission">Mission</a>
+        <a href="index.html#members">Members</a>
+        <a href="index.html#events">Events</a>
+        <a href="index.html#submit">Submit Event</a>
+        <a href="index.html#newsletter">Newsletter</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="roster.html">Roster</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </div>
+      <button class="theme-toggle" aria-label="Toggle night mode">🌙</button>
+    </nav>
+
+    <div class="login-container" aria-label="User login">
+      <form id="login-form" aria-labelledby="login-heading">
+        <h2 id="login-heading" class="sr-only">Login</h2>
+        <input type="text" id="username" placeholder="Username" required aria-label="Username">
+        <input type="password" id="password" placeholder="Password" required aria-label="Password">
+        <button type="submit">Login</button>
+      </form>
+      <button class="logout-button" aria-label="Logout">Logout</button>
     </div>
-    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
-  </nav>
+  </header>
 
-  <div class="login-container">
-    <form id="login-form">
-      <input type="text" id="username" placeholder="Username" required aria-label="Username">
-      <input type="password" id="password" placeholder="Password" required aria-label="Password">
-      <button type="submit">Login</button>
-    </form>
-    <button class="logout-button" aria-label="Logout">Logout</button>
-  </div>
-
-  <div class="contact-container">
-    <section class="section" id="contact">
-      <h1>Contact Us</h1>
-      <p>Have questions or want to get in touch? Fill out the form or reach out directly!</p>
-      <div class="contact-info">
-        <h2>Get in Touch</h2>
-        <p><strong>Email:</strong> info@cosmicrejex.com</p>
-        <p><strong>Phone:</strong> +64 123 456 789</p>
-        <p><strong>Address:</strong> Kiwiburn Festival, Hunterville, New Zealand</p>
-        <div class="social-links">
-          <a href="https://facebook.com/cosmicrejex" target="_blank" aria-label="Facebook">📘</a>
-          <a href="https://instagram.com/cosmicrejex" target="_blank" aria-label="Instagram">📷</a>
-          <a href="https://twitter.com/cosmicrejex" target="_blank" aria-label="Twitter">🐦</a>
+  <main>
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <h1 id="contact-heading">Contact Us</h1>
+      <p>We're here to answer your questions! Reach out through the form or connect with us directly.</p>
+      <div class="contact-container">
+        <div class="contact-info" aria-labelledby="contact-info-heading">
+          <h2 id="contact-info-heading">Get in Touch</h2>
+          <p><i class="fas fa-envelope" aria-hidden="true"></i> shanonrichards@windowslive.com</p>
+          <p><i class="fas fa-phone" aria-hidden="true"></i> +64 223417486</p>
+          <p><a href="https://www.google.com/maps/place/136+Cooks+Rd,+Hunterville+4785,+New+Zealand" target="_blank" aria-label="View festival location on Google Maps"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 136 Cooks Rd, Hunterville</a></p>
+          <div class="social-links" role="navigation" aria-label="Social media links">
+            <a href="https://www.facebook.com/groups/996318365425236" target="_blank" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="form-container">
+          <form id="contact-form" aria-labelledby="contact-form-heading">
+            <h2 id="contact-form-heading" class="sr-only">Contact Form</h2>
+            <input type="text" id="contact-name" name="name" placeholder="Your Name" required aria-label="Your Name">
+            <input type="email" id="contact-email" name="email" placeholder="Your Email" required aria-label="Your Email">
+            <textarea id="contact-message" name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+          <div class="success-message" id="success-message" role="alert">
+            <p>Message sent! We'll get back to you soon.</p>
+          </div>
+          <div class="error-message" id="error-message" role="alert">
+            <p>Please fill out all fields correctly.</p>
+          </div>
         </div>
       </div>
-      <div class="form-container">
-        <form id="contact-form">
-          <input type="text" id="contact-name" placeholder="Your Name" required aria-label="Your Name">
-          <input type="email" id="contact-email" placeholder="Your
-
- Email" required aria-label="Your Email">
-          <textarea id="contact-message" placeholder="Your Message" required aria-label="Your Message"></textarea>
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
     </section>
-  </div>
+  </main>
 
-  <footer>
+  <footer aria-label="Site footer">
     <p>© 2025 Cosmic Rejex. All rights reserved.</p>
   </footer>
 
   <script>
+    // Screen reader only class
+    const style = document.createElement('style');
+    style.textContent = '.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }';
+    document.head.appendChild(style);
+
     // Theme Toggle
     const themeToggle = document.querySelector('.theme-toggle');
     themeToggle.addEventListener('click', () => {
       document.body.classList.toggle('night-mode');
       themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+      themeToggle.setAttribute('aria-label', document.body.classList.contains('night-mode') ? 'Switch to light mode' : 'Switch to night mode');
       localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
     });
 
     if (localStorage.getItem('theme') === 'dark') {
       document.body.classList.add('night-mode');
       themeToggle.textContent = '☀️';
+      themeToggle.setAttribute('aria-label', 'Switch to light mode');
     }
 
     // Hamburger Menu
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+      const isExpanded = navLinks.classList.toggle('active');
+      hamburger.textContent = isExpanded ? '✖' : '☰';
+      hamburger.setAttribute('aria-expanded', isExpanded);
     });
 
     // Login Functionality
@@ -512,13 +674,33 @@
       document.body.classList.remove('logged-in');
     });
 
-    // Contact Form
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
+    // Contact Form Validation
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+    const errorMessage = document.getElementById('error-message');
+
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Message sent!');
-      document.getElementById('contact-name').value = '';
-      document.getElementById('contact-email').value = '';
-      document.getElementById('contact-message').value = '';
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (name && emailRegex.test(email) && message) {
+        successMessage.style.display = 'block';
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+          contactForm.reset();
+        }, 3000);
+        // Simulate sending email
+        const mailtoLink = `mailto:shanonrichards@windowslive.com?subject=Contact%20Form%20Submission&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0AMessage:%20${encodeURIComponent(message)}`;
+        window.location.href = mailtoLink;
+      } else {
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 3000);
+      }
     });
   </script>
 </body>
