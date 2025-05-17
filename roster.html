@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Roster - Cosmic Rejex</title>
+  <title>Roster & Tasks - Cosmic Rejex</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html, body {
@@ -13,7 +13,6 @@
       scroll-behavior: smooth;
       background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
       color: #2b1b0f;
-      cursor: url('images/ufo-cursor.png'), auto;
       transition: background 0.5s, color 0.5s;
     }
 
@@ -22,26 +21,24 @@
       color: #f8e1b4;
     }
 
-    body.night-mode .section {
+    body.night-mode .section,
+    body.night-mode .roster-table th,
+    body.night-mode .roster-table td,
+    body.night-mode .tasks-table th,
+    body.night-mode .tasks-table td {
       background-color: rgba(44, 29, 15, 0.8);
-    }
-
-    body.night-mode .section h1,
-    body.night-mode .section p,
-    body.night-mode .roster-container,
-    body.night-mode .members-grid .member {
       color: #f8e1b4;
-      background: rgba(44, 29, 15, 0.3);
     }
 
     body.night-mode .modal-content,
     body.night-mode .modal-content input,
-    body.night-mode .modal-content select {
+    body.night-mode .modal-content select,
+    body.night-mode .modal-content textarea {
       background: rgba(44, 29, 15, 0.9);
       color: #f8e1b4;
     }
 
-    a, button, input, select {
+    a, button, input, select, textarea {
       cursor: pointer;
     }
 
@@ -190,7 +187,7 @@
       color: #2b1b0f;
     }
 
-    .roster-container {
+    .roster-container, .tasks-container {
       max-width: 1200px;
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.15);
@@ -200,141 +197,85 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .role-selector {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .role-selector select {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      width: 200px;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    body.night-mode .role-selector select {
-      background: rgba(255, 255, 255, 0.1);
-      color: #f8e1b4;
-    }
-
-    .members-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-      padding: 20px;
-    }
-
-    .member {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid #e67e22;
-      position: relative;
-    }
-
-    .member:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
-    }
-
-    .member img {
+    .roster-table, .tasks-table {
       width: 100%;
-      height: auto;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 8px;
-      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .roster-table th, .roster-table td,
+    .tasks-table th, .tasks-table td {
       border: 1px solid #e67e22;
+      padding: 14px;
+      text-align: left;
+      font-size: 1rem;
+      color: #2b1b0f;
+      vertical-align: middle;
     }
 
-    .member h3 {
+    .roster-table th, .tasks-table th {
+      background: rgba(230, 126, 34, 0.4);
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.5em;
-      color: #2b1b0f;
-      margin: 10px 0 5px;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    .member span {
-      font-size: 1em;
-      color: #e67e22;
-      display: block;
-      margin-bottom: 10px;
+    .roster-table td, .tasks-table td {
+      background: rgba(255, 255, 255, 0.15);
     }
 
-    .member p {
-      font-size: 0.9em;
-      color: #2b1b0f;
-      margin: 0 0 10px;
+    .roster-table tr:nth-child(even), .tasks-table tr:nth-child(even) {
+      background: rgba(230, 126, 34, 0.1);
     }
 
-    .member .edit-button, .member .delete-button {
+    .roster-table tr:hover, .tasks-table tr:hover {
+      background: rgba(230, 126, 34, 0.25);
+      transition: background 0.3s;
+    }
+
+    .edit-button, .delete-button {
       display: none;
-      position: absolute;
-      top: 5px;
       background: rgba(44, 29, 15, 0.7);
       color: #f8e1b4;
       border: none;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      font-size: 0.9em;
+      border-radius: 5px;
+      padding: 6px 12px;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: background 0.3s, box-shadow 0.3s;
+      margin: 0 5px;
     }
 
-    .member .edit-button {
-      right: 35px;
+    .logged-in .edit-button, .logged-in .delete-button {
+      display: inline-block;
     }
 
-    .member .delete-button {
-      right: 5px;
-    }
-
-    .logged-in .member .edit-button, .logged-in .member .delete-button {
-      display: block;
-    }
-
-    .member .edit-button:hover, .member .delete-button:hover {
+    .edit-button:hover, .delete-button:hover {
       background: rgba(230, 126, 34, 0.9);
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .scroll-arrow {
+    .add-task-button, .add-participant-button {
       display: none;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
+      padding: 12px 24px;
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      font-size: 1.2em;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 20px auto;
+      display: block;
     }
 
-    .scroll-arrow:hover {
-      background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .scroll-arrow.left {
-      left: 10px;
-    }
-
-    .scroll-arrow.right {
-      right: 10px;
+    .logged-in .add-task-button, .logged-in .add-participant-button {
+      display: block;
     }
 
     .modal {
@@ -354,7 +295,7 @@
       background: rgba(255, 255, 255, 0.9);
       padding: 20px;
       border-radius: 10px;
-      max-width: 400px;
+      max-width: 500px;
       width: 90%;
       text-align: center;
       border: 2px solid #e67e22;
@@ -367,7 +308,7 @@
       margin-bottom: 20px;
     }
 
-    .modal-content input, .modal-content select {
+    .modal-content input, .modal-content select, .modal-content textarea {
       width: 100%;
       padding: 10px;
       margin-bottom: 15px;
@@ -375,12 +316,12 @@
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
       color: #2b1b0f;
+      box-sizing: border-box;
     }
 
-    .modal-content input[type="file"] {
-      background: none;
-      border: none;
-      padding: 5px;
+    .modal-content textarea {
+      resize: vertical;
+      min-height: 80px;
     }
 
     .modal-content button {
@@ -408,24 +349,6 @@
       background: none;
       font-size: 1.2em;
       padding: 5px 10px;
-    }
-
-    .save-button {
-      padding: 10px 20px;
-      background посел: #e67e22;
-      color: #2b1b0f;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin: 20px auto;
-      display: none;
-    }
-
-    .logged-in .save-button {
-      display: block;
     }
 
     footer {
@@ -508,26 +431,18 @@
         max-width: 95%;
       }
 
-      .roster-container {
+      .roster-container, .tasks-container {
         max-width: 95%;
         padding: 20px 15px;
       }
 
-      .members-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        max-width: 95%;
-      }
-
-      .role-selector select {
-        width: 150px;
+      .roster-table, .tasks-table {
         font-size: 0.9rem;
       }
 
-      .scroll-arrow {
-        width: 25px;
-        height: 25px;
-        font-size: 1em;
+      .roster-table th, .roster-table td,
+      .tasks-table th, .tasks-table td {
+        padding: 8px;
       }
     }
 
@@ -540,21 +455,13 @@
         font-size: 0.9em;
       }
 
-      .role-selector select {
-        width: 120px;
+      .roster-table, .tasks-table {
         font-size: 0.8rem;
       }
 
-      .member h3 {
-        font-size: 1.2em;
-      }
-
-      .member span {
-        font-size: 0.9em;
-      }
-
-      .member p {
-        font-size: 0.8em;
+      .roster-table th, .roster-table td,
+      .tasks-table th, .tasks-table td {
+        padding: 6px;
       }
 
       .hamburger {
@@ -596,62 +503,243 @@
 
   <div class="roster-container">
     <section class="section" id="roster">
-      <h1>Camp Roster</h1>
-      <p>Meet the full crew of Cosmic Rejex, including all campmates contributing to our vibe.</p>
-      <div class="role-selector">
-        <select id="role-select" aria-label="Select Role">
-          <option value="all">All Roles</option>
-          <option value="camp-lead">Camp Lead</option>
-          <option value="deputy-lead">Deputy Lead</option>
-          <option value="member">Member</option>
-        </select>
-      </div>
-      <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
-        <div class="scroll-arrow left" data-grid="members">◄</div>
-        <div class="scroll-arrow right" data-grid="members">►</div>
-        <div class="member camp-lead" data-role="camp-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/ShanonRichards.jpg" alt="Shanon Richards">
-          <h3>Shanon Richards</h3>
-          <span>Camp Lead</span>
-          <p>Oversees planning, forms, and execution.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member deputy-lead" data-role="deputy-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/MeganR.jpg" alt="Meghan Robson">
-          <h3>Meghan Robson</h3>
-          <span>Deputy Lead</span>
-          <p>Supports Camp Lead, tracks tasks.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" data-role="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/placeholder.jpg" alt="Alex Carter">
-          <h3>Alex Carter</h3>
-          <span>Member</span>
-          <p>Brings the cosmic vibes and art installations.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-      </div>
-      <button class="save-button" onclick="addNewMember()">Add New Member</button>
+      <h1>Kiwiburn Task Roster</h1>
+      <p>Manage and view tasks for Cosmic Rejex at Kiwiburn, including duty schedules and detailed task descriptions.</p>
+      <table class="roster-table">
+        <thead>
+          <tr>
+            <th>Start Date & Time</th>
+            <th>End Date & Time</th>
+            <th>Task</th>
+            <th>Assigned Person</th>
+            <th>Role</th>
+            <th>Action Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="roster-body">
+          <tr>
+            <td>2025-01-15 08:00</td>
+            <td>2025-01-15 12:00</td>
+            <td>Kitchen Duty</td>
+            <td>Shanon Richards</td>
+            <td>Cook</td>
+            <td>Prepare breakfast for 50 campers, including vegan options.</td>
+            <td>
+              <button class="edit-button" onclick="openEditTaskModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteTask(this)">×</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2025-01-16 18:00</td>
+            <td>2025-01-16 22:00</td>
+            <td>Bar Service</td>
+            <td>Meghan Robson</td>
+            <td>Bartender</td>
+            <td>Serve drinks and manage bar inventory during evening event.</td>
+            <td>
+              <button class="edit-button" onclick="openEditTaskModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteTask(this)">×</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2025-01-17 09:00</td>
+            <td>2025-01-17 17:00</td>
+            <td>Build Crew</td>
+            <td>Alex Carter</td>
+            <td>Builder</td>
+            <td>Construct main stage and art installations.</td>
+            <td>
+              <button class="edit-button" onclick="openEditTaskModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteTask(this)">×</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2025-01-20 08:00</td>
+            <td>2025-01-20 14:00</td>
+            <td>Packdown</td>
+            <td>Shanon Richards, Meghan Robson</td>
+            <td>Packdown Crew</td>
+            <td>Dismantle camp structures and clean site.</td>
+            <td>
+              <button class="edit-button" onclick="openEditTaskModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteTask(this)">×</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-task-button" onclick="openAddTaskModal()">Add New Task</button>
     </section>
   </div>
 
-  <div class="modal" id="edit-member-modal">
+  <div class="tasks-container">
+    <section class="section" id="tasks">
+      <h1>Participant Tasks</h1>
+      <p>Track participant onboarding tasks, ticket status, and camp fee payments for Cosmic Rejex.</p>
+      <table class="tasks-table">
+        <thead>
+          <tr>
+            <th>Participant Name</th>
+            <th>Kiwiburn Profile</th>
+            <th>Community Survey</th>
+            <th>Contact Email Provided</th>
+            <th>Camp Packing List</th>
+            <th>Camp Fee Status</th>
+            <th>Kiwiburn Tickets</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="tasks-body">
+          <tr>
+            <td>Shanon Richards</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Paid</td>
+            <td>Camp Allocated</td>
+            <td>
+              <button class="edit-button" onclick="openEditParticipantModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteParticipant(this)">×</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Meghan Robson</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Paid</td>
+            <td>Queue Allocated</td>
+            <td>
+              <button class="edit-button" onclick="openEditParticipantModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteParticipant(this)">×</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Alex Carter</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+            <td>Unpaid</td>
+            <td>To Be Determined</td>
+            <td>
+              <button class="edit-button" onclick="openEditParticipantModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteParticipant(this)">×</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-participant-button" onclick="openAddParticipantModal()">Add New Participant</button>
+    </section>
+  </div>
+
+  <div class="modal" id="edit-task-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeModal('edit-member-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Member</h3>
-      <input type="text" id="member-name" placeholder="Member Name" required aria-label="Member Name">
-      <input type="text" id="member-alt" placeholder="Image Alt Text" required aria-label="Image Alt Text">
-      <input type="file" id="member-image" accept="image/*" aria-label="Member Image">
-      <select id="member-role" required aria-label="Member Role">
-        <option value="camp-lead">Camp Lead</option>
-        <option value="deputy-lead">Deputy Lead</option>
-        <option value="member">Member</option>
+      <button class="close-button" onclick="closeModal('edit-task-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Task</h3>
+      <input type="datetime-local" id="task-start" required aria-label="Start Date and Time">
+      <input type="datetime-local" id="task-end" required aria-label="End Date and Time">
+      <select id="task-type" required aria-label="Task Type">
+        <option value="Kitchen Duty">Kitchen Duty</option>
+        <option value="Bar Service">Bar Service</option>
+        <option value="Build Crew">Build Crew</option>
+        <option value="Packdown">Packdown</option>
+        <option value="Other">Other</option>
       </select>
-      <input type="text" id="member-description" placeholder="Description" required aria-label="Member Description">
-      <button onclick="saveMemberDetails()">Save</button>
+      <input type="text" id="task-assignee" placeholder="Assigned Person(s)" required aria-label="Assigned Person">
+      <input type="text" id="task-role" placeholder="Role" required aria-label="Role">
+      <textarea id="task-action" placeholder="Action Description" required aria-label="Action Description"></textarea>
+      <button onclick="saveTaskDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="add-task-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('add-task-modal')" aria-label="Close modal">×</button>
+      <h3>Add New Task</h3>
+      <input type="datetime-local" id="new-task-start" required aria-label="Start Date and Time">
+      <input type="datetime-local" id="new-task-end" required aria-label="End Date and Time">
+      <select id="new-task-type" required aria-label="Task Type">
+        <option value="Kitchen Duty">Kitchen Duty</option>
+        <option value="Bar Service">Bar Service</option>
+        <option value="Build Crew">Build Crew</option>
+        <option value="Packdown">Packdown</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="new-task-assignee" placeholder="Assigned Person(s)" required aria-label="Assigned Person">
+      <input type="text" id="new-task-role" placeholder="Role" required aria-label="Role">
+      <textarea id="new-task-action" placeholder="Action Description" required aria-label="Action Description"></textarea>
+      <button onclick="addNewTask()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="edit-participant-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('edit-participant-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Participant</h3>
+      <input type="text" id="participant-name" placeholder="Participant Name" required aria-label="Participant Name">
+      <select id="participant-profile" required aria-label="Kiwiburn Profile">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <select id="participant-survey" required aria-label="Community Survey">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <select id="participant-email" required aria-label="Contact Email Provided">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <select id="participant-packing" required aria-label="Camp Packing List">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <select id="participant-fee-status" required aria-label="Camp Fee Status">
+        <option value="Paid">Paid</option>
+        <option value="Unpaid">Unpaid</option>
+      </select>
+      <select id="participant-tickets" required aria-label="Kiwiburn Tickets">
+        <option value="Queue Allocated">Queue Allocated</option>
+        <option value="Camp Allocated">Camp Allocated</option>
+        <option value="To Be Determined">To Be Determined</option>
+      </select>
+      <button onclick="saveParticipantDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="add-participant-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('add-participant-modal')" aria-label="Close modal">×</button>
+      <h3>Add New Participant</h3>
+      <input type="text" id="new-participant-name" placeholder="Participant Name" required aria-label="Participant Name">
+      <select id="new-participant-profile" required aria-label="Kiwiburn Profile">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+      <select id="new-participant-survey" required aria-label="Community Survey">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+      <select id="new-participant-email" required aria-label="Contact Email Provided">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+      <select id="new-participant-packing" required aria-label="Camp Packing List">
+        <option value="No">No</option>
+        <option value="Yes">Yes</option>
+      </select>
+      <select id="new-participant-fee-status" required aria-label="Camp Fee Status">
+        <option value="Unpaid">Unpaid</option>
+        <option value="Paid">Paid</option>
+      </select>
+      <select id="new-participant-tickets" required aria-label="Kiwiburn Tickets">
+        <option value="To Be Determined">To Be Determined</option>
+        <option value="Queue Allocated">Queue Allocated</option>
+        <option value="Camp Allocated">Camp Allocated</option>
+      </select>
+      <button onclick="addNewParticipant()">Save</button>
     </div>
   </div>
 
@@ -700,19 +788,6 @@
       document.body.classList.remove('logged-in');
     });
 
-    // Role Selector
-    const roleSelect = document.getElementById('role-select');
-    roleSelect.addEventListener('change', () => {
-      const selectedRole = roleSelect.value;
-      document.querySelectorAll('.member').forEach(member => {
-        member.style.display = selectedRole === 'all' || member.dataset.role === selectedRole ? 'block' : 'none';
-      });
-    });
-
-    // Initialize roster to show all roles
-    roleSelect.value = 'all';
-    roleSelect.dispatchEvent(new Event('change'));
-
     // Modal Functions
     function openModal(modalId) {
       document.getElementById(modalId).style.display = 'flex';
@@ -722,108 +797,166 @@
       document.getElementById(modalId).style.display = 'none';
     }
 
-    // Member Modal
-    function openEditMemberModal(button) {
-      const member = button.parentElement;
-      const img = member.querySelector('img');
-      const name = member.querySelector('h3').textContent;
-      const role = member.dataset.role;
-      const description = member.querySelector('p').textContent;
-      document.getElementById('member-name').value = name;
-      document.getElementById('member-alt').value = img.alt;
-      document.getElementById('member-role').value = role;
-      document.getElementById('member-description').value = description;
-      document.getElementById('edit-member-modal').dataset.editIndex = Array.from(member.parentElement.children).indexOf(member);
-      openModal('edit-member-modal');
+    // Roster Task Functions
+    function openEditTaskModal(button) {
+      const row = button.closest('tr');
+      const start = row.cells[0].textContent;
+      const end = row.cells[1].textContent;
+      const task = row.cells[2].textContent;
+      const assignee = row.cells[3].textContent;
+      const role = row.cells[4].textContent;
+      const action = row.cells[5].textContent;
+      document.getElementById('task-start').value = start.replace(' ', 'T');
+      document.getElementById('task-end').value = end.replace(' ', 'T');
+      document.getElementById('task-type').value = task;
+      document.getElementById('task-assignee').value = assignee;
+      document.getElementById('task-role').value = role;
+      document.getElementById('task-action').value = action;
+      document.getElementById('edit-task-modal').dataset.editIndex = Array.from(row.parentElement.children).indexOf(row);
+      openModal('edit-task-modal');
     }
 
-    function saveMemberDetails() {
-      const name = document.getElementById('member-name').value;
-      const alt = document.getElementById('member-alt').value;
-      const file = document.getElementById('member-image').files[0];
-      const role = document.getElementById('member-role').value;
-      const description = document.getElementById('member-description').value;
-      const editIndex = document.getElementById('edit-member-modal').dataset.editIndex;
-      const membersGrid = document.querySelector('.members-grid');
-      const member = membersGrid.children[editIndex];
-
-      member.querySelector('h3').textContent = name;
-      member.querySelector('img').alt = alt;
-      member.querySelector('span').textContent = role.charAt(0).toUpperCase() + role.slice(1).replace('-', ' ');
-      member.querySelector('p').textContent = description;
-      member.dataset.role = role;
-      member.className = `member ${role}`;
-      if (file) {
-        member.querySelector('img').src = URL.createObjectURL(file);
-      }
-      closeModal('edit-member-modal');
-      roleSelect.dispatchEvent(new Event('change')); // Refresh roster
+    function saveTaskDetails() {
+      const start = document.getElementById('task-start').value.replace('T', ' ');
+      const end = document.getElementById('task-end').value.replace('T', ' ');
+      const task = document.getElementById('task-type').value;
+      const assignee = document.getElementById('task-assignee').value;
+      const role = document.getElementById('task-role').value;
+      const action = document.getElementById('task-action').value;
+      const editIndex = document.getElementById('edit-task-modal').dataset.editIndex;
+      const rosterBody = document.getElementById('roster-body');
+      const row = rosterBody.children[editIndex];
+      row.cells[0].textContent = start;
+      row.cells[1].textContent = end;
+      row.cells[2].textContent = task;
+      row.cells[3].textContent = assignee;
+      row.cells[4].textContent = role;
+      row.cells[5].textContent = action;
+      closeModal('edit-task-modal');
     }
 
-    // Drag and Drop
-    let draggedElement = null;
-
-    function drag(event) {
-      draggedElement = event.target.closest('.member');
-      event.dataTransfer.setData('text/plain', '');
+    function openAddTaskModal() {
+      document.getElementById('new-task-start').value = '';
+      document.getElementById('new-task-end').value = '';
+      document.getElementById('new-task-type').value = 'Kitchen Duty';
+      document.getElementById('new-task-assignee').value = '';
+      document.getElementById('new-task-role').value = '';
+      document.getElementById('new-task-action').value = '';
+      openModal('add-task-modal');
     }
 
-    function allowDrop(event) {
-      event.preventDefault();
+    function addNewTask() {
+      const start = document.getElementById('new-task-start').value.replace('T', ' ');
+      const end = document.getElementById('new-task-end').value.replace('T', ' ');
+      const task = document.getElementById('new-task-type').value;
+      const assignee = document.getElementById('new-task-assignee').value;
+      const role = document.getElementById('new-task-role').value;
+      const action = document.getElementById('new-task-action').value;
+      const rosterBody = document.getElementById('roster-body');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${start}</td>
+        <td>${end}</td>
+        <td>${task}</td>
+        <td>${assignee}</td>
+        <td>${role}</td>
+        <td>${action}</td>
+        <td>
+          <button class="edit-button" onclick="openEditTaskModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteTask(this)">×</button>
+        </td>
+      `;
+      rosterBody.appendChild(row);
+      closeModal('add-task-modal');
     }
 
-    function dropMembers(event) {
-      event.preventDefault();
-      const membersGrid = document.querySelector('.members-grid');
-      if (draggedElement && draggedElement.classList.contains('member')) {
-        membersGrid.appendChild(draggedElement);
-      }
+    function deleteTask(button) {
+      button.closest('tr').remove();
     }
 
-    // Add New Member
-    function addNewMember() {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.onchange = (e) => {
-        const file = e.target.files[0];
-        const membersGrid = document.querySelector('.members-grid');
-        const member = document.createElement('div');
-        member.classList.add('member');
-        member.dataset.role = 'member';
-        member.draggable = true;
-        member.ondragstart = drag;
-        member.innerHTML = `
-          <img src="${file ? URL.createObjectURL(file) : 'images/placeholder.jpg'}" alt="New Member">
-          <h3>New Member</h3>
-          <span>Member</span>
-          <p>Contributes to the camp vibe.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        `;
-        membersGrid.appendChild(member);
-        roleSelect.dispatchEvent(new Event('change')); // Refresh roster
-      };
-      input.click();
+    // Participant Task Functions
+    function openEditParticipantModal(button) {
+      const row = button.closest('tr');
+      const name = row.cells[0].textContent;
+      const profile = row.cells[1].textContent;
+      const survey = row.cells[2].textContent;
+      const email = row.cells[3].textContent;
+      const packing = row.cells[4].textContent;
+      const feeStatus = row.cells[5].textContent;
+      const tickets = row.cells[6].textContent;
+      document.getElementById('participant-name').value = name;
+      document.getElementById('participant-profile').value = profile;
+      document.getElementById('participant-survey').value = survey;
+      document.getElementById('participant-email').value = email;
+      document.getElementById('participant-packing').value = packing;
+      document.getElementById('participant-fee-status').value = feeStatus;
+      document.getElementById('participant-tickets').value = tickets;
+      document.getElementById('edit-participant-modal').dataset.editIndex = Array.from(row.parentElement.children).indexOf(row);
+      openModal('edit-participant-modal');
     }
 
-    // Delete Member
-    function deleteMember(button) {
-      button.parentElement.remove();
-      roleSelect.dispatchEvent(new Event('change')); // Refresh roster
+    function saveParticipantDetails() {
+      const name = document.getElementById('participant-name').value;
+      const profile = document.getElementById('participant-profile').value;
+      const survey = document.getElementById('participant-survey').value;
+      const email = document.getElementById('participant-email').value;
+      const packing = document.getElementById('participant-packing').value;
+      const feeStatus = document.getElementById('participant-fee-status').value;
+      const tickets = document.getElementById('participant-tickets').value;
+      const editIndex = document.getElementById('edit-participant-modal').dataset.editIndex;
+      const tasksBody = document.getElementById('tasks-body');
+      const row = tasksBody.children[editIndex];
+      row.cells[0].textContent = name;
+      row.cells[1].textContent = profile;
+      row.cells[2].textContent = survey;
+      row.cells[3].textContent = email;
+      row.cells[4].textContent = packing;
+      row.cells[5].textContent = feeStatus;
+      row.cells[6].textContent = tickets;
+      closeModal('edit-participant-modal');
     }
 
-    // Scroll Arrows
-    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-      arrow.addEventListener('click', () => {
-        const grid = document.querySelector(`.members-grid`);
-        const scrollAmount = grid.offsetWidth * 0.8;
-        grid.scrollBy({
-          left: arrow.classList.contains('left') ? -scrollAmount : scrollAmount,
-          behavior: 'smooth'
-        });
-      });
-    });
+    function openAddParticipantModal() {
+      document.getElementById('new-participant-name').value = '';
+      document.getElementById('new-participant-profile').value = 'No';
+      document.getElementById('new-participant-survey').value = 'No';
+      document.getElementById('new-participant-email').value = 'No';
+      document.getElementById('new-participant-packing').value = 'No';
+      document.getElementById('new-participant-fee-status').value = 'Unpaid';
+      document.getElementById('new-participant-tickets').value = 'To Be Determined';
+      openModal('add-participant-modal');
+    }
+
+    function addNewParticipant() {
+      const name = document.getElementById('new-participant-name').value;
+      const profile = document.getElementById('new-participant-profile').value;
+      const survey = document.getElementById('new-participant-survey').value;
+      const email = document.getElementById('new-participant-email').value;
+      const packing = document.getElementById('new-participant-packing').value;
+      const feeStatus = document.getElementById('new-participant-fee-status').value;
+      const tickets = document.getElementById('new-participant-tickets').value;
+      const tasksBody = document.getElementById('tasks-body');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${name}</td>
+        <td>${profile}</td>
+        <td>${survey}</td>
+        <td>${email}</td>
+        <td>${packing}</td>
+        <td>${feeStatus}</td>
+        <td>${tickets}</td>
+        <td>
+          <button class="edit-button" onclick="openEditParticipantModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteParticipant(this)">×</button>
+        </td>
+      `;
+      tasksBody.appendChild(row);
+      closeModal('add-participant-modal');
+    }
+
+    function deleteParticipant(button) {
+      button.closest('tr').remove();
+    }
   </script>
 </body>
 </html>
