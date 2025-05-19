@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +48,8 @@
     body.night-mode .newsletter-container,
     body.night-mode .submit-section,
     body.night-mode .history-container,
-    body.night-mode .countdown-section {
+    body.night-mode .countdown-section,
+    body.night-mode .spotify-container {
       background: rgba(44, 29, 15, 0.3);
     }
 
@@ -702,6 +702,8 @@
       margin-bottom: 20px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     .countdown {
@@ -709,9 +711,9 @@
       justify-content: center;
       gap: 20px;
       font-family: 'Bebas Neue', cursive;
-      font-size: 2.5em;
+      font-size: 3em;
       color: #ffffff;
-      background: rgba(44, 29, 15, 0.7);
+      background: rgba(0, 0, 0, 0.7);
       padding: 15px 30px;
       border-radius: 10px;
       border: 2px solid #e67e22;
@@ -721,11 +723,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-width: 60px;
+      background: #ffffff;
+      color: #000000;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
     .countdown span small {
       font-size: 0.5em;
       text-transform: uppercase;
+      color: #000000;
+      margin-top: 5px;
     }
 
     .countdown-section input {
@@ -832,7 +842,7 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
+    .about-container, .mission-container, .members-container, .newsletter-container, .history-container, .spotify-container {
       max-width: 1200px;
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.15);
@@ -896,10 +906,7 @@
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
-      font-size: 0.9em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin: 10px auto;
-    }
+      font-size: 0წ
 
     .logged-in .edit-section-button {
       display: block;
@@ -950,60 +957,108 @@
       border: 2px solid #e67e22;
     }
 
-    /* History section styles */
+    /* Updated History section styles */
     .history-section {
       padding: 60px 20px;
       text-align: center;
+      background: #000000;
+      border: none;
+    }
+
+    .history-container {
+      background: #000000;
+      border: none;
+      padding: 0;
     }
 
     .history-container h1 {
+      font-family: 'Bebas Neue', cursive;
       font-size: 3.5em;
-      margin-bottom: 40px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      border-top: 3px solid #ff0000;
+      border-bottom: 3px solid #ff0000;
+      padding: 10px 0;
     }
 
     .history-gallery {
       display: flex;
       justify-content: center;
       gap: 20px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto 40px;
+      flex-wrap: wrap;
     }
 
-    .history-gallery img {
-      width: 300px;
+    .history-item {
+      flex: 1;
+      min-width: 300px;
+      max-width: 350px;
+      text-align: center;
+    }
+
+    .history-item img {
+      width: 100%;
       height: 200px;
       object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      border: 2px solid #e67e22;
+      border-radius: 0;
+      box-shadow: none;
+      border: 5px solid #ffffff;
     }
 
-    .history-text p {
-      font-size: 1.2em;
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 0 auto;
+    .history-item h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.8em;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin: 15px 0 10px;
+    }
+
+    .history-item p {
+      font-size: 1em;
+      color: #ffffff;
+      line-height: 1.6;
+      max-width: 100%;
     }
 
     /* Spotify section styles */
     .spotify-section {
       padding: 60px 20px;
       text-align: center;
+      background: #000000;
+      border: none;
+    }
+
+    .spotify-container {
+      background: #000000;
+      border: none;
+      padding: 0;
     }
 
     .spotify-container h1 {
+      font-family: 'Bebas Neue', cursive;
       font-size: 3.5em;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       margin-bottom: 20px;
+      border-top: 3px solid #ff0000;
+      border-bottom: 3px solid #ff0000;
+      padding: 10px 0;
     }
 
     .spotify-container p {
       font-size: 1.2em;
       margin-bottom: 30px;
+      color: #ffffff;
     }
 
     .spotify-embed {
       max-width: 600px;
       margin: 0 auto;
+      border: 5px solid #ffffff;
     }
 
     @media only screen and (max-width: 768px) {
@@ -1055,7 +1110,7 @@
       }
 
       .login-container input, .login-container button {
-        font BEFORE: .8rem;
+        font-size: 0.8rem;
         padding: 6px;
         width: 100%;
         box-sizing: border-box;
@@ -1189,8 +1244,12 @@
 
       .countdown {
         font-size: 1.5em;
-        flex-direction: column;
         gap: 10px;
+      }
+
+      .countdown span {
+        min-width: 50px;
+        padding: 8px;
       }
 
       .form-container {
@@ -1207,7 +1266,7 @@
         padding: 10px 15px;
       }
 
-      .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
+      .about-container, .mission-container, .members-container, .newsletter-container, .history-container, .spotify-container {
         max-width: 95%;
         padding: 20px 15px;
       }
@@ -1229,11 +1288,16 @@
       .history-gallery {
         flex-direction: column;
         align-items: center;
+        gap: 30px;
       }
 
-      .history-gallery img {
-        width: 100%;
-        max-width: 300px;
+      .history-item {
+        min-width: 100%;
+        max-width: 100%;
+      }
+
+      .history-item img {
+        height: 180px;
       }
 
       .history-container h1 {
@@ -1332,6 +1396,11 @@
         font-size: 1.2em;
       }
 
+      .countdown span {
+        min-width: 40px;
+        padding: 6px;
+      }
+
       .newsletter-container h2 {
         font-size: 1.5em;
       }
@@ -1372,6 +1441,10 @@
 
       .spotify-container h1 {
         font-size: 2em;
+      }
+
+      .history-item img {
+        height: 150px;
       }
     }
   </style>
@@ -1552,9 +1625,14 @@
       <button class="close-button" onclick="closeModal('history-modal')" aria-label="Close modal">×</button>
       <h3>Edit History Section</h3>
       <input type="text" id="history-title" placeholder="Section Title" required aria-label="Section Title">
-      <textarea id="history-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+      <textarea id="history-description-1" placeholder="Description for Item 1" required aria-label="Description for Item 1"></textarea>
+      <input type="text" id="history-title-1" placeholder="Title for Item 1" required aria-label="Title for Item 1">
       <input type="file" id="history-image1" accept="image/*" aria-label="History Image 1">
+      <textarea id="history-description-2" placeholder="Description for Item 2" required aria-label="Description for Item 2"></textarea>
+      <input type="text" id="history-title-2" placeholder="Title for Item 2" required aria-label="Title for Item 2">
       <input type="file" id="history-image2" accept="image/*" aria-label="History Image 2">
+      <textarea id="history-description-3" placeholder="Description for Item 3" required aria-label="Description for Item 3"></textarea>
+      <input type="text" id="history-title-3" placeholder="Title for Item 3" required aria-label="Title for Item 3">
       <input type="file" id="history-image3" accept="image/*" aria-label="History Image 3">
       <button onclick="saveHistoryDetails()">Save</button>
     </div>
@@ -1590,32 +1668,41 @@
     <section class="section history-section" id="history">
       <h1>Our History</h1>
       <div class="history-gallery">
-        <img src="images/About-Our-Camp/CampPhoto(1).png" alt="History Photo 1">
-        <img src="images/About-Our-Camp/CampPhoto(2).jpg" alt="History Photo 2">
-        <img src="images/About-Our-Camp/CampPhoto(3).png" alt="History Photo 3">
-      </div>
-      <div class="history-text">
-        <p>Cosmic Rejex was born in 2020 from a group of Kiwiburn regulars who wanted to create a space for alternative music and self-expression. Over the years, we’ve grown from a small tent circle to a vibrant sound camp, hosting everything from emo nights to alien-themed workshops. Our commitment to inclusivity and creativity keeps us thriving.</p>
+        <div class="history-item">
+          <img src="images/About-Our-Camp/CampPhoto(1).png" alt="History Photo 1">
+          <h3>The Beginning</h3>
+          <p>Cosmic Rejex was born in 2020 from a group of Kiwiburn regulars who wanted to create a space for alternative music and self-expression.</p>
+        </div>
+        <div class="history-item">
+          <img src="images/About-Our-Camp/CampPhoto(2).jpg" alt="History Photo 2">
+          <h3>The Rejex Grows</h3>
+          <p>By 2022, we’d grown from a small tent circle to a vibrant sound camp, hosting emo nights and alien-themed workshops.</p>
+        </div>
+        <div class="history-item">
+          <img src="images/About-Our-Camp/CampPhoto(3).png" alt="History Photo 3">
+          <h3>The Future</h3>
+          <p>Now, we’re focused on inclusivity and creativity, aiming to be a staple at Kiwiburn for years to come.</p>
+        </div>
       </div>
       <button class="edit-section-button" onclick="openModal('history-modal')">Edit Section</button>
     </section>
   </div>
 
-<div class="mission-container">
-  <section class="section" id="mission">
-    <h1>Our Mission</h1>
-    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
-    <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
-    <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
-      <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
-        <img src="images/Our-Mission/Camp-Photo.jpg" alt="Our Mission Camp Photo">
-        <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-        <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+  <div class="mission-container">
+    <section class="section" id="mission">
+      <h1>Our Mission</h1>
+      <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
+      <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
+      <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
+        <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
+          <img src="images/Our-Mission/Camp-Photo.jpg" alt="Our Mission Camp Photo">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+          <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+        </div>
       </div>
-    </div>
-    <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
-  </section>
-</div>
+      <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
+    </section>
+  </div>
 
   <div class="members-container">
     <section class="section" id="members">
