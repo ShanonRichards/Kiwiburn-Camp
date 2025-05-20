@@ -1075,19 +1075,20 @@
 .spotify-embed {
   max-width: 600px;
   margin: 0 auto;
-  border: 2px solid #000000; /* Changed to black */
+  border: 2px solid #e67e22;
   border-radius: 12px;
   overflow: hidden;
-  background: url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat;
+  background: #000000; /* Set to black */
   position: relative;
 }
 
 .spotify-embed iframe {
   background: transparent !important;
+  border: none; /* Ensure no border contributes to unwanted visuals */
 }
 
 body.night-mode .spotify-embed {
-  background: url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat; /* Replace with your dark mode image */
+  background: #000000; /* Keep black in night mode */
   border-color: #f39c12;
 }
 
