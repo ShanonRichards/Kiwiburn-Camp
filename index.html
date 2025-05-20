@@ -83,7 +83,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
+      padding: 15px 20px;
       z-index: 1000;
       border-bottom: 2px solid #e67e22;
     }
@@ -102,12 +102,8 @@
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-item {
-      position: relative;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     nav a {
@@ -115,48 +111,17 @@
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
+      margin: 5px 15px;
       padding: 10px 15px;
       border-radius: 4px;
       transition: background 0.3s, color 0.3s, box-shadow 0.3s;
       text-transform: uppercase;
-      display: block;
     }
 
     nav a:hover {
       background-color: #e67e22;
       color: #2b1b0f;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background: rgba(44, 29, 15, 0.95);
-      min-width: 200px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 4px;
-      border: 1px solid #e67e22;
-      top: 100%;
-      left: 0;
-    }
-
-    body.night-mode .dropdown-content {
-      background: rgba(74, 55, 35, 0.95);
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-content a {
-      font-size: 1rem;
-      padding: 12px 16px;
-      margin: 0;
     }
 
     .theme-toggle {
@@ -187,8 +152,15 @@
 
     .login-container {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      justify-content: flex-end;
+      padding: 10px 20px;
+      background: rgba(44, 29, 15, 0.85);
+      border-bottom: 1px solid #e67e22;
+      z-index: 999;
+    }
+
+    body.night-mode .login-container {
+      background: rgba(74, 55, 35, 0.85);
     }
 
     .login-container form {
@@ -231,14 +203,942 @@
       display: none;
     }
 
-    /* Media Queries */
+    .header {
+      background: url('images/Cover-Photo/last-try.png') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #f8e1b4;
+      position: relative;
+      text-shadow: 0 0 10px var(--primary);
+    }
+
+    .header-logo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 10;
+      filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
+    }
+
+    .header h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 4em;
+      max-width: 90%;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .header-ctas {
+      display: flex;
+      gap: 10px;
+    }
+
+    .apply-button, .secondary-button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .apply-button {
+      background: var(--primary);
+      color: var(--text);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    .secondary-button {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--text);
+    }
+
+    .apply-button:hover, .secondary-button:hover {
+      background: var(--secondary);
+      color: var(--background);
+    }
+
+    @keyframes glow {
+      from { 
+        text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400;
+        box-shadow: 0 0 5px var(--primary); 
+      }
+      to { 
+        text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22;
+        box-shadow: 0 0 15px var(--primary); 
+      }
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+      color: #f8e1b4;
+      transition: box-shadow 0.3s;
+    }
+
+    .scroll-down:hover {
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      background: url('images/dusty-texture.png') center/cover;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
+    }
+
+    .section:nth-of-type(odd) {
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .section:nth-of-type(even) {
+      background-color: rgba(217, 185, 155, 0.8);
+    }
+
+    .section h1, .section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #2b1b0f;
+      letter-spacing: 1px;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+      color: #2b1b0f;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #e67e22;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+    }
+
+    .gallery .image-container {
+      position: relative;
+    }
+
+    .gallery .delete-button, .gallery .edit-button {
+      display: none;
+      position: absolute;
+      top: 5px;
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery .delete-button {
+      right: 5px;
+    }
+
+    .gallery .edit-button {
+      right: 35px;
+    }
+
+    .logged-in .gallery .delete-button, .logged-in .gallery .edit-button {
+      display: block;
+    }
+
+    .gallery .delete-button:hover, .gallery .edit-button:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .members-grid, .roles-grid, .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      justify-items: center;
+      align-items: start;
+      position: relative;
+      min-height: 200px;
+    }
+
+    .scroll-arrow {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #f8e1b4;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.3s, box-shadow 0.3s;
+      animation: flash 1.5s infinite;
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .scroll-arrow:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .scroll-arrow.left {
+      left: 10px;
+    }
+
+    .scroll-arrow.right {
+      right: 10px;
+    }
+
+    .member, .role, .event {
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border: 1px solid #e67e22;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      height: 100%;
+    }
+
+    .role {
+      min-height: 250px;
+    }
+
+    .member:hover, .role:hover, .event:hover {
+      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+      transform: translateY(-5px);
+    }
+
+    .member img, .role img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+      border: 3px solid #f39c12;
+    }
+
+    .event img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 2px solid #f39c12;
+    }
+
+    .member.camp-lead, .member.deputy-lead {
+      position: relative;
+    }
+
+    .member.camp-lead::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #FFD700;
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .member.deputy-lead::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #C0C0C0;
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .member h3, .role h3, .event h3 {
+      margin: 10px 0 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5em;
+      color: #000000;
+      line-height: 1.2;
+    }
+
+    .member span {
+      font-weight: bold;
+      color: #e67e22;
+      display: block;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .member p, .event p {
+      font-size: 1em;
+      color: #000000;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .role p {
+      font-size: 1em;
+      color: #ffffff;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .event p.event-date, .event p.event-time, .event p.event-end, .event p.event-category {
+      font-size: 0.95em;
+      color: #2b1b0f;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .event p.event-date strong, .event p.event-time strong, .event p.event-end strong, .event p.event-category strong {
+      color: #e67e22;
+    }
+
+    .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
+      display: none;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .event .edit-button, .role .edit-button, .member .edit-button {
+      right: 35px;
+    }
+
+    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button, .logged-in .event .delete-button, .logged-in .role .edit-button, .logged-in .member .edit-button {
+      display: block;
+    }
+
+    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover, .role .edit-button:hover, .member .edit-button:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .role .apply-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .role .apply-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .role .tooltip {
+      visibility: hidden;
+      width: 180px;
+      background-color: rgba(44, 29, 15, 0.95);
+      color: #f8e1b4;
+      text-align: center;
+      border-radius: 8px;
+      padding: 12px;
+      position: absolute;
+      z-index: 10;
+      top: -10px;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      font-size: 0.9em;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid #f39c12;
+    }
+
+    .role .tooltip span {
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    .role:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -110%);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      border: 2px solid #e67e22;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      font-family: 'Bebas Neue', cursive;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input, .modal-content textarea, .modal-content select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .modal-content input[type="file"] {
+      background: none;
+      border: none;
+      padding: 5px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 0 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      font-size: 1.2em;
+      padding: 5px 10px;
+    }
+
+    .events-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .countdown-section {
+      position: relative;
+      background: url('images/Countdown/Kiwiburn-Coverphoto.jpg') center/cover no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+      color: #ffffff;
+      margin: 40px 0;
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    body.night-mode .countdown-section {
+      background: url('images/countdown-bg.jpg') center/cover no-repeat;
+    }
+
+    .countdown-section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      color: #ffffff;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5em;
+      color: #ffffff;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 15px 30px;
+      border-radius: 10px;
+      border: 2px solid #e67e22;
+    }
+
+    .countdown span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown span small {
+      font-size: 0.5em;
+      text-transform: uppercase;
+    }
+
+    .countdown-section input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      margin: 10px;
+      display: none;
+    }
+
+    .logged-in .countdown-section input {
+      display: inline-block;
+    }
+
+    .countdown-section button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    .logged-in .countdown-section button {
+      display: inline-block;
+    }
+
+    .countdown-section button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    body.night-mode footer {
+      background-color: #4a3723;
+    }
+
+    .form-container {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .form-container button {
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .submit-button, .fee-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+      margin: 10px;
+    }
+
+    .submit-button:hover, .fee-button:hover {
+      background-color: #f39c12;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .section#submit {
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .submit-section {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .newsletter-section {
+      padding: 80px 20px;
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    body.night-mode .newsletter-section {
+      background-color: rgba(44, 29, 15, 0.8);
+    }
+
+    .newsletter-container .section {
+      padding: 0;
+    }
+
+    .save-button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 20px auto;
+      display: none;
+    }
+
+    .logged-in .save-button {
+      display: block;
+    }
+
+    .edit-section-button {
+      display: none;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 10px auto;
+    }
+
+    .logged-in .edit-section-button {
+      display: block;
+    }
+
+    .edit-section-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    /* New styles for About section */
+    .about-section {
+      padding: 60px 20px;
+      text-align: left;
+      background: none;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h1 {
+      font-size: 4em;
+      margin-bottom: 20px;
+      color: #2b1b0f;
+    }
+
+    .about-text p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      color: #2b1b0f;
+      max-width: 100%;
+    }
+
+    .about-image img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border: 2px solid #e67e22;
+    }
+
+    /* Updated History section styles to match Whomp Wagon */
+    .history-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: none;
+    }
+
+    .history-container h1 {
+      font-size: 4em;
+      margin-bottom: 40px;
+      color: #e01b24;
+      position: relative;
+    }
+
+    .history-container h1::before,
+    .history-container h1::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 15%;
+      height: 2px;
+      background: #e01b24;
+    }
+
+    .history-container h1::before {
+      left: 0;
+    }
+
+    .history-container h1::after {
+      right: 0;
+    }
+
+    .history-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    .history-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .history-item img {
+      width: 100%;
+      max-width: 400px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border: 2px solid #e67e22;
+      margin-bottom: 15px;
+    }
+
+    .history-item h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.8em;
+      color: #2b1b0f;
+      margin-bottom: 10px;
+    }
+
+    .history-item p {
+      font-size: 1em;
+      line-height: 1.6;
+      color: #2b1b0f;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+
+    body.night-mode .history-container h1 {
+      color: #f8e1b4;
+    }
+
+    body.night-mode .history-container h1::before,
+    body.night-mode .history-container h1::after {
+      background: #f8e1b4;
+    }
+
+    body.night-mode .history-item h3,
+    body.night-mode .history-item p {
+      color: #f8e1b4;
+    }
+
+    /* Spotify section styles */
+    .spotify-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: none;
+    }
+
+    .spotify-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #000000 url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat;
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    body.night-mode .spotify-container {
+      background: #1a1a1a url('images/emo-bg-dark.jpg') center/cover no-repeat;
+    }
+
+    .spotify-container h1 {
+      font-family: 'Special Elite', cursive;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      letter-spacing: 2px;
+    }
+
+    .spotify-container p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #d3d3d3;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .spotify-embed {
+      max-width: 600px;
+      margin: 0 auto;
+      border: 2px solid #e67e22;
+      border-radius: 12px;
+      overflow: hidden;
+      background: url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat;
+      position: relative;
+    }
+
+    .spotify-embed iframe {
+      background: transparent !important;
+      border: none;
+    }
+
+    body.night-mode .spotify-embed {
+      background: url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat;
+      border-color: #f39c12;
+    }
+
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
       }
 
       nav {
-        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: center;
         padding: 10px;
       }
 
@@ -261,10 +1161,6 @@
         display: flex;
       }
 
-      .nav-item {
-        width: 100%;
-      }
-
       nav a {
         margin: 5px 0;
         font-size: 1rem;
@@ -272,29 +1168,18 @@
         text-align: center;
       }
 
-      .dropdown-content {
-        position: static;
-        background: rgba(74, 55, 35, 1);
-        border: none;
-        box-shadow: none;
-        padding-left: 20px;
-      }
-
-      .dropdown-content a {
-        text-align: left;
+      .theme-toggle {
+        font-size: 0.9rem;
+        padding: 5px;
       }
 
       .login-container {
-        width: 100%;
-        justify-content: center;
-        padding: 10px 0;
+        padding: 10px;
       }
 
       .login-container form {
         flex-direction: column;
         gap: 5px;
-        width: 100%;
-        max-width: 300px;
       }
 
       .login-container input, .login-container button {
@@ -303,21 +1188,375 @@
         width: 100%;
         box-sizing: border-box;
       }
+
+      .header {
+        height: 50vh;
+      }
+
+      .header-logo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .header h1 {
+        font-size: 3em;
+      }
+
+      .header p {
+        font-size: 1.2em;
+      }
+
+      .apply-button, .secondary-button {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+
+      .scroll-down {
+        font-size: 1.2rem;
+      }
+
+      .section {
+        padding: 40px 15px;
+      }
+
+      .section h1, .section h2 {
+        font-size: 2em;
+      }
+
+      .section p {
+        font-size: 1em;
+        max-width: 95%;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 95%;
+      }
+
+      .members-grid, .roles-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 15px;
+        max-width: 95%;
+        padding: 0 10px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .members-grid .scroll-arrow, .roles-grid .scroll-arrow {
+        display: block;
+      }
+
+      .member, .role {
+        flex: 0 0 140px;
+        scroll-snap-align: start;
+        min-height: 240px;
+        padding: 10px;
+      }
+
+      .member img, .role img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1.2rem;
+        top: -15px;
+      }
+
+      .member h3, .role h3 {
+        font-size: 1.3em;
+      }
+
+      .member span {
+        font-size: 1.1em;
+      }
+
+      .member p, .role p {
+        font-size: 0.9em;
+      }
+
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+      }
+
+      .event .edit-button, .role .edit-button, .member .edit-button {
+        right: 30px;
+      }
+
+      .role .tooltip {
+        width: 140px;
+        font-size: 0.85em;
+      }
+
+      .role .apply-button {
+        font-size: 0.8em;
+        padding: 6px 10px;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 95%;
+      }
+
+      .event img {
+        height: 150px;
+      }
+
+      .event h3 {
+        font-size: 1.4em;
+      }
+
+      .event p {
+        font-size: 0.95em;
+      }
+
+      .event {
+        min-height: 600px;
+      }
+
+      .countdown {
+        font-size: 1.5em;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .form-container {
+        max-width: 95%;
+      }
+
+      .submit-section, .newsletter-container {
+        max-width: 95%;
+        padding: 15px;
+      }
+
+      .submit-button, .fee-button {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+
+      .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
+        max-width: 95%;
+        padding: 20px 15px;
+      }
+
+      .about-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-image img {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .about-text h1 {
+        font-size: 2.5em;
+      }
+
+      .history-gallery {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .history-item img {
+        width: 100%;
+        max-width: 300px;
+        height: 200px;
+      }
+
+      .history-item h3 {
+        font-size: 1.5em;
+      }
+
+      .history-item p {
+        font-size: 0.9em;
+        max-width: 90%;
+      }
+
+      .history-container h1 {
+        font-size: 2.5em;
+      }
+
+      .history-container h1::before,
+      .history-container h1::after {
+        width: 10%;
+      }
+
+      .spotify-container h1 {
+        font-size: 2.5em;
+      }
+
+      .spotify-container p {
+        font-size: 1em;
+      }
+
+      .spotify-embed {
+        max-width: 100%;
+      }
+
+      .spotify-embed iframe {
+        height: 300px;
+      }
     }
 
     @media only screen and (max-width: 480px) {
+      .header h1 {
+        font-size: 2.2em;
+      }
+
+      .header p {
+        font-size: 1em;
+      }
+
+      .header-logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .section h1, .section h2 {
+        font-size: 1.6em;
+      }
+
+      .section p {
+        font-size: 0.9em;
+      }
+
+      .members-grid, .roles-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 0 5px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .member, .role {
+        flex: 0 0 120px;
+        scroll-snap-align: start;
+        min-height: 200px;
+        padding: 8px;
+      }
+
+      .member img, .role img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .member h3, .role h3 {
+        font-size: 1.1em;
+      }
+
+      .member span {
+        font-size: 1em;
+      }
+
+      .member p, .role p {
+        font-size: 0.85em;
+      }
+
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1rem;
+        top: -12px;
+      }
+
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7em;
+      }
+
+      .event .edit-button, .role .edit-button, .member .edit-button {
+        right: 25px;
+      }
+
+      .role .tooltip {
+        width: 120px;
+        font-size: 0.8em;
+        padding: 8px;
+      }
+
+      .role .apply-button {
+        font-size: 0.7em;
+        padding: 5px 8px;
+      }
+
+      .countdown {
+        font-size: 1.2em;
+      }
+
+      .newsletter-container h2 {
+        font-size: 1.5em;
+      }
+
+      .newsletter-container p {
+        font-size: 0.9em;
+      }
+
+      .event img {
+        height: 120px;
+      }
+
+      .event {
+        min-height: 500px;
+      }
+
       .hamburger {
         font-size: 1.2rem;
       }
 
       .login-container input, .login-container button {
-        font-size: 0.7rem;
+        font-size: 0.7em;
         padding: 5px;
       }
 
-      .nav-logo {
-        width: 40px;
-        height: 40px;
+      .apply-button, .secondary-button {
+        font-size: 0.9em;
+        padding: 8px 12px;
+      }
+
+      .about-text h1 {
+        font-size: 2em;
+      }
+
+      .history-container h1 {
+        font-size: 2em;
+      }
+
+      .history-container h1::before,
+      .history-container h1::after {
+        width: 5%;
+      }
+
+      .history-item h3 {
+        font-size: 1.3em;
+      }
+
+      .history-item p {
+        font-size: 0.85em;
+      }
+
+      .spotify-container h1 {
+        font-size: 2em;
+      }
+
+      .spotify-container p {
+        font-size: 0.9em;
+      }
+
+      .spotify-embed iframe {
+        height: 250px;
+      }
+    }
+
+    @media only screen and (min-width: 769px) {
+      .roles-grid .scroll-arrow, .members-grid .scroll-arrow {
+        display: none;
       }
     }
   </style>
@@ -327,60 +1566,29 @@
     <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="nav-logo">
     <button class="hamburger" aria-label="Toggle menu">☰</button>
     <div class="nav-links">
-      <div class="nav-item dropdown">
-        <a href="#about">About</a>
-        <div class="dropdown-content">
-          <a href="#about">Our Camp</a>
-          <a href="#mission">Our Mission</a>
-          <a href="#history">Our History</a>
-        </div>
-      </div>
-      <div class="nav-item dropdown">
-        <a href="#events">Events</a>
-        <div class="dropdown-content">
-          <a href="#events">Upcoming Events</a>
-          <a href="#past-events">Past Events</a>
-          <a href="submit-event.html">Submit Event</a>
-        </div>
-      </div>
-      <div class="nav-item dropdown">
-        <a href="#join">Join Us</a>
-        <div class="dropdown-content">
-          <a href="join-camp.html">Membership Info</a>
-          <a href="join-camp.html">Apply to Join</a>
-          <a href="join-camp.html#fees">Camp Fees</a>
-          <a href="Task_Roster.html">Task/Roster</a>
-        </div>
-      </div>
-      <div class="nav-item dropdown">
-        <a href="gallery.html">Gallery</a>
-        <div class="dropdown-content">
-          <a href="gallery.html#2021">2021</a>
-          <a href="gallery.html#2022">2022</a>
-          <a href="gallery.html#2023">2023</a>
-          <a href="gallery.html#2024">2024</a>
-          <a href="gallery.html#2025">2025</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="#newsletter">Newsletter</a>
-      </div>
-      <div class="nav-item">
-        <a href="contact.html">Contact Us</a>
-      </div>
-    </div>
-    <div class="login-container">
-      <form id="login-form">
-        <input type="text" id="username" placeholder="Username" required aria-label="Username">
-        <input type="password" id="password" placeholder="Password" required aria-label="Password">
-        <button type="submit">Login</button>
-      </form>
-      <button class="logout-button" aria-label="Logout">Logout</button>
+      <a href="#about">About</a>
+      <a href="#history">History</a>
+      <a href="#mission">Mission</a>
+      <a href="#members">Members</a>
+      <a href="#events">Events</a>
+      <a href="submit-event.html">Submit Event</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="Task_Roster.html">Tasks/Roster</a>
+      <a href="contact.html">Contact</a>
     </div>
     <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
   </nav>
 
-  <!-- Rest of the HTML remains unchanged -->
+  <div class="login-container">
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required aria-label="Username">
+      <input type="password" id="password" placeholder="Password" required aria-label="Password">
+      <button type="submit">Login</button>
+    </form>
+    <button class="logout-button" aria-label="Logout">Logout</button>
+  </div>
+
   <header class="header" id="home">
     <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="header-logo">
     <h1>JOIN COSMIC REJEX</h1>
@@ -393,7 +1601,6 @@
     <a href="#about" class="scroll-down" aria-label="Scroll to about section">▼</a>
   </header>
 
-  <!-- Modals and other sections remain unchanged -->
   <div class="modal" id="header-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeModal('header-modal')" aria-label="Close modal">×</button>
@@ -403,7 +1610,6 @@
     </div>
   </div>
 
-  <!-- Include all other modals as in the original HTML -->
   <div class="modal" id="member-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeModal('member-modal')" aria-label="Close modal">×</button>
@@ -465,8 +1671,7 @@
       <button class="close-button" onclick="closeModal('mission-modal')" aria-label="Close modal">×</button>
       <h3>Edit Mission Section</h3>
       <input type="text" id="mission-title" placeholder="Section Title" required aria-label="Section Title">
-      <textarea id="mission-description" placeholder="Section Description" required aria-label="Section Description"></textarea projektów
-
+      <textarea id="mission-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
       <input type="file" id="mission-image" accept="image/*" aria-label="Mission Image">
       <button onclick="saveMissionDetails()">Save</button>
     </div>
@@ -946,7 +2151,7 @@
   </div>
 
   <div class="events-container">
-    <section class="section" id="past-events">
+    <section class="section" id="events">
       <h1>Past Events (2025)</h1>
       <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
       <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
@@ -987,717 +2192,693 @@
         <div class="event">
           <img src="images/Event-Images/DJ-Poster.jpg" alt="DJ Showcase & Open Decks">
           <h3>DJ Showcase & Open Decks</h3>
-          <p>Spin some tunes or vibe to the beats at our DJ Showcase & Open Decks! Our talented camp DJs will kick things off, followed by an open deck session where anyone can jump in and share their mixes. From drum and bass to emo remixes, expect a night of eclectic sounds and high energy.</p>
-          <p class="event-date"><strong>Date:</strong> January 25, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 26, 2025, 1:00 AM</p>
-          <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        <p>Spin some tunes or vibe to the beats at our DJ Showcase & Open Decks! Our talented camp DJs will kick things off, followed by an open deck session where anyone can jump in and share their mixes. From drum and bass to emo remixes, expect a night of eclectic sounds and high energy.</p>
+        <p class="event-date"><strong>Date:</strong> January 25, 2025</p>
+        <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
+        <p class="event-end"><strong>End:</strong> January 26, 2025, 1:00 AM</p>
+        <p class="event-category"><strong>Category:</strong> Music</p>
+        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)">×</button>
+      </div>
+    </div>
+    <section class="section submit-section" id="submit">
+      <h2>Submit an Event</h2>
+      <p>Got an idea for an epic event? Share it with us and let’s make it happen at Kiwiburn!</p>
+      <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
+      <a href="submit-event.html" class="submit-button">Submit Your Event</a>
+    </section>
+  </section>
+</div>
+
+<section class="section countdown-section" id="countdown">
+  <h2>Countdown to Kiwiburn 2026</h2>
+  <div class="countdown" id="countdown-timer">
+    <span id="days">00</span> days
+    <span id="hours">00</span> hours
+    <span id="minutes">00</span> minutes
+    <span id="seconds">00</span> seconds
+  </div>
+  <input type="datetime-local" id="countdown-date-input" aria-label="Countdown Date Input">
+  <button onclick="updateCountdownDate()">Update Date</button>
+  <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
+</section>
+
+<div class="spotify-container">
+  <section class="section spotify-section" id="spotify">
+    <h1>EMO PLAYLIST</h1>
+    <p>Vibe out to our curated playlist of emo, rock, and alternative bangers.</p>
+    <div class="spotify-embed">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
+  </section>
+</div>
+
+<section class="section newsletter-section" id="newsletter">
+  <div class="newsletter-container">
+    <h1>Join Our Newsletter</h1>
+    <p>Stay updated with Cosmic Rejex events, news, and exclusive content.</p>
+    <div class="form-container">
+      <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
+      <button onclick="submitNewsletter()">Subscribe</button>
+    </div>
+    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+  </div>
+</section>
+
+<section class="section" id="submit">
+  <h1>Submit Your Event or Art</h1>
+  <p>Got an idea for an event, performance, or art installation? Share it with us!</p>
+  <div class="submit-section">
+    <a href="submit-event.html" class="submit-button">Submit Event or Art</a>
+    <a href="join-camp.html" class="fee-button">Membership Info</a>
+  </div>
+  <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
+</section>
+
+<footer>
+  <p>&copy; 2025 Cosmic Rejex. All rights reserved.</p>
+</footer>
+
+<script>
+  let loggedIn = false;
+  let draggedItem = null;
+
+  function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+  }
+
+  document.querySelector('.hamburger').addEventListener('click', toggleMenu);
+
+  function toggleTheme() {
+    document.body.classList.toggle('night-mode');
+    localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'night' : 'day');
+  }
+
+  document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+
+  if (localStorage.getItem('theme') === 'night') {
+    document.body.classList.add('night-mode');
+  }
+
+  document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username && password) {
+      loggedIn = true;
+      document.body.classList.add('logged-in');
+      document.getElementById('login-form').style.display = 'none';
+      document.querySelector('.logout-button').style.display = 'block';
+      alert('Logged in successfully!');
+    } else {
+      alert('Please enter both username and password.');
+    }
+  });
+
+  document.querySelector('.logout-button').addEventListener('click', function() {
+    loggedIn = false;
+    document.body.classList.remove('logged-in');
+    document.getElementById('login-form').style.display = 'flex';
+    document.querySelector('.logout-button').style.display = 'none';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    alert('Logged out successfully!');
+  });
+
+  function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'flex';
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  function openHeaderModal() {
+    const title = document.querySelector('.header h1').textContent;
+    document.getElementById('header-title').value = title;
+    openModal('header-modal');
+  }
+
+  function saveHeaderDetails() {
+    const title = document.getElementById('header-title').value;
+    if (title) {
+      document.querySelector('.header h1').textContent = title;
+      closeModal('header-modal');
+      alert('Header updated successfully!');
+    } else {
+      alert('Please fill in the title.');
+    }
+  }
+
+  function openEditMemberModal(button) {
+    const member = button.closest('.member');
+    const name = member.querySelector('h3').textContent;
+    const role = member.querySelector('span').textContent;
+    const description = member.querySelector('p').textContent;
+    document.getElementById('member-modal-title').textContent = 'Edit Member Details';
+    document.getElementById('member-name').value = name;
+    document.getElementById('member-role').value = role;
+    document.getElementById('member-description').value = description;
+    openModal('member-modal');
+    document.getElementById('member-modal').dataset.editIndex = Array.from(document.querySelectorAll('.member')).indexOf(member);
+  }
+
+  function saveMemberDetails() {
+    const name = document.getElementById('member-name').value;
+    const role = document.getElementById('member-role').value;
+    const description = document.getElementById('member-description').value;
+    const photo = document.getElementById('member-photo').files[0];
+    const editIndex = document.getElementById('member-modal').dataset.editIndex;
+
+    if (name && role && description) {
+      const membersGrid = document.querySelector('.members-grid');
+      let memberDiv;
+
+      if (editIndex) {
+        memberDiv = document.querySelectorAll('.member')[editIndex];
+      } else {
+        memberDiv = document.createElement('div');
+        memberDiv.className = 'member';
+        memberDiv.setAttribute('draggable', 'true');
+        memberDiv.addEventListener('dragstart', drag);
+      }
+
+      const isCampLead = role.toLowerCase().includes('camp lead');
+      const isDeputyLead = role.toLowerCase().includes('deputy lead');
+      if (isCampLead) memberDiv.classList.add('camp-lead');
+      if (isDeputyLead) memberDiv.classList.add('deputy-lead');
+
+      memberDiv.innerHTML = `
+        <img src="${photo ? URL.createObjectURL(photo) : 'images/placeholder.jpg'}" alt="${name}">
+        <h3>${name}</h3>
+        <span>${role}</span>
+        <p>${description}</p>
+        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteMember(this)">×</button>
+      `;
+
+      if (!editIndex) {
+        membersGrid.appendChild(memberDiv);
+      }
+
+      closeModal('member-modal');
+      document.getElementById('member-modal').dataset.editIndex = '';
+      document.getElementById('member-photo').value = '';
+      alert('Member details saved!');
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+
+  function deleteMember(button) {
+    if (confirm('Are you sure you want to delete this member?')) {
+      button.closest('.member').remove();
+    }
+  }
+
+  function openEditRoleModal(button) {
+    const role = button.closest('.role');
+    const title = role.querySelector('h3').textContent;
+    const description = role.querySelector('.tooltip p').textContent;
+    document.getElementById('role-modal-title').textContent = 'Edit Role';
+    document.getElementById('role-title').value = title;
+    document.getElementById('role-description').value = description;
+    openModal('role-modal');
+    document.getElementById('role-modal').dataset.editIndex = Array.from(document.querySelectorAll('.role')).indexOf(role);
+  }
+
+  function saveRoleDetails() {
+    const title = document.getElementById('role-title').value;
+    const description = document.getElementById('role-description').value;
+    const icon = document.getElementById('role-icon').files[0];
+    const editIndex = document.getElementById('role-modal').dataset.editIndex;
+
+    if (title && description) {
+      const rolesGrid = document.querySelector('.roles-grid');
+      let roleDiv;
+
+      if (editIndex) {
+        roleDiv = document.querySelectorAll('.role')[editIndex];
+      } else {
+        roleDiv = document.createElement('div');
+        roleDiv.className = 'role';
+        roleDiv.setAttribute('draggable', 'true');
+        roleDiv.addEventListener('dragstart', drag);
+      }
+
+      roleDiv.innerHTML = `
+        <img src="${icon ? URL.createObjectURL(icon) : 'images/role-placeholder.jpg'}" alt="${title} Icon">
+        <h3>${title}</h3>
+        <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+        <div class="tooltip">
+          <p>${description}</p>
         </div>
-      </div>
-      <section class="section submit-section" id="submit">
-        <h2>Submit an Event</h2>
-        <p>Got an idea for an epic event? Share it with us and let’s make it happen at Kiwiburn!</p>
-        <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
-        <a href="submit-event.html" class="submit-button">Submit Your Event</a>
-      </section>
-    </section>
-  </div>
+        <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteRole(this)">×</button>
+      `;
 
-  <section class="section countdown-section" id="countdown">
-    <h2>Countdown to Kiwiburn 2026</h2>
-    <div class="countdown" id="countdown-timer">
-      <span id="days">00</span> days
-      <span id="hours">00</span> hours
-      <span id="minutes">00</span> minutes
-      <span id="seconds">00</span> seconds
-    </div>
-    <input type="datetime-local" id="countdown-date-input" aria-label="Countdown Date Input">
-    <button onclick="updateCountdownDate()">Update Date</button>
-    <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
-  </section>
+      if (!editIndex) {
+        rolesGrid.appendChild(roleDiv);
+      }
 
-  <div class="spotify-container">
-    <section class="section spotify-section" id="spotify">
-      <h1>EMO PLAYLIST</h1>
-      <p>Vibe out to our curated playlist of emo, rock, and alternative bangers.</p>
-      <div class="spotify-embed">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
-    </section>
-  </div>
-
-  <section class="section newsletter-section" id="newsletter">
-    <div class="newsletter-container">
-      <h1>Join Our Newsletter</h1>
-      <p>Stay updated with Cosmic Rejex events, news, and exclusive content.</p>
-      <div class="form-container">
-        <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-        <button onclick="submitNewsletter()">Subscribe</button>
-      </div>
-      <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
-    </div>
-  </section>
-
-  <section class="section" id="join">
-    <h1>Submit Your Event or Art</h1>
-    <p>Got an idea for an event, performance, or art installation? Share it with us!</p>
-    <div class="submit-section">
-      <a href="submit-event.html" class="submit-button">Submit Event or Art</a>
-      <a href="join-camp.html" class="fee-button">Membership Info</a>
-    </div>
-    <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
-  </section>
-
-  <footer>
-    <p>© 2025 Cosmic Rejex. All rights reserved.</p>
-  </footer>
-
-  <script>
-    let loggedIn = false;
-    let draggedItem = null;
-
-    function toggleMenu() {
-      const navLinks = document.querySelector('.nav-links');
-      navLinks.classList.toggle('active');
+      closeModal('role-modal');
+      document.getElementById('role-modal').dataset.editIndex = '';
+      document.getElementById('role-icon').value = '';
+      alert('Role details saved!');
+    } else {
+      alert('Please fill in all fields.');
     }
+  }
 
-    document.querySelector('.hamburger').addEventListener('click', toggleMenu);
-
-    function toggleTheme() {
-      document.body.classList.toggle('night-mode');
-      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'night' : 'day');
+  function deleteRole(button) {
+    if (confirm('Are you sure you want to delete this role?')) {
+      button.closest('.role').remove();
     }
+  }
 
-    document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
+  function openEditEventModal(button) {
+    const event = button.closest('.event');
+    const title = event.querySelector('h3').textContent;
+    const description = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
+    const date = event.querySelector('.event-date').textContent.replace('Date: ', '');
+    const time = event.querySelector('.event-time').textContent.replace('Time: ', '');
+    const end = event.querySelector('.event-end').textContent.replace('End: ', '');
+    const category = event.querySelector('.event-category').textContent.replace('Category: ', '');
+    document.getElementById('event-title').value = title;
+    document.getElementById('event-description').value = description;
+    document.getElementById('event-date').value = date.split(', ')[1] ? date.split(', ')[1] : date;
+    document.getElementById('event-time').value = time;
+    document.getElementById('event-end').value = end.replace(', ', 'T');
+    document.getElementById('event-category').value = category;
+    openModal('event-modal');
+    document.getElementById('event-modal').dataset.editIndex = Array.from(document.querySelectorAll('.event')).indexOf(event);
+  }
 
-    if (localStorage.getItem('theme') === 'night') {
-      document.body.classList.add('night-mode');
-    }
+  function saveEventDetails() {
+    const title = document.getElementById('event-title').value;
+    const description = document.getElementById('event-description').value;
+    const date = document.getElementById('event-date').value;
+    const time = document.getElementById('event-time').value;
+    const end = document.getElementById('event-end').value;
+    const category = document.getElementById('event-category').value;
+    const image = document.getElementById('event-image').files[0];
 
-    document.getElementById('login-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+    if (title && description && date && time && end && category) {
+      const eventsGrid = document.querySelector('.events-grid');
+      let eventDiv;
 
-      if (username && password) {
-        loggedIn = true;
-        document.body.classList.add('logged-in');
-        document.getElementById('login-form').style.display = 'none';
-        document.querySelector('.logout-button').style.display = 'block';
-        alert('Logged in successfully!');
+      const editIndex = document.getElementById('event-modal').dataset.editIndex;
+      if (editIndex) {
+        eventDiv = document.querySelectorAll('.event')[editIndex];
       } else {
-        alert('Please enter both username and password.');
+        eventDiv = document.createElement('div');
+        eventDiv.className = 'event';
+        eventDiv.setAttribute('draggable', 'true');
+        eventDiv.addEventListener('dragstart', drag);
       }
-    });
 
-    document.querySelector('.logout-button').addEventListener('click', function() {
-      loggedIn = false;
-      document.body.classList.remove('logged-in');
-      document.getElementById('login-form').style.display = 'flex';
-      document.querySelector('.logout-button').style.display = 'none';
-      document.getElementById('username').value = '';
-      document.getElementById('password').value = '';
-      alert('Logged out successfully!');
-    });
+      eventDiv.innerHTML = `
+        <img src="${image ? URL.createObjectURL(image) : 'images/event-placeholder.jpg'}" alt="${title}">
+        <h3>${title}</h3>
+        <p class="event-date"><strong>Date:</strong> ${date}</p>
+        <p class="event-time"><strong>Time:</strong> ${time}</p>
+        <p class="event-end"><strong>End:</strong> ${end}</p>
+        <p class="event-category"><strong>Category:</strong> ${category}</p>
+        <p>${description}</p>
+        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)">×</button>
+      `;
 
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = 'flex';
+      if (!editIndex) {
+        eventsGrid.appendChild(eventDiv);
+      }
+
+      closeModal('event-modal');
+      document.getElementById('event-modal').dataset.editIndex = '';
+      document.getElementById('event-image').value = '';
+      alert('Event details saved!');
+    } else {
+      alert('Please fill in all fields.');
     }
+  }
 
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
+  function deleteEvent(button) {
+    if (confirm('Are you sure you want to delete this event?')) {
+      button.closest('.event').remove();
     }
+  }
 
-    function openHeaderModal() {
-      const title = document.querySelector('.header h1').textContent;
-      document.getElementById('header-title').value = title;
-      openModal('header-modal');
-    }
+  function drag(event) {
+    draggedItem = event.target.closest('.member, .role, .event, .image-container');
+    event.dataTransfer.setData('text/plain', '');
+  }
 
-    function saveHeaderDetails() {
-      const title = document.getElementById('header-title').value;
-      if (title) {
-        document.querySelector('.header h1').textContent = title;
-        closeModal('header-modal');
-        alert('Header updated successfully!');
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function dropMembers(event) {
+    event.preventDefault();
+    if (draggedItem && draggedItem.classList.contains('member')) {
+      const membersGrid = document.querySelector('.members-grid');
+      const closest = event.target.closest('.member');
+      if (closest) {
+        membersGrid.insertBefore(draggedItem, closest);
       } else {
-        alert('Please fill in the title.');
+        membersGrid.appendChild(draggedItem);
       }
     }
+    draggedItem = null;
+  }
 
-    function openEditMemberModal(button) {
-      const member = button.closest('.member');
-      const name = member.querySelector('h3').textContent;
-      const role = member.querySelector('span').textContent;
-      const description = member.querySelector('p').textContent;
-      document.getElementById('member-modal-title').textContent = 'Edit Member Details';
-      document.getElementById('member-name').value = name;
-      document.getElementById('member-role').value = role;
-      document.getElementById('member-description').value = description;
-      openModal('member-modal');
-      document.getElementById('member-modal').dataset.editIndex = Array.from(document.querySelectorAll('.member')).indexOf(member);
-    }
-
-    function saveMemberDetails() {
-      const name = document.getElementById('member-name').value;
-      const role = document.getElementById('member-role').value;
-      const description = document.getElementById('member-description').value;
-      const photo = document.getElementById('member-photo').files[0];
-      const editIndex = document.getElementById('member-modal').dataset.editIndex;
-
-      if (name && role && description) {
-        const membersGrid = document.querySelector('.members-grid');
-        let memberDiv;
-
-        if (editIndex) {
-          memberDiv = document.querySelectorAll('.member')[editIndex];
-        } else {
-          memberDiv = document.createElement('div');
-          memberDiv.className = 'member';
-          memberDiv.setAttribute('draggable', 'true');
-          memberDiv.addEventListener('dragstart', drag);
-        }
-
-        const isCampLead = role.toLowerCase().includes('camp lead');
-        const isDeputyLead = role.toLowerCase().includes('deputy lead');
-        if (isCampLead) memberDiv.classList.add('camp-lead');
-        if (isDeputyLead) memberDiv.classList.add('deputy-lead');
-
-        memberDiv.innerHTML = `
-          <img src="${photo ? URL.createObjectURL(photo) : 'images/placeholder.jpg'}" alt="${name}">
-          <h3>${name}</h3>
-          <span>${role}</span>
-          <p>${description}</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        `;
-
-        if (!editIndex) {
-          membersGrid.appendChild(memberDiv);
-        }
-
-        closeModal('member-modal');
-        document.getElementById('member-modal').dataset.editIndex = '';
-        document.getElementById('member-photo').value = '';
-        alert('Member details saved!');
+  function dropRoles(event) {
+    event.preventDefault();
+    if (draggedItem && draggedItem.classList.contains('role')) {
+      const rolesGrid = document.querySelector('.roles-grid');
+      const closest = event.target.closest('.role');
+      if (closest) {
+        rolesGrid.insertBefore(draggedItem, closest);
       } else {
-        alert('Please fill in all fields.');
+        rolesGrid.appendChild(draggedItem);
       }
     }
+    draggedItem = null;
+  }
 
-    function deleteMember(button) {
-      if (confirm('Are you sure you want to delete this member?')) {
-        button.closest('.member').remove();
-      }
-    }
-
-    function openEditRoleModal(button) {
-      const role = button.closest('.role');
-      const title = role.querySelector('h3').textContent;
-      const description = role.querySelector('.tooltip p').textContent;
-      document.getElementById('role-modal-title').textContent = 'Edit Role';
-      document.getElementById('role-title').value = title;
-      document.getElementById('role-description').value = description;
-      openModal('role-modal');
-      document.getElementById('role-modal').dataset.editIndex = Array.from(document.querySelectorAll('.role')).indexOf(role);
-    }
-
-    function saveRoleDetails() {
-      const title = document.getElementById('role-title').value;
-      const description = document.getElementById('role-description').value;
-      const icon = document.getElementById('role-icon').files[0];
-      const editIndex = document.getElementById('role-modal').dataset.editIndex;
-
-      if (title && description) {
-        const rolesGrid = document.querySelector('.roles-grid');
-        let roleDiv;
-
-        if (editIndex) {
-          roleDiv = document.querySelectorAll('.role')[editIndex];
-        } else {
-          roleDiv = document.createElement('div');
-          roleDiv.className = 'role';
-          roleDiv.setAttribute('draggable', 'true');
-          roleDiv.addEventListener('dragstart', drag);
-        }
-
-        roleDiv.innerHTML = `
-          <img src="${icon ? URL.createObjectURL(icon) : 'images/role-placeholder.jpg'}" alt="${title} Icon">
-          <h3>${title}</h3>
-          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>${description}</p>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        `;
-
-        if (!editIndex) {
-          rolesGrid.appendChild(roleDiv);
-        }
-
-        closeModal('role-modal');
-        document.getElementById('role-modal').dataset.editIndex = '';
-        document.getElementById('role-icon').value = '';
-        alert('Role details saved!');
+  function dropEvents(event) {
+    event.preventDefault();
+    if (draggedItem && draggedItem.classList.contains('event')) {
+      const eventsGrid = document.querySelector('.events-grid');
+      const closest = event.target.closest('.event');
+      if (closest) {
+        eventsGrid.insertBefore(draggedItem, closest);
       } else {
-        alert('Please fill in all fields.');
+        eventsGrid.appendChild(draggedItem);
       }
     }
+    draggedItem = null;
+  }
 
-    function deleteRole(button) {
-      if (confirm('Are you sure you want to delete this role?')) {
-        button.closest('.role').remove();
-      }
-    }
+  function dragMissionImage(event) {
+    draggedItem = event.target.closest('.image-container');
+    event.dataTransfer.setData('text/plain', '');
+  }
 
-    function openEditEventModal(button) {
-      const event = button.closest('.event');
-      const title = event.querySelector('h3').textContent;
-      const description = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
-      const date = event.querySelector('.event-date').textContent.replace('Date: ', '');
-      const time = event.querySelector('.event-time').textContent.replace('Time: ', '');
-      const end = event.querySelector('.event-end').textContent.replace('End: ', '');
-      const category = event.querySelector('.event-category').textContent.replace('Category: ', '');
-      document.getElementById('event-title').value = title;
-      document.getElementById('event-description').value = description;
-      document.getElementById('event-date').value = date.split(', ')[1] ? date.split(', ')[1] : date;
-      document.getElementById('event-time').value = time;
-      document.getElementById('event-end').value = end.replace(', ', 'T');
-      document.getElementById('event-category').value = category;
-      openModal('event-moda
-l');
-      document.getElementById('event-modal').dataset.editIndex = Array.from(document.querySelectorAll('.event')).indexOf(event);
-    }
-
-    function saveEventDetails() {
-      const title = document.getElementById('event-title').value;
-      const description = document.getElementById('event-description').value;
-      const date = document.getElementById('event-date').value;
-      const time = document.getElementById('event-time').value;
-      const end = document.getElementById('event-end').value;
-      const category = document.getElementById('event-category').value;
-      const image = document.getElementById('event-image').files[0];
-
-      if (title && description && date && time && end && category) {
-        const eventsGrid = document.querySelector('.events-grid');
-        let eventDiv;
-
-        const editIndex = document.getElementById('event-modal').dataset.editIndex;
-        if (editIndex) {
-          eventDiv = document.querySelectorAll('.event')[editIndex];
-        } else {
-          eventDiv = document.createElement('div');
-          eventDiv.className = 'event';
-          eventDiv.setAttribute('draggable', 'true');
-          eventDiv.addEventListener('dragstart', drag);
-        }
-
-        eventDiv.innerHTML = `
-          <img src="${image ? URL.createObjectURL(image) : 'images/event-placeholder.jpg'}" alt="${title}">
-          <h3>${title}</h3>
-          <p class="event-date"><strong>Date:</strong> ${date}</p>
-          <p class="event-time"><strong>Time:</strong> ${time}</p>
-          <p class="event-end"><strong>End:</strong> ${end}</p>
-          <p class="event-category"><strong>Category:</strong> ${category}</p>
-          <p>${description}</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        `;
-
-        if (!editIndex) {
-          eventsGrid.appendChild(eventDiv);
-        }
-
-        closeModal('event-modal');
-        document.getElementById('event-modal').dataset.editIndex = '';
-        document.getElementById('event-image').value = '';
-        alert('Event details saved!');
+  function dropMissionImage(event) {
+    event.preventDefault();
+    if (draggedItem && draggedItem.classList.contains('image-container')) {
+      const gallery = document.getElementById('mission-gallery');
+      const closest = event.target.closest('.image-container');
+      if (closest) {
+        gallery.insertBefore(draggedItem, closest);
       } else {
-        alert('Please fill in all fields.');
+        gallery.appendChild(draggedItem);
       }
     }
+    draggedItem = null;
+  }
 
-    function deleteEvent(button) {
-      if (confirm('Are you sure you want to delete this event?')) {
-        button.closest('.event').remove();
+  function openGalleryImageModal(button, section) {
+    const imageContainer = button.closest('.image-container');
+    const img = imageContainer.querySelector('img');
+    document.getElementById('gallery-image-alt').value = img.alt;
+    openModal('gallery-image-modal');
+    document.getElementById('gallery-image-modal').dataset.section = section;
+    document.getElementById('gallery-image-modal').dataset.index = Array.from(document.querySelectorAll(`#${section}-gallery .image-container`)).indexOf(imageContainer);
+  }
+
+  function saveGalleryImageDetails() {
+    const alt = document.getElementById('gallery-image-alt').value;
+    const file = document.getElementById('gallery-image-file').files[0];
+    const section = document.getElementById('gallery-image-modal').dataset.section;
+    const index = document.getElementById('gallery-image-modal').dataset.index;
+
+    if (alt) {
+      const gallery = document.getElementById(`${section}-gallery`);
+      const imageContainer = gallery.querySelectorAll('.image-container')[index];
+      const img = imageContainer.querySelector('img');
+      img.alt = alt;
+      if (file) {
+        img.src = URL.createObjectURL(file);
       }
+      closeModal('gallery-image-modal');
+      document.getElementById('gallery-image-file').value = '';
+      alert('Image details saved!');
+    } else {
+      alert('Please fill in the alt text.');
     }
+  }
 
-    function drag(event) {
-      draggedItem = event.target.closest('.member, .role, .event, .image-container');
-      event.dataTransfer.setData('text/plain', '');
+  function deleteMissionImage(button) {
+    if (confirm('Are you sure you want to delete this image?')) {
+      button.closest('.image-container').remove();
     }
+  }
 
-    function allowDrop(event) {
-      event.preventDefault();
-    }
-
-    function dropMembers(event) {
-      event.preventDefault();
-      if (draggedItem && draggedItem.classList.contains('member')) {
-        const membersGrid = document.querySelector('.members-grid');
-        const closest = event.target.closest('.member');
-        if (closest) {
-          membersGrid.insertBefore(draggedItem, closest);
-        } else {
-          membersGrid.appendChild(draggedItem);
-        }
-      }
-      draggedItem = null;
-    }
-
-    function dropRoles(event) {
-      event.preventDefault();
-      if (draggedItem && draggedItem.classList.contains('role')) {
-        const rolesGrid = document.querySelector('.roles-grid');
-        const closest = event.target.closest('.role');
-        if (closest) {
-          rolesGrid.insertBefore(draggedItem, closest);
-        } else {
-          rolesGrid.appendChild(draggedItem);
-        }
-      }
-      draggedItem = null;
-    }
-
-    function dropEvents(event) {
-      event.preventDefault();
-      if (draggedItem && draggedItem.classList.contains('event')) {
-        const eventsGrid = document.querySelector('.events-grid');
-        const closest = event.target.closest('.event');
-        if (closest) {
-          eventsGrid.insertBefore(draggedItem, closest);
-        } else {
-          eventsGrid.appendChild(draggedItem);
-        }
-      }
-      draggedItem = null;
-    }
-
-    function dragMissionImage(event) {
-      draggedItem = event.target.closest('.image-container');
-      event.dataTransfer.setData('text/plain', '');
-    }
-
-    function dropMissionImage(event) {
-      event.preventDefault();
-      if (draggedItem && draggedItem.classList.contains('image-container')) {
+  function uploadMissionImage() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = function(e) {
+      const file = e.target.files[0];
+      if (file) {
         const gallery = document.getElementById('mission-gallery');
-        const closest = event.target.closest('.image-container');
-        if (closest) {
-          gallery.insertBefore(draggedItem, closest);
-        } else {
-          gallery.appendChild(draggedItem);
-        }
+        const div = document.createElement('div');
+        div.className = 'image-container';
+        div.setAttribute('draggable', 'true');
+        div.addEventListener('dragstart', dragMissionImage);
+        div.innerHTML = `
+          <img src="${URL.createObjectURL(file)}" alt="New Mission Image">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+          <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+        `;
+        gallery.appendChild(div);
+        alert('Image uploaded successfully!');
       }
-      draggedItem = null;
-    }
+    };
+    input.click();
+  }
 
-    function openGalleryImageModal(button, section) {
-      const imageContainer = button.closest('.image-container');
-      const img = imageContainer.querySelector('img');
-      document.getElementById('gallery-image-alt').value = img.alt;
-      openModal('gallery-image-modal');
-      document.getElementById('gallery-image-modal').dataset.section = section;
-      document.getElementById('gallery-image-modal').dataset.index = Array.from(document.querySelectorAll(`#${section}-gallery .image-container`)).indexOf(imageContainer);
-    }
+  function saveAboutDetails() {
+    const title = document.getElementById('about-title').value;
+    const description = document.getElementById('about-description').value;
+    const image = document.getElementById('about-image').files[0];
 
-    function openGalleryImageModal(button, section) {
-      const imageContainer = button.closest('.image-container');
-      const img = imageContainer.querySelector('img');
-      document.getElementById('gallery-image-alt').value = img.alt;
-      openModal('gallery-image-modal');
-      document.getElementById('gallery-image-modal').dataset.section = section;
-      document.getElementById('gallery-image-modal').dataset.index = Array.from(document.querySelectorAll(`#${section}-gallery .image-container`)).indexOf(imageContainer);
-    }
-
-    function saveGalleryImageDetails() {
-      const alt = document.getElementById('gallery-image-alt').value;
-      const file = document.getElementById('gallery-image-file').files[0];
-      const section = document.getElementById('gallery-image-modal').dataset.section;
-      const index = document.getElementById('gallery-image-modal').dataset.index;
-
-      if (alt) {
-        const gallery = document.getElementById(`${section}-gallery`);
-        const imageContainer = gallery.querySelectorAll('.image-container')[index];
-        const img = imageContainer.querySelector('img');
-        img.alt = alt;
-        if (file) {
-          img.src = URL.createObjectURL(file);
-        }
-        closeModal('gallery-image-modal');
-        document.getElementById('gallery-image-modal').dataset.section = '';
-        document.getElementById('gallery-image-modal').dataset.index = '';
-        document.getElementById('gallery-image-file').value = '';
-        alert('Image details saved!');
-      } else {
-        alert('Please provide alt text.');
+    if (title && description) {
+      document.querySelector('.about-section h1').textContent = title;
+      document.querySelector('.about-section p').textContent = description;
+      if (image) {
+        document.querySelector('.about-image img').src = URL.createObjectURL(image);
       }
+      closeModal('about-modal');
+      document.getElementById('about-image').value = '';
+      alert('About section updated!');
+    } else {
+      alert('Please fill in all fields.');
     }
+  }
 
-    function deleteMissionImage(button) {
-      if (confirm('Are you sure you want to delete this image?')) {
-        button.closest('.image-container').remove();
+  function saveMissionDetails() {
+    const title = document.getElementById('mission-title').value;
+    const description = document.getElementById('mission-description').value;
+    const image = document.getElementById('mission-image').files[0];
+
+    if (title && description) {
+      document.querySelector('#mission h1').textContent = title;
+      document.querySelector('#mission p').textContent = description;
+      if (image) {
+        const gallery = document.getElementById('mission-gallery');
+        const div = document.createElement('div');
+        div.className = 'image-container';
+        div.setAttribute('draggable', 'true');
+        div.addEventListener('dragstart', dragMissionImage);
+        div.innerHTML = `
+          <img src="${URL.createObjectURL(image)}" alt="${title}">
+          <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+          <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+        `;
+        gallery.appendChild(div);
       }
+      closeModal('mission-modal');
+      document.getElementById('mission-image').value = '';
+      alert('Mission section updated!');
+    } else {
+      alert('Please fill in all fields.');
     }
+  }
 
-    function uploadMissionImage() {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.onchange = function(event) {
-        const file = event.target.files[0];
-        if (file) {
-          const gallery = document.getElementById('mission-gallery');
-          const imageContainer = document.createElement('div');
-          imageContainer.className = 'image-container';
-          imageContainer.setAttribute('draggable', 'true');
-          imageContainer.addEventListener('dragstart', dragMissionImage);
-          imageContainer.innerHTML = `
-            <img src="${URL.createObjectURL(file)}" alt="New Mission Image">
-            <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-            <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
-          `;
-          gallery.appendChild(imageContainer);
-        }
-      };
-      input.click();
+  function saveEventsDetails() {
+    const title = document.getElementById('events-title').value;
+    const description = document.getElementById('events-description').value;
+
+    if (title && description) {
+      document.querySelector('#events h1').textContent = title;
+      document.querySelector('#events p').textContent = description;
+      closeModal('events-modal');
+      alert('Events section updated!');
+    } else {
+      alert('Please fill in all fields.');
     }
+  }
 
-    function saveAboutDetails() {
-      const title = document.getElementById('about-title').value;
-      const description = document.getElementById('about-description').value;
-      const image = document.getElementById('about-image').files[0];
-      if (title && description) {
-        document.querySelector('.about-section h1').textContent = title;
-        document.querySelector('.about-section .about-text p').textContent = description;
-        if (image) {
-          document.querySelector('.about-section .about-image img').src = URL.createObjectURL(image);
-        }
-        closeModal('about-modal');
-        alert('About section updated!');
-      } else {
-        alert('Please fill in all fields.');
+  function saveNewsletterDetails() {
+    const title = document.getElementById('newsletter-title').value;
+    const description = document.getElementById('newsletter-description').value;
+
+    if (title && description) {
+      document.querySelector('.newsletter-container h1').textContent = title;
+      document.querySelector('.newsletter-container p').textContent = description;
+      closeModal('newsletter-modal');
+      alert('Newsletter section updated!');
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+
+  function saveJoinDetails() {
+    const title = document.getElementById('join-title').value;
+    const description = document.getElementById('join-description').value;
+
+    if (title && description) {
+      document.querySelector('#join h1').textContent = title;
+      document.querySelector('#join p').textContent = description;
+      closeModal('join-modal');
+      alert('Join section updated!');
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+
+  function saveSubmitDetails() {
+    const title = document.getElementById('submit-title').value;
+    const description = document.getElementById('submit-description').value;
+
+    if (title && description) {
+      document.querySelector('#submit h1').textContent = title;
+      document.querySelector('#submit p').textContent = description;
+      closeModal('submit-modal');
+      alert('Submit section updated!');
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+
+  function saveHistoryDetails() {
+    const title = document.getElementById('history-title').value;
+    const description = document.getElementById('history-description').value;
+    const image1 = document.getElementById('history-image1').files[0];
+    const image2 = document.getElementById('history-image2').files[0];
+    const image3 = document.getElementById('history-image3').files[0];
+
+    if (title && description) {
+      document.querySelector('.history-section h1').textContent = title;
+      const historyItems = document.querySelectorAll('.history-item');
+      if (image1) historyItems[0].querySelector('img').src = URL.createObjectURL(image1);
+      if (image2) historyItems[1].querySelector('img').src = URL.createObjectURL(image2);
+      if (image3) historyItems[2].querySelector('img').src = URL.createObjectURL(image3);
+      closeModal('history-modal');
+      document.getElementById('history-image1').value = '';
+      document.getElementById('history-image2').value = '';
+      document.getElementById('history-image3').value = '';
+      alert('History section updated!');
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+
+  function saveSpotifyDetails() {
+    const title = document.getElementById('spotify-title').value;
+    const description = document.getElementById('spotify-description').value;
+    const url = document.getElementById('spotify-url').value;
+    const bg = document.getElementById('spotify-bg').files[0];
+
+    if (title && description && url) {
+      document.querySelector('.spotify-section h1').textContent = title;
+      document.querySelector('.spotify-section p').textContent = description;
+      document.querySelector('.spotify-embed iframe').src = url;
+      if (bg) {
+        document.querySelector('.spotify-container').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
       }
+      closeModal('spotify-modal');
+      document.getElementById('spotify-bg').value = '';
+      alert('Spotify section updated!');
+    } else {
+      alert('Please fill in all fields.');
     }
+  }
 
-    function saveMissionDetails() {
-      const title = document.getElementById('mission-title').value;
-      const description = document.getElementById('mission-description').value;
-      const image = document.getElementById('mission-image').files[0];
-      if (title && description) {
-        document.querySelector('#mission h1').textContent = title;
-        document.querySelector('#mission p').textContent = description;
-        if (image) {
-          const gallery = document.getElementById('mission-gallery');
-          const imageContainer = document.createElement('div');
-          imageContainer.className = 'image-container';
-          imageContainer.setAttribute('draggable', 'true');
-          imageContainer.addEventListener('dragstart', dragMissionImage);
-          imageContainer.innerHTML = `
-            <img src="${URL.createObjectURL(image)}" alt="${title}">
-            <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-            <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
-          `;
-          gallery.appendChild(imageContainer);
-        }
-        closeModal('mission-modal');
-        alert('Mission section updated!');
-      } else {
-        alert('Please fill in all fields.');
+  function submitNewsletter() {
+    const email = document.getElementById('newsletter-email').value;
+    if (email) {
+      alert('Subscribed successfully!');
+      document.getElementById('newsletter-email').value = '';
+    } else {
+      alert('Please enter a valid email.');
+    }
+  }
+
+  function updateCountdownDate() {
+    const dateInput = document.getElementById('countdown-date-input').value;
+    if (dateInput) {
+      localStorage.setItem('countdownDate', dateInput);
+      alert('Countdown date updated!');
+      startCountdown();
+    } else {
+      alert('Please select a date and time.');
+    }
+  }
+
+  function saveCountdownDetails() {
+    const date = document.getElementById('countdown-date').value;
+    const bg = document.getElementById('countdown-bg').files[0];
+
+    if (date) {
+      localStorage.setItem('countdownDate', date);
+      if (bg) {
+        document.querySelector('.countdown-section').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
       }
+      closeModal('countdown-modal');
+      document.getElementById('countdown-bg').value = '';
+      alert('Countdown updated!');
+      startCountdown();
+    } else {
+      alert('Please select a date.');
     }
+  }
 
-    function saveEventsDetails() {
-      const title = document.getElementById('events-title').value;
-      const description = document.getElementById('events-description').value;
-      if (title && description) {
-        document.querySelector('#events h1').textContent = title;
-        document.querySelector('#events p').textContent = description;
-        closeModal('events-modal');
-        alert('Events section updated!');
-      } else {
-        alert('Please fill in all fields.');
-      }
+  function startCountdown() {
+    const countdownDate = new Date(localStorage.getItem('countdownDate') || '2026-01-25T00:00:00').getTime();
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = days.toString().padStart(2, '0');
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+    if (distance < 0) {
+      document.getElementById('countdown-timer').textContent = 'Event has started!';
     }
+  }
 
-    function saveNewsletterDetails() {
-      const title = document.getElementById('newsletter-title').value;
-      const description = document.getElementById('newsletter-description').value;
-      if (title && description) {
-        document.querySelector('.newsletter-section h1').textContent = title;
-        document.querySelector('.newsletter-section p').textContent = description;
-        closeModal('newsletter-modal');
-        alert('Newsletter section updated!');
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
+  setInterval(startCountdown, 1000);
 
-    function saveJoinDetails() {
-      const title = document.getElementById('join-title').value;
-      const description = document.getElementById('join-description').value;
-      if (title && description) {
-        document.querySelector('#join h1').textContent = title;
-        document.querySelector('#join p').textContent = description;
-        closeModal('join-modal');
-        alert('Join section updated!');
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-
-    function saveSubmitDetails() {
-      const title = document.getElementById('submit-title').value;
-      const description = document.getElementById('submit-description').value;
-      if (title && description) {
-        document.querySelector('#submit h2').textContent = title;
-        document.querySelector('#submit p').textContent = description;
-        closeModal('submit-modal');
-        alert('Submit section updated!');
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-
-    function saveHistoryDetails() {
-      const title = document.getElementById('history-title').value;
-      const description = document.getElementById('history-description').value;
-      const image1 = document.getElementById('history-image1').files[0];
-      const image2 = document.getElementById('history-image2').files[0];
-      const image3 = document.getElementById('history-image3').files[0];
-      if (title && description) {
-        document.querySelector('.history-section h1').textContent = title;
-        const historyItems = document.querySelectorAll('.history-item p');
-        historyItems[0].textContent = description;
-        if (image1) document.querySelectorAll('.history-item img')[0].src = URL.createObjectURL(image1);
-        if (image2) document.querySelectorAll('.history-item img')[1].src = URL.createObjectURL(image2);
-        if (image3) document.querySelectorAll('.history-item img')[2].src = URL.createObjectURL(image3);
-        closeModal('history-modal');
-        alert('History section updated!');
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-
-    function saveSpotifyDetails() {
-      const title = document.getElementById('spotify-title').value;
-      const description = document.getElementById('spotify-description').value;
-      const url = document.getElementById('spotify-url').value;
-      const bg = document.getElementById('spotify-bg').files[0];
-      if (title && description && url) {
-        document.querySelector('.spotify-section h1').textContent = title;
-        document.querySelector('.spotify-section p').textContent = description;
-        document.querySelector('.spotify-embed iframe').src = url;
-        if (bg) {
-          document.querySelector('.spotify-section').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
-        }
-        closeModal('spotify-modal');
-        alert('Spotify section updated!');
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-
-    function saveCountdownDetails() {
-      const date = document.getElementById('countdown-date').value;
-      const bg = document.getElementById('countdown-bg').files[0];
-      if (date) {
-        localStorage.setItem('countdownDate', date);
-        updateCountdown();
-        if (bg) {
-          document.querySelector('.countdown-section').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
-        }
-        closeModal('countdown-modal');
-        alert('Countdown updated!');
-      } else {
-        alert('Please select a date.');
-      }
-    }
-
-    function updateCountdown() {
-      const countdownDate = new Date(localStorage.getItem('countdownDate') || '2026-01-25T00:00:00').getTime();
-      const now = new Date().getTime();
-      const distance = countdownDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById('days').textContent = days.toString().padStart(2, '0');
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-      if (distance < 0) {
-        document.getElementById('countdown-timer').textContent = 'Kiwiburn has started!';
-      }
-    }
-
-    function updateCountdownDate() {
-      const dateInput = document.getElementById('countdown-date-input').value;
-      if (dateInput) {
-        localStorage.setItem('countdownDate', dateInput);
-        updateCountdown();
-        alert('Countdown date updated!');
-      } else {
-        alert('Please select a date.');
-      }
-    }
-
-    setInterval(updateCountdown, 1000);
-
-    function submitNewsletter() {
-      const email = document.getElementById('newsletter-email').value;
-      if (email) {
-        alert('Subscribed successfully!');
-        document.getElementById('newsletter-email').value = '';
-      } else {
-        alert('Please enter a valid email.');
-      }
-    }
-
-    document.getElementById('event-search').addEventListener('input', function(e) {
-      const search = e.target.value.toLowerCase();
-      const events = document.querySelectorAll('.event');
-      events.forEach(event => {
-        const title = event.querySelector('h3').textContent.toLowerCase();
-        const description = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent.toLowerCase();
-        if (title.includes(search) || description.includes(search)) {
-          event.style.display = 'block';
-        } else {
-          event.style.display = 'none';
-        }
-      });
+  const scrollArrows = document.querySelectorAll('.scroll-arrow');
+  scrollArrows.forEach(arrow => {
+    arrow.addEventListener('click', function() {
+      const grid = document.querySelector(`.${this.dataset.grid}-grid`);
+      const direction = this.classList.contains('left') ? -1 : 1;
+      grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
     });
-
-    function scrollGrid(gridSelector, direction) {
-      const grid = document.querySelector(gridSelector);
-      const scrollAmount = grid.clientWidth * 0.8;
-      grid.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-    }
-
-    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-      arrow.addEventListener('click', () => {
-        const grid = arrow.dataset.grid;
-        const direction = arrow.classList.contains('left') ? 'left' : 'right';
-        scrollGrid(`.${grid}-grid`, direction);
-      });
-    });
-
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-  </script>
+  });
+</script>
 </body>
 </html>
