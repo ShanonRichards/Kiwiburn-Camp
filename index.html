@@ -1072,17 +1072,36 @@
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
 
-    .spotify-embed {
-      max-width: 600px;
-      margin: 0 auto;
-      border: 2px solid #e67e22;
-      border-radius: 12px;
-      overflow: hidden;
-    }
+.spotify-embed {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid #e67e22;
+  border-radius: 12px;
+  overflow: hidden;
+  background: url('images/spotify-bg.jpg') center/cover no-repeat; /* Replace with your custom image */
+  position: relative;
+}
 
-    body.night-mode .spotify-embed {
-      border-color: #f39c12;
-    }
+.spotify-embed iframe {
+  background: transparent !important;
+}
+
+body.night-mode .spotify-embed {
+  background: url('images/spotify-bg-dark.jpg') center/cover no-repeat; /* Replace with your dark mode image */
+  border-color: #f39c12;
+}
+
+@media only screen and (max-width: 768px) {
+  .spotify-embed iframe {
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .spotify-embed iframe {
+    height: 250px;
+  }
+}
 
     @media only screen and (max-width: 768px) {
       .hamburger {
@@ -1686,7 +1705,8 @@
     <input type="text" id="spotify-title" placeholder="Section Title" required aria-label="Section Title">
     <textarea id="spotify-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
     <input type="text" id="spotify-url" placeholder="Spotify Embed URL" required aria-label="Spotify Embed URL">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <input type="file" id="spotify-bg" accept="image/*" aria-label="Spotify Background Image">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator&theme=1" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     <button onclick="saveSpotifyDetails()">Save</button>
   </div>
 </div>
@@ -2108,7 +2128,7 @@
       <h1>EMO PLAYLIST</h1>
       <p>Dive into our curated emo playlist, perfect for late-night vibes or screaming your heart out.</p>
       <div class="spotify-embed">
-        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9LtJFNY2tbI" width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator&theme=1" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
       <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
     </section>
@@ -2452,12 +2472,16 @@
       closeModal('submit-modal');
     }
 
-    function saveSpotifyDetails() {
-      document.querySelector('.spotify-section h1').textContent = document.getElementById('spotify-title').value;
-      document.querySelector('.spotify-section p').textContent = document.getElementById('spotify-description').value;
-      document.querySelector('.spotify-embed iframe').src = document.getElementById('spotify-url').value;
-      closeModal('spotify-modal');
-    }
+function saveSpotifyDetails() {
+  document.querySelector('.spotify-section h1').textContent = document.getElementById('spotify-title').value;
+  document.querySelector('.spotify-section p').textContent = document.getElementById('spotify-description').value;
+  document.querySelector('.spotify-embed iframe').src = document.getElementById('spotify-url').value;
+  const bg = document.getElementById('spotify-bg').files[0];
+  if (bg) {
+    document.querySelector('.spotify-embed').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
+  }
+  closeModal('spotify-modal');
+}
 
     function saveHistoryDetails() {
       document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
