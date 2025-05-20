@@ -1035,30 +1035,66 @@
     }
 
     /* Spotify section styles */
-    .spotify-section {
-      padding: 60px 20px;
-      text-align: center;
-    }
+/* Add this at the top of the <style> section */
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
-    .spotify-container h1 {
-      font-size: 3.5em;
-      margin-bottom: 20px;
-    }
+/* Spotify section styles */
+.spotify-section {
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    .spotify-container p {
-      font-size: 1.2em;
-      margin-bottom: 30px;
-    }
+.spotify-container h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 3.5em;
+  margin-bottom: 20px;
+  color: #2b1b0f; /* Default color */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a subtle shadow for emo vibe */
+}
 
-    .spotify-embed {
-      max-width: 600px;
-      margin: 0 auto;
-    }
+body.night-mode .spotify-container h1 {
+  color: #f8e1b4; /* Adjust for night mode */
+}
 
-    @media only screen and (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
+.spotify-container p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.spotify-embed-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #000000; /* Black background for the Spotify embed */
+  padding: 20px; /* Padding to create a border effect */
+  border-radius: 12px; /* Match iframe border-radius */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  border: 2px solid #e67e22; /* Maintain theme border */
+}
+
+body.night-mode .spotify-embed-wrapper {
+  background: #1a1a1a; /* Slightly lighter black for night mode */
+  border: 2px solid #f39c12; /* Adjust border color for night mode */
+}
+
+@media only screen and (max-width: 768px) {
+  .spotify-container h1 {
+    font-size: 2.5em;
+  }
+
+  .spotify-embed-wrapper {
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .spotify-container h1 {
+    font-size: 2em;
+  }
+
+  .spotify-embed-wrapper {
+    padding: 10px;
+  }
+}
 
       nav {
         flex-direction: column;
@@ -1638,16 +1674,16 @@
     </div>
   </div>
 
-  <div class="modal" id="spotify-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('spotify-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Spotify Playlist</h3>
-      <input type="text" id="spotify-title" placeholder="Section Title" required aria-label="Section Title">
-      <textarea id="spotify-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-      <input type="text" id="spotify-url" placeholder="Spotify Embed URL" required aria-label="Spotify Embed URL">
-      <button onclick="saveSpotifyDetails()">Save</button>
-    </div>
+<div class="modal" id="spotify-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('spotify-modal')" aria-label="Close modal">×</button>
+    <h3>Edit EMO NIGHT PLAYLIST Section</h3>
+    <input type="text" id="spotify-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="spotify-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="text" id="spotify-url" placeholder="Spotify Embed URL" required aria-label="Spotify Embed URL">
+    <button onclick="saveSpotifyDetails()">Save</button>
   </div>
+</div>
 
   <div class="about-container">
     <section class="section about-section" id="about">
@@ -2061,16 +2097,16 @@
   </section>
 </div>
 
-  <div class="spotify-container">
-    <section class="section spotify-section" id="spotify">
-      <h1>Our Playlist</h1>
-      <p>Vibe with us! Here’s a curated playlist featuring emo, rock, and drum and bass tracks to get you in the Cosmic Rejex mood.</p>
-      <div class="spotify-embed">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
-    </section>
-  </div>
+<div class="spotify-container">
+  <section class="section spotify-section" id="spotify">
+    <h1>EMO NIGHT PLAYLIST</h1>
+    <p>Vibe with us! Here’s a curated playlist featuring emo, rock, and drum and bass tracks to get you in the Cosmic Rejex mood.</p>
+    <div class="spotify-embed-wrapper">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
+  </section>
+</div>
 
   <div class="newsletter-container">
     <section class="section newsletter-section" id="newsletter">
