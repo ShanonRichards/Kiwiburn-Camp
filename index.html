@@ -76,8 +76,9 @@
     }
 
     nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      width: 100%;
       background: rgba(44, 29, 15, 0.85);
       backdrop-filter: blur(10px);
       display: flex;
@@ -104,14 +105,15 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
+    }
+
+    .nav-links li {
+      list-style: none;
       position: relative;
     }
 
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-item a.nav-main {
+    nav a {
       color: #f8e1b4;
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
@@ -124,57 +126,46 @@
       display: block;
     }
 
-    .nav-item:hover .nav-main {
+    nav a:hover {
       background-color: #e67e22;
       color: #2b1b0f;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
       display: none;
       position: absolute;
+      background: rgba(44, 29, 15, 0.9);
+      min-width: 160px;
+      z-index: 1001;
+      border-radius: 4px;
+      border: 1px solid #e67e22;
       top: 100%;
       left: 0;
-      background: rgba(44, 29, 15, 0.95);
-      border: 2px solid #e67e22;
-      border-radius: 4px;
-      min-width: 200px;
-      z-index: 1000;
-      animation: slideDown 0.3s ease-out;
     }
 
-    body.night-mode .dropdown {
-      background: rgba(74, 55, 35, 0.95);
+    body.night-mode .dropdown-content {
+      background: rgba(74, 55, 35, 0.9);
     }
 
-    .nav-item:hover .dropdown {
-      display: block;
-    }
-
-    .dropdown a {
-      display: block;
-      color: #f8e1b4;
-      padding: 10px 15px;
-      font-family: 'Montserrat', sans-serif;
+    .dropdown-content a {
       font-size: 1rem;
-      text-decoration: none;
-      transition: background 0.3s, color 0.3s;
+      margin: 0;
+      padding: 10px 15px;
+      border-radius: 0;
     }
 
-    .dropdown a:hover {
-      background-color: #e67e22;
+    .dropdown-content a:hover {
+      background-color: #f39c12;
       color: #2b1b0f;
     }
 
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     .theme-toggle {
@@ -203,69 +194,6 @@
       padding: 10px;
     }
 
-    .search-container {
-      position: relative;
-      margin-right: 20px;
-    }
-
-    .search-container input {
-      padding: 8px 30px 8px 10px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #f8e1b4;
-      font-size: 0.9rem;
-    }
-
-    .search-container input::placeholder {
-      color: #f8e1b4;
-    }
-
-    .search-container::after {
-      content: '🔍';
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #f8e1b4;
-    }
-
-    .search-results {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(44, 29, 15, 0.95);
-      border: 2px solid #e67e22;
-      border-radius: 4px;
-      max-height: 300px;
-      overflow-y: auto;
-      z-index: 1000;
-    }
-
-    body.night-mode .search-results {
-      background: rgba(74, 55, 35, 0.95);
-    }
-
-    .search-result {
-      padding: 10px;
-      color: #f8e1b4;
-      border-bottom: 1px solid #e67e22;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .search-result:hover {
-      background: #e67e22;
-      color: #2b1b0f;
-    }
-
-    .search-result.highlight {
-      background: #f39c12;
-      color: #2b1b0f;
-    }
-
     .login-container {
       display: flex;
       justify-content: flex-end;
@@ -273,6 +201,7 @@
       background: rgba(44, 29, 15, 0.85);
       border-bottom: 1px solid #e67e22;
       z-index: 999;
+      margin-top: 70px;
     }
 
     body.night-mode .login-container {
@@ -330,6 +259,7 @@
       color: #f8e1b4;
       position: relative;
       text-shadow: 0 0 10px var(--primary);
+      margin-top: 70px;
     }
 
     .header-logo {
@@ -440,11 +370,6 @@
       margin-bottom: 20px;
       color: #2b1b0f;
       letter-spacing: 1px;
-      position: sticky;
-      top: 70px;
-      background: inherit;
-      z-index: 10;
-      padding: 10px 0;
     }
 
     .section p {
@@ -471,7 +396,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 2px solid #e67e22;
-      loading: lazy;
     }
 
     .gallery img:hover {
@@ -592,7 +516,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       margin-bottom: 10px;
       border: 3px solid #f39c12;
-      loading: lazy;
     }
 
     .event img {
@@ -602,14 +525,13 @@
       border-radius: 8px;
       margin-bottom: 15px;
       border: 2px solid #f39c12;
-      loading: lazy;
     }
 
     .member.camp-lead, .member.deputy-lead {
       position: relative;
     }
 
-    .member.c destacado, .member.deputy-lead::before {
+    .member.camp-lead::before {
       content: '👑';
       position: absolute;
       top: -20px;
@@ -622,7 +544,15 @@
     }
 
     .member.deputy-lead::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
       color: #C0C0C0;
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     .member h3, .role h3, .event h3 {
@@ -801,30 +731,450 @@
 
     .modal-content button {
       padding: 10px 20px;
-      background-color:back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
       background-color: #e67e22;
       color: #2b1b0f;
       border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
+      border-radius: 5px;
       cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 0 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      font-size: 1.2em;
+      padding: 5px 10px;
+    }
+
+    .events-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .countdown-section {
+      position: relative;
+      background: url('images/Countdown/Kiwiburn-Coverphoto.jpg') center/cover no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+      color: #ffffff;
+      margin: 40px 0;
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    body.night-mode .countdown-section {
+      background: url('images/countdown-bg.jpg') center/cover no-repeat;
+    }
+
+    .countdown-section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      color: #ffffff;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5em;
+      color: #ffffff;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 15px 30px;
+      border-radius: 10px;
+      border: 2px solid #e67e22;
+    }
+
+    .countdown span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown span small {
+      font-size: 0.5em;
+      text-transform: uppercase;
+    }
+
+    .countdown-section input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      margin: 10px;
       display: none;
-      z-index: 1000;
+    }
+
+    .logged-in .countdown-section input {
+      display: inline-block;
+    }
+
+    .countdown-section button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    .logged-in .countdown-section button {
+      display: inline-block;
+    }
+
+    .countdown-section button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    body.night-mode footer {
+      background-color: #4a3723;
+    }
+
+    .form-container {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .form-container button {
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
       transition: background-color 0.3s, box-shadow 0.3s;
     }
 
-    .back-to-top.show {
+    .form-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .submit-button, .fee-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+      margin: 10px;
+    }
+
+    .submit-button:hover, .fee-button:hover {
+      background-color: #f39c12;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .section#submit {
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .submit-section {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .newsletter-section {
+      padding: 80px 20px;
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    body.night-mode .newsletter-section {
+      background-color: rgba(44, 29, 15, 0.8);
+    }
+
+    .newsletter-container .section {
+      padding: 0;
+    }
+
+    .save-button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 20px auto;
+      display: none;
+    }
+
+    .logged-in .save-button {
       display: block;
     }
 
-    .back-to-top:hover {
+    .edit-section-button {
+      display: none;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 10px auto;
+    }
+
+    .logged-in .edit-section-button {
+      display: block;
+    }
+
+    .edit-section-button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    /* New styles for About section */
+    .about-section {
+      padding: 60px 20px;
+      text-align: left;
+      background: none;
+    }
+
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h1 {
+      font-size: 4em;
+      margin-bottom: 20px;
+      color: #2b1b0f;
+    }
+
+    .about-text p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      color: #2b1b0f;
+      max-width: 100%;
+    }
+
+    .about-image img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border: 2px solid #e67e22;
+    }
+
+    /* Updated History section styles to match Whomp Wagon */
+    .history-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: none;
+    }
+
+    .history-container h1 {
+      font-size: 4em;
+      margin-bottom: 40px;
+      color: #e01b24;
+      position: relative;
+    }
+
+    .history-container h1::before,
+    .history-container h1::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 15%;
+      height: 2px;
+      background: #e01b24;
+    }
+
+    .history-container h1::before {
+      left: 0;
+    }
+
+    .history-container h1::after {
+      right: 0;
+    }
+
+    .history-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    .history-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .history-item img {
+      width: 100%;
+      max-width: 400px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border: 2px solid #e67e22;
+      margin-bottom: 15px;
+    }
+
+    .history-item h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.8em;
+      color: #2b1b0f;
+      margin-bottom: 10px;
+    }
+
+    .history-item p {
+      font-size: 1em;
+      line-height: 1.6;
+      color: #2b1b0f;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+
+    body.night-mode .history-container h1 {
+      color: #f8e1b4;
+    }
+
+    body.night-mode .history-container h1::before,
+    body.night-mode .history-container h1::after {
+      background: #f8e1b4;
+    }
+
+    body.night-mode .history-item h3,
+    body.night-mode .history-item p {
+      color: #f8e1b4;
+    }
+
+    /* Spotify section styles */
+    .spotify-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: none;
+    }
+
+    .spotify-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #000000 url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat;
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    body.night-mode .spotify-container {
+      background: #1a1a1a url('images/emo-bg-dark.jpg') center/cover no-repeat;
+    }
+
+    .spotify-container h1 {
+      font-family: 'Special Elite', cursive;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      letter-spacing: 2px;
+    }
+
+    .spotify-container p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #d3d3d3;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .spotify-embed {
+      max-width: 600px;
+      margin: 0 auto;
+      border: 2px solid #e67e22;
+      border-radius: 12px;
+      overflow: hidden;
+      background: url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat;
+      position: relative;
+    }
+
+    .spotify-embed iframe {
+      background: transparent !important;
+      border: none;
+    }
+
+    body.night-mode .spotify-embed {
+      background: url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat;
+      border-color: #f39c12;
     }
 
     @media only screen and (max-width: 768px) {
@@ -857,24 +1207,34 @@
         display: flex;
       }
 
-      .nav-item {
+      .nav-links li {
         width: 100%;
       }
 
-      .nav-item a.nav-main {
+      nav a {
         margin: 5px 0;
         font-size: 1rem;
         padding: 10px;
         text-align: center;
       }
 
-      .dropdown {
+      .dropdown-content {
         position: static;
-        display: none;
-        background: rgba(44, 29, 15, 0.8);
+        background: rgba(74, 55, 35, 0.9);
+        border: none;
+        width: 100%;
+        padding-left: 20px;
       }
 
-      .nav-item.active .dropdown {
+      body.night-mode .dropdown-content {
+        background: rgba(94, 75, 55, 0.9);
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-content {
         display: block;
       }
 
@@ -883,22 +1243,9 @@
         padding: 5px;
       }
 
-      .search-container {
-        margin: 10px 0;
-        width: 100%;
-      }
-
-      .search-container input {
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .search-results {
-        width: 100%;
-      }
-
       .login-container {
         padding: 10px;
+        margin-top: 60px;
       }
 
       .login-container form {
@@ -915,6 +1262,7 @@
 
       .header {
         height: 50vh;
+        margin-top: 60px;
       }
 
       .header-logo {
@@ -945,7 +1293,6 @@
 
       .section h1, .section h2 {
         font-size: 2em;
-        top: 60px;
       }
 
       .section p {
@@ -1128,29 +1475,6 @@
       .spotify-embed iframe {
         height: 300px;
       }
-
-      .accordion-header {
-        font-size: 1.5em;
-      }
-
-      .role-tabs {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .role-tab {
-        width: 100%;
-        text-align: center;
-      }
-
-      .event-filter {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .event-filter button, .event-filter select {
-        width: 100%;
-      }
     }
 
     @media only screen and (max-width: 480px) {
@@ -1169,7 +1493,6 @@
 
       .section h1, .section h2 {
         font-size: 1.6em;
-        top: 50px;
       }
 
       .section p {
@@ -1301,10 +1624,6 @@
       .spotify-embed iframe {
         height: 250px;
       }
-
-      .accordion-header {
-        font-size: 1.2em;
-      }
     }
 
     @media only screen and (min-width: 769px) {
@@ -1312,178 +1631,38 @@
         display: none;
       }
     }
-
-    .accordion-header {
-      background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
-      padding: 15px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.8em;
-      cursor: pointer;
-      border: 2px solid #e67e22;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    body.night-mode .accordion-header {
-      background: rgba(74, 55, 35, 0.7);
-    }
-
-    .accordion-header:hover {
-      background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .accordion-content {
-      display: none;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid #e67e22;
-      border-radius: 5px;
-      animation: slideDown 0.3s ease-out;
-    }
-
-    .accordion-content.active {
-      display: block;
-    }
-
-    .role-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .role-tab {
-      padding: 10px 20px;
-      background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2em;
-      border: 2px solid #e67e22;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .role-tab.active {
-      background: #f39c12;
-      color: #2b1b0f;
-    }
-
-    .role-tab:hover {
-      background: #e67e22;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .event-filter {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .event-filter button, .event-filter select {
-      padding: 8px 15px;
-      background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
-      border: 2px solid #e67e22;
-      border-radius: 5px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .event-filter button.active {
-      background: #f39c12;
-      color: #2b1b0f;
-    }
-
-    .event-filter button:hover, .event-filter select:hover {
-      background: #e67e22;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .calendar-view {
-      display: none;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 10px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .calendar-day {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid #e67e22;
-      padding: 10px;
-      border-radius: 5px;
-      min-height: 100px;
-    }
-
-    .calendar-day h4 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2em;
-      color: #f8e1b4;
-      margin-bottom: 10px;
-    }
-
-    .calendar-event {
-      background: rgba(44, 29, 15, 0.7);
-      padding: 5px;
-      margin: 5px 0;
-      border-radius: 3px;
-      color: #f8e1b4;
-      font-size: 0.9em;
-      cursor: pointer;
-    }
-
-    .calendar-event:hover {
-      background: #e67e22;
-      color: #2b1b0f;
-    }
   </style>
 </head>
 <body>
   <nav>
     <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="nav-logo">
     <button class="hamburger" aria-label="Toggle menu">☰</button>
-    <div class="nav-links">
-      <div class="nav-item">
-        <a href="#about" class="nav-main">About</a>
-        <div class="dropdown">
+    <ul class="nav-links">
+      <li class="dropdown">
+        <a href="#about">About</a>
+        <div class="dropdown-content">
           <a href="#about">Our Camp</a>
           <a href="#mission">Mission</a>
           <a href="#history">History</a>
         </div>
-      </div>
-      <div class="nav-item">
-        <a href="#events" class="nav-main">Events</a>
-        <div class="dropdown">
-          <a href="#events-2026">Upcoming Events (2026)</a>
-          <a href="#events-2025">Past Events (2025)</a>
+      </li>
+      <li class="dropdown">
+        <a href="#events">Events</a>
+        <div class="dropdown-content">
+          <a href="#events">Upcoming Events</a>
+          <a href="#past-events">Past Events</a>
           <a href="submit-event.html">Submit Event</a>
         </div>
-      </div>
-      <div class="nav-item">
-        <a href="#join" class="nav-main">Join Us</a>
-        <div class="dropdown">
+      </li>
+      <li class="dropdown">
+        <a href="#join">Join Us</a>
+        <div class="dropdown-content">
           <a href="join-camp.html">Membership Info</a>
-          <a href="#roles">Roles to Be Filled</a>
-          <a href="join-camp.html?apply=2026">Apply for 2026</a>
+          <a href="camp-fees.html">Camp Fees</a>
+          <a href="join-camp.html">Apply for 2026</a>
         </div>
-      </div>
-      <a href="gallery.html">Gallery</a>
-      <a href="Task_Roster.html">Tasks/Roster</a>
-      <a href="contact.html">Contact</a>
-      <a href="#newsletter">Newsletter</a>
-    </div>
-    <div class="search-container">
-      <input type="text" id="global-search" placeholder="Search Cosmic Rejex..." aria-label="Search">
-      <div class="search-results" id="search-results"></div>
-    </div>
+      </li>
+    </ul>
     <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
   </nav>
 
@@ -1496,7 +1675,18 @@
     <button class="logout-button" aria-label="Logout">Logout</button>
   </div>
 
-  <!-- Existing modals remain unchanged -->
+  <header class="header" id="home">
+    <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="header-logo">
+    <h1>JOIN COSMIC REJEX</h1>
+    <p>A Safe Space for Emos, Rockers, and Dreamers</p>
+    <div class="header-ctas">
+      <a href="join-camp.html" class="apply-button">Apply for 2026</a>
+      <a href="#about" class="secondary-button">Learn More</a>
+    </div>
+    <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
+    <a href="#about" class="scroll-down" aria-label="Scroll to about section">▼</a>
+  </header>
+
   <div class="modal" id="header-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeModal('header-modal')" aria-label="Close modal">×</button>
@@ -1525,12 +1715,6 @@
       <input type="text" id="role-title" placeholder="Role Title" required aria-label="Role Title">
       <textarea id="role-description" placeholder="Role Description" required aria-label="Role Description"></textarea>
       <input type="file" id="role-icon" accept="image/*" aria-label="Role Icon">
-      <select id="role-category" required aria-label="Role Category">
-        <option value="" disabled selected>Select Category</option>
-        <option value="Leadership">Leadership</option>
-        <option value="Logistics">Logistics</option>
-        <option value="Creative">Creative</option>
-      </select>
       <button onclick="saveRoleDetails()">Save</button>
     </div>
   </div>
@@ -1665,18 +1849,6 @@
     </div>
   </div>
 
-  <header class="header" id="home">
-    <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="header-logo">
-    <h1>JOIN COSMIC REJEX</h1>
-    <p>A Safe Space for Emos, Rockers, and Dreamers</p>
-    <div class="header-ctas">
-      <a href="join-camp.html" class="apply-button">Apply for 2026</a>
-      <a href="#about" class="secondary-button">Learn More</a>
-    </div>
-    <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
-    <a href="#about" class="scroll-down" aria-label="Scroll to about section">▼</a>
-  </header>
-
   <div class="about-container">
     <section class="section about-section" id="about">
       <div class="about-content">
@@ -1696,29 +1868,20 @@
     <section class="section history-section" id="history">
       <h1>Our History</h1>
       <div class="history-gallery">
-        <div class="history-item accordion">
-          <div class="accordion-header">The Early Days</div>
-          <div class="accordion-content">
-            <img src="images/History/Early-Days.jpg" alt="Early Days of Cosmic Rejex">
-            <h3>The Early Days</h3>
-            <p>Cosmic Rejex started as a small group of Kiwiburn regulars in 2020, united by a love for alternative music and self-expression. We set up our first camp with just a few tents, a portable speaker, and a dream to create a space for misfits.</p>
-          </div>
+        <div class="history-item">
+          <img src="images/History/Early-Days.jpg" alt="Early Days of Cosmic Rejex">
+          <h3>The Early Days</h3>
+          <p>Cosmic Rejex started as a small group of Kiwiburn regulars in 2020, united by a love for alternative music and self-expression. We set up our first camp with just a few tents, a portable speaker, and a dream to create a space for misfits.</p>
         </div>
-        <div class="history-item accordion">
-          <div class="accordion-header">The Sound Camp Era</div>
-          <div class="accordion-content">
-            <img src="images/History/First-Sound-Camp.jpg" alt="First Sound Camp">
-            <h3>The Sound Camp Era</h3>
-            <p>By 2022, we evolved into a full-fledged sound camp, bringing emo anthems and drum and bass to the playa. Our crew grew, and we introduced alien-themed art installations, making Cosmic Rejex a Kiwiburn staple.</p>
-          </div>
+        <div class="history-item">
+          <img src="images/History/First-Sound-Camp.jpg" alt="First Sound Camp">
+          <h3>The Sound Camp Era</h3>
+          <p>By 2022, we evolved into a full-fledged sound camp, bringing emo anthems and drum and bass to the playa. Our crew grew, and we introduced alien-themed art installations, making Cosmic Rejex a Kiwiburn staple.</p>
         </div>
-        <div class="history-item accordion">
-          <div class="accordion-header">The Future</div>
-          <div class="accordion-content">
-            <img src="images/History/Future-Vision.jpg" alt="Future Vision">
-            <h3>The Future</h3>
-            <p>Now, Cosmic Rejex is looking ahead to expand our inclusive vision. We aim to create a platform where musicians and artists of all genres can share their talents, continuing to grow our community at Kiwiburn and beyond.</p>
-          </div>
+        <div class="history-item">
+          <img src="images/History/Future-Vision.jpg" alt="Future Vision">
+          <h3>The Future</h3>
+          <p>Now, Cosmic Rejex is looking ahead to expand our inclusive vision. We aim to create a platform where musicians and artists of all genres can share their talents, continuing to grow our community at Kiwiburn and beyond.</p>
         </div>
       </div>
       <button class="edit-section-button" onclick="openModal('history-modal')">Edit Section</button>
@@ -1797,310 +1960,258 @@
         </div>
       </div>
 
-      <h2 id="roles">Roles to Be Filled</h2>
+      <h2>Roles to Be Filled</h2>
       <p>Join our Minnesotan style—hover over each role to learn more about the responsibilities and expectations.</p>
-      <div class="role-tabs">
-        <button class="role-tab active" data-category="all">All</button>
-        <button class="role-tab" data-category="Leadership">Leadership</button>
-        <button class="role-tab" data-category="Logistics">Logistics</button>
-        <button class="role-tab" data-category="Creative">Creative</button>
-      </div>
       <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
         <div class="scroll-arrow left" data-grid="roles">◄</div>
         <div class="scroll-arrow right" data-grid="roles">►</div>
-        <div class="role" data-category="Logistics" draggable="true" ondragstart="drag(event)">
+        <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Logestics-&-Build-Lead.png" alt="Logistics & Build Lead Icon">
           <h3>Logistics & Build Lead</h3>
           <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
-            <span>Time: 10-15 hrs/week</span>
-            <span>Skills: Planning, Coordination</span>
           </div>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
-        <div class="role" data-category="Logistics" draggable="true" ondragstart="drag(event)">
+        <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Volunteer-Coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
           <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
           <div class="tooltip">
             <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
-            <span>Time: 5-10 hrs/week</span>
-            <span>Skills: Organization, Communication</span>
           </div>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
-        <div class="role" data-category="Logistics" draggable="true" ondragstart="drag(event)">
+        <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Build-Crew.png" alt="Build Crew Icon">
           <h3>Build Crew</h3>
           <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
-            <span>Time: 15-20 hrs/week</span>
-            <span>Skills: Construction, Teamwork</span>
+            <p>Assists with camp setup, takedown, and structural builds under Build Lead.</p>
           </div>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
-        <div class="role" data-category="Leadership" draggable="true" ondragstart="drag(event)">
-          <img src="images/Roles-to-Be-Filled/Camp-Leadz.png" alt="Camp Lead Icon">
-          <h3>Camp Lead</h3>
-          <a href="join-camp.html?role=Camp%20Lead" class="apply-button">Apply for Role</a>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Sound-Crew.png" alt="Sound Crew Icon">
+          <h3>Sound Crew</h3>
+          <a href="join-camp.html?role=Sound%20Crew" class="apply-button">Apply for Role</a>
           <div class="tooltip">
-            <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
-            <span>Time: 20-25 hrs/week</span>
-            <span>Skills: Leadership, Problem-Solving</span>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" data-category="Leadership" draggable="true" ondragstart="drag(event)">
-          <img src="images/Roles-to-Be-Filled/Deputy-Leads.png" alt="Deputy Lead Icon">
-          <h3>Deputy Lead</h3>
-          <a href="join-camp.html?role=Deputy%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
-            <span>Time: 15-20 hrs/week</span>
-            <span>Skills: Support, Time Management</span>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" data-category="Logistics" draggable="true" ondragstart="drag(event)">
-          <img src="images/Roles-to-Be-Filled/Build-Lead.png" alt="Build Lead Icon">
-          <h3>Build Lead</h3>
-          <a href="join-camp.html?role=Build%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
-            <span>Time: 15-20 hrs/week</span>
-            <span>Skills: Leadership, Construction</span>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" data-category="Creative" draggable="true" ondragstart="drag(event)">
-          <img src="images/Roles-to-Be-Filled/Vibe-Managers.png" alt="Vibe Manager Icon">
-          <h3>Vibe Manager</h3>
-          <a href="join-camp.html?role=Vibe%20Manager" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
-            <span>Time: 5-10 hrs/week</span>
-            <span>Skills: Empathy, Community Building</span>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" data-category="Logistics" draggable="true" ondragstart="drag(event)">
-          <img src="images/Roles-to-Be-Filled/Logistics-Lead.png" alt="Logistics Lead Icon">
-          <h3>Logistics Lead</h3>
-          <a href="join-camp.html?role=Logistics%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
-            <span>Time: 10-15 hrs/week</span>
-            <span>Skills: Organization, Logistics</span>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" data-category="Creative" draggable="true" ondragstart="drag(event)">
-          <img src="images/Roles-to-Be-Filled/Art-Crew.png" alt="Art Crew Icon">
-          <h3>Art Crew</h3>
-          <a href="join-camp.html?role=Art%20Crew" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Designs alien-themed decorations and art installations to enhance camp vibe.</p>
-            <span>Time: 8-12 hrs/week</span>
-            <span>Skills: Creativity, Artistry</span>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" data-category="Creative" draggable="true" ondragstart="drag(event)">
-          <img src="images/Roles-to-Be-Filled/Sound-Lead.png" alt="Sound Lead Icon">
-          <h3>Sound Lead</h3>
-          <a href="join-camp.html?role=Sound%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Manages camp music, DJs, and audio gear. Ensures sound setup runs smoothly.</p>
-            <span>Time: 10-15 hrs/week</span>
-            <span>Skills: Audio Tech, Music Curation</span>
-          </div>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        </div>
-        <div class="role" data-category="Logistics" draggable="true" ondragstart="drag(event)">
-          <h3>Kitchen Lead</h3>
-          <a href="join-camp.html?role=Kitchen%20Lead" class="apply-button">Apply for Role</a>
-          <div class="tooltip">
-            <p>Plans shared meals and food storage. Oversees cooking and cleaning rosters.</p>
-            <span>Time: 10-15 hrs/week</span>
-            <span>Skills: Cooking, Organization</span>
+            <p>Sets up and manages audio equipment, supports DJs and music events.</p>
           </div>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
       </div>
-      <button class="edit-section-button" onclick="openModal('join-modal')">Edit Section</button>
-      <button class="save-button" onclick="openModal('member-modal')">Add Member</button>
-      <button class="save-button" onclick="openModal('role-modal')">Add Role</button>
-    </section>
-  </div>
-
-  <section class="section countdown-section" id="countdown">
-    <h1>Countdown to Kiwiburn 2026</h1>
-    <div class="countdown" id="countdown-timer">
-      <span id="days">00</span> Days
-      <span id="hours">00</span> Hours
-      <span id="minutes">00</span> Minutes
-      <span id="seconds">00</span> Seconds
-    </div>
-    <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Section</button>
-  </section>
-
-  <div class="spotify-container">
-    <section class="section" id="spotify">
-      <h1>EMO PLAYLIST</h1>
-      <p>Check out our Cosmic Rejex playlist to get in the mood for Kiwiburn—full of emo anthems, rock bangers, and drum and bass vibes.</p>
-      <div class="spotify-embed">
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      </div>
-      <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
+      <button class="save-button" onclick="openModal('member-modal')">Add New Member</button>
+      <button class="save-button" onclick="openModal('role-modal')">Add New Role</button>
     </section>
   </div>
 
   <section class="section" id="events">
     <h1>Upcoming Events</h1>
-    <p>Check out our lineup of music, art, and community events at Kiwiburn 2026. Filter by category or date, or switch to calendar view.</p>
-    <div class="event-filter">
-      <button class="event-filter-button active" data-filter="all">All</button>
-      <button class="event-filter-button" data-filter="Music">Music</button>
-      <button class="event-filter-button" data-filter="Art">Art</button>
-      <button class="event-filter-button" data-filter="Performance">Performance</button>
-      <button class="event-filter-button" data-filter="Workshop">Workshop</button>
-      <select id="date-filter" aria-label="Filter by date">
-        <option value="all">All Dates</option>
-        <option value="2026-01">January 2026</option>
-        <option value="2026-02">February 2026</option>
-      </select>
-      <button class="view-toggle" data-view="grid">Calendar View</button>
-    </div>
-    <div class="events-grid" id="events-grid">
-      <div class="event" data-category="Music" data-date="2026-01-15">
-        <img src="images/Events/Emo-Night.jpg" alt="Emo Night">
-        <h3>Emo Night</h3>
-        <p class="event-date"><strong>Date:</strong> January 15, 2026</p>
-        <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
-        <p class="event-end"><strong>End:</strong> January 16, 2026, 1:00 AM</p>
-        <p class="event-category"><strong>Category:</strong> Music</p>
-        <p>Relive the 2000s with our emo anthems and sing-alongs under the stars.</p>
-        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteEvent(this)">×</button>
-      </div>
-      <div class="event" data-category="Art" data-date="2026-01-16">
-        <img src="images/Events/Alien-Art.jpg" alt="Alien Art Workshop">
-        <h3>Alien Art Workshop</h3>
-        <p class="event-date"><strong>Date:</strong> January 16, 2026</p>
-        <p class="event-time"><strong>Time:</strong> 2:00 PM</p>
-        <p class="event-end"><strong>End:</strong> January 16, 2026, 5:00 PM</p>
-        <p class="event-category"><strong>Category:</strong> Art</p>
-        <p>Create your own alien-themed art to display at the camp.</p>
-        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteEvent(this)">×</button>
-      </div>
-      <div class="event" data-category="Performance" data-date="2026-01-17">
-        <img src="images/Events/Fire-Show.jpg" alt="Fire Performance">
-        <h3>Fire Performance</h3>
-        <p class="event-date"><strong>Date:</strong> January 17, 2026</p>
-        <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
-        <p class="event-end"><strong>End:</strong> January 17, 2026, 11:00 PM</p>
-        <p class="event-category"><strong>Category:</strong> Performance</p>
-        <p>A mesmerizing fire-spinning show by our talented crew.</p>
-        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteEvent(this)">×</button>
-      </div>
-    </div>
-    <div class="calendar-view" id="calendar-view"></div>
+    <p>Join us for a lineup of music, art, and immersive experiences that capture the Cosmic Rejex vibe.</p>
     <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
-    <button class="save-button" onclick="openModal('event-modal')">Add Event</button>
+    <div class="events-grid" ondragover="allowDrop(event)" ondrop="dropEvents(event)">
+      <div class="event" draggable="true" ondragstart="drag(event)">
+        <img src="images/Upcoming-Events/Emo-Karaoke-Night.jpg" alt="Emo Karaoke Night">
+        <h3>Emo Karaoke Night</h3>
+        <p class="event-date"><strong>Date:</strong> January 25, 2026</p>
+        <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
+        <p class="event-end"><strong>End:</strong> January 26, 2026, 12:00 AM</p>
+        <p class="event-category"><strong>Category:</strong> Music</p>
+        <p>Grab the mic and sing your heart out to your favorite emo anthems under the stars.</p>
+        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)">×</button>
+      </div>
+      <div class="event" draggable="true" ondragstart="drag(event)">
+        <img src="images/Upcoming-Events/Alien-Art-Workshop.jpg" alt="Alien Art Workshop">
+        <h3>Alien Art Workshop</h3>
+        <p class="event-date"><strong>Date:</strong> January 26, 2026</p>
+        <p class="event-time"><strong>Time:</strong> 2:00 PM</p>
+        <p class="event-end"><strong>End:</strong> January 26, 2026, 4:00 PM</p>
+        <p class="event-category"><strong>Category:</strong> Art</p>
+        <p>Create out-of-this-world art inspired by extraterrestrial themes with our crew.</p>
+        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)">×</button>
+      </div>
+      <div class="event" draggable="true" ondragstart="drag(event)">
+        <img src="images/Upcoming-Events/Drum-and-Bass-Rave.jpg" alt="Drum and Bass Rave">
+        <h3>Drum and Bass Rave</h3>
+        <p class="event-date"><strong>Date:</strong> January 27, 2026</p>
+        <p class="event-time"><strong>Time:</strong> 10:00 PM</p>
+        <p class="event-end"><strong>End:</strong> January 28, 2026, 2:00 AM</p>
+        <p class="event-category"><strong>Category:</strong> Music</p>
+        <p>Dance the night away with heavy basslines and epic DJ sets at our sound camp.</p>
+        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)">×</button>
+      </div>
+      <div class="event" draggable="true" ondragstart="drag(event)">
+        <img src="images/Upcoming-Events/Conspiracy-Theory-Circle.jpg" alt="Conspiracy Theory Circle">
+        <h3>Conspiracy Theory Circle</h3>
+        <p class="event-date"><strong>Date:</strong> January 28, 2026</p>
+        <p class="event-time"><strong>Time:</strong> 4:00 PM</p>
+        <p class="event-end"><strong>End:</strong> January 28, 2026, 6:00 PM</p>
+        <p class="event-category"><strong>Category:</strong> Other</p>
+        <p>Share your wildest theories in a fun, open-minded discussion by the fire.</p>
+        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteEvent(this)">×</button>
+      </div>
+    </div>
+    <a href="submit-event.html" class="submit-button">Submit Your Event</a>
+  </section>
+
+  <section class="section countdown-section" id="countdown">
+    <h2>COUNTDOWN TO KIWIBURN 2026</h2>
+    <div class="countdown">
+      <span id="days">00<br><small>Days</small></span>
+      <span id="hours">00<br><small>Hours</small></span>
+      <span id="minutes">00<br><small>Minutes</small></span>
+      <span id="seconds">00<br><small>Seconds</small></span>
+    </div>
+    <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
+    <input type="file" id="countdown-bg-input" accept="image/*" aria-label="Countdown Background Image">
+    <button onclick="openModal('countdown-modal')">Set Countdown</button>
   </section>
 
   <div class="newsletter-container">
-    <section class="section" id="newsletter">
-      <h2>Stay in the Loop</h2>
-      <p>Sign up for our newsletter to get the latest updates on Cosmic Rejex events, roles, and Kiwiburn 2026 plans.</p>
+    <section class="section newsletter-section" id="newsletter">
+      <h1>Stay in the Loop</h1>
+      <p>Sign up for our newsletter to get updates on events, camp news, and more.</p>
+      <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
       <div class="form-container">
         <form id="newsletter-form">
-          <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email for newsletter">
-          <button type="submit" class="submit-button">Subscribe</button>
+          <input type="email" id="newsletter-email" placeholder="Your Email" required aria-label="Your Email">
+          <button type="submit">Subscribe</button>
         </form>
       </div>
-      <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
     </section>
   </div>
 
-  <div class="submit-section">
-    <section class="section" id="submit">
-      <h2>Submit Your Event</h2>
-      <p>Got an idea for a music set, art project, or workshop? Submit it to be part of Cosmic Rejex at Kiwiburn 2026!</p>
+  <section class="section" id="submit">
+    <h1>Got an Idea?</h1>
+    <p>Have an event or workshop you’d like to host with Cosmic Rejex? Submit your idea, and let’s make it happen!</p>
+    <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
+    <div class="submit-section">
       <div class="form-container">
         <form id="event-submit-form">
           <input type="text" id="event-name" placeholder="Event Name" required aria-label="Event Name">
-          <textarea id="event-details" placeholder="Event Description" required aria-label="Event Description"></textarea>
-          <input type="date" id="event-proposed-date" required aria-label="Proposed Event Date">
-          <select id="event-type" required aria-label="Event Type">
-            <option value="" disabled selected>Select Event Type</option>
-            <option value="Music">Music</option>
-            <option value="Art">Art</option>
-            <option value="Performance">Performance</option>
-            <option value="Workshop">Workshop</option>
-            <option value="Other">Other</option>
-          </select>
+          <textarea id="event-details" placeholder="Event Details" required aria-label="Event Details"></textarea>
           <button type="submit" class="submit-button">Submit Event</button>
         </form>
       </div>
-      <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
+    </div>
+    <a href="camp-fees.html" class="fee-button">View Camp Fees</a>
+  </section>
+
+  <div class="spotify-container">
+    <section class="section spotify-section" id="spotify">
+      <h1>EMO PLAYLIST</h1>
+      <p>Our curated Spotify playlist captures the Cosmic Rejex vibe—perfect for prepping for Kiwiburn or reminiscing about past burns.</p>
+      <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
+      <div class="spotify-embed">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
     </section>
   </div>
 
-  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <footer>
+    <p>&copy; 2025 Cosmic Rejex. All rights reserved.</p>
+  </footer>
 
   <script>
-    // Theme Toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    themeToggle.addEventListener('click', () => {
+    // Toggle night mode
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
       document.body.classList.toggle('night-mode');
-      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+      localStorage.setItem('nightMode', document.body.classList.contains('night-mode'));
     });
 
-    // Load saved theme
-    if (localStorage.getItem('theme') === 'dark') {
+    // Check night mode preference
+    if (localStorage.getItem('nightMode') === 'true') {
       document.body.classList.add('night-mode');
     }
 
-    // Hamburger Menu
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+    // Hamburger menu toggle
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
     });
 
-    // Dropdown Menu Toggle for Mobile
-    document.querySelectorAll('.nav-item .nav-main').forEach(mainLink => {
-      mainLink.addEventListener('click', (e) => {
+    // Dropdown menu toggle for mobile
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+      dropdown.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
           e.preventDefault();
-          const parent = mainLink.parentElement;
-          const dropdown = parent.querySelector('.dropdown');
-          parent.classList.toggle('active');
-          document.querySelectorAll('.nav-item').forEach(item => {
-            if (item !== parent) item.classList.remove('active');
-          });
+          dropdown.classList.toggle('active');
         }
       });
     });
 
-    // Modal Functions
+    // Login functionality
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (username === 'admin' && password === 'password') {
+        document.body.classList.add('logged-in');
+        document.getElementById('login-form').style.display = 'none';
+        document.querySelector('.logout-button').style.display = 'block';
+        alert('Logged in successfully!');
+      } else {
+        alert('Invalid credentials');
+      }
+    });
+
+    // Logout functionality
+    document.querySelector('.logout-button').addEventListener('click', () => {
+      document.body.classList.remove('logged-in');
+      document.getElementById('login-form').style.display = 'flex';
+      document.querySelector('.logout-button').style.display = 'none';
+      alert('Logged out successfully!');
+    });
+
+    // Newsletter form submission
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('newsletter-email').value;
+      alert(`Subscribed with ${email}!`);
+      document.getElementById('newsletter-form').reset();
+    });
+
+    // Event submission form
+    document.getElementById('event-submit-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const eventName = document.getElementById('event-name').value;
+      const eventDetails = document.getElementById('event-details').value;
+      alert(`Event "${eventName}" submitted! Details: ${eventDetails}`);
+      document.getElementById('event-submit-form').reset();
+    });
+
+    // Countdown timer
+    function updateCountdown() {
+      const targetDate = new Date('2026-01-25T00:00:00').getTime();
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerHTML = days + '<br><small>Days</small>';
+      document.getElementById('hours').innerHTML = hours + '<br><small>Hours</small>';
+      document.getElementById('minutes').innerHTML = minutes + '<br><small>Minutes</small>';
+      document.getElementById('seconds').innerHTML = seconds + '<br><small>Seconds</small>';
+
+      if (distance < 0) {
+        document.querySelector('.countdown').innerHTML = 'Kiwiburn 2026 has started!';
+      }
+    }
+    setInterval(updateCountdown, 1000);
+
+    // Modal functions
     function openModal(modalId) {
       document.getElementById(modalId).style.display = 'flex';
     }
@@ -2110,8 +2221,7 @@
     }
 
     function openHeaderModal() {
-      const title = document.querySelector('.header h1').textContent;
-      document.getElementById('header-title').value = title;
+      document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
       openModal('header-modal');
     }
 
@@ -2119,19 +2229,17 @@
       const title = document.getElementById('header-title').value;
       document.querySelector('.header h1').textContent = title;
       closeModal('header-modal');
+      alert('Header updated!');
     }
 
     function openEditMemberModal(button) {
       const member = button.parentElement;
-      const name = member.querySelector('h3').textContent;
-      const role = member.querySelector('span').textContent;
-      const description = member.querySelector('p').textContent;
-      document.getElementById('member-name').value = name;
-      document.getElementById('member-role').value = role;
-      document.getElementById('member-description').value = description;
       document.getElementById('member-modal-title').textContent = 'Edit Member Details';
+      document.getElementById('member-name').value = member.querySelector('h3').textContent;
+      document.getElementById('member-role').value = member.querySelector('span')?.textContent || '';
+      document.getElementById('member-description').value = member.querySelector('p').textContent;
+      document.getElementById('member-photo').dataset.member = member.querySelector('img').src;
       openModal('member-modal');
-      document.getElementById('member-modal').dataset.editElement = member.outerHTML;
     }
 
     function saveMemberDetails() {
@@ -2139,32 +2247,37 @@
       const role = document.getElementById('member-role').value;
       const description = document.getElementById('member-description').value;
       const photo = document.getElementById('member-photo').files[0];
-      const modal = document.getElementById('member-modal');
-      const isEdit = modal.dataset.editElement;
       const membersGrid = document.querySelector('.members-grid');
-      const newMember = document.createElement('div');
-      newMember.classList.add('member');
-      if (role.toLowerCase().includes('camp lead')) newMember.classList.add('camp-lead');
-      if (role.toLowerCase().includes('deputy lead')) newMember.classList.add('deputy-lead');
-      newMember.setAttribute('draggable', 'true');
-      newMember.setAttribute('ondragstart', 'drag(event)');
-      const photoUrl = photo ? URL.createObjectURL(photo) : 'images/Core-Camp-Crew/default.png';
-      newMember.innerHTML = `
-        <img src="${photoUrl}" alt="${name}">
-        <h3>${name}</h3>
-        <span>${role}</span>
-        <p>${description}</p>
-        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteMember(this)">×</button>
-      `;
-      if (isEdit) {
-        const oldMember = membersGrid.querySelector(`[data-id="${modal.dataset.editId}"]`) || membersGrid.querySelector(':first-child');
-        oldMember.replaceWith(newMember);
+
+      if (document.getElementById('member-photo').dataset.member) {
+        const member = Array.from(membersGrid.children).find(m => m.querySelector('img')?.src === document.getElementById('member-photo').dataset.member);
+        member.querySelector('h3').textContent = name;
+        if (role) member.querySelector('span').textContent = role;
+        member.querySelector('p').textContent = description;
+        if (photo) {
+          const reader = new FileReader();
+          reader.onload = () => member.querySelector('img').src = reader.result;
+          reader.readAsDataURL(photo);
+        }
       } else {
-        membersGrid.appendChild(newMember);
+        const member = document.createElement('div');
+        member.className = 'member';
+        member.draggable = true;
+        member.ondragstart = drag;
+        member.innerHTML = `
+          <img src="${photo ? URL.createObjectURL(photo) : 'images/placeholder.png'}" alt="${name}">
+          <h3>${name}</h3>
+          ${role ? `<span>${role}</span>` : ''}
+          <p>${description}</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        `;
+        membersGrid.appendChild(member);
       }
       closeModal('member-modal');
-      delete modal.dataset.editElement;
+      document.getElementById('member-modal').reset();
+      delete document.getElementById('member-photo').dataset.member;
+      alert('Member saved!');
     }
 
     function deleteMember(button) {
@@ -2175,77 +2288,68 @@
 
     function openEditRoleModal(button) {
       const role = button.parentElement;
-      const title = role.querySelector('h3').textContent;
-      const description = role.querySelector('.tooltip p').textContent;
-      const category = role.dataset.category;
-      document.getElementById('role-title').value = title;
-      document.getElementById('role-description').value = description;
-      document.getElementById('role-category').value = category;
       document.getElementById('role-modal-title').textContent = 'Edit Role';
+      document.getElementById('role-title').value = role.querySelector('h3').textContent;
+      document.getElementById('role-description').value = role.querySelector('.tooltip p').textContent;
+      document.getElementById('role-icon').dataset.role = role.querySelector('img').src;
       openModal('role-modal');
-      document.getElementById('role-modal').dataset.editElement = role.outerHTML;
     }
 
     function saveRoleDetails() {
       const title = document.getElementById('role-title').value;
       const description = document.getElementById('role-description').value;
       const icon = document.getElementById('role-icon').files[0];
-      const category = document.getElementById('role-category').value;
-      const modal = document.getElementById('role-modal');
-      const isEdit = modal.dataset.editElement;
       const rolesGrid = document.querySelector('.roles-grid');
-      const newRole = document.createElement('div');
-      newRole.classList.add('role');
-      newRole.setAttribute('data-category', category);
-      newRole.setAttribute('draggable', 'true');
-      newRole.setAttribute('ondragstart', 'drag(event)');
-      const iconUrl = icon ? URL.createObjectURL(icon) : 'images/Roles-to-Be-Filled/default.png';
-      newRole.innerHTML = `
-        <img src="${iconUrl}" alt="${title} Icon">
-        <h3>${title}</h3>
-        <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
-        <div class="tooltip">
-          <p>${description}</p>
-          <span>Time: 10-15 hrs/week</span>
-          <span>Skills: Relevant Skills</span>
-        </div>
-        <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteRole(this)">×</button>
-      `;
-      if (isEdit) {
-        const oldRole = rolesGrid.querySelector(`[data-id="${modal.dataset.editId}"]`) || rolesGrid.querySelector(':first-child');
-        oldRole.replaceWith(newRole);
+
+      if (document.getElementById('role-icon').dataset.role) {
+        const role = Array.from(rolesGrid.children).find(r => r.querySelector('img')?.src === document.getElementById('role-icon').dataset.role);
+        role.querySelector('h3').textContent = title;
+        role.querySelector('.tooltip p').textContent = description;
+        role.querySelector('.apply-button').href = `join-camp.html?role=${encodeURIComponent(title)}`;
+        if (icon) {
+          const reader = new FileReader();
+          reader.onload = () => role.querySelector('img').src = reader.result;
+          reader.readAsDataURL(icon);
+        }
       } else {
-        rolesGrid.appendChild(newRole);
+        const role = document.createElement('div');
+        role.className = 'role';
+        role.draggable = true;
+        role.ondragstart = drag;
+        role.innerHTML = `
+          <img src="${icon ? URL.createObjectURL(icon) : 'images/placeholder.png'}" alt="${title} Icon">
+          <h3>${title}</h3>
+          <a href="join-camp.html?role=${encodeURIComponent(title)}" class="apply-button">Apply for Role</a>
+          <div class="tooltip">
+            <p>${description}</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        rolesGrid.appendChild(role);
       }
       closeModal('role-modal');
-      delete modal.dataset.editElement;
-      filterRoles();
+      document.getElementById('role-modal').reset();
+      delete document.getElementById('role-icon').dataset.role;
+      alert('Role saved!');
     }
 
     function deleteRole(button) {
       if (confirm('Are you sure you want to delete this role?')) {
         button.parentElement.remove();
-        filterRoles();
       }
     }
 
     function openEditEventModal(button) {
       const event = button.parentElement;
-      const title = event.querySelector('h3').textContent;
-      const description = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
-      const date = event.querySelector('.event-date').textContent.replace('Date: ', '');
-      const time = event.querySelector('.event-time').textContent.replace('Time: ', '');
-      const end = event.querySelector('.event-end').textContent.replace('End: ', '');
-      const category = event.querySelector('.event-category').textContent.replace('Category: ', '');
-      document.getElementById('event-title').value = title;
-      document.getElementById('event-description').value = description;
-      document.getElementById('event-date').value = new Date(date).toISOString().split('T')[0];
-      document.getElementById('event-time').value = time;
-      document.getElementById('event-end').value = new Date(end).toISOString().replace('Z', '');
-      document.getElementById('event-category').value = category;
+      document.getElementById('event-title').value = event.querySelector('h3').textContent;
+      document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
+      document.getElementById('event-date').value = event.querySelector('.event-date').textContent.match(/\d{4}-\d{2}-\d{2}/)?.[0] || '';
+      document.getElementById('event-time').value = event.querySelector('.event-time').textContent.match(/\d{1,2}:\d{2} [AP]M/)?.[0] || '';
+      document.getElementById('event-end').value = event.querySelector('.event-end').textContent.match(/\d{4}-\d{2}-\d{2}, \d{1,2}:\d{2} [AP]M/)?.[0].replace(', ', 'T') || '';
+      document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
+      document.getElementById('event-image').dataset.event = event.querySelector('img').src;
       openModal('event-modal');
-      document.getElementById('event-modal').dataset.editElement = event.outerHTML;
     }
 
     function saveEventDetails() {
@@ -2256,51 +2360,112 @@
       const end = document.getElementById('event-end').value;
       const category = document.getElementById('event-category').value;
       const image = document.getElementById('event-image').files[0];
-      const modal = document.getElementById('event-modal');
-      const isEdit = modal.dataset.editElement;
       const eventsGrid = document.querySelector('.events-grid');
-      const newEvent = document.createElement('div');
-      newEvent.classList.add('event');
-      newEvent.setAttribute('data-category', category);
-      newEvent.setAttribute('data-date', date);
-      const imageUrl = image ? URL.createObjectURL(image) : 'images/Events/default.jpg';
-      newEvent.innerHTML = `
-        <img src="${imageUrl}" alt="${title}">
-        <h3>${title}</h3>
-        <p class="event-date"><strong>Date:</strong> ${new Date(date).toLocaleDateString()}</p>
-        <p class="event-time"><strong>Time:</strong> ${time}</p>
-        <p class="event-end"><strong>End:</strong> ${new Date(end).toLocaleString()}</p>
-        <p class="event-category"><strong>Category:</strong> ${category}</p>
-        <p>${description}</p>
-        <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteEvent(this)">×</button>
-      `;
-      if (isEdit) {
-        const oldEvent = eventsGrid.querySelector(`[data-id="${modal.dataset.editId}"]`) || eventsGrid.querySelector(':first-child');
-        oldEvent.replaceWith(newEvent);
+
+      if (document.getElementById('event-image').dataset.event) {
+        const event = Array.from(eventsGrid.children).find(e => e.querySelector('img')?.src === document.getElementById('event-image').dataset.event);
+        event.querySelector('h3').textContent = title;
+        event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent = description;
+        event.querySelector('.event-date').innerHTML = `<strong>Date:</strong> ${new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+        event.querySelector('.event-time').innerHTML = `<strong>Time:</strong> ${time}`;
+        event.querySelector('.event-end').innerHTML = `<strong>End:</strong> ${new Date(end).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })}`;
+        event.querySelector('.event-category').innerHTML = `<strong>Category:</strong> ${category}`;
+        if (image) {
+          const reader = new FileReader();
+          reader.onload = () => event.querySelector('img').src = reader.result;
+          reader.readAsDataURL(image);
+        }
       } else {
-        eventsGrid.appendChild(newEvent);
+        const event = document.createElement('div');
+        event.className = 'event';
+        event.draggable = true;
+        event.ondragstart = drag;
+        event.innerHTML = `
+          <img src="${image ? URL.createObjectURL(image) : 'images/placeholder.png'}" alt="${title}">
+          <h3>${title}</h3>
+          <p class="event-date"><strong>Date:</strong> ${new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <p class="event-time"><strong>Time:</strong> ${time}</p>
+          <p class="event-end"><strong>End:</strong> ${new Date(end).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })}</p>
+          <p class="event-category"><strong>Category:</strong> ${category}</p>
+          <p>${description}</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        `;
+        eventsGrid.appendChild(event);
       }
       closeModal('event-modal');
-      delete modal.dataset.editElement;
-      filterEvents();
-      renderCalendar();
+      document.getElementById('event-modal').reset();
+      delete document.getElementById('event-image').dataset.event;
+      alert('Event saved!');
     }
 
     function deleteEvent(button) {
       if (confirm('Are you sure you want to delete this event?')) {
         button.parentElement.remove();
-        filterEvents();
-        renderCalendar();
       }
     }
 
-    function openAboutModal() {
-      const title = document.querySelector('.about-section h1').textContent;
-      const description = document.querySelector('.about-section p').textContent;
-      document.getElementById('about-title').value = title;
-      document.getElementById('about-description').value = description;
-      openModal('about-modal');
+    function openGalleryImageModal(button, section) {
+      const img = button.parentElement.querySelector('img');
+      document.getElementById('gallery-image-alt').value = img.alt;
+      document.getElementById('gallery-image-file').dataset.section = section;
+      document.getElementById('gallery-image-file').dataset.src = img.src;
+      openModal('gallery-image-modal');
+    }
+
+    function saveGalleryImageDetails() {
+      const alt = document.getElementById('gallery-image-alt').value;
+      const file = document.getElementById('gallery-image-file').files[0];
+      const section = document.getElementById('gallery-image-file').dataset.section;
+      const gallery = document.getElementById(`${section}-gallery`);
+      const src = document.getElementById('gallery-image-file').dataset.src;
+
+      if (src) {
+        const img = Array.from(gallery.querySelectorAll('img')).find(i => i.src === src);
+        img.alt = alt;
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = () => img.src = reader.result;
+          reader.readAsDataURL(file);
+        }
+      }
+      closeModal('gallery-image-modal');
+      document.getElementById('gallery-image-modal').reset();
+      delete document.getElementById('gallery-image-file').dataset.src;
+      delete document.getElementById('gallery-image-file').dataset.section;
+      alert('Image updated!');
+    }
+
+    function uploadMissionImage() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = () => {
+        const file = input.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const container = document.createElement('div');
+            container.className = 'image-container';
+            container.draggable = true;
+            container.ondragstart = dragMissionImage;
+            container.innerHTML = `
+              <img src="${reader.result}" alt="New Mission Image">
+              <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+              <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+            `;
+            document.getElementById('mission-gallery').appendChild(container);
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+      input.click();
+    }
+
+    function deleteMissionImage(button) {
+      if (confirm('Are you sure you want to delete this image?')) {
+        button.parentElement.remove();
+      }
     }
 
     function saveAboutDetails() {
@@ -2310,87 +2475,21 @@
       document.querySelector('.about-section h1').textContent = title;
       document.querySelector('.about-section p').textContent = description;
       if (image) {
-        document.querySelector('.about-image img').src = URL.createObjectURL(image);
+        const reader = new FileReader();
+        reader.onload = () => document.querySelector('.about-image img').src = reader.result;
+        reader.readAsDataURL(image);
       }
       closeModal('about-modal');
-    }
-
-    function openMissionModal() {
-      const title = document.querySelector('#mission h1').textContent;
-      const description = document.querySelector('#mission p').textContent;
-      document.getElementById('mission-title').value = title;
-      document.getElementById('mission-description').value = description;
-      openModal('mission-modal');
+      alert('About section updated!');
     }
 
     function saveMissionDetails() {
       const title = document.getElementById('mission-title').value;
       const description = document.getElementById('mission-description').value;
-      const image = document.getElementById('mission-image').files[0];
       document.querySelector('#mission h1').textContent = title;
       document.querySelector('#mission p').textContent = description;
-      if (image) {
-        const missionGallery = document.getElementById('mission-gallery');
-        const newImage = document.createElement('div');
-        newImage.classList.add('image-container');
-        newImage.setAttribute('draggable', 'true');
-        newImage.setAttribute('ondragstart', 'dragMissionImage(event)');
-        newImage.innerHTML = `
-          <img src="${URL.createObjectURL(image)}" alt="Mission Image">
-          <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-          <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
-        `;
-        missionGallery.appendChild(newImage);
-      }
       closeModal('mission-modal');
-    }
-
-    function openGalleryImageModal(button, section) {
-      const img = button.parentElement.querySelector('img');
-      document.getElementById('gallery-image-alt').value = img.alt;
-      openModal('gallery-image-modal');
-      document.getElementById('gallery-image-modal').dataset.section = section;
-      document.getElementById('gallery-image-modal').dataset.editElement = button.parentElement.outerHTML;
-    }
-
-    function saveGalleryImageDetails() {
-      const alt = document.getElementById('gallery-image-alt').value;
-      const file = document.getElementById('gallery-image-file').files[0];
-      const modal = document.getElementById('gallery-image-modal');
-      const section = modal.dataset.section;
-      const gallery = document.getElementById(`${section}-gallery`);
-      const newImage = document.createElement('div');
-      newImage.classList.add('image-container');
-      newImage.setAttribute('draggable', 'true');
-      newImage.setAttribute('ondragstart', `drag${section.charAt(0).toUpperCase() + section.slice(1)}Image(event)`);
-      const imageUrl = file ? URL.createObjectURL(file) : gallery.querySelector('img').src;
-      newImage.innerHTML = `
-        <img src="${imageUrl}" alt="${alt}">
-        <button class="edit-button" onclick="openGalleryImageModal(this, '${section}')">✎</button>
-        <button class="delete-button" onclick="delete${section.charAt(0).toUpperCase() + section.slice(1)}Image(this)">×</button>
-      `;
-      if (modal.dataset.editElement) {
-        const oldImage = gallery.querySelector(`[data-id="${modal.dataset.editId}"]`) || gallery.querySelector(':first-child');
-        oldImage.replaceWith(newImage);
-      } else {
-        gallery.appendChild(newImage);
-      }
-      closeModal('gallery-image-modal');
-      delete modal.dataset.editElement;
-    }
-
-    function deleteMissionImage(button) {
-      if (confirm('Are you sure you want to delete this image?')) {
-        button.parentElement.remove();
-      }
-    }
-
-    function openEventsModal() {
-      const title = document.querySelector('#events h1').textContent;
-      const description = document.querySelector('#events p').textContent;
-      document.getElementById('events-title').value = title;
-      document.getElementById('events-description').value = description;
-      openModal('events-modal');
+      alert('Mission section updated!');
     }
 
     function saveEventsDetails() {
@@ -2399,76 +2498,51 @@
       document.querySelector('#events h1').textContent = title;
       document.querySelector('#events p').textContent = description;
       closeModal('events-modal');
-    }
-
-    function openNewsletterModal() {
-      const title = document.querySelector('#newsletter h2').textContent;
-      const description = document.querySelector('#newsletter p').textContent;
-      document.getElementById('newsletter-title').value = title;
-      document.getElementById('newsletter-description').value = description;
-      openModal('newsletter-modal');
+      alert('Events section updated!');
     }
 
     function saveNewsletterDetails() {
       const title = document.getElementById('newsletter-title').value;
       const description = document.getElementById('newsletter-description').value;
-      document.querySelector('#newsletter h2').textContent = title;
+      document.querySelector('#newsletter h1').textContent = title;
       document.querySelector('#newsletter p').textContent = description;
       closeModal('newsletter-modal');
-    }
-
-    function openJoinModal() {
-      const title = document.querySelector('#roles').textContent;
-      const description = document.querySelector('#members p').textContent;
-      document.getElementById('join-title').value = title;
-      document.getElementById('join-description').value = description;
-      openModal('join-modal');
+      alert('Newsletter section updated!');
     }
 
     function saveJoinDetails() {
       const title = document.getElementById('join-title').value;
       const description = document.getElementById('join-description').value;
-      document.querySelector('#roles').textContent = title;
-      document.querySelector('#members p').textContent = description;
+      document.querySelector('#join h1').textContent = title;
+      document.querySelector('#join p').textContent = description;
       closeModal('join-modal');
-    }
-
-    function openSubmitModal() {
-      const title = document.querySelector('#submit h2').textContent;
-      const description = document.querySelector('#submit p').textContent;
-      document.getElementById('submit-title').value = title;
-      document.getElementById('submit-description').value = description;
-      openModal('submit-modal');
+      alert('Join section updated!');
     }
 
     function saveSubmitDetails() {
       const title = document.getElementById('submit-title').value;
       const description = document.getElementById('submit-description').value;
-      document.querySelector('#submit h2').textContent = title;
+      document.querySelector('#submit h1').textContent = title;
       document.querySelector('#submit p').textContent = description;
       closeModal('submit-modal');
-    }
-
-    function openCountdownModal() {
-      const date = document.getElementById('countdown-date').value;
-      document.getElementById('countdown-date').value = date;
-      openModal('countdown-modal');
+      alert('Submit section updated!');
     }
 
     function saveCountdownDetails() {
       const date = document.getElementById('countdown-date').value;
       const bg = document.getElementById('countdown-bg').files[0];
-      if (bg) {
-        document.querySelector('.countdown-section').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
+      if (date) {
+        localStorage.setItem('countdownDate', date);
       }
-      startCountdown(date);
+      if (bg) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          document.querySelector('.countdown-section').style.backgroundImage = `url(${reader.result})`;
+        };
+        reader.readAsDataURL(bg);
+      }
       closeModal('countdown-modal');
-    }
-
-    function openHistoryModal() {
-      const title = document.querySelector('#history h1').textContent;
-      document.getElementById('history-title').value = title;
-      openModal('history-modal');
+      alert('Countdown updated!');
     }
 
     function saveHistoryDetails() {
@@ -2477,22 +2551,24 @@
       const image1 = document.getElementById('history-image1').files[0];
       const image2 = document.getElementById('history-image2').files[0];
       const image3 = document.getElementById('history-image3').files[0];
-      document.querySelector('#history h1').textContent = title;
-      const historyItems = document.querySelectorAll('.history-item');
-      if (image1) historyItems[0].querySelector('img').src = URL.createObjectURL(image1);
-      if (image2) historyItems[1].querySelector('img').src = URL.createObjectURL(image2);
-      if (image3) historyItems[2].querySelector('img').src = URL.createObjectURL(image3);
+      document.querySelector('.history-section h1').textContent = title;
+      if (image1) {
+        const reader = new FileReader();
+        reader.onload = () => document.querySelector('.history-item:nth-child(1) img').src = reader.result;
+        reader.readAsDataURL(image1);
+      }
+      if (image2) {
+        const reader = new FileReader();
+        reader.onload = () => document.querySelector('.history-item:nth-child(2) img').src = reader.result;
+        reader.readAsDataURL(image2);
+      }
+      if (image3) {
+        const reader = new FileReader();
+        reader.onload = () => document.querySelector('.history-item:nth-child(3) img').src = reader.result;
+        reader.readAsDataURL(image3);
+      }
       closeModal('history-modal');
-    }
-
-    function openSpotifyModal() {
-      const title = document.querySelector('#spotify h1').textContent;
-      const description = document.querySelector('#spotify p').textContent;
-      const url = document.querySelector('.spotify-embed iframe').src;
-      document.getElementById('spotify-title').value = title;
-      document.getElementById('spotify-description').value = description;
-      document.getElementById('spotify-url').value = url;
-      openModal('spotify-modal');
+      alert('History section updated!');
     }
 
     function saveSpotifyDetails() {
@@ -2500,351 +2576,132 @@
       const description = document.getElementById('spotify-description').value;
       const url = document.getElementById('spotify-url').value;
       const bg = document.getElementById('spotify-bg').files[0];
-      document.querySelector('#spotify h1').textContent = title;
-      document.querySelector('#spotify p').textContent = description;
+      document.querySelector('.spotify-section h1').textContent = title;
+      document.querySelector('.spotify-section p').textContent = description;
       document.querySelector('.spotify-embed iframe').src = url;
       if (bg) {
-        document.querySelector('.spotify-container').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
+        const reader = new FileReader();
+        reader.onload = () => {
+          document.querySelector('.spotify-container').style.backgroundImage = `url(${reader.result})`;
+          document.querySelector('.spotify-embed').style.backgroundImage = `url(${reader.result})`;
+        };
+        reader.readAsDataURL(bg);
       }
       closeModal('spotify-modal');
+      alert('Spotify section updated!');
     }
 
-    // Drag and Drop
-    function allowDrop(event) {
-      event.preventDefault();
-    }
-
+    // Drag and drop functionality
     function drag(event) {
       event.dataTransfer.setData('text', event.target.outerHTML);
+      event.dataTransfer.setData('id', event.target.id);
       event.target.classList.add('dragging');
+    }
+
+    function allowDrop(event) {
+      event.preventDefault();
     }
 
     function dropMembers(event) {
       event.preventDefault();
       const data = event.dataTransfer.getData('text');
+      const id = event.dataTransfer.getData('id');
+      const grid = document.querySelector('.members-grid');
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = data;
-      const draggedElement = tempDiv.firstElementChild;
-      const membersGrid = document.querySelector('.members-grid');
-      const members = Array.from(membersGrid.children).filter(child => child.classList.contains('member'));
-      membersGrid.innerHTML = '';
-      membersGrid.appendChild(draggedElement);
-      members.forEach(member => {
-        if (member !== draggedElement) membersGrid.appendChild(member);
-      });
-      document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
+      const draggedElement = tempDiv.firstChild;
+      const target = event.target.closest('.member') || grid;
+
+      if (target.classList.contains('member')) {
+        target.parentNode.insertBefore(draggedElement, target.nextSibling);
+      } else {
+        grid.appendChild(draggedElement);
+      }
+
+      if (id) {
+        document.getElementById(id)?.remove();
+      }
+      document.querySelector('.dragging')?.classList.remove('dragging');
     }
 
     function dropRoles(event) {
       event.preventDefault();
       const data = event.dataTransfer.getData('text');
+      const id = event.dataTransfer.getData('id');
+      const grid = document.querySelector('.roles-grid');
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = data;
-      const draggedElement = tempDiv.firstElementChild;
-      const rolesGrid = document.querySelector('.roles-grid');
-      const roles = Array.from(rolesGrid.children).filter(child => child.classList.contains('role'));
-      rolesGrid.innerHTML = '';
-      rolesGrid.appendChild(draggedElement);
-      roles.forEach(role => {
-        if (role !== draggedElement) rolesGrid.appendChild(role);
-      });
-      document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
+      const draggedElement = tempDiv.firstChild;
+      const target = event.target.closest('.role') || grid;
+
+      if (target.classList.contains('role')) {
+        target.parentNode.insertBefore(draggedElement, target.nextSibling);
+      } else {
+        grid.appendChild(draggedElement);
+      }
+
+      if (id) {
+        document.getElementById(id)?.remove();
+      }
+      document.querySelector('.dragging')?.classList.remove('dragging');
+    }
+
+    function dropEvents(event) {
+      event.preventDefault();
+      const data = event.dataTransfer.getData('text');
+      const id = event.dataTransfer.getData('id');
+      const grid = document.querySelector('.events-grid');
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = data;
+      const draggedElement = tempDiv.firstChild;
+      const target = event.target.closest('.event') || grid;
+
+      if (target.classList.contains('event')) {
+        target.parentNode.insertBefore(draggedElement, target.nextSibling);
+      } else {
+        grid.appendChild(draggedElement);
+      }
+
+      if (id) {
+        document.getElementById(id)?.remove();
+      }
+      document.querySelector('.dragging')?.classList.remove('dragging');
     }
 
     function dragMissionImage(event) {
       event.dataTransfer.setData('text', event.target.parentElement.outerHTML);
+      event.dataTransfer.setData('id', event.target.parentElement.id);
       event.target.parentElement.classList.add('dragging');
     }
 
     function dropMissionImage(event) {
       event.preventDefault();
       const data = event.dataTransfer.getData('text');
+      const id = event.dataTransfer.getData('id');
+      const gallery = document.getElementById('mission-gallery');
       const tempDiv = document.createElement('div');
       tempDiv.innerHTML = data;
-      const draggedElement = tempDiv.firstElementChild;
-      const missionGallery = document.getElementById('mission-gallery');
-      const images = Array.from(missionGallery.children);
-      missionGallery.innerHTML = '';
-      missionGallery.appendChild(draggedElement);
-      images.forEach(img => {
-        if (img !== draggedElement) missionGallery.appendChild(img);
-      });
-      document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
+      const draggedElement = tempDiv.firstChild;
+      const target = event.target.closest('.image-container') || gallery;
+
+      if (target.classList.contains('image-container')) {
+        target.parentNode.insertBefore(draggedElement, target.nextSibling);
+      } else {
+        gallery.appendChild(draggedElement);
+      }
+
+      if (id) {
+        document.getElementById(id)?.remove();
+      }
+      document.querySelector('.dragging')?.classList.remove('dragging');
     }
 
-    // Login Functionality
-    const loginForm = document.getElementById('login-form');
-    const logoutButton = document.querySelector('.logout-button');
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      if (username === 'admin' && password === 'password') {
-        document.body.classList.add('logged-in');
-        loginForm.style.display = 'none';
-        logoutButton.style.display = 'block';
-        document.querySelectorAll('.edit-section-button, .save-button').forEach(btn => btn.style.display = 'block');
-      } else {
-        alert('Invalid credentials');
-      }
-    });
-
-    logoutButton.addEventListener('click', () => {
-      document.body.classList.remove('logged-in');
-      loginForm.style.display = 'flex';
-      logoutButton.style.display = 'none';
-      document.querySelectorAll('.edit-section-button, .save-button').forEach(btn => btn.style.display = 'none');
-    });
-
-    // Countdown Timer
-    function startCountdown(targetDate) {
-      const countdown = document.getElementById('countdown-timer');
-      const daysEl = document.getElementById('days');
-      const hoursEl = document.getElementById('hours');
-      const minutesEl = document.getElementById('minutes');
-      const secondsEl = document.getElementById('seconds');
-      const target = new Date(targetDate || '2026-01-15T00:00:00').getTime();
-      const interval = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = target - now;
-        if (distance < 0) {
-          clearInterval(interval);
-          countdown.textContent = 'Kiwiburn 2026 has started!';
-          return;
-        }
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        daysEl.textContent = days.toString().padStart(2, '0');
-        hoursEl.textContent = hours.toString().padStart(2, '0');
-        minutesEl.textContent = minutes.toString().padStart(2, '0');
-        secondsEl.textContent = seconds.toString().padStart(2, '0');
-      }, 1000);
-    }
-
-    startCountdown('2026-01-15T00:00:00');
-
-    // Newsletter Form
-    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('newsletter-email').value;
-      alert(`Subscribed with ${email}!`);
-      document.getElementById('newsletter-form').reset();
-    });
-
-    // Event Submit Form
-    document.getElementById('event-submit-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('event-name').value;
-      const details = document.getElementById('event-details').value;
-      const date = document.getElementById('event-proposed-date').value;
-      const type = document.getElementById('event-type').value;
-      alert(`Event "${name}" submitted for review!`);
-      document.getElementById('event-submit-form').reset();
-    });
-
-    // Back to Top Button
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
-    });
-
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Scroll Arrows for Members and Roles
+    // Scroll arrows for members and roles
     document.querySelectorAll('.scroll-arrow').forEach(arrow => {
       arrow.addEventListener('click', () => {
         const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
         const direction = arrow.classList.contains('left') ? -1 : 1;
         grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
-      });
-    });
-
-    // Role Tabs Filter
-    function filterRoles() {
-      const activeTab = document.querySelector('.role-tab.active');
-      const category = activeTab.dataset.category;
-      const roles = document.querySelectorAll('.role');
-      roles.forEach(role => {
-        if (category === 'all' || role.dataset.category === category) {
-          role.style.display = 'flex';
-        } else {
-          role.style.display = 'none';
-        }
-      });
-    }
-
-    document.querySelectorAll('.role-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        filterRoles();
-      });
-    });
-
-    // Event Filters
-    function filterEvents() {
-      const activeFilter = document.querySelector('.event-filter-button.active').dataset.filter;
-      const dateFilter = document.getElementById('date-filter').value;
-      const events = document.querySelectorAll('.event');
-      events.forEach(event => {
-        const categoryMatch = activeFilter === 'all' || event.dataset.category === activeFilter;
-        const dateMatch = dateFilter === 'all' || event.dataset.date.startsWith(dateFilter);
-        event.style.display = categoryMatch && dateMatch ? 'block' : 'none';
-      });
-    }
-
-    document.querySelectorAll('.event-filter-button').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('.event-filter-button').forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        filterEvents();
-        renderCalendar();
-      });
-    });
-
-    document.getElementById('date-filter').addEventListener('change', () => {
-      filterEvents();
-      renderCalendar();
-    });
-
-    // Calendar View
-    function renderCalendar() {
-      const calendarView = document.getElementById('calendar-view');
-      const events = Array.from(document.querySelectorAll('.event')).filter(event => event.style.display !== 'none');
-      calendarView.innerHTML = '';
-      const startDate = new Date('2026-01-01');
-      const endDate = new Date('2026-02-28');
-      const days = [];
-      for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-        days.push(new Date(d));
-      }
-      days.forEach(day => {
-        const dayDiv = document.createElement('div');
-        dayDiv.classList.add('calendar-day');
-        dayDiv.innerHTML = `<h4>${day.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</h4>`;
-        events.forEach(event => {
-          const eventDate = new Date(event.dataset.date);
-          if (eventDate.toDateString() === day.toDateString()) {
-            const eventDiv = document.createElement('div');
-            eventDiv.classList.add('calendar-event');
-            eventDiv.textContent = event.querySelector('h3').textContent;
-            eventDiv.addEventListener('click', () => {
-              event.scrollIntoView({ behavior: 'smooth' });
-              event.classList.add('highlight');
-              setTimeout(() => event.classList.remove('highlight'), 2000);
-            });
-            dayDiv.appendChild(eventDiv);
-          }
-        });
-        calendarView.appendChild(dayDiv);
-      });
-    }
-
-    // View Toggle
-    document.querySelector('.view-toggle').addEventListener('click', (e) => {
-      const eventsGrid = document.getElementById('events-grid');
-      const calendarView = document.getElementById('calendar-view');
-      const isGrid = e.target.dataset.view === 'grid';
-      eventsGrid.style.display = isGrid ? 'none' : 'grid';
-      calendarView.style.display = isGrid ? 'grid' : 'none';
-      e.target.textContent = isGrid ? 'Grid View' : 'Calendar View';
-      e.target.dataset.view = isGrid ? 'calendar' : 'grid';
-      if (isGrid) renderCalendar();
-    });
-
-    // Accordion
-    document.querySelectorAll('.accordion-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const content = header.nextElementSibling;
-        const isActive = content.classList.contains('active');
-        document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
-        if (!isActive) content.classList.add('active');
-      });
-    });
-
-    // Global Search
-    const searchInput = document.getElementById('global-search');
-    const searchResults = document.getElementById('search-results');
-
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase().trim();
-      searchResults.innerHTML = '';
-      if (query.length < 2) {
-        searchResults.style.display = 'none';
-        return;
-      }
-      const sections = [
-        { id: 'about', title: 'About Our Camp', content: document.querySelector('#about p')?.textContent },
-        { id: 'mission', title: 'Our Mission', content: document.querySelector('#mission p')?.textContent },
-        { id: 'history', title: 'Our History', content: Array.from(document.querySelectorAll('.history-item p')).map(p => p.textContent).join(' ') },
-        { id: 'members', title: 'Core Camp Crew', content: Array.from(document.querySelectorAll('.member p')).map(p => p.textContent).join(' ') },
-        { id: 'roles', title: 'Roles to Be Filled', content: Array.from(document.querySelectorAll('.role .tooltip p')).map(p => p.textContent).join(' ') },
-        { id: 'events', title: 'Upcoming Events', content: Array.from(document.querySelectorAll('.event p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)')).map(p => p.textContent).join(' ') },
-        { id: 'newsletter', title: 'Newsletter', content: document.querySelector('#newsletter p')?.textContent },
-        { id: 'submit', title: 'Submit Event', content: document.querySelector('#submit p')?.textContent },
-        { id: 'spotify', title: 'EMO Playlist', content: document.querySelector('#spotify p')?.textContent }
-      ];
-      const results = sections.filter(section => section.content?.toLowerCase().includes(query)).slice(0, 5);
-      if (results.length === 0) {
-        searchResults.innerHTML = '<div class="search-result">No results found</div>';
-      } else {
-        results.forEach(result => {
-          const resultDiv = document.createElement('div');
-          resultDiv.classList.add('search-result');
-          resultDiv.textContent = result.title;
-          resultDiv.addEventListener('click', () => {
-            document.getElementById(result.id).scrollIntoView({ behavior: 'smooth' });
-            searchResults.style.display = 'none';
-            searchInput.value = '';
-          });
-          searchResults.appendChild(resultDiv);
-        });
-      }
-      searchResults.style.display = 'block';
-    });
-
-    // Close search results when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-        searchResults.style.display = 'none';
-      }
-    });
-
-    // Initialize
-    filterRoles();
-    filterEvents();
-    renderCalendar();
-
-    // Close modals when clicking outside
-    document.querySelectorAll('.modal').forEach(modal => {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal(modal.id);
-      });
-    });
-
-    // Accessibility: Close modals with Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach(modal => {
-          if (modal.style.display === 'flex') closeModal(modal.id);
-        });
-      }
-    });
-
-    // Accessibility: Focus management for modals
-    document.querySelectorAll('.modal').forEach(modal => {
-      modal.addEventListener('transitionend', () => {
-        if (modal.style.display === 'flex') {
-          modal.querySelector('input, button, textarea, select').focus();
-        }
       });
     });
   </script>
