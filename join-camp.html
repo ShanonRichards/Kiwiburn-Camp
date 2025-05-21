@@ -73,7 +73,7 @@
       border-bottom: 2px solid #e67e22;
     }
 
-    body.night-mode nav Ascending(1) nav {
+    body.night-mode nav {
       background: rgba(74, 55, 35, 0.85);
     }
 
@@ -440,21 +440,6 @@
 
     .role h3 {
       margin: 10px 0 5px;
-      fuse: translateY(-5px);
-    }
-
-    .role img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      margin-bottom: 10px;
-      border: 3px solid #f39c12;
-    }
-
-    .role h3 {
-      margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
       color: #2b1b0f;
@@ -490,6 +475,14 @@
       cursor: pointer;
       font-size: 0.9rem;
       transition: background 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    body.logged-in .edit-button,
+    body.logged-in .delete-button,
+    body.logged-in .save-button,
+    body.logged-in .edit-section-button {
+      display: block;
     }
 
     .edit-button {
@@ -516,6 +509,7 @@
       margin: 20px 10px;
       cursor: pointer;
       transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
     }
 
     .save-button:hover, .edit-section-button:hover {
@@ -545,7 +539,7 @@
       visibility: hidden;
       width: 180px;
       background-color: rgba(44, 29, 15, 0.95);
-      color: #ffffff;
+      color: #f8e1b4; /* Changed to white for visibility */
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -665,6 +659,89 @@
     .name-container div {
       flex: 1;
       min-width: 200px;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(44, 29, 15, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid #e67e22;
+      max-width: 500px;
+      width: 90%;
+      color: #f8e1b4;
+    }
+
+    body.night-mode .modal-content {
+      background: rgba(74, 55, 35, 0.95);
+    }
+
+    .modal-content h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #f8e1b4;
+    }
+
+    .modal-content label {
+      font-family: 'Montserrat', sans-serif;
+      color: #f8e1b4;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: #f8e1b4;
+      cursor: pointer;
     }
 
     @media only screen and (max-width: 480px) {
@@ -1005,7 +1082,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Logestics-&-Build-Lead.png" alt="Logistics & Build Lead Icon">
           <h3>Logistics & Build Lead</h3>
-          <a href="join-camp.html?role=Logistics%20%26%20Build%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Logistics & Build Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
           </div>
@@ -1015,7 +1092,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Volunteer-Coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
-          <a href="join-camp.html?role=Volunteer%20Coordinator" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Volunteer Coordinator')">Apply for Role</a>
           <div class="tooltip">
             <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
           </div>
@@ -1025,7 +1102,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Build-Crew.png" alt="Build Crew Icon">
           <h3>Build Crew</h3>
-          <a href="join-camp.html?role=Build%20Crew" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Build Crew')">Apply for Role</a>
           <div class="tooltip">
             <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
           </div>
@@ -1035,7 +1112,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Camp-Leadz.png" alt="Camp Lead Icon">
           <h3>Camp Lead</h3>
-          <a href="join-camp.html?role=Camp%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Camp Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
           </div>
@@ -1045,7 +1122,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Deputy-Leads.png" alt="Deputy Lead Icon">
           <h3>Deputy Lead</h3>
-          <a href="join-camp.html?role=Deputy%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Deputy Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
           </div>
@@ -1055,7 +1132,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Build-Lead.png" alt="Build Lead Icon">
           <h3>Build Lead</h3>
-          <a href="join-camp.html?role=Build%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Build Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
           </div>
@@ -1065,7 +1142,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Vibe-Managers.png" alt="Vibe Manager Icon">
           <h3>Vibe Manager</h3>
-          <a href="join-camp.html?role=Vibe%20Manager" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Vibe Manager')">Apply for Role</a>
           <div class="tooltip">
             <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
           </div>
@@ -1075,7 +1152,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Logistics-Lead.png" alt="Logistics Lead Icon">
           <h3>Logistics Lead</h3>
-          <a href="join-camp.html?role=Logistics%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Logistics Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
           </div>
@@ -1085,7 +1162,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Sound-Lead.png" alt="Sound Lead Icon">
           <h3>Sound Lead</h3>
-          <a href="join-camp.html?role=Sound%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Sound Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
           </div>
@@ -1095,7 +1172,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Transport-Lead.png" alt="Transport Lead Icon">
           <h3>Transport Lead</h3>
-          <a href="join-camp.html?role=Transport%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Transport Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
           </div>
@@ -1105,7 +1182,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Arts-&-Workshop-Lead.png" alt="Art & Workshop Lead Icon">
           <h3>Art & Workshop Lead</h3>
-          <a href="join-camp.html?role=Art%20%26%20Workshop%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Art & Workshop Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
           </div>
@@ -1115,7 +1192,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Wellbeing-Officers.png" alt="Wellbeing Officer Icon">
           <h3>Wellbeing Officer</h3>
-          <a href="join-camp.html?role=Wellbeing%20Officer" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
           <div class="tooltip">
             <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
           </div>
@@ -1125,7 +1202,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Greeters.png" alt="Greeter Icon">
           <h3>Greeter</h3>
-          <a href="join-camp.html?role=Greeter" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Greeter')">Apply for Role</a>
           <div class="tooltip">
             <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
           </div>
@@ -1135,7 +1212,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Strike-Lead.png" alt="Strike Lead Icon">
           <h3>Strike Lead</h3>
-          <a href="join-camp.html?role=Strike%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Strike Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
           </div>
@@ -1145,7 +1222,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Comms-Lead.png" alt="Comms Lead Icon">
           <h3>Comms Lead</h3>
-          <a href="join-camp.html?role=Comms%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Comms Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
           </div>
@@ -1155,7 +1232,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Safety-Officer.png" alt="Safety Officer Icon">
           <h3>Safety Officer</h3>
-          <a href="join-camp.html?role=Safety%20Officer" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Safety Officer')">Apply for Role</a>
           <div class="tooltip">
             <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
           </div>
@@ -1165,7 +1242,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Moop-Manager.png" alt="MOOP Manager Icon">
           <h3>MOOP Manager</h3>
-          <a href="join-camp.html?role=MOOP%20Manager" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('MOOP Manager')">Apply for Role</a>
           <div class="tooltip">
             <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
           </div>
@@ -1175,7 +1252,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Power_Tech_Lead.png" alt="Power/Tech Lead Icon">
           <h3>Power/Tech Lead</h3>
-          <a href="join-camp.html?role=Power%2FTech%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
           </div>
@@ -1185,7 +1262,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Sustainability_Lead.png" alt="Sustainability Lead Icon">
           <h3>Sustainability Lead</h3>
-          <a href="join-camp.html?role=Sustainability%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Promotes eco-friendly practices, manages recycling, and ensures the camp aligns with Leave No Trace principles.</p>
           </div>
@@ -1195,7 +1272,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Inclusion_Officer.png" alt="Inclusion Officer Icon">
           <h3>Inclusion Officer</h3>
-          <a href="join-camp.html?role=Inclusion%20Officer" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
           <div class="tooltip">
             <p>Ensures the camp is welcoming to all, addressing accessibility and diversity needs.</p>
           </div>
@@ -1205,7 +1282,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Workshop-Coordinator.png" alt="Workshop Coordinator Icon">
           <h3>Workshop Coordinator</h3>
-          <a href="join-camp.html?role=Workshop%20Coordinator" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
           <div class="tooltip">
             <p>Organizes and promotes workshops, ensuring materials and schedules are ready.</p>
           </div>
@@ -1215,7 +1292,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Social-Media-Lead.png" alt="Social Media Lead Icon">
           <h3>Social Media Lead</h3>
-          <a href="join-camp.html?role=Social%20Media%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Social Media Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Manages the camp’s online presence, posting updates and engaging with the community.</p>
           </div>
@@ -1225,7 +1302,7 @@
         <div class="role" draggable="true" ondragstart="drag(event)">
           <img src="images/Roles-to-Be-Filled/Fundraising-Lead.png" alt="Fundraising Lead Icon">
           <h3>Fundraising Lead</h3>
-          <a href="join-camp.html?role=Fundraising%20Lead" class="apply-button">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Coordinates fundraising efforts to support camp costs and creative projects.</p>
           </div>
@@ -1238,11 +1315,11 @@
     </section>
   </div>
 
-  <section class="section">
+  <section class="section" id="apply">
     <h1>Apply to Join Cosmic Rejex</h1>
     <p>Fill out the form below to request your spot in our camp for Kiwiburn 2026. We can’t wait to vibe with you!</p>
     <div class="form-container">
-      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
         <input type="hidden" name="_captcha" value="false">
 
         <div class="name-container">
@@ -1265,30 +1342,33 @@
         <label>Have you attended Burning Man, Kiwiburn, or other regional burns before? If so, which ones and when?</label>
         <textarea name="burn_experience" rows="4" placeholder="Previous burn experience" required></textarea>
 
-        <label>Which camp roles are you interested in filling? (Select all that apply)</label>
-        <label><input type="checkbox" name="roles[]" value="Logistics & Build Lead"> Logistics & Build Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Volunteer Coordinator"> Volunteer Coordinator</label>
-        <label><input type="checkbox" name="roles[]" value="Build Crew"> Build Crew</label>
-        <label><input type="checkbox" name="roles[]" value="Camp Lead"> Camp Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Deputy Lead"> Deputy Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Build Lead"> Build Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Vibe Manager"> Vibe Manager</label>
-        <label><input type="checkbox" name="roles[]" value="Logistics Lead"> Logistics Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Sound Lead"> Sound Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Transport Lead"> Transport Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Art & Workshop Lead"> Art & Workshop Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Wellbeing Officer"> Wellbeing Officer</label>
-        <label><input type="checkbox" name="roles[]" value="Greeter"> Greeter</label>
-        <label><input type="checkbox" name="roles[]" value="Strike Lead"> Strike Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Comms Lead"> Comms Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Safety Officer"> Safety Officer</label>
-        <label><input type="checkbox" name="roles[]" value="MOOP Manager"> MOOP Manager</label>
-        <label><input type="checkbox" name="roles[]" value="Power/Tech Lead"> Power/Tech Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Sustainability Lead"> Sustainability Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Inclusion Officer"> Inclusion Officer</label>
-        <label><input type="checkbox" name="roles[]" value="Workshop Coordinator"> Workshop Coordinator</label>
-        <label><input type="checkbox" name="roles[]" value="Social Media Lead"> Social Media Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Fundraising Lead"> Fundraising Lead</label>
+        <label>Which camp role are you interested in filling?</label>
+        <select name="role" id="role-select" required>
+          <option value="">Select a role</option>
+          <option value="Logistics & Build Lead">Logistics & Build Lead</option>
+          <option value="Volunteer Coordinator">Volunteer Coordinator</option>
+          <option value="Build Crew">Build Crew</option>
+          <option value="Camp Lead">Camp Lead</option>
+          <option value="Deputy Lead">Deputy Lead</option>
+          <option value="Build Lead">Build Lead</option>
+          <option value="Vibe Manager">Vibe Manager</option>
+          <option value="Logistics Lead">Logistics Lead</option>
+          <option value="Sound Lead">Sound Lead</option>
+          <option value="Transport Lead">Transport Lead</option>
+          <option value="Art & Workshop Lead">Art & Workshop Lead</option>
+          <option value="Wellbeing Officer">Wellbeing Officer</option>
+          <option value="Greeter">Greeter</option>
+          <option value="Strike Lead">Strike Lead</option>
+          <option value="Comms Lead">Comms Lead</option>
+          <option value="Safety Officer">Safety Officer</option>
+          <option value="MOOP Manager">MOOP Manager</option>
+          <option value="Power/Tech Lead">Power/Tech Lead</option>
+          <option value="Sustainability Lead">Sustainability Lead</option>
+          <option value="Inclusion Officer">Inclusion Officer</option>
+          <option value="Workshop Coordinator">Workshop Coordinator</option>
+          <option value="Social Media Lead">Social Media Lead</option>
+          <option value="Fundraising Lead">Fundraising Lead</option>
+        </select>
 
         <label>Why do you want to join this camp?</label>
         <textarea name="why_join" rows="4" placeholder="What draws you to this group and vision?" required></textarea>
@@ -1313,7 +1393,7 @@
           <option value="Unsure">Unsure</option>
         </select>
 
-        <label>Will you pay in full upfront or prefer an instalment MBOT(1) instalment plan?</label>
+        <label>Will you pay in full upfront or prefer an instalment plan?</label>
         <select name="payment_plan" required>
           <option value="">Select an option</option>
           <option value="Full Upfront">Pay in full upfront</option>
@@ -1344,6 +1424,38 @@
       </form>
     </div>
   </section>
+
+  <!-- Role Modal -->
+  <div class="modal" id="role-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('role-modal')">&times;</span>
+      <h2 id="modal-title">Create New Role</h2>
+      <form id="role-form">
+        <label>Role Name</label>
+        <input type="text" id="role-name" required>
+        <label>Role Description</label>
+        <textarea id="role-description" rows="4" required></textarea>
+        <label>Role Image URL</label>
+        <input type="text" id="role-image" placeholder="Image URL" required>
+        <button type="submit" onclick="saveRole()">Save Role</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Section Edit Modal -->
+  <div class="modal" id="members-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('members-modal')">&times;</span>
+      <h2>Edit Section</h2>
+      <form id="section-form">
+        <label>Section Title</label>
+        <input type="text" id="section-title" required>
+        <label>Section Description</label>
+        <textarea id="section-description" rows="4" required></textarea>
+        <button type="submit" onclick="saveSection()">Save Section</button>
+      </form>
+    </div>
+  </div>
 
   <div class="emo-playlist-player">
     <button class="toggle-player" onclick="togglePlayer()">
@@ -1452,29 +1564,181 @@
         grid.insertBefore(draggedElement.firstChild, closestRole.element);
         draggedElement.firstChild.classList.remove('dragging');
       }
+      saveRoles();
     }
 
-    // Placeholder for Edit/Delete Role Functions
+    // Modal Functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    let currentRoleElement = null;
+
     function openEditRoleModal(button) {
-      console.log('Open edit modal for role:', button.parentElement.querySelector('h3').textContent);
-      // Add modal opening logic here
+      currentRoleElement = button.parentElement;
+      const roleName = currentRoleElement.querySelector('h3').textContent;
+      const roleDescription = currentRoleElement.querySelector('.tooltip p').textContent;
+      const roleImage = currentRoleElement.querySelector('img').src;
+
+      document.getElementById('modal-title').textContent = 'Edit Role';
+      document.getElementById('role-name').value = roleName;
+      document.getElementById('role-description').value = roleDescription;
+      document.getElementById('role-image').value = roleImage;
+      openModal('role-modal');
+    }
+
+    function saveRole() {
+      const roleName = document.getElementById('role-name').value;
+      const roleDescription = document.getElementById('role-description').value;
+      const roleImage = document.getElementById('role-image').value;
+
+      if (currentRoleElement) {
+        // Update existing role
+        currentRoleElement.querySelector('h3').textContent = roleName;
+        currentRoleElement.querySelector('.tooltip p').textContent = roleDescription;
+        currentRoleElement.querySelector('img').src = roleImage;
+        currentRoleElement.querySelector('.apply-button').setAttribute('onclick', `selectRole('${roleName}')`);
+      } else {
+        // Create new role
+        const roleDiv = document.createElement('div');
+        roleDiv.classList.add('role');
+        roleDiv.setAttribute('draggable', 'true');
+        roleDiv.setAttribute('ondragstart', 'drag(event)');
+        roleDiv.innerHTML = `
+          <img src="${roleImage}" alt="${roleName} Icon">
+          <h3>${roleName}</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('${roleName}')">Apply for Role</a>
+          <div class="tooltip">
+            <p>${roleDescription}</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        document.querySelector('.roles-grid').appendChild(roleDiv);
+
+        // Update dropdown
+        const select = document.getElementById('role-select');
+        const option = document.createElement('option');
+        option.value = roleName;
+        option.textContent = roleName;
+        select.appendChild(option);
+      }
+
+      closeModal('role-modal');
+      document.getElementById('role-form').reset();
+      currentRoleElement = null;
+      saveRoles();
     }
 
     function deleteRole(button) {
       if (confirm('Are you sure you want to delete this role?')) {
+        const roleName = button.parentElement.querySelector('h3').textContent;
         button.parentElement.remove();
+        const select = document.getElementById('role-select');
+        const option = select.querySelector(`option[value="${roleName}"]`);
+        if (option) option.remove();
+        saveRoles();
       }
     }
 
-    function openModal(modalId) {
-      console.log('Open modal:', modalId);
-      // Add modal opening logic here
+    function saveSection() {
+      const sectionTitle = document.getElementById('section-title').value;
+      const sectionDescription = document.getElementById('section-description').value;
+      document.querySelector('#roles h1').textContent = sectionTitle;
+      document.querySelector('#roles p').textContent = sectionDescription;
+      closeModal('members-modal');
+      saveRoles();
+    }
+
+    function selectRole(roleName) {
+      const select = document.getElementById('role-select');
+      select.value = roleName;
+      window.scrollTo({ top: document.getElementById('apply').offsetTop, behavior: 'smooth' });
     }
 
     // EMO PLAYLIST PLAYER Toggle
     function togglePlayer() {
       const playerWrapper = document.getElementById('player-wrapper');
       playerWrapper.classList.toggle('active');
+    }
+
+    // Save roles to GitHub
+    async function saveRoles() {
+      const rolesGrid = document.querySelector('.roles-grid');
+      const roles = Array.from(rolesGrid.children).filter(child => child.classList.contains('role')).map(role => ({
+        name: role.querySelector('h3').textContent,
+        description: role.querySelector('.tooltip p').textContent,
+        image: role.querySelector('img').src
+      }));
+
+      const sectionTitle = document.querySelector('#roles h1').textContent;
+      const sectionDescription = document.querySelector('#roles p').textContent;
+
+      const htmlContent = `
+<div class="roles-container">
+  <section class="section" id="roles">
+    <h1>${sectionTitle}</h1>
+    <p>${sectionDescription}</p>
+    <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
+      <div class="scroll-arrow left" data-grid="roles">◄</div>
+      <div class="scroll-arrow right" data-grid="roles">►</div>
+      ${roles.map(role => `
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="${role.image}" alt="${role.name} Icon">
+          <h3>${role.name}</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('${role.name}')">Apply for Role</a>
+          <div class="tooltip">
+            <p>${role.description}</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+      `).join('')}
+    </div>
+    <button class="save-button" onclick="openModal('role-modal')">Create New Role</button>
+    <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
+  </section>
+</div>
+`;
+
+      try {
+        const response = await fetch('https://api.github.com/repos/<owner>/<repo>/contents/join-camp.html', {
+          method: 'PUT',
+          headers: {
+            'Authorization': 'Bearer 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',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'Update join-camp.html with new roles and section data',
+            content: btoa(document.documentElement.outerHTML),
+            sha: await getFileSha() // Function to get current SHA, needs implementation
+          })
+        });
+
+        if (!response.ok) throw new Error('Failed to save to GitHub');
+        console.log('Changes saved to GitHub');
+      } catch (error) {
+        console.error('Error saving to GitHub:', error);
+      }
+    }
+
+    async function getFileSha() {
+      try {
+        const response = await fetch('https://api.github.com/repos/<owner>/<repo>/contents/join-camp.html', {
+          headers: {
+            'Authorization': 'Bearer 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'
+          }
+        });
+        const data = await response.json();
+        return data.sha;
+      } catch (error) {
+        console.error('Error fetching SHA:', error);
+        return null;
+      }
     }
   </script>
 </body>
