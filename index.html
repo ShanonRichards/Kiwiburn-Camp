@@ -767,6 +767,92 @@ body.night-mode .dropdown-menu {
       position: relative;
     }
 
+    .spotify-mini-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: all 0.3s ease;
+}
+
+.player-wrapper {
+  width: 300px;
+  background: rgba(44, 29, 15, 0.9);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none; /* Hidden by default */
+}
+
+.player-wrapper.active {
+  display: block; /* Show when toggled */
+}
+
+body.night-mode .player-wrapper {
+  background: rgba(74, 55, 35, 0.9);
+  border-color: var(--secondary);
+}
+
+.toggle-player {
+  background: var(--primary);
+  color: var(--text);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  margin-bottom: 10px;
+}
+
+.toggle-player:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+}
+
+body.night-mode .toggle-player {
+  background: var(--secondary);
+  color: var(--background);
+}
+
+body.night-mode .toggle-player:hover {
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .spotify-mini-player {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .player-wrapper {
+    width: 250px;
+  }
+
+  .toggle-player {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .player-wrapper {
+    width: 200px;
+  }
+
+  .toggle-player {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+}
+
     .modal-content h3 {
       font-family: 'Bebas Neue', cursive;
       color: #2b1b0f;
@@ -1721,6 +1807,11 @@ body.night-mode .dropdown-menu {
   <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
 </nav>
 
+  function toggleSpotifyPlayer() {
+  const playerWrapper = document.getElementById('player-wrapper');
+  playerWrapper.classList.toggle('active');
+}
+
   <header class="header" id="home">
     <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="header-logo">
     <h1>JOIN COSMIC REJEX</h1>
@@ -1882,18 +1973,17 @@ body.night-mode .dropdown-menu {
     </div>
   </div>
 
-  <div class="modal" id="spotify-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('spotify-modal')" aria-label="Close modal">×</button>
-      <h3>Edit EMO PLAYLIST Section</h3>
-      <input type="text" id="spotify-title" placeholder="Section Title" required aria-label="Section Title">
-      <textarea id="spotify-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-      <input type="text" id="spotify-url" placeholder="Spotify Embed URL" required aria-label="Spotify Embed URL">
-      <input type="file" id="spotify-bg" accept="image/*" aria-label="Spotify Background Image">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      <button onclick="saveSpotifyDetails()">Save</button>
-    </div>
+<div class="modal" id="spotify-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('spotify-modal')" aria-label="Close modal">×</button>
+    <h3>Edit EMO PLAYLIST Section</h3>
+    <input type="text" id="spotify-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="spotify-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="text" id="spotify-url" placeholder="Spotify Embed URL" required aria-label="Spotify Embed URL">
+    <input type="file" id="spotify-bg" accept="image/*" aria-label="Spotify Background Image">
+    <button onclick="saveSpotifyDetails()">Save</button>
   </div>
+</div>
 
   <div class="about-container">
     <section class="section about-section" id="about">
@@ -2359,8 +2449,11 @@ body.night-mode .dropdown-menu {
   <section class="section spotify-section" id="spotify">
     <h1>EMO PLAYLIST</h1>
     <p>Vibe out to our curated playlist of emo, rock, and alternative bangers.</p>
-    <div class="spotify-embed">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <div class="spotify-mini-player" id="spotify-mini-player">
+      <button class="toggle-player" onclick="toggleSpotifyPlayer()" aria-label="Toggle Spotify Player">🎵 Toggle Player</button>
+      <div class="player-wrapper" id="player-wrapper">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?utm_source=generator&theme=0" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
     </div>
     <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
   </section>
@@ -2921,26 +3014,26 @@ body.night-mode .dropdown-menu {
     }
   }
 
-  function saveSpotifyDetails() {
-    const title = document.getElementById('spotify-title').value;
-    const description = document.getElementById('spotify-description').value;
-    const url = document.getElementById('spotify-url').value;
-    const bg = document.getElementById('spotify-bg').files[0];
+function saveSpotifyDetails() {
+  const title = document.getElementById('spotify-title').value;
+  const description = document.getElementById('spotify-description').value;
+  const url = document.getElementById('spotify-url').value;
+  const bg = document.getElementById('spotify-bg').files[0];
 
-    if (title && description && url) {
-      document.querySelector('.spotify-section h1').textContent = title;
-      document.querySelector('.spotify-section p').textContent = description;
-      document.querySelector('.spotify-embed iframe').src = url;
-      if (bg) {
-        document.querySelector('.spotify-container').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
-      }
-      closeModal('spotify-modal');
-      document.getElementById('spotify-bg').value = '';
-      alert('Spotify section updated!');
-    } else {
-      alert('Please fill in all fields.');
+  if (title && description && url) {
+    document.querySelector('.spotify-section h1').textContent = title;
+    document.querySelector('.spotify-section p').textContent = description;
+    document.querySelector('.spotify-mini-player iframe').src = url;
+    if (bg) {
+      document.querySelector('.spotify-container').style.backgroundImage = `url(${URL.createObjectURL(bg)})`;
     }
+    closeModal('spotify-modal');
+    document.getElementById('spotify-bg').value = '';
+    alert('Spotify section updated!');
+  } else {
+    alert('Please fill in all fields.');
   }
+}
 
   function submitNewsletter() {
     const email = document.getElementById('newsletter-email').value;
