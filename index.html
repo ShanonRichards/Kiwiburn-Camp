@@ -6,6 +6,7 @@
   <title>Join Cosmic Rejex - Kiwiburn</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
+
     html, body {
       margin: 0;
       padding: 0;
@@ -75,36 +76,28 @@
       cursor: pointer;
     }
 
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(44, 29, 15, 0.85);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      z-index: 1000;
-      border-bottom: 2px solid #e67e22;
-    }
+nav {
+  position: sticky;
+  top: 0;
+  background: rgba(44, 29, 15, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  z-index: 1000;
+  border-bottom: 2px solid #e67e22;
+}
 
-    body.night-mode nav {
-      background: rgba(74, 55, 35, 0.85);
-    }
+body.night-mode nav {
+  background: rgba(74, 55, 35, 0.85);
+}
 
-    .nav-logo {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-      filter: drop-shadow(0 0 5px var(--primary));
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
     nav a {
       color: #f8e1b4;
@@ -150,58 +143,165 @@
       padding: 10px;
     }
 
-    .login-container {
-      display: flex;
-      justify-content: flex-end;
-      padding: 10px 20px;
-      background: rgba(44, 29, 15, 0.85);
-      border-bottom: 1px solid #e67e22;
-      z-index: 999;
-    }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-    body.night-mode .login-container {
-      background: rgba(74, 55, 35, 0.85);
-    }
+.dropdown-toggle {
+  cursor: pointer;
+}
 
-    .login-container form {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: rgba(44, 29, 15, 0.9);
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  border-radius: 4px;
+  border: 1px solid #e67e22;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+}
 
-    .login-container input {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      font-size: 0.9rem;
-    }
+body.night-mode .dropdown-menu {
+  background: rgba(74, 55, 35, 0.9);
+}
 
-    .login-container input::placeholder {
-      color: #ffffff;
-    }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #f8e1b4;
+  text-decoration: none;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
 
-    .login-container button {
-      padding: 8px 12px;
-      background-color: #e67e22;
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
+.dropdown-menu a:hover {
+  background-color: #e67e22;
+  color: #2b1b0f;
+  box-shadow: 0 0 10px #e67e22;
+}
 
-    .login-container button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
-    .login-container .logout-button {
-      display: none;
-    }
+/* Navigation login styles */
+.nav-login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-login form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-login input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #e67e22;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.nav-login input::placeholder {
+  color: #ffffff;
+}
+
+.nav-login button {
+  padding: 8px 12px;
+  background-color: #e67e22;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.nav-login .logout-button {
+  display: none;
+}
+
+.nav-login button:hover {
+  background-color: #f39c12;
+  box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+}
+
+/* Update nav styles for alignment */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(44, 29, 15, 0.9);
+    padding: 10px 0;
+    position: absolute;
+    top: 70px;
+    left: 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .dropdown-menu {
+    position: static;
+    background: rgba(74, 55, 35, 0.9);
+    box-shadow: none;
+    border: none;
+    margin: 5px 0;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: none;
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  .nav-login {
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-login form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-login input,
+  .nav-login button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
 
     .header {
       background: url('images/Cover-Photo/last-try.png') center/cover no-repeat;
@@ -1562,25 +1662,49 @@
   </style>
 </head>
 <body>
-  <nav>
-    <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="nav-logo">
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#history">History</a>
-      <a href="#mission">Mission</a>
-      <a href="#members">Members</a>
-      <a href="#events">Events</a>
-      <a href="submit-event.html">Submit Event</a>
-      <a href="#newsletter">Newsletter</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="Task_Roster.html">Tasks/Roster</a>
-      <a href="contact.html">Contact</a>
+<nav>
+  <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="nav-logo">
+  <button class="hamburger" aria-label="Toggle menu">☰</button>
+  <div class="nav-links">
+    <div class="dropdown">
+      <a href="#about" class="dropdown-toggle">About</a>
+      <div class="dropdown-menu">
+        <a href="#about">Our Camp</a>
+        <a href="#mission">Our Mission</a>
+        <a href="#history">Our History</a>
+      </div>
     </div>
-    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
-  </nav>
-
-  <div class="login-container">
+    <div class="dropdown">
+      <a href="#events" class="dropdown-toggle">Events</a>
+      <div class="dropdown-menu">
+        <a href="#events">Upcoming Events</a>
+        <a href="#past-events">Past Events</a>
+        <a href="submit-event.html">Submit Event</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#join" class="dropdown-toggle">Join Us</a>
+      <div class="dropdown-menu">
+        <a href="join-camp.html">Membership Info</a>
+        <a href="join-camp.html">Apply to Join</a>
+        <a href="camp-fees.html">Camp Fees</a>
+        <a href="Task_Roster.html">Task/Roster</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="gallery.html" class="dropdown-toggle">Gallery</a>
+      <div class="dropdown-menu">
+        <a href="gallery.html?year=2021">2021</a>
+        <a href="gallery.html?year=2022">2022</a>
+        <a href="gallery.html?year=2023">2023</a>
+        <a href="gallery.html?year=2024">2024</a>
+        <a href="gallery.html?year=2025">2025</a>
+      </div>
+    </div>
+    <a href="#newsletter">Newsletter</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="nav-login">
     <form id="login-form">
       <input type="text" id="username" placeholder="Username" required aria-label="Username">
       <input type="password" id="password" placeholder="Password" required aria-label="Password">
@@ -1588,6 +1712,8 @@
     </form>
     <button class="logout-button" aria-label="Logout">Logout</button>
   </div>
+  <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+</nav>
 
   <header class="header" id="home">
     <img src="images/Logo/Alien-Logo.png" alt="Cosmic Rejex Logo" class="header-logo">
