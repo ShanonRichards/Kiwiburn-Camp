@@ -454,11 +454,21 @@
       max-width: 90%;
     }
 
+    .role p.open {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+
+    .role p.filled {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+
     .role .tooltip {
       visibility: hidden;
       width: 180px;
       background-color: rgba(44, 29, 15, 0.95);
-      color: #f8e1b4;
+      color: #ffffff;
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -489,33 +499,36 @@
       text-align: left;
       max-width: 600px;
       margin: 40px auto;
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.2);
       border: 2px solid #e67e22;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
     }
 
     .form-container label {
       font-family: 'Montserrat', sans-serif;
       color: #2b1b0f;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       display: block;
-      font-size: 1em;
+      font-size: 1.1em;
+      font-weight: 600;
     }
 
     .form-container input,
     .form-container textarea,
     .form-container select {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
       border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.9);
       color: #2b1b0f;
       font-size: 1rem;
       box-sizing: border-box;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .form-container input[type="checkbox"] {
@@ -539,7 +552,7 @@
     .form-container textarea:focus {
       outline: none;
       border-color: #f39c12;
-      box-shadow: 0 0 10px #f39c12;
+      box-shadow: 0 0 12px rgba(243, 156, 18, 0.5);
     }
 
     .form-container textarea {
@@ -547,22 +560,45 @@
     }
 
     .form-container button {
-      padding: 12px 20px;
+      padding: 14px 24px;
       background-color: #e67e22;
       color: #2b1b0f;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
-      font-size: 1.2em;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      font-size: 1.3em;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
       display: block;
       margin: 20px auto 0;
     }
 
     .form-container button:hover {
       background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      box-shadow: 0 0 12px #e67e22, 0 0 20px #f39c12;
+      transform: translateY(-2px);
+    }
+
+    .name-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .name-container div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    @media only screen and (max-width: 480px) {
+      .name-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .name-container div {
+        min-width: 100%;
+      }
     }
 
     .emo-playlist-player {
@@ -891,73 +927,73 @@
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Build-Crew.png" alt="Build Crew Icon">
         <h3>Build Crew</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Decor-&-Vibe.png" alt="Decor & Vibe Icon">
         <h3>Decor & Vibe</h3>
-        <p>Filled</p>
+        <p class="filled">Filled</p>
         <div class="tooltip"><p>Creates the camp’s aesthetic and emotional atmosphere.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Kitchen-Coordinator.png" alt="Kitchen Coordinator Icon">
         <h3>Kitchen Coordinator / Cook</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Plans meals, manages food storage, and oversees cooking.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Music-Audio-Team.png" alt="Music/Audio Team Icon">
         <h3>Music/Audio Team</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Manages music, DJs, and audio equipment.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/LNT-Lead.png" alt="LNT Lead Icon">
         <h3>Leave No Trace (LNT) Lead</h3>
-        <p>Filled</p>
+        <p class="filled">Filled</p>
         <div class="tooltip"><p>Leads cleanup and ensures Leave No Trace principles.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Greeters.png" alt="Greeters Icon">
         <h3>Greeters / Camp Welcome Crew</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Welcomes arrivals and helps them settle in.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Consent-Support.png" alt="Consent Support Icon">
         <h3>Consent / Culture Support</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Promotes a safe and inclusive environment.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Power-&-Logistics.png" alt="Power & Logistics Icon">
         <h3>Power & Logistics</h3>
-        <p>Filled</p>
+        <p class="filled">Filled</p>
         <div class="tooltip"><p>Manages power systems and logistics coordination.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/DJ-Performer.png" alt="DJ/Performer Icon">
         <h3>DJ / Performer</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Performs music or other acts for the camp.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Workshop-Host.png" alt="Workshop Host Icon">
         <h3>Workshop Host</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Leads workshops or activities for camp members.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Floater.png" alt="Floater Icon">
         <h3>Floater / General Support</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Assists wherever needed across camp tasks.</p></div>
       </div>
       <div class="role">
         <img src="images/Roles-to-Be-Filled/Open-to-Anything.png" alt="Open to Anything Icon">
         <h3>Open to Anything</h3>
-        <p>Open</p>
+        <p class="open">Open</p>
         <div class="tooltip"><p>Flexible to help with any camp needs.</p></div>
       </div>
     </div>
@@ -970,8 +1006,16 @@
       <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
 
-        <label>Full Name and Burner/Playa Name</label>
-        <input type="text" name="name" placeholder="Full Name and Burner/Playa Name" required>
+        <div class="name-container">
+          <div>
+            <label>Full Name</label>
+            <input type="text" name="full_name" placeholder="Full Name" required>
+          </div>
+          <div>
+            <label>Burner/Playa Name</label>
+            <input type="text" name="burner_name" placeholder="Burner/Playa Name">
+          </div>
+        </div>
 
         <label>Email Address</label>
         <input type="email" name="email" placeholder="Email Address" required>
