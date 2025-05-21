@@ -3,104 +3,543 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Our Cosmic Camp - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Nova+Square&display=swap" rel="stylesheet">
+  <title>Join Cosmic Rejex Camp - Kiwiburn 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(180deg, #0a0a23 0%, #1a1a3d 100%);
-      color: #e0e0ff;
-      overflow-x: hidden;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+      cursor: url('images/ufo-cursor.png'), auto;
+      transition: background 0.5s, color 0.5s;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
+    :root {
+      --primary: #e67e22;
+      --secondary: #f39c12;
+      --text: #f8e1b4;
+      --background: #2b1b0f;
+    }
+
+    body.night-mode {
+      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
+      color: #f8e1b4;
+    }
+
+    body.night-mode .section:nth-of-type(odd) {
+      background-color: rgba(44, 29, 15, 0.8);
+    }
+
+    body.night-mode .section:nth-of-type(even) {
+      background-color: rgba(74, 55, 35, 0.8);
+    }
+
+    body.night-mode .section h1,
+    body.night-mode .section h2,
+    body.night-mode .section p,
+    body.night-mode .role p,
+    body.night-mode .form-container label {
+      color: #f8e1b4;
+    }
+
+    body.night-mode .form-container {
+      background: rgba(44, 29, 15, 0.3);
+    }
+
+    body.night-mode .form-container input,
+    body.night-mode .form-container textarea,
+    body.night-mode .form-container select {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+    }
+
+    a, button, input, textarea, select {
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(44, 29, 15, 0.85);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 1000;
+      border-bottom: 2px solid #e67e22;
+    }
+
+    body.night-mode nav {
+      background: rgba(74, 55, 35, 0.85);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      margin: 5px 15px;
+      padding: 10px 15px;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      text-transform: uppercase;
+    }
+
+    nav a:hover {
+      background-color: #e67e22;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: #f8e1b4;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      padding: 10px;
+      cursor: pointer;
+      transition: color 0.3s, box-shadow 0.3s;
+    }
+
+    .theme-toggle:hover {
+      color: #f39c12;
+      box-shadow: 0 0 10px #e67e22;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      color: #f8e1b4;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle {
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background: rgba(44, 29, 15, 0.9);
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1001;
+      border-radius: 4px;
+      border: 1px solid #e67e22;
+      top: 100%;
+      left: 0;
+      margin-top: 5px;
+    }
+
+    body.night-mode .dropdown-menu {
+      background: rgba(74, 55, 35, 0.9);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 15px;
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #e67e22;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .nav-login {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-login form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-login input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .nav-login input::placeholder {
+      color: #ffffff;
+    }
+
+    .nav-login button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-login .logout-button {
+      display: none;
+    }
+
+    .nav-login button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .nav-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-right: 10px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: rgba(74, 55, 35, 0.9);
+        box-shadow: none;
+        border: none;
+        margin: 5px 0;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+
+      .nav-login {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-login form {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-login input,
+      .nav-login button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    .header {
+      background: url('images/Cover-Photo/last-try.png') center/cover no-repeat;
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #f8e1b4;
+      position: relative;
+      text-shadow: 0 0 10px var(--primary);
+    }
+
+    .header-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 10;
+      filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
+    }
+
+    .header h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3em;
+      max-width: 90%;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .section {
       padding: 60px 20px;
       text-align: center;
-      position: relative;
-      z-index: 1;
+      background: url('images/dusty-texture.png') center/cover;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
     }
 
-    .container::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://images.unsplash.com/photo-1465101162946-4377e57745c3?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
-      background-size: cover;
-      opacity: 0.15;
-      z-index: -1;
+    .section:nth-of-type(odd) {
+      background-color: rgba(244, 228, 188, 0.8);
     }
 
-    h1 {
+    .section:nth-of-type(even) {
+      background-color: rgba(217, 185, 155, 0.8);
+    }
+
+    .section h1, .section h2 {
+      font-family: 'Bebas Neue', cursive;
       font-size: 3em;
       margin-bottom: 20px;
-      color: #ffffff;
-      text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
-      animation: glow 2s ease-in-out infinite alternate;
+      color: #2b1b0f;
+      letter-spacing: 1px;
     }
 
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-      color: #d0d0ff;
-      line-height: 1.8;
-      font-family: 'Nova Square', sans-serif;
+    .section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+      color: #2b1b0f;
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      justify-items: center;
+      align-items: start;
+      position: relative;
+      min-height: 200px;
+    }
+
+    .scroll-arrow {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #f8e1b4;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.3s, box-shadow 0.3s;
+      animation: flash 1.5s infinite;
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .scroll-arrow:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .scroll-arrow.left {
+      left: 10px;
+    }
+
+    .scroll-arrow.right {
+      right: 10px;
+    }
+
+    .role {
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border: 1px solid #e67e22;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      height: 100%;
+      min-height: 250px;
+    }
+
+    .role:hover {
+      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+      transform: translateY(-5px);
+    }
+
+    .role img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+      border: 3px solid #f39c12;
+    }
+
+    .role h3 {
+      margin: 10px 0 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5em;
+      color: #2b1b0f;
+      line-height: 1.2;
+    }
+
+    .role p {
+      font-size: 1em;
+      color: #2b1b0f;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .role .tooltip {
+      visibility: hidden;
+      width: 180px;
+      background-color: rgba(44, 29, 15, 0.95);
+      color: #f8e1b4;
+      text-align: center;
+      border-radius: 8px;
+      padding: 12px;
+      position: absolute;
+      z-index: 10;
+      top: -10px;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      font-size: 0.9em;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid #f39c12;
+    }
+
+    .role:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -110%);
     }
 
     .form-container {
       text-align: left;
       max-width: 600px;
-      margin: 0 auto;
-      background: rgba(20, 20, 50, 0.85);
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
       padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-      border: 1px solid #00d4ff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .form-container label {
+      font-family: 'Montserrat', sans-serif;
+      color: #2b1b0f;
+      margin-bottom: 5px;
+      display: block;
+      font-size: 1em;
     }
 
     .form-container input,
     .form-container textarea,
     .form-container select {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid #00d4ff;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
-      color: #e0e0ff;
+      color: #2b1b0f;
       font-size: 1rem;
       box-sizing: border-box;
-      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-container input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+      accent-color: #e67e22;
     }
 
     .form-container select {
-      color: #000000; /* Black text for dropdown */
-      background: rgba(255, 255, 255, 0.9); /* Slightly opaque white background for contrast */
+      color: #2b1b0f;
+      background: rgba(255, 255, 255, 0.9);
     }
 
     .form-container select option {
-      color: #000000; /* Black text for options */
-      background: #ffffff; /* White background for options */
+      color: #2b1b0f;
+      background: #ffffff;
     }
 
-    .form-container select:focus {
-      outline: none;
-      border-color: #ff00ff;
-      box-shadow: 0 0 10px #ff00ff;
-      color: #ffffff; /* White text when selected/focused */
-    }
-
+    .form-container select:focus,
     .form-container input:focus,
     .form-container textarea:focus {
       outline: none;
-      border-color: #ff00ff;
-      box-shadow: 0 0 10px #ff00ff;
+      border-color: #f39c12;
+      box-shadow: 0 0 10px #f39c12;
     }
 
     .form-container textarea {
@@ -108,121 +547,603 @@
     }
 
     .form-container button {
-      padding: 14px 25px;
-      background: linear-gradient(45deg, #00d4ff, #ff00ff);
-      color: #ffffff;
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
-      border-radius: 8px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 1.1rem;
-      font-family: 'Orbitron', sans-serif;
-      transition: transform 0.2s, box-shadow 0.2s;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: block;
+      margin: 20px auto 0;
     }
 
     .form-container button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #ff00ff;
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .back-link {
-      display: inline-block;
-      margin-top: 30px;
-      color: #00d4ff;
-      text-decoration: none;
-      font-size: 1.2em;
-      font-family: 'Nova Square', sans-serif;
-      transition: color 0.3s;
-    }
-
-    .back-link:hover {
-      color: #ff00ff;
-      text-decoration: underline;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
-      }
-      to {
-        text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-      }
-    }
-
-    /* Cosmic particle effect */
-    .particles {
+    .emo-playlist-player {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      transition: all 0.3s ease;
     }
 
-    .particle {
-      position: absolute;
-      background: #ffffff;
+    .toggle-player {
+      background: var(--primary);
+      color: var(--text);
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      margin-bottom: 10px;
+    }
+
+    .toggle-player:hover {
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    }
+
+    body.night-mode .toggle-player {
+      background: var(--secondary);
+      color: var(--background);
+    }
+
+    body.night-mode .toggle-player:hover {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
+
+    .toggle-image {
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      opacity: 0.7;
-      animation: float 15s infinite linear;
+      object-fit: cover;
+      border: 1px solid var(--primary);
     }
 
-    @keyframes float {
-      0% { transform: translateY(100vh) scale(0.5); opacity: 0.7; }
-      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    .player-wrapper {
+      width: 300px;
+      background: rgba(44, 29, 15, 0.9);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .player-wrapper.active {
+      display: block;
+    }
+
+    body.night-mode .player-wrapper {
+      background: rgba(74, 55, 35, 0.9);
+      border-color: var(--secondary);
+    }
+
+    .emo-playlist-player iframe {
+      width: 100%;
+      height: 152px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    body.night-mode footer {
+      background-color: #4a3723;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .header {
+        height: 40vh;
+      }
+
+      .header-logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .header h1 {
+        font-size: 2.5em;
+      }
+
+      .header p {
+        font-size: 1em;
+      }
+
+      .section {
+        padding: 40px 15px;
+      }
+
+      .section h1, .section h2 {
+        font-size: 2em;
+      }
+
+      .section p {
+        font-size: 1em;
+        max-width: 95%;
+      }
+
+      .roles-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 15px;
+        max-width: 95%;
+        padding: 0 10px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .roles-grid .scroll-arrow {
+        display: block;
+      }
+
+      .role {
+        flex: 0 0 140px;
+        scroll-snap-align: start;
+        min-height: 240px;
+        padding: 10px;
+      }
+
+      .role img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .role h3 {
+        font-size: 1.3em;
+      }
+
+      .role p {
+        font-size: 0.9em;
+      }
+
+      .role .tooltip {
+        width: 140px;
+        font-size: 0.85em;
+      }
+
+      .form-container {
+        max-width: 95%;
+        padding: 20px;
+      }
+
+      .emo-playlist-player {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .player-wrapper {
+        width: 250px;
+      }
+
+      .toggle-player {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+      }
+
+      .toggle-image {
+        width: 25px;
+        height: 25px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 120px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .header h1 {
+        font-size: 2em;
+      }
+
+      .header p {
+        font-size: 0.9em;
+      }
+
+      .section h1, .section h2 {
+        font-size: 1.6em;
+      }
+
+      .section p {
+        font-size: 0.9em;
+      }
+
+      .roles-grid {
+        gap: 10px;
+        padding: 0 5px;
+      }
+
+      .role {
+        flex: 0 0 120px;
+        min-height: 200px;
+        padding: 8px;
+      }
+
+      .role img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .role h3 {
+        font-size: 1.1em;
+      }
+
+      .role p {
+        font-size: 0.85em;
+      }
+
+      .role .tooltip {
+        width: 120px;
+        font-size: 0.8em;
+        padding: 8px;
+      }
+
+      .player-wrapper {
+        width: 200px;
+      }
+
+      .toggle-player {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+
+      .toggle-image {
+        width: 20px;
+        height: 20px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 100px;
+      }
+    }
+
+    @media only screen and (min-width: 769px) {
+      .roles-grid .scroll-arrow {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="particles" id="particles"></div>
-  <div class="container">
-    <h1>Join Our Cosmic Camp</h1>
-    <p>Embark on a stellar journey with the Kiwiburn community! Fill out the form below to request your place in our galactic camp.</p>
+  <nav>
+    <img src="images/Logo/Alien_Logo_New.png" alt="Cosmic Rejex Logo" class="nav-logo">
+    <button class="hamburger" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <div class="dropdown">
+        <a href="index.html#about" class="dropdown-toggle">About</a>
+        <div class="dropdown-menu">
+          <a href="index.html#about">Our Camp</a>
+          <a href="index.html#mission">Our Mission</a>
+          <a href="index.html#history">Our History</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="index.html#events" class="dropdown-toggle">Events</a>
+        <div class="dropdown-menu">
+          <a href="index.html#events">Upcoming Events</a>
+          <a href="index.html#past-events">Past Events</a>
+          <a href="submit-event.html">Submit Event</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#join" class="dropdown-toggle">Join Us</a>
+        <div class="dropdown-menu">
+          <a href="join-camp.html">Membership Info</a>
+          <a href="join-camp.html">Apply to Join</a>
+          <a href="camp-fees.html">Camp Fees</a>
+          <a href="Task_Roster.html">Task/Roster</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="gallery.html" class="dropdown-toggle">Gallery</a>
+        <div class="dropdown-menu">
+          <a href="gallery.html?year=2021">2021</a>
+          <a href="gallery.html?year=2022">2022</a>
+          <a href="gallery.html?year=2023">2023</a>
+          <a href="gallery.html?year=2024">2024</a>
+          <a href="gallery.html?year=2025">2025</a>
+        </div>
+      </div>
+      <a href="index.html#newsletter">Newsletter</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="nav-login">
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required aria-label="Username">
+        <input type="password" id="password" placeholder="Password" required aria-label="Password">
+        <button type="submit">Login</button>
+      </form>
+      <button class="logout-button" aria-label="Logout">Logout</button>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+  </nav>
+
+  <header class="header" id="join">
+    <img src="images/Logo/Alien_Logo_New2.png" alt="Cosmic Rejex Logo" class="header-logo">
+    <h1>Join Cosmic Rejex Camp</h1>
+    <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
+  </header>
+
+  <section class="section" id="roles">
+    <h1>Camp Roles Status</h1>
+    <p>Check out the available and filled roles below. Select the ones you're interested in when applying!</p>
+    <div class="roles-grid">
+      <div class="scroll-arrow left" data-grid="roles">◄</div>
+      <div class="scroll-arrow right" data-grid="roles">►</div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Build-Crew.png" alt="Build Crew Icon">
+        <h3>Build Crew</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Decor-&-Vibe.png" alt="Decor & Vibe Icon">
+        <h3>Decor & Vibe</h3>
+        <p>Filled</p>
+        <div class="tooltip"><p>Creates the camp’s aesthetic and emotional atmosphere.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Kitchen-Coordinator.png" alt="Kitchen Coordinator Icon">
+        <h3>Kitchen Coordinator / Cook</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Plans meals, manages food storage, and oversees cooking.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Music-Audio-Team.png" alt="Music/Audio Team Icon">
+        <h3>Music/Audio Team</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Manages music, DJs, and audio equipment.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/LNT-Lead.png" alt="LNT Lead Icon">
+        <h3>Leave No Trace (LNT) Lead</h3>
+        <p>Filled</p>
+        <div class="tooltip"><p>Leads cleanup and ensures Leave No Trace principles.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Greeters.png" alt="Greeters Icon">
+        <h3>Greeters / Camp Welcome Crew</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Welcomes arrivals and helps them settle in.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Consent-Support.png" alt="Consent Support Icon">
+        <h3>Consent / Culture Support</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Promotes a safe and inclusive environment.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Power-&-Logistics.png" alt="Power & Logistics Icon">
+        <h3>Power & Logistics</h3>
+        <p>Filled</p>
+        <div class="tooltip"><p>Manages power systems and logistics coordination.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/DJ-Performer.png" alt="DJ/Performer Icon">
+        <h3>DJ / Performer</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Performs music or other acts for the camp.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Workshop-Host.png" alt="Workshop Host Icon">
+        <h3>Workshop Host</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Leads workshops or activities for camp members.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Floater.png" alt="Floater Icon">
+        <h3>Floater / General Support</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Assists wherever needed across camp tasks.</p></div>
+      </div>
+      <div class="role">
+        <img src="images/Roles-to-Be-Filled/Open-to-Anything.png" alt="Open to Anything Icon">
+        <h3>Open to Anything</h3>
+        <p>Open</p>
+        <div class="tooltip"><p>Flexible to help with any camp needs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h1>Apply to Join Cosmic Rejex</h1>
+    <p>Fill out the form below to request your spot in our camp for Kiwiburn 2026. We can’t wait to vibe with you!</p>
     <div class="form-container">
       <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <select name="role" required>
-          <option value="">Select a Camp Role</option>
-          <optgroup label="Leadership & Logistics">
-            <option>🛠️ Camp Lead</option>
-            <option>🚛 Logistics & Build Lead</option>
-            <option>💰 Finance & Budget Lead</option>
-            <option>📆 Volunteer Coordinator</option>
-          </optgroup>
-          <optgroup label="Setup & Infrastructure">
-            <option>🔨 Build Crew</option>
-            <option>🎶 Sound & Lights Lead</option>
-            <option>🥗 Kitchen Lead</option>
-            <option>⛑️ Safety & Medical Lead</option>
-            <option>🔥 Fire & Rangers Lead</option>
-          </optgroup>
-          <optgroup label="Community & Experience">
-            <option>🎨 Art & Decor Lead</option>
-            <option>🎭 Event & Theme Night Lead</option>
-          </optgroup>
+
+        <label>Full Name and Burner/Playa Name</label>
+        <input type="text" name="name" placeholder="Full Name and Burner/Playa Name" required>
+
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <label>Phone Number (Mobile, WhatsApp, or Signal)</label>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+
+        <label>Have you attended Burning Man, Kiwiburn, or other regional burns before? If so, which ones and when?</label>
+        <textarea name="burn_experience" rows="4" placeholder="Previous burn experience" required></textarea>
+
+        <label>Which camp roles are you interested in filling? (Select all that apply)</label>
+        <label><input type="checkbox" name="roles[]" value="Build Crew"> Build Crew</label>
+        <label><input type="checkbox" name="roles[]" value="Decor & Vibe"> Decor & Vibe</label>
+        <label><input type="checkbox" name="roles[]" value="Kitchen Coordinator / Cook"> Kitchen Coordinator / Cook</label>
+        <label><input type="checkbox" name="roles[]" value="Music/Audio Team"> Music/Audio Team</label>
+        <label><input type="checkbox" name="roles[]" value="Leave No Trace (LNT) Lead"> Leave No Trace (LNT) Lead</label>
+        <label><input type="checkbox" name="roles[]" value="Greeters / Camp Welcome Crew"> Greeters / Camp Welcome Crew</label>
+        <label><input type="checkbox" name="roles[]" value="Consent / Culture Support"> Consent / Culture Support</label>
+        <label><input type="checkbox" name="roles[]" value="Power & Logistics"> Power & Logistics</label>
+        <label><input type="checkbox" name="roles[]" value="DJ / Performer"> DJ / Performer</label>
+        <label><input type="checkbox" name="roles[]" value="Workshop Host"> Workshop Host</label>
+        <label><input type="checkbox" name="roles[]" value="Floater / General Support"> Floater / General Support</label>
+        <label><input type="checkbox" name="roles[]" value="Open to anything / wherever needed"> Open to anything / wherever needed</label>
+
+        <label>Why do you want to join this camp?</label>
+        <textarea name="why_join" rows="4" placeholder="What draws you to this group and vision?" required></textarea>
+
+        <label>How will you be getting to the burn?</label>
+        <textarea name="travel" rows="4" placeholder="Travel method and timing" required></textarea>
+
+        <label>What contributions can you offer to the camp?</label>
+        <textarea name="contributions" rows="4" placeholder="e.g., building, cooking, performance, art, administration, organisation" required></textarea>
+
+        <label>Do you have any specific ideas, events, or projects you’d like to bring to camp?</label>
+        <textarea name="ideas" rows="4" placeholder="Specific ideas or projects"></textarea>
+
+        <label>Are you able to contribute any additional resources?</label>
+        <textarea name="resources" rows="4" placeholder="e.g., vehicles, tools, gear, infrastructure, supplies"></textarea>
+
+        <label>Camp dues are $____. Are you comfortable with this cost?</label>
+        <select name="dues_comfort" required>
+          <option value="">Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Unsure">Unsure</option>
         </select>
-        <textarea name="message" rows="4" placeholder="Why do you want to join?" required></textarea>
-        <button type="submit">Submit Request</button>
+
+        <label>Will you pay in full upfront or prefer an instalment plan?</label>
+        <select name="payment_plan" required>
+          <option value="">Select an option</option>
+          <option value="Full Upfront">Pay in full upfront</option>
+          <option value="Instalments">Instalment plan</option>
+        </select>
+
+        <label>Our camp values include: consent, communication, participation, fun, and responsibility. Are you aligned with these?</label>
+        <select name="values_alignment" required>
+          <option value="">Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Unsure">Unsure</option>
+        </select>
+
+        <label>How would you describe your “burner style”?</label>
+        <textarea name="burner_style" rows="4" placeholder="e.g., builder, organiser, introvert, performer, connector, etc." required></textarea>
+
+        <label>Do you plan to perform, host a workshop, or run an activity?</label>
+        <textarea name="performances" rows="4" placeholder="Describe your idea or intention"></textarea>
+
+        <label>Is there anything you would love to see happen in camp this year?</label>
+        <textarea name="camp_vision" rows="4" placeholder="Your vision for the camp"></textarea>
+
+        <label>Do you have any health needs, access requirements, or relevant concerns you’d like us to be aware of?</label>
+        <textarea name="health_needs" rows="4" placeholder="Health or access needs"></textarea>
+
+        <label>Is there anything you’re unsure about or worried about regarding joining the camp?</label>
+        <textarea name="concerns" rows="4" placeholder="Any concerns or uncertainties"></textarea>
+
+        <label>Optional: Upload a photo or link to your social media</label>
+        <input type="url" name="social_media" placeholder="Link to social media or photo">
+
+        <label>Do you have any questions for us?</label>
+        <textarea name="questions" rows="4" placeholder="Your questions"></textarea>
+
+        <button type="submit">Submit Application</button>
       </form>
     </div>
-    <a href="index.html" class="back-link">Return to Galactic Hub</a>
-  </div>
-  <script>
-    // Particle effect for cosmic theme
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 50;
+  </section>
 
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.width = `${Math.random() * 3 + 1}px`;
-      particle.style.height = particle.style.width;
-      particle.style.left = `${Math.random() * 100}vw`;
-      particle.style.animationDelay = `${Math.random() * 10}s`;
-      particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
-      particlesContainer.appendChild(particle);
+  <div class="emo-playlist-player">
+    <button class="toggle-player" onclick="togglePlayer()">
+      <img src="images/Spotify-Background/Cosmic-Rejex.png" alt="Emo Playlist Toggle Image" class="toggle-image">
+      Play Emo Playlist
+    </button>
+    <div class="player-wrapper" id="player-wrapper">
+      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy" 
+              aria-label="Emo Playlist Player"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Cosmic Rejex. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+    });
+
+    // Load theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('night-mode');
+      themeToggle.textContent = '☀️';
+    }
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+    });
+
+    // Dropdown Menu for Mobile
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const dropdown = toggle.parentElement;
+          dropdown.classList.toggle('active');
+        }
+      });
+    });
+
+    // Login/Logout
+    const loginForm = document.getElementById('login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const loginContainer = document.querySelector('.nav-login');
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginContainer.classList.add('logged-in');
+      loginForm.style.display = 'none';
+      logoutButton.style.display = 'block';
+      document.body.classList.add('logged-in');
+    });
+
+    logoutButton.addEventListener('click', () => {
+      loginContainer.classList.remove('logged-in');
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      document.body.classList.remove('logged-in');
+    });
+
+    // Scroll Arrows
+    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+      arrow.addEventListener('click', () => {
+        const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
+        const direction = arrow.classList.contains('left') ? -1 : 1;
+        grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
+      });
+    });
+
+    // EMO PLAYLIST PLAYER Toggle
+    function togglePlayer() {
+      const playerWrapper = document.getElementById('player-wrapper');
+      playerWrapper.classList.toggle('active');
     }
   </script>
 </body>
