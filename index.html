@@ -1274,43 +1274,6 @@
       color: #f8e1b4;
     }
 
-    .spotify-section {
-      padding: 60px 20px;
-      text-align: center;
-      background: none;
-    }
-
-    .spotify-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: #000000 url('images/Spotify-Background/Cosmic-Rejex.png') center/cover no-repeat;
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-
-    body.night-mode .spotify-container {
-      background: #1a1a1a url('images/emo-bg-dark.jpg') center/cover no-repeat;
-    }
-
-    .spotify-container h1 {
-      font-family: 'Special Elite', cursive;
-      font-size: 3.5em;
-      margin-bottom: 20px;
-      color: #ffffff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-      letter-spacing: 2px;
-    }
-
-    .spotify-container p {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.2em;
-      margin-bottom: 30px;
-      color: #d3d3d3;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
@@ -1568,15 +1531,6 @@
         width: 10%;
       }
 
-      .spotify-container h1 {
-        font-size: 2.5em;
-      }
-
-      .spotify-container p {
-        font-size: 1em;
-      }
-    }
-
     @media only screen and (max-width: 480px) {
       .header h1 {
         font-size: 2.2em;
@@ -1712,14 +1666,6 @@
       .history-item p {
         font-size: 0.85em;
       }
-
-      .spotify-container h1 {
-        font-size: 2em;
-      }
-
-      .spotify-container p {
-        font-size: 0.9em;
-      }
     }
 
     @media only screen and (min-width: 769px) {
@@ -1794,15 +1740,6 @@
   <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
   <a href="#about" class="scroll-down" aria-label="Scroll to about section">▼</a>
 </header>
-
-<div class="modal" id="header-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('header-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Header Section</h3>
-    <input type="text" id="header-title" placeholder="Header Title" required aria-label="Header Title">
-    <button onclick="saveHeaderDetails()">Save</button>
-  </div>
-</div>
 
 <div class="modal" id="member-modal">
   <div class="modal-content">
@@ -2406,16 +2343,8 @@
   <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
 </div>
 
-<div class="spotify-container">
-  <section class="section spotify-section" id="spotify">
-    <h1>EMO PLAYLIST PLAYER</h1>
-    <p>Vibe out to our curated playlist of emo, rock, and drum and bass tracks. Perfect for setting the Cosmic Rejex mood!</p>
-    <button class="edit-section-button" onclick="openModal('spotify-modal')">Edit Section</button>
-  </section>
-</div>
-
 <div class="emo-playlist-player">
-  <button class="toggle-player" onclick="togglePlayer()">Toggle EMO PLAYLIST PLAYER</button>
+  <button class="toggle-plCayer" onclick="togglePlayer()">Toggle EMO PLAYLIST PLAYER</button>
   <div class="player-wrapper" id="player-wrapper">
     <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9wa6XirBPv8" 
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
@@ -2737,16 +2666,7 @@
     document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
     closeModal('history-modal');
   }
-
-  function saveSpotifyDetails() {
-    document.querySelector('.spotify-section h1').textContent = document.getElementById('spotify-title').value;
-    document.querySelector('.spotify-section p').textContent = document.getElementById('spotify-description').value;
-    const newUrl = document.getElementById('spotify-url').value;
-    if (newUrl) {
-      document.querySelector('.emo-playlist-player iframe').src = newUrl;
-    }
-    closeModal('spotify-modal');
-  }
+  
 </script>
 </body>
 </html>
