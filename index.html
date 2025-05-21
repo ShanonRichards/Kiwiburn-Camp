@@ -6,7 +6,7 @@
   <title>Join Cosmic Rejex - Kiwiburn</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
-    html, body {
+    html, body {f
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif;
@@ -1965,6 +1965,22 @@ body.night-mode .toggle-player:hover {
   </section>
 </div>
 
+<div class="mission-container">
+  <section class="section" id="mission">
+    <h1>Our Mission</h1>
+    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
+    <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
+    <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
+      <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
+        <img src="images/Our-Mission/Camp-Photo.jpg" alt="Our Mission Camp Photo">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+        <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+      </div>
+    </div>
+    <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
+  </section>
+</div>
+
 <div class="history-container">
   <section class="section history-section" id="history">
     <h1>Our History</h1>
@@ -1986,22 +2002,6 @@ body.night-mode .toggle-player:hover {
       </div>
     </div>
     <button class="edit-section-button" onclick="openModal('history-modal')">Edit Section</button>
-  </section>
-</div>
-
-<div class="mission-container">
-  <section class="section" id="mission">
-    <h1>Our Mission</h1>
-    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
-    <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
-    <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
-      <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
-        <img src="images/Our-Mission/Camp-Photo.jpg" alt="Our Mission Camp Photo">
-        <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-        <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
-      </div>
-    </div>
-    <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
   </section>
 </div>
 
