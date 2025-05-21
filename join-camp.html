@@ -41,17 +41,22 @@
     body.night-mode .section h2,
     body.night-mode .section p,
     body.night-mode .role p,
-    body.night-mode .form-container label {
+    body.night-mode .form-container label,
+    body.night-mode .admin-panel label {
       color: #f8e1b4;
     }
 
-    body.night-mode .form-container {
+    body.night-mode .form-container,
+    body.night-mode .admin-panel {
       background: rgba(44, 29, 15, 0.3);
     }
 
     body.night-mode .form-container input,
     body.night-mode .form-container textarea,
-    body.night-mode .form-container select {
+    body.night-mode .form-container select,
+    body.night-mode .admin-panel input,
+    body.night-mode .admin-panel textarea,
+    body.night-mode .admin-panel select {
       background: rgba(255, 255, 255, 0.1);
       color: #f8e1b4;
     }
@@ -423,6 +428,10 @@
       min-height: 250px;
     }
 
+    .role.hidden {
+      display: none;
+    }
+
     .role:hover {
       box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
@@ -495,7 +504,26 @@
       transform: translate(-50%, -110%);
     }
 
-    .form-container {
+    .role .edit-button {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    body.logged-in .role .edit-button {
+      display: block;
+    }
+
+    .form-container, .admin-panel {
       text-align: left;
       max-width: 600px;
       margin: 40px auto;
@@ -507,7 +535,16 @@
       backdrop-filter: blur(8px);
     }
 
-    .form-container label {
+    .admin-panel {
+      display: none;
+    }
+
+    body.logged-in .admin-panel {
+      display: block;
+    }
+
+    .form-container label,
+    .admin-panel label {
       font-family: 'Montserrat', sans-serif;
       color: #2b1b0f;
       margin-bottom: 8px;
@@ -518,7 +555,10 @@
 
     .form-container input,
     .form-container textarea,
-    .form-container select {
+    .form-container select,
+    .admin-panel input,
+    .admin-panel textarea,
+    .admin-panel select {
       width: 100%;
       padding: 12px;
       margin-bottom: 20px;
@@ -531,35 +571,43 @@
       transition: border-color 0.3s, box-shadow 0.3s;
     }
 
-    .form-container input[type="checkbox"] {
+    .form-container input[type="checkbox"],
+    .admin-panel input[type="checkbox"] {
       width: auto;
       margin-right: 10px;
       accent-color: #e67e22;
     }
 
-    .form-container select {
+    .form-container select,
+    .admin-panel select {
       color: #2b1b0f;
       background: rgba(255, 255, 255, 0.9);
     }
 
-    .form-container select option {
+    .form-container select option,
+    .admin-panel select option {
       color: #2b1b0f;
       background: #ffffff;
     }
 
     .form-container select:focus,
     .form-container input:focus,
-    .form-container textarea:focus {
+    .form-container textarea:focus,
+    .admin-panel select:focus,
+    .admin-panel input:focus,
+    .admin-panel textarea:focus {
       outline: none;
       border-color: #f39c12;
       box-shadow: 0 0 12px rgba(243, 156, 18, 0.5);
     }
 
-    .form-container textarea {
+    .form-container textarea,
+    .admin-panel textarea {
       resize: vertical;
     }
 
-    .form-container button {
+    .form-container button,
+    .admin-panel button {
       padding: 14px 24px;
       background-color: #e67e22;
       color: #2b1b0f;
@@ -573,7 +621,8 @@
       margin: 20px auto 0;
     }
 
-    .form-container button:hover {
+    .form-container button:hover,
+    .admin-panel button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 12px #e67e22, 0 0 20px #f39c12;
       transform: translateY(-2px);
@@ -756,7 +805,7 @@
         font-size: 0.85em;
       }
 
-      .form-container {
+      .form-container, .admin-panel {
         max-width: 95%;
         padding: 20px;
       }
@@ -918,84 +967,38 @@
     <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
   </header>
 
+  <section class="section admin-panel" id="admin-roles">
+    <h1>Manage Camp Roles</h1>
+    <p>Add new roles or edit existing ones below.</p>
+    <form id="admin-role-form">
+      <input type="hidden" id="edit-role-id">
+      <label>Role Name</label>
+      <input type="text" id="role-name" placeholder="Role Name" required>
+      <label>Status</label>
+      <select id="role-status" required>
+        <option value="open">Open</option>
+        <option value="filled">Filled</option>
+      </select>
+      <label>Description</label>
+      <textarea id="role-description" rows="4" placeholder="Role description" required></textarea>
+      <label>Visibility</label>
+      <select id="role-visibility" required>
+        <option value="visible">Visible</option>
+        <option value="hidden">Hidden</option>
+      </select>
+      <label>Upload Image</label>
+      <input type="file" id="role-image" accept="image/*">
+      <button type="submit">Save Role</button>
+      <button type="button" id="cancel-edit">Cancel</button>
+    </form>
+  </section>
+
   <section class="section" id="roles">
     <h1>Camp Roles Status</h1>
     <p>Check out the available and filled roles below. Select the ones you're interested in when applying!</p>
-    <div class="roles-grid">
+    <div class="roles-grid" id="roles-grid">
       <div class="scroll-arrow left" data-grid="roles">◄</div>
       <div class="scroll-arrow right" data-grid="roles">►</div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Build-Crew.png" alt="Build Crew Icon">
-        <h3>Build Crew</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Decor-&-Vibe.png" alt="Decor & Vibe Icon">
-        <h3>Decor & Vibe</h3>
-        <p class="filled">Filled</p>
-        <div class="tooltip"><p>Creates the camp’s aesthetic and emotional atmosphere.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Kitchen-Coordinator.png" alt="Kitchen Coordinator Icon">
-        <h3>Kitchen Coordinator / Cook</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Plans meals, manages food storage, and oversees cooking.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Music-Audio-Team.png" alt="Music/Audio Team Icon">
-        <h3>Music/Audio Team</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Manages music, DJs, and audio equipment.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/LNT-Lead.png" alt="LNT Lead Icon">
-        <h3>Leave No Trace (LNT) Lead</h3>
-        <p class="filled">Filled</p>
-        <div class="tooltip"><p>Leads cleanup and ensures Leave No Trace principles.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Greeters.png" alt="Greeters Icon">
-        <h3>Greeters / Camp Welcome Crew</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Welcomes arrivals and helps them settle in.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Consent-Support.png" alt="Consent Support Icon">
-        <h3>Consent / Culture Support</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Promotes a safe and inclusive environment.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Power-&-Logistics.png" alt="Power & Logistics Icon">
-        <h3>Power & Logistics</h3>
-        <p class="filled">Filled</p>
-        <div class="tooltip"><p>Manages power systems and logistics coordination.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/DJ-Performer.png" alt="DJ/Performer Icon">
-        <h3>DJ / Performer</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Performs music or other acts for the camp.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Workshop-Host.png" alt="Workshop Host Icon">
-        <h3>Workshop Host</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Leads workshops or activities for camp members.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Floater.png" alt="Floater Icon">
-        <h3>Floater / General Support</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Assists wherever needed across camp tasks.</p></div>
-      </div>
-      <div class="role">
-        <img src="images/Roles-to-Be-Filled/Open-to-Anything.png" alt="Open to Anything Icon">
-        <h3>Open to Anything</h3>
-        <p class="open">Open</p>
-        <div class="tooltip"><p>Flexible to help with any camp needs.</p></div>
-      </div>
     </div>
   </section>
 
@@ -1003,7 +1006,7 @@
     <h1>Apply to Join Cosmic Rejex</h1>
     <p>Fill out the form below to request your spot in our camp for Kiwiburn 2026. We can’t wait to vibe with you!</p>
     <div class="form-container">
-      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
         <input type="hidden" name="_captcha" value="false">
 
         <div class="name-container">
@@ -1027,18 +1030,7 @@
         <textarea name="burn_experience" rows="4" placeholder="Previous burn experience" required></textarea>
 
         <label>Which camp roles are you interested in filling? (Select all that apply)</label>
-        <label><input type="checkbox" name="roles[]" value="Build Crew"> Build Crew</label>
-        <label><input type="checkbox" name="roles[]" value="Decor & Vibe"> Decor & Vibe</label>
-        <label><input type="checkbox" name="roles[]" value="Kitchen Coordinator / Cook"> Kitchen Coordinator / Cook</label>
-        <label><input type="checkbox" name="roles[]" value="Music/Audio Team"> Music/Audio Team</label>
-        <label><input type="checkbox" name="roles[]" value="Leave No Trace (LNT) Lead"> Leave No Trace (LNT) Lead</label>
-        <label><input type="checkbox" name="roles[]" value="Greeters / Camp Welcome Crew"> Greeters / Camp Welcome Crew</label>
-        <label><input type="checkbox" name="roles[]" value="Consent / Culture Support"> Consent / Culture Support</label>
-        <label><input type="checkbox" name="roles[]" value="Power & Logistics"> Power & Logistics</label>
-        <label><input type="checkbox" name="roles[]" value="DJ / Performer"> DJ / Performer</label>
-        <label><input type="checkbox" name="roles[]" value="Workshop Host"> Workshop Host</label>
-        <label><input type="checkbox" name="roles[]" value="Floater / General Support"> Floater / General Support</label>
-        <label><input type="checkbox" name="roles[]" value="Open to anything / wherever needed"> Open to anything / wherever needed</label>
+        <div id="roles-checkboxes"></div>
 
         <label>Why do you want to join this camp?</label>
         <textarea name="why_join" rows="4" placeholder="What draws you to this group and vision?" required></textarea>
@@ -1162,18 +1154,38 @@
 
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      loginContainer.classList.add('logged-in');
-      loginForm.style.display = 'none';
-      logoutButton.style.display = 'block';
-      document.body.classList.add('logged-in');
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (username === 'admin' && password === 'password') {
+        sessionStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('githubToken', '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');
+        loginContainer.classList.add('logged-in');
+        loginForm.style.display = 'none';
+        logoutButton.style.display = 'block';
+        document.body.classList.add('logged-in');
+        loadRoles();
+      } else {
+        alert('Invalid credentials. Please use username: admin, password: password');
+      }
     });
 
     logoutButton.addEventListener('click', () => {
+      sessionStorage.removeItem('isLoggedIn');
+      sessionStorage.removeItem('githubToken');
       loginContainer.classList.remove('logged-in');
       loginForm.style.display = 'flex';
       logoutButton.style.display = 'none';
       document.body.classList.remove('logged-in');
+      loadRoles();
     });
+
+    // Check login status on page load
+    if (sessionStorage.getItem('isLoggedIn') === 'true') {
+      loginContainer.classList.add('logged-in');
+      loginForm.style.display = 'none';
+      logoutButton.style.display = 'block';
+      document.body.classList.add('logged-in');
+    }
 
     // Scroll Arrows
     document.querySelectorAll('.scroll-arrow').forEach(arrow => {
@@ -1189,6 +1201,166 @@
       const playerWrapper = document.getElementById('player-wrapper');
       playerWrapper.classList.toggle('active');
     }
+
+    // Role Management
+    const rolesGrid = document.getElementById('roles-grid');
+    const adminRoleForm = document.getElementById('admin-role-form');
+    const rolesCheckboxes = document.getElementById('roles-checkboxes');
+    let roles = [];
+
+    async function loadRoles() {
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/ShanonRichards/Kiwiburn-Camp/main/data/roles.json');
+        roles = await response.json();
+        renderRoles();
+        renderRoleCheckboxes();
+      } catch (error) {
+        console.error('Error loading roles:', error);
+        alert('Failed to load roles. Please try again later.');
+      }
+    }
+
+    function renderRoles() {
+      const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+      rolesGrid.innerHTML = `
+        <div class="scroll-arrow left" data-grid="roles">◄</div>
+        <div class="scroll-arrow right" data-grid="roles">►</div>
+      `;
+      roles.forEach(role => {
+        if (role.visibility === 'visible' || isLoggedIn) {
+          const roleElement = document.createElement('div');
+          roleElement.className = `role ${role.visibility === 'hidden' ? 'hidden' : ''}`;
+          roleElement.innerHTML = `
+            <img src="${role.image}" alt="${role.name} Icon">
+            <h3>${role.name}</h3>
+            <p class="${role.status}">${role.status.charAt(0).toUpperCase() + role.status.slice(1)}</p>
+            <div class="tooltip"><p>${role.description}</p></div>
+            ${isLoggedIn ? `<button class="edit-button" data-id="${role.id}">Edit</button>` : ''}
+          `;
+          rolesGrid.appendChild(roleElement);
+        }
+      });
+
+      // Reattach edit button listeners
+      document.querySelectorAll('.edit-button').forEach(button => {
+        button.addEventListener('click', () => {
+          const roleId = button.dataset.id;
+          const role = roles.find(r => r.id === roleId);
+          document.getElementById('edit-role-id').value = role.id;
+          document.getElementById('role-name').value = role.name;
+          document.getElementById('role-status').value = role.status;
+          document.getElementById('role-description').value = role.description;
+          document.getElementById('role-visibility').value = role.visibility;
+          document.getElementById('admin-role-form').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    }
+
+    function renderRoleCheckboxes() {
+      rolesCheckboxes.innerHTML = '';
+      roles.forEach(role => {
+        if (role.visibility === 'visible') {
+          const label = document.createElement('label');
+          label.innerHTML = `
+            <input type="checkbox" name="roles[]" value="${role.name}"> ${role.name}
+          `;
+          rolesCheckboxes.appendChild(label);
+        }
+      });
+    }
+
+    adminRoleForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const roleId = document.getElementById('edit-role-id').value;
+      const roleName = document.getElementById('role-name').value;
+      const roleStatus = document.getElementById('role-status').value;
+      const roleDescription = document.getElementById('role-description').value;
+      const roleVisibility = document.getElementById('role-visibility').value;
+      const roleImage = document.getElementById('role-image').files[0];
+
+      let imageData = null;
+      if (roleImage) {
+        imageData = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.readAsDataURL(roleImage);
+        });
+      } else if (roleId) {
+        const existingRole = roles.find(r => r.id === roleId);
+        imageData = existingRole ? existingRole.image : null;
+      }
+
+      const newRole = {
+        id: roleId || String(roles.length + 1),
+        name: roleName,
+        status: roleStatus,
+        description: roleDescription,
+        image: imageData || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=',
+        visibility: roleVisibility
+      };
+
+      if (roleId) {
+        roles = roles.map(r => r.id === roleId ? newRole : r);
+      } else {
+        roles.push(newRole);
+      }
+
+      await saveRolesToGitHub();
+      adminRoleForm.reset();
+      document.getElementById('edit-role-id').value = '';
+      renderRoles();
+      renderRoleCheckboxes();
+    });
+
+    document.getElementById('cancel-edit').addEventListener('click', () => {
+      adminRoleForm.reset();
+      document.getElementById('edit-role-id').value = '';
+    });
+
+    async function saveRolesToGitHub() {
+      const token = sessionStorage.getItem('githubToken');
+      const repo = 'ShanonRichards/Kiwiburn-Camp';
+      const path = 'data/roles.json';
+      const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
+
+      try {
+        // Fetch current file to get SHA
+        const getResponse = await fetch(apiUrl, {
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        const fileData = await getResponse.json();
+
+        // Update file
+        const content = btoa(JSON.stringify(roles, null, 2));
+        const response = await fetch(apiUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          },
+          body: JSON.stringify({
+            message: 'Update roles.json',
+            content: content,
+            sha: fileData.sha
+          })
+        });
+
+        if (response.ok) {
+          alert('Roles updated successfully!');
+        } else {
+          throw new Error('Failed to update roles');
+        }
+      } catch (error) {
+        console.error('Error saving roles:', error);
+        alert('Failed to save roles. Please check your GitHub token and try again.');
+      }
+    }
+
+    // Load roles on page load
+    loadRoles();
   </script>
 </body>
 </html>
