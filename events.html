@@ -49,7 +49,8 @@
     }
 
     body.night-mode .events-container,
-    body.night-mode .submit-section {
+    body.night-mode .submit-section,
+    body.night-mode .cta-section {
       background: rgba(44, 29, 15, 0.3);
     }
 
@@ -236,6 +237,147 @@
       margin-right: 10px;
     }
 
+    .floating-submit-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      white-space: nowrap;
+    }
+
+    .floating-submit-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
+    }
+
+    body.night-mode .floating-submit-button {
+      background-color: #f39c12;
+      color: #f8e1b4;
+    }
+
+    body.night-mode .floating-submit-button:hover {
+      background-color: #e67e22;
+      box-shadow: 0 0 10px #f39c12, 0 0 20px #e67e22;
+    }
+
+    .hero-banner {
+      background: url('images/festival-hero.jpg') center/cover no-repeat;
+      padding: 100px 20px;
+      text-align: center;
+      color: #f8e1b4;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(44, 29, 15, 0.5);
+      z-index: -1;
+    }
+
+    .hero-banner h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 4rem;
+      margin: 0;
+      text-shadow: 0 0 10px #e67e22;
+    }
+
+    .hero-banner p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    .event-filter {
+      margin: 20px auto;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .event-filter select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    body.night-mode .event-filter select {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+    }
+
+    .cta-section {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      padding: 40px 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5rem;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
+    body.night-mode .cta-section h2,
+    body.night-mode .cta-section p {
+      color: #f8e1b4;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
+    }
+
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
@@ -287,6 +429,19 @@
       .nav-login button {
         width: 100%;
         box-sizing: border-box;
+      }
+
+      .floating-submit-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+
+      .hero-banner h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-banner p {
+        font-size: 1rem;
       }
     }
 
@@ -344,8 +499,15 @@
       padding: 15px;
       border: 1px solid #e67e22;
       box-sizing: border-box;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.5s ease;
       height: 100%;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .event:hover {
@@ -526,7 +688,7 @@
 
     .edit-section-button {
       display: none;
-      padding: 8px 12px;
+      padding: 8px 12බ
       background-color: #e67e22;
       color: #2b1b0f;
       border: none;
@@ -605,12 +767,12 @@
         min-height: 600px;
       }
 
-      .submit-section {
+      .submit-section, .cta-section {
         max-width: 95%;
         padding: 15px;
       }
 
-      .submit-button {
+      .submit-button, .cta-button {
         font-size: 1em;
         padding: 10px 15px;
       }
@@ -641,9 +803,22 @@
         min-height: 500px;
       }
 
-      .submit-button {
+      .submit-button, .cta-button {
         font-size: 0.9em;
         padding: 8px 12px;
+      }
+
+      .floating-submit-button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+
+      .hero-banner h1 {
+        font-size: 2rem;
+      }
+
+      .hero-banner p {
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -702,6 +877,98 @@
     <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
   </nav>
 
+  <a href="submit-event.html" class="floating-submit-button" aria-label="Submit Your Event Idea Now">Submit Your Event Idea Now</a>
+
+  <div class="hero-banner">
+    <h1>Cosmic Rejex at Kiwiburn</h1>
+    <p>Join us in creating unforgettable experiences at Kiwiburn! Relive the magic of past events and help shape the future by submitting your event ideas.</p>
+  </div>
+
+  <div class="events-container">
+    <section class="section" id="upcoming-events">
+      <h1>Upcoming Events</h1>
+      <p>Stay tuned for our next cosmic adventures at Kiwiburn! No events are confirmed yet, but check back soon for updates.</p>
+      <div class="events-grid" ondragover="allowDrop(event)" ondrop="dropEvents(event)">
+      </div>
+      <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
+    </section>
+
+    <section class="section" id="past-events">
+      <h1>Past Events (2025)</h1>
+      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
+      <div class="event-filter">
+        <select id="event-filter" aria-label="Filter Events by Category">
+          <option value="all">All Categories</option>
+          <option value="Music">Music</option>
+          <option value="Performance">Performance</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Art">Art</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
+      <div class="events-grid">
+        <div class="event" data-category="Music">
+          <img src="images/Event-Images/Emo-Night-Event.jpg" alt="Emo Night Poster">
+          <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
+          <p>Get ready to unleash your inner rebel at our Emo/Pop Punk Hour! Featuring a killer live band, dazzling light shows, a smoke-filled atmosphere, and enough angst to fuel your teenage dreams (or nightmares). Dress up, sing your heart out, and let the feels take over—this is the ultimate tribute to your favorite emo and pop-punk anthems. Don't miss out!</p>
+          <p class="event-date"><strong>Date:</strong> January 23, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
+          <p class="event-end"><strong>End:</strong> January 23, 2025, 11:59 PM</p>
+          <p class="event-category"><strong>Category:</strong> Music</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+        <div class="event" data-category="Performance">
+          <img src="images/Event-Images/Pole-Event.jpg" alt="Pole in the paddock">
+          <h3>Pole in the paddock</h3>
+          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+          <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
+          <p class="event-end"><strong>End:</strong> January 24, 2025, 7:00 PM</p>
+          <p class="event-category"><strong>Category:</strong> Performance</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+        <div class="event" data-category="Workshop">
+          <img src="images/Event-Images/Cosmic-Connections-Event.jpg" alt="Cosmic Connections">
+          <h3>Cosmic Connections</h3>
+          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
+          <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 8:30 PM</p>
+          <p class="event-end"><strong>End:</strong> January 24, 2025, 9:30 PM</p>
+          <p class="event-category"><strong>Category:</strong> Workshop</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+        <div class="event" data-category="Music">
+          <img src="images/Event-Images/DJ-Poster.jpg" alt="DJ Showcase & Open Decks">
+          <h3>DJ Showcase & Open Decks</h3>
+          <p>Spin some tunes or vibe to the beats at our DJ Showcase & Open Decks! Our talented camp DJs will kick things off, followed by an open deck session where anyone can jump in and share their mixes. From drum and bass to emo remixes, expect a night of eclectic sounds and high energy.</p>
+          <p class="event-date"><strong>Date:</strong> January 25, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
+          <p class="event-end"><strong>End:</strong> January 26, 2025, 1:00 AM</p>
+          <p class="event-category"><strong>Category:</strong> Music</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section submit-section" id="submit">
+      <h2>Submit an Event</h2>
+      <p>Got an idea for an epic event? Share it with us and let’s make it happen at Kiwiburn!</p>
+      <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
+      <a href="submit-event.html" class="submit-button">Submit Your Event</a>
+    </section>
+
+    <section class="cta-section">
+      <h2>Join Our Cosmic Community</h2>
+      <p>Stay in the loop with Cosmic Rejex! Sign up for our newsletter to get updates on events, camps, and how you can contribute to the next Kiwiburn.</p>
+      <a href="index.html#newsletter" class="cta-button">Sign Up Now</a>
+    </section>
+  </div>
+
   <div class="modal" id="event-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeModal('event-modal')" aria-label="Close modal">×</button>
@@ -742,89 +1009,6 @@
       <textarea id="submit-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
       <button onclick="saveSubmitDetails()">Save</button>
     </div>
-  </div>
-
-  <div class="events-container">
-    <section class="section" id="upcoming-events">
-      <h1>Upcoming Events (2026)</h1>
-      <p>Our next big event is happening in 2026 — Kiwiburn.</p>
-      <div class="event-search">
-        <input type="text" id="event-search" placeholder="Search Events..." aria-label="Search Events">
-      </div>
-      <div class="events-grid" ondragover="allowDrop(event)" ondrop="dropEvents(event)">
-        <div class="event" draggable="true" ondragstart="drag(event)">
-          <img src="images/Event-Images/To_Be_Announced.png" alt="TBD">
-          <h3>🚧 2026 Event – Details To Be Announced</h3>
-          <p class="event-date"><strong>Date:</strong> January 25, 2026</p>
-          <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 26, 2026, 2:00 AM</p>
-          <p class="event-category"><strong>Category:</strong> Music</p>
-          <p>Our next big event is happening in 2026 — Kiwiburn.</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-      </div>
-      <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
-    </section>
-
-    <section class="section" id="past-events">
-      <h1>Past Events (2025)</h1>
-      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
-      <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
-      <div class="events-grid">
-        <div class="event">
-          <img src="images/Event-Images/Emo-Night-Event.jpg" alt="Emo Night Poster">
-          <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-          <p>Get ready to unleash your inner rebel at our Emo/Pop Punk Hour! Featuring a killer live band, dazzling light shows, a smoke-filled atmosphere, and enough angst to fuel your teenage dreams (or nightmares). Dress up, sing your heart out, and let the feels take over—this is the ultimate tribute to your favorite emo and pop-punk anthems. Don't miss out!</p>
-          <p class="event-date"><strong>Date:</strong> January 23, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 23, 2025, 11:59 PM</p>
-          <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event">
-          <img src="images/Event-Images/Pole-Event.jpg" alt="Pole in the paddock">
-          <h3>Pole in the paddock</h3>
-          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
-          <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 24, 2025, 7:00 PM</p>
-          <p class="event-category"><strong>Category:</strong> Performance</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event">
-          <img src="images/Event-Images/Cosmic-Connections-Event.jpg" alt="Cosmic Connections">
-          <h3>Cosmic Connections</h3>
-          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
-          <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 8:30 PM</p>
-          <p class="event-end"><strong>End:</strong> January 24, 2025, 9:30 PM</p>
-          <p class="event-category"><strong>Category:</strong> Workshop</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event">
-          <img src="images/Event-Images/DJ-Poster.jpg" alt="DJ Showcase & Open Decks">
-          <h3>DJ Showcase & Open Decks</h3>
-          <p>Spin some tunes or vibe to the beats at our DJ Showcase & Open Decks! Our talented camp DJs will kick things off, followed by an open deck session where anyone can jump in and share their mixes. From drum and bass to emo remixes, expect a night of eclectic sounds and high energy.</p>
-          <p class="event-date"><strong>Date:</strong> January 25, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 26, 2025, 1:00 AM</p>
-          <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section submit-section" id="submit">
-      <h2>Submit an Event</h2>
-      <p>Got an idea for an epic event? Share it with us and let’s make it happen at Kiwiburn!</p>
-      <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
-      <a href="submit-event.html" class="submit-button">Submit Your Event</a>
-    </section>
   </div>
 
   <footer>
@@ -929,18 +1113,20 @@
 
     function dropEvents(event) {
       event.preventDefault();
-      const grid = document.querySelector('.events-grid');
-      if (draggedItem && grid.contains(event.target)) {
+      const grid = event.target.closest('.events-grid');
+      if (draggedItem && grid && grid.contains(event.target)) {
         grid.insertBefore(draggedItem, event.target.closest('.event') || null);
       }
     }
 
     // Section Editing
     function saveEventsDetails() {
-      document.querySelector('#upcoming-events h1').textContent = document.getElementById('events-title').value;
-      document.querySelector('#upcoming-events p').textContent = document.getElementById('events-description').value;
-      document.querySelector('#past-events h1').textContent = document.getElementById('events-title').value.replace('Upcoming', 'Past');
-      document.querySelector('#past-events p').textContent = document.getElementById('events-description').value;
+      const title = document.getElementById('events-title').value;
+      const description = document.getElementById('events-description').value;
+      document.querySelector('#upcoming-events h1').textContent = title;
+      document.querySelector('#upcoming-events p').textContent = description;
+      document.querySelector('#past-events h1').textContent = title.replace('Upcoming', 'Past');
+      document.querySelector('#past-events p').textContent = description;
       closeModal('events-modal');
     }
 
@@ -949,6 +1135,19 @@
       document.querySelector('#submit p').textContent = document.getElementById('submit-description').value;
       closeModal('submit-modal');
     }
+
+    // Event Filter
+    document.getElementById('event-filter').addEventListener('change', function() {
+      const category = this.value;
+      const events = document.querySelectorAll('.event');
+      events.forEach(event => {
+        if (category === 'all' || event.getAttribute('data-category') === category) {
+          event.style.display = 'flex';
+        } else {
+          event.style.display = 'none';
+        }
+      });
+    });
   </script>
 </body>
 </html>
