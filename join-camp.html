@@ -3,72 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Cosmic Rejex - Kiwiburn</title>
+  <title>Join Cosmic Rejex Camp - Kiwiburn 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  scroll-behavior: smooth;
-  background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
-  color: #2b1b0f;
-  cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
-  transition: background 0.5s, color 0.5s;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+      cursor: url('images/ufo-cursor.png'), auto;
+      transition: background 0.5s, color 0.5s;
+    }
 
-/* Custom Scrollbar Styles */
-::-webkit-scrollbar {
-  width: 12px; /* Width of the vertical scrollbar */
-  height: 12px; /* Height of the horizontal scrollbar */
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(44, 29, 15, 0.3); /* Track background, matching your theme */
-}
-
-::-webkit-scrollbar-thumb {
-  background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary); /* Image with fallback color */
-  border-radius: 6px; /* Rounded corners for the thumb */
-  border: 2px solid var(--secondary); /* Border to match your theme */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary); /* Hover effect with same image */
-  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary); /* Glow effect to match your theme */
-}
-
-/* Firefox Scrollbar Styling */
-html {
-  scrollbar-width: thin; /* Options: auto, thin, none */
-  scrollbar-color: var(--primary) rgba(44, 29, 15, 0.3); /* Thumb color and track color */
-}
-
-/* Night Mode Scrollbar Styles */
-body.night-mode ::-webkit-scrollbar-track {
-  background: rgba(74, 55, 35, 0.3); /* Darker track for night mode */
-}
-
-body.night-mode ::-webkit-scrollbar-thumb {
-  background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary); /* Same image, different fallback color */
-  border: 2px solid var(--primary);
-}
-
-body.night-mode ::-webkit-scrollbar-thumb:hover {
-  background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
-  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
-}
-
-body.night-mode {
-  scrollbar-color: var(--secondary) rgba(74, 55, 35, 0.3); /* Firefox night mode */
-}
-
-:root {
-  --primary: #e67e22;
-  --secondary: #f39c12;
-  --text: #f8e1b4;
-  --background: #2b1b0f;
-}
+    :root {
+      --primary: #e67e22;
+      --secondary: #f39c12;
+      --text: #f8e1b4;
+      --background: #2b1b0f;
+    }
 
     body.night-mode {
       background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
@@ -86,33 +40,18 @@ body.night-mode {
     body.night-mode .section h1,
     body.night-mode .section h2,
     body.night-mode .section p,
-    body.night-mode .member p,
-    body.night-mode .event p,
-    body.night-mode .event p.event-date,
-    body.night-mode .event p.event-time,
-    body.night-mode .event p.event-end,
-    body.night-mode .event p.event-category {
+    body.night-mode .role p,
+    body.night-mode .form-container label {
       color: #f8e1b4;
     }
 
-    body.night-mode .about-container,
-    body.night-mode .mission-container,
-    body.night-mode .members-container,
-    body.night-mode .newsletter-container,
-    body.night-mode .submit-section,
-    body.night-mode .history-container,
-    body.night-mode .countdown-section {
+    body.night-mode .form-container {
       background: rgba(44, 29, 15, 0.3);
     }
 
-    body.night-mode .modal-content {
-      background: rgba(44, 29, 15, 0.9);
-      color: #f8e1b4;
-    }
-
-    body.night-mode .modal-content input,
-    body.night-mode .modal-content textarea,
-    body.night-mode .modal-content select {
+    body.night-mode .form-container input,
+    body.night-mode .form-container textarea,
+    body.night-mode .form-container select {
       background: rgba(255, 255, 255, 0.1);
       color: #f8e1b4;
     }
@@ -350,11 +289,15 @@ body.night-mode {
         width: 100%;
         box-sizing: border-box;
       }
+
+      .hamburger {
+        display: block;
+      }
     }
 
     .header {
       background: url('images/Cover-Photo/last-try.png') center/cover no-repeat;
-      height: 70vh;
+      height: 50vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -366,8 +309,8 @@ body.night-mode {
     }
 
     .header-logo {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       object-fit: cover;
       z-index: 10;
@@ -376,83 +319,19 @@ body.night-mode {
 
     .header h1 {
       font-family: 'Bebas Neue', cursive;
-      font-size: 4em;
+      font-size: 3em;
       max-width: 90%;
       letter-spacing: 2px;
       margin-bottom: 10px;
     }
 
     .header p {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin-bottom: 20px;
     }
 
-    .header-ctas {
-      display: flex;
-      gap: 10px;
-    }
-
-    .apply-button, .secondary-button {
-      display: inline-block;
-      padding: 12px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2em;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .apply-button {
-      background: var(--primary);
-      color: var(--text);
-      animation: glow 3s ease-in-out infinite alternate;
-    }
-
-    .secondary-button {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--text);
-    }
-
-    .apply-button:hover, .secondary-button:hover {
-      background: var(--secondary);
-      color: var(--background);
-    }
-
-    @keyframes glow {
-      from { 
-        text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400;
-        box-shadow: 0 0 5px var(--primary); 
-      }
-      to { 
-        text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22;
-        box-shadow: 0 0 15px var(--primary); 
-      }
-    }
-
-    .scroll-down {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      animation: bounce 2s infinite;
-      color: #f8e1b4;
-      transition: box-shadow 0.3s;
-    }
-
-    .scroll-down:hover {
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
-      40% { transform: translate(-50%, -10px); }
-      60% { transform: translate(-50%, -5px); }
-    }
-
     .section {
-      padding: 80px 20px;
+      padding: 60px 20px;
       text-align: center;
       background: url('images/dusty-texture.png') center/cover;
       border-top: 1px solid #e67e22;
@@ -483,66 +362,7 @@ body.night-mode {
       color: #2b1b0f;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding-top: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 2px solid #e67e22;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
-    }
-
-    .gallery .image-container {
-      position: relative;
-    }
-
-    .gallery .delete-button, .gallery .edit-button {
-      display: none;
-      position: absolute;
-      top: 5px;
-      background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
-      border: none;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      font-size: 0.9em;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .gallery .delete-button {
-      right: 5px;
-    }
-
-    .gallery .edit-button {
-      right: 35px;
-    }
-
-    .logged-in .gallery .delete-button, .logged-in .gallery .edit-button {
-      display: block;
-    }
-
-    .gallery .delete-button:hover, .gallery .edit-button:hover {
-      background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .members-grid, .roles-grid, .events-grid {
+    .roles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 20px;
@@ -576,7 +396,7 @@ body.night-mode {
     }
 
     .scroll-arrow:hover {
-      background: rgba(230, 126, 34, 0.9);
+      background: rgba(230, 126, 4, 0.9);
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
@@ -588,7 +408,7 @@ body.night-mode {
       right: 10px;
     }
 
-    .member, .role, .event {
+    .role {
       text-align: center;
       position: relative;
       display: flex;
@@ -600,20 +420,17 @@ body.night-mode {
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease;
       height: 100%;
-    }
-
-    .role {
       min-height: 250px;
     }
 
-    .member:hover, .role:hover, .event:hover {
+    .role:hover {
       box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
     }
 
-    .member img, .role img {
-      width: 140px;
-      height: 140px;
+    .role img {
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -621,140 +438,108 @@ body.night-mode {
       border: 3px solid #f39c12;
     }
 
-    .event img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      border: 2px solid #f39c12;
-    }
-
-    .member.camp-lead, .member.deputy-lead {
-      position: relative;
-    }
-
-    .member.camp-lead::before {
-      content: '👑';
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      color: #FFD700;
-      z-index: 10;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .member.deputy-lead::before {
-      content: '👑';
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      color: #C0C0C0;
-      z-index: 10;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .member h3, .role h3, .event h3 {
+    .role h3 {
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
-      color: #000000;
+      color: #2b1b0f;
       line-height: 1.2;
     }
 
-    .member span {
-      font-weight: bold;
-      color: #e67e22;
-      display: block;
-      font-size: 1.2em;
-      margin-bottom: 5px;
-      line-height: 1.3;
-    }
-
-    .member p, .event p {
-      font-size: 1em;
-      color: #000000;
-      margin: 5px 0;
-      line-height: 1.4;
-      max-width: 90%;
-    }
-
-    .role p {
-      font-size: 1em;
-      color: #ffffff;
-      margin: 5px 0;
-      line-height: 1.4;
-      max-width: 90%;
-    }
-
-    .event p.event-date, .event p.event-time, .event p.event-end, .event p.event-category {
-      font-size: 0.95em;
-      color: #2b1b0f;
-      margin: 5px 0;
-      line-height: 1.4;
-      max-width: 90%;
-    }
-
-    .event p.event-date strong, .event p.event-time strong, .event p.event-end strong, .event p.event-category strong {
-      color: #e67e22;
-    }
-
-    .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
-      display: none;
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
-      border: none;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      font-size: 0.9em;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-    }
-
-    .event .edit-button, .role .edit-button, .member .edit-button {
-      right: 35px;
-    }
-
-    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button, .logged-in .event .delete-button, .logged-in .role .edit-button, .logged-in .member .edit-button {
-      display: block;
-    }
-
-    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover, .role .edit-button:hover, .member .edit-button:hover {
-      background: rgba(230, 126, 34, 0.9);
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .role .apply-button {
+    .apply-button {
       display: inline-block;
-      margin-top: 10px;
       padding: 8px 12px;
       background-color: #e67e22;
       color: #2b1b0f;
       text-decoration: none;
       border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
-      font-size: 0.9em;
+      font-size: 1rem;
+      margin: 10px 0;
       transition: background-color 0.3s, box-shadow 0.3s;
     }
 
-    .role .apply-button:hover {
+    .apply-button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .edit-button, .delete-button {
+      position: absolute;
+      top: 10px;
+      padding: 5px;
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    body.logged-in .edit-button,
+    body.logged-in .delete-button,
+    body.logged-in .save-button,
+    body.logged-in .edit-section-button {
+      display: block;
+    }
+
+    .edit-button {
+      right: 35px;
+    }
+
+    .delete-button {
+      right: 10px;
+    }
+
+    .edit-button:hover, .delete-button:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .save-button, .edit-section-button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      margin: 20px 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    .save-button:hover, .edit-section-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .role p {
+      font-size: 1em;
+      color: #2b1b0f;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .role p.open {
+      color: #2ecc71;
+      font-weight: bold;
+    }
+
+    .role p.filled {
+      color: #e74c3c;
+      font-weight: bold;
     }
 
     .role .tooltip {
       visibility: hidden;
       width: 180px;
       background-color: rgba(44, 29, 15, 0.95);
-      color: #f8e1b4;
+      color: #f8e1b4; /* Changed to white for visibility */
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -775,17 +560,108 @@ body.night-mode {
       border: 2px solid #f39c12;
     }
 
-    .role .tooltip span {
-      font-weight: bold;
-      font-size: 1em;
-    }
-
     .role:hover .tooltip {
       visibility: visible;
       opacity: 1;
       transform: translate(-50%, -110%);
     }
 
+    .form-container {
+      text-align: left;
+      max-width: 600px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid #e67e22;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    .form-container label {
+      font-family: 'Montserrat', sans-serif;
+      color: #2b1b0f;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.9);
+      color: #2b1b0f;
+      font-size: 1rem;
+      box-sizing: border-box;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-container input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+      accent-color: #e67e22;
+    }
+
+    .form-container select {
+      color: #2b1b0f;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .form-container select option {
+      color: #2b1b0f;
+      background: #ffffff;
+    }
+
+    .form-container select:focus,
+    .form-container input:focus,
+    .form-container textarea:focus {
+      outline: none;
+      border-color: #f39c12;
+      box-shadow: 0 0 12px rgba(243, 156, 18, 0.5);
+    }
+
+    .form-container textarea {
+      resize: vertical;
+    }
+
+    .form-container button {
+      padding: 14px 24px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.3em;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+      display: block;
+      margin: 20px auto 0;
+    }
+
+    .form-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 12px #e67e22, 0 0 20px #f39c12;
+      transform: translateY(-2px);
+    }
+
+    .name-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .name-container div {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    /* Modal Styles */
     .modal {
       display: none;
       position: fixed;
@@ -793,21 +669,90 @@ body.night-mode {
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
       z-index: 2000;
       justify-content: center;
       align-items: center;
     }
 
     .modal-content {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(44, 29, 15, 0.95);
       padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
+      border-radius: 12px;
       border: 2px solid #e67e22;
-      position: relative;
+      max-width: 500px;
+      width: 90%;
+      color: #f8e1b4;
+    }
+
+    body.night-mode .modal-content {
+      background: rgba(74, 55, 35, 0.95);
+    }
+
+    .modal-content h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #f8e1b4;
+    }
+
+    .modal-content label {
+      font-family: 'Montserrat', sans-serif;
+      color: #f8e1b4;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: #f8e1b4;
+      cursor: pointer;
+    }
+
+    @media only screen and (max-width: 480px) {
+      .name-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .name-container div {
+        min-width: 100%;
+      }
     }
 
     .emo-playlist-player {
@@ -822,68 +767,40 @@ body.night-mode {
     }
 
     .toggle-player {
-  background: var(--emo-dark);
-  color: #ffffff;
-  border: 2px solid var(--emo-accent);
-  border-radius: 8px;
-  padding: 10px 15px;
-  font-family: 'Special Elite', cursive;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
-  text-transform: uppercase;
-}
+      background: var(--primary);
+      color: var(--text);
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      margin-bottom: 10px;
+    }
 
-.toggle-player:hover {
-  background: var(--emo-accent);
-  box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
-  transform: scale(1.05);
-}
+    .toggle-player:hover {
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    }
 
-body.night-mode .toggle-player {
-  background: var(--emo-dark);
-  color: #d3d3d3;
-  border-color: var(--emo-accent);
-}
+    body.night-mode .toggle-player {
+      background: var(--secondary);
+      color: var(--background);
+    }
 
-body.night-mode .toggle-player:hover {
-  background: var(--emo-accent);
-  box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
-}
+    body.night-mode .toggle-player:hover {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
 
-.toggle-image {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--emo-accent);
-}
-
-/* Responsive Adjustments */
-@media only screen and (max-width: 768px) {
-  .toggle-player {
-    font-size: 0.9rem;
-    padding: 8px 12px;
-  }
-  .toggle-image {
-    width: 25px;
-    height: 25px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .toggle-player {
-    font-size: 0.8rem;
-    padding: 6px 10px;
-  }
-  .toggle-image {
-    width: 20px;
-    height: 20px;
-  }
-}
-  
+    .toggle-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--primary);
+    }
 
     .player-wrapper {
       width: 300px;
@@ -904,220 +821,11 @@ body.night-mode .toggle-player:hover {
       border-color: var(--secondary);
     }
 
-.toggle-player {
-  background: var(--primary);
-  color: var(--text);
-  border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s;
-  margin-bottom: 10px;
-}
-
-.toggle-player:hover {
-  background: var(--secondary);
-  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
-}
-
-body.night-mode .toggle-player {
-  background: var(--secondary);
-  color: var(--background);
-}
-
-body.night-mode .toggle-player:hover {
-  background: var(--primary);
-  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
-}
-
-    body.night-mode .toggle-player:hover {
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
-    }
-
     .emo-playlist-player iframe {
       width: 100%;
       height: 152px;
       border: none;
       border-radius: 12px;
-    }
-
-    @media only screen and (max-width: 768px) {
-      .emo-playlist-player {
-        bottom: 10px;
-        right: 10px;
-      }
-
-      .player-wrapper {
-        width: 250px;
-      }
-
-      .toggle-player {
-        font-size: 0.9rem;
-        padding: 6px 10px;
-      }
-
-      .emo-playlist-player iframe {
-        height: 120px;
-      }
-    }
-
-    @media only screen and (max-width: 480px) {
-      .player-wrapper {
-        width: 200px;
-      }
-
-      .toggle-player {
-        font-size: 0.8rem;
-        padding: 5px 8px;
-      }
-
-      .emo-playlist-player iframe {
-        height: 100px;
-      }
-    }
-
-    .modal-content h3 {
-      font-family: 'Bebas Neue', cursive;
-      color: #2b1b0f;
-      margin-bottom: 20px;
-    }
-
-    .modal-content input, .modal-content textarea, .modal-content select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-    }
-
-    .modal-content input[type="file"] {
-      background: none;
-      border: none;
-      padding: 5px;
-    }
-
-    .modal-content button {
-      padding: 10px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin: 0 10px;
-    }
-
-    .modal-content button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .modal-content .close-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      font-size: 1.2em;
-      padding: 5px 10px;
-    }
-
-    .events-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-    }
-
-    .countdown-section {
-      position: relative;
-      background: url('images/Countdown/Kiwiburn-Coverphoto.jpg') center/cover no-repeat;
-      padding: 60px 20px;
-      text-align: center;
-      color: #ffffff;
-      margin: 40px 0;
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    body.night-mode .countdown-section {
-      background: url('images/countdown-bg.jpg') center/cover no-repeat;
-    }
-
-    .countdown-section h2 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 3.5em;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      color: #ffffff;
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2.5em;
-      color: #ffffff;
-      background: rgba(44, 29, 15, 0.7);
-      padding: 15px 30px;
-      border-radius: 10px;
-      border: 2px solid #e67e22;
-    }
-
-    .countdown span {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .countdown span small {
-      font-size: 0.5em;
-      text-transform: uppercase;
-    }
-
-    .countdown-section input {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      margin: 10px;
-      display: none;
-    }
-
-    .logged-in .countdown-section input {
-      display: inline-block;
-    }
-
-    .countdown-section button {
-      padding: 8px 12px;
-      background-color: #e67e22;
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      display: none;
-    }
-
-    .logged-in .countdown-section button {
-      display: inline-block;
-    }
-
-    .countdown-section button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     footer {
@@ -1132,345 +840,22 @@ body.night-mode .toggle-player:hover {
       background-color: #4a3723;
     }
 
-    .form-container {
-      text-align: left;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .form-container input,
-    .form-container textarea,
-    .form-container select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      font-size: 1rem;
-      box-sizing: border-box;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-    }
-
-    .form-container button {
-      padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .form-container button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .submit-button, .fee-button {
-      display: inline-block;
-      padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      text-decoration: none;
-      border-radius: 5px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2em;
-      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-      margin: 10px;
-    }
-
-    .submit-button:hover, .fee-button:hover {
-      background-color: #f39c12;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .section#submit {
-      background-color: rgba(244, 228, 188, 0.8);
-    }
-
-    .submit-section {
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: 40px auto 0 auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .newsletter-section {
-      padding: 80px 20px;
-      background-color: rgba(244, 228, 188, 0.8);
-    }
-
-    body.night-mode .newsletter-section {
-      background-color: rgba(44, 29, 15, 0.8);
-    }
-
-    .newsletter-container .section {
-      padding: 0;
-    }
-
-    .save-button {
-      padding: 10px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin: 20px auto;
-      display: none;
-    }
-
-    .logged-in .save-button {
-      display: block;
-    }
-
-    .edit-section-button {
-      display: none;
-      padding: 8px 12px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin: 10px auto;
-    }
-
-    .logged-in .edit-section-button {
-      display: block;
-    }
-
-    .edit-section-button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .about-section {
-      padding: 60px 20px;
-      text-align: left;
-      background: none;
-    }
-
-    .about-content {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .about-text {
-      flex: 1;
-    }
-
-    .about-text h1 {
-      font-size: 4em;
-      margin-bottom: 20px;
-      color: #2b1b0f;
-    }
-
-    .about-text p {
-      font-size: 1.2em;
-      line-height: 1.8;
-      color: #2b1b0f;
-      max-width: 100%;
-    }
-
-    .about-image img {
-      width: 300px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      border: 2px solid #e67e22;
-    }
-
-    .history-section {
-      padding: 60px 20px;
-      text-align: center;
-      background: none;
-    }
-
-    .history-container h1 {
-      font-size: 4em;
-      margin-bottom: 40px;
-      color: #e01b24;
-      position: relative;
-    }
-
-    .history-container h1::before,
-    .history-container h1::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 15%;
-      height: 2px;
-      background: #e01b24;
-    }
-
-    .history-container h1::before {
-      left: 0;
-    }
-
-    .history-container h1::after {
-      right: 0;
-    }
-
-    .history-gallery {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto 40px;
-    }
-
-    .history-item {
-      flex: 1;
-      text-align: center;
-    }
-
-    .history-item img {
-      width: 100%;
-      max-width: 400px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      border: 2px solid #e67e22;
-      margin-bottom: 15px;
-    }
-
-    .history-item h3 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.8em;
-      color: #2b1b0f;
-      margin-bottom: 10px;
-    }
-
-    .history-item p {
-      font-size: 1em;
-      line-height: 1.6;
-      color: #2b1b0f;
-      max-width: 350px;
-      margin: 0 auto;
-    }
-
-    body.night-mode .history-container h1 {
-      color: #f8e1b4;
-    }
-
-    body.night-mode .history-container h1::before,
-    body.night-mode .history-container h1::after {
-      background: #f8e1b4;
-    }
-
-    body.night-mode .history-item h3,
-    body.night-mode .history-item p {
-      color: #f8e1b4;
-    }
-
     @media only screen and (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-
-      nav {
-        flex-direction: row;
-        align-items: center;
-        padding: 10px;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(44, 29, 15, 0.9);
-        padding: 10px 0;
-        position: absolute;
-        top: 70px;
-        left: 0;
-      }
-
-      body.night-mode .nav-links {
-        background: rgba(74, 55, 35, 0.9);
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      nav a {
-        margin: 5px 0;
-        font-size: 1rem;
-        padding: 10px;
-        text-align: center;
-      }
-
-      .theme-toggle {
-        font-size: 0.9rem;
-        padding: 5px;
-      }
-
-      .login-container {
-        padding: 10px;
-      }
-
-      .login-container form {
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .login-container input, .login-container button {
-        font-size: 0.8rem;
-        padding: 6px;
-        width: 100%;
-        box-sizing: border-box;
-      }
-
       .header {
-        height: 50vh;
+        height: 40vh;
       }
 
       .header-logo {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
       }
 
       .header h1 {
-        font-size: 3em;
+        font-size: 2.5em;
       }
 
       .header p {
-        font-size: 1.2em;
-      }
-
-      .apply-button, .secondary-button {
         font-size: 1em;
-        padding: 10px 15px;
-      }
-
-      .scroll-down {
-        font-size: 1.2rem;
       }
 
       .section {
@@ -1486,13 +871,7 @@ body.night-mode .toggle-player:hover {
         max-width: 95%;
       }
 
-      .gallery {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        max-width: 95%;
-      }
-
-      .members-grid, .roles-grid {
+      .roles-grid {
         display: flex;
         flex-direction: row;
         overflow-x: auto;
@@ -1502,47 +881,28 @@ body.night-mode .toggle-player:hover {
         scroll-snap-type: x mandatory;
       }
 
-      .members-grid .scroll-arrow, .roles-grid .scroll-arrow {
+      .roles-grid .scroll-arrow {
         display: block;
       }
 
-      .member, .role {
+      .role {
         flex: 0 0 140px;
         scroll-snap-align: start;
         min-height: 240px;
         padding: 10px;
       }
 
-      .member img, .role img {
-        width: 80px;
-        height: 80px;
+      .role img {
+        width: 60px;
+        height: 60px;
       }
 
-      .member.camp-lead::before, .member.deputy-lead::before {
-        font-size: 1.2rem;
-        top: -15px;
-      }
-
-      .member h3, .role h3 {
+      .role h3 {
         font-size: 1.3em;
       }
 
-      .member span {
-        font-size: 1.1em;
-      }
-
-      .member p, .role p {
+      .role p {
         font-size: 0.9em;
-      }
-
-      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
-        width: 20px;
-        height: 20px;
-        font-size: 0.8em;
-      }
-
-      .event .edit-button, .role .edit-button, .member .edit-button {
-        right: 30px;
       }
 
       .role .tooltip {
@@ -1550,114 +910,42 @@ body.night-mode .toggle-player:hover {
         font-size: 0.85em;
       }
 
-      .role .apply-button {
-        font-size: 0.8em;
+      .form-container {
+        max-width: 95%;
+        padding: 20px;
+      }
+
+      .emo-playlist-player {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .player-wrapper {
+        width: 250px;
+      }
+
+      .toggle-player {
+        font-size: 0.9rem;
         padding: 6px 10px;
       }
 
-      .events-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        max-width: 95%;
+      .toggle-image {
+        width: 25px;
+        height: 25px;
       }
 
-      .event img {
-        height: 150px;
+      .emo-playlist-player iframe {
+        height: 120px;
       }
-
-      .event h3 {
-        font-size: 1.4em;
-      }
-
-      .event p {
-        font-size: 0.95em;
-      }
-
-      .event {
-        min-height: 600px;
-      }
-
-      .countdown {
-        font-size: 1.5em;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .form-container {
-        max-width: 95%;
-      }
-
-      .submit-section, .newsletter-container {
-        max-width: 95%;
-        padding: 15px;
-      }
-
-      .submit-button, .fee-button {
-        font-size: 1em;
-        padding: 10px 15px;
-      }
-
-      .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
-        max-width: 95%;
-        padding: 20px 15px;
-      }
-
-      .about-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .about-image img {
-        width: 100%;
-        max-width: 300px;
-      }
-
-      .about-text h1 {
-        font-size: 2.5em;
-      }
-
-      .history-gallery {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-      }
-
-      .history-item img {
-        width: 100%;
-        max-width: 300px;
-        height: 200px;
-      }
-
-      .history-item h3 {
-        font-size: 1.5em;
-      }
-
-      .history-item p {
-        font-size: 0.9em;
-        max-width: 90%;
-      }
-
-      .history-container h1 {
-        font-size: 2.5em;
-      }
-
-      .history-container h1::before,
-      .history-container h1::after {
-        width: 10%;
-      }
+    }
 
     @media only screen and (max-width: 480px) {
       .header h1 {
-        font-size: 2.2em;
+        font-size: 2em;
       }
 
       .header p {
-        font-size: 1em;
-      }
-
-      .header-logo {
-        width: 80px;
-        height: 80px;
+        font-size: 0.9em;
       }
 
       .section h1, .section h2 {
@@ -1668,52 +956,28 @@ body.night-mode .toggle-player:hover {
         font-size: 0.9em;
       }
 
-      .members-grid, .roles-grid {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
+      .roles-grid {
         gap: 10px;
         padding: 0 5px;
-        scroll-snap-type: x mandatory;
       }
 
-      .member, .role {
+      .role {
         flex: 0 0 120px;
-        scroll-snap-align: start;
         min-height: 200px;
         padding: 8px;
       }
 
-      .member img, .role img {
-        width: 60px;
-        height: 60px;
+      .role img {
+        width: 50px;
+        height: 50px;
       }
 
-      .member h3, .role h3 {
+      .role h3 {
         font-size: 1.1em;
       }
 
-      .member span {
-        font-size: 1em;
-      }
-
-      .member p, .role p {
+      .role p {
         font-size: 0.85em;
-      }
-
-      .member.camp-lead::before, .member.deputy-lead::before {
-        font-size: 1rem;
-        top: -12px;
-      }
-
-      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
-        width: 18px;
-        height: 18px;
-        font-size: 0.7em;
-      }
-
-      .event .edit-button, .role .edit-button, .member .edit-button {
-        right: 25px;
       }
 
       .role .tooltip {
@@ -1722,714 +986,760 @@ body.night-mode .toggle-player:hover {
         padding: 8px;
       }
 
-      .role .apply-button {
-        font-size: 0.7em;
+      .player-wrapper {
+        width: 200px;
+      }
+
+      .toggle-player {
+        font-size: 0.8rem;
         padding: 5px 8px;
       }
 
-      .countdown {
-        font-size: 1.2em;
+      .toggle-image {
+        width: 20px;
+        height: 20px;
       }
 
-      .newsletter-container h2 {
-        font-size: 1.5em;
-      }
-
-      .newsletter-container p {
-        font-size: 0.9em;
-      }
-
-      .event img {
-        height: 120px;
-      }
-
-      .event {
-        min-height: 500px;
-      }
-
-      .hamburger {
-        font-size: 1.2rem;
-      }
-
-      .login-container input, .login-container button {
-        font-size: 0.7em;
-        padding: 5px;
-      }
-
-      .apply-button, .secondary-button {
-        font-size: 0.9em;
-        padding: 8px 12px;
-      }
-
-      .about-text h1 {
-        font-size: 2em;
-      }
-
-      .history-container h1 {
-        font-size: 2em;
-      }
-
-      .history-container h1::before,
-      .history-container h1::after {
-        width: 5%;
-      }
-
-      .history-item h3 {
-        font-size: 1.3em;
-      }
-
-      .history-item p {
-        font-size: 0.85em;
+      .emo-playlist-player iframe {
+        height: 100px;
       }
     }
 
     @media only screen and (min-width: 769px) {
-      .roles-grid .scroll-arrow, .members-grid .scroll-arrow {
+      .roles-grid .scroll-arrow {
         display: none;
       }
     }
   </style>
 </head>
 <body>
-<nav>
-  <img src="images/Logo/Logo_Update.png" alt="Cosmic Rejex Logo" class="nav-logo">
-  <button class="hamburger" aria-label="Toggle menu">☰</button>
-  <div class="nav-links">
-    <div class="dropdown">
-      <a href="#about" class="dropdown-toggle">About</a>
-      <div class="dropdown-menu">
-        <a href="#about">Our Camp</a>
-        <a href="#mission">Our Mission</a>
-        <a href="#history">Our History</a>
-      </div>
-    </div>
-<div class="dropdown">
-  <a href="events.html" class="dropdown-toggle">Events</a>
-  <div class="dropdown-menu">
-    <a href="events.html#upcoming-events">Upcoming Events</a>
-    <a href="events.html#past-events">Past Events</a>
-    <a href="events.html#submit">Submit Event</a>
-  </div>
-</div>
-    <div class="dropdown">
-      <a href="#join" class="dropdown-toggle">Join Us</a>
-      <div class="dropdown-menu">
-        <a href="join-camp.html">Membership Info</a>
-        <a href="join-camp.html">Apply to Join</a>
-        <a href="camp-fees.html">Camp Fees</a>
-        <a href="Task_Roster.html">Task/Roster</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <a href="gallery.html" class="dropdown-toggle">Gallery</a>
-      <div class="dropdown-menu">
-        <a href="gallery.html?year=2021">2021</a>
-        <a href="gallery.html?year=2022">2022</a>
-        <a href="gallery.html?year=2023">2023</a>
-        <a href="gallery.html?year=2024">2024</a>
-        <a href="gallery.html?year=2025">2025</a>
-      </div>
-    </div>
-    <a href="#newsletter">Newsletter</a>
-    <a href="contact.html">Contact Us</a>
-  </div>
-  <div class="nav-login">
-    <form id="login-form">
-      <input type="text" id="username" placeholder="Username" required aria-label="Username">
-      <input type="password" id="password" placeholder="Password" required aria-label="Password">
-      <button type="submit">Login</button>
-    </form>
-    <button class="logout-button" aria-label="Logout">Logout</button>
-  </div>
-  <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
-</nav>
-
-<header class="header" id="home">
-  <img src="images/Logo/3D_Rotation_Logo.gif" alt="Cosmic Rejex Logo" class="header-logo">
-  <h1>JOIN COSMIC REJEX</h1>
-  <p>A Safe Space for Emos, Rockers, and Dreamers</p>
-  <div class="header-ctas">
-    <a href="join-camp.html" class="apply-button">Apply for 2026</a>
-    <a href="#about" class="secondary-button">Learn More</a>
-  </div>
-  <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
-  <a href="#about" class="scroll-down" aria-label="Scroll to about section">▼</a>
-</header>
-
-<div class="modal" id="member-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('member-modal')" aria-label="Close modal">×</button>
-    <h3 id="member-modal-title">Add Member Details</h3>
-    <input type="text" id="member-name" placeholder="Member Name" required aria-label="Member Name">
-    <input type="text" id="member-role" placeholder="Member Role" required aria-label="Member Role">
-    <textarea id="member-description" placeholder="Member Description" required aria-label="Member Description"></textarea>
-    <input type="file" id="member-photo" accept="image/*" aria-label="Member Photo">
-    <button onclick="saveMemberDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="role-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('role-modal')" aria-label="Close modal">×</button>
-    <h3 id="role-modal-title">Create New Role</h3>
-    <input type="text" id="role-title" placeholder="Role Title" required aria-label="Role Title">
-    <textarea id="role-description" placeholder="Role Description" required aria-label="Role Description"></textarea>
-    <input type="file" id="role-icon" accept="image/*" aria-label="Role Icon">
-    <button onclick="saveRoleDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="event-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('event-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Event</h3>
-    <input type="text" id="event-title" placeholder="Event Title" required aria-label="Event Title">
-    <textarea id="event-description" placeholder="Event Description" required aria-label="Event Description"></textarea>
-    <input type="date" id="event-date" required aria-label="Event Date">
-    <input type="time" id="event-time" required aria-label="Event Time">
-    <input type="datetime-local" id="event-end" required aria-label="Event End Date and Time">
-    <select id="event-category" required aria-label="Event Category">
-      <option value="" disabled selected>Select Category</option>
-      <option value="Music">Music</option>
-      <option value="Art">Art</option>
-      <option value="Performance">Performance</option>
-      <option value="Workshop">Workshop</option>
-      <option value="Other">Other</option>
-    </select>
-    <input type="file" id="event-image" accept="image/*" aria-label="Event Image">
-    <button onclick="saveEventDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="about-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('about-modal')" aria-label="Close modal">×</button>
-    <h3>Edit About Section</h3>
-    <input type="text" id="about-title" placeholder="Section Title" required aria-label="Section Title">
-    <textarea id="about-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-    <input type="file" id="about-image" accept="image/*" aria-label="About Image">
-    <button onclick="saveAboutDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="mission-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('mission-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Mission Section</h3>
-    <input type="text" id="mission-title" placeholder="Section Title" required aria-label="Section Title">
-    <textarea id="mission-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-    <input type="file" id="mission-image" accept="image/*" aria-label="Mission Image">
-    <button onclick="saveMissionDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="gallery-image-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('gallery-image-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Gallery Image</h3>
-    <input type="text" id="gallery-image-alt" placeholder="Image Alt Text" required aria-label="Image Alt Text">
-    <input type="file" id="gallery-image-file" accept="image/*" aria-label="Gallery Image File">
-    <button onclick="saveGalleryImageDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="events-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('events-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Events Section</h3>
-    <input type="text" id="events-title" placeholder="Section Title" required aria-label="Section Title">
-    <textarea id="events-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-    <button onclick="saveEventsDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="newsletter-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('newsletter-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Newsletter Section</h3>
-    <input type="text" id="newsletter-title" placeholder="Section Title" required aria-label="Section Title">
-    <textarea id="newsletter-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-    <button onclick="saveNewsletterDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="join-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('join-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Join Section</h3>
-    <input type="text" id="join-title" placeholder="Section Title" required aria-label="Section Title">
-    <textarea id="join-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-    <button onclick="saveJoinDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="submit-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('submit-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Submit Event Section</h3>
-    <input type="text" id="submit-title" placeholder="Section Title" required aria-label="Section Title">
-    <textarea id="submit-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-    <button onclick="saveSubmitDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="countdown-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('countdown-modal')" aria-label="Close modal">×</button>
-    <h3>Edit Countdown</h3>
-    <input type="datetime-local" id="countdown-date" required aria-label="Countdown Date and Time">
-    <input type="file" id="countdown-bg" accept="image/*" aria-label="Countdown Background Image">
-    <button onclick="saveCountdownDetails()">Save</button>
-  </div>
-</div>
-
-<div class="modal" id="history-modal">
-  <div class="modal-content">
-    <button class="close-button" onclick="closeModal('history-modal')" aria-label="Close modal">×</button>
-    <h3>Edit History Section</h3>
-    <input type="text" id="history-title" placeholder="Section Title" required aria-label="Section Title">
-    <textarea id="history-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-    <input type="file" id="history-image1" accept="image/*" aria-label="History Image 1">
-    <input type="file" id="history-image2" accept="image/*" aria-label="History Image 2">
-    <input type="file" id="history-image3" accept="image/*" aria-label="History Image 3">
-    <button onclick="saveHistoryDetails()">Save</button>
-  </div>
-</div>
-  
-<div class="about-container">
-  <section class="section about-section" id="about">
-    <div class="about-content">
-      <div class="about-text">
-        <h1>About Our Camp</h1>
-        <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
-      </div>
-      <div class="about-image">
-        <img src="images/About-Our-Camp/Emo_Alien.png" alt="Camp Mates">
-      </div>
-    </div>
-    <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
-  </section>
-</div>
-
-<div class="mission-container">
-  <section class="section" id="mission">
-    <h1>Our Mission</h1>
-    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
-    <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
-    <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
-      <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
-        <img src="images/Our-Mission/Camp-Photo.jpg" alt="Our Mission Camp Photo">
-        <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
-        <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
-      </div>
-    </div>
-    <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
-  </section>
-</div>
-
-<div class="history-container">
-  <section class="section history-section" id="history">
-    <h1>Our History</h1>
-    <div class="history-gallery">
-      <div class="history-item">
-        <img src="images/History/Early-Days.jpg" alt="Early Days of Cosmic Rejex">
-        <h3>The Early Days</h3>
-        <p>Cosmic Rejex started as a small group of Kiwiburn regulars in 2020, united by a love for alternative music and self-expression. We set up our first camp with just a few tents, a portable speaker, and a dream to create a space for misfits.</p>
-      </div>
-      <div class="history-item">
-        <img src="images/History/First-Sound-Camp.jpg" alt="First Sound Camp">
-        <h3>The Sound Camp Era</h3>
-        <p>By 2022, we evolved into a full-fledged sound camp, bringing emo anthems and drum and bass to the playa. Our crew grew, and we introduced alien-themed art installations, making Cosmic Rejex a Kiwiburn staple.</p>
-      </div>
-      <div class="history-item">
-        <img src="images/History/Future-Vision.jpg" alt="Future Vision">
-        <h3>The Future</h3>
-        <p>Now, Cosmic Rejex is looking ahead to expand our inclusive vision. We aim to create a platform where musicians and artists of all genres can share their talents, continuing to grow our community at Kiwiburn and beyond.</p>
-      </div>
-    </div>
-    <button class="edit-section-button" onclick="openModal('history-modal')">Edit Section</button>
-  </section>
-</div>
-
-  <div class="members-container">
-    <section class="section" id="members">
-      <h1>Meet Our Core Camp Crew</h1>
-      <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
-        <div class="scroll-arrow left" data-grid="members">◄</div>
-        <div class="scroll-arrow right" data-grid="members">►</div>
-        <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Shanon_Richards.png" alt="Shanon Richards">
-          <h3>Shanon Richards</h3>
-          <span>Camp Lead</span>
-          <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Meghan_Louise _Robson.png" alt="Meghan">
-          <h3>Meghan Robson</h3>
-          <span>Deputy Lead</span>
-          <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Russell_Duffield.png" alt="Russell">
-          <h3>Russell Duffield</h3>
-          <span>Build Lead</span>
-          <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Micheal_Dunstan.png" alt="Micheal">
-          <h3>Micheal Dunstan</h3>
-          <span>Logistics Lead</span>
-          <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Tomas_Shelby.png" alt="Tomas">
-          <h3>Tomas Shelby</h3>
-          <span>Sound Lead</span>
-          <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Alana_Stewart.png" alt="Alana">
-          <h3>Alana Stewart</h3>
-          <span>Kitchen Lead</span>
-          <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
+  <nav>
+    <img src="images/Logo/Alien_Logo_New.png" alt="Cosmic Rejex Logo" class="nav-logo">
+    <button class="hamburger" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <div class="dropdown">
+        <a href="index.html#about" class="dropdown-toggle">About</a>
+        <div class="dropdown-menu">
+          <a href="index.html#about">Our Camp</a>
+          <a href="index.html#mission">Our Mission</a>
+          <a href="index.html#history">Our History</a>
         </div>
       </div>
+      <div class="dropdown">
+        <a href="index.html#events" class="dropdown-toggle">Events</a>
+        <div class="dropdown-menu">
+          <a href="index.html#events">Upcoming Events</a>
+          <a href="index.html#past-events">Past Events</a>
+          <a href="submit-event.html">Submit Event</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="#join" class="dropdown-toggle">Join Us</a>
+        <div class="dropdown-menu">
+          <a href="join-camp.html">Membership Info</a>
+          <a href="join-camp.html">Apply to Join</a>
+          <a href="camp-fees.html">Camp Fees</a>
+          <a href="Task_Roster.html">Task/Roster</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="gallery.html" class="dropdown-toggle">Gallery</a>
+        <div class="dropdown-menu">
+          <a href="gallery.html?year=2021">2021</a>
+          <a href="gallery.html?year=2022">2022</a>
+          <a href="gallery.html?year=2023">2023</a>
+          <a href="gallery.html?year=2024">2024</a>
+          <a href="gallery.html?year=2025">2025</a>
+        </div>
+      </div>
+      <a href="index.html#newsletter">Newsletter</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="nav-login">
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required aria-label="Username">
+        <input type="password" id="password" placeholder="Password" required aria-label="Password">
+        <button type="submit">Login</button>
+      </form>
+      <button class="logout-button" aria-label="Logout">Logout</button>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+  </nav>
 
-<div class="emo-playlist-player">
-  <button class="toggle-player" onclick="togglePlayer()">
-    <img src="images/Spotify-Background/Cosmic-Rejex.png" alt="Emo Playlist Toggle Image" class="toggle-image">
-    Play Emo Playlist
-  </button>
-<div class="player-wrapper" id="player-wrapper">
-    <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy" 
-            aria-label="Emo Playlist Player"></iframe>
+  <header class="header" id="join">
+    <img src="images/Logo/Alien_Logo_New2.png" alt="Cosmic Rejex Logo" class="header-logo">
+    <h1>Join Cosmic Rejex Camp</h1>
+    <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
+  </header>
+
+  <div class="roles-container">
+    <section class="section" id="roles">
+      <h1>Join Our Crew</h1>
+      <p>We're always looking for passionate people to join our camp. Check out the roles below and apply to be part of Cosmic Rejex!</p>
+      <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
+        <div class="scroll-arrow left" data-grid="roles">◄</div>
+        <div class="scroll-arrow right" data-grid="roles">►</div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Logestics-&-Build-Lead.png" alt="Logistics & Build Lead Icon">
+          <h3>Logistics & Build Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Logistics & Build Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Volunteer-Coordinator.png" alt="Volunteer Coordinator Icon">
+          <h3>Volunteer Coordinator</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Volunteer Coordinator')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Build-Crew.png" alt="Build Crew Icon">
+          <h3>Build Crew</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Build Crew')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Camp-Leadz.png" alt="Camp Lead Icon">
+          <h3>Camp Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Camp Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Deputy-Leads.png" alt="Deputy Lead Icon">
+          <h3>Deputy Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Deputy Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Build-Lead.png" alt="Build Lead Icon">
+          <h3>Build Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Build Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Vibe-Managers.png" alt="Vibe Manager Icon">
+          <h3>Vibe Manager</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Vibe Manager')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Logistics-Lead.png" alt="Logistics Lead Icon">
+          <h3>Logistics Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Logistics Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Sound-Lead.png" alt="Sound Lead Icon">
+          <h3>Sound Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Sound Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Transport-Lead.png" alt="Transport Lead Icon">
+          <h3>Transport Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Transport Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Arts-&-Workshop-Lead.png" alt="Art & Workshop Lead Icon">
+          <h3>Art & Workshop Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Art & Workshop Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Wellbeing-Officers.png" alt="Wellbeing Officer Icon">
+          <h3>Wellbeing Officer</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Greeters.png" alt="Greeter Icon">
+          <h3>Greeter</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Greeter')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Strike-Lead.png" alt="Strike Lead Icon">
+          <h3>Strike Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Strike Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Comms-Lead.png" alt="Comms Lead Icon">
+          <h3>Comms Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Comms Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Safety-Officer.png" alt="Safety Officer Icon">
+          <h3>Safety Officer</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Safety Officer')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Moop-Manager.png" alt="MOOP Manager Icon">
+          <h3>MOOP Manager</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('MOOP Manager')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Power_Tech_Lead.png" alt="Power/Tech Lead Icon">
+          <h3>Power/Tech Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Sustainability_Lead.png" alt="Sustainability Lead Icon">
+          <h3>Sustainability Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Promotes eco-friendly practices, manages recycling, and ensures the camp aligns with Leave No Trace principles.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Inclusion_Officer.png" alt="Inclusion Officer Icon">
+          <h3>Inclusion Officer</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Ensures the camp is welcoming to all, addressing accessibility and diversity needs.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Workshop-Coordinator.png" alt="Workshop Coordinator Icon">
+          <h3>Workshop Coordinator</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Organizes and promotes workshops, ensuring materials and schedules are ready.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Social-Media-Lead.png" alt="Social Media Lead Icon">
+          <h3>Social Media Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Social Media Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Manages the camp’s online presence, posting updates and engaging with the community.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="images/Roles-to-Be-Filled/Fundraising-Lead.png" alt="Fundraising Lead Icon">
+          <h3>Fundraising Lead</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
+          <div class="tooltip">
+            <p>Coordinates fundraising efforts to support camp costs and creative projects.</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+      </div>
+      <button class="save-button" onclick="openModal('role-modal')">Create New Role</button>
+      <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
+    </section>
   </div>
-</div>
 
-<section class="section newsletter-section" id="newsletter">
-  <div class="newsletter-container">
-    <h1>Join Our Newsletter</h1>
-    <p>Stay updated with Cosmic Rejex events, news, and exclusive content.</p>
+  <section class="section" id="apply">
+    <h1>Apply to Join Cosmic Rejex</h1>
+    <p>Fill out the form below to request your spot in our camp for Kiwiburn 2026. We can’t wait to vibe with you!</p>
     <div class="form-container">
-      <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-      <button onclick="submitNewsletter()">Subscribe</button>
+      <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="name-container">
+          <div>
+            <label>Full Name</label>
+            <input type="text" name="full_name" placeholder="Full Name" required>
+          </div>
+          <div>
+            <label>Burner/Playa Name</label>
+            <input type="text" name="burner_name" placeholder="Burner/Playa Name">
+          </div>
+        </div>
+
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <label>Phone Number (Mobile, WhatsApp, or Signal)</label>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+
+        <label>Have you attended Burning Man, Kiwiburn, or other regional burns before? If so, which ones and when?</label>
+        <textarea name="burn_experience" rows="4" placeholder="Previous burn experience" required></textarea>
+
+        <label>Which camp role are you interested in filling?</label>
+        <select name="role" id="role-select" required>
+          <option value="">Select a role</option>
+          <option value="Logistics & Build Lead">Logistics & Build Lead</option>
+          <option value="Volunteer Coordinator">Volunteer Coordinator</option>
+          <option value="Build Crew">Build Crew</option>
+          <option value="Camp Lead">Camp Lead</option>
+          <option value="Deputy Lead">Deputy Lead</option>
+          <option value="Build Lead">Build Lead</option>
+          <option value="Vibe Manager">Vibe Manager</option>
+          <option value="Logistics Lead">Logistics Lead</option>
+          <option value="Sound Lead">Sound Lead</option>
+          <option value="Transport Lead">Transport Lead</option>
+          <option value="Art & Workshop Lead">Art & Workshop Lead</option>
+          <option value="Wellbeing Officer">Wellbeing Officer</option>
+          <option value="Greeter">Greeter</option>
+          <option value="Strike Lead">Strike Lead</option>
+          <option value="Comms Lead">Comms Lead</option>
+          <option value="Safety Officer">Safety Officer</option>
+          <option value="MOOP Manager">MOOP Manager</option>
+          <option value="Power/Tech Lead">Power/Tech Lead</option>
+          <option value="Sustainability Lead">Sustainability Lead</option>
+          <option value="Inclusion Officer">Inclusion Officer</option>
+          <option value="Workshop Coordinator">Workshop Coordinator</option>
+          <option value="Social Media Lead">Social Media Lead</option>
+          <option value="Fundraising Lead">Fundraising Lead</option>
+        </select>
+
+        <label>Why do you want to join this camp?</label>
+        <textarea name="why_join" rows="4" placeholder="What draws you to this group and vision?" required></textarea>
+
+        <label>How will you be getting to the burn?</label>
+        <textarea name="travel" rows="4" placeholder="Travel method and timing" required></textarea>
+
+        <label>What contributions can you offer to the camp?</label>
+        <textarea name="contributions" rows="4" placeholder="e.g., building, cooking, performance, art, administration, organisation" required></textarea>
+
+        <label>Do you have any specific ideas, events, or projects you’d like to bring to camp?</label>
+        <textarea name="ideas" rows="4" placeholder="Specific ideas or projects"></textarea>
+
+        <label>Are you able to contribute any additional resources?</label>
+        <textarea name="resources" rows="4" placeholder="e.g., vehicles, tools, gear, infrastructure, supplies"></textarea>
+
+        <label>Camp dues are $____. Are you comfortable with this cost?</label>
+        <select name="dues_comfort" required>
+          <option value="">Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Unsure">Unsure</option>
+        </select>
+
+        <label>Will you pay in full upfront or prefer an instalment plan?</label>
+        <select name="payment_plan" required>
+          <option value="">Select an option</option>
+          <option value="Full Upfront">Pay in full upfront</option>
+          <option value="Instalments">Instalment plan</option>
+        </select>
+
+        <label>Our camp values include: consent, communication, participation, fun, and responsibility. Are you aligned with these?</label>
+        <select name="values_alignment" required>
+          <option value="">Select an option</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+          <option value="Unsure">Unsure</option>
+        </select>
+
+        <label>Do you have any health needs, access requirements, or relevant concerns you’d like us to be aware of?</label>
+        <textarea name="health_needs" rows="4" placeholder="Health or access needs"></textarea>
+
+        <label>Is there anything you’re unsure about or worried about regarding joining the camp?</label>
+        <textarea name="concerns" rows="4" placeholder="Any concerns or uncertainties"></textarea>
+
+        <label>Optional: Upload a photo or link to your social media</label>
+        <input type="url" name="social_media" placeholder="Link to social media or photo">
+
+        <label>Do you have any questions for us?</label>
+        <textarea name="questions" rows="4" placeholder="Your questions"></textarea>
+
+        <button type="submit">Submit Application</button>
+      </form>
     </div>
-    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+  </section>
+
+  <!-- Role Modal -->
+  <div class="modal" id="role-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('role-modal')">&times;</span>
+      <h2 id="modal-title">Create New Role</h2>
+      <form id="role-form">
+        <label>Role Name</label>
+        <input type="text" id="role-name" required>
+        <label>Role Description</label>
+        <textarea id="role-description" rows="4" required></textarea>
+        <label>Role Image URL</label>
+        <input type="text" id="role-image" placeholder="Image URL" required>
+        <button type="submit" onclick="saveRole()">Save Role</button>
+      </form>
+    </div>
   </div>
-</section>
 
-<div class="countdown-section" id="countdown">
-  <h2>Kiwiburn 2026 Countdown</h2>
-  <div class="countdown" id="countdown-timer">
-    <span id="days">00<br><small>Days</small></span>
-    <span id="hours">00<br><small>Hours</small></span>
-    <span id="minutes">00<br><small>Minutes</small></span>
-    <span id="seconds">00<br><small>Seconds</small></span>
+  <!-- Section Edit Modal -->
+  <div class="modal" id="members-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('members-modal')">&times;</span>
+      <h2>Edit Section</h2>
+      <form id="section-form">
+        <label>Section Title</label>
+        <input type="text" id="section-title" required>
+        <label>Section Description</label>
+        <textarea id="section-description" rows="4" required></textarea>
+        <button type="submit" onclick="saveSection()">Save Section</button>
+      </form>
+    </div>
   </div>
-  <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
-  <button onclick="updateCountdownDate()">Update Date</button>
-  <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
-</div>
 
-<script>
-  // Theme Toggle
-  const themeToggle = document.querySelector('.theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('night-mode');
-    themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
-    localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
-  });
+  <div class="emo-playlist-player">
+    <button class="toggle-player" onclick="togglePlayer()">
+      <img src="images/Spotify-Background/Cosmic-Rejex.png" alt="Emo Playlist Toggle Image" class="toggle-image">
+      Play Emo Playlist
+    </button>
+    <div class="player-wrapper" id="player-wrapper">
+      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy" 
+              aria-label="Emo Playlist Player"></iframe>
+    </div>
+  </div>
 
-  // Load theme preference
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('night-mode');
-    themeToggle.textContent = '☀️';
-  }
+  <footer>
+    <p>© 2025 Cosmic Rejex. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
 
-  // Hamburger Menu
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
-  });
+  <script>
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+    });
 
-  // Dropdown Menu for Mobile
-  document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-    toggle.addEventListener('click', (e) => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        const dropdown = toggle.parentElement;
-        dropdown.classList.toggle('active');
+    // Load theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('night-mode');
+      themeToggle.textContent = '☀️';
+    }
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+    });
+
+    // Dropdown Menu for Mobile
+    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const dropdown = toggle.parentElement;
+          dropdown.classList.toggle('active');
+        }
+      });
+    });
+
+    // Login/Logout
+    const loginForm = document.getElementById('login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const loginContainer = document.querySelector('.nav-login');
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginContainer.classList.add('logged-in');
+      loginForm.style.display = 'none';
+      logoutButton.style.display = 'block';
+      document.body.classList.add('logged-in');
+    });
+
+    logoutButton.addEventListener('click', () => {
+      loginContainer.classList.remove('logged-in');
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      document.body.classList.remove('logged-in');
+    });
+
+    // Scroll Arrows
+    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+      arrow.addEventListener('click', () => {
+        const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
+        const direction = arrow.classList.contains('left') ? -1 : 1;
+        grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
+      });
+    });
+
+    // Drag and Drop Functionality
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function drag(event) {
+      event.dataTransfer.setData("text", event.target.outerHTML);
+      event.target.classList.add('dragging');
+    }
+
+    function dropRoles(event) {
+      event.preventDefault();
+      const data = event.dataTransfer.getData("text");
+      const draggedElement = document.createElement('div');
+      draggedElement.innerHTML = data;
+      const grid = event.target.closest('.roles-grid');
+      const roles = Array.from(grid.children).filter(child => child.classList.contains('role'));
+      const closestRole = roles.reduce((closest, role) => {
+        const rect = role.getBoundingClientRect();
+        const distance = Math.abs(event.clientX - (rect.left + rect.width / 2));
+        return !closest || distance < closest.distance ? { element: role, distance } : closest;
+      }, null);
+
+      if (closestRole) {
+        grid.insertBefore(draggedElement.firstChild, closestRole.element);
+        draggedElement.firstChild.classList.remove('dragging');
       }
-    });
-  });
-
-  // Login/Logout
-  const loginForm = document.getElementById('login-form');
-  const logoutButton = document.querySelector('.logout-button');
-  const loginContainer = document.querySelector('.nav-login');
-
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    loginContainer.classList.add('logged-in');
-    loginForm.style.display = 'none';
-    logoutButton.style.display = 'block';
-    document.body.classList.add('logged-in');
-  });
-
-  logoutButton.addEventListener('click', () => {
-    loginContainer.classList.remove('logged-in');
-    loginForm.style.display = 'flex';
-    logoutButton.style.display = 'none';
-    document.body.classList.remove('logged-in');
-  });
-
-  // Modal Functions
-  function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'flex';
-  }
-
-  function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-  }
-
-  // Member Modal
-  function openEditMemberModal(button) {
-    const member = button.parentElement;
-    document.getElementById('member-modal-title').textContent = 'Edit Member Details';
-    document.getElementById('member-name').value = member.querySelector('h3').textContent;
-    document.getElementById('member-role').value = member.querySelector('span').textContent;
-    document.getElementById('member-description').value = member.querySelector('p').textContent;
-    openModal('member-modal');
-  }
-
-  function saveMemberDetails() {
-    closeModal('member-modal');
-  }
-
-  // Role Modal
-  function openEditRoleModal(button) {
-    const role = button.parentElement;
-    document.getElementById('role-modal-title').textContent = 'Edit Role';
-    document.getElementById('role-title').value = role.querySelector('h3').textContent;
-    document.getElementById('role-description').value = role.querySelector('p').textContent;
-    openModal('role-modal');
-  }
-
-  function saveRoleDetails() {
-    closeModal('role-modal');
-  }
-
-  // Event Modal
-  function openEditEventModal(button) {
-    const event = button.parentElement;
-    document.getElementById('event-title').value = event.querySelector('h3').textContent;
-    document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
-    document.getElementById('event-date').value = event.querySelector('.event-date').textContent.replace('Date: ', '');
-    document.getElementById('event-time').value = event.querySelector('.event-time').textContent.replace('Time: ', '');
-    document.getElementById('event-end').value = event.querySelector('.event-end').textContent.replace('End: ', '');
-    document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
-    openModal('event-modal');
-  }
-
-  function saveEventDetails() {
-    closeModal('event-modal');
-  }
-
-  // Delete Functions
-  function deleteMember(button) {
-    button.parentElement.remove();
-  }
-
-  function deleteRole(button) {
-    button.parentElement.remove();
-  }
-
-  function deleteEvent(button) {
-    button.parentElement.remove();
-  }
-
-  function deleteMissionImage(button) {
-    button.parentElement.remove();
-  }
-
-  // Drag and Drop
-  let draggedItem = null;
-
-  function drag(event) {
-    draggedItem = event.target;
-    event.dataTransfer.setData('text/plain', null);
-  }
-
-  function allowDrop(event) {
-    event.preventDefault();
-  }
-
-  function dropMembers(event) {
-    event.preventDefault();
-    const grid = document.querySelector('.members-grid');
-    if (draggedItem && grid.contains(event.target)) {
-      grid.insertBefore(draggedItem, event.target.closest('.member') || null);
+      saveRoles();
     }
-  }
 
-  function dropRoles(event) {
-    event.preventDefault();
-    const grid = document.querySelector('.roles-grid');
-    if (draggedItem && grid.contains(event.target)) {
-      grid.insertBefore(draggedItem, event.target.closest('.role') || null);
+    // Modal Functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
     }
-  }
 
-  function dropEvents(event) {
-    event.preventDefault();
-    const grid = document.querySelector('.events-grid');
-    if (draggedItem && grid.contains(event.target)) {
-      grid.insertBefore(draggedItem, event.target.closest('.event') || null);
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
     }
-  }
 
-  function dragMissionImage(event) {
-    draggedItem = event.target.parentElement;
-  }
+    let currentRoleElement = null;
 
-  function dropMissionImage(event) {
-    event.preventDefault();
-    const gallery = document.getElementById('mission-gallery');
-    if (draggedItem && gallery.contains(event.target)) {
-      gallery.insertBefore(draggedItem, event.target.closest('.image-container') || null);
+    function openEditRoleModal(button) {
+      currentRoleElement = button.parentElement;
+      const roleName = currentRoleElement.querySelector('h3').textContent;
+      const roleDescription = currentRoleElement.querySelector('.tooltip p').textContent;
+      const roleImage = currentRoleElement.querySelector('img').src;
+
+      document.getElementById('modal-title').textContent = 'Edit Role';
+      document.getElementById('role-name').value = roleName;
+      document.getElementById('role-description').value = roleDescription;
+      document.getElementById('role-image').value = roleImage;
+      openModal('role-modal');
     }
-  }
 
-  // Scroll Arrows
-  document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-    arrow.addEventListener('click', () => {
-      const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
-      const direction = arrow.classList.contains('left') ? -1 : 1;
-      grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
-    });
-  });
+    function saveRole() {
+      const roleName = document.getElementById('role-name').value;
+      const roleDescription = document.getElementById('role-description').value;
+      const roleImage = document.getElementById('role-image').value;
 
-  // Countdown Timer
-  function updateCountdown() {
-    const targetDate = new Date('2026-01-25T00:00:00').getTime();
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+      if (currentRoleElement) {
+        // Update existing role
+        currentRoleElement.querySelector('h3').textContent = roleName;
+        currentRoleElement.querySelector('.tooltip p').textContent = roleDescription;
+        currentRoleElement.querySelector('img').src = roleImage;
+        currentRoleElement.querySelector('.apply-button').setAttribute('onclick', `selectRole('${roleName}')`);
+      } else {
+        // Create new role
+        const roleDiv = document.createElement('div');
+        roleDiv.classList.add('role');
+        roleDiv.setAttribute('draggable', 'true');
+        roleDiv.setAttribute('ondragstart', 'drag(event)');
+        roleDiv.innerHTML = `
+          <img src="${roleImage}" alt="${roleName} Icon">
+          <h3>${roleName}</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('${roleName}')">Apply for Role</a>
+          <div class="tooltip">
+            <p>${roleDescription}</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        document.querySelector('.roles-grid').appendChild(roleDiv);
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Update dropdown
+        const select = document.getElementById('role-select');
+        const option = document.createElement('option');
+        option.value = roleName;
+        option.textContent = roleName;
+        select.appendChild(option);
+      }
 
-    document.getElementById('days').innerHTML = days + '<br><small>Days</small>';
-    document.getElementById('hours').innerHTML = hours + '<br><small>Hours</small>';
-    document.getElementById('minutes').innerHTML = minutes + '<br><small>Minutes</small>';
-    document.getElementById('seconds').innerHTML = seconds + '<br><small>Seconds</small>';
-
-    if (distance < 0) {
-      document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
+      closeModal('role-modal');
+      document.getElementById('role-form').reset();
+      currentRoleElement = null;
+      saveRoles();
     }
-  }
 
-  setInterval(updateCountdown, 1000);
-
-  function updateCountdownDate() {
-    const input = document.getElementById('countdown-input').value;
-    if (input) {
-      localStorage.setItem('countdownDate', input);
+    function deleteRole(button) {
+      if (confirm('Are you sure you want to delete this role?')) {
+        const roleName = button.parentElement.querySelector('h3').textContent;
+        button.parentElement.remove();
+        const select = document.getElementById('role-select');
+        const option = select.querySelector(`option[value="${roleName}"]`);
+        if (option) option.remove();
+        saveRoles();
+      }
     }
-  }
 
-  // EMO PLAYLIST PLAYER Toggle
-function togglePlayer() {
-  const playerWrapper = document.getElementById('player-wrapper');
-  playerWrapper.classList.toggle('active');
-}
-  // Section Editing
-  function openHeaderModal() {
-    document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
-    openModal('header-modal');
-  }
-
-  function saveHeaderDetails() {
-    document.querySelector('.header h1').textContent = document.getElementById('header-title').value;
-    closeModal('header-modal');
-  }
-
-  function openGalleryImageModal(button, section) {
-    const imageContainer = button.parentElement;
-    document.getElementById('gallery-image-alt').value = imageContainer.querySelector('img').alt;
-    openModal('gallery-image-modal');
-  }
-
-  function saveGalleryImageDetails() {
-    closeModal('gallery-image-modal');
-  }
-
-  function saveAboutDetails() {
-    document.querySelector('.about-section h1').textContent = document.getElementById('about-title').value;
-    document.querySelector('.about-section p').textContent = document.getElementById('about-description').value;
-    closeModal('about-modal');
-  }
-
-  function saveMissionDetails() {
-    document.querySelector('#mission h1').textContent = document.getElementById('mission-title').value;
-    document.querySelector('#mission p').textContent = document.getElementById('mission-description').value;
-    closeModal('mission-modal');
-  }
-
-  function saveEventsDetails() {
-    document.querySelector('#events h1').textContent = document.getElementById('events-title').value;
-    document.querySelector('#events p').textContent = document.getElementById('events-description').value;
-    closeModal('events-modal');
-  }
-
-  function saveNewsletterDetails() {
-    document.querySelector('#newsletter h1').textContent = document.getElementById('newsletter-title').value;
-    document.querySelector('#newsletter p').textContent = document.getElementById('newsletter-description').value;
-    closeModal('newsletter-modal');
-  }
-
-  function saveJoinDetails() {
-    document.querySelector('#join h1').textContent = document.getElementById('join-title').value;
-    document.querySelector('#join p').textContent = document.getElementById('join-description').value;
-    closeModal('join-modal');
-  }
-
-  function saveSubmitDetails() {
-    document.querySelector('#submit h1').textContent = document.getElementById('submit-title').value;
-    document.querySelector('#submit p').textContent = document.getElementById('submit-description').value;
-    closeModal('submit-modal');
-  }
-
-  function saveCountdownDetails() {
-    const input = document.getElementById('countdown-date').value;
-    if (input) {
-      localStorage.setItem('countdownDate', input);
+    function saveSection() {
+      const sectionTitle = document.getElementById('section-title').value;
+      const sectionDescription = document.getElementById('section-description').value;
+      document.querySelector('#roles h1').textContent = sectionTitle;
+      document.querySelector('#roles p').textContent = sectionDescription;
+      closeModal('members-modal');
+      saveRoles();
     }
-    closeModal('countdown-modal');
-  }
 
-  function saveHistoryDetails() {
-    document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
-    closeModal('history-modal');
-  }
-  
-</script>
+    function selectRole(roleName) {
+      const select = document.getElementById('role-select');
+      select.value = roleName;
+      window.scrollTo({ top: document.getElementById('apply').offsetTop, behavior: 'smooth' });
+    }
+
+    // EMO PLAYLIST PLAYER Toggle
+    function togglePlayer() {
+      const playerWrapper = document.getElementById('player-wrapper');
+      playerWrapper.classList.toggle('active');
+    }
+
+    // Save roles to GitHub
+    async function saveRoles() {
+      const rolesGrid = document.querySelector('.roles-grid');
+      const roles = Array.from(rolesGrid.children).filter(child => child.classList.contains('role')).map(role => ({
+        name: role.querySelector('h3').textContent,
+        description: role.querySelector('.tooltip p').textContent,
+        image: role.querySelector('img').src
+      }));
+
+      const sectionTitle = document.querySelector('#roles h1').textContent;
+      const sectionDescription = document.querySelector('#roles p').textContent;
+
+      const htmlContent = `
+<div class="roles-container">
+  <section class="section" id="roles">
+    <h1>${sectionTitle}</h1>
+    <p>${sectionDescription}</p>
+    <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
+      <div class="scroll-arrow left" data-grid="roles">◄</div>
+      <div class="scroll-arrow right" data-grid="roles">►</div>
+      ${roles.map(role => `
+        <div class="role" draggable="true" ondragstart="drag(event)">
+          <img src="${role.image}" alt="${role.name} Icon">
+          <h3>${role.name}</h3>
+          <a href="#apply" class="apply-button" onclick="selectRole('${role.name}')">Apply for Role</a>
+          <div class="tooltip">
+            <p>${role.description}</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        </div>
+      `).join('')}
+    </div>
+    <button class="save-button" onclick="openModal('role-modal')">Create New Role</button>
+    <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
+  </section>
+</div>
+`;
+
+      try {
+        const response = await fetch('https://api.github.com/repos/<owner>/<repo>/contents/join-camp.html', {
+          method: 'PUT',
+          headers: {
+            'Authorization': 'Bearer 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',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: 'Update join-camp.html with new roles and section data',
+            content: btoa(document.documentElement.outerHTML),
+            sha: await getFileSha() // Function to get current SHA, needs implementation
+          })
+        });
+
+        if (!response.ok) throw new Error('Failed to save to GitHub');
+        console.log('Changes saved to GitHub');
+      } catch (error) {
+        console.error('Error saving to GitHub:', error);
+      }
+    }
+
+    async function getFileSha() {
+      try {
+        const response = await fetch('https://api.github.com/repos/<owner>/<repo>/contents/join-camp.html', {
+          headers: {
+            'Authorization': 'Bearer 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'
+          }
+        });
+        const data = await response.json();
+        return data.sha;
+      } catch (error) {
+        console.error('Error fetching SHA:', error);
+        return null;
+      }
+    }
+  </script>
 </body>
 </html>
