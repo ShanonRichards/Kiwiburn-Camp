@@ -122,7 +122,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px;
+      padding: 10px 30px;
       z-index: 1000;
       border-bottom: 2px solid #e67e22;
     }
@@ -131,10 +131,23 @@
       background: rgba(74, 55, 35, 0.85);
     }
 
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
     .nav-links {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
 
     nav a {
@@ -142,7 +155,6 @@
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
-      margin: 5px 15px;
       padding: 10px 15px;
       border-radius: 4px;
       transition: background 0.3s, color 0.3s, box-shadow 0.3s;
@@ -356,6 +368,7 @@
     .header-ctas {
       display: flex;
       gap: 10px;
+      margin-bottom: 30px;
     }
 
     .apply-button, .secondary-button {
@@ -398,7 +411,7 @@
 
     .scroll-down {
       position: absolute;
-      bottom: 30px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 1.5rem;
@@ -439,36 +452,48 @@
       color: #f8e1b4;
     }
 
-    .cta-section {
+    .cta-section, .submit-section {
       background: rgba(255, 255, 255, 0.15);
       border: 2px solid #e67e22;
       padding: 40px 20px;
       border-radius: 10px;
-      max-width: 600px;
-      margin: 40px auto;
+      flex: 1;
+      min-width: 300px;
+      max-width: 580px;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .cta-section h2 {
+    .submit-cta-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .cta-section h2, .submit-section h2 {
       font-family: 'Bebas Neue', cursive;
       font-size: 2.5rem;
       color: #2b1b0f;
       margin-bottom: 20px;
     }
 
-    .cta-section p {
+    .cta-section p, .submit-section p {
       font-size: 1.1rem;
       color: #2b1b0f;
       margin-bottom: 20px;
     }
 
     body.night-mode .cta-section h2,
-    body.night-mode .cta-section p {
+    body.night-mode .cta-section p,
+    body.night-mode .submit-section h2,
+    body.night-mode .submit-section p {
       color: #f8e1b4;
     }
 
-    .cta-button {
+    .cta-button, .submit-button {
       display: inline-block;
       padding: 12px 20px;
       background-color: #e67e22;
@@ -480,7 +505,7 @@
       transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
 
-    .cta-button:hover {
+    .cta-button:hover, .submit-button:hover {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
       transform: scale(1.05);
@@ -698,35 +723,6 @@
       padding: 5px 10px;
     }
 
-    .submit-section {
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: 40px auto 0 auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .submit-button {
-      display: inline-block;
-      padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      text-decoration: none;
-      border-radius: 5px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2em;
-      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-      margin: 10px;
-    }
-
-    .submit-button:hover {
-      background-color: #f39c12;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
     .edit-section-button {
       display: none;
       padding: 8px 12px;
@@ -860,7 +856,7 @@
         background: rgba(44, 29, 15, 0.9);
         padding: 10px 0;
         position: absolute;
-        top: 70px;
+        top: 60px;
         left: 0;
       }
 
@@ -901,6 +897,11 @@
         box-sizing: border-box;
       }
 
+      .nav-right {
+        flex-direction: column;
+        gap: 10px;
+      }
+
       .floating-submit-button {
         padding: 8px 15px;
         font-size: 0.9rem;
@@ -929,6 +930,7 @@
       }
 
       .scroll-down {
+        bottom: 15px;
         font-size: 1.2rem;
       }
 
@@ -967,6 +969,11 @@
         min-height: 600px;
       }
 
+      .submit-cta-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
       .submit-section, .cta-section {
         max-width: 95%;
         padding: 15px;
@@ -1002,6 +1009,10 @@
     }
 
     @media only screen and (max-width: 480px) {
+      nav {
+        padding: 10px 15px;
+      }
+
       .header h1 {
         font-size: 2.2em;
       }
@@ -1071,8 +1082,10 @@
 </head>
 <body>
   <nav>
-    <img src="images/Logo/3D_Rotation_Logo.gif" alt="Cosmic Rejex Logo" class="nav-logo">
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
+    <div class="nav-left">
+      <img src="images/Logo/3D_Rotation_Logo.gif" alt="Cosmic Rejex Logo" class="nav-logo">
+      <button class="hamburger" aria-label="Toggle menu">☰</button>
+    </div>
     <div class="nav-links">
       <div class="dropdown">
         <a href="index.html#about" class="dropdown-toggle">About</a>
@@ -1112,15 +1125,17 @@
       <a href="index.html#newsletter">Newsletter</a>
       <a href="contact.html">Contact Us</a>
     </div>
-    <div class="nav-login">
-      <form id="login-form">
-        <input type="text" id="username" placeholder="Username" required aria-label="Username">
-        <input type="password" id="password" placeholder="Password" required aria-label="Password">
-        <button type="submit">Login</button>
-      </form>
-      <button class="logout-button" aria-label="Logout">Logout</button>
+    <div class="nav-right">
+      <div class="nav-login">
+        <form id="login-form">
+          <input type="text" id="username" placeholder="Username" required aria-label="Username">
+          <input type="password" id="password" placeholder="Password" required aria-label="Password">
+          <button type="submit">Login</button>
+        </form>
+        <button class="logout-button" aria-label="Logout">Logout</button>
+      </div>
+      <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
     </div>
-    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
   </nav>
 
   <header class="header" id="home">
@@ -1220,8 +1235,10 @@
         </div>
       </div>
     </section>
+  </div>
 
-    <section class="section submit-section" id="submit">
+  <div class="submit-cta-container">
+    <section class="submit-section" id="submit">
       <h2>Submit an Event</h2>
       <p>Got an idea for an epic event? Share it with us and let’s make it happen at Kiwiburn!</p>
       <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
