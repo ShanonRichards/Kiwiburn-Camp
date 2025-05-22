@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+Put your HTML text here<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -13,8 +13,52 @@
       scroll-behavior: smooth;
       background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
       color: #2b1b0f;
-      cursor: url('images/ufo-cursor.png'), auto;
+      cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
       transition: background 0.5s, color 0.5s;
+    }
+
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(44, 29, 15, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
+      border-radius: 6px;
+      border: 2px solid var(--secondary);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) rgba(44, 29, 15, 0.3);
+    }
+
+    body.night-mode ::-webkit-scrollbar-track {
+      background: rgba(74, 55, 35, 0.3);
+    }
+
+    body.night-mode ::-webkit-scrollbar-thumb {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
+      border: 2px solid var(--primary);
+    }
+
+    body.night-mode ::-webkit-scrollbar-thumb:hover {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
+
+    body.night-mode {
+      scrollbar-color: var(--secondary) rgba(74, 55, 35, 0.3);
     }
 
     :root {
@@ -274,39 +318,103 @@
       box-shadow: 0 0 10px #f39c12, 0 0 20px #e67e22;
     }
 
-    .hero-banner {
-      background: url('images/festival-hero.jpg') center/cover no-repeat;
-      padding: 100px 20px;
+    .header {
+      background: url('images/Cover-Photo/last-try.png') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       color: #f8e1b4;
       position: relative;
-      z-index: 1;
-      overflow: hidden;
+      text-shadow: 0 0 10px var(--primary);
     }
 
-    .hero-banner::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(44, 29, 15, 0.5);
-      z-index: -1;
+    .header-logo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 10;
+      filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
     }
 
-    .hero-banner h1 {
+    .header h1 {
       font-family: 'Bebas Neue', cursive;
-      font-size: 4rem;
-      margin: 0;
-      text-shadow: 0 0 10px #e67e22;
+      font-size: 4em;
+      max-width: 90%;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
 
-    .hero-banner p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 20px auto;
-      line-height: 1.6;
+    .header p {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .header-ctas {
+      display: flex;
+      gap: 10px;
+    }
+
+    .apply-button, .secondary-button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .apply-button {
+      background: var(--primary);
+      color: var(--text);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    .secondary-button {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--text);
+    }
+
+    .apply-button:hover, .secondary-button:hover {
+      background: var(--secondary);
+      color: var(--background);
+    }
+
+    @keyframes glow {
+      from { 
+        text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400;
+        box-shadow: 0 0 5px var(--primary); 
+      }
+      to { 
+        text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22;
+        box-shadow: 0 0 15px var(--primary); 
+      }
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+      color: #f8e1b4;
+      transition: box-shadow 0.3s;
+    }
+
+    .scroll-down:hover {
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
     }
 
     .event-filter {
@@ -376,73 +484,6 @@
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
       transform: scale(1.05);
-    }
-
-    @media only screen and (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(44, 29, 15, 0.9);
-        padding: 10px 0;
-        position: absolute;
-        top: 70px;
-        left: 0;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .dropdown-menu {
-        position: static;
-        background: rgba(74, 55, 35, 0.9);
-        box-shadow: none;
-        border: none;
-        margin: 5px 0;
-      }
-
-      .dropdown:hover .dropdown-menu {
-        display: none;
-      }
-
-      .dropdown.active .dropdown-menu {
-        display: block;
-      }
-
-      .nav-login {
-        margin-top: 10px;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .nav-login form {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .nav-login input,
-      .nav-login button {
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .floating-submit-button {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-      }
-
-      .hero-banner h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero-banner p {
-        font-size: 1rem;
-      }
     }
 
     .section {
@@ -688,7 +729,7 @@
 
     .edit-section-button {
       display: none;
-      padding: 8px 12බ
+      padding: 8px 12px;
       background-color: #e67e22;
       color: #2b1b0f;
       border: none;
@@ -719,6 +760,82 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
+    .emo-playlist-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-player {
+      background: var(--primary);
+      color: var(--text);
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toggle-player:hover {
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    }
+
+    body.night-mode .toggle-player {
+      background: var(--secondary);
+      color: var(--background);
+    }
+
+    body.night-mode .toggle-player:hover {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
+
+    .toggle-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--primary);
+    }
+
+    .player-wrapper {
+      width: 300px;
+      background: rgba(44, 29, 15, 0.9);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .player-wrapper.active {
+      display: block;
+    }
+
+    body.night-mode .player-wrapper {
+      background: rgba(74, 55, 35, 0.9);
+      border-color: var(--secondary);
+    }
+
+    .emo-playlist-player iframe {
+      width: 100%;
+      height: 152px;
+      border: none;
+      border-radius: 12px;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -732,6 +849,89 @@
     }
 
     @media only screen and (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: rgba(74, 55, 35, 0.9);
+        box-shadow: none;
+        border: none;
+        margin: 5px 0;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+
+      .nav-login {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-login form {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-login input,
+      .nav-login button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .floating-submit-button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+
+      .header {
+        height: 50vh;
+      }
+a
+      .header-logo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .header h1 {
+        font-size: 3em;
+      }
+
+      .header p {
+        font-size: 1.2em;
+      }
+
+      .apply-button, .secondary-button {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+
+      .scroll-down {
+        font-size: 1.2rem;
+      }
+
       .section {
         padding: 40px 15px;
       }
@@ -776,9 +976,45 @@
         font-size: 1em;
         padding: 10px 15px;
       }
+
+      .emo-playlist-player {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .player-wrapper {
+        width: 250px;
+      }
+
+      .toggle-player {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+      }
+
+      .toggle-image {
+        width: 25px;
+        height: 25px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 120px;
+      }
     }
 
     @media only screen and (max-width: 480px) {
+      .header h1 {
+        font-size: 2.2em;
+      }
+
+      .header p {
+        font-size: 1em;
+      }
+
+      .header-logo {
+        width: 80px;
+        height: 80px;
+      }
+
       .section h1, .section h2 {
         font-size: 1.6em;
       }
@@ -813,12 +1049,22 @@
         padding: 6px 12px;
       }
 
-      .hero-banner h1 {
-        font-size: 2rem;
+      .player-wrapper {
+        width: 200px;
       }
 
-      .hero-banner p {
-        font-size: 0.9rem;
+      .toggle-player {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+
+      .toggle-image {
+        width: 20px;
+        height: 20px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 100px;
       }
     }
   </style>
@@ -877,11 +1123,31 @@
     <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
   </nav>
 
+  <header class="header" id="home">
+    <img src="images/Logo/Logo_Update.png" alt="Cosmic Rejex Logo" class="header-logo">
+    <h1>Cosmic Rejex at Kiwiburn</h1>
+    <p>Join us in creating unforgettable experiences at Kiwiburn!</p>
+    <div class="header-ctas">
+      <a href="submit-event.html" class="apply-button">Submit Your Event</a>
+      <a href="#upcoming-events" class="secondary-button">View Events</a>
+    </div>
+    <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
+    <a href="#upcoming-events" class="scroll-down" aria-label="Scroll to upcoming events">▼</a>
+  </header>
+
   <a href="submit-event.html" class="floating-submit-button" aria-label="Submit Your Event Idea Now">Submit Your Event Idea Now</a>
 
-  <div class="hero-banner">
-    <h1>Cosmic Rejex at Kiwiburn</h1>
-    <p>Join us in creating unforgettable experiences at Kiwiburn! Relive the magic of past events and help shape the future by submitting your event ideas.</p>
+  <div class="emo-playlist-player">
+    <button class="toggle-player" onclick="togglePlayer()">
+      <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
+      Play Emo Playlist
+    </button>
+    <div class="player-wrapper" id="player-wrapper">
+      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy" 
+              aria-label="Emo Playlist Player"></iframe>
+    </div>
   </div>
 
   <div class="events-container">
@@ -1011,6 +1277,17 @@
     </div>
   </div>
 
+  <div class="modal" id="header-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('header-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Header Section</h3>
+      <input type="text" id="header-title" placeholder="Header Title" required aria-label="Header Title">
+      <textarea id="header-description" placeholder="Header Description" required aria-label="Header Description"></textarea>
+      <input type="file" id="header-image" accept="image/*" aria-label="Header Image">
+      <button onclick="saveHeaderDetails()">Save</button>
+    </div>
+  </div>
+
   <footer>
     <p>© 2025 Cosmic Rejex. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
   </footer>
@@ -1078,6 +1355,19 @@
       document.getElementById(modalId).style.display = 'none';
     }
 
+    // Header Modal
+    function openHeaderModal() {
+      document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
+      document.getElementById('header-description').value = document.querySelector('.header p').textContent;
+      openModal('header-modal');
+    }
+
+    function saveHeaderDetails() {
+      document.querySelector('.header h1').textContent = document.getElementById('header-title').value;
+      document.querySelector('.header p').textContent = document.getElementById('header-description').value;
+      closeModal('header-modal');
+    }
+
     // Event Modal
     function openEditEventModal(button) {
       const event = button.parentElement;
@@ -1117,6 +1407,12 @@
       if (draggedItem && grid && grid.contains(event.target)) {
         grid.insertBefore(draggedItem, event.target.closest('.event') || null);
       }
+    }
+
+    // Playlist Player Toggle
+    function togglePlayer() {
+      const playerWrapper = document.getElementById('player-wrapper');
+      playerWrapper.classList.toggle('active');
     }
 
     // Section Editing
