@@ -25,7 +25,13 @@
     body.night-mode .roster-table th,
     body.night-mode .roster-table td,
     body.night-mode .tasks-table th,
-    body.night-mode .tasks-table td {
+    body.night-mode .tasks-table td,
+    body.night-mode .transport-table th,
+    body.night-mode .transport-table td,
+    body.night-mode .sleeping-table th,
+    body.night-mode .sleeping-table td,
+    body.night-mode .payment-table th,
+    body.night-mode .payment-table td {
       background-color: rgba(44, 29, 15, 0.8);
       color: #f8e1b4;
     }
@@ -187,7 +193,7 @@
       color: #2b1b0f;
     }
 
-    .roster-container, .tasks-container {
+    .roster-container, .tasks-container, .transport-container, .sleeping-container, .payment-container {
       max-width: 1200px;
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.15);
@@ -197,7 +203,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .roster-table, .tasks-table {
+    .roster-table, .tasks-table, .transport-table, .sleeping-table, .payment-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
@@ -207,7 +213,10 @@
     }
 
     .roster-table th, .roster-table td,
-    .tasks-table th, .tasks-table td {
+    .tasks-table th, .tasks-table td,
+    .transport-table th, .transport-table td,
+    .sleeping-table th, .sleeping-table td,
+    .payment-table th, .payment-table td {
       border: 1px solid #e67e22;
       padding: 14px;
       text-align: left;
@@ -216,7 +225,8 @@
       vertical-align: middle;
     }
 
-    .roster-table th, .tasks-table th {
+    .roster-table th, .tasks-table th,
+    .transport-table th, .sleeping-table th, .payment-table th {
       background: rgba(230, 126, 34, 0.4);
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
@@ -224,15 +234,20 @@
       letter-spacing: 0.5px;
     }
 
-    .roster-table td, .tasks-table td {
+    .roster-table td, .tasks-table td,
+    .transport-table td, .sleeping-table td, .payment-table td {
       background: rgba(255, 255, 255, 0.15);
     }
 
-    .roster-table tr:nth-child(even), .tasks-table tr:nth-child(even) {
+    .roster-table tr:nth-child(even), .tasks-table tr:nth-child(even),
+    .transport-table tr:nth-child(even), .sleeping-table tr:nth-child(even),
+    .payment-table tr:nth-child(even) {
       background: rgba(230, 126, 34, 0.1);
     }
 
-    .roster-table tr:hover, .tasks-table tr:hover {
+    .roster-table tr:hover, .tasks-table tr:hover,
+    .transport-table tr:hover, .sleeping-table tr:hover,
+    .payment-table tr:hover {
       background: rgba(230, 126, 34, 0.25);
       transition: background 0.3s;
     }
@@ -259,7 +274,8 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .add-task-button, .add-participant-button {
+    .add-task-button, .add-participant-button, .add-transport-button,
+    .add-sleeping-button, .add-payment-button {
       display: none;
       padding: 12px 24px;
       background-color: #e67e22;
@@ -274,7 +290,9 @@
       display: block;
     }
 
-    .logged-in .add-task-button, .logged-in .add-participant-button {
+    .logged-in .add-task-button, .logged-in .add-participant-button,
+    .logged-in .add-transport-button, .logged-in .add-sleeping-button,
+    .logged-in .add-payment-button {
       display: block;
     }
 
@@ -431,17 +449,22 @@
         max-width: 95%;
       }
 
-      .roster-container, .tasks-container {
+      .roster-container, .tasks-container, .transport-container,
+      .sleeping-container, .payment-container {
         max-width: 95%;
         padding: 20px 15px;
       }
 
-      .roster-table, .tasks-table {
+      .roster-table, .tasks-table, .transport-table,
+      .sleeping-table, .payment-table {
         font-size: 0.9rem;
       }
 
       .roster-table th, .roster-table td,
-      .tasks-table th, .tasks-table td {
+      .tasks-table th, .tasks-table td,
+      .transport-table th, .transport-table td,
+      .sleeping-table th, .sleeping-table td,
+      .payment-table th, .payment-table td {
         padding: 8px;
       }
     }
@@ -455,12 +478,16 @@
         font-size: 0.9em;
       }
 
-      .roster-table, .tasks-table {
+      .roster-table, .tasks-table, .transport-table,
+      .sleeping-table, .payment-table {
         font-size: 0.8rem;
       }
 
       .roster-table th, .roster-table td,
-      .tasks-table th, .tasks-table td {
+      .tasks-table th, .tasks-table td,
+      .transport-table th, .transport-table td,
+      .sleeping-table th, .sleeping-table td,
+      .payment-table th, .payment-table td {
         padding: 6px;
       }
 
@@ -635,6 +662,138 @@
     </section>
   </div>
 
+  <div class="transport-container">
+    <section class="section" id="transport">
+      <h1>Camp Transport List</h1>
+      <p>Track transportation details for Cosmic Rejex members, including arrival and departure schedules.</p>
+      <table class="transport-table">
+        <thead>
+          <tr>
+            <th>Camp Members</th>
+            <th>Transportation Type</th>
+            <th>Current Location</th>
+            <th>Date of Arrival</th>
+            <th>Arrival Time</th>
+            <th>Date of Departure</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="transport-body">
+          <tr>
+            <td>Shanon Richards</td>
+            <td>Car</td>
+            <td>Auckland</td>
+            <td>2025-01-14</td>
+            <td>14:00</td>
+            <td>2025-01-21</td>
+            <td>
+              <button class="edit-button" onclick="openEditTransportModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteTransport(this)">×</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Meghan Robson</td>
+            <td>Bus</td>
+            <td>Wellington</td>
+            <td>2025-01-14</td>
+            <td>16:00</td>
+            <td>2025-01-21</td>
+            <td>
+              <button class="edit-button" onclick="openEditTransportModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteTransport(this)">×</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-transport-button" onclick="openAddTransportModal()">Add New Transport</button>
+    </section>
+  </div>
+
+  <div class="sleeping-container">
+    <section class="section" id="sleeping">
+      <h1>Sleeping Arrangement</h1>
+      <p>Manage sleeping arrangements for Cosmic Rejex members, including setup types and camp locations.</p>
+      <table class="sleeping-table">
+        <thead>
+          <tr>
+            <th>Setup Type</th>
+            <th>Sleeping Area</th>
+            <th>Camp Members</th>
+            <th>Tent/Vehicle</th>
+            <th>Location</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="sleeping-body">
+          <tr>
+            <td>Tent</td>
+            <td>Main Camp</td>
+            <td>Shanon Richards</td>
+            <td>Tent</td>
+            <td>Main Camp</td>
+            <td>
+              <button class="edit-button" onclick="openEditSleepingModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteSleeping(this)">×</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Vehicle</td>
+            <td>Quiet Retreat</td>
+            <td>Meghan Robson</td>
+            <td>Van</td>
+            <td>Quiet Retreat</td>
+            <td>
+              <button class="edit-button" onclick="openEditSleepingModal(this)">✎</button>
+              <button class="delete-button" onclick="deleteSleeping(this)">×</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-sleeping-button" onclick="openAddSleepingModal()">Add New Sleeping Arrangement</button>
+    </section>
+  </div>
+
+  <div class="payment-container">
+    <section class="section" id="payment">
+      <h1>Camp Payment Allocation</h1>
+      <p>Track gear payments and allocations for Cosmic Rejex camp setup.</p>
+      <table class="payment-table">
+        <thead>
+          <tr>
+            <th>Gear</th>
+            <th>Link</th>
+            <th>How Many</th>
+            <th>Cost</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="payment-body">
+          <tr>
+            <td>Tent</td>
+            <td><a href="https://example.com/tent">Tent Link</a></td>
+            <td>2</td>
+            <td>$150</td>
+            <td>
+              <button class="edit-button" onclick="openEditPaymentModal(this)">✎</button>
+              <button class="delete-button" onclick="deletePayment(this)">×</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Generator</td>
+            <td><a href="https://example.com/generator">Generator Link</a></td>
+            <td>1</td>
+            <td>$300</td>
+            <td>
+              <button class="edit-button" onclick="openEditPaymentModal(this)">✎</button>
+              <button class="delete-button" onclick="deletePayment(this)">×</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-payment-button" onclick="openAddPaymentModal()">Add New Payment</button>
+    </section>
+  </div>
+
   <div class="modal" id="edit-task-modal">
     <div class="modal-content">
       <button class="close-button" onclick="closeModal('edit-task-modal')" aria-label="Close modal">×</button>
@@ -740,6 +899,124 @@
         <option value="Camp Allocated">Camp Allocated</option>
       </select>
       <button onclick="addNewParticipant()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="edit-transport-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('edit-transport-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Transport</h3>
+      <input type="text" id="transport-members" placeholder="Camp Members" required aria-label="Camp Members">
+      <select id="transport-type" required aria-label="Transportation Type">
+        <option value="Car">Car</option>
+        <option value="Bus">Bus</option>
+        <option value="Van">Van</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="transport-location" placeholder="Current Location" required aria-label="Current Location">
+      <input type="date" id="transport-arrival-date" required aria-label="Date of Arrival">
+      <input type="time" id="transport-arrival-time" required aria-label="Arrival Time">
+      <input type="date" id="transport-departure-date" required aria-label="Date of Departure">
+      <button onclick="saveTransportDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="add-transport-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('add-transport-modal')" aria-label="Close modal">×</button>
+      <h3>Add New Transport</h3>
+      <input type="text" id="new-transport-members" placeholder="Camp Members" required aria-label="Camp Members">
+      <select id="new-transport-type" required aria-label="Transportation Type">
+        <option value="Car">Car</option>
+        <option value="Bus">Bus</option>
+        <option value="Van">Van</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="new-transport-location" placeholder="Current Location" required aria-label="Current Location">
+      <input type="date" id="new-transport-arrival-date" required aria-label="Date of Arrival">
+      <input type="time" id="new-transport-arrival-time" required aria-label="Arrival Time">
+      <input type="date" id="new-transport-departure-date" required aria-label="Date of Departure">
+      <button onclick="addNewTransport()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="edit-sleeping-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('edit-sleeping-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Sleeping Arrangement</h3>
+      <select id="sleeping-setup" required aria-label="Setup Type">
+        <option value="Tent">Tent</option>
+        <option value="Vehicle">Vehicle</option>
+        <option value="Other">Other</option>
+      </select>
+      <select id="sleeping-area" required aria-label="Sleeping Area">
+        <option value="Main Camp">Main Camp</option>
+        <option value="Quiet Retreat">Quiet Retreat</option>
+      </select>
+      <input type="text" id="sleeping-members" placeholder="Camp Members" required aria-label="Camp Members">
+      <select id="sleeping-type" required aria-label="Tent/Vehicle">
+        <option value="Tent">Tent</option>
+        <option value="Van">Van</option>
+        <option value="Car">Car</option>
+        <option value="Other">Other</option>
+      </select>
+      <select id="sleeping-location" required aria-label="Location">
+        <option value="Main Camp">Main Camp</option>
+        <option value="Quiet Retreat">Quiet Retreat</option>
+      </select>
+      <button onclick="saveSleepingDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="add-sleeping-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('add-sleeping-modal')" aria-label="Close modal">×</button>
+      <h3>Add New Sleeping Arrangement</h3>
+      <select id="new-sleeping-setup" required aria-label="Setup Type">
+        <option value="Tent">Tent</option>
+        <option value="Vehicle">Vehicle</option>
+        <option value="Other">Other</option>
+      </select>
+      <select id="new-sleeping-area" required aria-label="Sleeping Area">
+        <option value="Main Camp">Main Camp</option>
+        <option value="Quiet Retreat">Quiet Retreat</option>
+      </select>
+      <input type="text" id="new-sleeping-members" placeholder="Camp Members" required aria-label="Camp Members">
+      <select id="new-sleeping-type" required aria-label="Tent/Vehicle">
+        <option value="Tent">Tent</option>
+        <option value="Van">Van</option>
+        <option value="Car">Car</option>
+        <option value="Other">Other</option>
+      </select>
+      <select id="new-sleeping-location" required aria-label="Location">
+        <option value="Main Camp">Main Camp</option>
+        <option value="Quiet Retreat">Quiet Retreat</option>
+      </select>
+      <button onclick="addNewSleeping()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="edit-payment-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('edit-payment-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Payment Allocation</h3>
+      <input type="text" id="payment-gear" placeholder="Gear" required aria-label="Gear">
+      <input type="url" id="payment-link" placeholder="Link" required aria-label="Link">
+      <input type="number" id="payment-quantity" placeholder="How Many" min="1" required aria-label="How Many">
+      <input type="text" id="payment-cost" placeholder="Cost" required aria-label="Cost">
+      <button onclick="savePaymentDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="add-payment-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('add-payment-modal')" aria-label="Close modal">×</button>
+      <h3>Add New Payment Allocation</h3>
+      <input type="text" id="new-payment-gear" placeholder="Gear" required aria-label="Gear">
+      <input type="url" id="new-payment-link" placeholder="Link" required aria-label="Link">
+      <input type="number" id="new-payment-quantity" placeholder="How Many" min="1" required aria-label="How Many">
+      <input type="text" id="new-payment-cost" placeholder="Cost" required aria-label="Cost">
+      <button onclick="addNewPayment()">Save</button>
     </div>
   </div>
 
@@ -955,6 +1232,216 @@
     }
 
     function deleteParticipant(button) {
+      button.closest('tr').remove();
+    }
+
+    // Transport Functions
+    function openEditTransportModal(button) {
+      const row = button.closest('tr');
+      const members = row.cells[0].textContent;
+      const type = row.cells[1].textContent;
+      const location = row.cells[2].textContent;
+      const arrivalDate = row.cells[3].textContent;
+      const arrivalTime = row.cells[4].textContent;
+      const departureDate = row.cells[5].textContent;
+      document.getElementById('transport-members').value = members;
+      document.getElementById('transport-type').value = type;
+      document.getElementById('transport-location').value = location;
+      document.getElementById('transport-arrival-date').value = arrivalDate;
+      document.getElementById('transport-arrival-time').value = arrivalTime;
+      document.getElementById('transport-departure-date').value = departureDate;
+      document.getElementById('edit-transport-modal').dataset.editIndex = Array.from(row.parentElement.children).indexOf(row);
+      openModal('edit-transport-modal');
+    }
+
+    function saveTransportDetails() {
+      const members = document.getElementById('transport-members').value;
+      const type = document.getElementById('transport-type').value;
+      const location = document.getElementById('transport-location').value;
+      const arrivalDate = document.getElementById('transport-arrival-date').value;
+      const arrivalTime = document.getElementById('transport-arrival-time').value;
+      const departureDate = document.getElementById('transport-departure-date').value;
+      const editIndex = document.getElementById('edit-transport-modal').dataset.editIndex;
+      const transportBody = document.getElementById('transport-body');
+      const row = transportBody.children[editIndex];
+      row.cells[0].textContent = members;
+      row.cells[1].textContent = type;
+      row.cells[2].textContent = location;
+      row.cells[3].textContent = arrivalDate;
+      row.cells[4].textContent = arrivalTime;
+      row.cells[5].textContent = departureDate;
+      closeModal('edit-transport-modal');
+    }
+
+    function openAddTransportModal() {
+      document.getElementById('new-transport-members').value = '';
+      document.getElementById('new-transport-type').value = 'Car';
+      document.getElementById('new-transport-location').value = '';
+      document.getElementById('new-transport-arrival-date').value = '';
+      document.getElementById('new-transport-arrival-time').value = '';
+      document.getElementById('new-transport-departure-date').value = '';
+      openModal('add-transport-modal');
+    }
+
+    function addNewTransport() {
+      const members = document.getElementById('new-transport-members').value;
+      const type = document.getElementById('new-transport-type').value;
+      const location = document.getElementById('new-transport-location').value;
+      const arrivalDate = document.getElementById('new-transport-arrival-date').value;
+      const arrivalTime = document.getElementById('new-transport-arrival-time').value;
+      const departureDate = document.getElementById('new-transport-departure-date').value;
+      const transportBody = document.getElementById('transport-body');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${members}</td>
+        <td>${type}</td>
+        <td>${location}</td>
+        <td>${arrivalDate}</td>
+        <td>${arrivalTime}</td>
+        <td>${departureDate}</td>
+        <td>
+          <button class="edit-button" onclick="openEditTransportModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteTransport(this)">×</button>
+        </td>
+      `;
+      transportBody.appendChild(row);
+      closeModal('add-transport-modal');
+    }
+
+    function deleteTransport(button) {
+      button.closest('tr').remove();
+    }
+
+    // Sleeping Arrangement Functions
+    function openEditSleepingModal(button) {
+      const row = button.closest('tr');
+      const setup = row.cells[0].textContent;
+      const area = row.cells[1].textContent;
+      const members = row.cells[2].textContent;
+      const type = row.cells[3].textContent;
+      const location = row.cells[4].textContent;
+      document.getElementById('sleeping-setup').value = setup;
+      document.getElementById('sleeping-area').value = area;
+      document.getElementById('sleeping-members').value = members;
+      document.getElementById('sleeping-type').value = type;
+      document.getElementById('sleeping-location').value = location;
+      document.getElementById('edit-sleeping-modal').dataset.editIndex = Array.from(row.parentElement.children).indexOf(row);
+      openModal('edit-sleeping-modal');
+    }
+
+    function saveSleepingDetails() {
+      const setup = document.getElementById('sleeping-setup').value;
+      const area = document.getElementById('sleeping-area').value;
+      const members = document.getElementById('sleeping-members').value;
+      const type = document.getElementById('sleeping-type').value;
+      const location = document.getElementById('sleeping-location').value;
+      const editIndex = document.getElementById('edit-sleeping-modal').dataset.editIndex;
+      const sleepingBody = document.getElementById('sleeping-body');
+      const row = sleepingBody.children[editIndex];
+      row.cells[0].textContent = setup;
+      row.cells[1].textContent = area;
+      row.cells[2].textContent = members;
+      row.cells[3].textContent = type;
+      row.cells[4].textContent = location;
+      closeModal('edit-sleeping-modal');
+    }
+
+    function openAddSleepingModal() {
+      document.getElementById('new-sleeping-setup').value = 'Tent';
+      document.getElementById('new-sleeping-area').value = 'Main Camp';
+      document.getElementById('new-sleeping-members').value = '';
+      document.getElementById('new-sleeping-type').value = 'Tent';
+      document.getElementById('new-sleeping-location').value = 'Main Camp';
+      openModal('add-sleeping-modal');
+    }
+
+    function addNewSleeping() {
+      const setup = document.getElementById('new-sleeping-setup').value;
+      const area = document.getElementById('new-sleeping-area').value;
+      const members = document.getElementById('new-sleeping-members').value;
+      const type = document.getElementById('new-sleeping-type').value;
+      const location = document.getElementById('new-sleeping-location').value;
+      const sleepingBody = document.getElementById('sleeping-body');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${setup}</td>
+        <td>${area}</td>
+        <td>${members}</td>
+        <td>${type}</td>
+        <td>${location}</td>
+        <td>
+          <button class="edit-button" onclick="openEditSleepingModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteSleeping(this)">×</button>
+        </td>
+      `;
+      sleepingBody.appendChild(row);
+      closeModal('add-sleeping-modal');
+    }
+
+    function deleteSleeping(button) {
+      button.closest('tr').remove();
+    }
+
+    // Payment Allocation Functions
+    function openEditPaymentModal(button) {
+      const row = button.closest('tr');
+      const gear = row.cells[0].textContent;
+      const link = row.cells[1].querySelector('a').href;
+      const quantity = row.cells[2].textContent;
+      const cost = row.cells[3].textContent;
+      document.getElementById('payment-gear').value = gear;
+      document.getElementById('payment-link').value = link;
+      document.getElementById('payment-quantity').value = quantity;
+      document.getElementById('payment-cost').value = cost;
+      document.getElementById('edit-payment-modal').dataset.editIndex = Array.from(row.parentElement.children).indexOf(row);
+      openModal('edit-payment-modal');
+    }
+
+    function savePaymentDetails() {
+      const gear = document.getElementById('payment-gear').value;
+      const link = document.getElementById('payment-link').value;
+      const quantity = document.getElementById('payment-quantity').value;
+      const cost = document.getElementById('payment-cost').value;
+      const editIndex = document.getElementById('edit-payment-modal').dataset.editIndex;
+      const paymentBody = document.getElementById('payment-body');
+      const row = paymentBody.children[editIndex];
+      row.cells[0].textContent = gear;
+      row.cells[1].innerHTML = `<a href="${link}">${gear} Link</a>`;
+      row.cells[2].textContent = quantity;
+      row.cells[3].textContent = cost;
+      closeModal('edit-payment-modal');
+    }
+
+    function openAddPaymentModal() {
+      document.getElementById('new-payment-gear').value = '';
+      document.getElementById('new-payment-link').value = '';
+      document.getElementById('new-payment-quantity').value = '';
+      document.getElementById('new-payment-cost').value = '';
+      openModal('add-payment-modal');
+    }
+
+    function addNewPayment() {
+      const gear = document.getElementById('new-payment-gear').value;
+      const link = document.getElementById('new-payment-link').value;
+      const quantity = document.getElementById('new-payment-quantity').value;
+      const cost = document.getElementById('new-payment-cost').value;
+      const paymentBody = document.getElementById('payment-body');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${gear}</td>
+        <td><a href="${link}">${gear} Link</a></td>
+        <td>${quantity}</td>
+        <td>${cost}</td>
+        <td>
+          <button class="edit-button" onclick="openEditPaymentModal(this)">✎</button>
+          <button class="delete-button" onclick="deletePayment(this)">×</button>
+        </td>
+      `;
+      paymentBody.appendChild(row);
+      closeModal('add-payment-modal');
+    }
+
+    function deletePayment(button) {
       button.closest('tr').remove();
     }
   </script>
