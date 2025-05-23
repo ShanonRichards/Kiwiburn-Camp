@@ -1929,23 +1929,6 @@ body.night-mode .widget-wrapper {
   <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
 </div>
 
-  <div class="newsletter-popup" id="newsletter">
-    <button class="toggle-newsletter" onclick="toggleNewsletter()">
-      <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
-      Stay in Touch
-    </button>
-    <div class="newsletter-wrapper" id="newsletter-wrapper">
-      <div class="form-container">
-        <h3>Stay in Touch</h3>
-        <p>Stay up to date on upcoming events.</p>
-        <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-        <button onclick="submitNewsletter()">Subscribe</button>
-      </div>
-    </div>
-    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
-  </div>
-</div>
-
 <div class="countdown-container">
   <section class="section countdown-section" id="countdown">
     <h2>Kiwiburn 2026 Countdown</h2>
@@ -2171,7 +2154,6 @@ const targetDate = new Date(storedDate).getTime();
       localStorage.setItem('countdownDate', input);
     }
   }
-
   // EMO PLAYLIST PLAYER Toggle
 function togglePlayer() {
   const playerWrapper = document.getElementById('player-wrapper');
