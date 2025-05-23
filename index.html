@@ -1212,36 +1212,50 @@ body.night-mode .toggle-player:hover {
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
+```css
 .newsletter-popup {
   position: fixed;
   bottom: 20px;
-  right: 330px; /* Positioned to the left of the emo-playlist-player (300px width + 20px gap) */
+  right: 340px; /* Adjusted to align to the left of emo-playlist-player (300px width + 20px gap + 20px buffer) */
   z-index: 1000;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: flex-end;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+}
+
+.newsletter-popup.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.newsletter-popup:not(.active) {
+  transform: translateY(10px);
 }
 
 .toggle-newsletter {
   background: var(--primary);
   color: var(--text);
   border: 2px solid var(--primary);
-  border-radius: 8px;
-  padding: 10px 15px;
-  font-family: 'Special Elite', cursive;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   font-size: 1.1rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .toggle-newsletter:hover {
   background: var(--secondary);
-  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
-  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--primary), 0 0 25px var(--secondary);
+  transform: translateY(-2px);
 }
 
 body.night-mode .toggle-newsletter {
@@ -1252,18 +1266,27 @@ body.night-mode .toggle-newsletter {
 
 body.night-mode .toggle-newsletter:hover {
   background: var(--primary);
-  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+  box-shadow: 0 0 15px var(--secondary), 0 0 25px var(--primary);
+}
+
+.toggle-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--primary);
 }
 
 .newsletter-wrapper {
-  width: 300px;
-  background: rgba(44, 29, 15, 0.9);
+  width: 320px;
+  background: rgba(44, 29, 15, 0.95);
   border: 2px solid var(--primary);
-  border-radius: 12px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  display: none;
-  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .newsletter-wrapper.active {
@@ -1271,66 +1294,184 @@ body.night-mode .toggle-newsletter:hover {
 }
 
 body.night-mode .newsletter-wrapper {
-  background: rgba(74, 55, 35, 0.9);
+  background: rgba(74, 55, 35, 0.95);
   border-color: var(--secondary);
 }
 
 .newsletter-wrapper h3 {
   font-family: 'Bebas Neue', cursive;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #f8e1b4;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
 }
 
 .newsletter-wrapper p {
-  font-size: 0.9rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
   color: #f8e1b4;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .newsletter-wrapper .form-container {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .newsletter-wrapper input {
   width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #e67e22;
-  background: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--primary);
+  background: rgba(255, 255, 255, 0.15);
   color: #f8e1b4;
-  font-size: 0.9rem;
-  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.newsletter-wrapper input:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.newsletter-wrapper input::placeholder {
+  color: #f8e1b4;
+  opacity: 0.7;
 }
 
 .newsletter-wrapper button {
   width: 100%;
-  padding: 8px;
-  background-color: #e67e22;
+  padding: 12px;
+  background-color: var(--primary);
   color: #2b1b0f;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-family: 'Bebas Neue', cursive;
-  font-size: 1rem;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 .newsletter-wrapper button:hover {
-  background-color: #f39c12;
-  box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+  background-color: var(--secondary);
+  box-shadow: 0 0 15px var(--primary), 0 0 25px var(--secondary);
+  transform: translateY(-2px);
 }
 
-/* Adjust position for smaller screens */
+.newsletter-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #f8e1b4;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.newsletter-close:hover {
+  color: var(--secondary);
+}
+
+/* Responsive Adjustments */
 @media only screen and (max-width: 768px) {
   .newsletter-popup {
     bottom: 10px;
-    right: 270px; /* Adjusted for smaller emo-playlist-player width (250px + 20px gap) */
+    right: 280px; /* Adjusted for emo-playlist-player width (250px + 20px gap + 10px buffer) */
   }
 
   .newsletter-wrapper {
-    width: 250px;
+    width: 260px;
+    padding: 15px;
   }
+
+  .toggle-newsletter {
+    font-size: 0.95rem;
+    padding: 10px 15px;
+  }
+
+  .toggle-image {
+    width: 25px;
+    height: 25px;
+  }
+
+  .newsletter-wrapper h3 {
+    font-size: 1.5rem;
+  }
+
+  .newsletter-wrapper p {
+    font-size: 0.9rem;
+  }
+
+  .newsletter-wrapper input {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .newsletter-wrapper button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .newsletter-popup {
+    bottom: 10px;
+    right: 230px; /* Adjusted for emo-playlist-player width (200px + 20px gap + 10px buffer) */
+  }
+
+  .newsletter-wrapper {
+    width: 220px;
+    padding: 12px;
+  }
+
+  .toggle-newsletter {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  .toggle-image {
+    width: 20px;
+    height: 20px;
+  }
+
+  .newsletter-wrapper h3 {
+    font-size: 1.3rem;
+  }
+
+  .newsletter-wrapper p {
+    font-size: 0.85rem;
+  }
+
+  .newsletter-wrapper input {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .newsletter-wrapper button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .newsletter-popup {
+    bottom: 180px; /* Position above emo-playlist-player (100px height + 80px gap) */
+    right: 10px;
+  }
+
+  .newsletter-wrapper {
+    width: 90%;
+    max-width: 200px;
+  }
+}
 
   .toggle-newsletter {
     font-size: 0.9rem;
@@ -2287,9 +2428,10 @@ body.night-mode .newsletter-wrapper {
     Join Our Newsletter
   </button>
   <div class="newsletter-wrapper" id="newsletter-wrapper">
+    <button class="newsletter-close" onclick="toggleNewsletter()" aria-label="Close newsletter popup">×</button>
     <div class="form-container">
       <h3>Stay Updated</h3>
-      <p>Subscribe for Cosmic Rejex events and news.</p>
+      <p>Subscribe for Cosmic Rejex events, news, and exclusive updates.</p>
       <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
       <button onclick="submitNewsletter()">Subscribe</button>
     </div>
@@ -2527,14 +2669,15 @@ function togglePlayer() {
 }
 
 function toggleNewsletter() {
+  const newsletterPopup = document.getElementById('newsletter');
   const newsletterWrapper = document.getElementById('newsletter-wrapper');
+  newsletterPopup.classList.toggle('active');
   newsletterWrapper.classList.toggle('active');
 }
-  // Section Editing
-  function openHeaderModal() {
-    document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
-    openModal('header-modal');
-  }
+
+function submitNewsletter() {
+  alert('Subscribed successfully!');
+}
 
   function saveHeaderDetails() {
     document.querySelector('.header h1').textContent = document.getElementById('header-title').value;
