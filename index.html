@@ -430,16 +430,16 @@ body.night-mode {
       }
     }
 
-    .scroll-down {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      animation: bounce 2s infinite;
-      color: #f8e1b4;
-      transition: box-shadow 0.3s;
-    }
+.scroll-down {
+  position: absolute;
+  bottom: 10px; /* Lowered from 30px to 10px */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+  color: #f8e1b4;
+  transition: box-shadow 0.3s;
+}
 
     .scroll-down:hover {
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
@@ -885,24 +885,26 @@ body.night-mode .toggle-player:hover {
 }
   
 
-    .player-wrapper {
-      width: 300px;
-      background: rgba(44, 29, 15, 0.9);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      display: none;
-    }
+.player-wrapper {
+  width: 300px;
+  background: #000000; /* Changed to solid black */
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  color: #ffffff; /* White text for all content inside */
+}
 
-    .player-wrapper.active {
-      display: block;
-    }
+.player-wrapper.active {
+  display: block;
+}
 
-    body.night-mode .player-wrapper {
-      background: rgba(74, 55, 35, 0.9);
-      border-color: var(--secondary);
-    }
+body.night-mode .player-wrapper {
+  background: #000000; /* Maintain black background in night mode */
+  border-color: var(--secondary);
+  color: #ffffff; /* White text in night mode */
+}
 
 .toggle-player {
   background: var(--primary);
@@ -2012,10 +2014,10 @@ body.night-mode .newsletter-wrapper {
   <img src="images/Logo/Logo_Update.png" alt="Cosmic Rejex Logo" class="header-logo">
   <h1>JOIN COSMIC REJEX</h1>
   <p>A Safe Space for Emos, Rockers, and Dreamers</p>
-  <div class="header-ctas">
-    <a href="join-camp.html" class="apply-button">Apply for 2026</a>
-    <a href="#about" class="secondary-button">Learn More</a>
-  </div>
+<div class="header-ctas">
+  <a href="join-camp.html" class="apply-button">Apply for 2026</a>
+  <a href="events.html" class="secondary-button">Events</a>
+</div>
   <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
   <a href="#about" class="scroll-down" aria-label="Scroll to about section">▼</a>
 </header>
@@ -2229,6 +2231,7 @@ body.night-mode .newsletter-wrapper {
           <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
           <button class="delete-button" onclick="deleteMember(this)">×</button>
         </div>
+
         <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
           <img src="images/Core-Camp-Crew/Meghan_Louise _Robson.png" alt="Meghan">
           <h3>Meghan Robson</h3>
@@ -2271,47 +2274,51 @@ body.night-mode .newsletter-wrapper {
         </div>
       </div>
 
-<div class="newsletter-popup" id="newsletter">
-  <button class="toggle-newsletter" onclick="toggleNewsletter()">
-    <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
-    Join Our Newsletter
-  </button>
-  <div class="newsletter-wrapper" id="newsletter-wrapper">
-    <div class="form-container">
-      <h3>Stay Updated</h3>
-      <p>Subscribe for Cosmic Rejex events and news.</p>
-      <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-      <button onclick="submitNewsletter()">Subscribe</button>
+<!-- Emo Playlist Player -->
+<div class="sidebar-widgets">
+  <div class="emo-playlist-player">
+    <button class="toggle-player" onclick="togglePlayer()">
+      <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
+      Play Emo Playlist
+    </button>
+    <div class="player-wrapper" id="player-wrapper">
+      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy" 
+              aria-label="Emo Playlist Player"></iframe>
     </div>
   </div>
-  <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
-</div>
 
-<!-- Emo Playlist Player -->
-<div class="emo-playlist-player">
-  <button class="toggle-player" onclick="togglePlayer()">
-    <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
-    Play Emo Playlist
-  </button>
-  <div class="player-wrapper" id="player-wrapper">
-    <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy" 
-            aria-label="Emo Playlist Player"></iframe>
+  <div class="newsletter-popup" id="newsletter">
+    <button class="toggle-newsletter" onclick="toggleNewsletter()">
+      <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
+      Stay in Touch
+    </button>
+    <div class="newsletter-wrapper" id="newsletter-wrapper">
+      <div class="form-container">
+        <h3>Stay in Touch</h3>
+        <p>Stay up to date on upcoming events.</p>
+        <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
+        <button onclick="submitNewsletter()">Subscribe</button>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
   </div>
 </div>
 
-<div class="countdown-section" id="countdown">
-  <h2>Kiwiburn 2026 Countdown</h2>
-  <div class="countdown" id="countdown-timer">
-    <span id="days">00<br><small>Days</small></span>
-    <span id="hours">00<br><small>Hours</small></span>
-    <span id="minutes">00<br><small>Minutes</small></span>
-    <span id="seconds">00<br><small>Seconds</small></span>
-  </div>
-  <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
-  <button onclick="updateCountdownDate()">Update Date</button>
-  <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
+<div class="countdown-container">
+  <section class="section countdown-section" id="countdown">
+    <h2>Kiwiburn 2026 Countdown</h2>
+    <div class="countdown" id="countdown-timer">
+      <span id="days">00<br><small>Days</small></span>
+      <span id="hours">00<br><small>Hours</small></span>
+      <span id="minutes">00<br><small>Minutes</small></span>
+      <span id="seconds">00<br><small>Seconds</small></span>
+    </div>
+    <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
+    <button onclick="updateCountdownDate()">Update Date</button>
+    <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
+  </section>
 </div>
 
 <script>
@@ -2574,11 +2581,11 @@ function submitNewsletter() {
     closeModal('events-modal');
   }
 
-  function saveNewsletterDetails() {
-    document.querySelector('#newsletter h1').textContent = document.getElementById('newsletter-title').value;
-    document.querySelector('#newsletter p').textContent = document.getElementById('newsletter-description').value;
-    closeModal('newsletter-modal');
-  }
+function saveNewsletterDetails() {
+  document.querySelector('#newsletter h3').textContent = document.getElementById('newsletter-title').value;
+  document.querySelector('#newsletter p').textContent = document.getElementById('newsletter-description').value;
+  closeModal('newsletter-modal');
+}
 
   function saveJoinDetails() {
     document.querySelector('#join h1').textContent = document.getElementById('join-title').value;
