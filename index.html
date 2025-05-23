@@ -812,20 +812,19 @@ body.night-mode {
       position: relative;
     }
 
-/* Sidebar Widget (Combined Playlist and Newsletter) */
-.sidebar-widget {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  transition: all 0.3s ease;
-}
+    .emo-playlist-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      transition: all 0.3s ease;
+    }
 
-.toggle-button {
-  background: #000000;
+    .toggle-player {
+  background: var(--emo-dark);
   color: #ffffff;
   border: 2px solid var(--emo-accent);
   border-radius: 8px;
@@ -837,22 +836,21 @@ body.night-mode {
   gap: 10px;
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
   text-transform: uppercase;
-  margin-bottom: 10px;
 }
 
-.toggle-button:hover {
+.toggle-player:hover {
   background: var(--emo-accent);
   box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
   transform: scale(1.05);
 }
 
-body.night-mode .toggle-button {
-  background: #000000;
+body.night-mode .toggle-player {
+  background: var(--emo-dark);
   color: #d3d3d3;
   border-color: var(--emo-accent);
 }
 
-body.night-mode .toggle-button:hover {
+body.night-mode .toggle-player:hover {
   background: var(--emo-accent);
   box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
 }
@@ -865,53 +863,443 @@ body.night-mode .toggle-button:hover {
   border: 1px solid var(--emo-accent);
 }
 
-.widget-wrapper {
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+  .toggle-player {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+  .toggle-image {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .toggle-player {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+  .toggle-image {
+    width: 20px;
+    height: 20px;
+  }
+}
+  
+
+.player-wrapper {
   width: 300px;
-  background: #000000;
+  background: #000000; /* Changed to solid black */
   border: 2px solid var(--primary);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   display: none;
-  color: #ffffff;
+  color: #ffffff; /* White text for all content inside */
 }
 
-.widget-wrapper.active {
+.player-wrapper.active {
   display: block;
 }
 
-body.night-mode .widget-wrapper {
-  background: #000000;
+body.night-mode .player-wrapper {
+  background: #000000; /* Maintain black background in night mode */
   border-color: var(--secondary);
-  color: #ffffff;
+  color: #ffffff; /* White text in night mode */
 }
 
-.widget-wrapper iframe {
-  width: 100%;
-  height: 152px;
+.toggle-player {
+  background: var(--primary);
+  color: var(--text);
   border: none;
-  border-radius: 12px;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+  margin-bottom: 10px;
 }
 
-.widget-wrapper h3 {
+.toggle-player:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+}
+
+body.night-mode .toggle-player {
+  background: var(--secondary);
+  color: var(--background);
+}
+
+body.night-mode .toggle-player:hover {
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+}
+
+    body.night-mode .toggle-player:hover {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
+
+    .emo-playlist-player iframe {
+      width: 100%;
+      height: 152px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .emo-playlist-player {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .player-wrapper {
+        width: 250px;
+      }
+
+      .toggle-player {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 120px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .player-wrapper {
+        width: 200px;
+      }
+
+      .toggle-player {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 100px;
+      }
+    }
+
+    .modal-content h3 {
+      font-family: 'Bebas Neue', cursive;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input, .modal-content textarea, .modal-content select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .modal-content input[type="file"] {
+      background: none;
+      border: none;
+      padding: 5px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 0 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      font-size: 1.2em;
+      padding: 5px 10px;
+    }
+
+    .events-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .countdown-section {
+      position: relative;
+      background: url('images/Countdown/Kiwiburn-Coverphoto.jpg') center/cover no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+      color: #ffffff;
+      margin: 40px 0;
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    body.night-mode .countdown-section {
+      background: url('images/countdown-bg.jpg') center/cover no-repeat;
+    }
+
+    .countdown-section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      color: #ffffff;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5em;
+      color: #ffffff;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 15px 30px;
+      border-radius: 10px;
+      border: 2px solid #e67e22;
+    }
+
+    .countdown span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown span small {
+      font-size: 0.5em;
+      text-transform: uppercase;
+    }
+
+    .countdown-section input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      margin: 10px;
+      display: none;
+    }
+
+    .logged-in .countdown-section input {
+      display: inline-block;
+    }
+
+    .countdown-section button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    .logged-in .countdown-section button {
+      display: inline-block;
+    }
+
+    .countdown-section button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    body.night-mode footer {
+      background-color: #4a3723;
+    }
+
+    .form-container {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .form-container button {
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .submit-button, .fee-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+      margin: 10px;
+    }
+
+    .submit-button:hover, .fee-button:hover {
+      background-color: #f39c12;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .section#submit {
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .submit-section {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+/* Newsletter Popup */
+.newsletter-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 310px; /* Reduced gap to be closer to emo-playlist-player (300px width + 10px gap) */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: all 0.3s ease;
+}
+
+.toggle-newsletter {
+  background: var(--primary);
+  color: var(--text);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+  text-transform: uppercase;
+}
+
+.toggle-newsletter:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+  transform: scale(1.05);
+}
+
+body.night-mode .toggle-newsletter {
+  background: var(--secondary);
+  color: var(--background);
+  border-color: var(--primary);
+}
+
+body.night-mode .toggle-newsletter:hover {
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+  transform: scale(1.05);
+}
+
+.newsletter-wrapper {
+  width: 300px;
+  background: rgba(44, 29, 15, 0.9);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  padding: 15px;
+}
+
+.newsletter-wrapper.active {
+  display: block;
+}
+
+body.night-mode .newsletter-wrapper {
+  background: rgba(74, 55, 35, 0.9);
+  border-color: var(--secondary);
+}
+
+.newsletter-wrapper h3 {
   font-family: 'Bebas Neue', cursive;
   font-size: 1.5rem;
   color: #f8e1b4;
   margin-bottom: 10px;
 }
 
-.widget-wrapper p {
+.newsletter-wrapper p {
   font-size: 0.9rem;
   color: #f8e1b4;
   margin-bottom: 15px;
 }
 
-.widget-wrapper .form-container {
+.newsletter-wrapper .form-container {
   text-align: left;
 }
 
-.widget-wrapper input {
-  width: 100%;
+.newsletter-wrapper input {
+  width:100%;
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #e67e22;
@@ -921,7 +1309,7 @@ body.night-mode .widget-wrapper {
   margin-bottom: 10px;
 }
 
-.widget-wrapper button {
+.newsletter-wrapper button {
   width: 100%;
   padding: 8px;
   background-color: #e67e22;
@@ -934,19 +1322,23 @@ body.night-mode .widget-wrapper {
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.widget-wrapper button:hover {
+.newsletter-wrapper button:hover {
   background-color: #f39c12;
   box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
 }
 
 /* Responsive Adjustments */
 @media only screen and (max-width: 768px) {
-  .sidebar-widget {
+  .newsletter-popup {
     bottom: 10px;
-    right: 10px;
+    right: 260px; /* Adjusted for smaller emo-playlist-player width (250px + 10px gap) */
   }
 
-  .toggle-button {
+  .newsletter-wrapper {
+    width: 250px;
+  }
+
+  .toggle-newsletter {
     font-size: 0.9rem;
     padding: 8px 12px;
   }
@@ -956,30 +1348,26 @@ body.night-mode .widget-wrapper {
     height: 25px;
   }
 
-  .widget-wrapper {
-    width: 250px;
-  }
-
-  .widget-wrapper iframe {
-    height: 120px;
-  }
-
-  .widget-wrapper h3 {
+  .newsletter-wrapper h3 {
     font-size: 1.3rem;
   }
 
-  .widget-wrapper p {
+  .newsletter-wrapper p {
     font-size: 0.85rem;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .sidebar-widget {
+  .newsletter-popup {
     bottom: 10px;
-    right: 10px;
+    right: 210px; /* Adjusted for smaller emo-playlist-player width (200px + 10px gap) */
   }
 
-  .toggle-button {
+  .newsletter-wrapper {
+    width: 200px;
+  }
+
+  .toggle-newsletter {
     font-size: 0.8rem;
     padding: 6px 10px;
   }
@@ -989,20 +1377,19 @@ body.night-mode .widget-wrapper {
     height: 20px;
   }
 
-  .widget-wrapper {
-    width: 200px;
-  }
-
-  .widget-wrapper iframe {
-    height: 100px;
-  }
-
-  .widget-wrapper h3 {
+  .newsletter-wrapper h3 {
     font-size: 1.1rem;
   }
 
-  .widget-wrapper p {
+  .newsletter-wrapper p {
     font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .newsletter-popup {
+    right: 10px; /* Stack below emo-playlist-player on very small screens */
+    bottom: 170px; /* Adjusted to sit above emo-playlist-player (100px height + 70px gap) */
   }
 }
 
@@ -1902,31 +2289,36 @@ body.night-mode .widget-wrapper {
         </div>
       </div>
 
-<!-- Sidebar Widget (Combined Playlist and Newsletter) -->
-<div class="sidebar-widget" id="sidebar-widget">
-  <button class="toggle-button" onclick="togglePlayer()">
-    <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
-    Play Emo Playlist
-  </button>
-  <button class="toggle-button" onclick="toggleNewsletter()">
-    <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
-    Stay in Touch
-  </button>
-  <div class="widget-wrapper" id="player-wrapper">
-    <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy" 
-            aria-label="Emo Playlist Player"></iframe>
-  </div>
-  <div class="widget-wrapper" id="newsletter-wrapper">
-    <div class="form-container">
-      <h3>Stay in Touch</h3>
-      <p>Stay up to date on upcoming events.</p>
-      <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-      <button onclick="submitNewsletter()">Subscribe</button>
+<!-- Emo Playlist Player -->
+<div class="sidebar-widgets">
+  <div class="emo-playlist-player">
+    <button class="toggle-player" onclick="togglePlayer()">
+      <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
+      Play Emo Playlist
+    </button>
+    <div class="player-wrapper" id="player-wrapper">
+      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy" 
+              aria-label="Emo Playlist Player"></iframe>
     </div>
   </div>
-  <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+
+  <div class="newsletter-popup" id="newsletter">
+    <button class="toggle-newsletter" onclick="toggleNewsletter()">
+      <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
+      Stay in Touch
+    </button>
+    <div class="newsletter-wrapper" id="newsletter-wrapper">
+      <div class="form-container">
+        <h3>Stay in Touch</h3>
+        <p>Stay up to date on upcoming events.</p>
+        <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
+        <button onclick="submitNewsletter()">Subscribe</button>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+  </div>
 </div>
 
 <div class="countdown-container">
@@ -2154,6 +2546,7 @@ const targetDate = new Date(storedDate).getTime();
       localStorage.setItem('countdownDate', input);
     }
   }
+
   // EMO PLAYLIST PLAYER Toggle
 function togglePlayer() {
   const playerWrapper = document.getElementById('player-wrapper');
@@ -2161,7 +2554,9 @@ function togglePlayer() {
 }
 
 function toggleNewsletter() {
+  const newsletterPopup = document.getElementById('newsletter');
   const newsletterWrapper = document.getElementById('newsletter-wrapper');
+  newsletterPopup.classList.toggle('active');
   newsletterWrapper.classList.toggle('active');
 }
 
