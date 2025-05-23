@@ -2246,6 +2246,30 @@ body.night-mode .history-item p {
   </div>
 </div>
 
+<div class="countdown-container">
+  <section class="section countdown-section" id="countdown">
+    <h2>Kiwiburn 2026 Countdown</h2>
+    <div class="countdown" id="countdown-timer">
+      <span id="days">00<br><small>Days</small></span>
+      <span id="hours">00<br><small>Hours</small></span>
+      <span id="minutes">00<br><small>Minutes</small></span>
+      <span id="seconds">00<br><small>Seconds</small></span>
+    </div>
+    <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
+    <button onclick="updateCountdownDate()">Update Date</button>
+    <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
+  </section>
+</div>
+
+<script>
+  // Theme Toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('night-mode');
+    themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+    localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+  });
+
 <footer>
   <p>&copy; 2025 Cosmic Rejex | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
 </footer>
