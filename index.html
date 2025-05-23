@@ -1212,18 +1212,180 @@ body.night-mode .toggle-player:hover {
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-    .newsletter-section {
-      padding: 80px 20px;
-      background-color: rgba(244, 228, 188, 0.8);
-    }
+.newsletter-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 330px; /* Positioned to the left of the emo-playlist-player (300px width + 20px gap) */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: all 0.3s ease;
+}
 
-    body.night-mode .newsletter-section {
-      background-color: rgba(44, 29, 15, 0.8);
-    }
+.toggle-newsletter {
+  background: var(--primary);
+  color: var(--text);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+  text-transform: uppercase;
+}
 
-    .newsletter-container .section {
-      padding: 0;
-    }
+.toggle-newsletter:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+  transform: scale(1.05);
+}
+
+body.night-mode .toggle-newsletter {
+  background: var(--secondary);
+  color: var(--background);
+  border-color: var(--primary);
+}
+
+body.night-mode .toggle-newsletter:hover {
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+}
+
+.newsletter-wrapper {
+  width: 300px;
+  background: rgba(44, 29, 15, 0.9);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  padding: 15px;
+}
+
+.newsletter-wrapper.active {
+  display: block;
+}
+
+body.night-mode .newsletter-wrapper {
+  background: rgba(74, 55, 35, 0.9);
+  border-color: var(--secondary);
+}
+
+.newsletter-wrapper h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem;
+  color: #f8e1b4;
+  margin-bottom: 10px;
+}
+
+.newsletter-wrapper p {
+  font-size: 0.9rem;
+  color: #f8e1b4;
+  margin-bottom: 15px;
+}
+
+.newsletter-wrapper .form-container {
+  text-align: left;
+}
+
+.newsletter-wrapper input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #e67e22;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8e1b4;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.newsletter-wrapper button {
+  width: 100%;
+  padding: 8px;
+  background-color: #e67e22;
+  color: #2b1b0f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.newsletter-wrapper button:hover {
+  background-color: #f39c12;
+  box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+}
+
+/* Adjust position for smaller screens */
+@media only screen and (max-width: 768px) {
+  .newsletter-popup {
+    bottom: 10px;
+    right: 270px; /* Adjusted for smaller emo-playlist-player width (250px + 20px gap) */
+  }
+
+  .newsletter-wrapper {
+    width: 250px;
+  }
+
+  .toggle-newsletter {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .toggle-image {
+    width: 25px;
+    height: 25px;
+  }
+
+  .newsletter-wrapper h3 {
+    font-size: 1.3rem;
+  }
+
+  .newsletter-wrapper p {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .newsletter-popup {
+    bottom: 10px;
+    right: 220px; /* Adjusted for smaller emo-playlist-player width (200px + 20px gap) */
+  }
+
+  .newsletter-wrapper {
+    width: 200px;
+  }
+
+  .toggle-newsletter {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .toggle-image {
+    width: 20px;
+    height: 20px;
+  }
+
+  .newsletter-wrapper h3 {
+    font-size: 1.1rem;
+  }
+
+  .newsletter-wrapper p {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .newsletter-popup {
+    right: 10px; /* Stack below emo-playlist-player on very small screens */
+    bottom: 180px; /* Position above emo-playlist-player (100px height + 80px gap) */
+  }
+}
 
     .save-button {
       padding: 10px 20px;
@@ -1830,7 +1992,7 @@ body.night-mode .toggle-player:hover {
         <a href="gallery.html?year=2025">2025</a>
       </div>
     </div>
-    <a href="#newsletter">Newsletter</a>
+    <a href="javascript:void(0)" onclick="toggleNewsletter()">Newsletter</a>
     <a href="contact.html">Contact Us</a>
   </div>
   <div class="nav-login">
@@ -2119,18 +2281,21 @@ body.night-mode .toggle-player:hover {
             aria-label="Emo Playlist Player"></iframe>
   </div>
 </div>
-
-<section class="section newsletter-section" id="newsletter">
-  <div class="newsletter-container">
-    <h1>Join Our Newsletter</h1>
-    <p>Stay updated with Cosmic Rejex events, news, and exclusive content.</p>
+<div class="newsletter-popup" id="newsletter">
+  <button class="toggle-newsletter" onclick="toggleNewsletter()">
+    <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
+    Join Our Newsletter
+  </button>
+  <div class="newsletter-wrapper" id="newsletter-wrapper">
     <div class="form-container">
+      <h3>Stay Updated</h3>
+      <p>Subscribe for Cosmic Rejex events and news.</p>
       <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
       <button onclick="submitNewsletter()">Subscribe</button>
     </div>
-    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
   </div>
-</section>
+  <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+</div>
 
 <div class="countdown-section" id="countdown">
   <h2>Kiwiburn 2026 Countdown</h2>
@@ -2359,6 +2524,11 @@ body.night-mode .toggle-player:hover {
 function togglePlayer() {
   const playerWrapper = document.getElementById('player-wrapper');
   playerWrapper.classList.toggle('active');
+}
+
+function toggleNewsletter() {
+  const newsletterWrapper = document.getElementById('newsletter-wrapper');
+  newsletterWrapper.classList.toggle('active');
 }
   // Section Editing
   function openHeaderModal() {
