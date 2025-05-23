@@ -2163,143 +2163,62 @@ body.night-mode .history-item p {
   </section>
 </div>
 
-<div class="members-container">
-  <section class="section" id="members">
-    <h1>Meet Our Core Camp Crew</h1>
-    <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
-      <div class="scroll-arrow left" data-grid="members">◄</div>
-      <div class="scroll-arrow right" data-grid="members">►</div>
-      <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
-        <img src="images/Core-Camp-Crew/Shanon_Richards.png" alt="Shanon Richards">
-        <h3>Shanon Richards</h3>
-        <span>Camp Lead</span>
-        <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
-        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteMember(this)">×</button>
-      </div>
+  <div class="members-container">
+    <section class="section" id="members">
+      <h1>Meet Our Core Camp Crew</h1>
+      <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
+        <div class="scroll-arrow left" data-grid="members">◄</div>
+        <div class="scroll-arrow right" data-grid="members">►</div>
+        <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Shanon_Richards.png" alt="Shanon Richards">
+          <h3>Shanon Richards</h3>
+          <span>Camp Lead</span>
+          <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
 
-      <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
-        <img src="images/Core-Camp-Crew/Meghan_Louise _Robson.png" alt="Meghan">
-        <h3>Meghan Robson</h3>
-        <span>Deputy Lead</span>
-        <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
-        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteMember(this)">×</button>
+        <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Meghan_Louise _Robson.png" alt="Meghan">
+          <h3>Meghan Robson</h3>
+          <span>Deputy Lead</span>
+          <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Russell_Duffield.png" alt="Russell">
+          <h3>Russell Duffield</h3>
+          <span>Build Lead</span>
+          <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Micheal_Dunstan.png" alt="Micheal">
+          <h3>Micheal Dunstan</h3>
+          <span>Logistics Lead</span>
+          <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Tomas_Shelby.png" alt="Tomas">
+          <h3>Tomas Shelby</h3>
+          <span>Sound Lead</span>
+          <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Alana_Stewart.png" alt="Alana">
+          <h3>Alana Stewart</h3>
+          <span>Kitchen Lead</span>
+          <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
       </div>
-      <div class="member" draggable="true" ondragstart="drag(event)">
-        <img src="images/Core-Camp-Crew/Russell_Duffield.png" alt="Russell Duffield">
-        <h3>Russell Duffield</h3>
-        <span>Events Coordinator</span>
-        <p>Plans and manages camp events, ensuring a vibrant schedule of music, art, and workshops.</p>
-        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteMember(this)">×</button>
-      </div>
-      <div class="member" draggable="true" ondragstart="drag(event)">
-        <img src="images/Core-Camp-Crew/Luna_Starr.png" alt="Luna Starr">
-        <h3>Luna Starr</h3>
-        <span>Art Director</span>
-        <p>Curates alien-themed installations and visual art, creating immersive experiences for campers.</p>
-        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-        <button class="delete-button" onclick="deleteMember(this)">×</button>
-      </div>
-    </div>
-    <button class="save-button" onclick="addNewMember()">Add New Member</button>
-  </section>
-</div>
-
-<div class="section" id="roles">
-  <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
-    <div class="scroll-arrow left" data-grid="roles">◄</div>
-    <div class="scroll-arrow right" data-grid="roles">►</div>
-    <div class="role" draggable="true" ondragstart="drag(event)">
-      <img src="images/Roles/sound-crew.png" alt="Sound Crew Icon">
-      <h3>Sound Crew</h3>
-      <p>Manage audio setup, DJ sets, and sound quality for our camp’s music events.</p>
-      <div class="tooltip">
-        <span>Sound Crew</span>
-        Set up and manage sound systems, coordinate DJs, and ensure epic vibes.
-        <a href="join-camp.html" class="apply-button">Apply Now</a>
-      </div>
-      <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-      <button class="delete-button" onclick="deleteRole(this)">×</button>
-    </div>
-    <div class="role" draggable="true" ondragstart="drag(event)">
-      <img src="images/Roles/art-crew.png" alt="Art Crew Icon">
-      <h3>Art Crew</h3>
-      <p>Create and install art pieces, focusing on our alien and emo aesthetic.</p>
-      <div class="tooltip">
-        <span>Art Crew</span>
-        Design and build immersive art installations for the camp.
-        <a href="join-camp.html" class="apply-button">Apply Now</a>
-      </div>
-      <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-      <button class="delete-button" onclick="deleteRole(this)">×</button>
-    </div>
-    <div class="role" draggable="true" ondragstart="drag(event)">
-      <img src="images/Roles/logistics.png" alt="Logistics Icon">
-      <h3>Logistics Team</h3>
-      <p>Handle camp setup, supplies, and coordination of resources.</p>
-      <div class="tooltip">
-        <span>Logistics Team</span>
-        Organize camp setup, manage supplies, and keep things running smoothly.
-        <a href="join-camp.html" class="apply-button">Apply Now</a>
-      </div>
-      <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-      <button class="delete-button" onclick="deleteRole(this)">×</button>
-    </div>
-  </div>
-  <button class="save-button" onclick="openModal('role-modal')">Add New Role</button>
-</div>
-
-<div class="countdown-section" id="countdown">
-  <h2>Kiwiburn 2026 Countdown</h2>
-  <div class="countdown">
-    <span id="days">00<br><small>Days</small></span>
-    <span id="hours">00<br><small>Hours</small></span>
-    <span id="minutes">00<br><small>Minutes</small></span>
-    <span id="seconds">00<br><small>Seconds</small></span>
-  </div>
-  <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
-  <input type="file" id="countdown-bg-input" accept="image/*" aria-label="Countdown Background">
-  <button onclick="openModal('countdown-modal')">Set Countdown</button>
-</div>
-
-<div class="newsletter-container">
-  <section class="section" id="newsletter">
-    <h1>Stay in Touch</h1>
-    <p>Join our newsletter to stay updated on Cosmic Rejex events, news, and exclusive content!</p>
-    <div class="form-container">
-      <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email for Newsletter">
-      <button onclick="subscribeNewsletter()">Subscribe</button>
-    </div>
-    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
-  </section>
-</div>
-
-<div class="section" id="submit">
-  <div class="submit-section">
-    <h1>Submit an Event</h1>
-    <p>Got an idea for an event? Submit it here to be part of our Cosmic Rejex lineup!</p>
-    <div class="form-container">
-      <input type="text" id="event-title-input" placeholder="Event Title" required aria-label="Event Title">
-      <textarea id="event-description-input" placeholder="Event Description" required aria-label="Event Description"></textarea>
-      <input type="date" id="event-date-input" required aria-label="Event Date">
-      <input type="time" id="event-time-input" required aria-label="Event Time">
-      <input type="datetime-local" id="event-end-input" required aria-label="Event End Date and Time">
-      <select id="event-category-input" required aria-label="Event Category">
-        <option value="" disabled selected>Select Category</option>
-        <option value="Music">Music</option>
-        <option value="Art">Art</option>
-        <option value="Performance">Performance</option>
-        <option value="Workshop">Workshop</option>
-        <option value="Other">Other</option>
-      </select>
-      <input type="file" id="event-image-input" accept="image/*" aria-label="Event Image">
-      <button class="submit-button" onclick="submitEvent()">Submit Event</button>
-    </div>
-    <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
-  </div>
-</div>
 
 <div class="sidebar-widgets">
   <div class="newsletter-popup">
