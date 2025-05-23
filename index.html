@@ -1214,16 +1214,24 @@ body.night-mode .toggle-player:hover {
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-/* Newsletter Popup */
-.newsletter-popup {
+/* Sidebar Widgets */
+.sidebar-widgets {
   position: fixed;
-  bottom: 200px; /* Positioned above emo-playlist-player */
+  bottom: 20px;
   right: 20px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
+  gap: 0; /* Changed to 0 to remove spacing between buttons */
   align-items: flex-end;
   transition: all 0.3s ease;
+}
+
+/* Newsletter Popup */
+.newsletter-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .toggle-newsletter {
@@ -1231,12 +1239,12 @@ body.night-mode .toggle-player:hover {
   color: var(--text);
   border: 2px solid var(--primary);
   border-radius: 8px;
-  padding: 10px 15px;
+  padding: 8px 12px; /* Reduced padding */
   font-family: 'Special Elite', cursive;
-  font-size: 1.1rem;
+  font-size: 0.9rem; /* Reduced font size */
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
   text-transform: uppercase;
 }
@@ -1260,15 +1268,15 @@ body.night-mode .toggle-newsletter:hover {
 }
 
 .newsletter-wrapper {
-  width: 300px; /* Same width as player-wrapper */
-  background: #000000; /* Solid black background */
+  width: 300px;
+  background: transparent; /* Changed to transparent */
   border: 2px solid var(--primary);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   display: none;
   padding: 15px;
-  color: #ffffff; /* White text for all content inside */
+  color: #ffffff;
 }
 
 .newsletter-wrapper.active {
@@ -1276,21 +1284,21 @@ body.night-mode .toggle-newsletter:hover {
 }
 
 body.night-mode .newsletter-wrapper {
-  background: #000000; /* Maintain black background in night mode */
+  background: transparent; /* Changed to transparent */
   border-color: var(--secondary);
-  color: #ffffff; /* White text in night mode */
+  color: #ffffff;
 }
 
 .newsletter-wrapper h3 {
   font-family: 'Bebas Neue', cursive;
-  font-size: 1.5rem;
-  color: #ffffff; /* White text */
+  font-size: 1.3rem; /* Reduced font size */
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
 .newsletter-wrapper p {
-  font-size: 0.9rem;
-  color: #ffffff; /* White text */
+  font-size: 0.8rem; /* Reduced font size */
+  color: #ffffff;
   margin-bottom: 15px;
 }
 
@@ -1300,25 +1308,25 @@ body.night-mode .newsletter-wrapper {
 
 .newsletter-wrapper input {
   width: 100%;
-  padding: 8px;
+  padding: 6px; /* Reduced padding */
   border-radius: 5px;
   border: 1px solid #e67e22;
   background: rgba(255, 255, 255, 0.1);
-  color: #ffffff; /* White text */
-  font-size: 0.9rem;
+  color: #ffffff;
+  font-size: 0.8rem; /* Reduced font size */
   margin-bottom: 10px;
 }
 
 .newsletter-wrapper button {
   width: 100%;
-  padding: 8px;
+  padding: 6px; /* Reduced padding */
   background-color: #e67e22;
-  color: #ffffff; /* White text */
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-family: 'Bebas Neue', cursive;
-  font-size: 1rem;
+  font-size: 0.8rem; /* Reduced font size */
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
@@ -1329,14 +1337,9 @@ body.night-mode .newsletter-wrapper {
 
 /* Emo Playlist Player */
 .emo-playlist-player {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  transition: all 0.3s ease;
 }
 
 .toggle-player {
@@ -1344,12 +1347,12 @@ body.night-mode .newsletter-wrapper {
   color: var(--text);
   border: 2px solid var(--primary);
   border-radius: 8px;
-  padding: 10px 15px;
+  padding: 8px 12px; /* Reduced padding */
   font-family: 'Special Elite', cursive;
-  font-size: 1.1rem;
+  font-size: 0.9rem; /* Reduced font size */
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
   text-transform: uppercase;
 }
@@ -1373,22 +1376,22 @@ body.night-mode .toggle-player:hover {
 }
 
 .toggle-image {
-  width: 30px;
-  height: 30px;
+  width: 25px; /* Reduced size */
+  height: 25px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--primary);
 }
 
 .player-wrapper {
-  width: 300px; /* Same width as newsletter-wrapper */
-  background: #000000; /* Solid black background */
+  width: 300px;
+  background: transparent; /* Changed to transparent */
   border: 2px solid var(--primary);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   display: none;
-  color: #ffffff; /* White text for all content inside */
+  color: #ffffff;
 }
 
 .player-wrapper.active {
@@ -1396,9 +1399,9 @@ body.night-mode .toggle-player:hover {
 }
 
 body.night-mode .player-wrapper {
-  background: #000000; /* Maintain black background in night mode */
+  background: transparent; /* Changed to transparent */
   border-color: var(--secondary);
-  color: #ffffff; /* White text in night mode */
+  color: #ffffff;
 }
 
 .emo-playlist-player iframe {
@@ -1410,42 +1413,92 @@ body.night-mode .player-wrapper {
 
 /* Responsive Adjustments */
 @media only screen and (max-width: 768px) {
-  .newsletter-popup {
-    bottom: 180px; /* Positioned above emo-playlist-player */
-    right: 10px;
-  }
-
-  .emo-playlist-player {
+  .sidebar-widgets {
     bottom: 10px;
     right: 10px;
   }
 
   .newsletter-wrapper,
   .player-wrapper {
-    width: 250px; /* Same width for both */
+    width: 250px;
   }
 
   .toggle-newsletter,
   .toggle-player {
-    font-size: 0.9rem;
-    padding: 8px 12px;
+    font-size: 0.8rem; /* Reduced font size */
+    padding: 6px 10px; /* Reduced padding */
   }
 
   .toggle-image {
-    width: 25px;
-    height: 25px;
+    width: 20px; /* Reduced size */
+    height: 20px;
   }
 
   .newsletter-wrapper h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Reduced font size */
   }
 
   .newsletter-wrapper p {
-    font-size: 0.85rem;
+    font-size: 0.75rem; /* Reduced font size */
+  }
+
+  .newsletter-wrapper input {
+    padding: 5px; /* Reduced padding */
+    font-size: 0.75rem; /* Reduced font size */
+  }
+
+  .newsletter-wrapper button {
+    padding: 5px; /* Reduced padding */
+    font-size: 0.75rem; /* Reduced font size */
   }
 
   .emo-playlist-player iframe {
     height: 120px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .sidebar-widgets {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .newsletter-wrapper,
+  .player-wrapper {
+    width: 200px;
+  }
+
+  .toggle-newsletter,
+  .toggle-player {
+    font-size: 0.7rem; /* Reduced font size */
+    padding: 5px 8px; /* Reduced padding */
+  }
+
+  .toggle-image {
+    width: 18px; /* Reduced size */
+    height: 18px;
+  }
+
+  .newsletter-wrapper h3 {
+    font-size: 1rem; /* Reduced font size */
+  }
+
+  .newsletter-wrapper p {
+    font-size: 0.7rem; /* Reduced font size */
+  }
+
+  .newsletter-wrapper input {
+    padding: 4px; /* Reduced padding */
+    font-size: 0.7rem; /* Reduced font size */
+  }
+
+  .newsletter-wrapper button {
+    padding: 4px; /* Reduced padding */
+    font-size: 0.7rem; /* Reduced font size */
+  }
+
+  .emo-playlist-player iframe {
+    height: 100px;
   }
 }
 
@@ -2386,34 +2439,27 @@ body.night-mode .player-wrapper {
 
 <!-- Sidebar Widgets -->
 <div class="sidebar-widgets">
-  <!-- Newsletter Popup -->
-  <div class="newsletter-popup" id="newsletter">
+  <div class="newsletter-popup">
     <button class="toggle-newsletter" onclick="toggleNewsletter()">
-      <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
+      <img src="images/Icons/newsletter-icon.png" alt="Newsletter Icon" class="toggle-image">
       Stay in Touch
     </button>
     <div class="newsletter-wrapper" id="newsletter-wrapper">
+      <h3>Join Our Newsletter</h3>
+      <p>Stay updated with Cosmic Rejex news and events!</p>
       <div class="form-container">
-        <h3>Stay in Touch</h3>
-        <p>Stay up to date on upcoming events.</p>
-        <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-        <button onclick="submitNewsletter()">Subscribe</button>
+        <input type="email" id="sidebar-newsletter-email" placeholder="Enter your email" required aria-label="Sidebar Newsletter Email">
+        <button onclick="subscribeSidebarNewsletter()">Subscribe</button>
       </div>
     </div>
-    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
   </div>
-
-  <!-- Emo Playlist Player -->
   <div class="emo-playlist-player">
     <button class="toggle-player" onclick="togglePlayer()">
-      <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
+      <img src="images/Icons/playlist-icon.png" alt="Playlist Icon" class="toggle-image">
       Play Emo Playlist
     </button>
     <div class="player-wrapper" id="player-wrapper">
-      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy" 
-              aria-label="Emo Playlist Player"></iframe>
+      <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9LtJFNY2dbI" allow="encrypted-media" allowtransparency="true"></iframe>
     </div>
   </div>
 </div>
