@@ -1217,8 +1217,8 @@ body.night-mode .toggle-player:hover {
 /* Newsletter Popup */
 .newsletter-popup {
   position: fixed;
-  bottom: 20px;
-  right: 310px; /* Reduced gap to be closer to emo-playlist-player (300px width + 10px gap) */
+  bottom: 200px; /* Positioned above emo-playlist-player */
+  right: 20px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -1260,14 +1260,15 @@ body.night-mode .toggle-newsletter:hover {
 }
 
 .newsletter-wrapper {
-  width: 300px;
-  background: rgba(44, 29, 15, 0.9);
+  width: 300px; /* Same width as player-wrapper */
+  background: #000000; /* Solid black background */
   border: 2px solid var(--primary);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   display: none;
   padding: 15px;
+  color: #ffffff; /* White text for all content inside */
 }
 
 .newsletter-wrapper.active {
@@ -1275,20 +1276,21 @@ body.night-mode .toggle-newsletter:hover {
 }
 
 body.night-mode .newsletter-wrapper {
-  background: rgba(74, 55, 35, 0.9);
+  background: #000000; /* Maintain black background in night mode */
   border-color: var(--secondary);
+  color: #ffffff; /* White text in night mode */
 }
 
 .newsletter-wrapper h3 {
   font-family: 'Bebas Neue', cursive;
   font-size: 1.5rem;
-  color: #f8e1b4;
+  color: #ffffff; /* White text */
   margin-bottom: 10px;
 }
 
 .newsletter-wrapper p {
   font-size: 0.9rem;
-  color: #f8e1b4;
+  color: #ffffff; /* White text */
   margin-bottom: 15px;
 }
 
@@ -1297,12 +1299,12 @@ body.night-mode .newsletter-wrapper {
 }
 
 .newsletter-wrapper input {
-  width:100%;
+  width: 100%;
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #e67e22;
   background: rgba(255, 255, 255, 0.1);
-  color: #f8e1b4;
+  color: #ffffff; /* White text */
   font-size: 0.9rem;
   margin-bottom: 10px;
 }
@@ -1311,7 +1313,7 @@ body.night-mode .newsletter-wrapper {
   width: 100%;
   padding: 8px;
   background-color: #e67e22;
-  color: #2b1b0f;
+  color: #ffffff; /* White text */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -1325,18 +1327,106 @@ body.night-mode .newsletter-wrapper {
   box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
 }
 
+/* Emo Playlist Player */
+.emo-playlist-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transition: all 0.3s ease;
+}
+
+.toggle-player {
+  background: var(--primary);
+  color: var(--text);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+  text-transform: uppercase;
+}
+
+.toggle-player:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+  transform: scale(1.05);
+}
+
+body.night-mode .toggle-player {
+  background: var(--secondary);
+  color: var(--background);
+  border-color: var(--primary);
+}
+
+body.night-mode .toggle-player:hover {
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+  transform: scale(1.05);
+}
+
+.toggle-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--primary);
+}
+
+.player-wrapper {
+  width: 300px; /* Same width as newsletter-wrapper */
+  background: #000000; /* Solid black background */
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  color: #ffffff; /* White text for all content inside */
+}
+
+.player-wrapper.active {
+  display: block;
+}
+
+body.night-mode .player-wrapper {
+  background: #000000; /* Maintain black background in night mode */
+  border-color: var(--secondary);
+  color: #ffffff; /* White text in night mode */
+}
+
+.emo-playlist-player iframe {
+  width: 100%;
+  height: 152px;
+  border: none;
+  border-radius: 12px;
+}
+
 /* Responsive Adjustments */
 @media only screen and (max-width: 768px) {
   .newsletter-popup {
+    bottom: 180px; /* Positioned above emo-playlist-player */
+    right: 10px;
+  }
+
+  .emo-playlist-player {
     bottom: 10px;
-    right: 260px; /* Adjusted for smaller emo-playlist-player width (250px + 10px gap) */
+    right: 10px;
   }
 
-  .newsletter-wrapper {
-    width: 250px;
+  .newsletter-wrapper,
+  .player-wrapper {
+    width: 250px; /* Same width for both */
   }
 
-  .toggle-newsletter {
+  .toggle-newsletter,
+  .toggle-player {
     font-size: 0.9rem;
     padding: 8px 12px;
   }
@@ -1353,19 +1443,30 @@ body.night-mode .newsletter-wrapper {
   .newsletter-wrapper p {
     font-size: 0.85rem;
   }
+
+  .emo-playlist-player iframe {
+    height: 120px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
   .newsletter-popup {
+    bottom: 170px; /* Positioned above emo-playlist-player */
+    right: 10px;
+  }
+
+  .emo-playlist-player {
     bottom: 10px;
-    right: 210px; /* Adjusted for smaller emo-playlist-player width (200px + 10px gap) */
+    right: 10px;
   }
 
-  .newsletter-wrapper {
-    width: 200px;
+  .newsletter-wrapper,
+  .player-wrapper {
+    width: 200px; /* Same width for both */
   }
 
-  .toggle-newsletter {
+  .toggle-newsletter,
+  .toggle-player {
     font-size: 0.8rem;
     padding: 6px 10px;
   }
@@ -1382,12 +1483,21 @@ body.night-mode .newsletter-wrapper {
   .newsletter-wrapper p {
     font-size: 0.8rem;
   }
+
+  .emo-playlist-player iframe {
+    height: 100px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
   .newsletter-popup {
-    right: 10px; /* Stack below emo-playlist-player on very small screens */
-    bottom: 170px; /* Adjusted to sit above emo-playlist-player (100px height + 70px gap) */
+    bottom: 170px; /* Maintain position above emo-playlist-player */
+    right: 10px;
+  }
+
+  .emo-playlist-player {
+    bottom: 10px;
+    right: 10px;
   }
 }
 
@@ -2274,21 +2384,9 @@ body.night-mode .newsletter-wrapper {
         </div>
       </div>
 
-<!-- Emo Playlist Player -->
+<!-- Sidebar Widgets -->
 <div class="sidebar-widgets">
-  <div class="emo-playlist-player">
-    <button class="toggle-player" onclick="togglePlayer()">
-      <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
-      Play Emo Playlist
-    </button>
-    <div class="player-wrapper" id="player-wrapper">
-      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-              loading="lazy" 
-              aria-label="Emo Playlist Player"></iframe>
-    </div>
-  </div>
-
+  <!-- Newsletter Popup -->
   <div class="newsletter-popup" id="newsletter">
     <button class="toggle-newsletter" onclick="toggleNewsletter()">
       <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
@@ -2303,6 +2401,20 @@ body.night-mode .newsletter-wrapper {
       </div>
     </div>
     <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+  </div>
+
+  <!-- Emo Playlist Player -->
+  <div class="emo-playlist-player">
+    <button class="toggle-player" onclick="togglePlayer()">
+      <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
+      Play Emo Playlist
+    </button>
+    <div class="player-wrapper" id="player-wrapper">
+      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy" 
+              aria-label="Emo Playlist Player"></iframe>
+    </div>
   </div>
 </div>
 
