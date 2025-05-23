@@ -1219,8 +1219,8 @@ body.night-mode .toggle-player:hover {
 /* Newsletter Popup */
 .newsletter-popup {
   position: fixed;
-  bottom: 20px;
-  right: 330px; /* Positioned to the left of emo-playlist-player (300px width + 30px gap) */
+  bottom: 200px; /* Positioned above emo-playlist-player (152px iframe height + 48px gap) */
+  right: 20px; /* Aligned with emo-playlist-player */
   z-index: 1000;
   display: flex;
   flex-direction: column;
@@ -1330,8 +1330,8 @@ body.night-mode .newsletter-wrapper {
 /* Responsive Adjustments */
 @media only screen and (max-width: 768px) {
   .newsletter-popup {
-    bottom: 10px;
-    right: 270px; /* Adjusted for smaller emo-playlist-player width (250px + 20px gap) */
+    bottom: 170px; /* Adjusted for smaller emo-playlist-player height (120px + 50px gap) */
+    right: 10px;
   }
 
   .newsletter-wrapper {
@@ -1357,10 +1357,10 @@ body.night-mode .newsletter-wrapper {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
   .newsletter-popup {
-    bottom: 180px; /* Stack above emo-playlist-player */
-    right: 10px; /* Align with emo-playlist-player */
+    bottom: 150px; /* Adjusted for smaller emo-playlist-player height (100px + 50px gap) */
+    right: 10px;
   }
 
   .newsletter-wrapper {
@@ -1380,6 +1380,11 @@ body.night-mode .newsletter-wrapper {
   .newsletter-wrapper h3 {
     font-size: 1.1rem;
   }
+
+  .newsletter-wrapper p {
+    font-size: 0.8rem;
+  }
+}
 
 @media only screen and (max-width: 400px) {
   .newsletter-popup {
