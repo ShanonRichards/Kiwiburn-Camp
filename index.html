@@ -844,7 +844,7 @@ body.night-mode {
   gap: 10px;
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
   text-transform: uppercase;
-  width: 180px; /* Fixed width to match Play Emo Playlist button */
+  width: 180px; /* Fixed width for both buttons */
   justify-content: center; /* Center content */
 }
 
@@ -877,7 +877,12 @@ body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
   .toggle-player, .toggle-newsletter {
     font-size: 0.9rem;
     padding: 8px 12px;
-    width: 150px;
+    width: 150px; /* Consistent width for both buttons */
+  }
+
+  .toggle-image {
+    width: 25px;
+    height: 25px;
   }
 }
 
@@ -893,7 +898,12 @@ body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
   .toggle-player, .toggle-newsletter {
     font-size: 0.8rem;
     padding: 6px 10px;
-    width: 140px;
+    width: 140px; /* Consistent width for both buttons */
+  }
+
+  .toggle-image {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -950,19 +960,6 @@ body.night-mode .player-wrapper {
   background: #000000; /* Maintain black background in night mode */
   border-color: var(--secondary);
   color: #ffffff; /* White text in night mode */
-}
-
-.toggle-player {
-  background: var(--primary);
-  color: var(--text);
-  border: none;
-  border-radius: 5px;
-  padding: 8px 12px;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s;
-  margin-bottom: 10px;
 }
 
 .toggle-player:hover {
