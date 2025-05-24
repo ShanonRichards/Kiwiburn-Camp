@@ -2233,21 +2233,24 @@ body.night-mode .newsletter-wrapper {
     </div>
   </div>
 
-  <div class="newsletter-popup" id="newsletter">
-    <button class="toggle-newsletter" onclick="toggleNewsletter()">
-      <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
-      Stay in Touch
-    </button>
-    <div class="newsletter-wrapper" id="newsletter-wrapper">
-      <div class="form-container">
-        <h3>Stay in Touch</h3>
-        <p>Stay up to date on upcoming events.</p>
-        <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-        <button onclick="submitNewsletter()">Subscribe</button>
-      </div>
+<div class="newsletter-popup" id="newsletter">
+  <button class="toggle-newsletter" onclick="toggleNewsletter()">
+    <img src="images/Newsletter/Newsletter_Icon.png" alt="Newsletter Toggle Image" class="toggle-image">
+    Stay in Touch
+  </button>
+  <div class="newsletter-wrapper" id="newsletter-wrapper">
+    <div class="form-container">
+      <h3>Stay in Touch</h3>
+      <p>Stay up to date on upcoming events.</p>
+      <form action="https://formspree.io/f/your-unique-id" method="POST">
+        <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required aria-label="Email">
+        <input type="hidden" name="_subject" value="New Newsletter Subscription">
+        <input type="hidden" name="_cc" value="shanonrichards@windowslive.com">
+        <button type="submit">Subscribe</button>
+      </form>
     </div>
-    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
   </div>
+  <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
 </div>
 
 <div class="countdown-container">
@@ -2490,7 +2493,17 @@ function toggleNewsletter() {
 }
 
 function submitNewsletter() {
-  alert('Subscribed successfully!');
+  const email = document.getElementById('newsletter-email').value;
+  if (!email) {
+    alert('Please enter a valid email!');
+    return;
+  }
+  document.getElementById('newsletter-email').value = '';
+  alert('Subscribed successfully! You will be added to the email chain.');
+}
+  // Formspree handles the submission, so we just clear the input
+  document.getElementById('newsletter-email').value = '';
+  alert('Subscribed successfully! You will be added to the email chain.');
 }
 
   function saveHeaderDetails() {
