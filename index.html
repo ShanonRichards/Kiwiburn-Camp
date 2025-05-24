@@ -812,21 +812,29 @@ body.night-mode {
       position: relative;
     }
 
-    .emo-playlist-player {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      transition: all 0.3s ease;
-    }
+/* Sidebar Widgets */
+.sidebar-widgets {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-end;
+  transition: all 0.3s ease;
+}
 
-    .toggle-player {
-  background: var(--emo-dark);
-  color: #ffffff;
-  border: 2px solid var(--emo-accent);
+.emo-playlist-player, .newsletter-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.toggle-player, .toggle-newsletter {
+  background: #000000; /* Black background */
+  color: #ffffff; /* White text */
+  border: 2px solid var(--emo-accent); /* Keep the orange border */
   border-radius: 8px;
   padding: 10px 15px;
   font-family: 'Special Elite', cursive;
@@ -836,24 +844,60 @@ body.night-mode {
   gap: 10px;
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
   text-transform: uppercase;
+  width: 180px; /* Fixed width to match Play Emo Playlist button */
+  justify-content: center; /* Center content */
 }
 
-.toggle-player:hover {
-  background: var(--emo-accent);
+.toggle-player:hover, .toggle-newsletter:hover {
+  background: var(--emo-accent); /* Orange on hover */
   box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
   transform: scale(1.05);
 }
 
-body.night-mode .toggle-player {
-  background: var(--emo-dark);
-  color: #d3d3d3;
+body.night-mode .toggle-player, body.night-mode .toggle-newsletter {
+  background: #000000; /* Black background in night mode */
+  color: #ffffff; /* White text in night mode */
   border-color: var(--emo-accent);
 }
 
-body.night-mode .toggle-player:hover {
+body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
   background: var(--emo-accent);
   box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
 }
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+  .sidebar-widgets {
+    flex-direction: row;
+    gap: 8px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .toggle-player, .toggle-newsletter {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .sidebar-widgets {
+    flex-direction: column;
+    gap: 10px;
+    bottom: 10px;
+    right: 10px;
+    align-items: flex-end;
+  }
+
+  .toggle-player, .toggle-newsletter {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    width: 140px;
+  }
+}
+
+
 
 .toggle-image {
   width: 30px;
@@ -1216,50 +1260,7 @@ body.night-mode .toggle-player:hover {
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
-/* Newsletter Popup */
-.newsletter-popup {
-  position: fixed;
-  bottom: 20px;
-  right: 310px; /* Reduced gap to be closer to emo-playlist-player (300px width + 10px gap) */
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  transition: all 0.3s ease;
-}
 
-.toggle-newsletter {
-  background: var(--primary);
-  color: var(--text);
-  border: 2px solid var(--primary);
-  border-radius: 8px;
-  padding: 10px 15px;
-  font-family: 'Special Elite', cursive;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
-  text-transform: uppercase;
-}
-
-.toggle-newsletter:hover {
-  background: var(--secondary);
-  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
-  transform: scale(1.05);
-}
-
-body.night-mode .toggle-newsletter {
-  background: var(--secondary);
-  color: var(--background);
-  border-color: var(--primary);
-}
-
-body.night-mode .toggle-newsletter:hover {
-  background: var(--primary);
-  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
-  transform: scale(1.05);
-}
 
 .newsletter-wrapper {
   width: 300px;
@@ -1327,21 +1328,11 @@ body.night-mode .newsletter-wrapper {
   box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
 }
 
-/* Responsive Adjustments */
-@media only screen and (max-width: 768px) {
-  .newsletter-popup {
-    bottom: 10px;
-    right: 260px; /* Adjusted for smaller emo-playlist-player width (250px + 10px gap) */
-  }
 
   .newsletter-wrapper {
     width: 250px;
   }
 
-  .toggle-newsletter {
-    font-size: 0.9rem;
-    padding: 8px 12px;
-  }
 
   .toggle-image {
     width: 25px;
@@ -1357,41 +1348,16 @@ body.night-mode .newsletter-wrapper {
   }
 }
 
-@media only screen and (max-width: 480px) {
-  .newsletter-popup {
-    bottom: 10px;
-    right: 210px; /* Adjusted for smaller emo-playlist-player width (200px + 10px gap) */
-  }
 
   .newsletter-wrapper {
     width: 200px;
   }
 
-  .toggle-newsletter {
-    font-size: 0.8rem;
-    padding: 6px 10px;
-  }
 
   .toggle-image {
     width: 20px;
     height: 20px;
   }
-
-  .newsletter-wrapper h3 {
-    font-size: 1.1rem;
-  }
-
-  .newsletter-wrapper p {
-    font-size: 0.8rem;
-  }
-}
-
-@media only screen and (max-width: 400px) {
-  .newsletter-popup {
-    right: 10px; /* Stack below emo-playlist-player on very small screens */
-    bottom: 170px; /* Adjusted to sit above emo-playlist-player (100px height + 70px gap) */
-  }
-}
 
     .save-button {
       padding: 10px 20px;
@@ -2289,7 +2255,6 @@ body.night-mode .newsletter-wrapper {
         </div>
       </div>
 
-<!-- Emo Playlist Player -->
 <div class="sidebar-widgets">
   <div class="emo-playlist-player">
     <button class="toggle-player" onclick="togglePlayer()">
