@@ -838,13 +838,13 @@ body.night-mode {
   border-radius: 8px;
   padding: 10px 15px;
   font-family: 'Special Elite', cursive;
-  font-size: 1.1rem;
+  font-size: 0.9rem; /* Changed from 1.1rem */
   display: flex;
   align-items: center;
   gap: 10px;
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
   text-transform: uppercase;
-  width: 180px;
+  width: 150px; /* Changed from 180px */
   justify-content: center;
 }
 
@@ -867,51 +867,33 @@ body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
 
 /* Responsive Adjustments */
 @media only screen and (max-width: 768px) {
-  .sidebar-widgets {
-    flex-direction: row;
-    gap: 8px;
-    bottom: 10px;
-    right: 10px;
-  }
-
   .toggle-player, .toggle-newsletter {
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Changed from 0.9rem */
     padding: 8px 12px;
-    width: 150px; /* Consistent width for both buttons */
+    width: 130px; /* Changed from 150px */
   }
-
   .toggle-image {
-    width: 25px;
-    height: 25px;
+    width: 22px; /* Changed from 25px */
+    height: 22px; /* Changed from 25px */
   }
 }
-
 @media only screen and (max-width: 480px) {
-  .sidebar-widgets {
-    flex-direction: column;
-    gap: 10px;
-    bottom: 10px;
-    right: 10px;
-    align-items: flex-end;
-  }
-
   .toggle-player, .toggle-newsletter {
-    font-size: 0.8rem;
+    font-size: 0.7rem; /* Changed from 0.8rem */
     padding: 6px 10px;
-    width: 140px; /* Consistent width for both buttons */
+    width: 120px; /* Changed from 140px */
   }
-
   .toggle-image {
-    width: 20px;
-    height: 20px;
+    width: 18px; /* Changed from 20px */
+    height: 18px; /* Changed from 20px */
   }
 }
 
 
 
 .toggle-image {
-  width: 30px;
-  height: 30px;
+  width: 25px; /* Changed from 30px */
+  height: 25px; /* Changed from 30px */
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--emo-accent);
@@ -939,17 +921,16 @@ body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
     height: 20px;
   }
 }
-  
 
 .player-wrapper {
-  width: 300px;
-  background: #000000; /* Changed to solid black */
+  width: 220px; /* Changed from 300px */
+  background: #000000;
   border: 2px solid var(--primary);
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   display: none;
-  color: #ffffff; /* White text for all content inside */
+  color: #ffffff;
 }
 
 .player-wrapper.active {
@@ -982,32 +963,29 @@ body.night-mode .toggle-player:hover {
       box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
     }
 
-    .emo-playlist-player iframe {
-      width: 100%;
-      height: 152px;
-      border: none;
-      border-radius: 12px;
-    }
+.emo-playlist-player iframe {
+  width: 100%;
+  height: 120px; /* Changed from 152px */
+  border: none;
+  border-radius: 12px;
+}
 
-    @media only screen and (max-width: 768px) {
-      .emo-playlist-player {
-        bottom: 10px;
-        right: 10px;
-      }
-
-      .player-wrapper {
-        width: 250px;
-      }
-
-      .toggle-player {
-        font-size: 0.9rem;
-        padding: 6px 10px;
-      }
-
-      .emo-playlist-player iframe {
-        height: 120px;
-      }
-    }
+@media only screen and (max-width: 768px) {
+  .player-wrapper {
+    width: 200px; /* Changed from 250px */
+  }
+  .emo-playlist-player iframe {
+    height: 100px; /* Changed from 120px */
+  }
+}
+@media only screen and (max-width: 480px) {
+  .player-wrapper {
+    width: 180px; /* Changed from 200px */
+  }
+  .emo-playlist-player iframe {
+    height: 90px; /* Changed from 100px */
+  }
+}
 
     @media only screen and (max-width: 480px) {
       .player-wrapper {
@@ -1260,7 +1238,7 @@ body.night-mode .toggle-player:hover {
 
 
 .newsletter-wrapper {
-  width: 300px;
+  width: 220px; /* Changed from 300px */
   background: rgba(44, 29, 15, 0.9);
   border: 2px solid var(--primary);
   border-radius: 12px;
@@ -1281,13 +1259,12 @@ body.night-mode .newsletter-wrapper {
 
 .newsletter-wrapper h3 {
   font-family: 'Bebas Neue', cursive;
-  font-size: 1.5rem;
+  font-size: 1.2rem; /* Changed from 1.5rem */
   color: #f8e1b4;
   margin-bottom: 10px;
 }
-
 .newsletter-wrapper p {
-  font-size: 0.9rem;
+  font-size: 0.8rem; /* Changed from 0.9rem */
   color: #f8e1b4;
   margin-bottom: 15px;
 }
@@ -1325,36 +1302,26 @@ body.night-mode .newsletter-wrapper {
   box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
 }
 
-
-  .newsletter-wrapper {
-    width: 250px;
-  }
-
-
-  .toggle-image {
-    width: 25px;
-    height: 25px;
-  }
-
+@media only screen and (max-width: 768px) {
   .newsletter-wrapper h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem; /* Changed from 1.3rem */
   }
-
   .newsletter-wrapper p {
-    font-size: 0.85rem;
+    font-size: 0.75rem; /* Changed from 0.85rem */
+  }
+}
+@media only screen and (max-width: 480px) {
+  .newsletter-wrapper {
+    width: 180px; /* Changed from 200px */
+  }
+  .newsletter-wrapper h3 {
+    font-size: 1rem; /* Changed from 1.3rem */
+  }
+  .newsletter-wrapper p {
+    font-size: 0.7rem; /* Changed from 0.85rem */
   }
 }
 
-
-  .newsletter-wrapper {
-    width: 200px;
-  }
-
-
-  .toggle-image {
-    width: 20px;
-    height: 20px;
-  }
 
     .save-button {
       padding: 10px 20px;
