@@ -362,6 +362,22 @@
       color: #2b1b0f;
     }
 
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .title-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #f39c12;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
     .roles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -480,8 +496,7 @@
 
     body.logged-in .edit-button,
     body.logged-in .delete-button,
-    body.logged-in .save-button,
-    body.logged-in .edit-section-button {
+    body.logged-in .save-button {
       display: block;
     }
 
@@ -871,6 +886,15 @@
         max-width: 95%;
       }
 
+      .title-container {
+        gap: 15px;
+      }
+
+      .title-image {
+        width: 60px;
+        height: 60px;
+      }
+
       .roles-grid {
         display: flex;
         flex-direction: row;
@@ -954,6 +978,15 @@
 
       .section p {
         font-size: 0.9em;
+      }
+
+      .title-container {
+        gap: 10px;
+      }
+
+      .title-image {
+        width: 50px;
+        height: 50px;
       }
 
       .roles-grid {
@@ -1074,7 +1107,11 @@
 
   <div class="roles-container">
     <section class="section" id="roles">
-      <h1>Join Our Crew</h1>
+      <div class="title-container">
+        <img src="images/crew-left.png" alt="Crew Left Icon" class="title-image">
+        <h1>Join Our Crew</h1>
+        <img src="images/crew-right.png" alt="Crew Right Icon" class="title-image">
+      </div>
       <p>We're always looking for passionate people to join our camp. Check out the roles below and apply to be part of Cosmic Rejex!</p>
       <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
         <div class="scroll-arrow left" data-grid="roles">◄</div>
@@ -1428,7 +1465,7 @@
   <!-- Role Modal -->
   <div class="modal" id="role-modal">
     <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('role-modal')">&times;</span>
+      <span class="close-modal" onclick="closeModal('role-modal')">×</span>
       <h2 id="modal-title">Create New Role</h2>
       <form id="role-form">
         <label>Role Name</label>
@@ -1445,7 +1482,7 @@
   <!-- Section Edit Modal -->
   <div class="modal" id="members-modal">
     <div class="modal-content">
-      <span class="close-modal" onclick="closeModal('members-modal')">&times;</span>
+      <span class="close-modal" onclick="closeModal('members-modal')">×</span>
       <h2>Edit Section</h2>
       <form id="section-form">
         <label>Section Title</label>
@@ -1681,7 +1718,11 @@
       const htmlContent = `
 <div class="roles-container">
   <section class="section" id="roles">
-    <h1>${sectionTitle}</h1>
+    <div class="title-container">
+      <img src="images/crew-left.png" alt="Crew Left Icon" class="title-image">
+      <h1>${sectionTitle}</h1>
+      <img src="images/crew-right.png" alt="Crew Right Icon" class="title-image">
+    </div>
     <p>${sectionDescription}</p>
     <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
       <div class="scroll-arrow left" data-grid="roles">◄</div>
