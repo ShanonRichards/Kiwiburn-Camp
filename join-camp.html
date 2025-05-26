@@ -369,12 +369,12 @@
       gap: 20px;
     }
 
-.title-image {
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  background: transparent;
-}
+    .title-image {
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+    }
 
     .roles-grid {
       display: grid;
@@ -552,7 +552,7 @@
       visibility: hidden;
       width: 180px;
       background-color: rgba(44, 29, 15, 0.95);
-      color: #f8e1b4; /* Changed to white for visibility */
+      color: #f8e1b4;
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -674,7 +674,6 @@
       min-width: 200px;
     }
 
-    /* Modal Styles */
     .modal {
       display: none;
       position: fixed;
@@ -1107,7 +1106,7 @@
     <section class="section" id="roles">
       <div class="title-container">
         <img src="images/About-Our-Camp/Alien_Left.png" alt="Crew Left Icon" class="title-image">
-        <h1>Join Our C̶U̶L̶T̶ Crew</h1>
+        <img src="images/About-Our-Camp/Alien_Crew.png" alt="Crew Title Icon" class="title-image">
         <img src="images/About-Our-Camp/Alien_Right.png" alt="Crew Right Icon" class="title-image">
       </div>
       <p>We're always looking for passionate people to join our camp. Check out the roles below and apply to be part of Cosmic Rejex!</p>
@@ -1460,7 +1459,6 @@
     </div>
   </section>
 
-  <!-- Role Modal -->
   <div class="modal" id="role-modal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('role-modal')">×</span>
@@ -1477,7 +1475,6 @@
     </div>
   </div>
 
-  <!-- Section Edit Modal -->
   <div class="modal" id="members-modal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal('members-modal')">×</span>
@@ -1682,8 +1679,7 @@
 
     function saveSection() {
       const sectionTitle = document.getElementById('section-title').value;
-      const sectionDescription = document.getElementById('section-description').value;
-      document.querySelector('#roles h1').textContent = sectionTitle;
+      const sectionDescription = document.querySelector('#roles p').textContent;
       document.querySelector('#roles p').textContent = sectionDescription;
       closeModal('members-modal');
       saveRoles();
@@ -1710,16 +1706,15 @@
         image: role.querySelector('img').src
       }));
 
-      const sectionTitle = document.querySelector('#roles h1').textContent;
       const sectionDescription = document.querySelector('#roles p').textContent;
 
       const htmlContent = `
 <div class="roles-container">
   <section class="section" id="roles">
     <div class="title-container">
-      <img src="images/crew-left.png" alt="Crew Left Icon" class="title-image">
-      <h1>${sectionTitle}</h1>
-      <img src="images/crew-right.png" alt="Crew Right Icon" class="title-image">
+      <img src="images/About-Our-Camp/Alien_Left.png" alt="Crew Left Icon" class="title-image">
+      <img src="images/About-Our-Camp/Alien_Crew.png" alt="Crew Title Icon" class="title-image">
+      <img src="images/About-Our-Camp/Alien_Right.png" alt="Crew Right Icon" class="title-image">
     </div>
     <p>${sectionDescription}</p>
     <div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
@@ -1754,7 +1749,7 @@
           body: JSON.stringify({
             message: 'Update join-camp.html with new roles and section data',
             content: btoa(document.documentElement.outerHTML),
-            sha: await getFileSha() // Function to get current SHA, needs implementation
+            sha: await getFileSha()
           })
         });
 
