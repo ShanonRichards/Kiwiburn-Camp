@@ -376,6 +376,13 @@
       background: transparent;
     }
 
+    /* Specific styling for Join_Our_Cult_Crews.png to match #apply h1 font size */
+    .title-image.crew-title {
+      width: auto;
+      height: 3em; /* Matches the 3em font-size of #apply h1 */
+      object-fit: contain;
+    }
+
     .roles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -756,17 +763,6 @@
       cursor: pointer;
     }
 
-    @media only screen and (max-width: 480px) {
-      .name-container {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .name-container div {
-        min-width: 100%;
-      }
-    }
-
     .emo-playlist-player {
       position: fixed;
       bottom: 20px;
@@ -892,6 +888,10 @@
         height: 60px;
       }
 
+      .title-image.crew-title {
+        height: 2em; /* Matches the 2em font-size of #apply h1 */
+      }
+
       .roles-grid {
         display: flex;
         flex-direction: row;
@@ -986,6 +986,10 @@
         height: 50px;
       }
 
+      .title-image.crew-title {
+        height: 1.6em; /* Matches the 1.6em font-size of #apply h1 */
+      }
+
       .roles-grid {
         gap: 10px;
         padding: 0 5px;
@@ -1038,6 +1042,17 @@
     @media only screen and (min-width: 769px) {
       .roles-grid .scroll-arrow {
         display: none;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .name-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .name-container div {
+        min-width: 100%;
       }
     }
   </style>
@@ -1106,7 +1121,7 @@
     <section class="section" id="roles">
       <div class="title-container">
         <img src="images/About-Our-Camp/Alien_Left.png" alt="Crew Left Icon" class="title-image">
-        <img src="images/About-Our-Camp/Join_Our_Cult_Crews.png" alt="Crew Title Icon" class="title-image">
+        <img src="images/About-Our-Camp/Join_Our_Cult_Crews.png" alt="Crew Title Icon" class="title-image crew-title">
         <img src="images/About-Our-Camp/Alien_Right.png" alt="Crew Right Icon" class="title-image">
       </div>
       <p>We're always looking for passionate people to join our camp. Check out the roles below and apply to be part of Cosmic Rejex!</p>
@@ -1713,7 +1728,7 @@
   <section class="section" id="roles">
     <div class="title-container">
       <img src="images/About-Our-Camp/Alien_Left.png" alt="Crew Left Icon" class="title-image">
-      <img src="images/About-Our-Camp/Alien_Crew.png" alt="Crew Title Icon" class="title-image">
+      <img src="images/About-Our-Camp/Join_Our_Cult_Crews.png" alt="Crew Title Icon" class="title-image crew-title">
       <img src="images/About-Our-Camp/Alien_Right.png" alt="Crew Right Icon" class="title-image">
     </div>
     <p>${sectionDescription}</p>
