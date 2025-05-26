@@ -1881,54 +1881,16 @@ body.night-mode .newsletter-wrapper {
       }
     }
 
-@media only screen and (min-width: 769px) {
+    @media only screen and (min-width: 769px) {
       .roles-grid .scroll-arrow, .members-grid .scroll-arrow {
         display: none;
       }
     }
-/* Sidebar Styling */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      width: 50px; /* Adjust width as needed */
-      height: 100vh; /* Full height of the viewport */
-      background-size: contain; /* Ensure the image fits well */
-      background-repeat: no-repeat; /* Prevent image tiling */
-      background-position: center; /* Center the image */
-      z-index: 999; /* Ensure it appears below the nav but above content */
-    }
-
-    .left-sidebar {
-      left: 0;
-      background-image: url('images/yellow-arrow.png'); /* Path to your yellow arrow image */
-    }
-
-    .right-sidebar {
-      right: 0;
-      background-image: url('images/yellow-arrow.png'); /* You can use a different image for the right sidebar if desired */
-    }
-
-    /* Optional: Adjust sidebar for night mode */
-    body.night-mode .sidebar {
-      opacity: 0.8; /* Slightly transparent in night mode for better contrast */
-    }
-
-    /* Responsive adjustments */
-    @media only screen and (max-width: 768px) {
-      .sidebar {
-        width: 30px; /* Smaller width for mobile */
-      }
-    }
-</style>
+  </style>
 </head>
 <body>
-  <!-- Left Sidebar -->
-  <div class="sidebar left-sidebar"></div>
-  <!-- Right Sidebar -->
-  <div class="sidebar right-sidebar"></div>
 <nav>
   <img src="images/Logo/Cosmic-Rejex-Logo.png" alt="Cosmic Rejex Logo" class="nav-logo">
-</nav>
   <button class="hamburger" aria-label="Toggle menu">☰</button>
   <div class="nav-links">
     <div class="dropdown">
