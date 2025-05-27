@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Rift Festival: Hold Space to Join</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Orbitron:wght@400;700&family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #e67e22;
+      --secondary: #f39c12;
+      --text: #f8e1b4;
+      --background: #2b1b0f;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Special Elite', cursive;
+      background: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmZiZGQ1ZGZiZGQ1ZGZiZGQ1ZGZiZGQ1ZGZiZGQ1ZGZiZGQ1ZGZiZA==/giphy.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-blend-mode: overlay;
+      background-color: rgba(44, 29, 15, 0.85);
+    }
+
+    #entry-screen {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+    }
+
+    #countdown-button {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      padding: 20px 40px;
+      background: rgba(44, 29, 15, 0.4);
+      border: 3px solid var(--primary);
+      border-radius: 8px;
+      box-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary);
+      animation: cosmic-flicker 3s ease-in-out infinite;
+      cursor: default;
+      user-select: none;
+      text-transform: lowercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    }
+
+    @keyframes cosmic-flicker {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 20px var(--primary), 0 0 40px var(--secondary); }
+      50% { opacity: 0.85; transform: scale(1.03); box-shadow: 0 0 30px var(--primary), 0 0 50px var(--secondary); }
+    }
+
+    #overlay-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      z-index: 1;
+    }
+
+    #overlay-left, #overlay-right {
+      width: 50%;
+      height: 100%;
+      background: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG1tM2U5ZmM1M3I3b3o5YTB3aDZmM3Jod3M0b3Z0N2Y4c2ZhN3A4cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7bu3XilJ5BOiSGic/giphy.gif') no-repeat;
+      background-size: cover;
+      background-position: left center;
+      opacity: 0;
+      transition: transform 1.3s ease, opacity 2s ease;
+      filter: grayscale(30%) hue-rotate(90deg);
+    }
+
+    #overlay-right {
+      background-position: right center;
+    }
+
+    #overlay-left.split {
+      transform: translateX(-100%);
+    }
+
+    #overlay-right.split {
+      transform: translateX(100%);
+    }
+
+    /* Responsive adjustments */
+    @media only screen and (max-width: 768px) {
+      #countdown-button {
+        font-size: 24px;
+        padding: 15px 30px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      #countdown-button {
+        font-size: 20px;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="entry-screen">
+    <div id="countdown-button">hold space to enter cosmic rift</div>
+  </div>
+  <div id="overlay-container">
+    <div id="overlay-left"></div>
+    <div id="overlay-right"></div>
+  </div>
+
+  <script>
+    let holdTime = 0;
+    let isHolding = false;
+    const requiredHoldTime = 2000; // 2 seconds in milliseconds
+
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'Space' && !isHolding) {
+        isHolding = true;
+        holdTime = 0;
+        const overlayLeft = document.getElementById('overlay-left');
+        const overlayRight = document.getElementById('overlay-right');
+        const button = document.getElementById('countdown-button');
+
+        // Start progress animation
+        overlayLeft.style.opacity = '0';
+        overlayRight.style.opacity = '0';
+        let progress = 0;
+        const timer = setInterval(() => {
+          holdTime += 50;
+          progress = holdTime / requiredHoldTime;
+          overlayLeft.style.opacity = Math.min(progress, 1);
+          overlayRight.style.opacity = Math.min(progress, 1);
+          button.textContent = `hold space to enter cosmic rift (${Math.round((requiredHoldTime - holdTime) / 1000) + 1}s)`;
+
+          if (holdTime >= requiredHoldTime) {
+            clearInterval(timer);
+            document.getElementById('entry-screen').style.display = 'none';
+            overlayLeft.classList.add('split');
+            overlayRight.classList.add('split');
+            setTimeout(() => {
+              window.location.href = 'index.html'; // Redirect to index.html
+            }, 1300); // Wait for split animation to complete
+          }
+        }, 50);
+
+        document.addEventListener('keyup', (e) => {
+          if (e.code === 'Space') {
+            clearInterval(timer);
+            isHolding = false;
+            overlayLeft.style.opacity = '0';
+            overlayRight.style.opacity = '0';
+            button.textContent = 'hold space to enter cosmic rift';
+          }
+        }, { once: true });
+      }
+    });
+  </script>
+</body>
+</html>
