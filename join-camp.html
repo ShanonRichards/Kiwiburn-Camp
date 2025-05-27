@@ -530,6 +530,27 @@
       line-height: 1.2;
     }
 
+    .role-status {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2ecc71;
+      color: #ffffff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8em;
+      font-weight: bold;
+      z-index: 5;
+      border: 1px solid #27ae60;
+    }
+
+    .role-status.filled {
+      background-color: #e74c3c;
+      border-color: #c0392b;
+    }
+
     .apply-button {
       display: inline-block;
       padding: 8px 12px;
@@ -543,7 +564,13 @@
       transition: background-color 0.3s, box-shadow 0.3s;
     }
 
-    .apply-button:hover {
+    .apply-button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .apply-button:hover:not(:disabled) {
       background-color: #f39c12;
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
@@ -622,7 +649,7 @@
       visibility: hidden;
       width: 180px;
       background-color: rgba(44, 29, 15, 0.95);
-      color: #f8e1b4;
+      color: #ffffff;
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -653,7 +680,7 @@
       text-align: left;
       max-width: 600px;
       margin: 40px auto;
-      background: rgba(255, 235, 205, 0.3); /* Slightly different color (bisque-like) */
+      background: rgba(255, 235, 205, 0.3);
       border: 2px solid #e67e22;
       padding: 40px;
       border-radius: 12px;
@@ -667,7 +694,7 @@
       text-align: left;
       max-width: 500px;
       margin: 20px auto;
-      background: rgba(255, 235, 205, 0.3); /* Matching the form-container color */
+      background: rgba(255, 235, 205, 0.3);
       border: 2px solid #e67e22;
       padding: 20px;
       border-radius: 12px;
@@ -869,7 +896,7 @@
 
     .toggle-player {
       background: var(--primary);
-      color: var(--text);
+      color: #ffffff;
       border: none;
       border-radius: 5px;
       padding: 8px 12px;
@@ -887,7 +914,7 @@
 
     body.night-mode .toggle-player {
       background: var(--secondary);
-      color: var(--background);
+      color: #ffffff;
     }
 
     body.night-mode .toggle-player:hover {
@@ -1024,6 +1051,11 @@
         font-size: 0.85em;
       }
 
+      .role-status {
+        font-size: 0.7em;
+        padding: 3px 6px;
+      }
+
       .form-container,
       .form-card {
         max-width: 95%;
@@ -1112,6 +1144,11 @@
         width: 120px;
         font-size: 0.8em;
         padding: 8px;
+      }
+
+      .role-status {
+        font-size: 0.65em;
+        padding: 2px 5px;
       }
 
       .player-wrapper {
@@ -1221,6 +1258,7 @@
         <div class="scroll-arrow left" data-grid="roles">◄</div>
         <div class="scroll-arrow right" data-grid="roles">►</div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Logestics-&-Build-Lead.png" alt="Logistics & Build Lead Icon">
           <h3>Logistics & Build Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Logistics & Build Lead')">Apply for Role</a>
@@ -1231,9 +1269,10 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status filled">Filled</div>
           <img src="images/Roles-to-Be-Filled/Volunteer-Coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Volunteer Coordinator')">Apply for Role</a>
+          <a href="#apply" class="apply-button" onclick="selectRole('Volunteer Coordinator')" disabled>Apply for Role</a>
           <div class="tooltip">
             <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
           </div>
@@ -1241,6 +1280,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Build-Crew.png" alt="Build Crew Icon">
           <h3>Build Crew</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Build Crew')">Apply for Role</a>
@@ -1251,6 +1291,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Camp-Leadz.png" alt="Camp Lead Icon">
           <h3>Camp Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Camp Lead')">Apply for Role</a>
@@ -1261,6 +1302,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Deputy-Leads.png" alt="Deputy Lead Icon">
           <h3>Deputy Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Deputy Lead')">Apply for Role</a>
@@ -1271,6 +1313,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Build-Lead.png" alt="Build Lead Icon">
           <h3>Build Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Build Lead')">Apply for Role</a>
@@ -1281,6 +1324,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Vibe-Managers.png" alt="Vibe Manager Icon">
           <h3>Vibe Manager</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Vibe Manager')">Apply for Role</a>
@@ -1291,6 +1335,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Logistics-Lead.png" alt="Logistics Lead Icon">
           <h3>Logistics Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Logistics Lead')">Apply for Role</a>
@@ -1301,6 +1346,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Sound-Lead.png" alt="Sound Lead Icon">
           <h3>Sound Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Sound Lead')">Apply for Role</a>
@@ -1311,6 +1357,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Transport-Lead.png" alt="Transport Lead Icon">
           <h3>Transport Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Transport Lead')">Apply for Role</a>
@@ -1321,6 +1368,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Arts-&-Workshop-Lead.png" alt="Art & Workshop Lead Icon">
           <h3>Art & Workshop Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Art & Workshop Lead')">Apply for Role</a>
@@ -1331,6 +1379,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Wellbeing-Officers.png" alt="Wellbeing Officer Icon">
           <h3>Wellbeing Officer</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
@@ -1341,6 +1390,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Greeters.png" alt="Greeter Icon">
           <h3>Greeter</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Greeter')">Apply for Role</a>
@@ -1351,6 +1401,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Strike-Lead.png" alt="Strike Lead Icon">
           <h3>Strike Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Strike Lead')">Apply for Role</a>
@@ -1361,6 +1412,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Comms-Lead.png" alt="Comms Lead Icon">
           <h3>Comms Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Comms Lead')">Apply for Role</a>
@@ -1371,6 +1423,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Safety-Officer.png" alt="Safety Officer Icon">
           <h3>Safety Officer</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Safety Officer')">Apply for Role</a>
@@ -1381,6 +1434,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Moop-Manager.png" alt="MOOP Manager Icon">
           <h3>MOOP Manager</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('MOOP Manager')">Apply for Role</a>
@@ -1391,6 +1445,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Power_Tech_Lead.png" alt="Power/Tech Lead Icon">
           <h3>Power/Tech Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
@@ -1401,6 +1456,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Social-Media-Lead.png" alt="Social Media Lead Icon">
           <h3>Social Media Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Social Media Lead')">Apply for Role</a>
@@ -1411,6 +1467,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Fundraising-Lead.png" alt="Fundraising Lead Icon">
           <h3>Fundraising Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
@@ -1421,6 +1478,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Sustainability_Lead.png" alt="Sustainability Lead Icon">
           <h3>Sustainability Lead</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
@@ -1431,6 +1489,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Inclusion_Officer.png" alt="Inclusion Officer Icon">
           <h3>Inclusion Officer</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
@@ -1441,6 +1500,7 @@
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
+          <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Workshop-Coordinator.png" alt="Workshop Coordinator Icon">
           <h3>Workshop Coordinator</h3>
           <a href="#apply" class="apply-button" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
@@ -1458,7 +1518,7 @@
 
   <section class="section" id="apply">
     <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
-    <p>Fill out the form below to request your spot in our camp for Kiwiburn 2026. We can’t wait to vibe with you!</p>
+    <p>Fill out the form below to request your spot in our camp for Kiwiburn  Green's 2026. We can’t wait to vibe with you!</p>
     <div class="book-container">
       <div class="book">
         <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
@@ -1700,6 +1760,11 @@
         <textarea id="role-description" rows="4" required></textarea>
         <label>Role Image URL</label>
         <input type="text" id="role-image" placeholder="Image URL" required>
+        <label>Role Status</label>
+        <select id="role-status" required>
+          <option value="Open">Open</option>
+          <option value="Filled">Filled</option>
+        </select>
         <button type="submit" onclick="saveRole()">Save Role</button>
       </form>
     </div>
@@ -1795,216 +1860,230 @@
       arrow.addEventListener('click', () => {
         const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
         const direction = arrow.classList.contains('left') ? -1 : 1;
-        grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
+        const scrollAmount = 200;
+        grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
       });
     });
 
-    // Form Navigation with Slide Animation
+    // Drag and Drop for Roles
+    let draggedRole = null;
+
+    function drag(event) {
+      draggedRole = event.target.closest('.role');
+      event.dataTransfer.setData('text/plain', draggedRole.outerHTML);
+    }
+
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function dropRoles(event) {
+      event.preventDefault();
+      const rolesGrid = event.target.closest('.roles-grid');
+      const role = document.createElement('div');
+      role.innerHTML = event.dataTransfer.getData('text/plain');
+      role.className = 'role';
+      role.setAttribute('draggable', 'true');
+      role.addEventListener('dragstart', drag);
+      role.querySelector('.edit-button').addEventListener('click', () => openEditRoleModal(role.querySelector('.edit-button')));
+      role.querySelector('.delete-button').addEventListener('click', () => deleteRole(role.querySelector('.delete-button')));
+      role.querySelector('.apply-button').addEventListener('click', () => selectRole(role.querySelector('h3').textContent));
+      rolesGrid.appendChild(role);
+      draggedRole.remove();
+    }
+
+    // Form Navigation
+    const formCards = document.querySelectorAll('.form-card');
+    const prevButtons = document.querySelectorAll('.prev-btn');
+    const nextButtons = document.querySelectorAll('.next-btn');
     let currentPage = 1;
-    const formCards = document.querySelectorAll('.form-card.page');
-    const totalPages = formCards.length;
 
     function updateFormNavigation() {
-      formCards.forEach(card => {
-        card.classList.remove('active', 'slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
-        if (parseInt(card.dataset.page) === currentPage) {
-          card.classList.add('active');
-          // Apply slide-in animation based on navigation direction
-          card.classList.add(currentPage > parseInt(card.dataset.page) ? 'slide-in-right' : 'slide-in-left');
-          setTimeout(() => card.classList.remove('slide-in-left', 'slide-in-right'), 600);
-        }
-      });
-
-      document.querySelectorAll('.prev-btn').forEach(btn => {
+      prevButtons.forEach(btn => {
         btn.disabled = currentPage === 1;
       });
-
-      document.querySelectorAll('.next-btn').forEach(btn => {
-        btn.disabled = currentPage === totalPages;
+      nextButtons.forEach(btn => {
+        btn.disabled = currentPage === formCards.length;
       });
     }
 
-    document.querySelectorAll('.next-btn').forEach(btn => {
+    function showPage(pageNumber, direction = 'right') {
+      formCards.forEach(card => {
+        card.classList.remove('active', 'slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+      });
+      const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
+      const nextCard = document.querySelector(`.form-card[data-page="${pageNumber}"]`);
+
+      if (currentCard && nextCard) {
+        currentCard.classList.add(direction === 'right' ? 'slide-out-left' : 'slide-out-right');
+        nextCard.classList.add('active', direction === 'right' ? 'slide-in-right' : 'slide-in-left');
+      }
+
+      currentPage = pageNumber;
+      updateFormNavigation();
+    }
+
+    prevButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
-        const inputs = currentCard.querySelectorAll('input[required], textarea[required], select[required]');
-        let valid = true;
-
-        inputs.forEach(input => {
-          if (!input.value.trim()) {
-            valid = false;
-            input.style.borderColor = '#e74c3c';
-          } else {
-            input.style.borderColor = '#e67e22';
-          }
-        });
-
-        if (valid && currentPage < totalPages) {
-          currentCard.classList.add('slide-out-left');
-          setTimeout(() => {
-            currentPage++;
-            updateFormNavigation();
-            currentCard.classList.remove('slide-out-left');
-          }, 600);
-        } else if (!valid) {
-          alert('Please fill out all required fields before proceeding.');
+        if (currentPage > 1) {
+          showPage(currentPage - 1, 'left');
         }
       });
     });
 
-    document.querySelectorAll('.prev-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (currentPage > 1) {
-      const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
-      currentCard.classList.add('slide-out-right');
-      setTimeout(() => {
-        currentPage--;
-        updateFormNavigation();
-        currentCard.classList.remove('slide-out-right');
-      }, 600);
+    nextButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentPage < formCards.length) {
+          showPage(currentPage + 1, 'right');
+        }
+      });
+    });
+
+    // Role Selection
+    function selectRole(roleName) {
+      const roleSelect = document.getElementById('role-select');
+      roleSelect.value = roleName;
+      document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+      showPage(1);
     }
-  });
-});
 
-// Role Selection
-function selectRole(role) {
-  const roleSelect = document.getElementById('role-select');
-  roleSelect.value = role;
-  window.scrollTo({ top: document.getElementById('apply').offsetTop, behavior: 'smooth' });
-}
-
-// Modal Functions
-function openModal(modalId) {
-  document.getElementById(modalId).style.display = 'flex';
-}
-
-function closeModal(modalId) {
-  document.getElementById(modalId).style.display = 'none';
-}
-
-// Role Management
-function openEditRoleModal(button) {
-  const roleDiv = button.closest('.role');
-  const roleName = roleDiv.querySelector('h3').textContent;
-  const roleDescription = roleDiv.querySelector('.tooltip p').textContent;
-  const roleImage = roleDiv.querySelector('img').src;
-
-  document.getElementById('modal-title').textContent = 'Edit Role';
-  document.getElementById('role-name').value = roleName;
-  document.getElementById('role-description').value = roleDescription;
-  document.getElementById('role-image').value = roleImage;
-
-  const roleForm = document.getElementById('role-form');
-  roleForm.dataset.editRole = roleName;
-  openModal('role-modal');
-}
-
-function saveRole() {
-  const roleForm = document.getElementById('role-form');
-  const roleName = document.getElementById('role-name').value;
-  const roleDescription = document.getElementById('role-description').value;
-  const roleImage = document.getElementById('role-image').value;
-  const rolesGrid = document.querySelector('.roles-grid');
-
-  if (roleForm.dataset.editRole) {
-    const oldRoleName = roleForm.dataset.editRole;
-    const roleDiv = Array.from(rolesGrid.querySelectorAll('.role')).find(
-      role => role.querySelector('h3').textContent === oldRoleName
-    );
-    roleDiv.querySelector('h3').textContent = roleName;
-    roleDiv.querySelector('.tooltip p').textContent = roleDescription;
-    roleDiv.querySelector('img').src = roleImage;
-    roleDiv.querySelector('.apply-button').onclick = () => selectRole(roleName);
-    delete roleForm.dataset.editRole;
-  } else {
-    const newRole = document.createElement('div');
-    newRole.classList.add('role');
-    newRole.setAttribute('draggable', 'true');
-    newRole.setAttribute('ondragstart', 'drag(event)');
-    newRole.innerHTML = `
-      <img src="${roleImage}" alt="${roleName} Icon">
-      <h3>${roleName}</h3>
-      <a href="#apply" class="apply-button" onclick="selectRole('${roleName}')">Apply for Role</a>
-      <div class="tooltip">
-        <p>${roleDescription}</p>
-      </div>
-      <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-      <button class="delete-button" onclick="deleteRole(this)">×</button>
-    `;
-    rolesGrid.appendChild(newRole);
-    const roleSelect = document.getElementById('role-select');
-    const option = document.createElement('option');
-    option.value = roleName;
-    option.textContent = roleName;
-    roleSelect.appendChild(option);
-  }
-
-  closeModal('role-modal');
-}
-
-function deleteRole(button) {
-  if (confirm('Are you sure you want to delete this role?')) {
-    const roleDiv = button.closest('.role');
-    const roleName = roleDiv.querySelector('h3').textContent;
-    roleDiv.remove();
-    const roleSelect = document.getElementById('role-select');
-    const option = roleSelect.querySelector(`option[value="${roleName}"]`);
-    if (option) option.remove();
-  }
-}
-
-// Drag and Drop
-let dragged;
-
-function allowDrop(event) {
-  event.preventDefault();
-}
-
-function drag(event) {
-  dragged = event.target.closest('.role');
-}
-
-function dropRoles(event) {
-  event.preventDefault();
-  const rolesGrid = event.target.closest('.roles-grid');
-  const roles = Array.from(rolesGrid.querySelectorAll('.role'));
-  const dropTarget = event.target.closest('.role');
-  if (dropTarget && dragged !== dropTarget) {
-    const draggedIndex = roles.indexOf(dragged);
-    const targetIndex = roles.indexOf(dropTarget);
-    if (draggedIndex < targetIndex) {
-      rolesGrid.insertBefore(dragged, dropTarget.nextSibling);
-    } else {
-      rolesGrid.insertBefore(dragged, dropTarget);
+    // Modal Handling
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
     }
-  }
-}
 
-// Section Editing
-function saveSection() {
-  const sectionTitle = document.getElementById('section-title').value;
-  const sectionDescription = document.getElementById('section-description').value;
-  document.querySelector('#roles .title-container .crew-title').alt = sectionTitle;
-  document.querySelector('#roles p').textContent = sectionDescription;
-  closeModal('members-modal');
-}
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
 
-// Playlist Player Toggle
-function togglePlayer() {
-  const playerWrapper = document.getElementById('player-wrapper');
-  playerWrapper.classList.toggle('active');
-}
+    document.querySelectorAll('.close-modal').forEach(closeBtn => {
+      closeBtn.addEventListener('click', () => {
+        closeModal(closeBtn.closest('.modal').id);
+      });
+    });
 
-// Close modals on click outside
-document.querySelectorAll('.modal').forEach(modal => {
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal(modal.id);
-  });
-});
+    // Create/Edit Role
+    function openEditRoleModal(button) {
+      const role = button.closest('.role');
+      const roleName = role.querySelector('h3').textContent;
+      const roleDescription = role.querySelector('.tooltip p').textContent;
+      const roleImage = role.querySelector('img').src;
+      const roleStatus = role.querySelector('.role-status').textContent;
 
-// Initialize form navigation
-updateFormNavigation();
+      document.getElementById('modal-title').textContent = 'Edit Role';
+      document.getElementById('role-name').value = roleName;
+      document.getElementById('role-description').value = roleDescription;
+      document.getElementById('role-image').value = roleImage;
+      document.getElementById('role-status').value = roleStatus;
+      document.getElementById('role-form').dataset.editRole = roleName;
+      openModal('role-modal');
+    }
+
+    function saveRole() {
+      const roleName = document.getElementById('role-name').value;
+      const roleDescription = document.getElementById('role-description').value;
+      const roleImage = document.getElementById('role-image').value;
+      const roleStatus = document.getElementById('role-status').value;
+      const roleForm = document.getElementById('role-form');
+
+      const rolesGrid = document.querySelector('.roles-grid');
+      const roleSelect = document.getElementById('role-select');
+
+      if (roleForm.dataset.editRole) {
+        const oldRoleName = roleForm.dataset.editRole;
+        const roleElement = Array.from(rolesGrid.querySelectorAll('.role')).find(
+          role => role.querySelector('h3').textContent === oldRoleName
+        );
+        if (roleElement) {
+          roleElement.querySelector('h3').textContent = roleName;
+          roleElement.querySelector('.tooltip p').textContent = roleDescription;
+          roleElement.querySelector('img').src = roleImage;
+          const statusElement = roleElement.querySelector('.role-status');
+          statusElement.textContent = roleStatus;
+          statusElement.className = `role-status${roleStatus === 'Filled' ? ' filled' : ''}`;
+          roleElement.querySelector('.apply-button').disabled = roleStatus === 'Filled';
+
+          // Update role select options
+          const option = roleSelect.querySelector(`option[value="${oldRoleName}"]`);
+          if (option) {
+            option.value = roleName;
+            option.textContent = roleName;
+          }
+        }
+      } else {
+        const role = document.createElement('div');
+        role.className = 'role';
+        role.setAttribute('draggable', 'true');
+        role.innerHTML = `
+          <div class="role-status${roleStatus === 'Filled' ? ' filled' : ''}">${roleStatus}</div>
+          <img src="${roleImage}" alt="${roleName} Icon">
+          <h3>${roleName}</h3>
+          <a href="#apply" class="apply-button" ${roleStatus === 'Filled' ? 'disabled' : ''} onclick="selectRole('${roleName}')">Apply for Role</a>
+          <div class="tooltip">
+            <p>${roleDescription}</p>
+          </div>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        role.addEventListener('dragstart', drag);
+        rolesGrid.appendChild(role);
+
+        // Add to role select
+        const option = document.createElement('option');
+        option.value = roleName;
+        option.textContent = roleName;
+        roleSelect.appendChild(option);
+      }
+
+      closeModal('role-modal');
+      roleForm.reset();
+      delete roleForm.dataset.editRole;
+      document.getElementById('modal-title').textContent = 'Create New Role';
+    }
+
+    document.getElementById('role-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      saveRole();
+    });
+
+    // Delete Role
+    function deleteRole(button) {
+      const role = button.closest('.role');
+      const roleName = role.querySelector('h3').textContent;
+      if (confirm(`Are you sure you want to delete the ${roleName} role?`)) {
+        role.remove();
+        const roleSelect = document.getElementById('role-select');
+        const option = roleSelect.querySelector(`option[value="${roleName}"]`);
+        if (option) {
+          option.remove();
+        }
+      }
+    }
+
+    // Edit Section
+    function saveSection() {
+      const sectionTitle = document.getElementById('section-title').value;
+      const sectionDescription = document.getElementById('section-description').value;
+      const section = document.getElementById('roles');
+      section.querySelector('h2').textContent = sectionTitle;
+      section.querySelector('p').textContent = sectionDescription;
+      closeModal('members-modal');
+    }
+
+    document.getElementById('section-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      saveSection();
+    });
+
+    // Playlist Player Toggle
+    function togglePlayer() {
+      const playerWrapper = document.getElementById('player-wrapper');
+      playerWrapper.classList.toggle('active');
+    }
+
+    // Initialize Form Navigation
+    updateFormNavigation();
   </script>
 </body>
 </html>
-
+</xaiArtifact>
