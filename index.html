@@ -1429,20 +1429,20 @@ body.night-mode .newsletter-wrapper {
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
-  max-width: 1000px;
+  max-width: 1200px; /* Increased to accommodate larger images */
   margin-left: auto;
   margin-right: auto;
 }
 
 .title-icon {
-  width: 800px; /* Adjusted for desktop */
+  width: 1200px; /* Significantly increased from 800px */
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
 
 .title-icon:hover {
-  transform: scale(1.1);
+  transform: scale(1.05); /* Slightly reduced scale to prevent overwhelming hover effect */
 }
 
 .title-container h1 {
@@ -1452,20 +1452,19 @@ body.night-mode .newsletter-wrapper {
 }
 
 @media only screen and (max-width: 768px) {
+  .title-container {
+    flex-direction: column; /* Stack vertically on smaller screens */
+    gap: 8px;
+  }
   .title-icon {
     width: 100%;
-    max-width: 120px;
+    max-width: 300px; /* Increased from 120px for larger appearance on tablets */
     height: auto;
   }
   .title-container h1 {
     font-size: 2.5em;
   }
 }
-
-  .title-icon {
-    width: 40px;
-    height: 40px;
-  }
 
   .title-container h1 {
     font-size: 2.5em;
@@ -1473,12 +1472,14 @@ body.night-mode .newsletter-wrapper {
 }
 
 @media only screen and (max-width: 480px) {
+  .title-container {
+    gap: 5px;
+  }
   .title-icon {
     width: 100%;
-    max-width: 80px;
+    max-width: 200px; /* Increased from 80px for mobile */
     height: auto;
   }
-}
   .title-container h1 {
     font-size: 2em;
   }
