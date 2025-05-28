@@ -228,7 +228,7 @@
       text-transform: uppercase;
     }
 
-    .dropdown:hover .dropdown-menu {
+    .dropdown clickable:hover .dropdown-menu {
       display: block;
     }
 
@@ -402,7 +402,7 @@
       border-bottom: 1px solid #e67e22;
     }
 
-    .section:nth-of-type(odd) {
+    .section:nth-of-type保證(odd) {
       background-color: rgba(244, 228, 188, 0.8);
     }
 
@@ -505,7 +505,7 @@
       transition: box-shadow 0.3s ease, transform 0.3s ease;
       height: 100%;
       min-height: 250px;
-      justify-content: space-between;
+      justify-content: space-between; /* Aligns content with space between */
     }
 
     .role:hover {
@@ -561,7 +561,7 @@
       border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
-      margin-top: auto;
+      margin-top: auto; /* Pushes button to the bottom */
       transition: background-color 0.3s, box-shadow 0.3s;
     }
 
@@ -646,34 +646,34 @@
       font-weight: bold;
     }
 
-    .role .tooltip {
-      visibility: hidden;
-      width: 180px;
-      background-color: rgba(44, 29, 15, 0.95);
-      color: #ffffff;
-      text-align: center;
-      border-radius: 8px;
-      padding: 12px;
-      position: absolute;
-      z-index: 10;
-      top: -10px;
-      left: 50%;
-      transform: translate(-50%, -100%);
-      opacity: 0;
-      transition: opacity 0.3s, transform 0.3s;
-      font-size: 0.9em;
-      font-family: 'Montserrat', sans-serif;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      border: 2px solid #f39c12;
-    }
+.role .tooltip {
+  visibility: hidden;
+  width: 180px;
+  background-color: rgba(44, 29, 15, 0.95);
+  color: #ffffff; /* Text color is already white, but we'll make it more specific */
+  text-align: center;
+  border-radius: 8px;
+  padding: 12px;
+  position: absolute;
+  z-index: 10;
+  top: -10px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  font-size: 0.9em;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid #f39c12;
+}
 
-    .role .tooltip p {
-      color: #ffffff;
-    }
+.role .tooltip p {
+  color: #ffffff;
+}
 
     .role:hover .tooltip {
       visibility: visible;
@@ -1429,7 +1429,7 @@
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
-          <b-img src="images/Roles-to-Be-Filled/Safety-Officer.png" alt="Safety Officer Icon">
+          <img src="images/Roles-to-Be-Filled/Safety-Officer.png" alt="Safety Officer Icon">
           <h3>Safety Officer</h3>
           <div class="tooltip">
             <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
@@ -1523,238 +1523,233 @@
 
   <section class="section" id="apply">
     <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
-    <p>Fill out the form below to request your spot in our camp for Kiwiburn Green's 2026. We can’t wait to vibe with you!</p>
+    <p>Fill out the form below to request your spot in our camp for Kiwiburn  Green's 2026. We can’t wait to vibe with you!</p>
     <div class="book-container">
       <div class="book">
-        <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="Cosmic Rejex Camp Application">
-          <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
+  <input type="hidden" name="_captcha" value="false">
 
-          <!-- Page 1: Role Selection -->
-          <div class="form-card page active" data-page="1">
-            <div class="page-content">
-              <label>Which camp role are you interested in filling?</label>
-              <select name="role" id="role-select" required>
-                <option value="">Select a role</option>
-                <option value="Logistics & Build Lead">Logistics & Build Lead</option>
-                <option value="Volunteer Coordinator">Volunteer Coordinator</option>
-                <option value="Build Crew">Build Crew</option>
-                <option value="Camp Lead">Camp Lead</option>
-                <option value="Deputy Lead">Deputy Lead</option>
-                <option value="Build Lead">Build Lead</option>
-                <option value="Vibe Manager">Vibe Manager</option>
-                <option value="Logistics Lead">Logistics Lead</option>
-                <option value="Sound Lead">Sound Lead</option>
-                <option value="Transport Lead">Transport Lead</option>
-                <option value="Art & Workshop Lead">Art & Workshop Lead</option>
-                <option value="Wellbeing Officer">Wellbeing Officer</option>
-                <option value="Greeter">Greeter</option>
-                <option value="Strike Lead">Strike Lead</option>
-                <option value="Comms Lead">Comms Lead</option>
-                <option value="Safety Officer">Safety Officer</option>
-                <option value="MOOP Manager">MOOP Manager</option>
-                <option value="Power/Tech Lead">Power/Tech Lead</option>
-                <option value="Social Media Lead">Social Media Lead</option>
-                <option value="Fundraising Lead">Fundraising Lead</option>
-                <option value="Sustainability Lead">Sustainability Lead</option>
-                <option value="Inclusion Officer">Inclusion Officer</option>
-                <option value="Workshop Coordinator">Workshop Coordinator</option>
-              </select>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn" disabled>Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 2: Name -->
-          <div class="form-card page" data-page="2">
-            <div class="page-content">
-              <div class="name-container">
-                <div>
-                  <label>Full Name</label>
-                  <input type="text" name="full_name" placeholder="Full Name" required>
-                </div>
-                <div>
-                  <label>Burner/Playa Name</label>
-                  <input type="text" name="burner_name" placeholder="Burner/Playa Name">
-                </div>
-              </div>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 3: Contact Info -->
-          <div class="form-card page" data-page="3">
-            <div class="page-content">
-              <label>Email Address</label>
-              <input type="email" name="email" placeholder="Email Address" required>
-              <label>Phone Number (Mobile, WhatsApp, or Signal)</label>
-              <input type="tel" name="phone" placeholder="Phone Number" required>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 4: Burn Experience -->
-          <div class="form-card page" data-page="4">
-            <div class="page-content">
-              <label>Have you attended Burning Man, Kiwiburn, or other regional burns before? If so, which ones and when?</label>
-              <textarea name="burn_experience" rows="4" placeholder="Previous burn experience" required></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 5: Why Join -->
-          <div class="form-card page" data-page="5">
-            <div class="page-content">
-              <label>Why do you want to join this camp?</label>
-              <textarea name="why_join" rows="4" placeholder="What draws you to this group and vision?" required></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 6: Travel -->
-          <div class="form-card page" data-page="6">
-            <div class="page-content">
-              <label>How will you be getting to the burn?</label>
-              <textarea name="travel" rows="4" placeholder="Travel method and timing" required></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 7: Contributions -->
-          <div class="form-card page" data-page="7">
-            <div class="page-content">
-              <label>What contributions can you offer to the camp?</label>
-              <textarea name="contributions" rows="4" placeholder="e.g., building, cooking, performance, art, administration, organisation" required></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 8: Ideas -->
-          <div class="form-card page" data-page="8">
-            <div class="page-content">
-              <label>Do you have any specific ideas, events, or projects you’d like to bring to camp?</label>
-              <textarea name="ideas" rows="4" placeholder="Specific ideas or projects"></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 9: Resources -->
-          <div class="form-card page" data-page="9">
-            <div class="page-content">
-              <label>Are you able to contribute any additional resources?</label>
-              <textarea name="resources" rows="4" placeholder="e.g., vehicles, tools, gear, infrastructure, supplies"></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 10: Dues -->
-          <div class="form-card page" data-page="10">
-            <div class="page-content">
-              <label>Camp dues are $____. Are you comfortable with this cost?</label>
-              <select name="dues_comfort" required>
-                <option value="">Select an option</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-                <option value="Unsure">Unsure</option>
-              </select>
-              <label>Will you pay in full upfront or prefer an instalment plan?</label>
-              <select name="payment_plan" required>
-                <option value="">Select an option</option>
-                <option value="Full Upfront">Pay in full upfront</option>
-                <option value="Instalments">Instalment plan</option>
-              </select>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 11: Values -->
-          <div class="form-card page" data-page="11">
-            <div class="page-content">
-              <label>Our camp values include: consent, communication, participation, fun, and responsibility. Are you aligned with these?</label>
-              <select name="values_alignment" required>
-                <option value="">Select an option</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-                <option value="Unsure">Unsure</option>
-              </select>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 12: Health Needs -->
-          <div class="form-card page" data-page="12">
-            <div class="page-content">
-              <label>Do you have any health needs, access requirements, or relevant concerns you’d like us to be aware of?</label>
-              <textarea name="health_needs" rows="4" placeholder="Health or access needs"></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 13: Concerns -->
-          <div class="form-card page" data-page="13">
-            <div class="page-content">
-              <label>Is there anything you’re unsure about or worried about regarding joining the camp?</label>
-              <textarea name="concerns" rows="4" placeholder="Any concerns or uncertainties"></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="button" class="next-btn book-btn">Next</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Page 14: Final Questions -->
-          <div class="form-card page" data-page="14">
-            <div class="page-content">
-              <label>Optional: Upload a photo or link to your social media</label>
-              <input type="url" name="social_media" placeholder="Link to social media or photo">
-              <label>Do you have any questions for us?</label>
-              <textarea name="questions" rows="4" placeholder="Your questions"></textarea>
-              <div class="form-navigation">
-                <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="submit" class="submit-btn book-btn">Submit Application</button>
-              </div>
-            </div>
-          </div>
-        </form>
+  <!-- Page 1 -->
+  <div class="form-card page active" data-page="1">
+    <div class="page-content">
+      <label>Which camp role are you interested in filling?</label>
+      <select name="role" id="role-select" required>
+        <option value="">Select a role</option>
+        <option value="Logistics & Build Lead">Logistics & Build Lead</option>
+        <option value="Volunteer Coordinator">Volunteer Coordinator</option>
+        <option value="Build Crew">Build Crew</option>
+        <option value="Camp Lead">Camp Lead</option>
+        <option value="Deputy Lead">Deputy Lead</option>
+        <option value="Build Lead">Build Lead</option>
+        <option value="Vibe Manager">Vibe Manager</option>
+        <option value="Logistics Lead">Logistics Lead</option>
+        <option value="Sound Lead">Sound Lead</option>
+        <option value="Transport Lead">Transport Lead</option>
+        <option value="Art & Workshop Lead">Art & Workshop Lead</option>
+        <option value="Wellbeing Officer">Wellbeing Officer</option>
+        <option value="Greeter">Greeter</option>
+        <option value="Strike Lead">Strike Lead</option>
+        <option value="Comms Lead">Comms Lead</option>
+        <option value="Safety Officer">Safety Officer</option>
+        <option value="MOOP Manager">MOOP Manager</option>
+        <option value="Power/Tech Lead">Power/Tech Lead</option>
+        <option value="Social Media Lead">Social Media Lead</option>
+        <option value="Fundraising Lead">Fundraising Lead</option>
+        <option value="Sustainability Lead">Sustainability Lead</option>
+        <option value="Inclusion Officer">Inclusion Officer</option>
+        <option value="Workshop Coordinator">Workshop Coordinator</option>
+      </select>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn" disabled>Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
       </div>
     </div>
-  </section>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="form-card page" data-page="2">
+    <div class="page-content">
+      <div class="name-container">
+        <div>
+          <label>Full Name</label>
+          <input type="text" name="full_name" placeholder="Full Name" required>
+        </div>
+        <div>
+          <label>Burner/Playa Name</label>
+          <input type="text" name="burner_name" placeholder="Burner/Playa Name">
+        </div>
+      </div>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="form-card page" data-page="3">
+    <div class="page-content">
+      <label>Email Address</label>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <label>Phone Number (Mobile, WhatsApp, or Signal)</label>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 4 -->
+  <div class="form-card page" data-page="4">
+    <div class="page-content">
+      <label>Have you attended Burning Man, Kiwiburn, or other regional burns before? If so, which ones and when?</label>
+      <textarea name="burn_experience" rows="4" placeholder="Previous burn experience" required></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 5 -->
+  <div class="form-card page" data-page="5">
+    <div class="page-content">
+      <label>Why do you want to join this camp?</label>
+      <textarea name="why_join" rows="4" placeholder="What draws you to this group and vision?" required></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 6 -->
+  <div class="form-card page" data-page="6">
+    <div class="page-content">
+      <label>How will you be getting to the burn?</label>
+      <textarea name="travel" rows="4" placeholder="Travel method and timing" required></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 7 -->
+  <div class="form-card page" data-page="7">
+    <div class="page-content">
+      <label>What contributions can you offer to the camp?</label>
+      <textarea name="contributions" rows="4" placeholder="e.g., building, cooking, performance, art, administration, organisation" required></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 8 -->
+  <div class="form-card page" data-page="8">
+    <div class="page-content">
+      <label>Do you have any specific ideas, events, or projects you’d like to bring to camp?</label>
+      <textarea name="ideas" rows="4" placeholder="Specific ideas or projects"></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 9 -->
+  <div class="form-card page" data-page="9">
+    <div class="page-content">
+      <label>Are you able to contribute any additional resources?</label>
+      <textarea name="resources" rows="4" placeholder="e.g., vehicles, tools, gear, infrastructure, supplies"></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 10 -->
+  <div class="form-card page" data-page="10">
+    <div class="page-content">
+      <label>Camp dues are $____. Are you comfortable with this cost?</label>
+      <select name="dues_comfort" required>
+        <option value="">Select an option</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="Unsure">Unsure</option>
+      </select>
+      <label>Will you pay in full upfront or prefer an instalment plan?</label>
+      <select name="payment_plan" required>
+        <option value="">Select an option</option>
+        <option value="Full Upfront">Pay in full upfront</option>
+        <option value="Instalments">Instalment plan</option>
+      </select>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 11 -->
+  <div class="form-card page" data-page="11">
+    <div class="page-content">
+      <label>Our camp values include: consent, communication, participation, fun, and responsibility. Are you aligned with these?</label>
+      <select name="values_alignment" required>
+        <option value="">Select an option</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="Unsure">Unsure</option>
+      </select>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 12 -->
+  <div class="form-card page" data-page="12">
+    <div class="page-content">
+      <label>Do you have any health needs, access requirements, or relevant concerns you’d like us to be aware of?</label>
+      <textarea name="health_needs" rows="4" placeholder="Health or access needs"></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 13 -->
+  <div class="form-card page" data-page="13">
+    <div class="page-content">
+      <label>Is there anything you’re unsure about or worried about regarding joining the camp?</label>
+      <textarea name="concerns" rows="4" placeholder="Any concerns or uncertainties"></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="button" class="next-btn book-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 14 -->
+  <div class="form-card page" data-page="14">
+    <div class="page-content">
+      <label>Optional: Upload a photo or link to your social media</label>
+      <input type="url" name="social_media" placeholder="Link to social media or photo">
+      <label>Do you have any questions for us?</label>
+      <textarea name="questions" rows="4" placeholder="Your questions"></textarea>
+      <div class="form-navigation">
+        <button type="button" class="prev-btn book-btn">Previous</button>
+        <button type="submit" class="submit-btn book-btn">Submit Application</button>
+      </div>
+    </div>
+  </div>
+</form>
 
   <div class="modal" id="role-modal">
     <div class="modal-content">
@@ -1843,245 +1838,246 @@
     });
 
     // Login/Logout
-const loginForm = document.getElementById('login-form');
-const logoutButton = document.querySelector('.logout-button');
-const loginContainer = document.querySelector('.nav-login');
+    const loginForm = document.getElementById('login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const loginContainer = document.querySelector('.nav-login');
 
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  loginContainer.classList.add('logged-in');
-  loginForm.style.display = 'none';
-  logoutButton.style.display = 'block';
-  document.body.classList.add('logged-in');
-  localStorage.setItem('loggedIn', 'true');
-});
-
-logoutButton.addEventListener('click', () => {
-  loginContainer.classList.remove('logged-in');
-  loginForm.style.display = 'flex';
-  logoutButton.style.display = 'none';
-  document.body.classList.remove('logged-in');
-  localStorage.removeItem('loggedIn');
-});
-
-// Check login state
-if (localStorage.getItem('loggedIn') === 'true') {
-  loginContainer.classList.add('logged-in');
-  loginForm.style.display = 'none';
-  logoutButton.style.display = 'block';
-  document.body.classList.add('logged-in');
-}
-
-// Form Navigation
-const formCards = document.querySelectorAll('.form-card');
-const prevButtons = document.querySelectorAll('.prev-btn');
-const nextButtons = document.querySelectorAll('.next-btn');
-const submitButton = document.querySelector('.submit-btn');
-let currentPage = 1;
-
-function updateFormPage(direction = 'next') {
-  const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
-  let nextPage = direction === 'next' ? currentPage + 1 : currentPage - 1;
-  const nextCard = document.querySelector(`.form-card[data-page="${nextPage}"]`);
-
-  if (!nextCard) return;
-
-  // Apply slide animations
-  if (direction === 'next') {
-    currentCard.classList.add('slide-out-left');
-    nextCard.classList.add('slide-in-right');
-  } else {
-    currentCard.classList.add('slide-out-right');
-    nextCard.classList.add('slide-in-left');
-  }
-
-  setTimeout(() => {
-    currentCard.classList.remove('active', 'slide-out-left', 'slide-out-right');
-    nextCard.classList.add('active');
-    nextCard.classList.remove('slide-in-left', 'slide-in-right');
-    currentPage = nextPage;
-
-    // Update button states
-    prevButtons.forEach(btn => btn.disabled = currentPage === 1);
-    nextButtons.forEach(btn => btn.disabled = currentPage === formCards.length);
-    submitButton.style.display = currentPage === formCards.length ? 'block' : 'none';
-  }, 600);
-}
-
-nextButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
-    const inputs = currentCard.querySelectorAll('input[required], select[required], textarea[required]');
-    let valid = true;
-
-    inputs.forEach(input => {
-      if (!input.value) {
-        valid = false;
-        input.style.borderColor = '#e74c3c';
-      } else {
-        input.style.borderColor = '#e67e22';
-      }
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginContainer.classList.add('logged-in');
+      loginForm.style.display = 'none';
+      logoutButton.style.display = 'block';
+      document.body.classList.add('logged-in');
     });
 
-    if (valid) updateFormPage('next');
-  });
-});
+    logoutButton.addEventListener('click', () => {
+      loginContainer.classList.remove('logged-in');
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      document.body.classList.remove('logged-in');
+    });
 
-prevButtons.forEach(button => {
-  button.addEventListener('click', () => updateFormPage('prev'));
-});
+    // Scroll Arrows
+    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+      arrow.addEventListener('click', () => {
+        const grid = document.querySelector(`.roles-grid`);
+        const isLeft = arrow.classList.contains('left');
+        const scrollAmount = 300; // Adjust scroll distance as needed
+        grid.scrollBy({
+          left: isLeft ? -scrollAmount : scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    });
 
-// Role Selection
-function selectRole(role) {
-  const roleSelect = document.getElementById('role-select');
-  roleSelect.value = role;
-}
+    // Form Navigation
+    const formCards = document.querySelectorAll('.form-card');
+    const prevButtons = document.querySelectorAll('.prev-btn');
+    const nextButtons = document.querySelectorAll('.next-btn');
+    let currentPage = 1;
 
-// Modal Handling
-function openModal(modalId) {
-  document.getElementById(modalId).style.display = 'flex';
-}
-
-function closeModal(modalId) {
-  document.getElementById(modalId).style.display = 'none';
-}
-
-document.querySelectorAll('.close-modal').forEach(closeBtn => {
-  closeBtn.addEventListener('click', () => {
-    closeModal(closeBtn.closest('.modal').id);
-  });
-});
-
-// Role Management
-function saveRole() {
-  const roleName = document.getElementById('role-name').value;
-  const roleDescription = document.getElementById('role-description').value;
-  const roleImage = document.getElementById('role-image').value;
-  const roleStatus = document.getElementById('role-status').value;
-
-  const roleDiv = document.createElement('div');
-  roleDiv.className = 'role';
-  roleDiv.draggable = true;
-  roleDiv.ondragstart = drag;
-  roleDiv.innerHTML = `
-    <div class="role-status ${roleStatus.toLowerCase()}">${roleStatus}</div>
-    <img src="${roleImage}" alt="${roleName} Icon">
-    <h3>${roleName}</h3>
-    <div class="tooltip"><p>${roleDescription}</p></div>
-    <a href="#apply" class="apply-button" onclick="selectRole('${roleName}')" ${roleStatus === 'Filled' ? 'disabled' : ''}>Apply for Role</a>
-    <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-    <button class="delete-button" onclick="deleteRole(this)">×</button>
-  `;
-  document.querySelector('.roles-grid').appendChild(roleDiv);
-  closeModal('role-modal');
-}
-
-function openEditRoleModal(button) {
-  const roleDiv = button.closest('.role');
-  const roleName = roleDiv.querySelector('h3').textContent;
-  const roleDescription = roleDiv.querySelector('.tooltip p').textContent;
-  const roleImage = roleDiv.querySelector('img').src;
-  const roleStatus = roleDiv.querySelector('.role-status').textContent;
-
-  document.getElementById('role-name').value = roleName;
-  document.getElementById('role-description').value = roleDescription;
-  document.getElementById('role-image').value = roleImage;
-  document.getElementById('role-status').value = roleStatus;
-  document.getElementById('modal-title').textContent = 'Edit Role';
-  openModal('role-modal');
-
-  document.getElementById('role-form').onsubmit = (e) => {
-    e.preventDefault();
-    roleDiv.querySelector('h3').textContent = document.getElementById('role-name').value;
-    roleDiv.querySelector('.tooltip p').textContent = document.getElementById('role-description').value;
-    roleDiv.querySelector('img').src = document.getElementById('role-image').value;
-    const status = document.getElementById('role-status').value;
-    const statusDiv = roleDiv.querySelector('.role-status');
-    statusDiv.textContent = status;
-    statusDiv.className = `role-status ${status.toLowerCase()}`;
-    roleDiv.querySelector('.apply-button').disabled = status === 'Filled';
-    closeModal('role-modal');
-  };
-}
-
-function deleteRole(button) {
-  button.closest('.role').remove();
-}
-
-// Section Editing
-function saveSection() {
-  const sectionTitle = document.getElementById('section-title').value;
-  const sectionDescription = document.getElementById('section-description').value;
-  document.querySelector('#roles h2').textContent = sectionTitle;
-  document.querySelector('#roles p').textContent = sectionDescription;
-  closeModal('members-modal');
-}
-
-// Drag and Drop Roles
-let draggedRole = null;
-
-function drag(event) {
-  draggedRole = event.target.closest('.role');
-  event.dataTransfer.setData('text/plain', '');
-}
-
-function allowDrop(event) {
-  event.preventDefault();
-}
-
-function dropRoles(event) {
-  event.preventDefault();
-  const rolesGrid = document.querySelector('.roles-grid');
-  const roles = Array.from(rolesGrid.children).filter(child => child.classList.contains('role'));
-  const mouseX = event.clientX;
-  let insertBeforeElement = null;
-
-  roles.forEach(role => {
-    const rect = role.getBoundingClientRect();
-    if (mouseX < rect.left + rect.width / 2 && role !== draggedRole) {
-      insertBeforeElement = role;
+    function updateFormNavigation() {
+      formCards.forEach(card => {
+        card.classList.remove('active', 'slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
+        if (parseInt(card.dataset.page) === currentPage) {
+          card.classList.add('active', 'slide-in-right');
+        }
+      });
+      prevButtons.forEach(btn => btn.disabled = currentPage === 1);
+      nextButtons.forEach(btn => btn.disabled = currentPage === formCards.length);
     }
-  });
 
-  if (insertBeforeElement) {
-    rolesGrid.insertBefore(draggedRole, insertBeforeElement);
-  } else {
-    rolesGrid.appendChild(draggedRole);
-  }
-}
+    prevButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          formCards[currentPage - 1].classList.add('slide-out-right');
+          currentPage--;
+          setTimeout(updateFormNavigation, 600);
+        }
+      });
+    });
 
-// Scroll Arrows for Roles Grid
-document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-  arrow.addEventListener('click', () => {
-    const grid = document.querySelector('.roles-grid');
-    const isLeft = arrow.classList.contains('left');
-    grid.scrollBy({ left: isLeft ? -200 : 200, behavior: 'smooth' });
-  });
-});
+    nextButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (currentPage < formCards.length) {
+          formCards[currentPage - 1].classList.add('slide-out-left');
+          currentPage++;
+          setTimeout(updateFormNavigation, 600);
+        }
+      });
+    });
 
-// Spotify Player Toggle
-function togglePlayer() {
-  const playerWrapper = document.getElementById('player-wrapper');
-  playerWrapper.classList.toggle('active');
-}
-
-// Form Submission
-document.getElementById('application-form').addEventListener('submit', (e) => {
-  const inputs = document.querySelectorAll('.form-card input[required], .form-card select[required], .form-card textarea[required]');
-  let valid = true;
-
-  inputs.forEach(input => {
-    if (!input.value) {
-      valid = false;
-      input.style.borderColor = '#e74c3c';
-    } else {
-      input.style.borderColor = '#e67e22';
+    // Role Selection
+    function selectRole(roleName) {
+      const roleSelect = document.getElementById('role-select');
+      roleSelect.value = roleName;
+      currentPage = 4; // Jump to role selection page
+      updateFormNavigation();
+      window.scrollTo({ top: document.getElementById('apply').offsetTop, behavior: 'smooth' });
     }
-  });
 
-  if (!valid) {
-    e.preventDefault();
-    alert('Please fill out all required fields.');
-  }
-});
-</script>
+    // Modal Handling
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    document.querySelectorAll('.close-modal').forEach(closeBtn => {
+      closeBtn.addEventListener('click', () => {
+        closeModal(closeBtn.parentElement.parentElement.id);
+      });
+    });
+
+    // Create/Edit Role
+    function openEditRoleModal(button) {
+      const roleDiv = button.parentElement;
+      const roleName = roleDiv.querySelector('h3').textContent;
+      const roleDescription = roleDiv.querySelector('.tooltip p').textContent;
+      const roleImage = roleDiv.querySelector('img').src;
+      const roleStatus = roleDiv.querySelector('.role-status').textContent;
+
+      document.getElementById('modal-title').textContent = 'Edit Role';
+      document.getElementById('role-name').value = roleName;
+      document.getElementById('role-description').value = roleDescription;
+      document.getElementById('role-image').value = roleImage;
+      document.getElementById('role-status').value = roleStatus;
+      document.getElementById('role-form').dataset.editing = roleName;
+      openModal('role-modal');
+    }
+
+    function saveRole() {
+      const roleForm = document.getElementById('role-form');
+      const roleName = document.getElementById('role-name').value;
+      const roleDescription = document.getElementById('role-description').value;
+      const roleImage = document.getElementById('role-image').value;
+      const roleStatus = document.getElementById('role-status').value;
+      const rolesGrid = document.querySelector('.roles-grid');
+      const roleSelect = document.getElementById('role-select');
+
+      if (roleForm.dataset.editing) {
+        const oldRoleName = roleForm.dataset.editing;
+        const roleDiv = Array.from(rolesGrid.children).find(div => div.querySelector('h3').textContent === oldRoleName);
+        if (roleDiv) {
+          roleDiv.querySelector('h3').textContent = roleName;
+          roleDiv.querySelector('.tooltip p').textContent = roleDescription;
+          roleDiv.querySelector('img').src = roleImage;
+          roleDiv.querySelector('.role-status').textContent = roleStatus;
+          roleDiv.querySelector('.role-status').className = `role-status ${roleStatus.toLowerCase()}`;
+          roleDiv.querySelector('.apply-button').onclick = () => selectRole(roleName);
+          roleDiv.querySelector('.apply-button').disabled = roleStatus === 'Filled';
+          // Update dropdown
+          const option = roleSelect.querySelector(`option[value="${oldRoleName}"]`);
+          if (option) {
+            option.value = roleName;
+            option.textContent = roleName;
+          }
+        }
+        delete roleForm.dataset.editing;
+      } else {
+        const roleDiv = document.createElement('div');
+        roleDiv.className = 'role';
+        roleDiv.draggable = true;
+        roleDiv.ondragstart = drag;
+        roleDiv.innerHTML = `
+          <div class="role-status ${roleStatus.toLowerCase()}">${roleStatus}</div>
+          <img src="${roleImage}" alt="${roleName} Icon">
+          <h3>${roleName}</h3>
+          <div class="tooltip">
+            <p>${roleDescription}</p>
+          </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('${roleName}')" ${roleStatus === 'Filled' ? 'disabled' : ''}>Apply for Role</a>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        rolesGrid.appendChild(roleDiv);
+        const option = document.createElement('option');
+        option.value = roleName;
+        option.textContent = roleName;
+        roleSelect.appendChild(option);
+      }
+      closeModal('role-modal');
+    }
+
+    // Delete Role
+    function deleteRole(button) {
+      const roleDiv = button.parentElement;
+      const roleName = roleDiv.querySelector('h3').textContent;
+      const roleSelect = document.getElementById('role-select');
+      const option = roleSelect.querySelector(`option[value="${roleName}"]`);
+      if (option) option.remove();
+      roleDiv.remove();
+    }
+
+    // Edit Section
+    function saveSection() {
+      const sectionTitle = document.getElementById('section-title').value;
+      const sectionDescription = document.getElementById('section-description').value;
+      const section = document.getElementById('roles');
+      section.querySelector('h1').textContent = sectionTitle;
+      section.querySelector('p').textContent = sectionDescription;
+      closeModal('members-modal');
+    }
+
+    // Drag and Drop Roles
+    let draggedRole = null;
+
+    function drag(event) {
+      draggedRole = event.target.closest('.role');
+      event.dataTransfer.setData('text/plain', '');
+      setTimeout(() => {
+        draggedRole.style.opacity = '0.5';
+      }, 0);
+    }
+
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function dropRoles(event) {
+      event.preventDefault();
+      const rolesGrid = document.querySelector('.roles-grid');
+      const roles = Array.from(rolesGrid.children).filter(child => child.classList.contains('role'));
+      const mouseX = event.clientX;
+      const gridRect = rolesGrid.getBoundingClientRect();
+      const closestRole = roles.reduce((closest, role) => {
+        const rect = role.getBoundingClientRect();
+        const distance = Math.abs(mouseX - (rect.left + rect.width / 2));
+        return distance < closest.distance ? { role, distance } : closest;
+      }, { role: null, distance: Infinity }).role;
+
+      if (closestRole && draggedRole !== closestRole) {
+        const closestRect = closestRole.getBoundingClientRect();
+        const insertBefore = mouseX < (closestRect.left + closestRect.width / 2);
+        if (insertBefore) {
+          rolesGrid.insertBefore(draggedRole, closestRole);
+        } else {
+          rolesGrid.insertBefore(draggedRole, closestRole.nextSibling);
+        }
+      }
+      draggedRole.style.opacity = '1';
+      draggedRole = null;
+    }
+
+    // Music Player Toggle
+    function togglePlayer() {
+      const playerWrapper = document.getElementById('player-wrapper');
+      playerWrapper.classList.toggle('active');
+    }
+
+    // Initialize Form
+    updateFormNavigation();
+
+    // Form Submission Handling
+    document.getElementById('application-form').addEventListener('submit', (e) => {
+      // Form submission is handled by FormSubmit
+      alert('Application submitted successfully!');
+      e.target.reset();
+      currentPage = 1;
+      updateFormNavigation();
+    });
+  </script>
+</body>
+</html>
