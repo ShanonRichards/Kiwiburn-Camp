@@ -2069,16 +2069,30 @@ function selectRole(roleName) {
 
     // Initialize Form
     updateFormNavigation();
+// Form Submission Handling
+document.getElementById('application-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const currentCard = document.querySelector('.form-card.active');
+  const isLastPage = parseInt(currentCard.dataset.page) === formCards.length;
+  const submitButton = form.querySelector('.submit-btn');
 
-    // Form Submission Handling
-    document.getElementById('application-form').addEventListener('submit', (e) => {
-      // Form submission is handled by FormSubmit
-      alert('Application submitted successfully!');
-      e.target.reset();
+  if (isLastPage && form.checkValidity()) {
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...';
+    alert('Application submitted successfully!');
+    form.submit();
+    setTimeout(() => {
+      form.reset();
       currentPage = 1;
       updateFormNavigation();
-    });
-  </script>
-</body>
-</html>
+      submitButton.disabled = false;
+      submitButton.textContent = 'Submit Application';
+    }, 1000);
+  } else if (isLastPage) {
+    form.reportValidity();
+  }
+});
+
+// Keep the rest of your script unchanged
 
