@@ -1435,18 +1435,14 @@ body.night-mode .newsletter-wrapper {
 }
 
 .title-icon {
-  width: 50px;
-  height: 50px;
+  width: 300px;
+  height: auto;
   object-fit: contain;
-  border: 2px solid #e67e22;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .title-icon:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.5);
 }
 
 .title-container h1 {
@@ -1456,10 +1452,12 @@ body.night-mode .newsletter-wrapper {
 }
 
 @media only screen and (max-width: 768px) {
-  .title-container {
-    flex-direction: column;
-    gap: 10px;
+  .title-icon {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
   }
+}
 
   .title-icon {
     width: 40px;
@@ -1473,9 +1471,11 @@ body.night-mode .newsletter-wrapper {
 
 @media only screen and (max-width: 480px) {
   .title-icon {
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
   }
+}
 
   .title-container h1 {
     font-size: 2em;
