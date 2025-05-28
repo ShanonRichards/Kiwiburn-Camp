@@ -1995,12 +1995,12 @@ body.night-mode .newsletter-wrapper {
   </div>
   <div class="dropdown">
     <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Join_US_Bar.png" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
-    <div class="dropdown-menu">
-      <a href="join-camp.html"><img src="images/icons/membership-icon.png" alt="Membership Icon" class="nav-icon">Membership Info</a>
-      <a href="join-camp.html"><img src="images/icons/apply-icon.png" alt="Apply Icon" class="nav-icon">Apply to Join</a>
-      <a href="camp-fees.html"><img src="images/icons/fees-icon.png" alt="Fees Icon" class="nav-icon">Camp Fees</a>
-      <a href="Task_Roster.html"><img src="images/icons/task-icon.png" alt="Task Icon" class="nav-icon">Task/Roster</a>
-    </div>
+<div class="dropdown-menu">
+  <a href="#about"><img src="images/icons/our-camp-icon.png" alt="Our Camp Icon" class="nav-icon">Our Camp</a>
+  <a href="#members"><img src="images/icons/members-icon.png" alt="Members Icon" class="nav-icon">Our Core Crew</a>
+  <a href="#mission"><img src="images/icons/mission-icon.png" alt="Mission Icon" class="nav-icon">Our Mission</a>
+  <a href="#history"><img src="images/icons/history-icon.png" alt="History Icon" class="nav-icon">Our History</a>
+</div>
   </div>
   <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Gallary_Bar.png" alt="Gallery Icon" class="nav-icon">Gallery</a>
   <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/News_Letter_Bar.png" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
@@ -2185,17 +2185,75 @@ body.night-mode .newsletter-wrapper {
   
 <div class="about-container">
   <section class="section about-section" id="about">
-<div class="about-content">
-  <div class="about-image">
-    <img src="images/About-Our-Camp/Head-Bang-Injury.png" alt="Camp Mates" loading="lazy">
-  </div>
-  <div class="about-text">
-    <h1>About Our Camp</h1>
-    <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
-  </div>
-</div>
+    <div class="about-content">
+      <div class="about-image">
+        <img src="images/About-Our-Camp/Head-Bang-Injury.png" alt="Camp Mates" loading="lazy">
+      </div>
+      <div class="about-text">
+        <h1>About Our Camp</h1>
+        <p>Join the Rejex... Cosmic Rejex is a welcoming home for emos, rockers, and bass-heads—a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, raw rock, and rolling drum and bass, all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
+      </div>
+    </div>
     <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
   </section>
+
+  <div class="members-container">
+    <section class="section" id="members">
+      <h1>Meet Our Core Camp Crew</h1>
+      <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
+        <div class="scroll-arrow left" data-grid="members" role="button" aria-label="Scroll members left">◄</div>
+        <div class="scroll-arrow right" data-grid="members" role="button" aria-label="Scroll members right">►</div>
+        <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Shanon_Richards.png" alt="Shanon Richards">
+          <h3>Shanon Richards</h3>
+          <span>Camp Lead</span>
+          <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Meghan_Louise_Robson.png" alt="Meghan">
+          <h3>Meghan Robson</h3>
+          <span>Deputy Lead</span>
+          <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Russell_Duffield.png" alt="Russell">
+          <h3>Russell Duffield</h3>
+          <span>Build Lead</span>
+          <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Micheal_Dunstan.png" alt="Micheal">
+          <h3>Micheal Dunstan</h3>
+          <span>Logistics Lead</span>
+          <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Tomas_Shelby.png" alt="Tomas">
+          <h3>Tomas Shelby</h3>
+          <span>Sound Lead</span>
+          <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+        <div class="member" draggable="true" ondragstart="drag(event)">
+          <img src="images/Core-Camp-Crew/Alana_Stewart.png" alt="Alana">
+          <h3>Alana Stewart</h3>
+          <span>Kitchen Lead</span>
+          <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
+          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteMember(this)">×</button>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
 
 <div class="mission-container">
@@ -2243,63 +2301,6 @@ body.night-mode .newsletter-wrapper {
     <button class="edit-section-button" onclick="openModal('history-modal')">Edit Section</button>
   </section>
 </div>
-
-  <div class="members-container">
-    <section class="section" id="members">
-      <h1>Meet Our Core Camp Crew</h1>
-<div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
-  <div class="scroll-arrow left" data-grid="members" role="button" aria-label="Scroll members left">◄</div>
-  <div class="scroll-arrow right" data-grid="members" role="button" aria-label="Scroll members right">►</div>
-        <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Shanon_Richards.png" alt="Shanon Richards">
-          <h3>Shanon Richards</h3>
-          <span>Camp Lead</span>
-          <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-
-        <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Meghan_Louise _Robson.png" alt="Meghan">
-          <h3>Meghan Robson</h3>
-          <span>Deputy Lead</span>
-          <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Russell_Duffield.png" alt="Russell">
-          <h3>Russell Duffield</h3>
-          <span>Build Lead</span>
-          <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Micheal_Dunstan.png" alt="Micheal">
-          <h3>Micheal Dunstan</h3>
-          <span>Logistics Lead</span>
-          <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Tomas_Shelby.png" alt="Tomas">
-          <h3>Tomas Shelby</h3>
-          <span>Sound Lead</span>
-          <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-        <div class="member" draggable="true" ondragstart="drag(event)">
-          <img src="images/Core-Camp-Crew/Alana_Stewart.png" alt="Alana">
-          <h3>Alana Stewart</h3>
-          <span>Kitchen Lead</span>
-          <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
-          <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteMember(this)">×</button>
-        </div>
-      </div>
 
 <div class="sidebar-widgets">
   <div class="emo-playlist-player">
