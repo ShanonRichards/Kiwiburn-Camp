@@ -1435,8 +1435,8 @@ body.night-mode .newsletter-wrapper {
 }
 
 .title-icon {
-  width: 800px; /* Changed from 40px to 160px (4x) */
-  height: auto; /* Changed from 40px to auto to maintain aspect ratio */
+  width: 800px; /* Adjusted for desktop */
+  height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -1454,7 +1454,7 @@ body.night-mode .newsletter-wrapper {
 @media only screen and (max-width: 768px) {
   .title-icon {
     width: 100%;
-    max-width: 120px; /* Adjusted from 300px to 120px for better proportionality */
+    max-width: 120px;
     height: auto;
   }
   .title-container h1 {
@@ -1475,9 +1475,10 @@ body.night-mode .newsletter-wrapper {
 @media only screen and (max-width: 480px) {
   .title-icon {
     width: 100%;
-    max-width: 80px; /* Adjusted from 300px to 80px for mobile screens */
+    max-width: 80px;
     height: auto;
   }
+}
   .title-container h1 {
     font-size: 2em;
   }
