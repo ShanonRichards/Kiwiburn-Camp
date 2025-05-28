@@ -1416,14 +1416,116 @@ body.night-mode .newsletter-wrapper {
 
 .about-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Align items at the top */
   gap: 40px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .about-text {
-  flex: 1;
+  flex: 1; /* Takes up equal space */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center text content */
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1; /* Takes up equal space */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center text content */
+}
+
+.about-image {
+  flex: 1; /* Takes up equal space */
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%; /* Ensure image takes full width of its container */
+  max-width: 400px; /* Limit maximum width */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #e67e22;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the title and icons */
+  gap: 20px; /* Increased gap for larger icons */
+  margin-bottom: 40px; /* Increased margin for spacing */
+  max-width: 1200px; /* Wider to accommodate larger icons */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-icon {
+  width: 100px; /* Increased size for desktop */
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.title-icon:hover {
+  transform: scale(1.1);
+}
+
+.title-container h1 {
+  font-size: 4em;
+  color: #2b1b0f;
+  margin: 0;
+  text-align: center; /* Ensure title is centered */
+}
+
+@media only screen and (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center; /* Center content on smaller screens */
+    text-align: center;
+  }
+
+  .about-image {
+    width: 100%; /* Full width on mobile */
+  }
+
+  .about-image img {
+    max-width: 300px; /* Smaller max-width for mobile */
+  }
+
+  .title-icon {
+    width: 60px; /* Smaller icons for tablet */
+    height: auto;
+  }
+
+  .title-container h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .title-icon {
+    width: 40px; /* Even smaller icons for mobile */
+    height: auto;
+  }
+
+  .title-container h1 {
+    font-size: 2em;
+  }
+
+  .about-image img {
+    max-width: 250px; /* Further reduced for small screens */
+  }
 }
 
 .title-container {
@@ -2264,21 +2366,21 @@ body.night-mode .about-description {
   
 <div class="about-container">
   <section class="section about-section" id="about">
-<div class="about-content">
-  <div class="about-image">
-    <img src="images/About-Our-Camp/Head-Bang-Injury.png" alt="Camp Mates" loading="lazy">
-  </div>
-  <div class="about-text">
     <div class="title-container">
       <img src="images/About-Our-Camp/Metal_Left.png" alt="Left Icon" class="title-icon left-icon">
       <h1>About Our Camp</h1>
       <img src="images/About-Our-Camp/Alien_Right_Rock2.png" alt="Right Icon" class="title-icon right-icon">
     </div>
-<div class="about-description">
-  <p>Cosmic Rejex is a welcoming home for those seeking something beyond trance on the paddock. Our camp is full of emos, rockers, and bass-heads — a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, rock, and drum and bass — all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
-</div>
-  </div>
-</div>
+    <div class="about-content">
+      <div class="about-image">
+        <img src="images/About-Our-Camp/Head-Bang-Injury.png" alt="Camp Mates" loading="lazy">
+      </div>
+      <div class="about-text">
+        <div class="about-description">
+          <p>Cosmic Rejex is a welcoming home for those seeking something beyond trance on the paddock. Our camp is full of emos, rockers, and bass-heads — a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, rock, and drum and bass — all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
+        </div>
+      </div>
+    </div>
     <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
   </section>
 </div>
