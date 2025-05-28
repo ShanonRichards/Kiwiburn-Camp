@@ -1908,13 +1908,13 @@
     });
 
     // Role Selection
-    function selectRole(roleName) {
-      const roleSelect = document.getElementById('role-select');
-      roleSelect.value = roleName;
-      currentPage = 4; // Jump to role selection page
-      updateFormNavigation();
-      window.scrollTo({ top: document.getElementById('apply').offsetTop, behavior: 'smooth' });
-    }
+function selectRole(roleName) {
+  const roleSelect = document.getElementById('role-select');
+  roleSelect.value = roleName;
+  currentPage = 1; // Jump to role selection page (now Page 1)
+  updateFormNavigation();
+  window.scrollTo({ top: document.getElementById('apply').offsetTop, behavior: 'smooth' });
+}
 
     // Modal Handling
     function openModal(modalId) {
