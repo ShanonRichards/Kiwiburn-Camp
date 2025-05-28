@@ -156,9 +156,9 @@ nav a {
   border-radius: 4px;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s;
   text-transform: uppercase;
-  display: flex; /* Added to align icon and text */
-  align-items: center; /* Center vertically */
-  gap: 8px; /* Space between icon and text */
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 nav a:hover {
@@ -168,10 +168,10 @@ nav a:hover {
 }
 
 .nav-icon {
-  width: 16px; /* Small size for icons */
+  width: 16px;
   height: 16px;
-  object-fit: contain; /* Maintain aspect ratio */
-  vertical-align: middle; /* Align with text */
+  object-fit: contain;
+  vertical-align: middle;
 }
 
 /* Adjust padding for dropdown menu links to account for icons */
@@ -231,52 +231,55 @@ nav a:hover {
       padding: 10px;
     }
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-    .dropdown-toggle {
-      cursor: pointer;
-    }
+.dropdown-toggle {
+  cursor: pointer;
+}
 
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background: rgba(44, 29, 15, 0.9);
-      min-width: 160px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1001;
-      border-radius: 4px;
-      border: 1px solid #e67e22;
-      top: 100%;
-      left: 0;
-      margin-top: 5px;
-    }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: rgba(44, 29, 15, 0.9);
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  border-radius: 4px;
+  border: 1px solid #e67e22;
+  top: 100%;
+  left: 0;
+  margin-top: 5px;
+}
 
-    body.night-mode .dropdown-menu {
-      background: rgba(74, 55, 35, 0.9);
-    }
+body.night-mode .dropdown-menu {
+  background: rgba(74, 55, 35, 0.9);
+}
 
-    .dropdown-menu a {
-      display: block;
-      padding: 10px 15px;
-      color: #f8e1b4;
-      text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      text-transform: uppercase;
-    }
+.dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  color: #f8e1b4;
+  text-decoration: none;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
 
-    .dropdown-menu a:hover {
-      background-color: #e67e22;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22;
-    }
+.dropdown-menu a:hover {
+  background-color: #e67e22;
+  color: #2b1b0f;
+  box-shadow: 0 0 10px #e67e22;
+}
 
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
     .nav-login {
       display: flex;
@@ -2069,15 +2072,15 @@ body.night-mode .about-description {
       <a href="events.html#submit"><img src="images/icons/submit-event-icon.png" alt="Submit Event Icon" class="nav-icon">Submit Event</a>
     </div>
   </div>
-  <div class="dropdown">
-    <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Join_US_Bar.png" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
-<div class="dropdown-menu">
-  <a href="#about"><img src="images/icons/our-camp-icon.png" alt="Our Camp Icon" class="nav-icon">Our Camp</a>
-  <a href="#members"><img src="images/icons/members-icon.png" alt="Members Icon" class="nav-icon">Our Core Crew</a>
-  <a href="#mission"><img src="images/icons/mission-icon.png" alt="Mission Icon" class="nav-icon">Our Mission</a>
-  <a href="#history"><img src="images/icons/history-icon.png" alt="History Icon" class="nav-icon">Our History</a>
-</div>
+<div class="dropdown">
+  <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Join_US_Bar.png" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
+  <div class="dropdown-menu">
+    <a href="join-camp.html"><img src="images/icons/membership-icon.png" alt="Membership Icon" class="nav-icon">Membership Info</a>
+    <a href="join-camp.html"><img src="images/icons/apply-icon.png" alt="Apply Icon" class="nav-icon">Apply to Join</a>
+    <a href="camp-fees.html"><img src="images/icons/fees-icon.png" alt="Fees Icon" class="nav-icon">Camp Fees</a>
+    <a href="Task_Roster.html"><img src="images/icons/task-icon.png" alt="Task Icon" class="nav-icon">Task/Roster</a>
   </div>
+</div>
   <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Gallary_Bar.png" alt="Gallery Icon" class="nav-icon">Gallery</a>
   <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/News_Letter_Bar.png" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
   <a href="contact.html"><img src="images/Webpage_Bar_Icons/Contact_Us_Bar.png" alt="Contact Icon" class="nav-icon">Contact Us</a>
