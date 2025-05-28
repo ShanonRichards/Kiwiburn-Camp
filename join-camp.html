@@ -1566,9 +1566,14 @@
     </div>
     <div class="book-container">
       <div class="book">
-        <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://your-site.com/thank-you.html">
+<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
+  <input type="hidden" name="_captcha" value="true">
+  <input type="hidden" name="_next" value="https://yourusername.github.io/repository/thank-you.html">
+  <input type="hidden" name="_subject" value="Cosmic Rejex 2026 Application">
+  <input type="hidden" name="_cc" value="email">
+  <input type="hidden" name="_honey" value="">
+  <!-- Rest of the form fields remain unchanged -->
+</form>
 
           <!-- Page 1 -->
           <div class="form-card page active" data-page="1">
@@ -1956,29 +1961,65 @@
     });
 
     // Handle form submission
-    document.getElementById('application-form').addEventListener('submit', function(e) {
-      const inputs = document.querySelectorAll('.form-card input[required], .form-card select[required], .form-card textarea[required]');
-      let valid = true;
+document.getElementById('application-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const inputs = document.querySelectorAll('.form-card input[required], .form-card select[required], .form-card textarea[required]');
+  let valid = true;
 
-      inputs.forEach(input => {
-        if (!input.value) {
-          valid = false;
-          input.style.borderColor = '#e74c3c';
-          setTimeout(() => {
-            input.style.borderColor = '#e67e22';
-          }, 2000);
-        }
-      });
+  inputs.forEach(input => {
+    if (!input.value) {
+      valid = false;
+      input.style.borderColor = '#e74c3c';
+      setTimeout(() => {
+        input.style.borderColor = '#e67e22';
+      }, 2000);
+    }
+  });
 
-      if (!valid) {
-        e.preventDefault();
-        alert('Please fill out all required fields before submitting.');
-      } else {
-        // FormSubmit handles the submission; no additional action needed
-        alert('Thank you for your application! We’ll get back to you soon.');
-      }
+  if (!valid) {
+    alert('Please fill out all required fields before submitting.');
+    return;
+  }
+
+  const submitBtn = document.querySelector('.submit-btn');
+  submitBtn.textContent = 'Submitting...';
+  submitBtn.disabled = true;
+
+  const formData = {
+    role: document.querySelector('[name="role"]').value,
+    full_name: document.querySelector('[name="full_name"]').value,
+    burner_name: document.querySelector('[name="burner_name"]').value,
+    email: document.querySelector('[name="email"]').value,
+    phone: document.querySelector('[name="phone"]').value,
+    burn_experience: document.querySelector('[name="burn_experience"]').value,
+    why_join: document.querySelector('[name="why_join"]').value,
+    travel: document.querySelector('[name="travel"]').value,
+    contributions: document.querySelector('[name="contributions"]').value,
+    ideas: document.querySelector('[name="ideas"]').value,
+    resources: document.querySelector('[name="resources"]').value,
+    dues_comfort: document.querySelector('[name="dues_comfort"]').value,
+    payment_plan: document.querySelector('[name="payment_plan"]').value,
+    values_alignment: document.querySelector('[name="values_alignment"]').value,
+    health_needs: document.querySelector('[name="health_needs"]').value,
+    concerns: document.querySelector('[name="concerns"]').value,
+    social_media: document.querySelector('[name="social_media"]').value,
+    questions: document.querySelector('[name="questions"]').value,
+  };
+
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+    .then(() => {
+      alert('Thank you for your application! We’ll get back to you soon.');
+      window.location.href = 'thank-you.html';
+    })
+    .catch(error => {
+      alert('Error submitting form. Please try again.');
+      console.error('EmailJS error:', error);
+    })
+    .finally(() => {
+      submitBtn.textContent = 'Submit Application';
+      submitBtn.disabled = false;
     });
-
+});
     // Select role from roles grid
     function selectRole(role) {
       const roleSelect = document.getElementById('role-select');
