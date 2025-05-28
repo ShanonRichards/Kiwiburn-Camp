@@ -1567,10 +1567,9 @@
     <div class="book-container">
       <div class="book">
 <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
-  <input type="hidden" name="_captcha" value="true">
-  <input type="hidden" name="_next" value="https://yourusername.github.io/repository/thank-you.html">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://cosmicrejex.github.io/thank-you.html">
   <input type="hidden" name="_subject" value="Cosmic Rejex 2026 Application">
-  <input type="hidden" name="_cc" value="email">
   <input type="hidden" name="_honey" value="">
   <!-- Rest of the form fields remain unchanged -->
 </form>
@@ -1959,10 +1958,9 @@
     document.querySelectorAll('.prev-btn').forEach(btn => {
       btn.addEventListener('click', prevPage);
     });
-
-    // Handle form submission
+// Handle form submission
+// Handle form submission
 document.getElementById('application-form').addEventListener('submit', function(e) {
-  e.preventDefault();
   const inputs = document.querySelectorAll('.form-card input[required], .form-card select[required], .form-card textarea[required]');
   let valid = true;
 
@@ -1977,6 +1975,7 @@ document.getElementById('application-form').addEventListener('submit', function(
   });
 
   if (!valid) {
+    e.preventDefault();
     alert('Please fill out all required fields before submitting.');
     return;
   }
@@ -1985,40 +1984,12 @@ document.getElementById('application-form').addEventListener('submit', function(
   submitBtn.textContent = 'Submitting...';
   submitBtn.disabled = true;
 
-  const formData = {
-    role: document.querySelector('[name="role"]').value,
-    full_name: document.querySelector('[name="full_name"]').value,
-    burner_name: document.querySelector('[name="burner_name"]').value,
-    email: document.querySelector('[name="email"]').value,
-    phone: document.querySelector('[name="phone"]').value,
-    burn_experience: document.querySelector('[name="burn_experience"]').value,
-    why_join: document.querySelector('[name="why_join"]').value,
-    travel: document.querySelector('[name="travel"]').value,
-    contributions: document.querySelector('[name="contributions"]').value,
-    ideas: document.querySelector('[name="ideas"]').value,
-    resources: document.querySelector('[name="resources"]').value,
-    dues_comfort: document.querySelector('[name="dues_comfort"]').value,
-    payment_plan: document.querySelector('[name="payment_plan"]').value,
-    values_alignment: document.querySelector('[name="values_alignment"]').value,
-    health_needs: document.querySelector('[name="health_needs"]').value,
-    concerns: document.querySelector('[name="concerns"]').value,
-    social_media: document.querySelector('[name="social_media"]').value,
-    questions: document.querySelector('[name="questions"]').value,
-  };
-
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
-    .then(() => {
-      alert('Thank you for your application! We’ll get back to you soon.');
-      window.location.href = 'thank-you.html';
-    })
-    .catch(error => {
-      alert('Error submitting form. Please try again.');
-      console.error('EmailJS error:', error);
-    })
-    .finally(() => {
-      submitBtn.textContent = 'Submit Application';
-      submitBtn.disabled = false;
-    });
+  // Let Formsubmit.co handle the submission
+  // No need to prevent default behavior here, as we want the form to submit to Formsubmit.co
+  setTimeout(() => {
+    submitBtn.textContent = 'Submit Application';
+    submitBtn.disabled = false;
+  }, 2000); // Reset button after a short delay
 });
     // Select role from roles grid
     function selectRole(role) {
