@@ -402,7 +402,7 @@
       border-bottom: 1px solid #e67e22;
     }
 
-    .section:nth-of-type(odd) {
+    .section:nth-of-type保證(odd) {
       background-color: rgba(244, 228, 188, 0.8);
     }
 
@@ -505,6 +505,7 @@
       transition: box-shadow 0.3s ease, transform 0.3s ease;
       height: 100%;
       min-height: 250px;
+      justify-content: space-between; /* Aligns content with space between */
     }
 
     .role:hover {
@@ -560,7 +561,7 @@
       border-radius: 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
-      margin: 10px 0;
+      margin-top: auto; /* Pushes button to the bottom */
       transition: background-color 0.3s, box-shadow 0.3s;
     }
 
@@ -649,7 +650,7 @@
       visibility: hidden;
       width: 180px;
       background-color: rgba(44, 29, 15, 0.95);
-      color: #ffffff;
+      color: #ffffff; /* Changed to white */
       text-align: center;
       border-radius: 8px;
       padding: 12px;
@@ -1261,10 +1262,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Logestics-&-Build-Lead.png" alt="Logistics & Build Lead Icon">
           <h3>Logistics & Build Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Logistics & Build Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Logistics & Build Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1272,10 +1273,10 @@
           <div class="role-status filled">Filled</div>
           <img src="images/Roles-to-Be-Filled/Volunteer-Coordinator.png" alt="Volunteer Coordinator Icon">
           <h3>Volunteer Coordinator</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Volunteer Coordinator')" disabled>Apply for Role</a>
           <div class="tooltip">
             <p>Assigns & tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Volunteer Coordinator')" disabled>Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1283,10 +1284,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Build-Crew.png" alt="Build Crew Icon">
           <h3>Build Crew</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Build Crew')">Apply for Role</a>
           <div class="tooltip">
             <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Build Crew')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1294,10 +1295,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Camp-Leadz.png" alt="Camp Lead Icon">
           <h3>Camp Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Camp Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Camp Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1305,10 +1306,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Deputy-Leads.png" alt="Deputy Lead Icon">
           <h3>Deputy Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Deputy Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Deputy Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1316,10 +1317,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Build-Lead.png" alt="Build Lead Icon">
           <h3>Build Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Build Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Build Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1327,10 +1328,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Vibe-Managers.png" alt="Vibe Manager Icon">
           <h3>Vibe Manager</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Vibe Manager')">Apply for Role</a>
           <div class="tooltip">
             <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Vibe Manager')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1338,10 +1339,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Logistics-Lead.png" alt="Logistics Lead Icon">
           <h3>Logistics Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Logistics Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Logistics Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1349,10 +1350,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Sound-Lead.png" alt="Sound Lead Icon">
           <h3>Sound Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Sound Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Sound Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1360,10 +1361,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Transport-Lead.png" alt="Transport Lead Icon">
           <h3>Transport Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Transport Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Transport Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1371,10 +1372,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Arts-&-Workshop-Lead.png" alt="Art & Workshop Lead Icon">
           <h3>Art & Workshop Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Art & Workshop Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Art & Workshop Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1382,10 +1383,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Wellbeing-Officers.png" alt="Wellbeing Officer Icon">
           <h3>Wellbeing Officer</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
           <div class="tooltip">
             <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1393,10 +1394,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Greeters.png" alt="Greeter Icon">
           <h3>Greeter</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Greeter')">Apply for Role</a>
           <div class="tooltip">
             <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Greeter')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1404,10 +1405,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Strike-Lead.png" alt="Strike Lead Icon">
           <h3>Strike Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Strike Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Strike Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1415,10 +1416,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Comms-Lead.png" alt="Comms Lead Icon">
           <h3>Comms Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Comms Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Comms Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1426,10 +1427,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Safety-Officer.png" alt="Safety Officer Icon">
           <h3>Safety Officer</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Safety Officer')">Apply for Role</a>
           <div class="tooltip">
             <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Safety Officer')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1437,10 +1438,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Moop-Manager.png" alt="MOOP Manager Icon">
           <h3>MOOP Manager</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('MOOP Manager')">Apply for Role</a>
           <div class="tooltip">
             <p>Leads Leave No Trace systems and cleanup. Educates campmates and tracks waste effectively.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('MOOP Manager')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1448,10 +1449,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Power_Tech_Lead.png" alt="Power/Tech Lead Icon">
           <h3>Power/Tech Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1459,10 +1460,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Social-Media-Lead.png" alt="Social Media Lead Icon">
           <h3>Social Media Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Social Media Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Manages the camp’s online presence, posting updates and engaging with the community.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Social Media Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1470,10 +1471,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Fundraising-Lead.png" alt="Fundraising Lead Icon">
           <h3>Fundraising Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Coordinates fundraising efforts to support camp costs and creative projects.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1481,10 +1482,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Sustainability_Lead.png" alt="Sustainability Lead Icon">
           <h3>Sustainability Lead</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
           <div class="tooltip">
             <p>Promotes eco-friendly practices, manages recycling, and ensures the camp aligns with Leave No Trace principles.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1492,10 +1493,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Inclusion_Officer.png" alt="Inclusion Officer Icon">
           <h3>Inclusion Officer</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
           <div class="tooltip">
             <p>Ensures the camp is welcoming to all, addressing accessibility and diversity needs.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1503,10 +1504,10 @@
           <div class="role-status">Open</div>
           <img src="images/Roles-to-Be-Filled/Workshop-Coordinator.png" alt="Workshop Coordinator Icon">
           <h3>Workshop Coordinator</h3>
-          <a href="#apply" class="apply-button" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
           <div class="tooltip">
             <p>Organizes and promotes workshops, ensuring materials and schedules are ready.</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         </div>
@@ -1858,39 +1859,15 @@
     // Scroll Arrows
     document.querySelectorAll('.scroll-arrow').forEach(arrow => {
       arrow.addEventListener('click', () => {
-        const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
-        const direction = arrow.classList.contains('left') ? -1 : 1;
-        const scrollAmount = 200;
-        grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        const grid = document.querySelector(`.roles-grid`);
+        const isLeft = arrow.classList.contains('left');
+        const scrollAmount = 300; // Adjust scroll distance as needed
+        grid.scrollBy({
+          left: isLeft ? -scrollAmount : scrollAmount,
+          behavior: 'smooth'
+        });
       });
     });
-
-    // Drag and Drop for Roles
-    let draggedRole = null;
-
-    function drag(event) {
-      draggedRole = event.target.closest('.role');
-      event.dataTransfer.setData('text/plain', draggedRole.outerHTML);
-    }
-
-    function allowDrop(event) {
-      event.preventDefault();
-    }
-
-    function dropRoles(event) {
-      event.preventDefault();
-      const rolesGrid = event.target.closest('.roles-grid');
-      const role = document.createElement('div');
-      role.innerHTML = event.dataTransfer.getData('text/plain');
-      role.className = 'role';
-      role.setAttribute('draggable', 'true');
-      role.addEventListener('dragstart', drag);
-      role.querySelector('.edit-button').addEventListener('click', () => openEditRoleModal(role.querySelector('.edit-button')));
-      role.querySelector('.delete-button').addEventListener('click', () => deleteRole(role.querySelector('.delete-button')));
-      role.querySelector('.apply-button').addEventListener('click', () => selectRole(role.querySelector('h3').textContent));
-      rolesGrid.appendChild(role);
-      draggedRole.remove();
-    }
 
     // Form Navigation
     const formCards = document.querySelectorAll('.form-card');
@@ -1899,34 +1876,22 @@
     let currentPage = 1;
 
     function updateFormNavigation() {
-      prevButtons.forEach(btn => {
-        btn.disabled = currentPage === 1;
-      });
-      nextButtons.forEach(btn => {
-        btn.disabled = currentPage === formCards.length;
-      });
-    }
-
-    function showPage(pageNumber, direction = 'right') {
       formCards.forEach(card => {
-        card.classList.remove('active', 'slide-out-left', 'slide-out-right', 'slide-in-left', 'slide-in-right');
+        card.classList.remove('active', 'slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
+        if (parseInt(card.dataset.page) === currentPage) {
+          card.classList.add('active', 'slide-in-right');
+        }
       });
-      const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
-      const nextCard = document.querySelector(`.form-card[data-page="${pageNumber}"]`);
-
-      if (currentCard && nextCard) {
-        currentCard.classList.add(direction === 'right' ? 'slide-out-left' : 'slide-out-right');
-        nextCard.classList.add('active', direction === 'right' ? 'slide-in-right' : 'slide-in-left');
-      }
-
-      currentPage = pageNumber;
-      updateFormNavigation();
+      prevButtons.forEach(btn => btn.disabled = currentPage === 1);
+      nextButtons.forEach(btn => btn.disabled = currentPage === formCards.length);
     }
 
     prevButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         if (currentPage > 1) {
-          showPage(currentPage - 1, 'left');
+          formCards[currentPage - 1].classList.add('slide-out-right');
+          currentPage--;
+          setTimeout(updateFormNavigation, 600);
         }
       });
     });
@@ -1934,7 +1899,9 @@
     nextButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         if (currentPage < formCards.length) {
-          showPage(currentPage + 1, 'right');
+          formCards[currentPage - 1].classList.add('slide-out-left');
+          currentPage++;
+          setTimeout(updateFormNavigation, 600);
         }
       });
     });
@@ -1943,8 +1910,9 @@
     function selectRole(roleName) {
       const roleSelect = document.getElementById('role-select');
       roleSelect.value = roleName;
-      document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
-      showPage(1);
+      currentPage = 4; // Jump to role selection page
+      updateFormNavigation();
+      window.scrollTo({ top: document.getElementById('apply').offsetTop, behavior: 'smooth' });
     }
 
     // Modal Handling
@@ -1958,106 +1926,88 @@
 
     document.querySelectorAll('.close-modal').forEach(closeBtn => {
       closeBtn.addEventListener('click', () => {
-        closeModal(closeBtn.closest('.modal').id);
+        closeModal(closeBtn.parentElement.parentElement.id);
       });
     });
 
     // Create/Edit Role
     function openEditRoleModal(button) {
-      const role = button.closest('.role');
-      const roleName = role.querySelector('h3').textContent;
-      const roleDescription = role.querySelector('.tooltip p').textContent;
-      const roleImage = role.querySelector('img').src;
-      const roleStatus = role.querySelector('.role-status').textContent;
+      const roleDiv = button.parentElement;
+      const roleName = roleDiv.querySelector('h3').textContent;
+      const roleDescription = roleDiv.querySelector('.tooltip p').textContent;
+      const roleImage = roleDiv.querySelector('img').src;
+      const roleStatus = roleDiv.querySelector('.role-status').textContent;
 
       document.getElementById('modal-title').textContent = 'Edit Role';
       document.getElementById('role-name').value = roleName;
       document.getElementById('role-description').value = roleDescription;
       document.getElementById('role-image').value = roleImage;
       document.getElementById('role-status').value = roleStatus;
-      document.getElementById('role-form').dataset.editRole = roleName;
+      document.getElementById('role-form').dataset.editing = roleName;
       openModal('role-modal');
     }
 
     function saveRole() {
+      const roleForm = document.getElementById('role-form');
       const roleName = document.getElementById('role-name').value;
       const roleDescription = document.getElementById('role-description').value;
       const roleImage = document.getElementById('role-image').value;
       const roleStatus = document.getElementById('role-status').value;
-      const roleForm = document.getElementById('role-form');
-
       const rolesGrid = document.querySelector('.roles-grid');
       const roleSelect = document.getElementById('role-select');
 
-      if (roleForm.dataset.editRole) {
-        const oldRoleName = roleForm.dataset.editRole;
-        const roleElement = Array.from(rolesGrid.querySelectorAll('.role')).find(
-          role => role.querySelector('h3').textContent === oldRoleName
-        );
-        if (roleElement) {
-          roleElement.querySelector('h3').textContent = roleName;
-          roleElement.querySelector('.tooltip p').textContent = roleDescription;
-          roleElement.querySelector('img').src = roleImage;
-          const statusElement = roleElement.querySelector('.role-status');
-          statusElement.textContent = roleStatus;
-          statusElement.className = `role-status${roleStatus === 'Filled' ? ' filled' : ''}`;
-          roleElement.querySelector('.apply-button').disabled = roleStatus === 'Filled';
-
-          // Update role select options
+      if (roleForm.dataset.editing) {
+        const oldRoleName = roleForm.dataset.editing;
+        const roleDiv = Array.from(rolesGrid.children).find(div => div.querySelector('h3').textContent === oldRoleName);
+        if (roleDiv) {
+          roleDiv.querySelector('h3').textContent = roleName;
+          roleDiv.querySelector('.tooltip p').textContent = roleDescription;
+          roleDiv.querySelector('img').src = roleImage;
+          roleDiv.querySelector('.role-status').textContent = roleStatus;
+          roleDiv.querySelector('.role-status').className = `role-status ${roleStatus.toLowerCase()}`;
+          roleDiv.querySelector('.apply-button').onclick = () => selectRole(roleName);
+          roleDiv.querySelector('.apply-button').disabled = roleStatus === 'Filled';
+          // Update dropdown
           const option = roleSelect.querySelector(`option[value="${oldRoleName}"]`);
           if (option) {
             option.value = roleName;
             option.textContent = roleName;
           }
         }
+        delete roleForm.dataset.editing;
       } else {
-        const role = document.createElement('div');
-        role.className = 'role';
-        role.setAttribute('draggable', 'true');
-        role.innerHTML = `
-          <div class="role-status${roleStatus === 'Filled' ? ' filled' : ''}">${roleStatus}</div>
+        const roleDiv = document.createElement('div');
+        roleDiv.className = 'role';
+        roleDiv.draggable = true;
+        roleDiv.ondragstart = drag;
+        roleDiv.innerHTML = `
+          <div class="role-status ${roleStatus.toLowerCase()}">${roleStatus}</div>
           <img src="${roleImage}" alt="${roleName} Icon">
           <h3>${roleName}</h3>
-          <a href="#apply" class="apply-button" ${roleStatus === 'Filled' ? 'disabled' : ''} onclick="selectRole('${roleName}')">Apply for Role</a>
           <div class="tooltip">
             <p>${roleDescription}</p>
           </div>
+          <a href="#apply" class="apply-button" onclick="selectRole('${roleName}')" ${roleStatus === 'Filled' ? 'disabled' : ''}>Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
           <button class="delete-button" onclick="deleteRole(this)">×</button>
         `;
-        role.addEventListener('dragstart', drag);
-        rolesGrid.appendChild(role);
-
-        // Add to role select
+        rolesGrid.appendChild(roleDiv);
         const option = document.createElement('option');
         option.value = roleName;
         option.textContent = roleName;
         roleSelect.appendChild(option);
       }
-
       closeModal('role-modal');
-      roleForm.reset();
-      delete roleForm.dataset.editRole;
-      document.getElementById('modal-title').textContent = 'Create New Role';
     }
-
-    document.getElementById('role-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      saveRole();
-    });
 
     // Delete Role
     function deleteRole(button) {
-      const role = button.closest('.role');
-      const roleName = role.querySelector('h3').textContent;
-      if (confirm(`Are you sure you want to delete the ${roleName} role?`)) {
-        role.remove();
-        const roleSelect = document.getElementById('role-select');
-        const option = roleSelect.querySelector(`option[value="${roleName}"]`);
-        if (option) {
-          option.remove();
-        }
-      }
+      const roleDiv = button.parentElement;
+      const roleName = roleDiv.querySelector('h3').textContent;
+      const roleSelect = document.getElementById('role-select');
+      const option = roleSelect.querySelector(`option[value="${roleName}"]`);
+      if (option) option.remove();
+      roleDiv.remove();
     }
 
     // Edit Section
@@ -2065,25 +2015,69 @@
       const sectionTitle = document.getElementById('section-title').value;
       const sectionDescription = document.getElementById('section-description').value;
       const section = document.getElementById('roles');
-      section.querySelector('h2').textContent = sectionTitle;
+      section.querySelector('h1').textContent = sectionTitle;
       section.querySelector('p').textContent = sectionDescription;
       closeModal('members-modal');
     }
 
-    document.getElementById('section-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      saveSection();
-    });
+    // Drag and Drop Roles
+    let draggedRole = null;
 
-    // Playlist Player Toggle
+    function drag(event) {
+      draggedRole = event.target.closest('.role');
+      event.dataTransfer.setData('text/plain', '');
+      setTimeout(() => {
+        draggedRole.style.opacity = '0.5';
+      }, 0);
+    }
+
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function dropRoles(event) {
+      event.preventDefault();
+      const rolesGrid = document.querySelector('.roles-grid');
+      const roles = Array.from(rolesGrid.children).filter(child => child.classList.contains('role'));
+      const mouseX = event.clientX;
+      const gridRect = rolesGrid.getBoundingClientRect();
+      const closestRole = roles.reduce((closest, role) => {
+        const rect = role.getBoundingClientRect();
+        const distance = Math.abs(mouseX - (rect.left + rect.width / 2));
+        return distance < closest.distance ? { role, distance } : closest;
+      }, { role: null, distance: Infinity }).role;
+
+      if (closestRole && draggedRole !== closestRole) {
+        const closestRect = closestRole.getBoundingClientRect();
+        const insertBefore = mouseX < (closestRect.left + closestRect.width / 2);
+        if (insertBefore) {
+          rolesGrid.insertBefore(draggedRole, closestRole);
+        } else {
+          rolesGrid.insertBefore(draggedRole, closestRole.nextSibling);
+        }
+      }
+      draggedRole.style.opacity = '1';
+      draggedRole = null;
+    }
+
+    // Music Player Toggle
     function togglePlayer() {
       const playerWrapper = document.getElementById('player-wrapper');
       playerWrapper.classList.toggle('active');
     }
 
-    // Initialize Form Navigation
+    // Initialize Form
     updateFormNavigation();
+
+    // Form Submission Handling
+    document.getElementById('application-form').addEventListener('submit', (e) => {
+      // Form submission is handled by FormSubmit
+      alert('Application submitted successfully!');
+      e.target.reset();
+      currentPage = 1;
+      updateFormNavigation();
+    });
   </script>
 </body>
 </html>
-</xaiArtifact>
+
