@@ -2579,6 +2579,193 @@ body.night-mode .about-description {
   </section>
 </div>
 
+<style>
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.about-section {
+  padding: 60px 20px;
+  text-align: left;
+  background: none;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-icon {
+  width: 150px; /* Increased from 100px */
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.title-icon:hover {
+  transform: scale(1.1);
+}
+
+.title-container h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 5em; /* Increased from 4em */
+  color: #2b1b0f;
+  margin: 0;
+  text-align: center;
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8em; /* Decreased from implicit larger size */
+  color: #2b1b0f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-description {
+  background: rgba(230, 126, 34, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e67e22;
+  margin: 10px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.about-description:hover {
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+.about-description p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #2b1b0f;
+  margin: 0;
+}
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns image top with subtitle box */
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 500px; /* Increased from 400px */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #e67e22;
+}
+
+body.night-mode .title-container h1,
+body.night-mode .about-text h2,
+body.night-mode .about-description p {
+  color: #f8e1b4;
+}
+
+body.night-mode .about-description {
+  background: rgba(243, 156, 18, 0.15);
+  border-color: #f39c12;
+}
+
+@media only screen and (max-width: 768px) {
+  .title-container {
+    gap: 20px;
+  }
+
+  .title-icon {
+    width: 100px; /* Adjusted for tablet */
+    height: auto;
+  }
+
+  .title-container h1 {
+    font-size: 3.5em;
+  }
+
+  .about-text h2 {
+    font-size: 1.5em;
+  }
+
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-image img {
+    max-width: 350px; /* Adjusted for tablet */
+  }
+
+  .about-description {
+    padding: 15px;
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .title-container {
+    gap: 15px;
+  }
+
+  .title-icon {
+    width: 80px; /* Adjusted for mobile */
+    height: auto;
+  }
+
+  .title-container h1 {
+    font-size: 2.5em;
+  }
+
+  .about-text h2 {
+    font-size: 1.2em;
+  }
+
+  .about-image img {
+    max-width: 280px; /* Adjusted for mobile */
+  }
+
+  .about-description {
+    padding: 12px;
+    max-width: 95%;
+  }
+}
+</style>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
+  </section>
+</div>
+
 <div class="members-container">
   <section class="section" id="members">
     <h1>Meet Our Core Camp Crew</h1>
