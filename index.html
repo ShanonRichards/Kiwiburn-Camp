@@ -449,17 +449,13 @@ nav a:hover {
   margin-top: 5px;
 }
 
-.dropdown.active .dropdown-menu {
-  display: block;
-}
-
 body.night-mode .dropdown-menu {
   background: rgba(74, 55, 35, 0.9);
   border-color: #f39c12;
 }
 
 .dropdown-menu a {
-  display: block;
+  display: block; /* Changed from flex to block since no icons */
   padding: 10px 15px;
   color: #f8e1b4;
   text-decoration: none;
@@ -473,6 +469,10 @@ body.night-mode .dropdown-menu {
   background-color: #e67e22;
   color: #2b1b0f;
   box-shadow: 0 0 10px #e67e22;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
     .nav-login {
@@ -542,38 +542,37 @@ body.night-mode .dropdown-menu {
       gap: 10px;
     }
 
-@media only screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: rgba(44, 29, 15, 0.9);
-    padding: 10px 0;
-    position: absolute;
-    top: 70px;
-    left: 0;
-  }
+    @media only screen and (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+      }
 
-.nav-links.active {
-    display: flex;
-  }
+      .nav-links.active {
+        display: flex;
+      }
 
-.dropdown-menu {
-    position: static;
-    background: rgba(74, 55, 35, 0.9);
-    box-shadow: none;
-    border: none;
-    margin: 5px 0;
-  }
+      .dropdown-menu {
+        position: static;
+        background: rgba(74, 55, 35, 0.9);
+        box-shadow: none;
+        border: none;
+        margin: 5px 0;
+      }
 
       .dropdown:hover .dropdown-menu {
         display: none;
       }
 
-.dropdown.active .dropdown-menu {
-    display: block;
-  }
-}
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
 
       .nav-login {
         margin-top: 10px;
