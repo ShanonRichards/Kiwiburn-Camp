@@ -1345,24 +1345,26 @@ body.night-mode .toggle-player:hover {
       gap: 30px;
     }
 
-    .countdown-section {
-      position: relative;
-      background: url('images/Countdown/Kiwiburn-Coverphoto.jpg') center/cover no-repeat;
-      padding: 60px 20px;
-      text-align: center;
-      color: #ffffff;
-      margin: 40px 0;
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+.countdown-section {
+  position: relative;
+  background: url('images/Countdown/Kiwiburn-Coverphoto.jpg') center/cover no-repeat;
+  padding: 60px 20px;
+  text-align: center;
+  color: #ffffff;
+  margin: 40px 0;
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
 
-    body.night-mode .countdown-section {
-      background: url('images/countdown-bg.jpg') center/cover no-repeat;
-    }
+body.night-mode .countdown-section {
+  /* Remove specific background if using dynamic JS background */
+  /* Or set a fallback */
+  background: rgba(44, 29, 15, 0.7) center/cover no-repeat;
+}
 
     .countdown-section h2 {
       font-family: 'Bebas Neue', cursive;
@@ -3148,43 +3150,76 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
 
 // Countdown Timer
 function updateCountdown() {
-  // Current date: May 29, 2025, 03:33 PM NZST
-  const now = new Date('2025-05-29T15:33:00+12:00').getTime();
-  
-  // Calculate target date: 240 days, 4 hours, 28 minutes, 5 seconds from now
-  const targetDate = new Date(now + 
-    (240 * 24 * 60 * 60 * 1000) + // 240 days
-    (4 * 60 * 60 * 1000) +       // 4 hours
-    (28 * 60 * 1000) +           // 28 minutes
-    (5 * 1000)                    // 5 seconds
-  ).getTime();
+  const now = new Date().getTime();
+  let targetDate = localStorage.getItem('countdownDate');
 
-  const distance = targetDate - now;
+  // Default target date: January 29, 2026, 12:00 PM NZST
+  if (!targetDate) {
+    targetDate = new Date('2026-01-29T12:00:00+13:00').toISOString();
+    localStorage.setItem('countdownDate', targetDate);
+  }
+
+  const targetTime = new Date(targetDate).getTime();
+  const distance = targetTime - now;
+
+  if (distance < 0) {
+    document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
+    return;
+  }
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Pad numbers with leading zeros for consistent two-digit display
+  // Pad numbers with leading zeros
   document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
   document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<br><small>Hours</small>';
   document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<br><small>Minutes</small>';
   document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<br><small>Seconds</small>';
+}
 
-  if (distance < 0) {
-    document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
+function updateCountdownDate() {
+  const input = document.getElementById('countdown-input').value;
+  if (input) {
+    // Convert input to NZST
+    const nzstDate = new Date(input + '+13:00').toISOString();
+    localStorage.setItem('countdownDate', nzstDate);
+    updateCountdown(); // Update immediately after setting new date
   }
 }
 
-  setInterval(updateCountdown, 1000);
-
-  function updateCountdownDate() {
-    const input = document.getElementById('countdown-input').value;
-    if (input) {
-      localStorage.setItem('countdownDate', input);
-    }
+function saveCountdownDetails() {
+  const input = document.getElementById('countdown-date').value;
+  const bgInput = document.getElementById('countdown-bg');
+  if (input) {
+    // Convert input to NZST
+    const nzstDate = new Date(input + '+13:00').toISOString();
+    localStorage.setItem('countdownDate', nzstDate);
   }
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      document.querySelector('.countdown-section').style.background = `url('${e.target.result}') center/cover no-repeat`;
+      localStorage.setItem('countdownBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('countdown-modal');
+  updateCountdown(); // Update immediately after saving
+}
+
+// Load background image from localStorage if available
+document.addEventListener('DOMContentLoaded', () => {
+  const savedBg = localStorage.getItem('countdownBg');
+  if (savedBg) {
+    document.querySelector('.countdown-section').style.background = `url('${savedBg}') center/cover no-repeat`;
+  }
+  updateCountdown(); // Initial call
+});
+
+// Run countdown every second
+setInterval(updateCountdown, 1000);
 
   // EMO PLAYLIST PLAYER Toggle
 function togglePlayer() {
