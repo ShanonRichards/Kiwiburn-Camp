@@ -487,7 +487,7 @@ nav a:hover {
 }
 
 .dropdown-menu {
-  display: none;
+  display: block; /* Changed from none to allow visibility control */
   position: absolute;
   background: rgba(44, 29, 15, 0.9);
   min-width: 160px;
@@ -498,6 +498,9 @@ nav a:hover {
   top: 100%;
   left: 0;
   margin-top: 5px;
+  opacity: 0; /* Start invisible */
+  visibility: hidden; /* Hidden by default */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
 }
 
 body.night-mode .dropdown-menu {
@@ -523,7 +526,8 @@ body.night-mode .dropdown-menu {
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block;
+  opacity: 1; /* Fully visible on hover */
+  visibility: visible; /* Make visible */
 }
 
     .nav-login {
