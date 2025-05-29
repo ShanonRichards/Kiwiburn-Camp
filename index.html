@@ -3159,6 +3159,12 @@ function updateCountdown() {
   const now = new Date().getTime();
   const distance = countdownDate - now;
 
+  if (distance < 0) {
+    clearInterval(countdownInterval);
+    document.getElementById("countdown-timer").innerHTML = "Event has started!";
+    return;
+  }
+
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -3168,6 +3174,7 @@ function updateCountdown() {
   document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0") + "<br><small>Hours</small>";
   document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0") + "<br><small>Minutes</small>";
   document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, "0") + "<br><small>Seconds</small>";
+}
 
   if (distance < 0) {
     clearInterval(countdownInterval);
@@ -3182,8 +3189,13 @@ const countdownInterval = setInterval(updateCountdown, 1000);
 function updateCountdownDate() {
   const input = document.getElementById("countdown-input").value;
   if (input) {
-    countdownDate = new Date(input).getTime();
-    updateCountdown(); // Update immediately
+    const newDate = new Date(input).getTime();
+    if (!isNaN(newDate) && newDate > Date.now()) {
+      countdownDate = newDate;
+      updateCountdown(); // Update immediately
+    } else {
+      alert("Please select a future date and time.");
+    }
   } else {
     alert("Please select a valid date and time.");
   }
@@ -3258,25 +3270,42 @@ function saveNewsletterDetails() {
   }
 
 function saveCountdownDetails() {
-  const input = document.getElementById('countdown-date').value;
-  const bgInput = document.getElementById('countdown-bg');
-  if (input && !isNaN(new Date(input).getTime())) {
-    countdownDate = new Date(input).getTime();
-    updateCountdown(); // Update immediately
+  const input = document.getElementById("countdown-date").value;
+  const bgInput = document.getElementById("countdown-bg");
+
+  if (input) {
+    const newDate = new Date(input).getTime();
+    if (!isNaN(newDate) && newDate > Date.now()) {
+      countdownDate = newDate;
+      updateCountdown(); // Update immediately
+    } else {
+      alert("Please enter a valid future date and time.");
+    }
   } else {
-    alert('Please enter a valid date and time.');
+    alert("Please enter a valid date and time.");
   }
+
   if (bgInput.files && bgInput.files[0]) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      const countdownSection = document.querySelector('.countdown-section');
+      const countdownSection = document.querySelector(".countdown-section");
       countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
-      localStorage.setItem('countdownBg', e.target.result);
+      localStorage.setItem("countdownBg", e.target.result);
     };
     reader.readAsDataURL(bgInput.files[0]);
   }
-  closeModal('countdown-modal');
+
+  closeModal("countdown-modal");
 }
+
+// Load saved countdown background from localStorage
+window.addEventListener("load", () => {
+  const savedBg = localStorage.getItem("countdownBg");
+  if (savedBg) {
+    const countdownSection = document.querySelector(".countdown-section");
+    countdownSection.style.background = `url('${savedBg}') center/cover no-repeat`;
+  }
+});
 
   function saveHistoryDetails() {
     document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
@@ -3284,5 +3313,318 @@ function saveCountdownDetails() {
   }
   
 </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiwiburn 2026 Countdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .countdown-section {
+      position: relative;
+      background: url('https://via.placeholder.com/1200x400') center/cover no-repeat;
+      padding: 60px 20px;
+      text-align: center;
+      color: #ffffff;
+      margin: 40px 0;
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    body.night-mode .countdown-section {
+      background: rgba(44, 29, 15, 0.7) center/cover no-repeat;
+    }
+
+    .countdown-section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      color: #ffffff;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5em;
+      color: #ffffff;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 15px 30px;
+      border-radius: 10px;
+      border: 2px solid #e67e22;
+    }
+
+    .countdown span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown span small {
+      font-size: 0.5em;
+      text-transform: uppercase;
+    }
+
+    .countdown-section input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      margin: 10px;
+      display: none;
+    }
+
+    .logged-in .countdown-section input {
+      display: inline-block;
+    }
+
+    .countdown-section button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    .logged-in .countdown-section button {
+      display: inline-block;
+    }
+
+    .countdown-section button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    @media only screen and (max-width: 480px) {
+      .countdown {
+        font-size: 1.8em;
+        padding: 10px 20px;
+        gap: 15px;
+      }
+
+      .countdown-section h2 {
+        font-size: 2.5em;
+      }
+
+      .countdown-section input,
+      .countdown-section button {
+        width: 100%;
+        box-sizing: border-box;
+        margin: 5px 0;
+      }
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      overflow: auto;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    .modal-content h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #e67e22;
+      border-radius: 5px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      margin: 10px 5px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown-container">
+    <section class="section countdown-section" id="countdown">
+      <h2>Kiwiburn 2026 Countdown</h2>
+      <div class="countdown" id="countdown-timer">
+        <span id="days">00<br><small>Days</small></span>
+        <span id="hours">00<br><small>Hours</small></span>
+        <span id="minutes">00<br><small>Minutes</small></span>
+        <span id="seconds">00<br><small>Seconds</small></span>
+      </div>
+      <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
+      <button onclick="updateCountdownDate()">Update Date</button>
+      <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
+    </section>
+  </div>
+
+  <!-- Countdown Modal -->
+  <div id="countdown-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('countdown-modal')">&times;</span>
+      <h2>Edit Countdown</h2>
+      <input type="datetime-local" id="countdown-date" aria-label="Set Countdown Date">
+      <input type="file" id="countdown-bg" accept="image/*" aria-label="Upload Countdown Background">
+      <button onclick="saveCountdownDetails()">Save Changes</button>
+    </div>
+  </div>
+
+  <script>
+    // Set the target date for the countdown (January 29, 2026, 12:00 PM NZST)
+    let countdownDate = new Date("2026-01-29T12:00:00+13:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown-timer").innerHTML = "Event has started!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = days.toString().padStart(2, "0") + "<br><small>Days</small>";
+      document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0") + "<br><small>Hours</small>";
+      document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0") + "<br><small>Minutes</small>";
+      document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, "0") + "<br><small>Seconds</small>";
+    }
+
+    // Update countdown every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+
+    // Function to update countdown date based on user input
+    function updateCountdownDate() {
+      const input = document.getElementById("countdown-input").value;
+      if (input) {
+        const newDate = new Date(input).getTime();
+        if (!isNaN(newDate) && newDate > Date.now()) {
+          countdownDate = newDate;
+          updateCountdown(); // Update immediately
+        } else {
+          alert("Please select a future date and time.");
+        }
+      } else {
+        alert("Please select a valid date and time.");
+      }
+    }
+
+    function saveCountdownDetails() {
+      const input = document.getElementById("countdown-date").value;
+      const bgInput = document.getElementById("countdown-bg");
+
+      if (input) {
+        const newDate = new Date(input).getTime();
+        if (!isNaN(newDate) && newDate > Date.now()) {
+          countdownDate = newDate;
+          updateCountdown(); // Update immediately
+        } else {
+          alert("Please enter a valid future date and time.");
+        }
+      } else {
+        alert("Please enter a valid date and time.");
+      }
+
+      if (bgInput.files && bgInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const countdownSection = document.querySelector(".countdown-section");
+          countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
+          localStorage.setItem("countdownBg", e.target.result);
+        };
+        reader.readAsDataURL(bgInput.files[0]);
+      }
+
+      closeModal("countdown-modal");
+    }
+
+    // Load saved countdown background from localStorage
+    window.addEventListener("load", () => {
+      const savedBg = localStorage.getItem("countdownBg");
+      if (savedBg) {
+        const countdownSection = document.querySelector(".countdown-section");
+        countdownSection.style.background = `url('${savedBg}') center/cover no-repeat`;
+      }
+    });
+
+    // Modal functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
+
+    // Simulate login for testing (remove in production)
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("logged-in"); // Simulate logged-in state for testing
+      updateCountdown(); // Initial countdown update
+    });
+  </script>
 </body>
 </html>
