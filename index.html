@@ -487,7 +487,7 @@ nav a:hover {
 }
 
 .dropdown-menu {
-  display: block; /* Changed from none to allow visibility control */
+  display: none;
   position: absolute;
   background: rgba(44, 29, 15, 0.9);
   min-width: 160px;
@@ -498,9 +498,6 @@ nav a:hover {
   top: 100%;
   left: 0;
   margin-top: 5px;
-  opacity: 0; /* Start invisible */
-  visibility: hidden; /* Hidden by default */
-  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
 }
 
 body.night-mode .dropdown-menu {
@@ -526,8 +523,7 @@ body.night-mode .dropdown-menu {
 }
 
 .dropdown:hover .dropdown-menu {
-  opacity: 1; /* Fully visible on hover */
-  visibility: visible; /* Make visible */
+  display: block;
 }
 
     .nav-login {
@@ -2961,10 +2957,10 @@ body.night-mode .about-description {
   <section class="section countdown-section" id="countdown">
     <h2>Kiwiburn 2026 Countdown</h2>
     <div class="countdown" id="countdown-timer">
-      <span id="days">00<br><small>Days</small></span>
-      <span id="hours">00<br><small>Hours</small></span>
-      <span id="minutes">00<br><small>Minutes</small></span>
-      <span id="seconds">00<br><small>Seconds</small></span>
+      <span id="days">240<br><small>Days</small></span>
+      <span id="hours">04<br><small>Hours</small></span>
+      <span id="minutes">21<br><small>Minutes</small></span>
+      <span id="seconds">28<br><small>Seconds</small></span>
     </div>
     <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
     <button onclick="updateCountdownDate()">Update Date</button>
@@ -3152,42 +3148,87 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
     });
   });
 
-// Set the target date for the countdown (example: January 15, 2026, 12:00 PM NZST)
-let countdownDate = new Date("2026-01-29T12:00:00+13:00").getTime();"
-
+// Countdown Timer
 function updateCountdown() {
   const now = new Date().getTime();
-  const distance = countdownDate - now;
+  let targetDate = localStorage.getItem('countdownDate');
+
+  // Default target date: January 29, 2026, 12:00 PM NZST
+  if (!targetDate) {
+    targetDate = new Date('2026-01-29T12:00:00+13:00').toISOString();
+    localStorage.setItem('countdownDate', targetDate);
+  }
+
+  const targetTime = new Date(targetDate).getTime();
+  const distance = targetTime - now;
+
+if (distance <= 0) {
+  document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
+  clearInterval(countdownInterval);
+  return;
+}
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById("days").innerHTML = days.toString().padStart(2, "0") + "<br><small>Days</small>";
-  document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0") + "<br><small>Hours</small>";
-  document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0") + "<br><small>Minutes</small>";
-  document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, "0") + "<br><small>Seconds</small>";
-
-  if (distance < 0) {
-    clearInterval(countdownInterval);
-    document.getElementById("countdown-timer").innerHTML = "Event has started!";
-  }
+  // Update DOM with padded numbers
+  try {
+document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
+    document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<br><small>Hours</small>';
+    document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<br><small>Minutes</small>';
+    document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<br><small>Seconds</small>';
+} catch (error) {
+  console.error('Error updating countdown DOM:', error);
+}
 }
 
-// Update countdown every second
-const countdownInterval = setInterval(updateCountdown, 1000);
-
-// Function to update countdown date based on user input
 function updateCountdownDate() {
-  const input = document.getElementById("countdown-input").value;
-  if (input) {
-    countdownDate = new Date(input).getTime();
-    updateCountdown(); // Update immediately
-  } else {
-    alert("Please select a valid date and time.");
-  }
+  const input = document.getElementById('countdown-input').value;
+if (input && !isNaN(new Date(input).getTime())) {
+  const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+  const isoDate = new Date(nzstDate).toISOString();
+} else {
+  alert('Please enter a valid date and time.');
 }
+}
+
+function saveCountdownDetails() {
+  const input = document.getElementById('countdown-date').value;
+  const bgInput = document.getElementById('countdown-bg');
+  if (input && !isNaN(new Date(input).getTime())) {
+    // Convert input to NZST
+const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+const isoDate = new Date(nzstDate).toISOString();
+    localStorage.setItem('countdownDate', isoDate);
+    updateCountdown(); // Update immediately after saving
+  } else {
+    alert('Please enter a valid date and time.');
+  }
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const countdownSection = document.querySelector('.countdown-section');
+      countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
+      localStorage.setItem('countdownBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('countdown-modal');
+}
+
+// Load background image and initialize countdown
+document.addEventListener('DOMContentLoaded', () => {
+  const savedBg = localStorage.getItem('countdownBg');
+  if (savedBg) {
+    document.querySelector('.countdown-section').style.background = `url('${savedBg}') center/cover no-repeat`;
+  }
+  updateCountdown(); // Initial call
+});
+
+// Run countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
 
   // EMO PLAYLIST PLAYER Toggle
 function togglePlayer() {
@@ -3257,26 +3298,13 @@ function saveNewsletterDetails() {
     closeModal('submit-modal');
   }
 
-function saveCountdownDetails() {
-  const input = document.getElementById('countdown-date').value;
-  const bgInput = document.getElementById('countdown-bg');
-  if (input && !isNaN(new Date(input).getTime())) {
-    countdownDate = new Date(input).getTime();
-    updateCountdown(); // Update immediately
-  } else {
-    alert('Please enter a valid date and time.');
+  function saveCountdownDetails() {
+    const input = document.getElementById('countdown-date').value;
+    if (input) {
+      localStorage.setItem('countdownDate', input);
+    }
+    closeModal('countdown-modal');
   }
-  if (bgInput.files && bgInput.files[0]) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const countdownSection = document.querySelector('.countdown-section');
-      countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
-      localStorage.setItem('countdownBg', e.target.result);
-    };
-    reader.readAsDataURL(bgInput.files[0]);
-  }
-  closeModal('countdown-modal');
-}
 
   function saveHistoryDetails() {
     document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
