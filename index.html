@@ -3162,54 +3162,63 @@ function updateCountdown() {
   const targetTime = new Date(targetDate).getTime();
   const distance = targetTime - now;
 
-  if (distance < 0) {
-    document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
-    return;
-  }
+if (distance <= 0) {
+  document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
+  clearInterval(countdownInterval);
+  return;
+}
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Pad numbers with leading zeros
-  document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
-  document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<br><small>Hours</small>';
-  document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<br><small>Minutes</small>';
-  document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<br><small>Seconds</small>';
+  // Update DOM with padded numbers
+  try {
+document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
+    document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<br><small>Hours</small>';
+    document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<br><small>Minutes</small>';
+    document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<br><small>Seconds</small>';
+} catch (error) {
+  console.error('Error updating countdown DOM:', error);
+}
 }
 
 function updateCountdownDate() {
   const input = document.getElementById('countdown-input').value;
-  if (input) {
-    // Convert input to NZST
-    const nzstDate = new Date(input + '+13:00').toISOString();
-    localStorage.setItem('countdownDate', nzstDate);
-    updateCountdown(); // Update immediately after setting new date
-  }
+if (input && !isNaN(new Date(input).getTime())) {
+  const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+  const isoDate = new Date(nzstDate).toISOString();
+} else {
+  alert('Please enter a valid date and time.');
+}
 }
 
 function saveCountdownDetails() {
   const input = document.getElementById('countdown-date').value;
   const bgInput = document.getElementById('countdown-bg');
-  if (input) {
+  if (input && !isNaN(new Date(input).getTime())) {
     // Convert input to NZST
-    const nzstDate = new Date(input + '+13:00').toISOString();
-    localStorage.setItem('countdownDate', nzstDate);
+const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+const isoDate = new Date(nzstDate).toISOString();
+    localStorage.setItem('countdownDate', isoDate);
+    updateCountdown(); // Update immediately after saving
+  } else {
+    alert('Please enter a valid date and time.');
   }
   if (bgInput.files && bgInput.files[0]) {
     const reader = new FileReader();
     reader.onload = function (e) {
-      document.querySelector('.countdown-section').style.background = `url('${e.target.result}') center/cover no-repeat`;
+      const countdownSection = document.querySelector('.countdown-section');
+      countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
       localStorage.setItem('countdownBg', e.target.result);
     };
     reader.readAsDataURL(bgInput.files[0]);
   }
   closeModal('countdown-modal');
-  updateCountdown(); // Update immediately after saving
 }
 
-// Load background image from localStorage if available
+// Load background image and initialize countdown
 document.addEventListener('DOMContentLoaded', () => {
   const savedBg = localStorage.getItem('countdownBg');
   if (savedBg) {
@@ -3219,7 +3228,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Run countdown every second
-setInterval(updateCountdown, 1000);
+const countdownInterval = setInterval(updateCountdown, 1000);
 
   // EMO PLAYLIST PLAYER Toggle
 function togglePlayer() {
