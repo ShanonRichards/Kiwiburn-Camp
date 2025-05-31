@@ -487,7 +487,7 @@ nav a:hover {
 }
 
 .dropdown-menu {
-  display: none;
+  display: block; /* Changed to block for transition control */
   position: absolute;
   background: rgba(44, 29, 15, 0.9);
   min-width: 160px;
@@ -498,11 +498,16 @@ nav a:hover {
   top: 100%;
   left: 0;
   margin-top: 5px;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Initially not interactive */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+  transition-delay: 0s; /* No delay on show */
 }
 
-body.night-mode .dropdown-menu {
-  background: rgba(74, 55, 35, 0.9);
-  border-color: #f39c12;
+.dropdown:hover .dropdown-menu {
+  opacity: 1; /* Show when hovered */
+  visibility: visible; /* Make interactive */
+  transition-delay: 0.5s; /* Delay disappearance by 0.5 seconds */
 }
 
 .dropdown-menu a {
@@ -1109,7 +1114,7 @@ body.night-mode .dropdown-menu {
   z-index: 1000;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 20px; /* Increased spacing between buttons */
   align-items: flex-end;
   transition: all 0.3s ease;
 }
