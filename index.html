@@ -2402,45 +2402,40 @@ body.night-mode .about-description {
 </head>
 <body>
 <nav>
-  <img src="images/Logo/Cosmic_Rejex_Bar_Logo.png
-" alt="Cosmic Rejex Logo" class="nav-logo">
-<div class="nav-links">
-  <div class="dropdown">
-    <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/About.png" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
-    <div class="dropdown-menu">
-      <a href="#about">Our Camp</a>
-      <a href="#mission">Our Mission</a>
-      <a href="#history">Our History</a>
+  <img src="images/Logo/Cosmic_Rejex_Bar_Logo.png" alt="Cosmic Rejex Logo" class="nav-logo">
+  <div class="nav-links">
+    <div class="dropdown">
+      <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/About.png" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="#about">Our Camp</a>
+        <a href="#mission">Our Mission</a>
+        <a href="#history">Our History</a>
+      </div>
     </div>
-  </div>
-  <div class="dropdown">
-    <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Events.png" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
-    <div class="dropdown-menu">
-      <a href="events.html#upcoming-events">Upcoming Events</a>
-      <a href="events.html#past-events">Past Events</a>
-      <a href="events.html#submit">Submit Event</a>
+    <div class="dropdown">
+      <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Events.png" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="events.html#upcoming-events">Upcoming Events</a>
+        <a href="events.html#past-events">Past Events</a>
+        <a href="events.html#submit">Submit Event</a>
+      </div>
     </div>
+    <div class="dropdown">
+      <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Join_Us.png" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="join-camp.html">Membership Info</a>
+        <a href="join-camp.html">Apply to Join</a>
+        <a href="camp-fees.html">Camp Fees</a>
+        <a href="Task_Roster.html">Task/Roster</a>
+      </div>
+    </div>
+    <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Gallery.png" alt="Gallery Icon" class="nav-icon">Gallery</a>
+    <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/News_Letter.png" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
+    <a href="contact.html"><img src="images/Webpage_Bar_Icons/Contact_Us.png" alt="Contact Icon" class="nav-icon">Contact Us</a>
+    <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/FAQ.png" alt="FAQ Icon" class="nav-icon">FAQ</a>
   </div>
-<div class="dropdown">
-  <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Join_Us.png" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
-  <div class="dropdown-menu">
-    <a href="join-camp.html">Membership Info</a>
-    <a href="join-camp.html">Apply to Join</a>
-    <a href="camp-fees.html">Camp Fees</a>
-    <a href="Task_Roster.html">Task/Roster</a>
-  </div>
-</div>
-  <a href="gallery.html""><img src="images/Webpage_Bar_Icons/Gallery.png" alt="Gallery Icon" class="nav-icon">Gallery</a>
-  <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/News_Letter.png" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
-  <a href="contact.html"><img src="images/Webpage_Bar_Icons/Contact_Us.png" alt="Contact Icon" class="nav-icon">Contact Us</a>
-  <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/FAQ.png" alt="FAQ Icon" class="nav-icon">FAQ</a>
-</div>
   <div class="nav-login">
-    <form id="login-form">
-      <input type="text" id="username" placeholder="Username" required aria-label="Username">
-      <input type="password" id="password" placeholder="Password" required aria-label="Password">
-      <button type="submit">Login</button>
-    </form>
+    <button class="login-button" onclick="openModal('login-modal')">Login</button>
     <button class="logout-button" aria-label="Logout">Logout</button>
   </div>
   <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
@@ -2608,6 +2603,18 @@ body.night-mode .about-description {
     <textarea id="header-description" placeholder="Header Description" required aria-label="Header Description"></textarea>
     <input type="file" id="header-image" accept="image/*" aria-label="Header Image">
     <button onclick="saveHeaderDetails()">Save</button>
+  </div>
+</div>
+<!-- New Login Modal -->
+<div class="modal" id="login-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('login-modal')" aria-label="Close modal">×</button>
+    <h3>Login</h3>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required aria-label="Username">
+      <input type="password" id="password" placeholder="Password" required aria-label="Password">
+      <button type="submit">Login</button>
+    </form>
   </div>
 </div>
   
