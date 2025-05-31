@@ -621,14 +621,15 @@ body.night-mode .modal-content button:hover {
   display: none;
   position: absolute;
   background: rgba(44, 29, 15, 0.9);
-  min-width: 160px;
+  min-width: 200px; /* Increased for better readability */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   border-radius: 6px;
   border: 2px solid #e67e22;
-  top: 100%;
-  left: 0;
-  margin-top: 5px;
+  top: 100%; /* Aligns directly below the button */
+  left: 50%; /* Center the dropdown */
+  transform: translateX(-50%); /* Adjust to center under the button */
+  margin-top: 8px; /* Slightly increased for spacing */
 }
 
 body.night-mode .dropdown-menu {
@@ -637,14 +638,15 @@ body.night-mode .dropdown-menu {
 }
 
 .dropdown-menu a {
-  display: block; /* Changed from flex to block since no icons */
-  padding: 10px 15px;
+  display: block;
+  padding: 12px 15px; /* Slightly increased padding for better spacing */
   color: #f8e1b4;
   text-decoration: none;
   font-family: 'Bebas Neue', cursive;
   font-size: 1rem;
   text-transform: uppercase;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  text-align: center; /* Center text for better appearance */
 }
 
 .dropdown-menu a:hover {
@@ -740,21 +742,25 @@ body.night-mode .dropdown-menu {
         display: flex;
       }
 
-      .dropdown-menu {
-        position: static;
-        background: rgba(74, 55, 35, 0.9);
-        box-shadow: none;
-        border: none;
-        margin: 5px 0;
-      }
+/* Ensure mobile behavior remains unchanged */
+@media only screen and (max-width: 768px) {
+  .dropdown-menu {
+    position: static;
+    background: rgba(74, 55, 35, 0.9);
+    box-shadow: none;
+    border: none;
+    margin: 5px 0;
+    min-width: 100%; /* Full width on mobile */
+  }
 
-      .dropdown:hover .dropdown-menu {
-        display: none;
-      }
+.dropdown:hover .dropdown-menu {
+    display: none;
+  }
 
-      .dropdown.active .dropdown-menu {
-        display: block;
-      }
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+}
 
       .nav-login {
         margin-top: 10px;
@@ -2535,14 +2541,15 @@ body.night-mode .about-description {
 <nav>
   <img src="images/Logo/Cosmic_Rejex_Bar_Logo.png" alt="Cosmic Rejex Logo" class="nav-logo">
   <div class="nav-links">
-    <div class="dropdown">
-      <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/About.png" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
-      <div class="dropdown-menu">
-        <a href="#about">Our Camp</a>
-        <a href="#mission">Our Mission</a>
-        <a href="#history">Our History</a>
-      </div>
-    </div>
+<div class="dropdown">
+  <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Join_Us.png" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
+  <div class="dropdown-menu">
+    <a href="join-camp.html">Membership Info</a>
+    <a href="join-camp.html">Apply to Join</a>
+    <a href="camp-fees.html">Camp Fees</a>
+    <a href="Task_Roster.html">Task/Roster</a>
+  </div>
+</div>
     <div class="dropdown">
       <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Events.png" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
       <div class="dropdown-menu">
@@ -3129,7 +3136,7 @@ hamburger.addEventListener('click', () => {
   hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
 });
 
-// Dropdown Menu for Mobile
+// Dropdown Menu for Mobile (unchanged)
 document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   toggle.addEventListener('click', (e) => {
     if (window.innerWidth <= 768) {
