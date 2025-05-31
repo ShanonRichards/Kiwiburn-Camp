@@ -62,9 +62,8 @@ body.night-mode::after {
 }
 
 @media only screen and (max-width: 768px) {
-  body::before,
-  body::after {
-    display: none;
+  .hamburger {
+    display: block; /* Visible on mobile */
   }
 }
 
@@ -352,16 +351,16 @@ body.night-mode {
 nav {
   position: sticky;
   top: 0;
-  background: rgba(44, 29, 15, 0.95); /* More solid background */
-  backdrop-filter: blur(15px); /* Enhanced blur for premium feel */
+  background: rgba(44, 29, 15, 0.95);
+  backdrop-filter: blur(15px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px; /* More spacious padding */
+  padding: 10px 30px; /* Reduced padding from 15px 40px */
   z-index: 1000;
   border-bottom: 3px solid #e67e22;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow for depth */
-  height: 70px; /* Fixed height for consistency */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  height: 50px; /* Changed from 70px to 50px for a thinner nav bar */
 }
 
 body.night-mode nav {
