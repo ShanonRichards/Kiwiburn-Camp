@@ -356,11 +356,17 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 30px; /* Reduced padding from 15px 40px */
+  padding: 10px 30px;
   z-index: 1000;
   border-bottom: 3px solid #e67e22;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  height: 30px; /* Changed from 70px to 50px for a thinner nav bar */
+  height: 30px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Controls the space between login button and theme toggle */
 }
 
 body.night-mode nav {
@@ -445,9 +451,9 @@ nav a:hover {
   border: 2px solid #e67e22;
   color: #f8e1b4;
   font-family: 'Bebas Neue', cursive;
-  font-size: 0.9rem; /* Reduced from 1.1rem */
-  padding: 6px 10px; /* Reduced from 10px 15px */
-  border-radius: 6px; /* Reduced from 8px for proportionality */
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
 }
@@ -2459,7 +2465,7 @@ body.night-mode .about-description {
         <a href="#mission">Our Mission</a>
         <a href="#history">Our History</a>
       </div>
-    </div>
+</div>
     <div class="dropdown">
       <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Events.png" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
       <div class="dropdown-menu">
@@ -2468,7 +2474,7 @@ body.night-mode .about-description {
         <a href="events.html#submit">Submit Event</a>
       </div>
     </div>
-    <div class="dropdown">
+<div class="dropdown">
       <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Join_Us.png" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
       <div class="dropdown-menu">
         <a href="join-camp.html">Membership Info</a>
@@ -2476,17 +2482,19 @@ body.night-mode .about-description {
         <a href="camp-fees.html">Camp Fees</a>
         <a href="Task_Roster.html">Task/Roster</a>
       </div>
-    </div>
+</div>
     <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Gallery.png" alt="Gallery Icon" class="nav-icon">Gallery</a>
     <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/News_Letter.png" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
     <a href="contact.html"><img src="images/Webpage_Bar_Icons/Contact_Us.png" alt="Contact Icon" class="nav-icon">Contact Us</a>
     <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/FAQ.png" alt="FAQ Icon" class="nav-icon">FAQ</a>
   </div>
-  <div class="nav-login">
-    <button class="login-button" onclick="openModal('login-modal')">Login</button>
-    <button class="logout-button" aria-label="Logout">Logout</button>
+  <div class="nav-right">
+    <div class="nav-login">
+      <button class="login-button" onclick="openModal('login-modal')">Login</button>
+      <button class="logout-button" aria-label="Logout">Logout</button>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
   </div>
-  <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
 </nav>
 
 <header class="header" id="home">
