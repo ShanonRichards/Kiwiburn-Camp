@@ -11,7 +11,7 @@ html, body {
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
-  background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+  background: url('images/full-background.jpg') center/cover no-repeat fixed;
   color: #2b1b0f;
   cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
   transition: background 0.5s, color 0.5s;
@@ -20,6 +20,8 @@ html, body {
 /* Side Backgrounds */
 body::before,
 body::after {
+  display: none; /* Hide side backgrounds entirely */
+}
   content: '';
   position: fixed;
   top: 0;
@@ -299,10 +301,10 @@ body.night-mode {
   --emo-accent: #e67e22; /* Added for toggle-player accent */
 }
 
-    body.night-mode {
-      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
-      color: #f8e1b4;
-    }
+body.night-mode {
+  background: url('images/full-background-night.jpg') center/cover no-repeat fixed;
+  color: #f8e1b4;
+}
 
     body.night-mode .section:nth-of-type(odd) {
       background-color: rgba(44, 29, 15, 0.8);
@@ -2719,7 +2721,7 @@ Copy
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.85); /* Increased opacity for better contrast */
   border: 2px solid #e67e22;
   border-radius: 10px;
   padding: 40px 20px;
