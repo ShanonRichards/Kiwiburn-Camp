@@ -2979,6 +2979,278 @@ body.night-mode .about-description {
   </section>
 </div>
 
+<style>
+/* Our Setup Section */
+.setup-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.setup-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none;
+}
+
+.setup-section h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 4em;
+  margin-bottom: 40px;
+  color: #e01b24;
+  position: relative;
+}
+
+.setup-section h1::before,
+.setup-section h1::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 15%;
+  height: 2px;
+  background: #e01b24;
+}
+
+.setup-section h1::before {
+  left: 0;
+}
+
+.setup-section h1::after {
+  right: 0;
+}
+
+.setup-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.setup-item {
+  text-align: center;
+}
+
+.setup-item img {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #e67e22;
+  margin-bottom: 15px;
+}
+
+.setup-item h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8em;
+  color: #2b1b0f;
+  margin-bottom: 10px;
+}
+
+.setup-item p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  color: #2b1b0f;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.setup-description {
+  background: rgba(230, 126, 34, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e67e22;
+  margin: 10px auto;
+  max-width: 350px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.setup-description:hover {
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+/* Night Mode */
+body.night-mode .setup-container {
+  background: rgba(44, 29, 15, 0.95);
+  border-color: #f39c12;
+}
+
+body.night-mode .setup-section h1 {
+  color: #f8e1b4;
+}
+
+body.night-mode .setup-section h1::before,
+body.night-mode .setup-section h1::after {
+  background: #f8e1b4;
+}
+
+body.night-mode .setup-item h3,
+body.night-mode .setup-item p {
+  color: #f8e1b4;
+}
+
+body.night-mode .setup-description {
+  background: rgba(243, 156, 18, 0.15);
+  border-color: #f39c12;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+  .setup-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .setup-item img {
+    max-width: 300px;
+    height: 200px;
+  }
+
+  .setup-section h1 {
+    font-size: 3em;
+  }
+
+  .setup-section h1::before,
+  .setup-section h1::after {
+    width: 10%;
+  }
+
+  .setup-item h3 {
+    font-size: 1.5em;
+  }
+
+  .setup-item p {
+    font-size: 0.9em;
+    max-width: 90%;
+  }
+
+  .setup-description {
+    max-width: 90%;
+    padding: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .setup-gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .setup-item img {
+    max-width: 280px;
+    height: 180px;
+  }
+
+  .setup-section h1 {
+    font-size: 2.5em;
+  }
+
+  .setup-section h1::before,
+  .setup-section h1::after {
+    width: 5%;
+  }
+
+  .setup-item h3 {
+    font-size: 1.3em;
+  }
+
+  .setup-item p {
+    font-size: 0.85em;
+  }
+
+  .setup-description {
+    max-width: 95%;
+    padding: 10px;
+  }
+}
+</style>
+
+<div class="setup-container">
+  <section class="section setup-section" id="setup">
+    <h1>Our Setup</h1>
+    <div class="setup-gallery">
+      <div class="setup-item">
+        <img src="images/Our-Setup/Chill_Zone.jpg" alt="Chill Zone Setup">
+        <h3>Chill Zone</h3>
+        <div class="setup-description">
+          <p>A cozy space with bean bags and fairy lights for relaxing and deep conversations.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our-Setup/Sound_Stage.jpg" alt="Sound Stage Setup">
+        <h3>Sound Stage</h3>
+        <div class="setup-description">
+          <p>Our main stage with powerful speakers for emo, punk, and drum and bass performances.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our-Setup/Art_Installation.jpg" alt="Art Installation">
+        <h3>Art Installation</h3>
+        <div class="setup-description">
+          <p>Alien-themed sculptures and interactive art pieces to spark creativity.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our-Setup/Kitchen_Hub.jpg" alt="Kitchen Hub Setup">
+        <h3>Kitchen Hub</h3>
+        <div class="setup-description">
+          <p>Communal kitchen for shared meals, equipped for group cooking and storage.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our-Setup/Camping_Area.jpg" alt="Camping Area Setup">
+        <h3>Camping Area</h3>
+        <div class="setup-description">
+          <p>Spacious tent area designed for comfort and community bonding.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our-Setup/Workshop_Space.jpg" alt="Workshop Space Setup">
+        <h3>Workshop Space</h3>
+        <div class="setup-description">
+          <p>Dedicated area for art and music workshops to inspire and engage.</p>
+        </div>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('setup-modal')">Edit Section</button>
+  </section>
+</div>
+
+<!-- Modal for Editing Setup Section -->
+<div class="modal" id="setup-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('setup-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Setup Section</h3>
+    <input type="text" id="setup-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="setup-description" placeholder="Section Description" aria-label="Section Description"></textarea>
+    <input type="file" id="setup-image1" accept="image/*" aria-label="Setup Image 1">
+    <input type="file" id="setup-image2" accept="image/*" aria-label="Setup Image 2">
+    <input type="file" id="setup-image3" accept="image/*" aria-label="Setup Image 3">
+    <input type="file" id="setup-image4" accept="image/*" aria-label="Setup Image 4">
+    <input type="file" id="setup-image5" accept="image/*" aria-label="Setup Image 5">
+    <input type="file" id="setup-image6" accept="image/*" aria-label="Setup Image 6">
+    <button onclick="saveSetupDetails()">Save</button>
+  </div>
+</div>
+
+<script>
+function saveSetupDetails() {
+  document.querySelector('.setup-section h1').textContent = document.getElementById('setup-title').value;
+  closeModal('setup-modal');
+}
+</script>
+
 <div class="history-container">
   <section class="section history-section" id="history">
     <h1>Our History</h1>
