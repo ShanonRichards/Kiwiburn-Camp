@@ -3217,35 +3217,35 @@ function updateCountdown() {
   const now = new Date().getTime();
   let targetDate = localStorage.getItem('countdownDate');
 
-  // Default target date: January 29, 2026, 12:00 PM NZST
+// Default target date: January 29, 2026, 12:00 PM NZST
   if (!targetDate) {
     targetDate = new Date('2026-01-29T12:00:00+13:00').toISOString();
     localStorage.setItem('countdownDate', targetDate);
   }
 
-  const targetTime = new Date(targetDate).getTime();
+const targetTime = new Date(targetDate).getTime();
   const distance = targetTime - now;
 
 if (distance <= 0) {
-  document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
-  clearInterval(countdownInterval);
-  return;
-}
+    document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
+    clearInterval(countdownInterval);
+    return;
+  }
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Update DOM with padded numbers
+// Update DOM with padded numbers
   try {
-document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
+    document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
     document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<br><small>Hours</small>';
     document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<br><small>Minutes</small>';
     document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<br><small>Seconds</small>';
-} catch (error) {
-  console.error('Error updating countdown DOM:', error);
-}
+  } catch (error) {
+    console.error('Error updating countdown DOM:', error);
+  }
 }
 
 function updateCountdownDate() {
@@ -3258,15 +3258,15 @@ if (input && !isNaN(new Date(input).getTime())) {
 }
 }
 
+// Updated saveCountdownDetails
 function saveCountdownDetails() {
   const input = document.getElementById('countdown-date').value;
   const bgInput = document.getElementById('countdown-bg');
   if (input && !isNaN(new Date(input).getTime())) {
-    // Convert input to NZST
-const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
-const isoDate = new Date(nzstDate).toISOString();
+    const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+    const isoDate = new Date(nzstDate).toISOString();
     localStorage.setItem('countdownDate', isoDate);
-    updateCountdown(); // Update immediately after saving
+    updateCountdown();
   } else {
     alert('Please enter a valid date and time.');
   }
@@ -3275,6 +3275,7 @@ const isoDate = new Date(nzstDate).toISOString();
     reader.onload = function (e) {
       const countdownSection = document.querySelector('.countdown-section');
       countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
+      countdownSection.style.backgroundAttachment = 'fixed'; // Ensure parallax
       localStorage.setItem('countdownBg', e.target.result);
     };
     reader.readAsDataURL(bgInput.files[0]);
@@ -3286,13 +3287,26 @@ const isoDate = new Date(nzstDate).toISOString();
 document.addEventListener('DOMContentLoaded', () => {
   const savedBg = localStorage.getItem('countdownBg');
   if (savedBg) {
-    document.querySelector('.countdown-section').style.background = `url('${savedBg}') center/cover no-repeat`;
+    const countdownSection = document.querySelector('.countdown-section');
+    countdownSection.style.background = `url('${savedBg}') center/cover no-repeat`;
+    countdownSection.style.backgroundAttachment = 'fixed'; // Ensure parallax on load
   }
   updateCountdown(); // Initial call
 });
 
 // Run countdown every second
 const countdownInterval = setInterval(updateCountdown, 1000);
+
+// Parallax Scroll Effect
+window.addEventListener('scroll', function () {
+  const parallaxSections = document.querySelectorAll('.parallax-section');
+  parallaxSections.forEach(section => {
+    let scrollPosition = window.pageYOffset;
+    let offset = section.getBoundingClientRect().top + window.scrollY;
+    let relativeScroll = scrollPosition - offset;
+    section.style.backgroundPositionY = -(relativeScroll * 0.3) + 'px'; // Adjust parallax speed
+  });
+});
 
   // EMO PLAYLIST PLAYER Toggle
 function togglePlayer() {
