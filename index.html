@@ -31,7 +31,6 @@ body::after {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Added for alignment with cover photo */
   opacity: 0.7;
   transition: opacity 0.3s, background 0.5s;
 }
@@ -797,16 +796,13 @@ body.night-mode .dropdown-menu {
       60% { transform: translate(-50%, -5px); }
     }
 
-/* General Section Styling */
-.section {
-  padding: 60px 20px; /* Consistent padding for all sections */
-  text-align: center;
-  background: none; /* Remove background to allow side images to show */
-  border-top: 1px solid #e67e22;
-  border-bottom: 1px solid #e67e22;
-  position: relative;
-  z-index: 1; /* Ensure above side backgrounds */
-}
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      background: url('images/dusty-texture.png') center/cover;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
+    }
 
     .section:nth-of-type(odd) {
       background-color: rgba(244, 228, 188, 0.8);
@@ -1403,20 +1399,19 @@ body.night-mode .toggle-player:hover {
       gap: 30px;
     }
 
-/* Countdown Section */
 .countdown-section {
   position: relative;
   background: url('images/Countdown/Kiwiburn-Coverphoto.jpg') center/cover no-repeat;
-  background-attachment: fixed; /* Added for consistent background behavior */
   padding: 60px 20px;
   text-align: center;
   color: #ffffff;
-  margin: 40px auto; /* Centered with auto margins */
+  margin: 40px 0;
   border: 2px solid #e67e22;
   border-radius: 10px;
   max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  z-index: 1; /* Ensure above side backgrounds */
 }
 
 body.night-mode .countdown-section {
@@ -1561,20 +1556,16 @@ body.night-mode .countdown-section {
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-/* Containers for Sections */
 .about-container, .mission-container, .members-container, .history-container, .countdown-container {
   max-width: 1200px;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.15); /* Semi-transparent for visibility of side backgrounds */
+  margin: 40px auto; /* Added margin to space containers from each other */
+  background: rgba(255, 255, 255, 0.15);
   border: 2px solid #e67e22;
   border-radius: 10px;
   padding: 40px 20px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  position: relative;
-  z-index: 1; /* Ensure above side backgrounds */
-  display: flex;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically where applicable */
+  position: relative; /* Ensures containers sit above side backgrounds */
+  z-index: 1; /* Places containers above body::before/after */
 }
 
     .section#submit {
