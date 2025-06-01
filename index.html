@@ -324,15 +324,14 @@ body.night-mode {
       color: #f8e1b4;
     }
 
-    body.night-mode .about-container,
-    body.night-mode .mission-container,
-    body.night-mode .members-container,
-    body.night-mode .newsletter-container,
-    body.night-mode .submit-section,
-    body.night-mode .history-container,
-    body.night-mode .countdown-section {
-      background: rgba(44, 29, 15, 0.3);
-    }
+body.night-mode .about-container,
+body.night-mode .mission-container,
+body.night-mode .members-container,
+body.night-mode .history-container,
+body.night-mode .countdown-container {
+  background: rgba(44, 29, 15, 0.3);
+  border-color: #f39c12;
+}
 
     body.night-mode .modal-content {
       background: rgba(44, 29, 15, 0.9);
@@ -1557,15 +1556,17 @@ body.night-mode .countdown-section {
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .about-container, .mission-container, .members-container, .newsletter-container, .history-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+.about-container, .mission-container, .members-container, .history-container, .countdown-container {
+  max-width: 1200px;
+  margin: 40px auto; /* Added margin to space containers from each other */
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  position: relative; /* Ensures containers sit above side backgrounds */
+  z-index: 1; /* Places containers above body::before/after */
+}
 
     .section#submit {
       background-color: rgba(244, 228, 188, 0.8);
