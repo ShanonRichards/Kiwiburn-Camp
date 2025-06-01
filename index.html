@@ -24,7 +24,9 @@ body::after {
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 200px;
+  width: calc((100vw - 1200px) / 2); /* Fill space outside max-width 1200px content */
+  min-width: 100px; /* Minimum width to prevent collapse */
+  max-width: 300px; /* Maximum width to avoid overly wide columns */
   z-index: -1;
   background-size: cover;
   background-position: center;
@@ -35,13 +37,13 @@ body::after {
 
 body::before {
   left: 0;
-  background: url('images/dusty-texture.png') center/cover no-repeat;
+  background: url('images/Page-Background/Skelanimals_Side.png') center/cover no-repeat;
   border-right: 2px solid #e67e22;
 }
 
 body::after {
   right: 0;
-  background: url('images/dusty-texture.png') center/cover no-repeat;
+  background: url('images/Page-Background/Skelanimals_Side.png') center/cover no-repeat;
   border-left: 2px solid #e67e22;
 }
 
@@ -53,11 +55,11 @@ body.night-mode::after {
   border-color: #f39c12;
 }
 
-/* Hide or adjust side backgrounds on smaller screens */
+/* Hide side backgrounds on smaller screens */
 @media only screen and (max-width: 1200px) {
   body::before,
   body::after {
-    width: 100px;
+    display: none; /* Hide side backgrounds on smaller screens */
   }
 }
 
