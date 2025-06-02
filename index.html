@@ -1175,8 +1175,12 @@ body.night-mode .dropdown-menu {
   align-items: flex-end;
 }
 
+/* Sidebar Widgets */
 .toggle-player, .toggle-newsletter {
-  background: #000000;
+  background-image: url('images/Spotify-Background/Playlist_Button.jpg'); /* Default image for both, overridden below */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: #ffffff;
   border: 2px solid var(--emo-accent);
   border-radius: 8px;
@@ -1186,14 +1190,24 @@ body.night-mode .dropdown-menu {
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
   text-transform: uppercase;
-  width: 200px; /* Increased from 150px */
+  width: 200px;
   justify-content: center;
+  position: relative; /* Ensure overlay works */
+}
+
+.toggle-player {
+  background-image: url('images/Spotify-Background/Playlist_Button.jpg'); /* Specific image for playlist button */
+}
+
+.toggle-newsletter {
+  background-image: url('images/Newsletter/Newsletter_Button.jpg'); /* Specific image for newsletter button */
 }
 
 .toggle-player:hover, .toggle-newsletter:hover {
-  background: var(--emo-accent); /* Orange on hover */
+  background-color: rgba(230, 126, 34, 0.3); /* Semi-transparent orange overlay on hover */
+  background-blend-mode: overlay; /* Blend overlay with background image */
   box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
   transform: scale(1.05);
 }
@@ -1204,8 +1218,23 @@ body.night-mode .toggle-player, body.night-mode .toggle-newsletter {
   border-color: var(--emo-accent);
 }
 
+body.night-mode .toggle-player, body.night-mode .toggle-newsletter {
+  background-image: url('images/Spotify-Background/Playlist_Button.jpg'); /* Default image for night mode */
+  color: #ffffff;
+  border-color: var(--emo-accent);
+}
+
+body.night-mode .toggle-player {
+  background-image: url('images/Spotify-Background/Playlist_Button.jpg'); /* Night mode playlist button image */
+}
+
+body.night-mode .toggle-newsletter {
+  background-image: url('images/Newsletter/Newsletter_Button.jpg'); /* Night mode newsletter button image */
+}
+
 body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
-  background: var(--emo-accent);
+  background-color: rgba(243, 156, 18, 0.3); /* Semi-transparent night mode orange overlay */
+  background-blend-mode: overlay;
   box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
 }
 
@@ -1221,15 +1250,26 @@ body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
     height: 22px; /* Changed from 25px */
   }
 }
+@media only screen and (max-width: 768px) {
+  .toggle-player, .toggle-newsletter {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    width: 130px;
+  }
+  .toggle-image {
+    width: 22px;
+    height: 22px;
+  }
+}
 @media only screen and (max-width: 480px) {
   .toggle-player, .toggle-newsletter {
     font-size: 0.7rem;
     padding: 6px 10px;
-    width: 160px; /* Increased from 120px */
+    width: 160px;
   }
   .toggle-image {
-    width: 18px; /* Changed from 20px */
-    height: 18px; /* Changed from 20px */
+    width: 18px;
+    height: 18px;
   }
 }
 
