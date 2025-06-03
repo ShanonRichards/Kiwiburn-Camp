@@ -2500,14 +2500,119 @@ Copy
         width: 5%;
       }
 
-      .history-item h3 {
-        font-size: 1.3em;
-      }
+@media only screen and (max-width: 480px) {
+  .history-item h3 {
+    font-size: 1.3em;
+  }
+  .history-item p {
+    font-size: 0.85em;
+  }
+}
 
-      .history-item p {
-        font-size: 0.85em;
-      }
-    }
+/* Popup Ad Styles */
+.popup-ad {
+  display: none; /* Hidden by default, shown via JS */
+  position: fixed;
+  z-index: 2000; /* Above other content */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.popup-ad.active {
+  display: flex; /* Show when active */
+}
+
+.popup-content {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 300px; /* Adjust size as needed */
+  width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px; /* Limit image height */
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.close-popup {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(44, 29, 15, 0.7);
+  color: #f8e1b4;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.close-popup:hover {
+  background: rgba(230, 126, 34, 0.9);
+  box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+}
+
+body.night-mode .popup-content {
+  background: rgba(44, 29, 15, 0.9);
+  border-color: #f39c12;
+}
+
+body.night-mode .close-popup {
+  background: rgba(74, 55, 35, 0.7);
+}
+
+body.night-mode .close-popup:hover {
+  background: rgba(243, 156, 18, 0.9);
+}
+
+/* Position popups differently */
+#popup-ad-1 {
+  top: 10%;
+  left: 5%;
+}
+
+#popup-ad-2 {
+  top: 10%;
+  right: 5%;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+  .popup-content {
+    max-width: 250px;
+  }
+  #popup-ad-1, #popup-ad-2 {
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  #popup-ad-2 {
+    top: 50%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .popup-content {
+    max-width: 200px;
+  }
+  .popup-image {
+    max-height: 300px;
+  }
+}
 
     @media only screen and (min-width: 769px) {
       .roles-grid .scroll-arrow, .members-grid .scroll-arrow {
@@ -2710,6 +2815,20 @@ Copy
     <input type="file" id="history-image2" accept="image/*" aria-label="History Image 2">
     <input type="file" id="history-image3" accept="image/*" aria-label="History Image 3">
     <button onclick="saveHistoryDetails()">Save</button>
+  </div>
+</div>
+
+<!-- Add Popup Ad Boxes -->
+<div class="popup-ad" id="popup-ad-1">
+  <div class="popup-content">
+    <button class="close-popup" onclick="closePopup('popup-ad-1')" aria-label="Close popup 1">×</button>
+    <img src="images/Popup-Ad/ad1.jpg" alt="Popup Ad 1" class="popup-image">
+  </div>
+</div>
+<div class="popup-ad" id="popup-ad-2">
+  <div class="popup-content">
+    <button class="close-popup" onclick="closePopup('popup-ad-2')" aria-label="Close popup 2">×</button>
+    <img src="images/Popup-Ad/ad2.jpg" alt="Popup Ad 2" class="popup-image">
   </div>
 </div>
   
@@ -3722,10 +3841,31 @@ function saveNewsletterDetails() {
     closeModal('countdown-modal');
   }
 
-  function saveHistoryDetails() {
-    document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
-    closeModal('history-modal');
+function saveHistoryDetails() {
+  document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
+  closeModal('history-modal');
+}
+
+// Show popups on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Existing DOMContentLoaded code...
+  const savedBg = localStorage.getItem('countdownBg');
+  if (savedBg) {
+    const countdownSection = document.querySelector('.countdown-section');
+    countdownSection.style.background = `url('${savedBg}') center/cover no-repeat`;
+    countdownSection.style.backgroundAttachment = 'fixed';
   }
+  updateCountdown();
+
+  // Show popups
+  document.getElementById('popup-ad-1').classList.add('active');
+  document.getElementById('popup-ad-2').classList.add('active');
+});
+
+// Close popup function
+function closePopup(popupId) {
+  document.getElementById(popupId).classList.remove('active');
+}
   
 </script>
 </body>
