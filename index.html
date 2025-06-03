@@ -2511,22 +2511,21 @@ Copy
 
 /* Popup Ad Styles */
 .popup-ad {
-  display: none; /* Hidden by default, shown via JS */
-  position: fixed;
-  z-index: 2000; /* Above other content */
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
 }
 
 .popup-ad.active {
-  display: flex; /* Show when active */
+    display: flex !important;
 }
-
 .popup-content {
   position: relative;
   background: rgba(255, 255, 255, 0.9);
@@ -2547,23 +2546,24 @@ Copy
 }
 
 .close-popup {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: rgba(44, 29, 15, 0.7);
-  color: #f8e1b4;
-  border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  font-size: 0.9em;
-  cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(44, 29, 15, 0.7);
+    color: #f8e1b4;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 0.9em;
+    cursor: pointer;
+    z-index: 2100; /* Higher than popup container */
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .close-popup:hover {
-  background: rgba(230, 126, 34, 0.9);
-  box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    background: rgba(230, 126, 34, 0.9);
+    box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
 }
 
 body.night-mode .popup-content {
@@ -2820,16 +2820,17 @@ body.night-mode .close-popup:hover {
 
 <!-- Add Popup Ad Boxes -->
 <div class="popup-ad" id="popup-ad-1">
-  <div class="popup-content">
-    <button class="close-popup" onclick="closePopup('popup-ad-1')" aria-label="Close popup 1">×</button>
-    <img src="images/Popup-Ad/ad1.jpg" alt="Popup Ad 1" class="popup-image">
-  </div>
+<div id="popup-ad-1" class="popup-ad">
+    <div class="popup-content">
+        <button class="close-popup" onclick="closePopup('popup-ad-1')">X</button>
+        <img src="ad1.jpg" alt="Ad 1">
+    </div>
 </div>
-<div class="popup-ad" id="popup-ad-2">
-  <div class="popup-content">
-    <button class="close-popup" onclick="closePopup('popup-ad-2')" aria-label="Close popup 2">×</button>
-    <img src="images/Popup-Ad/ad2.jpg" alt="Popup Ad 2" class="popup-image">
-  </div>
+<div id="popup-ad-2" class="popup-ad">
+    <div class="popup-content">
+        <button class="close-popup" onclick="closePopup('popup-ad-2')">X</button>
+        <img src="ad2.jpg" alt="Ad 2">
+    </div>
 </div>
   
 <!-- Add the header modal here -->
@@ -3864,8 +3865,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Close popup function
 function closePopup(popupId) {
-  document.getElementById(popupId).classList.remove('active');
+    const popup = document.getElementById(popupId);
+    if (popup) {
+        popup.classList.remove('active');
+    } else {
+        console.error('Popup with ID ' + popupId + ' not found');
+    }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Show popups on page load
+    const popup1 = document.getElementById('popup-ad-1');
+    const popup2 = document.getElementById('popup-ad-2');
+    if (popup1) popup1.classList.add('active');
+    if (popup2) popup2.classList.add('active');
+
+    // Add event listeners to close buttons for debugging
+    document.querySelectorAll('.close-popup').forEach(button => {
+        button.addEventListener('click', (e) => {
+            console.log('Close button clicked for:', button.getAttribute('onclick'));
+            const popupId = button.getAttribute('onclick').match(/'([^']+)'/)[1];
+            closePopup(popupId);
+        });
+    });
+});
   
 </script>
 </body>
