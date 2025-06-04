@@ -3795,22 +3795,32 @@ function submitNewsletter() {
 function toggleSongPlayer() {
   const songPlayerWrapper = document.getElementById('song-player-wrapper');
   const audio = document.getElementById('song-audio-player');
-  
-// Toggle the player visibility
+
+  // Check if audio source is valid
+  if (!audio.src || audio.src === window.location.href) {
+    console.error('Audio source is invalid or missing.');
+    alert('Error: Audio file not found. Please check the file path or ensure the file is uploaded correctly.');
+    return;
+  }
+
+  // Toggle visibility of the player
   songPlayerWrapper.classList.toggle('active');
 
   if (songPlayerWrapper.classList.contains('active')) {
-    // Attempt to load the audio before playing
-    audio.load(); // Reload the audio to ensure it's ready
-    audio.play().then(() => {
-      console.log('Audio is playing successfully.');
-    }).catch(error => {
-      console.error('Error playing audio:', error);
-      alert('Unable to play audio. This may be due to browser restrictions or an issue with the audio file.');
-    });
+    // Reload audio to ensure it’s ready
+    audio.load();
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        console.log('Audio is playing successfully.');
+      }).catch(error => {
+        console.error('Playback error:', error);
+        alert('Cannot play audio. This may be due to browser restrictions, a missing file, or server issues.');
+      });
+    }
   } else {
     audio.pause();
-    audio.currentTime = 0; // Reset to start when paused
+    audio.currentTime = 0; // Reset to start
     console.log('Audio paused.');
   }
 }
