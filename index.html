@@ -1336,7 +1336,7 @@ body.night-mode .toggle-song-player:hover {
   border: 1px solid var(--emo-accent);
 }
 
-/* Song Player Wrapper */
+/*  Wrapper */
 .song-player-wrapper {
   width: 300px; /* Increased to match player-wrapper */
   background: rgba(44, 29, 15, 0.95);
@@ -3476,7 +3476,7 @@ function saveSetupDetails() {
   </button>
   <div class="song-player-wrapper" id="song-player-wrapper">
     <audio id="song-audio-player" controls aria-label="Song Audio Player">
-      <source src="Music/A Day To Remember - All My Friends (Official Audio).mp3"audio/mpeg">
+      <source src="Music/A Day To Remember - All My Friends (Official Audio).mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
   </div>
@@ -3801,7 +3801,7 @@ function toggleSongPlayer() {
     return;
   }
 
-  songPlayerWrapper.classList.toggle('active');
+songPlayerWrapper.classList.toggle('active');
   if (songPlayerWrapper.classList.contains('active')) {
     audio.play().catch(error => {
       console.error('Error playing audio:', error);
