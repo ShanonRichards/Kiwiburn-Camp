@@ -3,75 +3,307 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Events - Cosmic Rejex - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      scroll-behavior: smooth;
-      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
-      color: #2b1b0f;
-      cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
-      transition: background 0.5s, color 0.5s;
-    }
+  <title>Join Cosmic Rejex - Kiwiburn</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Creepster&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet"><style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  background: url('images/Page-Background/Background_Skulls.jpg') center/cover no-repeat fixed;
+  color: #2b1b0f;
+  cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
+  transition: background 0.5s, color 0.5s;
+}
 
-    /* Custom Scrollbar Styles */
-    ::-webkit-scrollbar {
-      width: 12px;
-      height: 12px;
-    }
+/* Side Backgrounds */
+body::before,
+body::after {
+  display: none; /* Hide side backgrounds entirely */
+}
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: calc((100vw - 1200px) / 2); /* Fill space outside max-width 1200px content */
+  min-width: 100px; /* Minimum width to prevent collapse */
+  max-width: 300px; /* Maximum width to avoid overly wide columns */
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  transition: opacity 0.3s, background 0.5s;
+}
 
-    ::-webkit-scrollbar-track {
-      background: rgba(44, 29, 15, 0.3);
-    }
+body::before {
+  left: 0;
+  background: url('images/Cover-Photo/Emo_Wallpaper_1.jpg') center/cover no-repeat;
+  border-right: 2px solid #e67e22;
+}
 
-    ::-webkit-scrollbar-thumb {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
-      border-radius: 6px;
-      border: 2px solid var(--secondary);
-    }
+body::after {
+  right: 0;
+  background: url('images/Cover-Photo/Emo_Wallpaper_1.jpg') center/cover no-repeat;
+  border-left: 2px solid #e67e22;
+}
 
-    ::-webkit-scrollbar-thumb:hover {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
-    }
+/* Night Mode Adjustments */
+body.night-mode::before,
+body.night-mode::after {
+  background: url('images/dusty-texture.png') center/cover no-repeat;
+  opacity: 0.6;
+  border-color: #f39c12;
+}
 
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: var(--primary) rgba(44, 29, 15, 0.3);
-    }
+/* Hide side backgrounds on smaller screens */
+@media only screen and (max-width: 1200px) {
+  body::before,
+  body::after {
+    display: none; /* Hide side backgrounds on smaller screens */
+  }
+}
 
-    body.night-mode ::-webkit-scrollbar-track {
-      background: rgba(74, 55, 35, 0.3);
-    }
+@media only screen and (max-width: 768px) {
+  .hamburger {
+    display: block; /* Visible on mobile */
+  }
+}
 
-    body.night-mode ::-webkit-scrollbar-thumb {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
-      border: 2px solid var(--primary);
-    }
+.about-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  background: #f4e4bc;
+  padding: 20px 0;
+}
 
-    body.night-mode ::-webkit-scrollbar-thumb:hover {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
-      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
-    }
+.alien-icon {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
 
-    body.night-mode {
-      scrollbar-color: var(--secondary) rgba(74, 55, 35, 0.3);
-    }
+.about-header h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3.5em;
+  color: #2b1b0f;
+  margin: 0;
+  letter-spacing: 2px;
+  text-align: center;
+}
 
-    :root {
-      --primary: #e67e22;
-      --secondary: #f39c12;
-      --text: #f8e1b4;
-      --background: #2b1b0f;
-    }
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
 
-    body.night-mode {
-      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
-      color: #f8e1b4;
-    }
+.about-counter {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.counter-sign {
+  background: #2b1b0f;
+  color: #f8e1b4;
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.counter-number {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 4em;
+  color: #e67e22;
+}
+
+.counter-text {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5em;
+  line-height: 1.2;
+}
+
+.about-description {
+  flex: 2;
+  background: rgba(230, 126, 34, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e67e22;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.about-description p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #2b1b0f;
+  margin: 0;
+}
+
+.about-description:hover {
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+body.night-mode .about-header {
+  background: #2b1b0f;
+}
+
+body.night-mode .about-header h1 {
+  color: #f8e1b4;
+}
+
+body.night-mode .counter-sign {
+  background: #4a3723;
+  color: #f8e1b4;
+}
+
+body.night-mode .counter-number {
+  color: #f39c12;
+}
+
+body.night-mode .about-description {
+  background: rgba(243, 156, 18, 0.15);
+  border-color: #f39c12;
+}
+
+body.night-mode .about-description p {
+  color: #f8e1b4;
+}
+
+@media only screen and (max-width: 768px) {
+  .about-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .alien-icon {
+    width: 100px;
+  }
+
+  .about-header h1 {
+    font-size: 2.5em;
+  }
+
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-counter, .about-description {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .counter-sign {
+    padding: 15px;
+  }
+
+  .counter-number {
+    font-size: 3em;
+  }
+
+  .counter-text {
+    font-size: 1.2em;
+  }
+
+  .about-description {
+    padding: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .alien-icon {
+    width: 80px;
+  }
+
+  .about-header h1 {
+    font-size: 2em;
+  }
+
+  .counter-number {
+    font-size: 2.5em;
+  }
+
+  .counter-text {
+    font-size: 1em;
+  }
+
+  .about-description {
+    padding: 12px;
+  }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(44, 29, 15, 0.3); /* Track background, matching your theme */
+}
+
+::-webkit-scrollbar-thumb {
+  background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary); /* Image with fallback color */
+  border-radius: 6px; /* Rounded corners for the thumb */
+  border: 2px solid var(--secondary); /* Border to match your theme */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary); /* Hover effect with same image */
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary); /* Glow effect to match your theme */
+}
+
+/* Firefox Scrollbar Styling */
+html {
+  scrollbar-width: thin; /* Options: auto, thin, none */
+  scrollbar-color: var(--primary) rgba(44, 29, 15, 0.3); /* Thumb color and track color */
+}
+
+/* Night Mode Scrollbar Styles */
+body.night-mode ::-webkit-scrollbar-track {
+  background: rgba(74, 55, 35, 0.3); /* Darker track for night mode */
+}
+
+body.night-mode ::-webkit-scrollbar-thumb {
+  background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary); /* Same image, different fallback color */
+  border: 2px solid var(--primary);
+}
+
+body.night-mode ::-webkit-scrollbar-thumb:hover {
+  background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
+  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+}
+
+body.night-mode {
+  scrollbar-color: var(--secondary) rgba(74, 55, 35, 0.3); /* Firefox night mode */
+}
+
+:root {
+  --primary: #ef75ad;
+  --secondary: #ef75ad;
+  --text: #f8e1b4;
+  --background: #ef75ad;
+  --emo-dark: #ef75ad; /* Added for toggle-player background */
+  --emo-accent: #ef75ad; /* Added for toggle-player accent */
+}
+
+body.night-mode {
+  background: url('images/full-background-night.jpg') center/cover no-repeat fixed;
+  color: #f8e1b4;
+}
 
     body.night-mode .section:nth-of-type(odd) {
       background-color: rgba(44, 29, 15, 0.8);
@@ -84,6 +316,7 @@
     body.night-mode .section h1,
     body.night-mode .section h2,
     body.night-mode .section p,
+    body.night-mode .member p,
     body.night-mode .event p,
     body.night-mode .event p.event-date,
     body.night-mode .event p.event-time,
@@ -92,11 +325,15 @@
       color: #f8e1b4;
     }
 
-    body.night-mode .events-container,
-    body.night-mode .submit-section,
-    body.night-mode .cta-section {
-      background: rgba(44, 29, 15, 0.3);
-    }
+body.night-mode .about-container,
+body.night-mode .members-container,
+body.night-mode .mission-container,
+body.night-mode .history-container,
+body.night-mode .countdown-container {
+  background: rgba(44, 29, 15, 0.95); /* Slightly more opaque for contrast */
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
 
     body.night-mode .modal-content {
       background: rgba(44, 29, 15, 0.9);
@@ -114,131 +351,238 @@
       cursor: pointer;
     }
 
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(44, 29, 15, 0.85);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 30px;
-      z-index: 1000;
-      border-bottom: 2px solid #e67e22;
-    }
+nav {
+  position: sticky;
+  top: 0;
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the entire nav */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents image tiling */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  z-index: 1000;
+  border-bottom: 3px solid #d3c9b8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  height: 30px;
+}
 
-    body.night-mode nav {
-      background: rgba(74, 55, 35, 0.85);
-    }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Controls the space between login button and theme toggle */
+}
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-    }
+body.night-mode nav {
+  background: #000000; /* Changed to solid black */
+  border-bottom: 3px solid #f39c12;
+}
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+.hamburger {
+  display: none; /* Hidden on desktop by default */
+  background: none;
+  border: none;
+  color: #f8e1b4;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.3s, transform 0.2s;
+}
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-    }
+.hamburger:hover {
+  color: #e67e22;
+  transform: scale(1.1);
+}
 
-    nav a {
-      color: #f8e1b4;
-      text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      padding: 10px 15px;
-      border-radius: 4px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-      text-transform: uppercase;
-    }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Increased gap for better spacing */
+  flex-wrap: nowrap;
+}
 
-    nav a:hover {
-      background-color: #e67e22;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
+nav a {
+  color: #f8e1b4;
+  text-decoration: none;
+font-family: 'Creepster', cursive, sans-serif;
+  font-size: 1.2rem; /* Larger for readability */
+  padding: 10px 15px; /* More padding for clickability */
+  border-radius: 8px; /* Softer corners */
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
 
-    .theme-toggle {
-      background: none;
-      border: none;
-      color: #f8e1b4;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      padding: 10px;
-      cursor: pointer;
-      transition: color 0.3s, box-shadow 0.3s;
-    }
+nav a:hover {
+  background-color: #ef75ad;
+  color: #2b1b0f;
+  box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+  transform: translateY(-2px); /* Subtle lift on hover */
+}
 
-    .theme-toggle:hover {
-      color: #f39c12;
-      box-shadow: 0 0 10px #e67e22;
-    }
+.nav-logo {
+  width: 50px; /* Larger logo for prominence */
+  height: 50px;
+  object-fit: contain;
+  margin-right: 15px;
+  transition: transform 0.3s;
+}
 
-    .hamburger {
-      display: none;
-      font-size: 1.5rem;
-      color: #f8e1b4;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 10px;
-    }
+.nav-logo:hover {
+  transform: scale(1.05); /* Subtle logo animation */
+}
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
+.nav-icon {
+  width: 32px; /* Smaller for balance */
+  height: 32px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
 
-    .dropdown-toggle {
-      cursor: pointer;
-    }
+.nav- {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-right: 15px;
+}
 
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background: rgba(44, 29, 15, 0.9);
-      min-width: 160px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1001;
-      border-radius: 4px;
-      border: 1px solid #e67e22;
-      top: 100%;
-      left: 0;
-      margin-top: 5px;
-    }
+.theme-toggle {
+  background: none;
+  border: 2px solid #ef75ad;
+  color: #f8e1b4;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
 
-    body.night-mode .dropdown-menu {
-      background: rgba(74, 55, 35, 0.9);
-    }
+.theme-toggle:hover {
+  background: #ef75ad;
+  color: #2b1b0f;
+  box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+  transform: translateY(-2px);
+}
 
-    .dropdown-menu a {
-      display: block;
-      padding: 10px 15px;
-      color: #f8e1b4;
-      text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      text-transform: uppercase;
-    }
+.nav-login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    .dropdown-menu a:hover {
-      background-color: #e67e22;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22;
-    }
+nav-login form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
+.nav-login input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ef75ad;
+  background: rgba(255, 255, 255, 0.2);
+  color: #f8e1b4;
+  font-size: 0.9rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.nav-login input:focus {
+  outline: none;
+  border-color: #f39c12;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-login input::placeholder {
+  color: #f8e1b4;
+  opacity: 0.8;
+}
+
+.nav-login button {
+  padding: 8px 15px;
+  background-color: #ef75ad;
+  color: #2b1b0f;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.nav-login .logout-button {
+  display: none;
+}
+
+.nav-login button:hover {
+  background-color: #f39c12;
+  box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+  transform: translateY(-2px);
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  background: rgba(44, 29, 15, 0.95);
+  min-width: 180px; /* Wider for readability */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  border-radius: 8px;
+  border: 2px solid #ef75ad;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+}
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body.night-mode .dropdown-menu {
+  background: rgba(74, 55, 35, 0.95);
+  border-color: #f39c12;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 18px;
+  color: #f8e1b4;
+  text-decoration: none;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #ef75ad;
+  color: #2b1b0f;
+  box-shadow: 0 0 10px #ef75ad inset;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
     .nav-login {
       display: flex;
@@ -255,7 +599,7 @@
     .nav-login input {
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid #e67e22;
+      border: 1px solid #ef75ad;
       background: rgba(255, 255, 255, 0.1);
       color: #ffffff;
       font-size: 0.9rem;
@@ -267,7 +611,7 @@
 
     .nav-login button {
       padding: 8px 12px;
-      background-color: #e67e22;
+      background-color: #ef75ad;
       color: #ffffff;
       border: none;
       border-radius: 5px;
@@ -286,52 +630,79 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .nav-logo {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      margin-right: 10px;
-    }
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+}
 
-    .floating-submit-button {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      border: none;
-      border-radius: 25px;
-      padding: 10px 20px;
+    .nav {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
-      white-space: nowrap;
+      justify-content: space-between;
+      padding: 10px 20px;
+      flex-wrap: wrap;
     }
 
-    .floating-submit-button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-      transform: scale(1.05);
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    body.night-mode .floating-submit-button {
-      background-color: #f39c12;
-      color: #f8e1b4;
-    }
+    @media only screen and (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+      }
 
-    body.night-mode .floating-submit-button:hover {
-      background-color: #e67e22;
-      box-shadow: 0 0 10px #f39c12, 0 0 20px #e67e22;
+      .nav-links.active {
+        display: flex;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: rgba(74, 55, 35, 0.9);
+        box-shadow: none;
+        border: none;
+        margin: 5px 0;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+
+      .nav-login {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-login form {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-login input,
+      .nav-login button {
+        width: 100%;
+        box-sizing: border-box;
+      }
     }
 
     .header {
-      background: url('images/Cover-Photo/last-try.png') center/cover no-repeat;
+      background: url('images/Cover-Photo/Big_Tent_Pencil.png') center/cover no-repeat;
       height: 70vh;
       display: flex;
       flex-direction: column;
@@ -343,32 +714,35 @@
       text-shadow: 0 0 10px var(--primary);
     }
 
-    .header-logo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      z-index: 10;
-      filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
-    }
+.header-logo {
+  max-width: 350px; /* Original size maintained */
+  height: auto; /* Maintains aspect ratio */
+  z-index: 10;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+  margin-top: 20px; /* Moves the logo downward from the nav bar */
+}
+.header h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3em;
+  max-width: 90%;
+  letter-spacing: 2px;
+  margin-bottom: 0px;
+  color: #494949; /* Soft purple for "Color and Glow" */
+  text-shadow: 0 0 10px #ffff;
+  animation: glow-h1 3s ease-in-out infinite alternate; /* Dynamic glow */
+}
 
-    .header h1 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 4em;
-      max-width: 90%;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .header p {
-      font-size: 1.5em;
-      margin-bottom: 20px;
-    }
+.header p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #ffff;
+  text-shadow: 0 0 10px #ffff; /* Blue glow */
+  animation: glow-p 3s ease-in-out infinite alternate; /* Dynamic glow */
+}
 
     .header-ctas {
       display: flex;
       gap: 10px;
-      margin-bottom: 30px;
     }
 
     .apply-button, .secondary-button {
@@ -378,7 +752,6 @@
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2em;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     .apply-button {
@@ -409,16 +782,16 @@
       }
     }
 
-    .scroll-down {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.5rem;
-      animation: bounce 2s infinite;
-      color: #f8e1b4;
-      transition: box-shadow 0.3s;
-    }
+.scroll-down {
+  position: absolute;
+  bottom: 10px; /* Lowered from 30px to 10px */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+  color: #f8e1b4;
+  transition: box-shadow 0.3s;
+}
 
     .scroll-down:hover {
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
@@ -430,102 +803,55 @@
       60% { transform: translate(-50%, -5px); }
     }
 
-    .event-filter {
-      margin: 20px auto;
-      max-width: 300px;
-      text-align: center;
-    }
+.section {
+  padding: 80px 20px;
+  text-align: center;
+  background: none; /* Remove background */
+  border-top: 1px solid #e67e22;
+  border-bottom: 1px solid #e67e22;
+}
 
-    .event-filter select {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      width: 100%;
-    }
+.section:nth-of-type(odd) {
+  background: none; /* Remove alternating background */
+}
 
-    body.night-mode .event-filter select {
-      background: rgba(255, 255, 255, 0.1);
-      color: #f8e1b4;
-    }
+.section:nth-of-type(even) {
+  background: none; /* Remove alternating background */
+}
 
-    .cta-section, .submit-section {
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      padding: 40px 20px;
-      border-radius: 10px;
-      flex: 1;
-      min-width: 300px;
-      max-width: 580px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
+.about-section {
+  padding: 60px 20px;
+  text-align: left;
+  background: none; /* Remove background */
+}
 
-    .submit-cta-container {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+.countdown-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none; /* Remove background */
+  border: none;
+}
 
-    .cta-section h2, .submit-section h2 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2.5rem;
-      color: #2b1b0f;
-      margin-bottom: 20px;
-    }
+.setup-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none; /* Remove background */
+}
 
-    .cta-section p, .submit-section p {
-      font-size: 1.1rem;
-      color: #2b1b0f;
-      margin-bottom: 20px;
-    }
+.history-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none; /* Remove background */
+}
 
-    body.night-mode .cta-section h2,
-    body.night-mode .cta-section p,
-    body.night-mode .submit-section h2,
-    body.night-mode .submit-section p {
-      color: #f8e1b4;
-    }
+body.night-mode .section:nth-of-type(odd),
+body.night-mode .section:nth-of-type(even) {
+  background: none; /* Remove alternating backgrounds in night mode */
+}
 
-    .cta-button, .submit-button {
-      display: inline-block;
-      padding: 12px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      text-decoration: none;
-      border-radius: 5px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
-    }
-
-    .cta-button:hover, .submit-button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-      transform: scale(1.05);
-    }
-
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-      background: url('images/dusty-texture.png') center/cover;
-      border-top: 1px solid #e67e22;
-      border-bottom: 1px solid #e67e22;
-    }
-
-    .section:nth-of-type(odd) {
-      background-color: rgba(244, 228, 188, 0.8);
-    }
-
-    .section:nth-of-type(even) {
-      background-color: rgba(217, 185, 155, 0.8);
-    }
+body.night-mode .countdown-section {
+  background: none; /* Remove background in night mode */
+}
 
     .section h1, .section h2 {
       font-family: 'Bebas Neue', cursive;
@@ -543,9 +869,68 @@
       color: #2b1b0f;
     }
 
-    .events-grid {
+    .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #e67e22;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+    }
+
+    .gallery .image-container {
+      position: relative;
+    }
+
+    .gallery .delete-button, .gallery .edit-button {
+      display: none;
+      position: absolute;
+      top: 5px;
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery .delete-button {
+      right: 5px;
+    }
+
+    .gallery .edit-button {
+      right: 35px;
+    }
+
+    .logged-in .gallery .delete-button, .logged-in .gallery .edit-button {
+      display: block;
+    }
+
+    .gallery .delete-button:hover, .gallery .edit-button:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .members-grid, .roles-grid, .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 20px;
       max-width: 1200px;
       margin: 40px auto 0 auto;
@@ -555,7 +940,41 @@
       min-height: 200px;
     }
 
-    .event {
+    .scroll-arrow {
+      display: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: #f8e1b4;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.3s, box-shadow 0.3s;
+      animation: flash 1.5s infinite;
+    }
+
+    @keyframes flash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .scroll-arrow:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .scroll-arrow.left {
+      left: 10px;
+    }
+
+    .scroll-arrow.right {
+      right: 10px;
+    }
+
+    .member, .role, .event {
       text-align: center;
       position: relative;
       display: flex;
@@ -565,20 +984,27 @@
       padding: 15px;
       border: 1px solid #e67e22;
       box-sizing: border-box;
-      transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.5s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
       height: 100%;
-      opacity: 0;
-      animation: fadeIn 0.5s ease-in forwards;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .role {
+      min-height: 250px;
     }
 
-    .event:hover {
+    .member:hover, .role:hover, .event:hover {
       box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
+    }
+
+    .member img, .role img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin-bottom: 10px;
+      border: 3px solid #f39c12;
     }
 
     .event img {
@@ -590,7 +1016,35 @@
       border: 2px solid #f39c12;
     }
 
-    .event h3 {
+    .member.camp-lead, .member.deputy-lead {
+      position: relative;
+    }
+
+    .member.camp-lead::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #FFD700;
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .member.deputy-lead::before {
+      content: '👑';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #C0C0C0;
+      z-index: 10;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .member h3, .role h3, .event h3 {
       margin: 10px 0 5px;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
@@ -598,9 +1052,26 @@
       line-height: 1.2;
     }
 
-    .event p {
+    .member span {
+      font-weight: bold;
+      color: #e67e22;
+      display: block;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .member p, .event p {
       font-size: 1em;
       color: #000000;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .role p {
+      font-size: 1em;
+      color: #ffffff;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
@@ -618,10 +1089,11 @@
       color: #e67e22;
     }
 
-    .event .edit-button, .event .delete-button {
+    .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
       display: none;
       position: absolute;
       top: 5px;
+      right: 5px;
       background: rgba(44, 29, 15, 0.7);
       color: #f8e1b4;
       border: none;
@@ -633,21 +1105,71 @@
       transition: background 0.3s, box-shadow 0.3s;
     }
 
-    .event .edit-button {
+    .event .edit-button, .role .edit-button, .member .edit-button {
       right: 35px;
     }
 
-    .event .delete-button {
-      right: 5px;
-    }
-
-    .logged-in .event .edit-button, .logged-in .event .delete-button {
+    .logged-in .member .delete-button, .logged-in .role .delete-button, .logged-in .event .edit-button, .logged-in .event .delete-button, .logged-in .role .edit-button, .logged-in .member .edit-button {
       display: block;
     }
 
-    .event .edit-button:hover, .event .delete-button:hover {
+    .member .delete-button:hover, .role .delete-button:hover, .event .edit-button:hover, .event .delete-button:hover, .role .edit-button:hover, .member .edit-button:hover {
       background: rgba(230, 126, 34, 0.9);
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .role .apply-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .role .apply-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .role .tooltip {
+      visibility: hidden;
+      width: 180px;
+      background-color: rgba(44, 29, 15, 0.95);
+      color: #f8e1b4;
+      text-align: center;
+      border-radius: 8px;
+      padding: 12px;
+      position: absolute;
+      z-index: 10;
+      top: -10px;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      font-size: 0.9em;
+      font-family: 'Montserrat', sans-serif;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid #f39c12;
+    }
+
+    .role .tooltip span {
+      font-weight: bold;
+      font-size: 1em;
+    }
+
+    .role:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -110%);
     }
 
     .modal {
@@ -672,6 +1194,236 @@
       text-align: center;
       border: 2px solid #e67e22;
       position: relative;
+    }
+
+/* Sidebar Widgets */
+.sidebar-widgets {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Increased spacing between buttons */
+  align-items: flex-end;
+  transition: all 0.3s ease;
+}
+
+.emo-playlist-player, .newsletter-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Sidebar Widgets */
+.toggle-player, .toggle-newsletter {
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Default image for both, overridden below */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  border: 2px solid var(--emo-accent);
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  text-transform: uppercase;
+  width: 200px;
+  justify-content: center;
+  position: relative; /* Ensure overlay works */
+}
+
+.toggle-player {
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Specific image for playlist button */
+}
+
+.toggle-newsletter {
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Specific image for newsletter button */
+}
+
+.toggle-player:hover, .toggle-newsletter:hover {
+  background-color: rgba(230, 126, 34, 0.3); /* Semi-transparent orange overlay on hover */
+  background-blend-mode: overlay; /* Blend overlay with background image */
+  box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
+  transform: scale(1.05);
+}
+
+body.night-mode .toggle-player, body.night-mode .toggle-newsletter {
+  background: #000000; /* Black background in night mode */
+  color: #ffffff; /* White text in night mode */
+  border-color: var(--emo-accent);
+}
+
+body.night-mode .toggle-player, body.night-mode .toggle-newsletter {
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Default image for night mode */
+  color: #ffffff;
+  border-color: var(--emo-accent);
+}
+
+body.night-mode .toggle-player {
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Night mode playlist button image */
+}
+
+body.night-mode .toggle-newsletter {
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Night mode newsletter button image */
+}
+
+body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
+  background-color: rgba(243, 156, 18, 0.3); /* Semi-transparent night mode orange overlay */
+  background-blend-mode: overlay;
+  box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+  .toggle-player, .toggle-newsletter {
+    font-size: 0.8rem; /* Changed from 0.9rem */
+    padding: 8px 12px;
+    width: 130px; /* Changed from 150px */
+  }
+  .toggle-image {
+    width: 22px; /* Changed from 25px */
+    height: 22px; /* Changed from 25px */
+  }
+}
+@media only screen and (max-width: 768px) {
+  .toggle-player, .toggle-newsletter {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    width: 130px;
+  }
+  .toggle-image {
+    width: 22px;
+    height: 22px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .toggle-player, .toggle-newsletter {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+    width: 160px;
+  }
+  .toggle-image {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+
+
+.toggle-image {
+  width: 25px; /* Changed from 30px */
+  height: 25px; /* Changed from 30px */
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--emo-accent);
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+  .toggle-player {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+  .toggle-image {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .toggle-player {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+  .toggle-image {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.player-wrapper {
+  width: 300px; /* Increased from 220px */
+  background: #000000;
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  color: #ffffff;
+}
+
+.player-wrapper.active {
+  display: block;
+}
+
+body.night-mode .player-wrapper {
+  background: #000000; /* Maintain black background in night mode */
+  border-color: var(--secondary);
+  color: #ffffff; /* White text in night mode */
+}
+
+.toggle-player:hover {
+  background: var(--secondary);
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+}
+
+body.night-mode .toggle-player {
+  background: var(--secondary);
+  color: var(--background);
+}
+
+body.night-mode .toggle-player:hover {
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+}
+
+    body.night-mode .toggle-player:hover {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
+
+.emo-playlist-player iframe {
+  width: 100%;
+  height: 120px;
+  border: none;
+  border-radius: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+  .player-wrapper {
+    width: 280px; /* Increased from 200px */
+  }
+  .emo-playlist-player iframe {
+    height: 100px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .player-wrapper {
+    width: 180px; /* Changed from 200px */
+  }
+  .emo-playlist-player iframe {
+    height: 90px; /* Changed from 100px */
+  }
+}
+
+    @media only screen and (max-width: 480px) {
+.player-wrapper {
+    width: 260px; /* Increased from 180px */
+  }
+
+      .toggle-player {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+
+  .emo-playlist-player iframe {
+    height: 90px;
+  }
     }
 
     .modal-content h3 {
@@ -723,6 +1475,294 @@
       padding: 5px 10px;
     }
 
+    .events-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+.countdown-section {
+  background: url('images/Countdown/Kiwiburn-Coverphoto.jpg') center/cover no-repeat;
+  padding: 60px 20px;
+  text-align: center;
+  color: #ffffff;
+  border: none; /* Rely on container border */
+}
+
+body.night-mode .countdown-section {
+  /* Remove specific background if using dynamic JS background */
+  /* Or set a fallback */
+  background: rgba(44, 29, 15, 0.7) center/cover no-repeat;
+}
+
+    .countdown-section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      color: #ffffff;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5em;
+      color: #ffffff;
+      background: rgba(44, 29, 15, 0.7);
+      padding: 15px 30px;
+      border-radius: 10px;
+      border: 2px solid #e67e22;
+    }
+
+    .countdown span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown span small {
+      font-size: 0.5em;
+      text-transform: uppercase;
+    }
+
+    .countdown-section input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      margin: 10px;
+      display: none;
+    }
+
+    .logged-in .countdown-section input {
+      display: inline-block;
+    }
+
+    .countdown-section button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
+    }
+
+    .logged-in .countdown-section button {
+      display: inline-block;
+    }
+
+    .countdown-section button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    body.night-mode footer {
+      background-color: #4a3723;
+    }
+
+    .form-container {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      font-size: 1rem;
+      box-sizing: border-box;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .form-container button {
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-container button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .submit-button, .fee-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+      margin: 10px;
+    }
+
+    .submit-button:hover, .fee-button:hover {
+      background-color: #f39c12;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+.about-container, .mission-container, .members-container, .history-container, .countdown-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: rgba(153, 144, 142, 0.9); /* More opaque for distinct box */
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3); /* Stronger shadow for depth */
+  position: relative;
+  z-index: 2; /* Above body pseudo-elements */
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+    .section#submit {
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .submit-section {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 40px auto 0 auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+
+
+.newsletter-wrapper {
+  width: 220px; /* Changed from 300px */
+  background: rgba(44, 29, 15, 0.9);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  padding: 15px;
+}
+
+.newsletter-wrapper.active {
+  display: block;
+}
+
+body.night-mode .newsletter-wrapper {
+  background: rgba(74, 55, 35, 0.9);
+  border-color: var(--secondary);
+}
+
+.newsletter-wrapper h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2rem; /* Changed from 1.5rem */
+  color: #f8e1b4;
+  margin-bottom: 10px;
+}
+.newsletter-wrapper p {
+  font-size: 0.8rem; /* Changed from 0.9rem */
+  color: #f8e1b4;
+  margin-bottom: 15px;
+}
+
+.newsletter-wrapper .form-container {
+  text-align: left;
+}
+
+.newsletter-wrapper input {
+  width:100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #e67e22;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8e1b4;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.newsletter-wrapper button {
+  width: 100%;
+  padding: 8px;
+  background-color: #e67e22;
+  color: #2b1b0f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.newsletter-wrapper button:hover {
+  background-color: #f39c12;
+  box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+}
+
+@media only screen and (max-width: 768px) {
+  .newsletter-wrapper h3 {
+    font-size: 1.1rem; /* Changed from 1.3rem */
+  }
+  .newsletter-wrapper p {
+    font-size: 0.75rem; /* Changed from 0.85rem */
+  }
+}
+@media only screen and (max-width: 480px) {
+  .newsletter-wrapper {
+    width: 180px; /* Changed from 200px */
+  }
+  .newsletter-wrapper h3 {
+    font-size: 1rem; /* Changed from 1.3rem */
+  }
+  .newsletter-wrapper p {
+    font-size: 0.7rem; /* Changed from 0.85rem */
+  }
+}
+
+
+    .save-button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 20px auto;
+      display: none;
+    }
+
+    .logged-in .save-button {
+      display: block;
+    }
+
     .edit-section-button {
       display: none;
       padding: 8px 12px;
@@ -746,107 +1786,359 @@
       box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
-    .events-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #e67e22;
-      border-radius: 10px;
-      padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    .about-section {
+      padding: 60px 20px;
+      text-align: left;
+      background: none;
     }
 
-    .emo-playlist-player {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      transition: all 0.3s ease;
+.about-content {
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1; /* Takes up equal space */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center text content */
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1; /* Takes up equal space */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center text content */
+}
+
+.about-image {
+  flex: 1; /* Takes up equal space */
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%; /* Ensure image takes full width of its container */
+  max-width: 400px; /* Limit maximum width */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #e67e22;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the title and icons */
+  gap: 20px; /* Increased gap for larger icons */
+  margin-bottom: 40px; /* Increased margin for spacing */
+  max-width: 1200px; /* Wider to accommodate larger icons */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-icon {
+  width: 100px; /* Increased size for desktop */
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.title-icon:hover {
+  transform: scale(1.1);
+}
+
+.title-container h1 {
+  font-size: 4em;
+  color: #2b1b0f;
+  margin: 0;
+  text-align: center; /* Ensure title is centered */
+}
+
+@media only screen and (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    align-items: center; /* Center content on smaller screens */
+    text-align: center;
+  }
+
+  .about-image {
+    width: 100%; /* Full width on mobile */
+  }
+
+  .about-image img {
+    max-width: 300px; /* Smaller max-width for mobile */
+  }
+
+  .title-icon {
+    width: 60px; /* Smaller icons for tablet */
+    height: auto;
+  }
+
+  .title-container h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .title-icon {
+    width: 40px; /* Even smaller icons for mobile */
+    height: auto;
+  }
+
+  .title-container h1 {
+    font-size: 2em;
+  }
+
+  .about-image img {
+    max-width: 250px; /* Further reduced for small screens */
+  }
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-icon {
+  width: 800px; /* Adjusted for desktop */
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.title-icon:hover {
+  transform: scale(1.1);
+}
+
+.title-container h1 {
+  font-size: 4em;
+  color: #2b1b0f;
+  margin: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .title-icon {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+  }
+  .title-container h1 {
+    font-size: 2.5em;
+  }
+}
+
+  .title-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .title-container h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .title-icon {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+  }
+}
+  .title-container h1 {
+    font-size: 2em;
+  }
+}
+
+  .title-container h1 {
+    font-size: 2em;
+  }
+}
+
+    .about-text p {
+      font-size: 1.2em;
+      line-height: 1.8;
+      color: #2b1b0f;
+      max-width: 100%;
     }
 
-    .toggle-player {
-      background: var(--primary);
-      color: var(--text);
-      border: none;
-      border-radius: 5px;
-      padding: 8px 12px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .toggle-player:hover {
-      background: var(--secondary);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
-    }
-
-    body.night-mode .toggle-player {
-      background: var(--secondary);
-      color: var(--background);
-    }
-
-    body.night-mode .toggle-player:hover {
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
-    }
-
-    .toggle-image {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid var(--primary);
-    }
-
-    .player-wrapper {
+    .about-image img {
       width: 300px;
-      background: rgba(44, 29, 15, 0.9);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      display: none;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border: 2px solid #e67e22;
     }
 
-    .player-wrapper.active {
-      display: block;
-    }
-
-    body.night-mode .player-wrapper {
-      background: rgba(74, 55, 35, 0.9);
-      border-color: var(--secondary);
-    }
-
-    .emo-playlist-player iframe {
-      width: 100%;
-      height: 152px;
-      border: none;
-      border-radius: 12px;
-    }
-
-    footer {
+    .history-section {
+      padding: 60px 20px;
       text-align: center;
-      padding: 30px;
-      background-color: #2b1b0f;
-      color: #f8e1b4;
-      border-top: 2px solid #e67e22;
+      background: none;
     }
 
-    body.night-mode footer {
-      background-color: #4a3723;
+    .history-container h1 {
+      font-size: 4em;
+      margin-bottom: 40px;
+      color: #e01b24;
+      position: relative;
+    }
+
+    .history-container h1::before,
+    .history-container h1::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 15%;
+      height: 2px;
+      background: #e01b24;
+    }
+
+    .history-container h1::before {
+      left: 0;
+    }
+
+    .history-container h1::after {
+      right: 0;
+    }
+
+    .history-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    .history-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .history-item img {
+      width: 100%;
+      max-width: 400px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      border: 2px solid #e67e22;
+      margin-bottom: 15px;
+    }
+
+    .history-item h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.8em;
+      color: #2b1b0f;
+      margin-bottom: 10px;
+    }
+
+    .history-item p {
+      font-size: 1em;
+      line-height: 1.6;
+      color: #2b1b0f;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+
+    body.night-mode .history-container h1 {
+      color: #f8e1b4;
+    }
+
+    body.night-mode .history-container h1::before,
+    body.night-mode .history-container h1::after {
+      background: #f8e1b4;
+    }
+
+    body.night-mode .history-item h3,
+    body.night-mode .history-item p {
+      color: #f8e1b4;
+    }
+
+    /* Styling for the history description container */
+    .history-description {
+      background: rgba(230, 126, 34, 0.1); /* Slight orange tone background */
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #e67e22;
+      margin: 10px auto;
+      max-width: 350px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.3s ease;
+    }
+
+.about-description {
+  background: rgba(230, 126, 34, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e67e22;
+  margin: 10px auto;
+  max-width: 600px; /* Increased from 350px */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.about-description:hover {
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+body.night-mode .about-description {
+  background: rgba(243, 156, 18, 0.15);
+  border-color: #f39c12;
+  color: #f8e1b4;
+}
+
+@media only screen and (max-width: 768px) {
+  .about-description {
+    padding: 15px;
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .about-description {
+    padding: 12px;
+    max-width: 95%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .history-description {
+    padding: 10px;
+    max-width: 95%;
+  }
+}
+
+    body.night-mode .history-item h3,
+    body.night-mode .history-item p {
+      color: #f8e1b4;
     }
 
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
+      }
+
+      nav {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
       }
 
       .nav-links {
@@ -856,55 +2148,44 @@
         background: rgba(44, 29, 15, 0.9);
         padding: 10px 0;
         position: absolute;
-        top: 60px;
+        top: 70px;
         left: 0;
+      }
+
+      body.night-mode .nav-links {
+        background: rgba(74, 55, 35, 0.9);
       }
 
       .nav-links.active {
         display: flex;
       }
 
-      .dropdown-menu {
-        position: static;
-        background: rgba(74, 55, 35, 0.9);
-        box-shadow: none;
-        border: none;
+      nav a {
         margin: 5px 0;
+        font-size: 1rem;
+        padding: 10px;
+        text-align: center;
       }
 
-      .dropdown:hover .dropdown-menu {
-        display: none;
+      .theme-toggle {
+        font-size: 0.9rem;
+        padding: 5px;
       }
 
-      .dropdown.active .dropdown-menu {
-        display: block;
+      .login-container {
+        padding: 10px;
       }
 
-      .nav-login {
-        margin-top: 10px;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .nav-login form {
+      .login-container form {
         flex-direction: column;
-        width: 100%;
+        gap: 5px;
       }
 
-      .nav-login input,
-      .nav-login button {
+      .login-container input, .login-container button {
+        font-size: 0.8rem;
+        padding: 6px;
         width: 100%;
         box-sizing: border-box;
-      }
-
-      .nav-right {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .floating-submit-button {
-        padding: 8px 15px;
-        font-size: 0.9rem;
       }
 
       .header {
@@ -930,7 +2211,6 @@
       }
 
       .scroll-down {
-        bottom: 15px;
         font-size: 1.2rem;
       }
 
@@ -945,6 +2225,75 @@
       .section p {
         font-size: 1em;
         max-width: 95%;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        max-width: 95%;
+      }
+
+      .members-grid, .roles-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 15px;
+        max-width: 95%;
+        padding: 0 10px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .members-grid .scroll-arrow, .roles-grid .scroll-arrow {
+        display: block;
+      }
+
+      .member, .role {
+        flex: 0 0 140px;
+        scroll-snap-align: start;
+        min-height: 240px;
+        padding: 10px;
+      }
+
+      .member img, .role img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1.2rem;
+        top: -15px;
+      }
+
+      .member h3, .role h3 {
+        font-size: 1.3em;
+      }
+
+      .member span {
+        font-size: 1.1em;
+      }
+
+      .member p, .role p {
+        font-size: 0.9em;
+      }
+
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+      }
+
+      .event .edit-button, .role .edit-button, .member .edit-button {
+        right: 30px;
+      }
+
+      .role .tooltip {
+        width: 140px;
+        font-size: 0.85em;
+      }
+
+      .role .apply-button {
+        font-size: 0.8em;
+        padding: 6px 10px;
       }
 
       .events-grid {
@@ -969,50 +2318,99 @@
         min-height: 600px;
       }
 
-      .submit-cta-container {
+      .countdown {
+        font-size: 1.5em;
         flex-direction: column;
-        align-items: center;
+        gap: 10px;
       }
 
-      .submit-section, .cta-section {
+      .form-container {
+        max-width: 95%;
+      }
+
+      .submit-section, .newsletter-container {
         max-width: 95%;
         padding: 15px;
       }
 
-      .submit-button, .cta-button {
+      .submit-button, .fee-button {
         font-size: 1em;
         padding: 10px 15px;
       }
 
-      .emo-playlist-player {
-        bottom: 10px;
-        right: 10px;
+Collapse
+
+Wrap
+
+Copy
+@media only screen and (max-width: 768px) {
+  .about-container, .mission-container, .members-container, .history-container, .countdown-container {
+    max-width: 95%;
+    padding: 30px 15px;
+    margin: 20px auto;
+  }
+
+  .section {
+    padding: 40px 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .about-container, .mission-container, .members-container, .history-container, .countdown-container {
+    max-width: 95%;
+    padding: 20px 10px;
+    margin: 15px auto;
+  }
+
+  .section {
+    padding: 30px 10px;
+  }
+}
+      .about-content {
+        flex-direction: column;
+        text-align: center;
       }
 
-      .player-wrapper {
-        width: 250px;
+      .about-image img {
+        width: 100%;
+        max-width: 300px;
       }
 
-      .toggle-player {
-        font-size: 0.9rem;
-        padding: 6px 10px;
+      .about-text h1 {
+        font-size: 2.5em;
       }
 
-      .toggle-image {
-        width: 25px;
-        height: 25px;
+      .history-gallery {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
       }
 
-      .emo-playlist-player iframe {
-        height: 120px;
+      .history-item img {
+        width: 100%;
+        max-width: 300px;
+        height: 200px;
       }
-    }
+
+      .history-item h3 {
+        font-size: 1.5em;
+      }
+
+      .history-item p {
+        font-size: 0.9em;
+        max-width: 90%;
+      }
+
+      .history-container h1 {
+        font-size: 2.5em;
+      }
+
+      .history-container h1::before,
+      .history-container h1::after {
+        width: 10%;
+      }
 
     @media only screen and (max-width: 480px) {
-      nav {
-        padding: 10px 15px;
-      }
-
       .header h1 {
         font-size: 2.2em;
       }
@@ -1021,10 +2419,12 @@
         font-size: 1em;
       }
 
-      .header-logo {
-        width: 80px;
-        height: 80px;
-      }
+@media only screen and (max-width: 480px) {
+  .header-logo {
+    max-width: 150px; /* Smaller size for mobile, adjustable */
+    height: auto;
+  }
+}
 
       .section h1, .section h2 {
         font-size: 1.6em;
@@ -1034,127 +2434,1140 @@
         font-size: 0.9em;
       }
 
+      .members-grid, .roles-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 0 5px;
+        scroll-snap-type: x mandatory;
+      }
+
+      .member, .role {
+        flex: 0 0 120px;
+        scroll-snap-align: start;
+        min-height: 200px;
+        padding: 8px;
+      }
+
+      .member img, .role img {
+        width: 60px;
+        height: 60px;
+      }
+
+      .member h3, .role h3 {
+        font-size: 1.1em;
+      }
+
+      .member span {
+        font-size: 1em;
+      }
+
+      .member p, .role p {
+        font-size: 0.85em;
+      }
+
+      .member.camp-lead::before, .member.deputy-lead::before {
+        font-size: 1rem;
+        top: -12px;
+      }
+
+      .member .delete-button, .role .delete-button, .event .edit-button, .event .delete-button, .role .edit-button, .member .edit-button {
+        width: 18px;
+        height: 18px;
+        font-size: 0.7em;
+      }
+
+      .event .edit-button, .role .edit-button, .member .edit-button {
+        right: 25px;
+      }
+
+      .role .tooltip {
+        width: 120px;
+        font-size: 0.8em;
+        padding: 8px;
+      }
+
+      .role .apply-button {
+        font-size: 0.7em;
+        padding: 5px 8px;
+      }
+
+      .countdown {
+        font-size: 1.2em;
+      }
+
+      .newsletter-container h2 {
+        font-size: 1.5em;
+      }
+
+      .newsletter-container p {
+        font-size: 0.9em;
+      }
+
       .event img {
         height: 120px;
-      }
-
-      .event h3 {
-        font-size: 1.3em;
-      }
-
-      .event p {
-        font-size: 0.85em;
       }
 
       .event {
         min-height: 500px;
       }
 
-      .submit-button, .cta-button {
+      .hamburger {
+        font-size: 1.2rem;
+      }
+
+      .login-container input, .login-container button {
+        font-size: 0.7em;
+        padding: 5px;
+      }
+
+      .apply-button, .secondary-button {
         font-size: 0.9em;
         padding: 8px 12px;
       }
 
-      .floating-submit-button {
-        font-size: 0.8rem;
-        padding: 6px 12px;
+      .about-text h1 {
+        font-size: 2em;
       }
 
-      .player-wrapper {
-        width: 200px;
+      .history-container h1 {
+        font-size: 2em;
       }
 
-      .toggle-player {
-        font-size: 0.8rem;
-        padding: 5px 8px;
+      .history-container h1::before,
+      .history-container h1::after {
+        width: 5%;
       }
 
-      .toggle-image {
-        width: 20px;
-        height: 20px;
+      .history-item h3 {
+        font-size: 1.3em;
       }
 
-      .emo-playlist-player iframe {
-        height: 100px;
+      .history-item p {
+        font-size: 0.85em;
+      }
+    }
+
+    @media only screen and (min-width: 769px) {
+      .roles-grid .scroll-arrow, .members-grid .scroll-arrow {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="nav-left">
-      <img src="images/Logo/3D_Rotation_Logo.gif" alt="Cosmic Rejex Logo" class="nav-logo">
-      <button class="hamburger" aria-label="Toggle menu">☰</button>
+<nav>
+  <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
+  <button class="hamburger" aria-label="Toggle Menu">☰</button>
+  <div class="nav-links">
+    <div class="dropdown">
+      <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="#about">Our Camp</a>
+        <a href="#mission">Our Mission</a>
+        <a href="#history">Our History</a>
+      </div>
+</div>
+    <div class="dropdown">
+      <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="events.html#upcoming-events">Upcoming Events</a>
+        <a href="events.html#past-events">Past Events</a>
+        <a href="events.html#submit">Submit Event</a>
+      </div>
     </div>
-    <div class="nav-links">
-      <div class="dropdown">
-        <a href="index.html#about" class="dropdown-toggle">About</a>
-        <div class="dropdown-menu">
-          <a href="index.html#about">Our Camp</a>
-          <a href="index.html#mission">Our Mission</a>
-          <a href="index.html#history">Our History</a>
-        </div>
+<div class="dropdown">
+      <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="join-camp.html">Membership Info</a>
+        <a href="join-camp.html">Apply to Join</a>
+        <a href="camp-fees.html">Camp Fees</a>
+        <a href="Task_Roster.html">Task/Roster</a>
       </div>
-      <div class="dropdown">
-        <a href="events.html" class="dropdown-toggle">Events</a>
-        <div class="dropdown-menu">
-          <a href="events.html#upcoming-events">Upcoming Events</a>
-          <a href="events.html#past-events">Past Events</a>
-          <a href="events.html#submit">Submit Event</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <a href="index.html#join" class="dropdown-toggle">Join Us</a>
-        <div class="dropdown-menu">
-          <a href="join-camp.html">Membership Info</a>
-          <a href="join-camp.html">Apply to Join</a>
-          <a href="camp-fees.html">Camp Fees</a>
-          <a href="Task_Roster.html">Task/Roster</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <a href="gallery.html" class="dropdown-toggle">Gallery</a>
-        <div class="dropdown-menu">
-          <a href="gallery.html?year=2021">2021</a>
-          <a href="gallery.html?year=2022">2022</a>
-          <a href="gallery.html?year=2023">2023</a>
-          <a href="gallery.html?year=2024">2024</a>
-          <a href="gallery.html?year=2025">2025</a>
-        </div>
-      </div>
-      <a href="index.html#newsletter">Newsletter</a>
-      <a href="contact.html">Contact Us</a>
+</div>
+    <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Eye_Webbar_Movings.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
+    <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/Cloud_Webbar_Moving.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
+    <a href="contact.html"><img src="images/Webpage_Bar_Icons/Thunder_Webbar_Moving.gif" alt="Contact Icon" class="nav-icon">Contact Us</a>
+    <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/Skull_Webbars_Moving.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-login">
+      <button class="login-button" onclick="openModal('login-modal')">Login</button>
+      <button class="logout-button" aria-label="Logout">Logout</button>
     </div>
-    <div class="nav-right">
-      <div class="nav-login">
-        <form id="login-form">
-          <input type="text" id="username" placeholder="Username" required aria-label="Username">
-          <input type="password" id="password" placeholder="Password" required aria-label="Password">
-          <button type="submit">Login</button>
-        </form>
-        <button class="logout-button" aria-label="Logout">Logout</button>
-      </div>
-      <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
-    </div>
-  </nav>
+    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+  </div>
+</nav>
 
-  <header class="header" id="home">
-    <img src="images/Logo/Logo_Update.png" alt="Cosmic Rejex Logo" class="header-logo">
-    <h1>Cosmic Rejex at Kiwiburn</h1>
-    <p>Join us in creating unforgettable experiences at Kiwiburn!</p>
-    <div class="header-ctas">
-      <a href="submit-event.html" class="apply-button">Submit Your Event</a>
-      <a href="#upcoming-events" class="secondary-button">View Events</a>
+<header class="header" id="home">
+  <img src="images/Logo/Sketch_Lighter.png" alt="Cosmic Rejex Logo" class="header-logo">
+  <h1>JOIN COSMIC REJEX</h1>
+  <p>A Safe Space for Emos, Rockers, and Dreamers</p>
+<div class="header-ctas">
+  <a href="join-camp.html" class="apply-button">Apply for 2026</a>
+  <a href="events.html" class="secondary-button">Events</a>
+</div>
+  <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
+  <a href="#about" class="scroll-down" aria-label="Scroll to about section">▼</a>
+</header>
+
+<div class="modal" id="member-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('member-modal')" aria-label="Close modal">×</button>
+    <h3 id="member-modal-title">Add Member Details</h3>
+    <input type="text" id="member-name" placeholder="Member Name" required aria-label="Member Name">
+    <input type="text" id="member-role" placeholder="Member Role" required aria-label="Member Role">
+    <textarea id="member-description" placeholder="Member Description" required aria-label="Member Description"></textarea>
+    <input type="file" id="member-photo" accept="image/*" aria-label="Member Photo">
+    <button onclick="saveMemberDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="role-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('role-modal')" aria-label="Close modal">×</button>
+    <h3 id="role-modal-title">Create New Role</h3>
+    <input type="text" id="role-title" placeholder="Role Title" required aria-label="Role Title">
+    <textarea id="role-description" placeholder="Role Description" required aria-label="Role Description"></textarea>
+    <input type="file" id="role-icon" accept="image/*" aria-label="Role Icon">
+    <button onclick="saveRoleDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="event-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('event-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Event</h3>
+    <input type="text" id="event-title" placeholder="Event Title" required aria-label="Event Title">
+    <textarea id="event-description" placeholder="Event Description" required aria-label="Event Description"></textarea>
+    <input type="date" id="event-date" required aria-label="Event Date">
+    <input type="time" id="event-time" required aria-label="Event Time">
+    <input type="datetime-local" id="event-end" required aria-label="Event End Date and Time">
+    <select id="event-category" required aria-label="Event Category">
+      <option value="" disabled selected>Select Category</option>
+      <option value="Music">Music</option>
+      <option value="Art">Art</option>
+      <option value="Performance">Performance</option>
+      <option value="Workshop">Workshop</option>
+      <option value="Other">Other</option>
+    </select>
+    <input type="file" id="event-image" accept="image/*" aria-label="Event Image">
+    <button onclick="saveEventDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="about-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('about-modal')" aria-label="Close modal">×</button>
+    <h3>Edit About Section</h3>
+    <input type="text" id="about-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="about-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="about-bg" accept="image/*" aria-label="About Background Image">
+    <input type="file" id="about-image" accept="image/*" aria-label="About Image">
+    <button onclick="saveAboutDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="members-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('members-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Members Section</h3>
+    <input type="text" id="members-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="members-description" placeholder="Section Description" aria-label="Section Description"></textarea>
+    <input type="file" id="members-bg" accept="image/*" aria-label="Members Background Image">
+    <button onclick="saveMembersDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="mission-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('mission-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Mission Section</h3>
+    <input type="text" id="mission-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="mission-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="mission-bg" accept="image/*" aria-label="Mission Background Image">
+    <input type="file" id="mission-image" accept="image/*" aria-label="Mission Image">
+    <button onclick="saveMissionDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="history-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('history-modal')" aria-label="Close modal">×</button>
+    <h3>Edit History Section</h3>
+    <input type="text" id="history-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="history-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="history-bg" accept="image/*" aria-label="History Background Image">
+    <input type="file" id="history-image1" accept="image/*" aria-label="History Image 1">
+    <input type="file" id="history-image2" accept="image/*" aria-label="History Image 2">
+    <input type="file" id="history-image3" accept="image/*" aria-label="History Image 3">
+    <button onclick="saveHistoryDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="setup-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('setup-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Setup Section</h3>
+    <input type="text" id="setup-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="setup-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="setup-bg" accept="image/*" aria-label="Setup Background Image">
+    <input type="file" id="setup-image1" accept="image/*" aria-label="Setup Image 1">
+    <input type="file" id="setup-image2" accept="image/*" aria-label="Setup Image 2">
+    <input type="file" id="setup-image3" accept="image/*" aria-label="Setup Image 3">
+    <input type="file" id="setup-image4" accept="image/*" aria-label="Setup Image 4">
+    <input type="file" id="setup-image5" accept="image/*" aria-label="Setup Image 5">
+    <input type="file" id="setup-image6" accept="image/*" aria-label="Setup Image 6">
+    <button onclick="saveSetupDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="countdown-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('countdown-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Countdown</h3>
+    <input type="datetime-local" id="countdown-date" required aria-label="Countdown Date and Time">
+    <input type="file" id="countdown-bg" accept="image/*" aria-label="Countdown Background Image">
+    <button onclick="saveCountdownDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="gallery-image-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('gallery-image-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Gallery Image</h3>
+    <input type="text" id="gallery-image-alt" placeholder="Image Alt Text" required aria-label="Image Alt Text">
+    <input type="file" id="gallery-image-file" accept="image/*" aria-label="Gallery Image File">
+    <button onclick="saveGalleryImageDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="events-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('events-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Events Section</h3>
+    <input type="text" id="events-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="events-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <button onclick="saveEventsDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="newsletter-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('newsletter-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Newsletter Section</h3>
+    <input type="text" id="newsletter-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="newsletter-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <button onclick="saveNewsletterDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="join-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('join-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Join Section</h3>
+    <input type="text" id="join-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="join-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <button onclick="saveJoinDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="submit-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('submit-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Submit Event Section</h3>
+    <input type="text" id="submit-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="submit-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <button onclick="saveSubmitDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="countdown-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('countdown-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Countdown</h3>
+    <input type="datetime-local" id="countdown-date" required aria-label="Countdown Date and Time">
+    <input type="file" id="countdown-bg" accept="image/*" aria-label="Countdown Background Image">
+    <button onclick="saveCountdownDetails()">Save</button>
+  </div>
+</div>
+
+<!-- Last modal in your code -->
+<div class="modal" id="history-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('history-modal')" aria-label="Close modal">×</button>
+    <h3>Edit History Section</h3>
+    <input type="text" id="history-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="history-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="history-image1" accept="image/*" aria-label="History Image 1">
+    <input type="file" id="history-image2" accept="image/*" aria-label="History Image 2">
+    <input type="file" id="history-image3" accept="image/*" aria-label="History Image 3">
+    <button onclick="saveHistoryDetails()">Save</button>
+  </div>
+</div>
+  
+<!-- Add the header modal here -->
+<div class="modal" id="header-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('header-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Header Section</h3>
+    <input type="text" id="header-title" placeholder="Header Title" required aria-label="Header Title">
+    <textarea id="header-description" placeholder="Header Description" required aria-label="Header Description"></textarea>
+    <input type="file" id="header-image" accept="image/*" aria-label="Header Image">
+    <button onclick="saveHeaderDetails()">Save</button>
+  </div>
+</div>
+<!-- New Login Modal -->
+<div class="modal" id="login-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('login-modal')" aria-label="Close modal">×</button>
+    <h3>Login</h3>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Username" required aria-label="Username">
+      <input type="password" id="password" placeholder="Password" required aria-label="Password">
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</div>
+  
+<div class="about-container">
+  <section class="section about-section" id="about">
+    <div class="title-container">
+      <img src="images/About-Our-Camp/Metal_Left_Title.png" alt="Left Alien Icon" class="title-icon">
+      <h1>ABOUT OUR CAMP</h1>
+      <img src="images/About-Our-Camp/Metal_Right.png" alt="Right Alien Icon" class="title-icon">
     </div>
-    <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
-    <a href="#upcoming-events" class="scroll-down" aria-label="Scroll to upcoming events">▼</a>
-  </header>
+    <div class="about-content">
+      <div class="about-text">
+        <h2>Welcome to Cosmic Rejex</h2>
+        <div class="about-description">
+          <p>Cosmic Rejex is a welcoming home for those seeking something beyond trance on the paddock. Our camp is full of emos, rockers, and bass-heads — a safe, inclusive space to connect, unwind, and be yourself. We’re all about good tunes, strange art, deep chats, and the occasional wild conspiracy theory. As a sound camp, you can expect emo anthems, rock, and drum and bass — all wrapped in a laid-back, friendly atmosphere. Whether you’re here to dance, chill, or just vibe out, you’re always welcome.</p>
+        </div>
+      </div>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
+  </section>
+</div>
 
-  <a href="submit-event.html" class="floating-submit-button" aria-label="Submit Your Event Idea Now">Submit Your Event Idea Now</a>
+<style>
+/* About Container */
+.about-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/Cover-Photo/crumpled_loose.png'); /* Default background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
 
+body.night-mode .about-container {
+  background-image: url('images/Cover-Photo/crumpled_loose.png'); /* Night mode background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Members Container */
+.members-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .members-container {
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Mission Container */
+.mission-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .mission-container {
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* History Container */
+.history-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .history-container {
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Countdown Container */
+.countdown-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/backgrounds/countdown-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .countdown-container {
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Setup Container */
+.setup-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .setup-container {
+  background-image: url('images/Cover-Photo/crumpled_loose.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+.about-section {
+  padding: 60px 20px;
+  text-align: left;
+  background: none;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-icon {
+  width: 150px; /* Increased from 100px */
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.title-icon:hover {
+  transform: scale(1.1);
+}
+
+.title-container h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 5em; /* Increased from 4em */
+  color: #2b1b0f;
+  margin: 0;
+  text-align: center;
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8em; /* Decreased from implicit larger size */
+  color: #2b1b0f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-description {
+  background: rgba(230, 126, 34, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e67e22;
+  margin: 10px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.about-description:hover {
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+.about-description p {
+  font-size: 1.2em;
+  line-height: 1.8;
+  color: #2b1b0f;
+  margin: 0;
+}
+
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns image top with subtitle box */
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 500px; /* Increased from 400px */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #e67e22;
+}
+
+body.night-mode .title-container h1,
+body.night-mode .about-text h2,
+body.night-mode .about-description p {
+  color: #f8e1b4;
+}
+
+body.night-mode .about-description {
+  background: rgba(243, 156, 18, 0.15);
+  border-color: #f39c12;
+}
+
+@media only screen and (max-width: 768px) {
+  .title-container {
+    gap: 20px;
+  }
+
+  .title-icon {
+    width: 100px; /* Adjusted for tablet */
+    height: auto;
+  }
+
+  .title-container h1 {
+    font-size: 3.5em;
+  }
+
+  .about-text h2 {
+    font-size: 1.5em;
+  }
+
+  .about-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-image img {
+    max-width: 350px; /* Adjusted for tablet */
+  }
+
+  .about-description {
+    padding: 15px;
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .title-container {
+    gap: 15px;
+  }
+
+  .title-icon {
+    width: 80px; /* Adjusted for mobile */
+    height: auto;
+  }
+
+  .title-container h1 {
+    font-size: 2.5em;
+  }
+
+  .about-text h2 {
+    font-size: 1.2em;
+  }
+
+  .about-image img {
+    max-width: 280px; /* Adjusted for mobile */
+  }
+
+  .about-description {
+    padding: 12px;
+    max-width: 95%;
+  }
+}
+</style>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
+  </section>
+</div>
+
+<div class="members-container">
+  <section class="section" id="members">
+    <h1>Meet Our Core Camp Crew</h1>
+    <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
+      <div class="scroll-arrow left" data-grid="members" role="button" aria-label="Scroll members left">◄</div>
+      <div class="scroll-arrow right" data-grid="members" role="button" aria-label="Scroll members right">►</div>
+      <div class="member camp-lead" draggable="true" ondragstart="drag(event)">
+        <img src="images/Core-Camp-Crew/Shanon_Richards.png" alt="Shanon Richards">
+        <h3>Shanon Richards</h3>
+        <span>Camp Lead</span>
+        <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
+        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteMember(this)">×</button>
+      </div>
+      <div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
+        <img src="images/Core-Camp-Crew/Meghan_Louise_Robson.png" alt="Meghan">
+        <h3>Meghan Robson</h3>
+        <span>Deputy Lead</span>
+        <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
+        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteMember(this)">×</button>
+      </div>
+      <div class="member" draggable="true" ondragstart="drag(event)">
+        <img src="images/Core-Camp-Crew/Russell_Duffield.png" alt="Russell">
+        <h3>Russell Duffield</h3>
+        <span>Build Lead</span>
+        <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
+        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteMember(this)">×</button>
+      </div>
+      <div class="member" draggable="true" ondragstart="drag(event)">
+        <img src="images/Core-Camp-Crew/Micheal_Dunstan.png" alt="Micheal">
+        <h3>Micheal Dunstan</h3>
+        <span>Logistics Lead</span>
+        <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
+        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteMember(this)">×</button>
+      </div>
+      <div class="member" draggable="true" ondragstart="drag(event)">
+        <img src="images/Core-Camp-Crew/Tomas_Shelby.png" alt="Tomas">
+        <h3>Tomas Shelby</h3>
+        <span>Sound Lead</span>
+        <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
+        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteMember(this)">×</button>
+      </div>
+      <div class="member" draggable="true" ondragstart="drag(event)">
+        <img src="images/Core-Camp-Crew/Alana_Stewart.png" alt="Alana">
+        <h3>Alana Stewart</h3>
+        <span>Kitchen Lead</span>
+        <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
+        <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
+        <button class="delete-button" onclick="deleteMember(this)">×</button>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
+  </section>
+</div>
+
+<div class="mission-container">
+  <section class="section" id="mission">
+    <h1>Our Mission</h1>
+    <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
+    <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
+    <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
+      <div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
+        <img src="images/Our-Mission/Camp-Photo.jpg" alt="Our Mission Camp Photo">
+        <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
+        <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
+      </div>
+    </div>
+    <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
+  </section>
+</div>
+
+<style>
+/* Our Setup Section */
+.setup-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #e67e22;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.setup-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none;
+}
+
+.setup-section h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 4em;
+  margin-bottom: 40px;
+  color: #e01b24;
+  position: relative;
+}
+
+.setup-section h1::before,
+.setup-section h1::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 15%;
+  height: 2px;
+  background: #e01b24;
+}
+
+.setup-section h1::before {
+  left: 0;
+}
+
+.setup-section h1::after {
+  right: 0;
+}
+
+.setup-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.setup-item {
+  text-align: center;
+}
+
+.setup-item img {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  border: 2px solid #e67e22;
+  margin-bottom: 15px;
+}
+
+.setup-item h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8em;
+  color: #2b1b0f;
+  margin-bottom: 10px;
+}
+
+.setup-item p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  color: #2b1b0f;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+.setup-description {
+  background: rgba(230, 126, 34, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #e67e22;
+  margin: 10px auto;
+  max-width: 350px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.setup-description:hover {
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+/* Night Mode */
+body.night-mode .setup-container {
+  background: rgba(44, 29, 15, 0.95);
+  border-color: #f39c12;
+}
+
+body.night-mode .setup-section h1 {
+  color: #f8e1b4;
+}
+
+body.night-mode .setup-section h1::before,
+body.night-mode .setup-section h1::after {
+  background: #f8e1b4;
+}
+
+body.night-mode .setup-item h3,
+body.night-mode .setup-item p {
+  color: #f8e1b4;
+}
+
+body.night-mode .setup-description {
+  background: rgba(243, 156, 18, 0.15);
+  border-color: #f39c12;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+  .setup-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .setup-item img {
+    max-width: 300px;
+    height: 200px;
+  }
+
+  .setup-section h1 {
+    font-size: 3em;
+  }
+
+  .setup-section h1::before,
+  .setup-section h1::after {
+    width: 10%;
+  }
+
+  .setup-item h3 {
+    font-size: 1.5em;
+  }
+
+  .setup-item p {
+    font-size: 0.9em;
+    max-width: 90%;
+  }
+
+  .setup-description {
+    max-width: 90%;
+    padding: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .setup-gallery {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .setup-item img {
+    max-width: 280px;
+    height: 180px;
+  }
+
+  .setup-section h1 {
+    font-size: 2.5em;
+  }
+
+  .setup-section h1::before,
+  .setup-section h1::after {
+    width: 5%;
+  }
+
+  .setup-item h3 {
+    font-size: 1.3em;
+  }
+
+  .setup-item p {
+    font-size: 0.85em;
+  }
+
+  .setup-description {
+    max-width: 95%;
+    padding: 10px;
+  }
+}
+</style>
+
+<div class="setup-container">
+  <section class="section setup-section" id="setup">
+    <h1>Our Setup</h1>
+    <div class="setup-gallery">
+      <div class="setup-item">
+        <img src="images/Our_Setup/Camping_Setup.jpg" alt="Chill Zone Setup">
+        <h3>Shared Space</h3>
+        <div class="setup-description"> 
+          <p>We have a spacious 12x19m Double Star Party Tent — perfect for a covered dance floor and pole dancing. Additionally, there are three separate gazebos: one each for the DJ booth, chill zone, and kitchen area.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/">
+        <h3>Sound Stage</h3>
+        <div class="setup-description">
+          <p>Main Stage Sound setup for emo, punk & DnB:
+•2× Mackie 15" (1400W)
+•2× Alto Pro 15" (2500W)
+•3× Mackie Thump18S Subs (1200W)</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our-Setup/Art_Installation.jpg" alt="Art Installation">
+        <h3>Art Installation</h3>
+        <div class="setup-description">
+          <p>Alien-themed sculptures and interactive art pieces to spark creativity.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our_Setup/Open_Dj.jpg" alt="Kitchen Hub Setup">
+        <h3>Drop In & DJ</h3>
+        <div class="setup-description">
+          <p>Our camp offers an open-air DJ space where anyone can jump on the decks and share their sound. Whether you're a seasoned pro or just vibing, plug in and play — spontaneous sets, wild mixes, and dancefloor magic.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our_Setup/DJ_Zone.png" alt="Communal Area">
+        <h3>Sound Stage</h3>
+        <div class="setup-description">
+          <p>The main stage sound setup features two 15" 1400W Mackie speakers, two 15" 2500W Alto Pro speakers, and three 18" 1200W Mackie Thump18S subwoofers—optimized for emo, punk, and DnB—alongside dynamic lighting effects including DJ lights, a fog machine, and more.</p>
+        </div>
+      </div>
+      <div class="setup-item">
+        <img src="images/Our_Setup/Chill_Zone.png" alt="Workshop Space Setup">
+        <h3>Chill Zone</h3>
+        <div class="setup-description">
+          <p>A cozy and safe retreat tucked away at the back of our camp, opposite the DJ stand. This blacklight-lit neon space is filled with pillows, couches, bean bags, and fairy lights—perfect for relaxing and deep conversations.</p>
+        </div>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('setup-modal')">Edit Section</button>
+  </section>
+</div>
+
+<!-- Modal for Editing Setup Section -->
+<div class="modal" id="setup-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('setup-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Setup Section</h3>
+    <input type="text" id="setup-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="setup-description" placeholder="Section Description" aria-label="Section Description"></textarea>
+    <input type="file" id="setup-image1" accept="image/*" aria-label="Setup Image 1">
+    <input type="file" id="setup-image2" accept="image/*" aria-label="Setup Image 2">
+    <input type="file" id="setup-image3" accept="image/*" aria-label="Setup Image 3">
+    <input type="file" id="setup-image4" accept="image/*" aria-label="Setup Image 4">
+    <input type="file" id="setup-image5" accept="image/*" aria-label="Setup Image 5">
+    <input type="file" id="setup-image6" accept="image/*" aria-label="Setup Image 6">
+    <button onclick="saveSetupDetails()">Save</button>
+  </div>
+</div>
+
+<script>
+function saveSetupDetails() {
+  document.querySelector('.setup-section h1').textContent = document.getElementById('setup-title').value;
+  closeModal('setup-modal');
+}
+</script>
+
+<div class="history-container">
+  <section class="section history-section" id="history">
+    <h1>Our History</h1>
+    <div class="history-gallery">
+      <div class="history-item">
+        <img src="images/Our History/Kiwiburn_2022_smooth_loop.gif" alt="Early Days of Cosmic Rejex">
+        <h3>The Early Days</h3>
+        <div class="history-description">
+          <p>Cosmic Rejex began as Cosmic Creatures and Camp Riddikulus before adopting its name in 2025, honoring former member Bede Max. It started with a small group of Kiwiburn regulars and newcomers brought together by a love for alternative music and self-expression. With just a few tents, a speaker, and a shared vision, we set out to build something bigger.</p>
+        </div>
+      </div>
+      <div class="history-item">
+        <img src="images/Our History/Party_Camp.gif" alt="First Sound Camp">
+        <h3>The Sound Camp Era</h3>
+        <div class="history-description">
+          <p>By 2024, we had grown into a full-fledged sound camp with our roots in an emo night collaboration with R.A.T Camp. In 2025, we took over hosting, expanding into DJ sets featuring drum and bass and punk rock. Our team grew from 13 to 35, adding alien-themed art, a chill zone, and more, making Cosmic Rejex a true Kiwiburn fixture.</p>
+        </div>
+      </div>
+      <div class="history-item">
+        <img src="images/Our History/Kiwiburn_Emo_Night.gif" alt="Future Vision">
+        <h3>The Future</h3>
+        <div class="history-description">
+          <p>Cosmic Rejex is now looking ahead to the next Kiwiburn, aiming to showcase more artwork and creative expression. We’re welcoming new members who share our love for emo, punk, and alternative music. Our focus is on growing the team, expanding roles, and building a space where artists and musicians can thrive. Join us and create freely.</p>
+        </div>
+      </div>
+    </div>
+    <button class="edit-section-button" onclick="openModal('history-modal')">Edit Section</button>
+  </section>
+</div>
+
+<div class="sidebar-widgets">
   <div class="emo-playlist-player">
     <button class="toggle-player" onclick="togglePlayer()">
-      <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
+      <img src="images/Spotify-Background/Spotify_Playlist.gif" alt="Emo Playlist Toggle Image" class="toggle-image">
       Play Emo Playlist
     </button>
     <div class="player-wrapper" id="player-wrapper">
@@ -1165,302 +3578,495 @@
     </div>
   </div>
 
-  <div class="events-container">
-    <section class="section" id="upcoming-events">
-      <h1>Upcoming Events</h1>
-      <p>Stay tuned for our next cosmic adventures at Kiwiburn! No events are confirmed yet, but check back soon for updates.</p>
-      <div class="events-grid" ondragover="allowDrop(event)" ondrop="dropEvents(event)">
+  <div class="newsletter-popup" id="newsletter">
+    <button class="toggle-newsletter" onclick="toggleNewsletter()">
+      <img src="images/Spotify-Background/News_Letter.gif" alt="Newsletter Toggle Image" class="toggle-image">
+      Stay in Touch
+    </button>
+    <div class="newsletter-wrapper" id="newsletter-wrapper">
+      <div class="form-container">
+        <h3>Stay in Touch</h3>
+        <p>Stay up to date on upcoming events.</p>
+        <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
+        <button onclick="submitNewsletter()">Subscribe</button>
       </div>
-      <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
-    </section>
-
-    <section class="section" id="past-events">
-      <h1>Past Events (2025)</h1>
-      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
-      <div class="event-filter">
-        <select id="event-filter" aria-label="Filter Events by Category">
-          <option value="all">All Categories</option>
-          <option value="Music">Music</option>
-          <option value="Performance">Performance</option>
-          <option value="Workshop">Workshop</option>
-          <option value="Art">Art</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-      <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
-      <div class="events-grid">
-        <div class="event" data-category="Music">
-          <img src="images/Event-Images/Emo-Night-Event.jpg" alt="Emo Night Poster">
-          <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-          <p>Get ready to unleash your inner rebel at our Emo/Pop Punk Hour! Featuring a killer live band, dazzling light shows, a smoke-filled atmosphere, and enough angst to fuel your teenage dreams (or nightmares). Dress up, sing your heart out, and let the feels take over—this is the ultimate tribute to your favorite emo and pop-punk anthems. Don't miss out!</p>
-          <p class="event-date"><strong>Date:</strong> January 23, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 23, 2025, 11:59 PM</p>
-          <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event" data-category="Performance">
-          <img src="images/Event-Images/Pole-Event.jpg" alt="Pole in the paddock">
-          <h3>Pole in the paddock</h3>
-          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
-          <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 24, 2025, 7:00 PM</p>
-          <p class="event-category"><strong>Category:</strong> Performance</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event" data-category="Workshop">
-          <img src="images/Event-Images/Cosmic-Connections-Event.jpg" alt="Cosmic Connections">
-          <h3>Cosmic Connections</h3>
-          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
-          <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 8:30 PM</p>
-          <p class="event-end"><strong>End:</strong> January 24, 2025, 9:30 PM</p>
-          <p class="event-category"><strong>Category:</strong> Workshop</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-        <div class="event" data-category="Music">
-          <img src="images/Event-Images/DJ-Poster.jpg" alt="DJ Showcase & Open Decks">
-          <h3>DJ Showcase & Open Decks</h3>
-          <p>Spin some tunes or vibe to the beats at our DJ Showcase & Open Decks! Our talented camp DJs will kick things off, followed by an open deck session where anyone can jump in and share their mixes. From drum and bass to emo remixes, expect a night of eclectic sounds and high energy.</p>
-          <p class="event-date"><strong>Date:</strong> January 25, 2025</p>
-          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
-          <p class="event-end"><strong>End:</strong> January 26, 2025, 1:00 AM</p>
-          <p class="event-category"><strong>Category:</strong> Music</p>
-          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteEvent(this)">×</button>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="submit-cta-container">
-    <section class="submit-section" id="submit">
-      <h2>Submit an Event</h2>
-      <p>Got an idea for an epic event? Share it with us and let’s make it happen at Kiwiburn!</p>
-      <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
-      <a href="submit-event.html" class="submit-button">Submit Your Event</a>
-    </section>
-
-    <section class="cta-section">
-      <h2>Join Our Cosmic Community</h2>
-      <p>Stay in the loop with Cosmic Rejex! Sign up for our newsletter to get updates on events, camps, and how you can contribute to the next Kiwiburn.</p>
-      <a href="index.html#newsletter" class="cta-button">Sign Up Now</a>
-    </section>
-  </div>
-
-  <div class="modal" id="event-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('event-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Event</h3>
-      <input type="text" id="event-title" placeholder="Event Title" required aria-label="Event Title">
-      <textarea id="event-description" placeholder="Event Description" required aria-label="Event Description"></textarea>
-      <input type="date" id="event-date" required aria-label="Event Date">
-      <input type="time" id="event-time" required aria-label="Event Time">
-      <input type="datetime-local" id="event-end" required aria-label="Event End Date and Time">
-      <select id="event-category" required aria-label="Event Category">
-        <option value="" disabled selected>Select Category</option>
-        <option value="Music">Music</option>
-        <option value="Art">Art</option>
-        <option value="Performance">Performance</option>
-        <option value="Workshop">Workshop</option>
-        <option value="Other">Other</option>
-      </select>
-      <input type="file" id="event-image" accept="image/*" aria-label="Event Image">
-      <button onclick="saveEventDetails()">Save</button>
     </div>
+    <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
   </div>
+</div>
 
-  <div class="modal" id="events-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('events-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Events Section</h3>
-      <input type="text" id="events-title" placeholder="Section Title" required aria-label="Section Title">
-      <textarea id="events-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-      <button onclick="saveEventsDetails()">Save</button>
+<div class="countdown-container">
+  <section class="section countdown-section" id="countdown">
+    <h2>Kiwiburn 2026 Countdown</h2>
+    <div class="countdown" id="countdown-timer">
+      <span id="days">237<br><small>Days</small></span>
+      <span id="hours">07<br><small>Hours</small></span>
+      <span id="minutes">01br><small>Minutes</small></span>
+      <span id="seconds">28<br><small>Seconds</small></span>
     </div>
-  </div>
+    <input type="datetime-local" id="countdown-input" aria-label="Set Countdown Date">
+    <button onclick="updateCountdownDate()">Update Date</button>
+    <button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
+  </section>
+</div>
 
-  <div class="modal" id="submit-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('submit-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Submit Event Section</h3>
-      <input type="text" id="submit-title" placeholder="Section Title" required aria-label="Section Title">
-      <textarea id="submit-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-      <button onclick="saveSubmitDetails()">Save</button>
-    </div>
-  </div>
+<script>
+  // Theme Toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('night-mode');
+    themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+    localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+  });
 
-  <div class="modal" id="header-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('header-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Header Section</h3>
-      <input type="text" id="header-title" placeholder="Header Title" required aria-label="Header Title">
-      <textarea id="header-description" placeholder="Header Description" required aria-label="Header Description"></textarea>
-      <input type="file" id="header-image" accept="image/*" aria-label="Header Image">
-      <button onclick="saveHeaderDetails()">Save</button>
-    </div>
-  </div>
+  // Load theme preference
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('night-mode');
+    themeToggle.textContent = '☀️';
+  }
 
-  <footer>
-    <p>© 2025 Cosmic Rejex. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
-  </footer>
+// Hamburger Menu
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+});
 
-  <script>
-    // Theme Toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('night-mode');
-      themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
-      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
-    });
-
-    // Load theme preference
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('night-mode');
-      themeToggle.textContent = '☀️';
-    }
-
-    // Hamburger Menu
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
-    });
-
-    // Dropdown Menu for Mobile
-    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-      toggle.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          const dropdown = toggle.parentElement;
-          dropdown.classList.toggle('active');
-        }
-      });
-    });
-
-    // Login/Logout
-    const loginForm = document.getElementById('login-form');
-    const logoutButton = document.querySelector('.logout-button');
-    const loginContainer = document.querySelector('.nav-login');
-
-    loginForm.addEventListener('submit', (e) => {
+// Dropdown Menu for Mobile
+document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768) {
       e.preventDefault();
-      loginContainer.classList.add('logged-in');
-      loginForm.style.display = 'none';
-      logoutButton.style.display = 'block';
-      document.body.classList.add('logged-in');
+      const dropdown = toggle.parentElement;
+      dropdown.classList.toggle('active');
+    }
+  });
+});
+
+  // Login/ut
+  const loginForm = document.getElementById('login-form');
+  const logoutButton = document.querySelector('.logout-button');
+  const loginContainer = document.querySelector('.nav-login');
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    loginContainer.classList.add('logged-in');
+    loginForm.style.display = 'none';
+    logoutButton.style.display = 'block';
+    document.body.classList.add('logged-in');
+  });
+
+  logoutButton.addEventListener('click', () => {
+    loginContainer.classList.remove('logged-in');
+    loginForm.style.display = 'flex';
+    logoutButton.style.display = 'none';
+    document.body.classList.remove('logged-in');
+  });
+
+  // Modal Functions
+  function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'flex';
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  // Member Modal
+  function openEditMemberModal(button) {
+    const member = button.parentElement;
+    document.getElementById('member-modal-title').textContent = 'Edit Member Details';
+    document.getElementById('member-name').value = member.querySelector('h3').textContent;
+    document.getElementById('member-role').value = member.querySelector('span').textContent;
+    document.getElementById('member-description').value = member.querySelector('p').textContent;
+    openModal('member-modal');
+  }
+
+  function saveMemberDetails() {
+    closeModal('member-modal');
+  }
+
+  // Role Modal
+  function openEditRoleModal(button) {
+    const role = button.parentElement;
+    document.getElementById('role-modal-title').textContent = 'Edit Role';
+    document.getElementById('role-title').value = role.querySelector('h3').textContent;
+    document.getElementById('role-description').value = role.querySelector('p').textContent;
+    openModal('role-modal');
+  }
+
+  function saveRoleDetails() {
+    closeModal('role-modal');
+  }
+
+  // Event Modal
+  function openEditEventModal(button) {
+    const event = button.parentElement;
+    document.getElementById('event-title').value = event.querySelector('h3').textContent;
+    document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
+    document.getElementById('event-date').value = event.querySelector('.event-date').textContent.replace('Date: ', '');
+    document.getElementById('event-time').value = event.querySelector('.event-time').textContent.replace('Time: ', '');
+    document.getElementById('event-end').value = event.querySelector('.event-end').textContent.replace('End: ', '');
+    document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
+    openModal('event-modal');
+  }
+
+  function saveEventDetails() {
+    closeModal('event-modal');
+  }
+
+  // Delete Functions
+  function deleteMember(button) {
+    button.parentElement.remove();
+  }
+
+  function deleteRole(button) {
+    button.parentElement.remove();
+  }
+
+  function deleteEvent(button) {
+    button.parentElement.remove();
+  }
+
+  function deleteMissionImage(button) {
+    button.parentElement.remove();
+  }
+
+  // Drag and Drop
+  let draggedItem = null;
+
+  function drag(event) {
+    draggedItem = event.target;
+    event.dataTransfer.setData('text/plain', null);
+  }
+
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function dropMembers(event) {
+    event.preventDefault();
+    const grid = document.querySelector('.members-grid');
+    if (draggedItem && grid.contains(event.target)) {
+      grid.insertBefore(draggedItem, event.target.closest('.member') || null);
+    }
+  }
+
+  function dropRoles(event) {
+    event.preventDefault();
+    const grid = document.querySelector('.roles-grid');
+    if (draggedItem && grid.contains(event.target)) {
+      grid.insertBefore(draggedItem, event.target.closest('.role') || null);
+    }
+  }
+
+  function dropEvents(event) {
+    event.preventDefault();
+    const grid = document.querySelector('.events-grid');
+    if (draggedItem && grid.contains(event.target)) {
+      grid.insertBefore(draggedItem, event.target.closest('.event') || null);
+    }
+  }
+
+  function dragMissionImage(event) {
+    draggedItem = event.target.parentElement;
+  }
+
+  function dropMissionImage(event) {
+    event.preventDefault();
+    const gallery = document.getElementById('mission-gallery');
+    if (draggedItem && gallery.contains(event.target)) {
+      gallery.insertBefore(draggedItem, event.target.closest('.image-container') || null);
+    }
+  }
+
+  // Scroll Arrows
+  document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+    arrow.addEventListener('click', () => {
+      const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
+      const direction = arrow.classList.contains('left') ? -1 : 1;
+      grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
     });
+  });
 
-    logoutButton.addEventListener('click', () => {
-      loginContainer.classList.remove('logged-in');
-      loginForm.style.display = 'flex';
-      logoutButton.style.display = 'none';
-      document.body.classList.remove('logged-in');
-    });
+// Countdown Timer
+function updateCountdown() {
+  const now = new Date().getTime();
+  let targetDate = localStorage.getItem('countdownDate');
 
-    // Modal Functions
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = 'flex';
-    }
+// Default target date: January 29, 2026, 12:00 PM NZST
+  if (!targetDate) {
+    targetDate = new Date('2026-01-29T12:00:00+13:00').toISOString();
+    localStorage.setItem('countdownDate', targetDate);
+  }
 
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-    }
+const targetTime = new Date(targetDate).getTime();
+  const distance = targetTime - now;
 
-    // Header Modal
-    function openHeaderModal() {
-      document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
-      document.getElementById('header-description').value = document.querySelector('.header p').textContent;
-      openModal('header-modal');
-    }
+if (distance <= 0) {
+    document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
+    clearInterval(countdownInterval);
+    return;
+  }
 
-    function saveHeaderDetails() {
-      document.querySelector('.header h1').textContent = document.getElementById('header-title').value;
-      document.querySelector('.header p').textContent = document.getElementById('header-description').value;
-      closeModal('header-modal');
-    }
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Event Modal
-    function openEditEventModal(button) {
-      const event = button.parentElement;
-      document.getElementById('event-title').value = event.querySelector('h3').textContent;
-      document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
-      document.getElementById('event-date').value = event.querySelector('.event-date').textContent.replace('Date: ', '');
-      document.getElementById('event-time').value = event.querySelector('.event-time').textContent.replace('Time: ', '');
-      document.getElementById('event-end').value = event.querySelector('.event-end').textContent.replace('End: ', '');
-      document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
-      openModal('event-modal');
-    }
+// Update DOM with padded numbers
+  try {
+    document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
+    document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<br><small>Hours</small>';
+    document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<br><small>Minutes</small>';
+    document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<br><small>Seconds</small>';
+  } catch (error) {
+    console.error('Error updating countdown DOM:', error);
+  }
+}
 
-    function saveEventDetails() {
-      closeModal('event-modal');
-    }
+function updateCountdownDate() {
+  const input = document.getElementById('countdown-input').value;
+if (input && !isNaN(new Date(input).getTime())) {
+  const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+  const isoDate = new Date(nzstDate).toISOString();
+} else {
+  alert('Please enter a valid date and time.');
+}
+}
 
-    // Delete Event
-    function deleteEvent(button) {
-      button.parentElement.remove();
-    }
+// Updated saveCountdownDetails
+function saveCountdownDetails() {
+  const input = document.getElementById('countdown-date').value;
+  const bgInput = document.getElementById('countdown-bg');
+  if (input && !isNaN(new Date(input).getTime())) {
+    const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+    const isoDate = new Date(nzstDate).toISOString();
+    localStorage.setItem('countdownDate', isoDate);
+    updateCountdown();
+  } else {
+    alert('Please enter a valid date and time.');
+  }
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const countdownSection = document.querySelector('.countdown-section');
+      countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
+      countdownSection.style.backgroundAttachment = 'fixed'; // Ensure parallax
+      localStorage.setItem('countdownBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('countdown-modal');
+}
 
-    // Drag and Drop
-    let draggedItem = null;
+// Load background image and initialize countdown
+document.addEventListener('DOMContentLoaded', () => {
+  const savedBg = localStorage.getItem('countdownBg');
+  if (savedBg) {
+    const countdownSection = document.querySelector('.countdown-section');
+    countdownSection.style.background = `url('${savedBg}') center/cover no-repeat`;
+    countdownSection.style.backgroundAttachment = 'fixed'; // Ensure parallax on load
+  }
+  updateCountdown(); // Initial call
+});
 
-    function drag(event) {
-      draggedItem = event.target;
-      event.dataTransfer.setData('text/plain', null);
-    }
+// Run countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
 
-    function allowDrop(event) {
-      event.preventDefault();
-    }
+// Parallax Scroll Effect
+window.addEventListener('scroll', function () {
+  const parallaxSections = document.querySelectorAll('.parallax-section');
+  parallaxSections.forEach(section => {
+    let scrollPosition = window.pageYOffset;
+    let offset = section.getBoundingClientRect().top + window.scrollY;
+    let relativeScroll = scrollPosition - offset;
+    section.style.backgroundPositionY = -(relativeScroll * 0.3) + 'px'; // Adjust parallax speed
+  });
+});
 
-    function dropEvents(event) {
-      event.preventDefault();
-      const grid = event.target.closest('.events-grid');
-      if (draggedItem && grid && grid.contains(event.target)) {
-        grid.insertBefore(draggedItem, event.target.closest('.event') || null);
-      }
-    }
+  // EMO PLAYLIST PLAYER Toggle
+function togglePlayer() {
+  const playerWrapper = document.getElementById('player-wrapper');
+  playerWrapper.classList.toggle('active');
+}
 
-    // Playlist Player Toggle
-    function togglePlayer() {
-      const playerWrapper = document.getElementById('player-wrapper');
-      playerWrapper.classList.toggle('active');
-    }
+function toggleNewsletter() {
+  const newsletterPopup = document.getElementById('newsletter');
+  const newsletterWrapper = document.getElementById('newsletter-wrapper');
+  newsletterPopup.classList.toggle('active');
+  newsletterWrapper.classList.toggle('active');
+}
 
-    // Section Editing
-    function saveEventsDetails() {
-      const title = document.getElementById('events-title').value;
-      const description = document.getElementById('events-description').value;
-      document.querySelector('#upcoming-events h1').textContent = title;
-      document.querySelector('#upcoming-events p').textContent = description;
-      document.querySelector('#past-events h1').textContent = title.replace('Upcoming', 'Past');
-      document.querySelector('#past-events p').textContent = description;
-      closeModal('events-modal');
-    }
+function submitNewsletter() {
+  alert('Subscribed successfully!');
+}
 
-    function saveSubmitDetails() {
-      document.querySelector('#submit h2').textContent = document.getElementById('submit-title').value;
-      document.querySelector('#submit p').textContent = document.getElementById('submit-description').value;
-      closeModal('submit-modal');
-    }
+  function saveHeaderDetails() {
+    document.querySelector('.header h1').textContent = document.getElementById('header-title').value;
+    closeModal('header-modal');
+  }
 
-    // Event Filter
-    document.getElementById('event-filter').addEventListener('change', function() {
-      const category = this.value;
-      const events = document.querySelectorAll('.event');
-      events.forEach(event => {
-        if (category === 'all' || event.getAttribute('data-category') === category) {
-          event.style.display = 'flex';
-        } else {
-          event.style.display = 'none';
-        }
-      });
-    });
-  </script>
+  function openGalleryImageModal(button, section) {
+    const imageContainer = button.parentElement;
+    document.getElementById('gallery-image-alt').value = imageContainer.querySelector('img').alt;
+    openModal('gallery-image-modal');
+  }
+
+  function saveGalleryImageDetails() {
+    closeModal('gallery-image-modal');
+  }
+
+// Save About Section Details
+function saveAboutDetails() {
+  document.querySelector('.about-section h1').textContent = document.getElementById('about-title').value;
+  document.querySelector('.about-section .about-description p').textContent = document.getElementById('about-description').value;
+  const bgInput = document.getElementById('about-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const aboutContainer = document.querySelector('.about-container');
+      aboutContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('aboutBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('about-modal');
+}
+
+// Save Members Section Details
+function saveMembersDetails() {
+  document.querySelector('#members h1').textContent = document.getElementById('members-title').value;
+  document.querySelector('#members p').textContent = document.getElementById('members-description').value;
+  const bgInput = document.getElementById('members-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const membersContainer = document.querySelector('.members-container');
+      membersContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('membersBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('members-modal');
+}
+
+// Save Mission Section Details
+function saveMissionDetails() {
+  document.querySelector('#mission h1').textContent = document.getElementById('mission-title').value;
+  document.querySelector('#mission p').textContent = document.getElementById('mission-description').value;
+  const bgInput = document.getElementById('mission-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const missionContainer = document.querySelector('.mission-container');
+      missionContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('missionBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('mission-modal');
+}
+
+// Save History Section Details
+function saveHistoryDetails() {
+  document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
+  document.querySelector('.history-section p').textContent = document.getElementById('history-description').value;
+  const bgInput = document.getElementById('history-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const historyContainer = document.querySelector('.history-container');
+      historyContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('historyBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('history-modal');
+}
+
+// Save Setup Section Details
+function saveSetupDetails() {
+  document.querySelector('.setup-section h1').textContent = document.getElementById('setup-title').value;
+  document.querySelector('.setup-section p').textContent = document.getElementById('setup-description').value;
+  const bgInput = document.getElementById('setup-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const setupContainer = document.querySelector('.setup-container');
+      setupContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('setupBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('setup-modal');
+}
+
+// Save Countdown Section Details
+function saveCountdownDetails() {
+  const input = document.getElementById('countdown-date').value;
+  const bgInput = document.getElementById('countdown-bg');
+  if (input && !isNaN(new Date(input).getTime())) {
+    const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+    const isoDate = new Date(nzstDate).toISOString();
+    localStorage.setItem('countdownDate', isoDate);
+    updateCountdown();
+  } else {
+    alert('Please enter a valid date and time.');
+  }
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const countdownContainer = document.querySelector('.countdown-container');
+      countdownContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('countdownBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('countdown-modal');
+}
+
+// Load saved backgrounds on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedAboutBg = localStorage.getItem('aboutBg');
+  if (savedAboutBg) {
+    document.querySelector('.about-container').style.backgroundImage = `url('${savedAboutBg}')`;
+  }
+
+  const savedMembersBg = localStorage.getItem('membersBg');
+  if (savedMembersBg) {
+    document.querySelector('.members-container').style.backgroundImage = `url('${savedMembersBg}')`;
+  }
+
+  const savedMissionBg = localStorage.getItem('missionBg');
+  if (savedMissionBg) {
+    document.querySelector('.mission-container').style.backgroundImage = `url('${savedMissionBg}')`;
+  }
+
+  const savedHistoryBg = localStorage.getItem('historyBg');
+  if (savedHistoryBg) {
+    document.querySelector('.history-container').style.backgroundImage = `url('${savedHistoryBg}')`;
+  }
+
+  const savedSetupBg = localStorage.getItem('setupBg');
+  if (savedSetupBg) {
+    document.querySelector('.setup-container').style.backgroundImage = `url('${savedSetupBg}')`;
+  }
+
+  const savedCountdownBg = localStorage.getItem('countdownBg');
+  if (savedCountdownBg) {
+    document.querySelector('.countdown-container').style.backgroundImage = `url('${savedCountdownBg}')`;
+  }
+
+  updateCountdown(); // Initialize countdown
+});
+
+  function saveHistoryDetails() {
+    document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
+    closeModal('history-modal');
+  }
+  
+</script>
 </body>
 </html>
