@@ -803,21 +803,55 @@ body.night-mode .dropdown-menu {
       60% { transform: translate(-50%, -5px); }
     }
 
-    .section {
-      padding: 80px 20px;
-      text-align: center;
-      background: url('images/dusty-texture.png') center/cover;
-      border-top: 1px solid #e67e22;
-      border-bottom: 1px solid #e67e22;
-    }
+.section {
+  padding: 80px 20px;
+  text-align: center;
+  background: none; /* Remove background */
+  border-top: 1px solid #e67e22;
+  border-bottom: 1px solid #e67e22;
+}
 
-    .section:nth-of-type(odd) {
-      background-color: rgba(244, 228, 188, 0.8);
-    }
+.section:nth-of-type(odd) {
+  background: none; /* Remove alternating background */
+}
 
-    .section:nth-of-type(even) {
-      background-color: rgba(217, 185, 155, 0.8);
-    }
+.section:nth-of-type(even) {
+  background: none; /* Remove alternating background */
+}
+
+.about-section {
+  padding: 60px 20px;
+  text-align: left;
+  background: none; /* Remove background */
+}
+
+.countdown-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none; /* Remove background */
+  border: none;
+}
+
+.setup-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none; /* Remove background */
+}
+
+.history-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none; /* Remove background */
+}
+
+body.night-mode .section:nth-of-type(odd),
+body.night-mode .section:nth-of-type(even) {
+  background: none; /* Remove alternating backgrounds in night mode */
+}
+
+body.night-mode .countdown-section {
+  background: none; /* Remove background in night mode */
+}
 
     .section h1, .section h2 {
       font-family: 'Bebas Neue', cursive;
@@ -2629,8 +2663,20 @@ Copy
     <h3>Edit About Section</h3>
     <input type="text" id="about-title" placeholder="Section Title" required aria-label="Section Title">
     <textarea id="about-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="about-bg" accept="image/*" aria-label="About Background Image">
     <input type="file" id="about-image" accept="image/*" aria-label="About Image">
     <button onclick="saveAboutDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="members-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('members-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Members Section</h3>
+    <input type="text" id="members-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="members-description" placeholder="Section Description" aria-label="Section Description"></textarea>
+    <input type="file" id="members-bg" accept="image/*" aria-label="Members Background Image">
+    <button onclick="saveMembersDetails()">Save</button>
   </div>
 </div>
 
@@ -2640,8 +2686,50 @@ Copy
     <h3>Edit Mission Section</h3>
     <input type="text" id="mission-title" placeholder="Section Title" required aria-label="Section Title">
     <textarea id="mission-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="mission-bg" accept="image/*" aria-label="Mission Background Image">
     <input type="file" id="mission-image" accept="image/*" aria-label="Mission Image">
     <button onclick="saveMissionDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="history-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('history-modal')" aria-label="Close modal">×</button>
+    <h3>Edit History Section</h3>
+    <input type="text" id="history-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="history-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="history-bg" accept="image/*" aria-label="History Background Image">
+    <input type="file" id="history-image1" accept="image/*" aria-label="History Image 1">
+    <input type="file" id="history-image2" accept="image/*" aria-label="History Image 2">
+    <input type="file" id="history-image3" accept="image/*" aria-label="History Image 3">
+    <button onclick="saveHistoryDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="setup-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('setup-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Setup Section</h3>
+    <input type="text" id="setup-title" placeholder="Section Title" required aria-label="Section Title">
+    <textarea id="setup-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+    <input type="file" id="setup-bg" accept="image/*" aria-label="Setup Background Image">
+    <input type="file" id="setup-image1" accept="image/*" aria-label="Setup Image 1">
+    <input type="file" id="setup-image2" accept="image/*" aria-label="Setup Image 2">
+    <input type="file" id="setup-image3" accept="image/*" aria-label="Setup Image 3">
+    <input type="file" id="setup-image4" accept="image/*" aria-label="Setup Image 4">
+    <input type="file" id="setup-image5" accept="image/*" aria-label="Setup Image 5">
+    <input type="file" id="setup-image6" accept="image/*" aria-label="Setup Image 6">
+    <button onclick="saveSetupDetails()">Save</button>
+  </div>
+</div>
+
+<div class="modal" id="countdown-modal">
+  <div class="modal-content">
+    <button class="close-button" onclick="closeModal('countdown-modal')" aria-label="Close modal">×</button>
+    <h3>Edit Countdown</h3>
+    <input type="datetime-local" id="countdown-date" required aria-label="Countdown Date and Time">
+    <input type="file" id="countdown-bg" accept="image/*" aria-label="Countdown Background Image">
+    <button onclick="saveCountdownDetails()">Save</button>
   </div>
 </div>
 
@@ -2764,27 +2852,160 @@ Copy
 </div>
 
 <style>
+/* About Container */
 .about-container {
   max-width: 1200px;
-  margin: 0 auto;
-  background-image: url('images/background.jpg'); /* Replace with your image path */
-  background-size: cover; /* Ensures the image covers the container */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents image tiling */
-  border: 2px solid #8b0000; /* Retains the red border */
-  border-radius: 10px;
-  padding: 40px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-}
-
-/* Night mode styling */
-body.night-mode .about-container {
-  background-image: url('images/background-night.jpg'); /* Optional: different image for night mode */
+  margin: 40px auto;
+  background-image: url('images/backgrounds/about-bg.jpg'); /* Default background */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-color: #f39c12; /* Retains the orange-red border from night mode */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Slightly stronger shadow for contrast */
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .about-container {
+  background-image: url('images/backgrounds/about-bg-night.jpg'); /* Night mode background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Members Container */
+.members-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/backgrounds/members-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .members-container {
+  background-image: url('images/backgrounds/members-bg-night.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Mission Container */
+.mission-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/backgrounds/mission-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .mission-container {
+  background-image: url('images/backgrounds/mission-bg-night.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* History Container */
+.history-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/backgrounds/history-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .history-container {
+  background-image: url('images/backgrounds/history-bg-night.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Countdown Container */
+.countdown-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/backgrounds/countdown-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .countdown-container {
+  background-image: url('images/backgrounds/countdown-bg-night.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+}
+
+/* Setup Container */
+.setup-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/backgrounds/setup-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #ff4b2b;
+  border-radius: 10px;
+  padding: 40px 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.night-mode .setup-container {
+  background-image: url('images/backgrounds/setup-bg-night.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-color: #f39c12;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
 .about-section {
@@ -3697,49 +3918,149 @@ function submitNewsletter() {
     closeModal('gallery-image-modal');
   }
 
-  function saveAboutDetails() {
-    document.querySelector('.about-section h1').textContent = document.getElementById('about-title').value;
-    document.querySelector('.about-section p').textContent = document.getElementById('about-description').value;
-    closeModal('about-modal');
+// Save About Section Details
+function saveAboutDetails() {
+  document.querySelector('.about-section h1').textContent = document.getElementById('about-title').value;
+  document.querySelector('.about-section .about-description p').textContent = document.getElementById('about-description').value;
+  const bgInput = document.getElementById('about-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const aboutContainer = document.querySelector('.about-container');
+      aboutContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('aboutBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
   }
-
-  function saveMissionDetails() {
-    document.querySelector('#mission h1').textContent = document.getElementById('mission-title').value;
-    document.querySelector('#mission p').textContent = document.getElementById('mission-description').value;
-    closeModal('mission-modal');
-  }
-
-  function saveEventsDetails() {
-    document.querySelector('#events h1').textContent = document.getElementById('events-title').value;
-    document.querySelector('#events p').textContent = document.getElementById('events-description').value;
-    closeModal('events-modal');
-  }
-
-function saveNewsletterDetails() {
-  document.querySelector('#newsletter h3').textContent = document.getElementById('newsletter-title').value;
-  document.querySelector('#newsletter p').textContent = document.getElementById('newsletter-description').value;
-  closeModal('newsletter-modal');
+  closeModal('about-modal');
 }
 
-  function saveJoinDetails() {
-    document.querySelector('#join h1').textContent = document.getElementById('join-title').value;
-    document.querySelector('#join p').textContent = document.getElementById('join-description').value;
-    closeModal('join-modal');
+// Save Members Section Details
+function saveMembersDetails() {
+  document.querySelector('#members h1').textContent = document.getElementById('members-title').value;
+  document.querySelector('#members p').textContent = document.getElementById('members-description').value;
+  const bgInput = document.getElementById('members-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const membersContainer = document.querySelector('.members-container');
+      membersContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('membersBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('members-modal');
+}
+
+// Save Mission Section Details
+function saveMissionDetails() {
+  document.querySelector('#mission h1').textContent = document.getElementById('mission-title').value;
+  document.querySelector('#mission p').textContent = document.getElementById('mission-description').value;
+  const bgInput = document.getElementById('mission-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const missionContainer = document.querySelector('.mission-container');
+      missionContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('missionBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('mission-modal');
+}
+
+// Save History Section Details
+function saveHistoryDetails() {
+  document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
+  document.querySelector('.history-section p').textContent = document.getElementById('history-description').value;
+  const bgInput = document.getElementById('history-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const historyContainer = document.querySelector('.history-container');
+      historyContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('historyBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('history-modal');
+}
+
+// Save Setup Section Details
+function saveSetupDetails() {
+  document.querySelector('.setup-section h1').textContent = document.getElementById('setup-title').value;
+  document.querySelector('.setup-section p').textContent = document.getElementById('setup-description').value;
+  const bgInput = document.getElementById('setup-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const setupContainer = document.querySelector('.setup-container');
+      setupContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('setupBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('setup-modal');
+}
+
+// Save Countdown Section Details
+function saveCountdownDetails() {
+  const input = document.getElementById('countdown-date').value;
+  const bgInput = document.getElementById('countdown-bg');
+  if (input && !isNaN(new Date(input).getTime())) {
+    const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+    const isoDate = new Date(nzstDate).toISOString();
+    localStorage.setItem('countdownDate', isoDate);
+    updateCountdown();
+  } else {
+    alert('Please enter a valid date and time.');
+  }
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const countdownContainer = document.querySelector('.countdown-container');
+      countdownContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('countdownBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('countdown-modal');
+}
+
+// Load saved backgrounds on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedAboutBg = localStorage.getItem('aboutBg');
+  if (savedAboutBg) {
+    document.querySelector('.about-container').style.backgroundImage = `url('${savedAboutBg}')`;
   }
 
-  function saveSubmitDetails() {
-    document.querySelector('#submit h1').textContent = document.getElementById('submit-title').value;
-    document.querySelector('#submit p').textContent = document.getElementById('submit-description').value;
-    closeModal('submit-modal');
+  const savedMembersBg = localStorage.getItem('membersBg');
+  if (savedMembersBg) {
+    document.querySelector('.members-container').style.backgroundImage = `url('${savedMembersBg}')`;
   }
 
-  function saveCountdownDetails() {
-    const input = document.getElementById('countdown-date').value;
-    if (input) {
-      localStorage.setItem('countdownDate', input);
-    }
-    closeModal('countdown-modal');
+  const savedMissionBg = localStorage.getItem('missionBg');
+  if (savedMissionBg) {
+    document.querySelector('.mission-container').style.backgroundImage = `url('${savedMissionBg}')`;
   }
+
+  const savedHistoryBg = localStorage.getItem('historyBg');
+  if (savedHistoryBg) {
+    document.querySelector('.history-container').style.backgroundImage = `url('${savedHistoryBg}')`;
+  }
+
+  const savedSetupBg = localStorage.getItem('setupBg');
+  if (savedSetupBg) {
+    document.querySelector('.setup-container').style.backgroundImage = `url('${savedSetupBg}')`;
+  }
+
+  const savedCountdownBg = localStorage.getItem('countdownBg');
+  if (savedCountdownBg) {
+    document.querySelector('.countdown-container').style.backgroundImage = `url('${savedCountdownBg}')`;
+  }
+
+  updateCountdown(); // Initialize countdown
+});
 
   function saveHistoryDetails() {
     document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
