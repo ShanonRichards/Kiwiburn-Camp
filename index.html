@@ -1279,7 +1279,54 @@ body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
   }
 }
 
+/* Song Player */
+/* Song Player */
+.song-player {
+  position: fixed;
+  bottom: 100px; /* Moved to avoid overlap with sidebar-widgets */
+  right: 20px;
+  z-index: 1000;
+}
 
+/* Song Player Button */
+.toggle-song-player {
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  border: 2px solid var(--emo-accent);
+  border-radius: 8px; /* Changed from 50px to match other buttons */
+  padding: 10px 15px;
+  font-family: 'Special Elite', cursive; /* Consistent with playlist button */
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  text-transform: uppercase;
+  width: 200px; /* Increased to match playlist button */
+  justify-content: center;
+}
+
+.toggle-song-player:hover {
+  background-color: rgba(230, 126, 34, 0.3);
+  background-blend-mode: overlay;
+  box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
+  transform: scale(1.05);
+}
+
+body.night-mode .toggle-song-player {
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+  border-color: var(--emo-accent);
+  color: #ffffff;
+}
+
+body.night-mode .toggle-song-player:hover {
+  background-color: rgba(243, 156, 18, 0.3);
+  background-blend-mode: overlay;
+  box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
+}
 
 .toggle-image {
   width: 25px; /* Changed from 30px */
@@ -1287,6 +1334,56 @@ body.night-mode .toggle-player:hover, body.night-mode .toggle-newsletter:hover {
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--emo-accent);
+}
+
+/* Song Player Wrapper */
+.song-player-wrapper {
+  width: 300px; /* Increased to match player-wrapper */
+  background: rgba(44, 29, 15, 0.95);
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  color: #ffffff;
+  padding: 10px;
+}
+/* Audio Element Styling */
+#song-audio-player {
+  width: 100%;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 768px) {
+  .song-player {
+    bottom: 80px; /* Adjusted for smaller screens */
+    right: 15px;
+  }
+  .toggle-song-player {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    width: 130px;
+  }
+  .song-player-wrapper {
+    width: 280px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .song-player {
+    bottom: 70px;
+    right: 10px;
+  }
+  .toggle-song-player {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+    width: 160px;
+  }
+  .song-player-wrapper {
+    width: 260px;
+  }
 }
 
 /* Responsive Adjustments */
@@ -3371,9 +3468,22 @@ function saveSetupDetails() {
       </div>
     </div>
     <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+
+<div class="song-player">
+  <button class="toggle-song-player" onclick="toggleSongPlayer()" aria-label="Toggle Song Player">
+    <img src="images/Spotify-Background/Spotify_Playlist.gif" alt="Song Player Toggle Image" class="toggle-image">
+    Play Song
+  </button>
+  <div class="song-player-wrapper" id="song-player-wrapper">
+    <audio id="song-audio-player" controls aria-label="Song Audio Player">
+      <!-- Replace with a valid audio file path -->
+      <source src="audio/sample-song.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
   </div>
 </div>
-
+</div>
+</div>
 <div class="countdown-container">
   <section class="section countdown-section" id="countdown">
     <h2>Kiwiburn 2026 Countdown</h2>
@@ -3670,16 +3780,37 @@ function togglePlayer() {
   const playerWrapper = document.getElementById('player-wrapper');
   playerWrapper.classList.toggle('active');
 }
-
 function toggleNewsletter() {
-  const newsletterPopup = document.getElementById('newsletter');
   const newsletterWrapper = document.getElementById('newsletter-wrapper');
-  newsletterPopup.classList.toggle('active');
   newsletterWrapper.classList.toggle('active');
 }
-
 function submitNewsletter() {
-  alert('Subscribed successfully!');
+  const email = document.getElementById('newsletter-email').value;
+  if (email) {
+    alert('Thank you for subscribing!');
+  } else {
+    alert('Please enter a valid email.');
+  }
+}
+function toggleSongPlayer() {
+  const songPlayerWrapper = document.getElementById('song-player-wrapper');
+  const audio = document.getElementById('song-audio-player');
+  
+  if (!audio.src || audio.src.endsWith('audio/song.mp3')) {
+    console.warn('Audio source is missing or invalid. Please provide a valid audio file.');
+    alert('Error: Audio file not found. Please check the audio source.');
+    return;
+  }
+
+  songPlayerWrapper.classList.toggle('active');
+  if (songPlayerWrapper.classList.contains('active')) {
+    audio.play().catch(error => {
+      console.error('Error playing audio:', error);
+      alert('Unable to play audio. Please check the audio file or browser permissions.');
+    });
+  } else {
+    audio.pause();
+  }
 }
 
   function saveHeaderDetails() {
