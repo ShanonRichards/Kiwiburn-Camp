@@ -161,7 +161,7 @@ body.night-mode .about-header {
 }
 
 body.night-mode .about-header h1 {
-  color: #494949;
+  color: #f8e1b4;
 }
 
 body.night-mode .counter-sign {
@@ -709,7 +709,7 @@ body.night-mode .dropdown-menu {
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #494949;
+      color: #f8e1b4;
       position: relative;
       text-shadow: 0 0 10px var(--primary);
     }
@@ -721,18 +721,35 @@ body.night-mode .dropdown-menu {
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
   margin-top: 20px; /* Moves the logo downward from the nav bar */
 }
-    .header h1 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 3em;
-      max-width: 90%;
-      letter-spacing: 2px;
-      margin-bottom: 0px;
-    }
+.header h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3em;
+  max-width: 90%;
+  letter-spacing: 2px;
+  margin-bottom: 0px;
+  color: #494949; /* Soft purple for "Color and Glow" */
+  text-shadow: 0 0 10px #ffff;
+  animation: glow-h1 3s ease-in-out infinite alternate; /* Dynamic glow */
+}
 
-    .header p {
-      font-size: 1.5em;
-      margin-bottom: 20px;
-    }
+@keyframes glow-p {
+  from { 
+    text-shadow: 0 0 10px #ffff, 0 0 20px #ffff, 0 0 30px #ffff;
+    box-shadow: 0 0 5px #ffff;
+  }
+  to { 
+    text-shadow: 0 0 20px #ffff, 0 0 30px #ffff, 0 0 40px #ffff;
+    box-shadow: 0 0 15px #ffff;
+  }
+}
+
+.header p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #494949;
+  text-shadow: 0 0 10px #ffff; /* Blue glow */
+  animation: glow-p 3s ease-in-out infinite alternate; /* Dynamic glow */
+}
 
     .header-ctas {
       display: flex;
@@ -746,7 +763,6 @@ body.night-mode .dropdown-menu {
       text-decoration: none;
       font-family: 'Bebas Neue', cursive;
       font-size: 1.2em;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     .apply-button {
@@ -768,11 +784,11 @@ body.night-mode .dropdown-menu {
 
     @keyframes glow {
       from { 
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+        text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400;
         box-shadow: 0 0 5px var(--primary); 
       }
       to { 
-        text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff;
+        text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22;
         box-shadow: 0 0 15px var(--primary); 
       }
     }
@@ -818,7 +834,7 @@ body.night-mode .dropdown-menu {
       font-family: 'Bebas Neue', cursive;
       font-size: 3em;
       margin-bottom: 20px;
-      color: #494949;
+      color: #2b1b0f;
       letter-spacing: 1px;
     }
 
@@ -2372,7 +2388,7 @@ Copy
       }
 
     @media only screen and (max-width: 480px) {
-      
+      .header h1 {
         font-size: 2.2em;
       }
 
