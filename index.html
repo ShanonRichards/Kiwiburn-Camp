@@ -3476,7 +3476,7 @@ function saveSetupDetails() {
   </button>
   <div class="song-player-wrapper" id="song-player-wrapper">
     <audio id="song-audio-player" controls aria-label="Song Audio Player">
-      <source src="Music/A Day To Remember - All My Friends (Official Audio).mp3" type="audio/mpeg">
+      <source src="Music/A%20Day%20To%20Remember%20-%20All%20My%20Friends%20(Official%20Audio).mp3" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
   </div>
@@ -3795,13 +3795,13 @@ function toggleSongPlayer() {
   const songPlayerWrapper = document.getElementById('song-player-wrapper');
   const audio = document.getElementById('song-audio-player');
   
-  if (!audio.src || audio.src.endsWith('audio/song.mp3')) {
-    console.warn('Audio source is missing or invalid. Please provide a valid audio file.');
+  if (!audio.src) {
+    console.warn('Audio source is missing. Please provide a valid audio file.');
     alert('Error: Audio file not found. Please check the audio source.');
     return;
   }
 
-songPlayerWrapper.classList.toggle('active');
+  songPlayerWrapper.classList.toggle('active');
   if (songPlayerWrapper.classList.contains('active')) {
     audio.play().catch(error => {
       console.error('Error playing audio:', error);
