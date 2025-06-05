@@ -52,6 +52,8 @@
             height: 50px;
             cursor: move;
             transition: transform 0.3s;
+            user-drag: none; /* Prevent default browser drag behavior */
+            -webkit-user-drag: none;
         }
         .icon:hover {
             transform: scale(1.2);
@@ -97,9 +99,9 @@
             <canvas id="imageCanvas" width="600" height="400"></canvas>
         </div>
         <div class="icon-tray">
-            <img src="images/Logo/Cosmic_Graffiti_Logo.png" class="icon" alt="Star Icon" data-icon="star">
-            <img src="images/Logo/Cosmic_Graffiti_Logo.png" class="icon" alt="Lightning Icon" data-icon="lightning">
-            <img src="assets/images/skull.png" class="icon" alt="Skull Icon" data-icon="skull">
+            <img src="images/Logo/Cosmic_Rejex_Largerk.png class="icon" alt="Star Icon" data-icon="star" draggable="true">
+            <img src="images/Logo/Cosmic_Rejex_Largerk.png" class="icon" alt="Lightning Icon" data-icon="lightning" draggable="true">
+            <img src="assets/images/skull.png" class="icon" alt="Skull Icon" data-icon="skull" draggable="true">
         </div>
     </div>
 
@@ -120,6 +122,12 @@
         iconImages.lightning.src = 'assets/images/lightning.png';
         iconImages.skull.src = 'assets/images/skull.png';
 
+        // Check if images load successfully
+        Object.keys(iconImages).forEach(key => {
+            iconImages[key].onload = () => console.log(`${key} icon loaded successfully`);
+            iconImages[key].onerror = () => console.error(`${key} icon failed to load at ${iconImages[key].src}`);
+        });
+
         // Handle image upload
         imageUpload.addEventListener('change', (e) => {
             const file = e.target.files[0];
@@ -135,6 +143,7 @@
                         ctx.drawImage(uploadedImage, (canvas.width - imgWidth) / 2, (canvas.height - imgHeight) / 2, imgWidth, imgHeight);
                         redrawIcons();
                     };
+                    uploadedImage.onerror = () => console.error('Uploaded image failed to load');
                 };
                 reader.readAsDataURL(file);
             }
@@ -145,14 +154,17 @@
             icon.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('text/plain', e.target.dataset.icon);
                 e.target.classList.add('dragging');
+                console.log(`Dragging ${e.target.dataset.icon}`);
             });
             icon.addEventListener('dragend', (e) => {
                 e.target.classList.remove('dragging');
+                console.log(`Drag ended for ${e.target.dataset.icon}`);
             });
         });
 
         canvas.addEventListener('dragover', (e) => {
             e.preventDefault();
+            e.dataTransfer.dropEffect = 'copy'; // Indicate a copy operation
         });
 
         canvas.addEventListener('drop', (e) => {
@@ -161,8 +173,14 @@
             const rect = canvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            icons.push({ type: iconType, x, y });
-            redrawCanvas();
+            // Ensure drop is within canvas bounds
+            if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
+                icons.push({ type: iconType, x, y });
+                console.log(`Dropped ${iconType} at (${x}, ${y})`);
+                redrawCanvas();
+            } else {
+                console.warn('Drop outside canvas bounds');
+            }
         });
 
         // Redraw canvas with image and icons
@@ -180,8 +198,10 @@
         function redrawIcons() {
             icons.forEach(icon => {
                 const img = iconImages[icon.type];
-                if (img.complete) {
+                if (img.complete && img.naturalWidth !== 0) {
                     ctx.drawImage(img, icon.x - 25, icon.y - 25, 50, 50); // Center icon at drop point
+                } else {
+                    console.warn(`${icon.type} icon not loaded, skipping draw`);
                 }
             });
         }
