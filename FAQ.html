@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilich Code - Interactive Art Section</title>
+    <title>Ilich Code - Interactive Art Studio</title>
     <style>
         body {
             margin: 0;
@@ -11,6 +11,8 @@
             background-color: #000;
             color: #fff;
             overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
         }
         .ilich-section {
             padding: 50px;
@@ -27,7 +29,7 @@
             font-size: 1.2em;
             margin-bottom: 30px;
         }
-        .canvas-container {
+        .image-container {
             position: relative;
             width: 600px;
             height: 400px;
@@ -36,10 +38,13 @@
             background: #222;
             overflow: hidden;
         }
-        #imageCanvas {
-            display: block;
+        #mainImage {
             max-width: 100%;
             max-height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         .icon-tray {
             display: flex;
@@ -52,7 +57,7 @@
             height: 50px;
             cursor: move;
             transition: transform 0.3s;
-            user-drag: none; /* Prevent default browser drag behavior */
+            user-drag: none;
             -webkit-user-drag: none;
         }
         .icon:hover {
@@ -60,6 +65,12 @@
         }
         .icon.dragging {
             opacity: 0.7;
+        }
+        .dropped-asset {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            pointer-events: none; /* Prevent dropped assets from being draggable again */
         }
         .upload-btn {
             background: #ff0066;
@@ -79,7 +90,7 @@
             .ilich-section {
                 padding: 20px;
             }
-            .canvas-container {
+            .image-container {
                 width: 100%;
                 height: 300px;
             }
@@ -92,41 +103,23 @@
 <body>
     <div class="ilich-section">
         <h2>Ilich Code Art Studio</h2>
-        <p>Upload your photo and customize it with our punk-rave icons!</p>
+        <p>Upload a photo and customize it by dragging and dropping accessories like hats or beards!</p>
         <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-        <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">Upload Your Image</button>
-        <div class="canvas-container">
-            <canvas id="imageCanvas" width="600" height="400"></canvas>
+        <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">Upload Your Photo</button>
+        <div class="image-container">
+            <img id="mainImage" src="" alt="Uploaded Image" style="display: none;">
         </div>
         <div class="icon-tray">
-            <img src="images/Logo/Cosmic_Rejex_Largerk.png class="icon" alt="Star Icon" data-icon="star" draggable="true">
-            <img src="images/Logo/Cosmic_Rejex_Largerk.png" class="icon" alt="Lightning Icon" data-icon="lightning" draggable="true">
-            <img src="assets/images/skull.png" class="icon" alt="Skull Icon" data-icon="skull" draggable="true">
+            <img src="images/Logo/Sketch_Lighter.png" class="icon" alt="Hat Icon" data-asset="hat" draggable="true">
+            <img src="images/Logo/Sketch_Lighter.png" class="icon" alt="Beard Icon" data-asset="beard" draggable="true">
+            <img src="images/Logo/Sketch_Lighter.png" class="icon" alt="Glasses Icon" data-asset="glasses" draggable="true">
         </div>
     </div>
 
     <script>
-        const canvas = document.getElementById('imageCanvas');
-        const ctx = canvas.getContext('2d');
         const imageUpload = document.getElementById('imageUpload');
-        let uploadedImage = new Image();
-        let icons = [];
-
-        // Preload icon images
-        const iconImages = {
-            star: new Image(),
-            lightning: new Image(),
-            skull: new Image()
-        };
-        iconImages.star.src = 'assets/images/star.png';
-        iconImages.lightning.src = 'assets/images/lightning.png';
-        iconImages.skull.src = 'assets/images/skull.png';
-
-        // Check if images load successfully
-        Object.keys(iconImages).forEach(key => {
-            iconImages[key].onload = () => console.log(`${key} icon loaded successfully`);
-            iconImages[key].onerror = () => console.error(`${key} icon failed to load at ${iconImages[key].src}`);
-        });
+        const mainImage = document.getElementById('mainImage');
+        const body = document.body;
 
         // Handle image upload
         imageUpload.addEventListener('change', (e) => {
@@ -134,77 +127,52 @@
             if (file) {
                 const reader = new FileReader();
                 reader.onload = (event) => {
-                    uploadedImage.src = event.target.result;
-                    uploadedImage.onload = () => {
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                        const scale = Math.min(canvas.width / uploadedImage.width, canvas.height / uploadedImage.height);
-                        const imgWidth = uploadedImage.width * scale;
-                        const imgHeight = uploadedImage.height * scale;
-                        ctx.drawImage(uploadedImage, (canvas.width - imgWidth) / 2, (canvas.height - imgHeight) / 2, imgWidth, imgHeight);
-                        redrawIcons();
-                    };
-                    uploadedImage.onerror = () => console.error('Uploaded image failed to load');
+                    mainImage.src = event.target.result;
+                    mainImage.style.display = 'block';
+                    console.log('Image uploaded successfully');
                 };
+                reader.onerror = () => console.error('Failed to upload image');
                 reader.readAsDataURL(file);
             }
         });
 
-        // Handle drag and drop for icons
+        // Handle drag and drop for assets
         document.querySelectorAll('.icon').forEach(icon => {
             icon.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text/plain', e.target.dataset.icon);
+                e.dataTransfer.setData('text/plain', e.target.dataset.asset);
+                e.dataTransfer.setData('text/src', e.target.src);
                 e.target.classList.add('dragging');
-                console.log(`Dragging ${e.target.dataset.icon}`);
+                console.log(`Dragging ${e.target.dataset.asset}`);
             });
             icon.addEventListener('dragend', (e) => {
                 e.target.classList.remove('dragging');
-                console.log(`Drag ended for ${e.target.dataset.icon}`);
+                console.log(`Drag ended for ${e.target.dataset.asset}`);
             });
         });
 
-        canvas.addEventListener('dragover', (e) => {
+        // Allow dropping anywhere on the page
+        body.addEventListener('dragover', (e) => {
             e.preventDefault();
-            e.dataTransfer.dropEffect = 'copy'; // Indicate a copy operation
+            e.dataTransfer.dropEffect = 'copy';
         });
 
-        canvas.addEventListener('drop', (e) => {
+        body.addEventListener('drop', (e) => {
             e.preventDefault();
-            const iconType = e.dataTransfer.getData('text/plain');
-            const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            // Ensure drop is within canvas bounds
-            if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
-                icons.push({ type: iconType, x, y });
-                console.log(`Dropped ${iconType} at (${x}, ${y})`);
-                redrawCanvas();
-            } else {
-                console.warn('Drop outside canvas bounds');
-            }
+            const assetType = e.dataTransfer.getData('text/plain');
+            const assetSrc = e.dataTransfer.getData('text/src');
+            const x = e.clientX;
+            const y = e.clientY;
+
+            // Create a new image element for the dropped asset
+            const droppedAsset = document.createElement('img');
+            droppedAsset.src = assetSrc;
+            droppedAsset.className = 'dropped-asset';
+            droppedAsset.style.left = `${x - 25}px`; // Center the 50x50 image at drop point
+            droppedAsset.style.top = `${y - 25}px`;
+            droppedAsset.alt = `${assetType} Asset`;
+            body.appendChild(droppedAsset);
+            console.log(`Dropped ${assetType} at (${x}, ${y})`);
         });
-
-        // Redraw canvas with image and icons
-        function redrawCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (uploadedImage.src) {
-                const scale = Math.min(canvas.width / uploadedImage.width, canvas.height / uploadedImage.height);
-                const imgWidth = uploadedImage.width * scale;
-                const imgHeight = uploadedImage.height * scale;
-                ctx.drawImage(uploadedImage, (canvas.width - imgWidth) / 2, (canvas.height - imgHeight) / 2, imgWidth, imgHeight);
-            }
-            redrawIcons();
-        }
-
-        function redrawIcons() {
-            icons.forEach(icon => {
-                const img = iconImages[icon.type];
-                if (img.complete && img.naturalWidth !== 0) {
-                    ctx.drawImage(img, icon.x - 25, icon.y - 25, 50, 50); // Center icon at drop point
-                } else {
-                    console.warn(`${icon.type} icon not loaded, skipping draw`);
-                }
-            });
-        }
     </script>
 </body>
 </html>
