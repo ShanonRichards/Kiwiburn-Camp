@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main Page with Interactive Artboard</title>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Creepster&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -16,9 +16,15 @@
       text-align: center;
     }
     .main-content h1 {
-      color: #333;
-      font-size: 36px;
+      color: #8b0000; /* Blood red color for emo effect */
+      font-size: 48px;
       margin-bottom: 20px;
+      font-family: 'Creepster', cursive;
+      background-color: #000;
+      padding: 15px;
+      border-radius: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
     .artboard-container {
       width: 100%;
@@ -47,6 +53,10 @@
     }
     .t396__elem[data-elem-id="custom-uploaded-img"] {
       z-index: 0;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      pointer-events: none;
     }
     .tn-atom__img {
       width: 100%;
@@ -56,45 +66,51 @@
       object-fit: contain;
     }
     .t396__elem[data-elem-type="text"] .tn-atom {
-      color: #fd4e22;
+      color: #fff;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 26px;
       font-weight: 600;
       line-height: 1.55;
       letter-spacing: -1px;
       text-align: center;
-      background-color: #ffdd2b;
+      background-color: #000;
       border-radius: 0;
       padding: 10px;
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-      transform: rotate(350deg);
+      transform: rotate(0deg);
     }
     .t396__elem[data-elem-type="button"] .tn-atom {
-      color: #fd4e22;
+      color: #fff;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 26px;
       font-weight: 600;
       line-height: 1.55;
       letter-spacing: -1px;
       text-align: center;
-      background-color: #ffdd2b;
+      background-color: #000;
       border-radius: 0;
       padding: 15px;
       display: block;
       text-decoration: none;
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-      transform: rotate(31deg);
+      transform: rotate(0deg);
       cursor: pointer;
     }
-    .t396__elem[data-elem-type="upload"] input,
-    .t396__elem[data-elem-type="slider"] .ui-slider {
-      color: #fd4e22;
+    .t396__elem[data-elem-type="upload"] input {
+      color: #fff;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 16px;
-      background-color: #ffdd2b;
+      background-color: #000;
       border: none;
       padding: 10px;
       cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .t396__elem[data-elem-type="slider"] .ui-slider {
+      background-color: #ffdd2b;
+      border: none;
+      padding: 10px;
       width: 100%;
       box-sizing: border-box;
     }
@@ -103,12 +119,19 @@
       border: 2px solid #fff;
       cursor: pointer;
     }
+    .t396__elem[data-elem-type="slider"] {
+      background-color: #fff;
+      border: 2px solid #000;
+      border-radius: 4px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
     .t396__elem[data-elem-type="text"] .tn-atom:hover,
     .t396__elem[data-elem-type="button"] .tn-atom:hover,
     .t396__elem[data-elem-type="upload"] input:hover,
     .t396__elem[data-elem-type="slider"] .ui-slider:hover {
-      background-color: #000000;
-      color: #ffffff;
+      background-color: #333;
+      color: #fff;
     }
     .ui-draggable-dragging {
       transform: scale(1);
@@ -116,6 +139,19 @@
     .uploaded-image {
       display: block;
       object-fit: contain;
+    }
+    .slider-label {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      background-color: #000;
+      padding: 5px 10px;
+      border-radius: 4px;
     }
     @media screen and (min-width: 1440px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
@@ -136,7 +172,7 @@
       .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 15%; width: 160px; }
       .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 35%; width: 220px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 200px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 520px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 1439px) {
@@ -158,7 +194,7 @@
       .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 200px; width: 160px; }
       .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 400px; width: 220px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 200px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 470px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 1199px) {
@@ -180,7 +216,7 @@
       .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
       .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 200px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 420px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 959px) {
@@ -202,9 +238,9 @@
       .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 100px; width: 100px; }
       .t396__elem[data-elem-id="custom-button1"] { top: 420px; left: 200px; width: 150px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
-      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(0deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 200px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 370px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 639px) {
@@ -226,9 +262,9 @@
       .t396__elem[data-elem-id="custom-text2"] { top: 340px; left: 80px; width: 90px; }
       .t396__elem[data-elem-id="custom-button1"] { top: 380px; left: 150px; width: 120px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
-      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(0deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 200px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 320px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 479px) {
@@ -250,10 +286,9 @@
       .t396__elem[data-elem-id="custom-text2"] { top: 300px; left: 50px; width: 70px; }
       .t396__elem[data-elem-id="custom-button1"] { top: 340px; left: 100px; width: 100px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
-      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; }
-      .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; transform: rotate(0deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 200px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 270px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 100%) {
@@ -265,7 +300,7 @@
         visibility: visible !important;
         z-index: 1 !important;
       }
-      .t396__elem[data-error-id="custom-uploaded-img"] {
+      .t396__elem[data-elem-id="custom-uploaded-img"] {
         z-index: 0 !important;
       }
     }
@@ -280,14 +315,14 @@
         <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="hidden" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
           <div class="t396__carrier"></div>
           <div class="t396__filter"></div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="10" data-field-left-value="10" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-top-units-value="px" data-field-leftunits-value="px" data-field-top-res-320-value="10" data-field-left-res-320-value="10" data-field-top-res-480-value="10" data-field-left-res-480-value="10" data-field-top-res-640-value="10" data-field-left-res-640-value="10" data-field-top-res-960-value="10" data-field-left-res-960-value="10" data-field-top-res-1200-value="10" data-field-left-res-1200-value="10">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="10" data-field-left-value="10" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-top-res-320-value="10" data-field-left-res-320-value="10" data-field-top-res-480-value="10" data-field-left-res-480-value="10" data-field-top-res-640-value="10" data-field-left-res-640-value="10" data-field-top-res-960-value="10" data-field-left-res-960-value="10" data-field-top-res-1200-value="10" data-field-left-res-1200-value="10">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Hair_element (1).png" alt="Custom Image 1" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Hair_Element (1).png" alt="Custom Image 1" />
             </div>
           </div>
           <div class="t396__elem tn-elem drag" data-elem-id="custom-img2" data-elem-type="image" data-field-top-value="10" data-field-left-value="95%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="10" data-field-left-res-320-value="95%" data-field-top-res-480-value="10" data-field-left-res-480-value="95%" data-field-top-res-640-value="10" data-field-left-res-640-value="95%" data-field-top-res-960-value="10" data-field-left-res-960-value="95%" data-field-top-res-1200-value="10" data-field-left-res-1200-value="95%">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img src="images/Rejex_Me/Emo_Beanie_element (2).png" alt="Custom Image 2" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Beanie_Element (2).png" alt="Custom Image 2" />
             </div>
           </div>
           <div class="t396__elem tn-elem drag" data-elem-id="custom-img3" data-elem-type="image" data-field-top-value="90" data-field-left-value="10" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-top-res-320-value="60" data-field-left-res-320-value="10" data-field-top-res-480-value="80" data-field-left-res-480-value="10" data-field-top-res-640-value="80" data-field-left-res-640-value="10" data-field-top-res-960-value="80" data-field-left-res-960-value="10" data-field-top-res-1200-value="80" data-field-left-res-1200-value="10">
@@ -340,33 +375,34 @@
               <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+12" alt="Custom Image 12" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img13" data-elem-type="image" data-field-top-value="490" data-field-left-value="10" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-left-units-value="px" data-field-top-res-320-value="310" data-field-left-res-320-value="10" data-field-top-res-480-value="430" data-field-left-res-480-value="10" data-field-top-res-640-value="430" data-field-left-res-640-value="10" data-field-top-res-960-value="430" data-field-left-res-960-value="10" data-field-top-res-1200-value="430" data-field-left-res-1200-value="10">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img13" data-elem-type="image" data-field-top-value="490" data-field-left-value="10" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-top-res-320-value="310" data-field-left-res-320-value="10" data-field-top-res-480-value="430" data-field-left-res-480-value="10" data-field-top-res-640-value="430" data-field-left-res-640-value="10" data-field-top-res-960-value="430" data-field-left-res-960-value="10" data-field-top-res-1200-value="430" data-field-left-res-1200-value="10">
             <div class="tn-atom">
               <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+13" alt="Custom Image 13" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
+          <div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img uploaded-image" src=" alt="" alt="Uploaded Image" />
+              <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="400" data-field-left-value="700" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-top-units-value="px" data-field-left-units-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="240" data-field-left-res-320-value="200" data-field-width-res-320-value="80" data-field-top-res-480-value="280" data-field-left-res-480-value="280" data-field-width-res-480-value="320px" data-field-width-res="320px" width-res-640="320" data-field-top-res-960-value="350" data-field-left-res-640-value="350" data-field-width-res-640="350" width-res-960="150" data-field-top-res-1200-value="400" data-field-left-res-1200-value="600" data-field-width-res-1200="180px">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="400" data-field-left-value="700" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="240" data-field-left-res-320-value="200" data-field-width-res-320-value="80" data-field-top-res-480-value="280" data-field-left-res-480-value="280" data-field-width-res-480-value="100" data-field-top-res-640-value="320" data-field-left-res-640-value="350" data-field-width-res-640-value="120" data-field-top-res-960-value="350" data-field-left-res-960-value="500" data-field-width-res-960-value="150" data-field-top-res-1200-value="400" data-field-left-res-1200-value="600" data-field-width-res-1200-value="180">
             <div class="tn-atom">Try it with your photo!</div>
-            </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="450" data-field-left-value="400" data-field-width-value="300" data-field-axisy-value="300" data-field-axisx-value="="px" data-field-left-value="px" data-field-container-value="grid" data-field-top-units-value="px" data-field-width-units-value="px" data-field-top-res-320-value="300" data-field-left-res-320-value="50px" data-field-width-res-320-value="70px" data-field-top-res-480-value="340px" data-field-left-res-480-value="80px" data-field-width-res-480-value="90px" data-field-top-res-640="380px" data-field-left-res-640="100px" data-field-width-res-640="320px" data-field-top-res-960="400px" data-field-left-res-960="150px" data-field-width-res-960="130px" data-field-top-res-1200="450px" data-field-left-res-1200="200px" data-field-width-res-1200="160px">
+          </div>
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="450" data-field-left-value="300" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="300" data-field-left-res-320-value="50" data-field-width-res-320-value="70" data-field-top-res-480-value="340" data-field-left-res-480-value="80" data-field-width-res-480-value="90" data-field-top-res-640-value="380" data-field-left-res-640-value="100" data-field-width-res-640-value="100" data-field-top-res-960-value="400" data-field-left-res-960-value="150" data-field-width-res-960-value="130" data-field-top-res-1200-value="450" data-field-left-res-1200-value="200" data-field-width-res-1200-value="160">
             <div class="tn-atom">Drag me around!</div>
-            </div>
+          </div>
           <div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-top-value="500" data-field-left-value="500" data-field-width-value="220" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="340" data-field-left-res-320-value="100" data-field-width-res-320-value="100" data-field-top-res-480-value="380" data-field-left-res-480-value="150" data-field-width-res-480-value="120" data-field-top-res-640-value="420" data-field-left-res-640-value="200" data-field-width-res-640-value="150" data-field-top-res-960-value="450" data-field-left-res-960-value="300" data-field-width-res-960-value="180" data-field-top-res-1200-value="500" data-field-left-res-1200-value="400" data-field-width-res-1200-value="220">
             <a class="tn-atom" href="#try-now">Try Now!</a>
           </div>
           <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-top-value="20" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
             <input type="file" id="photo-upload" accept="image/*">
           </div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="200" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+          <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="520" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="270" data-field-left-res-320-value="20" data-field-top-res-480-value="320" data-field-left-res-480-value="20" data-field-top-res-640-value="370" data-field-left-res-640-value="20" data-field-top-res-960-value="420" data-field-left-res-960-value="20" data-field-top-res-1200-value="470" data-field-left-res-1200-value="20">
             <button class="tn-atom save-button">Save Photo</button>
           </div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-top-value="140" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+          <div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-top-value="140" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="140" data-field-left-res-320-value="20" data-field-top-res-480-value="140" data-field-left-res-480-value="20" data-field-top-res-640-value="140" data-field-left-res-640-value="20" data-field-top-res-960-value="140" data-field-left-res-960-value="20" data-field-top-res-1200-value="140" data-field-left-res-1200-value="20">
             <div id="size-slider"></div>
+            <span class="slider-label">Size Slider</span>
           </div>
         </div>
       </div>
@@ -391,7 +427,7 @@
         }
       });
 
-      $('.t396__elem[data-elem-type="image"]').on('click', function() {
+      $('.t396__elem[data-elem-type="image"]').not('[data-elem-id="custom-uploaded-img"]').on('click', function() {
         $(this).css("z-index", zIndex++);
         if ($(this).data('elem-id').startsWith('custom-img')) {
           lastSelectedImage = $(this).data('elem-id');
@@ -444,14 +480,6 @@
             'width': newWidth + 'px',
             'height': newHeight + 'px'
           });
-
-          if (isUploaded) {
-            container.css({
-              'top': '50%',
-              'left': '50%',
-              'transform': 'translate(-50%, -50%)'
-            });
-          }
         };
       }
 
@@ -476,10 +504,7 @@
             const uploadedImg = $('.t396__elem[data-elem-id="custom-uploaded-img"] .tn-atom__img');
             uploadedImg.attr('src', result);
             adjustImageSize('custom-uploaded-img', result, true, 1);
-            $('.t396__elem[data-elem-id="custom-uploaded-img"]').addClass('drag').draggable({
-              cursor: "grabbing",
-              start: function() { $(this).css("z-index", zIndex++); }
-            }).show();
+            $('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
           }).catch(error => {
             console.error('Error reading file:', error);
           });
