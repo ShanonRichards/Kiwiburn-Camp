@@ -26,7 +26,7 @@
       margin: 0 auto;
       border: 2px solid #ccc;
       border-radius: 8px;
-      overflow: visible;
+      overflow: hidden; /* Changed to hidden to prevent overflow */
       position: relative;
     }
     .t396__artboard {
@@ -35,7 +35,7 @@
       background-position: center;
       background-size: cover;
       background-attachment: fixed;
-      overflow: visible;
+      overflow: hidden; /* Changed to hidden to contain content */
       position: relative;
     }
     .t396__carrier, .t396__filter {
@@ -101,10 +101,10 @@
       transform: scale(1);
     }
     .uploaded-image {
-      width: auto;
+      width: 100%;
       height: 100%;
       display: block;
-      max-width: 100%;
+      object-fit: contain; /* Ensure image fits without stretching */
     }
     .t396__elem[data-elem-id="custom-uploaded-img"] {
       position: absolute;
@@ -112,6 +112,10 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1;
+      width: 100%; /* Match artboard width */
+      height: 100%; /* Match artboard height */
+      max-width: 100%;
+      max-height: 100%;
     }
     @media screen and (min-width: 1440px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
@@ -123,7 +127,7 @@
       .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 35%; width: 220px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 600px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 600px; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
     }
     @media screen and (max-width: 1439px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
@@ -135,7 +139,7 @@
       .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 400px; width: 220px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 550px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 550px; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
     }
     @media screen and (max-width: 1199px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
@@ -147,7 +151,7 @@
       .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 500px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 500px; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
     }
     @media screen and (max-width: 959px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 450px; }
@@ -161,7 +165,7 @@
       .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 450px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 450px; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
     }
     @media screen and (max-width: 639px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 400px; }
@@ -175,7 +179,7 @@
       .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 400px; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
     }
     @media screen and (max-width: 479px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 350px; }
@@ -190,12 +194,12 @@
       .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 350px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { height: 350px; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
     }
     /* Ensure visibility in full-screen mode */
     @media screen and (max-width: 100%) {
       .artboard-container, .t396__artboard, .t396__carrier, .t396__filter {
-        overflow: visible !important;
+        overflow: hidden !important;
         width: 100% !important;
       }
       .t396__elem {
@@ -211,10 +215,10 @@
     <p>Create and customize your design below!</p>
     <div class="artboard-container">
       <div class="t396">
-        <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="visible" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
+        <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="hidden" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
           <div class="t396__carrier"></div>
           <div class="t396__filter"></div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="150" data-field-left-value="1000" data-field-width-value="250 " data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="60" data-field-left-res-320-value="200" data-field-width-res-320-value="120" data-field-top-res-480-value="80" data-field-left-res-480-value="300" data-field-width-res-480-value="150" data-field-top-res-640-value="100" data-field-left-res-640-value="400" data-field-width-res-640-value="180" data-field-top-res-960-value="120" data-field-left-res-960-value="600" data-field-width-res-960-value="200" data-field-top-res-1200-value="150" data-field-left-res-1200-value="800" data-field-width-res-1200-value="250">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="150" data-field-left-value="1000" data-field-width-value="250" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="60" data-field-left-res-320-value="200" data-field-width-res-320-value="120" data-field-top-res-480-value="80" data-field-left-res-480-value="300" data-field-width-res-480-value="150" data-field-top-res-640-value="100" data-field-left-res-640-value="400" data-field-width-res-640-value="180" data-field-top-res-960-value="120" data-field-left-res-960-value="600" data-field-width-res-960-value="200" data-field-top-res-1200-value="150" data-field-left-res-1200-value="800" data-field-width-res-1200-value="250">
             <div class="tn-atom">
               <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Hair_Element.png" alt="Custom Image 1" />
             </div>
@@ -280,30 +284,52 @@
           readFile(file).then(result => {
             const uploadedImg = $('.t396__elem[data-elem-id="custom-uploaded-img"] .tn-atom__img');
             const container = $('.t396__elem[data-elem-id="custom-uploaded-img"]');
-            // Get the height from artboard based on current screen size
-            let height;
+            const artboard = $('.t396__artboard');
+            // Get the dimensions from artboard based on current screen size
+            let artboardHeight, artboardWidth;
             const screenWidth = $(window).width();
             if (screenWidth <= 320) {
-              height = 350;
+              artboardHeight = 350;
+              artboardWidth = 320;
             } else if (screenWidth <= 479) {
-              height = 400;
+              artboardHeight = 400;
+              artboardWidth = 479;
             } else if (screenWidth <= 639) {
-              height = 450;
+              artboardHeight = 450;
+              artboardWidth = 639;
             } else if (screenWidth <= 959) {
-              height = 500;
+              artboardHeight = 500;
+              artboardWidth = 959;
             } else if (screenWidth <= 1199) {
-              height = 550;
+              artboardHeight = 550;
+              artboardWidth = 1199;
             } else {
-              height = 600;
+              artboardHeight = 600;
+              artboardWidth = artboard.width(); // Use actual artboard width
             }
-            uploadedImg.attr('src', result);
-            uploadedImg.css({
-              'width': 'auto',
-              'height': height + 'px',
-              'max-width': '100%'
-            });
-            container.css('height', height + 'px');
-            $('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
+            // Create an image to get its natural dimensions
+            const img = new Image();
+            img.src = result;
+            img.onload = function() {
+              const imgWidth = img.naturalWidth;
+              const imgHeight = img.naturalHeight;
+              // Calculate scaling to fit within artboard
+              const scale = Math.min(artboardWidth / imgWidth, artboardHeight / imgHeight);
+              const newWidth = imgWidth * scale;
+              const newHeight = imgHeight * scale;
+              uploadedImg.attr('src', result);
+              uploadedImg.css({
+                'width': newWidth + 'px',
+                'height': newHeight + 'px',
+                'max-width': '100%',
+                'max-height': '100%'
+              });
+              container.css({
+                'width': newWidth + 'px',
+                'height': newHeight + 'px'
+              });
+              $('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
+            };
           }).catch(error => {
             console.error('Error reading file:', error);
           });
