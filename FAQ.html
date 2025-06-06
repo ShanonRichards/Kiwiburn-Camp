@@ -51,8 +51,8 @@
     .tn-atom__img {
       width: 100%;
       height: auto;
-      max-width: 100%;
-      max-height: 100%;
+      max-width: none;
+      max-height: none;
       object-fit: contain;
     }
     .t396__elem[data-elem-type="text"] .tn-atom {
@@ -86,7 +86,8 @@
       transform: rotate(31deg);
       cursor: pointer;
     }
-    .t396__elem[data-elem-type="upload"] input {
+    .t396__elem[data-elem-type="upload"] input,
+    .t396__elem[data-elem-type="slider"] .ui-slider {
       color: #fd4e22;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 16px;
@@ -97,9 +98,15 @@
       width: 100%;
       box-sizing: border-box;
     }
+    .t396__elem[data-elem-type="slider"] .ui-slider-handle {
+      background: #fd4e22;
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
     .t396__elem[data-elem-type="text"] .tn-atom:hover,
     .t396__elem[data-elem-type="button"] .tn-atom:hover,
-    .t396__elem[data-elem-type="upload"] input:hover {
+    .t396__elem[data-elem-type="upload"] input:hover,
+    .t396__elem[data-elem-type="slider"] .ui-slider:hover {
       background-color: #000000;
       color: #ffffff;
     }
@@ -130,6 +137,7 @@
       .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 35%; width: 220px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 1439px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
@@ -151,6 +159,7 @@
       .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 400px; width: 220px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 1199px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
@@ -172,6 +181,7 @@
       .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 959px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 450px; }
@@ -194,7 +204,8 @@
       .t396__elem[data-elem-type="text"] .tn-atom,
       .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: ocia180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 639px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 400px; }
@@ -218,6 +229,7 @@
       .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 479px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 350px; }
@@ -242,6 +254,7 @@
       .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
       .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 100%) {
       .artboard-container, .t396__artboard, .t396__carrier, .t396__filter {
@@ -332,7 +345,7 @@
               <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+13" alt="Custom Image 13" />
             </div>
           </div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
             <div class="tn-atom">
               <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
             </div>
@@ -352,6 +365,9 @@
           <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="80" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
             <button class="tn-atom save-button">Save Photo</button>
           </div>
+          <div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-top-value="140" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+            <div id="size-slider"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -369,7 +385,7 @@
         start: function() { $(this).css("z-index", zIndex++); }
       });
 
-      function adjustImageSize(elemId, imgSrc, isUploaded = false) {
+      function adjustImageSize(elemId, imgSrc, isUploaded = false, scaleFactor = 1) {
         const container = $(`.t396__elem[data-elem-id="${elemId}"]`);
         const img = container.find('.tn-atom__img');
         const artboard = $('.t396__artboard');
@@ -401,15 +417,15 @@
         tempImg.onload = function() {
           const imgWidth = tempImg.naturalWidth;
           const imgHeight = tempImg.naturalHeight;
-          const scale = Math.min(artboardWidth / imgWidth, artboardHeight / imgHeight, 1);
-          const newWidth = imgWidth * scale;
-          const newHeight = imgHeight * scale;
+          const baseScale = Math.min(artboardWidth / imgWidth, artboardHeight / imgHeight, 1);
+          const newWidth = imgWidth * baseScale * scaleFactor;
+          const newHeight = imgHeight * baseScale * scaleFactor;
 
           img.css({
             'width': newWidth + 'px',
             'height': newHeight + 'px',
-            'max-width': '100%',
-            'max-height': '100%'
+            'max-width': 'none',
+            'max-height': 'none'
           });
           container.css({
             'width': newWidth + 'px',
@@ -426,9 +442,18 @@
         };
       }
 
+      function updateAllCustomImages(scaleFactor) {
+        for (let i = 1; i <= 13; i++) {
+          const imgSrc = $(`.t396__elem[data-elem-id="custom-img${i}"] .tn-atom__img`).attr('src');
+          if (imgSrc) {
+            adjustImageSize(`custom-img${i}`, imgSrc, false, scaleFactor);
+          }
+        }
+      }
+
       for (let i = 1; i <= 13; i++) {
         const imgSrc = $(`.t396__elem[data-elem-id="custom-img${i}"] .tn-atom__img`).attr('src');
-        adjustImageSize(`custom-img${i}`, imgSrc);
+        adjustImageSize(`custom-img${i}`, imgSrc, false, 1);
       }
 
       function readFile(file) {
@@ -446,11 +471,24 @@
           readFile(file).then(result => {
             const uploadedImg = $('.t396__elem[data-elem-id="custom-uploaded-img"] .tn-atom__img');
             uploadedImg.attr('src', result);
-            adjustImageSize('custom-uploaded-img', result, true);
-            $('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
+            adjustImageSize('custom-uploaded-img', result, true, 1);
+            $('.t396__elem[data-elem-id="custom-uploaded-img"]').addClass('drag').draggable({
+              cursor: "grabbing",
+              start: function() { $(this).css("z-index", zIndex++); }
+            }).show();
           }).catch(error => {
             console.error('Error reading file:', error);
           });
+        }
+      });
+
+      $('#size-slider').slider({
+        min: 0.5,
+        max: 2,
+        step: 0.1,
+        value: 1,
+        slide: function(event, ui) {
+          updateAllCustomImages(ui.value);
         }
       });
 
