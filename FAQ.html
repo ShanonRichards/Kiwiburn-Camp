@@ -1,32 +1,52 @@
+here is my code, i need help doing the following please - change the background image from a color to a set background i can set for the container, this is nothing to do with the upload button do not change this its just in the code 
+
+make the following changes for me grot, making sure it keeps each thing working
+- remove the custom color code for the background, this whole section can be replaced with a image background of my chosing. that is set for the container
+
+remove the color bar, 
+
+1. make the background that has a color - to just be a custom background i set / image, unmoveable, just a background i set for the container
+2. for the uploaded photo, make sure it is unmovable, this image stays in the center of the container
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Interactive Page</title>
+  <title>Main Page with Interactive Artboard</title>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <style>
-    /* Artboard */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .main-content {
+      padding: 20px;
+      text-align: center;
+    }
+    .main-content h1 {
+      color: #333;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .artboard-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
     .t396__artboard {
-      height: 1000px;
+      height: 600px;
       background-color: #ff6b6b;
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
       overflow: visible;
       position: relative;
     }
-
-    /* Carrier and Filter */
     .t396__carrier, .t396__filter {
-      height: 1000px;
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      height: 100%;
     }
-
-    /* Elements */
     .t396__elem {
       position: absolute;
     }
@@ -34,8 +54,6 @@
       width: 100%;
       height: auto;
     }
-
-    /* Text Styling */
     .t396__elem[data-elem-type="text"] .tn-atom {
       color: #fd4e22;
       font-family: 'Montserrat', Arial, sans-serif;
@@ -50,8 +68,6 @@
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
       transform: rotate(350deg);
     }
-
-    /* Button Styling */
     .t396__elem[data-elem-type="button"] .tn-atom {
       color: #fd4e22;
       font-family: 'Montserrat', Arial, sans-serif;
@@ -67,11 +83,10 @@
       text-decoration: none;
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
       transform: rotate(31deg);
+      cursor: pointer;
     }
-
-    /* File Upload and Save Button Styling */
     .t396__elem[data-elem-type="upload"] input,
-    .t396__elem[data-elem-type="button"] .tn-atom.save-button {
+    .t396__elem[data-elem-type="color"] input {
       color: #fd4e22;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 16px;
@@ -79,123 +94,137 @@
       border: none;
       padding: 10px;
       cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
     }
-
-    /* Hover Effects */
     .t396__elem[data-elem-type="text"] .tn-atom:hover,
     .t396__elem[data-elem-type="button"] .tn-atom:hover,
     .t396__elem[data-elem-type="upload"] input:hover,
-    .t396__elem[data-elem-type="button"] .tn-atom.save-button:hover {
+    .t396__elem[data-elem-type="color"] input:hover {
       background-color: #000000;
       color: #ffffff;
     }
-
-    /* Draggable Elements */
     .ui-draggable-dragging {
       transform: scale(1);
     }
-
-    /* Responsive Design */
+    .uploaded-image {
+      max-width: 300px;
+      width: auto;
+      height: auto;
+    }
     @media screen and (max-width: 1439px) {
-      .t396__artboard, .t396__carrier, .t396__filter { height: 900px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 200px; left: 800px; width: 300px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 300px; left: 300px; width: 80px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 400px; left: 500px; width: 150px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 500px; left: 600px; width: 200px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 600px; left: 200px; width: 180px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 700px; left: 400px; width: 250px; }
-      .t396__elem[data-elem-id="custom-upload"] { top: 50px; left: 50px; width: 200px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 100px; left: 50px; width: 200px; }
+      .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 150px; left: 800px; width: 250px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 250px; left: 300px; width: 70px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 350px; left: 500px; width: 120px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 600px; width: 180px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 200px; width: 160px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 400px; width: 220px; }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 60px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-color"] { top: 100px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 150px; left: 100px; width: 200px; }
     }
     @media screen and (max-width: 1199px) {
-      .t396__artboard, .t396__carrier, .t396__filter { height: 800px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 150px; left: 600px; width: 250px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 250px; left: 200px; width: 70px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 350px; left: 400px; width: 120px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 450px; left: 500px; width: 180px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 550px; left: 150px; width: 160px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 650px; left: 300px; width: 220px; }
+      .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 120px; left: 600px; width: 200px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 200px; left: 200px; width: 60px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 300px; left: 400px; width: 100px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 120px; left: 80px; width: 180px; }
     }
     @media screen and (max-width: 959px) {
-      .t396__artboard, .t396__carrier, .t396__filter { height: 700px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 120px; left: 400px; width: 200px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 200px; left: 100px; width: 60px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 300px; left: 300px; width: 100px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 350px; width: 150px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 500px; left: 100px; width: 130px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 600px; left: 200px; width: 180px; }
+      .t396__artboard, .t396__carrier, .t396__filter { height: 450px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 100px; left: 400px; width: 180px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 180px; left: 100px; width: 50px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 260px; left: 300px; width: 90px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 320px; left: 350px; width: 120px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 100px; width: 100px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 420px; left: 200px; width: 150px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
       .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 100px; left: 60px; width: 150px; }
     }
     @media screen and (max-width: 639px) {
-      .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 100px; left: 300px; width: 180px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 180px; left: 80px; width: 50px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 260px; left: 250px; width: 90px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 340px; left: 280px; width: 120px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 420px; left: 80px; width: 100px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 150px; width: 150px; }
+      .t396__artboard, .t396__carrier, .t396__filter { height: 400px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 80px; left: 300px; width: 150px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 150px; left: 80px; width: 40px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 220px; left: 250px; width: 80px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 280px; left: 280px; width: 100px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 340px; left: 80px; width: 90px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 380px; left: 150px; width: 120px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
       .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 80px; left: 50px; width: 120px; }
     }
     @media screen and (max-width: 479px) {
-      .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 80px; left: 200px; width: 150px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 150px; left: 50px; width: 40px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 220px; left: 180px; width: 80px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 300px; left: 200px; width: 100px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 50px; width: 90px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 100px; width: 120px; }
+      .t396__artboard, .t396__carrier, .t396__filter { height: 350px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 60px; left: 200px; width: 120px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 120px; left: 50px; width: 30px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 180px; left: 180px; width: 60px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 240px; left: 200px; width: 80px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 300px; left: 50px; width: 70px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 340px; left: 100px; width: 100px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
       .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; }
       .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 60px; left: 40px; width: 100px; }
     }
   </style>
 </head>
 <body>
-  <div class="t396">
-    <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="1000" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="visible" data-artboard-height-res-320="500" data-artboard-height-res-480="600" data-artboard-height-res-960="700" data-artboard-height-res-1200="900">
-      <div class="t396__carrier"></div>
-      <div class="t396__filter"></div>
-      <!-- Draggable Images -->
-      <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="200" data-field-left-value="1000" data-field-width-value="300" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="80" data-field-left-res-320-value="200" data-field-width-res-320-value="150" data-field-top-res-480-value="100" data-field-left-res-480-value="300" data-field-width-res-480-value="180" data-field-top-res-640-value="120" data-field-left-res-640-value="400" data-field-width-res-640-value="200" data-field-top-res-960-value="150" data-field-left-res-960-value="600" data-field-width-res-960-value="250" data-field-top-res-1200-value="200" data-field-left-res-1200-value="800" data-field-width-res-1200-value="300">
-        <div class="tn-atom">
-          <img class="tn-atom__img t-img" src="images/Logo/Sketch_Lighter.png" alt="Custom Image 1" />
+  <div class="main-content">
+    <h1>Welcome to the Interactive Artboard</h1>
+    <p>Create and customize your design below!</p>
+    <div class="artboard-container">
+      <div class="t396">
+        <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="visible" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
+          <div class="t396__carrier"></div>
+          <div class="t396__filter"></div>
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="150" data-field-left-value="1000" data-field-width-value="250" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="60" data-field-left-res-320-value="200" data-field-width-res-320-value="120" data-field-top-res-480-value="80" data-field-left-res-480-value="300" data-field-width-res-480-value="150" data-field-top-res-640-value="100" data-field-left-res-640-value="400" data-field-width-res-640-value="180" data-field-top-res-960-value="120" data-field-left-res-960-value="600" data-field-width-res-960-value="200" data-field-top-res-1200-value="150" data-field-left-res-1200-value="800" data-field-width-res-1200-value="250">
+            <div class="tn-atom">
+              <img class="tn-atom__img t-img" src="images/Logo/Sketch_Lighter.png" alt="Custom Image 1" />
+            </div>
+          </div>
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img2" data-elem-type="image" data-field-top-value="250" data-field-left-value="400" data-field-width-value="70" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="120" data-field-left-res-320-value="50" data-field-width-res-320-value="30" data-field-top-res-480-value="150" data-field-left-res-480-value="80" data-field-width-res-480-value="40" data-field-top-res-640-value="180" data-field-left-res-640-value="100" data-field-width-res-640-value="50" data-field-top-res-960-value="200" data-field-left-res-960-value="200" data-field-width-res-960-value="60" data-field-top-res-1200-value="250" data-field-left-res-1200-value="300" data-field-width-res-1200-value="70">
+            <div class="tn-atom">
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80x140?text=Custom+Image+2" alt="Custom Image 2" />
+            </div>
+          </div>
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img3" data-elem-type="image" data-field-top-value="350" data-field-left-value="600" data-field-width-value="120" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="180" data-field-left-res-320-value="180" data-field-width-res-320-value="60" data-field-top-res-480-value="220" data-field-left-res-480-value="250" data-field-width-res-480-value="80" data-field-top-res-640-value="260" data-field-left-res-640-value="300" data-field-width-res-640-value="90" data-field-top-res-960-value="300" data-field-left-res-960-value="400" data-field-width-res-960-value="100" data-field-top-res-1200-value="350" data-field-left-res-1200-value="500" data-field-width-res-1200-value="120">
+            <div class="tn-atom">
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+3" alt="Custom Image 3" />
+            </div>
+          </div>
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-top-value="150" data-field-left-value="100" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="60" data-field-left-res-320-value="40" data-field-width-res-320-value="100" data-field-top-res-480-value="80" data-field-left-res-480-value="50" data-field-width-res-480-value="120" data-field-top-res-640-value="100" data-field-left-res-640-value="60" data-field-width-res-640-value="150" data-field-top-res-960-value="120" data-field-left-res-960-value="80" data-field-width-res-960-value="180" data-field-top-res-1200-value="150" data-field-left-res-1200-value="100" data-field-width-res-1200-value="200">
+            <div class="tn-atom">
+              <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
+            </div>
+          </div>
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="400" data-field-left-value="700" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="240" data-field-left-res-320-value="200" data-field-width-res-320-value="80" data-field-top-res-480-value="280" data-field-left-res-480-value="280" data-field-width-res-480-value="100" data-field-top-res-640-value="320" data-field-left-res-640-value="350" data-field-width-res-640-value="120" data-field-top-res-960-value="350" data-field-left-res-960-value="500" data-field-width-res-960-value="150" data-field-top-res-1200-value="400" data-field-left-res-1200-value="600" data-field-width-res-1200-value="180">
+            <div class="tn-atom">Try it with your photo!</div>
+          </div>
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="450" data-field-left-value="300" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="300" data-field-left-res-320-value="50" data-field-width-res-320-value="70" data-field-top-res-480-value="340" data-field-left-res-480-value="80" data-field-width-res-480-value="90" data-field-top-res-640-value="380" data-field-left-res-640-value="100" data-field-width-res-640-value="100" data-field-top-res-960-value="400" data-field-left-res-960-value="150" data-field-width-res-960-value="130" data-field-top-res-1200-value="450" data-field-left-res-1200-value="200" data-field-width-res-1200-value="160">
+            <div class="tn-atom">Drag me around!</div>
+          </div>
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-top-value="500" data-field-left-value="500" data-field-width-value="220" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="340" data-field-left-res-320-value="100" data-field-width-res-320-value="100" data-field-top-res-480-value="380" data-field-left-res-480-value="150" data-field-width-res-480-value="120" data-field-top-res-640-value="420" data-field-left-res-640-value="200" data-field-width-res-640-value="150" data-field-top-res-960-value="450" data-field-left-res-960-value="300" data-field-width-res-960-value="180" data-field-top-res-1200-value="500" data-field-left-res-1200-value="400" data-field-width-res-1200-value="220">
+            <a class="tn-atom" href="#try-now">Try Now!</a>
+          </div>
+          <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-top-value="20" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+            <input type="file" id="photo-upload" accept="image/*">
+          </div>
+          <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="60" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+            <button class="tn-atom save-button">Save Photo</button>
+          </div>
+          <div class="t396__elem tn-elem" data-elem-id="custom-color" data-elem-type="color" data-field-top-value="100" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+            <input type="color" id="bg-color-picker" value="#ff6b6b">
+          </div>
         </div>
-      </div>
-      <div class="t396__elem tn-elem drag" data-elem-id="custom-img2" data-elem-type="image" data-field-top-value="300" data-field-left-value="400" data-field-width-value="80" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="150" data-field-left-res-320-value="50" data-field-width-res-320-value="40" data-field-top-res-480-value="180" data-field-left-res-480-value="80" data-field-width-res-480-value="50" data-field-top-res-640-value="200" data-field-left-res-640-value="100" data-field-width-res-640-value="60" data-field-top-res-960-value="250" data-field-left-res-960-value="200" data-field-width-res-960-value="70" data-field-top-res-1200-value="300" data-field-left-res-1200-value="300" data-field-width-res-1200-value="80">
-        <div class="tn-atom">
-          <img class="tn-atom__img t-img" src="https://via.placeholder.com/80x140?text=Custom+Image+2" alt="Custom Image 2" />
-        </div>
-      </div>
-      <div class="t396__elem tn-elem drag" data-elem-id="custom-img3" data-elem-type="image" data-field-top-value="400" data-field-left-value="600" data-field-width-value="150" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="220" data-field-left-res-320-value="180" data-field-width-res-320-value="80" data-field-top-res-480-value="260" data-field-left-res-480-value="250" data-field-width-res-480-value="90" data-field-top-res-640-value="300" data-field-left-res-640-value="300" data-field-width-res-640-value="100" data-field-top-res-960-value="350" data-field-left-res-960-value="400" data-field-width-res-960-value="120" data-field-top-res-1200-value="400" data-field-left-res-1200-value="500" data-field-width-res-1200-value="150">
-        <div class="tn-atom">
-          <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+3" alt="Custom Image 3" />
-        </div>
-      </div>
-      <!-- Text Elements -->
-      <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="500" data-field-left-value="700" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="300" data-field-left-res-320-value="200" data-field-width-res-320-value="100" data-field-top-res-480-value="340" data-field-left-res-480-value="280" data-field-width-res-480-value="120" data-field-top-res-640-value="400" data-field-left-res-640-value="350" data-field-width-res-640-value="150" data-field-top-res-960-value="450" data-field-left-res-960-value="500" data-field-width-res-960-value="180" data-field-top-res-1200-value="500" data-field-left-res-1200-value="600" data-field-width-res-1200-value="200">
-        <div class="tn-atom">Try it with your photo!</div>
-      </div>
-      <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="600" data-field-left-value="300" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="380" data-field-left-res-320-value="50" data-field-width-res-320-value="90" data-field-top-res-480-value="420" data-field-left-res-480-value="80" data-field-width-res-480-value="100" data-field-top-res-640-value="500" data-field-left-res-640-value="100" data-field-width-res-640-value="130" data-field-top-res-960-value="550" data-field-left-res-960-value="150" data-field-width-res-960-value="160" data-field-top-res-1200-value="600" data-field-left-res-1200-value="200" data-field-width-res-1200-value="180">
-        <div class="tn-atom">Drag me around!</div>
-      </div>
-      <!-- Button -->
-      <div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-top-value="700" data-field-left-value="500" data-field-width-value="250" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="450" data-field-left-res-320-value="100" data-field-width-res-320-value="120" data-field-top-res-480-value="500" data-field-left-res-480-value="150" data-field-width-res-480-value="150" data-field-top-res-640-value="600" data-field-left-res-640-value="200" data-field-width-res-640-value="180" data-field-top-res-960-value="650" data-field-left-res-960-value="300" data-field-width-res-960-value="220" data-field-top-res-1200-value="700" data-field-left-res-1200-value="400" data-field-width-res-1200-value="250">
-        <a class="tn-atom" href="#try-now">Try Now!</a>
-      </div>
-      <!-- File Upload -->
-      <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-top-value="50" data-field-left-value="50" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
-        <input type="file" id="photo-upload" accept="image/*" style="padding: 10px; background: #ffdd2b; border: none; color: #fd4e22; font-family: 'Montserrat', Arial, sans-serif; font-size: 16px;">
-      </div>
-      <!-- Save Button -->
-      <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="100" data-field-left-value="50" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
-        <button class="tn-atom save-button">Save Photo</button>
       </div>
     </div>
   </div>
-
-  <!-- Scripts -->
   <script src="https://code.jquery.com/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
@@ -208,10 +237,9 @@
         start: function() { $(this).css("z-index", zIndex++); }
       });
 
-      // File Upload Handling
       function readFile(file) {
         let reader = new FileReader();
-        reader.readAsDataURL(file); // Changed to readAsDataURL for background image
+        reader.readAsDataURL(file);
         return new Promise((resolve, reject) => {
           reader.onload = function() { resolve(reader.result); };
           reader.onerror = function() { reject(reader.error); };
@@ -222,19 +250,24 @@
         const file = event.target.files[0];
         if (file) {
           readFile(file).then(result => {
-            $('.t396__artboard').css({
-              'background-image': `url(${result})`,
-              'background-size': 'cover',
-              'background-position': 'center center',
-              'background-repeat': 'no-repeat'
+            const uploadedImg = $('.t396__elem[data-elem-id="custom-uploaded-img"] .tn-atom__img');
+            uploadedImg.attr('src', result);
+            uploadedImg.css({
+              'width': 'auto',
+              'height': 'auto',
+              'max-width': '300px'
             });
+            $('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
           }).catch(error => {
             console.error('Error reading file:', error);
           });
         }
       });
 
-      // Save Photo Handling
+      $('#bg-color-picker').on('change', function() {
+        $('.t396__artboard').css('background-color', this.value);
+      });
+
       $('.save-button').on('click', function() {
         html2canvas(document.querySelector('.t396__artboard')).then(canvas => {
           const link = document.createElement('a');
@@ -243,6 +276,8 @@
           link.click();
         });
       });
+
+      $('.t396__elem[data-elem-id="custom-uploaded-img"]').hide();
     });
   </script>
 </body>
