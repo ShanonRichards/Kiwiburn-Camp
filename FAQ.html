@@ -1,8 +1,3 @@
-show me the code to change to do the following
-
-help me fix the uploaded image should be in the center of the page not on the far right
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,27 +21,26 @@ help me fix the uploaded image should be in the center of the page not on the fa
       margin-bottom: 20px;
     }
     .artboard-container {
-      max-width: 1200px;
+      width: 100%;
+      min-width: 1200px;
       margin: 0 auto;
       border: 2px solid #ccc;
       border-radius: 8px;
-      overflow: hidden;
+      overflow: visible;
       position: relative;
     }
-.t396__artboard {
-  height: 600px;
-  background-image: url('https://via.placeholder.com/1200x600?text=Background+Image');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: visible;
-  position: relative;
-}
+    .t396__artboard {
+      height: 600px;
+      background-color: #ff6b6b;
+      overflow: visible;
+      position: relative;
+    }
     .t396__carrier, .t396__filter {
       height: 100%;
     }
     .t396__elem {
       position: absolute;
+      z-index: 1;
     }
     .tn-atom__img {
       width: 100%;
@@ -105,141 +99,95 @@ help me fix the uploaded image should be in the center of the page not on the fa
     .ui-draggable-dragging {
       transform: scale(1);
     }
-.uploaded-image {
-  max-width: 300px;
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@media screen and (max-width: 1439px) {
-  .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
-  .t396__elem[data-elem-id="custom-img1"] { top: 150px; left: 800px; width: 250px; }
-  .t396__elem[data-elem-id="custom-img2"] { top: 250px; left: 300px; width: 70px; }
-  .t396__elem[data-elem-id="custom-img3"] { top: 350px; left: 500px; width: 120px; }
-  .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 600px; width: 180px; }
-  .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 200px; width: 160px; }
-  .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 400px; width: 220px; }
-  .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
-  .t396__elem[data-elem-id="custom-save"] { top: 60px; left: 20px; width: 180px; }
-  .t396__elem[data-elem-id="custom-color"] { top: 100px; left: 20px; width: 180px; }
-  .t396__elem[data-elem-id="custom-uploaded-img"] { width: 200px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-}
-
-@media screen and (max-width: 1199px) {
-  .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
-  .t396__elem[data-elem-id="custom-img1"] { top: 120px; left: 600px; width: 200px; }
-  .t396__elem[data-elem-id="custom-img2"] { top: 200px; left: 200px; width: 60px; }
-  .t396__elem[data-elem-id="custom-img3"] { top: 300px; left: 400px; width: 100px; }
-  .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
-  .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
-  .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
-  .t396__elem[data-elem-id="custom-uploaded-img"] { width: 180px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-}
-
-@media screen and (max-width: 959px) {
-  .t396__artboard, .t396__carrier, .t396__filter { height: 450px; }
-  .t396__elem[data-elem-id="custom-img1"] { top: 100px; left: 400px; width: 180px; }
-  .t396__elem[data-elem-id="custom-img2"] { top: 180px; left: 100px; width: 50px; }
-  .t396__elem[data-elem-id="custom-img3"] { top: 260px; left: 300px; width: 90px; }
-  .t396__elem[data-elem-id="custom-text1"] { top: 320px; left: 350px; width: 120px; }
-  .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 100px; width: 100px; }
-  .t396__elem[data-elem-id="custom-button1"] { top: 420px; left: 200px; width: 150px; }
-  .t396__elem[data-elem-type="text"] .tn-atom,
-  .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
-  .t396__elem[data-elem-id="custom-uploaded-img"] { width: 150px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-}
-
-@media screen and (max-width: 639px) {
-  .t396__artboard, .t396__carrier, .t396__filter { height: 400px; }
-  .t396__elem[data-elem-id="custom-img1"] { top: 80px; left: 300px; width: 150px; }
-  .t396__elem[data-elem-id="custom-img2"] { top: 150px; left: 80px; width: 40px; }
-  .t396__elem[data-elem-id="custom-img3"] { top: 220px; left: 250px; width: 80px; }
-  .t396__elem[data-elem-id="custom-text1"] { top: 280px; left: 280px; width: 100px; }
-  .t396__elem[data-elem-id="custom-text2"] { top: 340px; left: 80px; width: 90px; }
-  .t396__elem[data-elem-id="custom-button1"] { top: 380px; left: 150px; width: 120px; }
-  .t396__elem[data-elem-type="text"] .tn-atom,
-  .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
-  .t396__elem[data-elem-id="custom-uploaded-img"] { width: 120px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-}
-
-@media screen and (max-width: 479px) {
-  .t396__artboard, .t396__carrier, .t396__filter { height: 350px; }
-  .t396__elem[data-elem-id="custom-img1"] { top: 60px; left: 200px; width: 120px; }
-  .t396__elem[data-elem-id="custom-img2"] { top: 120px; left: 50px; width: 30px; }
-  .t396__elem[data-elem-id="custom-img3"] { top: 180px; left: 180px; width: 60px; }
-  .t396__elem[data-elem-id="custom-text1"] { top: 240px; left: 200px; width: 80px; }
-  .t396__elem[data-elem-id="custom-text2"] { top: 300px; left: 50px; width: 70px; }
-  .t396__elem[data-elem-id="custom-button1"] { top: 340px; left: 100px; width: 100px; }
-  .t396__elem[data-elem-type="text"] .tn-atom,
-  .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; }
-  .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
-  .t396__elem[data-elem-id="custom-uploaded-img"] { width: 100px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
-}
-HTML Change
-In the <body> section, find the element with data-elem-id="custom-uploaded-img" and remove the drag class to prevent it from being draggable. Replace the following:
-
-html
-
-Collapse
-
-Wrap
-
-Copy
-<div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-width-value="200" data-field-container-value="grid" data-field-widthunits-value="px" data-field-width-res-320-value="100" data-field-width-res-480-value="120" data-field-width-res-640-value="150" data-field-width-res-960-value="180" data-field-width-res-1200-value="200">
-  <div class="tn-atom">
-    <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
-  </div>
-</div>>
-  <div class="tn-atom">
-    <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
-  </div>
-</div>
-With:
-
-html
-
-Collapse
-
-Wrap
-
-Copy
-<div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-width-value="200" data-field-container-value="grid" data-field-widthunits-value="px" data-field-width-res-320-value="100" data-field-width-res-480-value="120" data-field-width-res-640-value="150" data-field-width-res-960-value="180" data-field-width-res-1200-value="200">
-  <div class="tn-atom">
-    <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
-  </div>
-</div>
-Explanation of Changes
-Centering the Uploaded Image:
-The .uploaded-image CSS rule already uses top: 50%; left: 50%; transform: translate(-50%, -50%);, which is correct for centering. However, the media queries for [data-elem-id="custom-uploaded-img"] were overriding these with specific top and left values (e.g., left: 100px), causing the image to appear off-center. The updated media queries now use top: 50%; left: 50%; transform: translate(-50%, -50%); consistently to keep the image centered across all screen sizes.
-Only the width is adjusted in media queries to maintain responsiveness, while positioning remains centered.
-Making the Image Non-Draggable:
-Removed the drag class from the custom-uploaded-img element in the HTML, so jQuery’s .draggable() (applied to .drag elements in the script) does not affect the uploaded image.
-Removed unnecessary positioning attributes (data-field-top-value, data-field-left-value, etc.) from the HTML for custom-uploaded-img, as the CSS now handles centering.
-Preserving Other Functionality:
-The file upload functionality (controlled by the #photo-upload input and JavaScript) remains unchanged.
-The save button functionality (using html2canvas) is unaffected, as it captures the entire .t396__artboard correctly.
-These changes ensure the uploaded image is always centered in the artboard and cannot be dragged, while maintaining all other functionality. Replace the specified CSS and HTML sections in your original code with the provided snippets.
-
-
-
-
-
-
-
-
-3.9s
-
-How can Grok help?
-
-
-DeepSearch
-
-Think
-
-Grok 3
+    .uploaded-image {
+      max-width: 300px;
+      width: auto;
+      height: auto;
+    }
+    @media screen and (min-width: 1440px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 150px; left: 70%; width: 250px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 250px; left: 25%; width: 70px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 350px; left: 40%; width: 120px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 50%; width: 180px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 15%; width: 160px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 35%; width: 220px; }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 60px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-color"] { top: 100px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 150px; left: 10%; width: 200px; }
+    }
+    @media screen and (max-width: 1439px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 150px; left: 800px; width: 250px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 250px; left: 300px; width: 70px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 350px; left: 500px; width: 120px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 600px; width: 180px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 200px; width: 160px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 400px; width: 220px; }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 60px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-color"] { top: 100px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 150px; left: 100px; width: 200px; }
+    }
+    @media screen and (max-width: 1199px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 120px; left: 600px; width: 200px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 200px; left: 200px; width: 60px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 300px; left: 400px; width: 100px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 120px; left: 80px; width: 180px; }
+    }
+    @media screen and (max-width: 959px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 450px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 100px; left: 400px; width: 180px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 180px; left: 100px; width: 50px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 260px; left: 300px; width: 90px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 320px; left: 350px; width: 120px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 100px; width: 100px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 420px; left: 200px; width: 150px; }
+      .t396__elem[data-elem-type="text"] .tn-atom,
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 100px; left: 60px; width: 150px; }
+    }
+    @media screen and (max-width: 639px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 400px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 80px; left: 300px; width: 150px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 150px; left: 80px; width: 40px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 220px; left: 250px; width: 80px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 280px; left: 280px; width: 100px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 340px; left: 80px; width: 90px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 380px; left: 150px; width: 120px; }
+      .t396__elem[data-elem-type="text"] .tn-atom,
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 80px; left: 50px; width: 120px; }
+    }
+    @media screen and (max-width: 479px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 350px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 60px; left: 200px; width: 120px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 120px; left: 50px; width: 30px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 180px; left: 180px; width: 60px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 240px; left: 200px; width: 80px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 300px; left: 50px; width: 70px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 340px; left: 100px; width: 100px; }
+      .t396__elem[data-elem-type="text"] .tn-atom,
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; }
+      .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
+      .t396__elem[data-elem-id="custom-uploaded-img"] { top: 60px; left: 40px; width: 100px; }
+    }
+    /* Ensure visibility in full-screen mode */
+    @media screen and (max-width: 100%) {
+      .artboard-container, .t396__artboard, .t396__carrier, .t396__filter {
+        overflow: visible !important;
+        width: 100% !important;
+      }
+      .t396__elem {
+        visibility: visible !important;
+        z-index: 1 !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -266,7 +214,7 @@ Grok 3
               <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+3" alt="Custom Image 3" />
             </div>
           </div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-top-value="150" data-field-left-value="100" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="60" data-field-left-res-320-value="40" data-field-width-res-320-value="100" data-field-top-res-480-value="80" data-field-left-res-480-value="50" data-field-width-res-480-value="120" data-field-top-res-640-value="100" data-field-left-res-640-value="60" data-field-width-res-640-value="150" data-field-top-res-960-value="120" data-field-left-res-960-value="80" data-field-width-res-960-value="180" data-field-top-res-1200-value="150" data-field-left-res-1200-value="100" data-field-width-res-1200-value="200">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-top-value="150" data-field-left-value="100" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="60" data-field-left-res-320-value="40" data-field-width-res-320-value="100" data-field-top-res-480-value="80" data-field-left-res-480-value="50" data-field-width-res-480-value="120" data-field-top-res-640-value="100" data-field-left-res-640-value="60" data-field-width-res-640-value="150" data-field-top-res-960-value="120" data-field-left-res-960-value="80" data-field-width-res-960-value="180" data-field-top-res-1200-value="150" data-field-left-res-1200-value="100" data-field-width-res-1200-value="200">
             <div class="tn-atom">
               <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
             </div>
@@ -285,6 +233,9 @@ Grok 3
           </div>
           <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="60" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
             <button class="tn-atom save-button">Save Photo</button>
+          </div>
+          <div class="t396__elem tn-elem" data-elem-id="custom-color" data-elem-type="color" data-field-top-value="100" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+            <input type="color" id="bg-color-picker" value="#ff6b6b">
           </div>
         </div>
       </div>
@@ -328,6 +279,11 @@ Grok 3
           });
         }
       });
+
+      $('#bg-color-picker').on('change', function() {
+        $('.t396__artboard').css('background-color', this.value);
+      });
+
       $('.save-button').on('click', function() {
         html2canvas(document.querySelector('.t396__artboard')).then(canvas => {
           const link = document.createElement('a');
