@@ -1,178 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ilich Code - Interactive Art Studio</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #000;
-            color: #fff;
-            overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
-        }
-        .ilich-section {
-            padding: 50px;
-            text-align: center;
-            background: linear-gradient(45deg, #ff0066, #00ccff);
-        }
-        .ilich-section h2 {
-            font-size: 2.5em;
-            text-transform: uppercase;
-            text-shadow: 2px 2px #000;
-            margin-bottom: 20px;
-        }
-        .ilich-section p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        .image-container {
-            position: relative;
-            width: 600px;
-            height: 400px;
-            margin: 0 auto;
-            border: 2px solid #fff;
-            background: #222;
-            overflow: hidden;
-        }
-        #mainImage {
-            max-width: 100%;
-            max-height: 100%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        .icon-tray {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .icon {
-            width: 50px;
-            height: 50px;
-            cursor: move;
-            transition: transform 0.3s;
-            user-drag: none;
-            -webkit-user-drag: none;
-        }
-        .icon:hover {
-            transform: scale(1.2);
-        }
-        .icon.dragging {
-            opacity: 0.7;
-        }
-        .dropped-asset {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            pointer-events: none; /* Prevent dropped assets from being draggable again */
-        }
-        .upload-btn {
-            background: #ff0066;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: background 0.3s;
-        }
-        .upload-btn:hover {
-            background: #00ccff;
-        }
-        @media (max-width: 768px) {
-            .ilich-section {
-                padding: 20px;
-            }
-            .image-container {
-                width: 100%;
-                height: 300px;
-            }
-            .ilich-section h2 {
-                font-size: 1.8em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Interactive Page</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    /* Artboard */
+    .t396__artboard {
+      height: 1000px;
+      background-color: #ff6b6b;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      overflow: visible;
+      position: relative;
+    }
+
+    /* Carrier and Filter */
+    .t396__carrier, .t396__filter {
+      height: 1000px;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    /* Elements */
+    .t396__elem {
+      position: absolute;
+    }
+    .tn-atom__img {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Text Styling */
+    .t396__elem[data-elem-type="text"] .tn-atom {
+      color: #fd4e22;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.55;
+      letter-spacing: -1px;
+      text-align: center;
+      background-color: #ffdd2b;
+      border-radius: 0;
+      padding: 10px;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      transform: rotate(350deg);
+    }
+
+    /* Button Styling */
+    .t396__elem[data-elem-type="button"] .tn-atom {
+      color: #fd4e22;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.55;
+      letter-spacing: -1px;
+      text-align: center;
+      background-color: #ffdd2b;
+      border-radius: 0;
+      padding: 15px;
+      display: block;
+      text-decoration: none;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      transform: rotate(31deg);
+    }
+
+    /* File Upload and Save Button Styling */
+    .t396__elem[data-elem-type="upload"] input,
+    .t396__elem[data-elem-type="button"] .tn-atom.save-button {
+      color: #fd4e22;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 16px;
+      background-color: #ffdd2b;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    /* Hover Effects */
+    .t396__elem[data-elem-type="text"] .tn-atom:hover,
+    .t396__elem[data-elem-type="button"] .tn-atom:hover,
+    .t396__elem[data-elem-type="upload"] input:hover,
+    .t396__elem[data-elem-type="button"] .tn-atom.save-button:hover {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    /* Draggable Elements */
+    .ui-draggable-dragging {
+      transform: scale(1);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1439px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 900px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 200px; left: 800px; width: 300px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 300px; left: 300px; width: 80px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 400px; left: 500px; width: 150px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 500px; left: 600px; width: 200px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 600px; left: 200px; width: 180px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 700px; left: 400px; width: 250px; }
+      .t396__elem[data-elem-id="custom-upload"] { top: 50px; left: 50px; width: 200px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 100px; left: 50px; width: 200px; }
+    }
+    @media screen and (max-width: 1199px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 800px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 150px; left: 600px; width: 250px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 250px; left: 200px; width: 70px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 350px; left: 400px; width: 120px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 450px; left: 500px; width: 180px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 550px; left: 150px; width: 160px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 650px; left: 300px; width: 220px; }
+    }
+    @media screen and (max-width: 959px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 700px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 120px; left: 400px; width: 200px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 200px; left: 100px; width: 60px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 300px; left: 300px; width: 100px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 350px; width: 150px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 500px; left: 100px; width: 130px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 600px; left: 200px; width: 180px; }
+      .t396__elem[data-elem-type="text"] .tn-atom,
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
+    }
+    @media screen and (max-width: 639px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 100px; left: 300px; width: 180px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 180px; left: 80px; width: 50px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 260px; left: 250px; width: 90px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 340px; left: 280px; width: 120px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 420px; left: 80px; width: 100px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 150px; width: 150px; }
+      .t396__elem[data-elem-type="text"] .tn-atom,
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
+    }
+    @media screen and (max-width: 479px) {
+      .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 80px; left: 200px; width: 150px; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 150px; left: 50px; width: 40px; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 220px; left: 180px; width: 80px; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 300px; left: 200px; width: 100px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 50px; width: 90px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 100px; width: 120px; }
+      .t396__elem[data-elem-type="text"] .tn-atom,
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; }
+      .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
+    }
+  </style>
 </head>
 <body>
-    <div class="ilich-section">
-        <h2>Ilich Code Art Studio</h2>
-        <p>Upload a photo and customize it by dragging and dropping accessories like hats or beards!</p>
-        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
-        <button class="upload-btn" onclick="document.getElementById('imageUpload').click()">Upload Your Photo</button>
-        <div class="image-container">
-            <img id="mainImage" src="" alt="Uploaded Image" style="display: none;">
+  <div class="t396">
+    <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="1000" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="visible" data-artboard-height-res-320="500" data-artboard-height-res-480="600" data-artboard-height-res-960="700" data-artboard-height-res-1200="900">
+      <div class="t396__carrier"></div>
+      <div class="t396__filter"></div>
+      <!-- Draggable Images -->
+      <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="200" data-field-left-value="1000" data-field-width-value="300" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="80" data-field-left-res-320-value="200" data-field-width-res-320-value="150" data-field-top-res-480-value="100" data-field-left-res-480-value="300" data-field-width-res-480-value="180" data-field-top-res-640-value="120" data-field-left-res-640-value="400" data-field-width-res-640-value="200" data-field-top-res-960-value="150" data-field-left-res-960-value="600" data-field-width-res-960-value="250" data-field-top-res-1200-value="200" data-field-left-res-1200-value="800" data-field-width-res-1200-value="300">
+        <div class="tn-atom">
+          <img class="tn-atom__img t-img" src="images/Logo/Sketch_Lighter.png" alt="Custom Image 1" />
         </div>
-        <div class="icon-tray">
-            <img src="images/Logo/Sketch_Lighter.png" class="icon" alt="Hat Icon" data-asset="hat" draggable="true">
-            <img src="images/Logo/Sketch_Lighter.png" class="icon" alt="Beard Icon" data-asset="beard" draggable="true">
-            <img src="images/Logo/Sketch_Lighter.png" class="icon" alt="Glasses Icon" data-asset="glasses" draggable="true">
+      </div>
+      <div class="t396__elem tn-elem drag" data-elem-id="custom-img2" data-elem-type="image" data-field-top-value="300" data-field-left-value="400" data-field-width-value="80" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="150" data-field-left-res-320-value="50" data-field-width-res-320-value="40" data-field-top-res-480-value="180" data-field-left-res-480-value="80" data-field-width-res-480-value="50" data-field-top-res-640-value="200" data-field-left-res-640-value="100" data-field-width-res-640-value="60" data-field-top-res-960-value="250" data-field-left-res-960-value="200" data-field-width-res-960-value="70" data-field-top-res-1200-value="300" data-field-left-res-1200-value="300" data-field-width-res-1200-value="80">
+        <div class="tn-atom">
+          <img class="tn-atom__img t-img" src="https://via.placeholder.com/80x140?text=Custom+Image+2" alt="Custom Image 2" />
         </div>
+      </div>
+      <div class="t396__elem tn-elem drag" data-elem-id="custom-img3" data-elem-type="image" data-field-top-value="400" data-field-left-value="600" data-field-width-value="150" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="220" data-field-left-res-320-value="180" data-field-width-res-320-value="80" data-field-top-res-480-value="260" data-field-left-res-480-value="250" data-field-width-res-480-value="90" data-field-top-res-640-value="300" data-field-left-res-640-value="300" data-field-width-res-640-value="100" data-field-top-res-960-value="350" data-field-left-res-960-value="400" data-field-width-res-960-value="120" data-field-top-res-1200-value="400" data-field-left-res-1200-value="500" data-field-width-res-1200-value="150">
+        <div class="tn-atom">
+          <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+3" alt="Custom Image 3" />
+        </div>
+      </div>
+      <!-- Text Elements -->
+      <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="500" data-field-left-value="700" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="300" data-field-left-res-320-value="200" data-field-width-res-320-value="100" data-field-top-res-480-value="340" data-field-left-res-480-value="280" data-field-width-res-480-value="120" data-field-top-res-640-value="400" data-field-left-res-640-value="350" data-field-width-res-640-value="150" data-field-top-res-960-value="450" data-field-left-res-960-value="500" data-field-width-res-960-value="180" data-field-top-res-1200-value="500" data-field-left-res-1200-value="600" data-field-width-res-1200-value="200">
+        <div class="tn-atom">Try it with your photo!</div>
+      </div>
+      <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="600" data-field-left-value="300" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="380" data-field-left-res-320-value="50" data-field-width-res-320-value="90" data-field-top-res-480-value="420" data-field-left-res-480-value="80" data-field-width-res-480-value="100" data-field-top-res-640-value="500" data-field-left-res-640-value="100" data-field-width-res-640-value="130" data-field-top-res-960-value="550" data-field-left-res-960-value="150" data-field-width-res-960-value="160" data-field-top-res-1200-value="600" data-field-left-res-1200-value="200" data-field-width-res-1200-value="180">
+        <div class="tn-atom">Drag me around!</div>
+      </div>
+      <!-- Button -->
+      <div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-top-value="700" data-field-left-value="500" data-field-width-value="250" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="450" data-field-left-res-320-value="100" data-field-width-res-320-value="120" data-field-top-res-480-value="500" data-field-left-res-480-value="150" data-field-width-res-480-value="150" data-field-top-res-640-value="600" data-field-left-res-640-value="200" data-field-width-res-640-value="180" data-field-top-res-960-value="650" data-field-left-res-960-value="300" data-field-width-res-960-value="220" data-field-top-res-1200-value="700" data-field-left-res-1200-value="400" data-field-width-res-1200-value="250">
+        <a class="tn-atom" href="#try-now">Try Now!</a>
+      </div>
+      <!-- File Upload -->
+      <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-top-value="50" data-field-left-value="50" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+        <input type="file" id="photo-upload" accept="image/*" style="padding: 10px; background: #ffdd2b; border: none; color: #fd4e22; font-family: 'Montserrat', Arial, sans-serif; font-size: 16px;">
+      </div>
+      <!-- Save Button -->
+      <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="100" data-field-left-value="50" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+        <button class="tn-atom save-button">Save Photo</button>
+      </div>
     </div>
+  </div>
 
-    <script>
-        const imageUpload = document.getElementById('imageUpload');
-        const mainImage = document.getElementById('mainImage');
-        const body = document.body;
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      let zIndex = 10;
+      $('.drag').draggable({
+        cursor: "grabbing",
+        start: function() { $(this).css("z-index", zIndex++); }
+      });
 
-        // Handle image upload
-        imageUpload.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (event) => {
-                    mainImage.src = event.target.result;
-                    mainImage.style.display = 'block';
-                    console.log('Image uploaded successfully');
-                };
-                reader.onerror = () => console.error('Failed to upload image');
-                reader.readAsDataURL(file);
-            }
+      // File Upload Handling
+      function readFile(file) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file); // Changed to readAsDataURL for background image
+        return new Promise((resolve, reject) => {
+          reader.onload = function() { resolve(reader.result); };
+          reader.onerror = function() { reject(reader.error); };
         });
+      }
 
-        // Handle drag and drop for assets
-        document.querySelectorAll('.icon').forEach(icon => {
-            icon.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text/plain', e.target.dataset.asset);
-                e.dataTransfer.setData('text/src', e.target.src);
-                e.target.classList.add('dragging');
-                console.log(`Dragging ${e.target.dataset.asset}`);
+      $('#photo-upload').on('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+          readFile(file).then(result => {
+            $('.t396__artboard').css({
+              'background-image': `url(${result})`,
+              'background-size': 'cover',
+              'background-position': 'center center',
+              'background-repeat': 'no-repeat'
             });
-            icon.addEventListener('dragend', (e) => {
-                e.target.classList.remove('dragging');
-                console.log(`Drag ended for ${e.target.dataset.asset}`);
-            });
-        });
+          }).catch(error => {
+            console.error('Error reading file:', error);
+          });
+        }
+      });
 
-        // Allow dropping anywhere on the page
-        body.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'copy';
+      // Save Photo Handling
+      $('.save-button').on('click', function() {
+        html2canvas(document.querySelector('.t396__artboard')).then(canvas => {
+          const link = document.createElement('a');
+          link.download = 'custom-artboard.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
         });
-
-        body.addEventListener('drop', (e) => {
-            e.preventDefault();
-            const assetType = e.dataTransfer.getData('text/plain');
-            const assetSrc = e.dataTransfer.getData('text/src');
-            const x = e.clientX;
-            const y = e.clientY;
-
-            // Create a new image element for the dropped asset
-            const droppedAsset = document.createElement('img');
-            droppedAsset.src = assetSrc;
-            droppedAsset.className = 'dropped-asset';
-            droppedAsset.style.left = `${x - 25}px`; // Center the 50x50 image at drop point
-            droppedAsset.style.top = `${y - 25}px`;
-            droppedAsset.alt = `${assetType} Asset`;
-            body.appendChild(droppedAsset);
-            console.log(`Dropped ${assetType} at (${x}, ${y})`);
-        });
-    </script>
+      });
+    });
+  </script>
 </body>
 </html>
