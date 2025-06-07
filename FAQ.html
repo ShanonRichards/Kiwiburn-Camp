@@ -165,12 +165,14 @@
     }
     .asset-container {
       position: absolute;
-      top: 60px;
+      top: 50px; /* Directly below dropdown */
       right: 10px;
       display: flex;
       flex-direction: column;
       gap: 10px;
       z-index: 1;
+      max-height: 500px; /* Limit height to prevent overflow */
+      overflow-y: auto; /* Enable scrolling if needed */
     }
     @media screen and (min-width: 1440px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
@@ -182,7 +184,7 @@
       .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
       .t396__elem[data-elem-id="custom-rotate-slider"] { top: 200px; left: 20px; width: 180px; }
       .dropdown-container { top: 10px; right: 20px; }
-      .asset-container { top: 60px; right: 20px; }
+      .asset-container { top: 50px; right: 20px; }
     }
     @media screen and (max-width: 1439px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
@@ -304,6 +306,7 @@
               <option value="hair">Hair</option>
               <option value="beanie">Beanie</option>
               <option value="eyes">Eyes</option>
+              <option value="other">Other</option>
             </select>
           </div>
           <div class="asset-container" id="asset-container"></div>
@@ -321,19 +324,46 @@
       let lastSelectedImage = null;
 
       const assets = [
-        { id: 'custom-img1', category: 'hair', src: 'images/Rejex_Me/Emo_Hair_element (1).png', alt: 'Emo Hair' },
-        { id: 'custom-img2', category: 'beanie', src: 'images/Rejex_Me/Emo_Beanie_element (2).png', alt: 'Emo Beanie' },
-        { id: 'custom-img3', category: 'eyes', src: 'images/Rejex_Me/Alien_Eyes.png', alt: 'Alien Eyes' },
-        { id: 'custom-img4', category: 'eyes', src: 'images/Rejex_Me/Alien_Eyes_Blue.png', alt: 'Alien Eyes Blue' },
-        { id: 'custom-img5', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+5', alt: 'Custom Image 5' },
-        { id: 'custom-img6', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+6', alt: 'Custom Image 6' },
-        { id: 'custom-img7', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+7', alt: 'Custom Image 7' },
-        { id: 'custom-img8', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+8', alt: 'Custom Image 8' },
-        { id: 'custom-img9', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+9', alt: 'Custom Image 9' },
-        { id: 'custom-img10', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+10', alt: 'Custom Image 10' },
-        { id: 'custom-img11', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+11', alt: 'Custom Image 11' },
-        { id: 'custom-img12', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+12', alt: 'Custom Image 12' },
-        { id: 'custom-img13', category: 'other', src: 'https://via.placeholder.com/150x200?text=Custom+Image+13', alt: 'Custom Image 13' }
+        { id: 'custom-img1', category: 'hair', src: 'images/Rejex_Me/Emo_Hair_Element (1).png', alt: 'Emo Hair 1' },
+        { id: 'custom-img2', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+2', alt: 'Hair 2' },
+        { id: 'custom-img3', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+3', alt: 'Hair 3' },
+        { id: 'custom-img4', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+4', alt: 'Hair 4' },
+        { id: 'custom-img5', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+5', alt: 'Hair 5' },
+        { id: 'custom-img6', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+6', alt: 'Hair 6' },
+        { id: 'custom-img7', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+7', alt: 'Hair 7' },
+        { id: 'custom-img8', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+8', alt: 'Hair 8' },
+        { id: 'custom-img9', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+9', alt: 'Hair 9' },
+        { id: 'custom-img10', category: 'hair', src: 'https://via.placeholder.com/150x200?text=Hair+10', alt: 'Hair 10' },
+        { id: 'custom-img11', category: 'beanie', src: 'images/Rejex_Me/Emo_Beanie_element (2).png', alt: 'Emo Beanie 1' },
+        { id: 'custom-img12', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+2', alt: 'Beanie 2' },
+        { id: 'custom-img13', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+3', alt: 'Beanie 3' },
+        { id: 'custom-img14', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+4', alt: 'Beanie 4' },
+        { id: 'custom-img15', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+5', alt: 'Beanie 5' },
+        { id: 'custom-img16', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+6', alt: 'Beanie 6' },
+        { id: 'custom-img17', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+7', alt: 'Beanie 7' },
+        { id: 'custom-img18', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+8', alt: 'Beanie 8' },
+        { id: 'custom-img19', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+9', alt: 'Beanie 9' },
+        { id: 'custom-img20', category: 'beanie', src: 'https://via.placeholder.com/150x200?text=Beanie+10', alt: 'Beanie 10' },
+        { id: 'custom-img21', category: 'eyes', src: 'images/Rejex_Me/Alien_Eyes.png', alt: 'Alien Eyes 1' },
+        { id: 'custom-img22', category: 'eyes', src: 'images/Rejex_Me/Alien_Eyes_Blue.png', alt: 'Alien Eyes Blue' },
+        { id: 'custom-img23', category: 'eyes', src: 'https://via.placeholder.com/150x200?text=Eyes+3', alt: 'Eyes 3' },
+        { id: 'custom-img24', category: 'eyes', src: 'https://via.placeholder.com/150x200?text=Eyes+4', alt: 'Eyes 4' },
+        { id: 'custom-img25', category: 'eyes', src: 'https://via.placeholder.com/150x200?text=Eyes+5', alt: 'Eyes 5' },
+        { id: 'custom-img26', category: 'eyes', src: 'https://via.placeholder.com/150x200?text=Eyes+6', alt: 'Eyes 6' },
+        { id: 'custom-img27', category: 'eyes', src: 'https://via.placeholder.com/150x200?text=Eyes+7', alt: 'Eyes 7' },
+        { id: 'custom-img28', category: 'eyes', src: 'https://via.placeholder.com/150x200?text=Eyes+8', alt: 'Eyes 8' },
+        { id: 'custom-img29', category: 'eyes', src: 'https://via.placeholder.com/150x200?text=Eyes+9', alt: 'Eyes 9' },
+        { id: 'custom-img30', category: 'eyes', src: 'https://via.placeholder.com/150x200?text=Eyes+10', alt: 'Eyes 10' },
+        { id: 'custom-img31', category: 'other', src: 'https://via.placeholder.com/150x200?text=Necklace', alt: 'Necklace' },
+        { id: 'custom-img32', category: 'other', src: 'https://via.placeholder.com/150x200?text=Choker', alt: 'Choker' },
+        { id: 'custom-img33', category: 'other', src: 'https://via.placeholder.com/150x200?text=Other+3', alt: 'Other 3' },
+        { id: 'custom-img34', category: 'other', src: 'https://via.placeholder.com/150x200?text=Other+4', alt: 'Other 4' },
+        { id: 'custom-img35', category: 'other', src: 'https://via.placeholder.com/150x200?text=Other+5', alt: 'Other 5' },
+        { id: 'custom-img36', category: 'other', src: 'https://via.placeholder.com/150x200?text=Other+6', alt: 'Other 6' },
+        { id: 'custom-img37', category: 'other', src: 'https://via.placeholder.com/150x200?text=Other+7', alt: 'Other 7' },
+        { id: 'custom-img38', category: 'other', src: 'https://via.placeholder.com/150x200?text=Other+8', alt: 'Other 8' },
+        { id: 'custom-img39', category: 'other', src: 'https://via.placeholder.com/150x200?text=Other+9', alt: 'Other 9' },
+        { id: 'custom-img40', category: 'other', src: 'https://via.placeholder.com/150x200?text=Other+10', alt: 'Other 10' }
       ];
 
       function updateAssetDisplay(category) {
@@ -342,17 +372,18 @@
         const filteredAssets = category === 'all' ? assets : assets.filter(asset => asset.category === category);
         
         filteredAssets.forEach((asset, index) => {
+          const topPosition = 50 + index * 50; // Start below dropdown
           const elem = $(`
             <div class="t396__elem tn-elem drag" data-elem-id="${asset.id}" data-elem-type="image" 
-                 data-field-top-value="${60 + index * 50}" data-field-left-value="95%" 
+                 data-field-top-value="${topPosition}" data-field-left-value="95%" 
                  data-field-axisy-value="top" data-field-axisx-value="right" 
                  data-field-container-value="grid" data-field-top-units-value="px" 
                  data-field-left-units-value="%" 
-                 data-field-top-res-320-value="${60 + index * 50}" data-field-left-res-320-value="95%"
-                 data-field-top-res-480-value="${60 + index * 50}" data-field-left-res-480-value="95%"
-                 data-field-top-res-640-value="${60 + index * 50}" data-field-left-res-640-value="95%"
-                 data-field-top-res-960-value="${60 + index * 50}" data-field-left-res-960-value="95%"
-                 data-field-top-res-1200-value="${60 + index * 50}" data-field-left-res-1200-value="95%">
+                 data-field-top-res-320-value="${topPosition}" data-field-left-res-320-value="95%"
+                 data-field-top-res-480-value="${topPosition}" data-field-left-res-480-value="95%"
+                 data-field-top-res-640-value="${topPosition}" data-field-left-res-640-value="95%"
+                 data-field-top-res-960-value="${topPosition}" data-field-left-res-960-value="95%"
+                 data-field-top-res-1200-value="${topPosition}" data-field-left-res-1200-value="95%">
               <div class="tn-atom">
                 <img class="tn-atom__img t-img" src="${asset.src}" alt="${asset.alt}" />
               </div>
@@ -486,7 +517,7 @@
         });
       }
 
-      for (let i = 1; i <= 13; i++) {
+      for (let i = 1; i <= 40; i++) {
         const imgSrc = $(`.t396__elem[data-elem-id="custom-img${i}"] .tn-atom__img`).attr('src');
         if (imgSrc) {
           adjustImageSize(`custom-img${i}`, imgSrc, false, 1);
