@@ -147,6 +147,7 @@
     .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]) {
       transform: scale(0.5);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
     .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]).ui-draggable-dragging {
       transform: scale(1);
@@ -254,6 +255,55 @@
       display: block;
       object-fit: contain;
     }
+    .trash-bin {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 77, 77, 0.8);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .trash-bin:hover {
+      background-color: #e63939;
+      transform: scale(1.1);
+    }
+    .trash-bin::before {
+      content: '🗑️';
+      font-size: 20px;
+      color: #ffffff;
+    }
+    .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]):hover .remove-btn {
+      opacity: 1;
+    }
+    .remove-btn {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d4d;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s ease, background-color 0.2s ease;
+      z-index: 10;
+    }
+    .remove-btn:hover {
+      background-color: #e63939;
+    }
     @media screen and (min-width: 1440px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
       .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 50%; width: 180px; }
@@ -303,6 +353,9 @@
       .t396__elem[data-elem-id="custom-save"] .tn-atom { transform: rotate(0deg); }
       .sidebar, .right-sidebar { width: 150px; }
       .sidebar .category-item img { width: 60px; }
+      .trash-bin { width: 32px; height: 32px; }
+      .trash-bin::before { font-size: 16px; }
+      .remove-btn { width: 16px; height: 16px; font-size: 10px; top: -8px; right: -8px; }
     }
     @media screen and (max-width: 100%) {
       .artboard-container, .t396__artboard, .t396__carrier, .t396__filter {
@@ -356,6 +409,7 @@
         <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="hidden" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
           <div class="t396__carrier"></div>
           <div class="t396__filter"></div>
+          <div class="trash-bin" id="trash-bin"></div>
           <div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
             <div class="tn-atom">
               <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
@@ -479,6 +533,17 @@
         }
       });
 
+      function addRemoveButton(elem) {
+        const removeBtn = $('<div>').addClass('remove-btn').text('×').appendTo(elem);
+        removeBtn.on('click', function(e) {
+          e.stopPropagation();
+          $(this).closest('.t396__elem').remove();
+          if (lastSelectedImage === elem.data('elem-id')) {
+            lastSelectedImage = null;
+          }
+        });
+      }
+
       $('.category-item').on('click', function() {
         const src = $(this).find('img').attr('src');
         const alt = $(this).find('img').attr('alt');
@@ -511,6 +576,8 @@
               $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
             )
           ).appendTo('.t396__artboard');
+
+          addRemoveButton(elem);
 
           elem.draggable({
             cursor: 'grabbing',
@@ -572,6 +639,8 @@
               )
             ).appendTo('.t396__artboard');
 
+            addRemoveButton(elem);
+
             elem.draggable({
               cursor: 'grabbing',
               start: function() {
@@ -596,6 +665,17 @@
             });
 
             adjustImageSize(elemId, src, false, 1);
+          }
+        }
+      });
+
+      $('#trash-bin').droppable({
+        accept: '.t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"])',
+        hoverClass: 'trash-bin-hover',
+        drop: function(event, ui) {
+          ui.draggable.remove();
+          if (lastSelectedImage === ui.draggable.data('elem-id')) {
+            lastSelectedImage = null;
           }
         }
       });
