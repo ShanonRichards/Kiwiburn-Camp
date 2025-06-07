@@ -122,7 +122,7 @@
       background-position: center;
       background-size: cover;
       background-attachment: fixed;
-      overflow: hidden;
+      overflow: visible !important; /* Allow elements to be positioned at edges */
       position: relative;
     }
     .t396__carrier, .t396__filter {
@@ -589,12 +589,26 @@
             start: function(event, ui) {
               $(this).css('z-index', zIndex++);
               lastSelectedImage = elemId;
-              $(this).css('transform', 'translate(-50%, -50%) scale(1)');
+            },
+            drag: function(event, ui) {
+              const container = $(this);
+              const artboard = $('.t396__artboard');
+              const artboardWidth = artboard.width();
+              const artboardHeight = artboard.height();
+              const elemWidth = container.width();
+              const elemHeight = container.height();
+
+              const minLeft = elemWidth / 2;
+              const maxLeft = artboardWidth - elemWidth / 2;
+              const minTop = elemHeight / 2;
+              const maxTop = artboardHeight - elemHeight / 2;
+
+              ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+              ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
             },
             stop: function(event, ui) {
-              const left = parseFloat($(this).css('left'));
-              const artboardWidth = $('.t396__artboard').width();
-              $(this).css('transform', 'translate(-50%, -50%) scale(1)');
+              const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+              $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
             }
           });
 
@@ -654,10 +668,26 @@
               start: function(event, ui) {
                 $(this).css('z-index', zIndex++);
                 lastSelectedImage = elemId;
-                $(this).css('transform', 'translate(-50%, -50%) scale(1)');
+              },
+              drag: function(event, ui) {
+                const container = $(this);
+                const artboard = $('.t396__artboard');
+                const artboardWidth = artboard.width();
+                const artboardHeight = artboard.height();
+                const elemWidth = container.width();
+                const elemHeight = container.height();
+
+                const minLeft = elemWidth / 2;
+                const maxLeft = artboardWidth - elemWidth / 2;
+                const minTop = elemHeight / 2;
+                const maxTop = artboardHeight - elemHeight / 2;
+
+                ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+                ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
               },
               stop: function(event, ui) {
-                $(this).css('transform', 'translate(-50%, -50%) scale(1)');
+                const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+                $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
               }
             });
 
@@ -696,12 +726,28 @@
           $(this).css('z-index', zIndex++);
           if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
             lastSelectedImage = $(this).data('elem-id');
-            $(this).css('transform', 'translate(-50%, -50%) scale(1)');
           }
+        },
+        drag: function(event, ui) {
+          const container = $(this);
+          const artboard = $('.t396__artboard');
+          const artboardWidth = artboard.width();
+          const artboardHeight = artboard.height();
+          const elemWidth = container.width();
+          const elemHeight = container.height();
+
+          const minLeft = elemWidth / 2;
+          const maxLeft = artboardWidth - elemWidth / 2;
+          const minTop = elemHeight / 2;
+          const maxTop = artboardHeight - elemHeight / 2;
+
+          ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+          ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
         },
         stop: function(event, ui) {
           if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
-            $(this).css('transform', 'translate(-50%, -50%) scale(1)');
+            const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+            $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
           }
         }
       });
