@@ -5,89 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Main Page with Interactive Artboard</title>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Creepster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Creepster&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Montserrat', Arial, sans-serif;
-      background-color: #000000;
+      background-color: #1c2526;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       overflow-y: auto;
+      color: #e0e0e0;
     }
     .main-content {
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
       flex: 0 0 auto;
+      background: linear-gradient(180deg, #2a2e2e 0%, #1c2526 100%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
     .main-content h1 {
-      color: #ff0000;
-      font-size: 36px;
-      margin-bottom: 20px;
+      color: #ff4d4d;
+      font-size: 40px;
+      margin-bottom: 15px;
       font-family: 'Creepster', cursive;
-      background-color: #000000;
-      padding: 10px;
+      background: none;
+      padding: 12px 24px;
       display: inline-block;
-      border-radius: 5px;
+      border-radius: 10px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
     .main-content p {
-      color: #ffffff;
+      color: #d1d1d1;
+      font-size: 18px;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto;
     }
     .container {
       display: flex;
       flex: 1;
       min-height: 0;
       margin-bottom: 2cm;
+      padding: 0 15px;
     }
     .sidebar {
       width: 200px;
-      background-color: #1a1a1a;
-      padding: 10px;
+      background-color: #262626;
+      padding: 15px;
       overflow-y: auto;
-      border-left: 2px solid #ccc;
+      border-left: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
     .right-sidebar {
       width: 200px;
-      background-color: #1a1a1a;
-      padding: 10px;
+      background-color: #262626;
+      padding: 15px;
       overflow-y: auto;
-      border-right: 2px solid #ccc;
+      border-right: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
     .sidebar details, .right-sidebar details {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .sidebar summary, .right-sidebar summary {
       color: #ffffff;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
-      padding: 5px;
+      padding: 10px;
       background-color: #333333;
-      border-radius: 5px;
+      border-radius: 8px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
     .sidebar summary:hover, .right-sidebar summary:hover {
-      background-color: #444444;
+      background-color: #ff4d4d;
+      transform: translateY(-2px);
     }
     .sidebar .category-item {
-      margin: 5px 0;
+      margin: 8px 0;
       cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .sidebar .category-item:hover {
+      transform: scale(1.05);
     }
     .sidebar .category-item img {
       width: 80px;
       height: auto;
       object-fit: contain;
       display: block;
-      margin: 5px auto;
+      margin: 8px auto;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     }
     .artboard-container {
       flex: 1;
       min-width: 320px;
       margin: 0;
-      border: 2px solid #ccc;
-      border-radius: 8px;
+      border: none;
+      border-radius: 10px;
       overflow: hidden;
       position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      background-color: #262626;
     }
     .t396__artboard {
       height: 600px;
@@ -104,6 +131,7 @@
     .t396__elem {
       position: absolute;
       z-index: 1;
+      transition: transform 0.3s ease;
     }
     .t396__elem[data-elem-id="custom-uploaded-img"] {
       z-index: 0;
@@ -118,73 +146,105 @@
     }
     .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]) {
       transform: scale(0.5);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]).ui-draggable-dragging {
       transform: scale(1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
     .t396__elem[data-elem-type="text"] .tn-atom {
       color: #ffffff;
       font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 600;
-      line-height: 1.55;
-      letter-spacing: -1px;
+      line-height: 1.5;
+      letter-spacing: -0.5px;
       text-align: center;
-      background-color: #000000;
-      border-radius: 0;
-      padding: 10px;
-      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      background-color: rgba(0, 0, 0, 0.75);
+      border-radius: 8px;
+      padding: 12px 20px;
+      transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
       transform: rotate(350deg);
+    }
+    .t396__elem[data-elem-type="text"] .tn-atom:hover {
+      background-color: #ff4d4d;
     }
     .t396__elem[data-elem-type="button"] .tn-atom {
       color: #ffffff;
       font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 26px;
+      font-size: 20px;
       font-weight: 600;
-      line-height: 1.55;
-      letter-spacing: -1px;
+      line-height: 1.5;
+      letter-spacing: -0.5px;
       text-align: center;
-      background-color: #000000;
-      border-radius: 0;
-      padding: 15px;
+      background-color: #ff4d4d;
+      border-radius: 8px;
+      padding: 14px 20px;
       display: block;
       text-decoration: none;
-      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
       cursor: pointer;
+    }
+    .t396__elem[data-elem-type="button"] .tn-atom:hover {
+      background-color: #e63939;
+      transform: scale(1.05);
     }
     .t396__elem[data-elem-id="custom-save"] .tn-atom {
       transform: rotate(0deg);
+      background-color: #4caf50;
     }
-    .t396__elem[data-elem-type="upload"] input,
-    .t396__elem[data-elem-type="slider"] .ui-slider {
+    .t396__elem[data-elem-id="custom-save"] .tn-atom:hover {
+      background-color: #3d8b40;
+      transform: scale(1.05);
+    }
+    .t396__elem[data-elem-type="upload"] input {
       color: #ffffff;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 16px;
-      background-color: #000000;
+      background-color: #333333;
       border: none;
-      padding: 10px;
+      padding: 12px;
+      border-radius: 8px;
       cursor: pointer;
       width: 100%;
       box-sizing: border-box;
+      transition: background-color 0.2s ease-in-out;
+    }
+    .t396__elem[data-elem-type="upload"] input:hover {
+      background-color: #ff4d4d;
+    }
+    .t396__elem[data-elem-type="slider"] .ui-slider {
+      background-color: #333333;
+      border: none;
+      border-radius: 4px;
+      height: 6px;
+      margin-top: 8px;
     }
     .t396__elem[data-elem-type="slider"] .ui-slider-handle {
-      background: #ff0000;
-      border: 2px solid #fff;
+      background: #ff4d4d;
+      border: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      top: -4px;
       cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .t396__elem[data-elem-type="slider"] .ui-slider-handle:hover {
+      background: #e63939;
     }
     .t396__elem[data-elem-type="slider"] .slider-label {
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 14px;
-      color: #ffffff;
-      margin-bottom: 5px;
+      font-weight: 400;
+      color: #d1d1d1;
+      margin-bottom: 8px;
       text-align: left;
     }
     .t396__elem[data-elem-type="text"] .tn-atom:hover,
     .t396__elem[data-elem-type="button"] .tn-atom:hover,
     .t396__elem[data-elem-type="upload"] input:hover,
     .t396__elem[data-elem-type="slider"] .ui-slider:hover {
-      background-color: #333333;
       color: #ffffff;
     }
     .ui-draggable-dragging {
@@ -204,9 +264,9 @@
       .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
       .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
       .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
-     GIT:      .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
     }
-    @media screen and (maxouvrez: max-width: 1199px) {
+    @media screen and (max-width: 1199px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
       .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
       .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
@@ -259,7 +319,7 @@
     }
     .right-sidebar .t396__elem {
       position: relative;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .right-sidebar .t396__elem[data-elem-type="upload"] input,
     .right-sidebar .t396__elem[data-elem-type="button"] .tn-atom,
@@ -271,7 +331,7 @@
 </head>
 <body>
   <div class="main-content">
-    <h1>REJEX YOUSELF!</h1>
+    <h1>REJEX YOURSELF!</h1>
     <p>Create and turn yourself into an emo, alien rejex!</p>
   </div>
   <div class="container">
@@ -325,7 +385,6 @@
       let lastSelectedImage = null;
       let itemCounter = 0;
 
-      // Define categories and items
       const categories = [
         {
           name: 'Hats/Beanies',
@@ -390,7 +449,6 @@
         }
       ];
 
-      // Populate sidebar with categories and items
       const sidebar = $('#category-sidebar');
       categories.forEach(category => {
         const details = $('<details>').appendTo(sidebar);
@@ -408,7 +466,6 @@
         });
       });
 
-      // Make sidebar images draggable
       $('.category-item').draggable({
         helper: 'clone',
         cursor: 'move',
@@ -422,7 +479,6 @@
         }
       });
 
-      // Make sidebar images clickable to add to artboard
       $('.category-item').on('click', function() {
         const src = $(this).find('img').attr('src');
         const alt = $(this).find('img').attr('alt');
@@ -483,7 +539,6 @@
         }
       });
 
-      // Make artboard droppable
       $('.t396__artboard').droppable({
         accept: '.category-item',
         drop: function(event, ui) {
@@ -493,7 +548,6 @@
           const existing = $(`.t396__elem[data-elem-id="${elemId}"]`);
 
           if (!existing.length) {
-            // Calculate drop position relative to artboard
             const artboardOffset = $(this).offset();
             const dropX = event.pageX - artboardOffset.left;
             const dropY = event.pageY - artboardOffset.top;
