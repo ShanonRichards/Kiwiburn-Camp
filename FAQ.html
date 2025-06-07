@@ -72,6 +72,7 @@
     }
     .sidebar details, .right-sidebar details {
       margin-bottom: 12px;
+      position: relative;
     }
     .sidebar summary, .right-sidebar summary {
       color: #ffffff;
@@ -92,6 +93,7 @@
       margin: 8px 0;
       cursor: pointer;
       transition: transform 0.2s ease;
+      position: relative;
     }
     .sidebar .category-item:hover {
       transform: scale(1.05);
@@ -103,7 +105,28 @@
       display: block;
       margin: 8px auto;
       border-radius: 6px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    }
+    .category-item .remove-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: rgba(255, 77, 77, 0.8);
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .category-item .remove-btn:hover {
+      background-color: #e63939;
+      transform: scale(1.1);
     }
     .artboard-container {
       flex: 1;
@@ -135,7 +158,6 @@
     }
     .t396__elem[data-elem-id="custom-uploaded-img"] {
       z-index: 0;
-      pointer-events: none;
     }
     .tn-atom__img {
       width: 100%;
@@ -146,12 +168,11 @@
     }
     .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]) {
       transform: translate(-50%, -50%) scale(0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
       position: absolute;
     }
     .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]).ui-draggable-dragging {
       transform: translate(-50%, -50%) scale(1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
     .t396__elem[data-elem-type="text"] .tn-atom {
       color: #ffffff;
@@ -255,34 +276,10 @@
       display: block;
       object-fit: contain;
     }
-    .trash-bin {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 77, 77, 0.8);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.2s ease;
-    }
-    .trash-bin:hover {
-      background-color: #e63939;
-      transform: scale(1.1);
-    }
-    .trash-bin::before {
-      content: '🗑️';
-      font-size: 20px;
-      color: #ffffff;
-    }
     .right-sidebar .t396__elem {
       position: relative;
       display: block;
-      margin-bottom: 20px; /* Increased spacing between elements */
+      margin-bottom: 20px;
       width: 100%;
     }
     .right-sidebar .t396__elem[data-elem-type="upload"] input,
@@ -340,8 +337,6 @@
       .t396__elem[data-elem-id="custom-save"] .tn-atom { transform: rotate(0deg); }
       .sidebar, .right-sidebar { width: 150px; }
       .sidebar .category-item img { width: 60px; }
-      .trash-bin { width: 32px; height: 32px; }
-      .trash-bin::before { font-size: 16px; }
     }
     @media screen and (max-width: 100%) {
       .artboard-container, .t396__artboard, .t396__carrier, .t396__filter {
@@ -385,7 +380,6 @@
         <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="hidden" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
           <div class="t396__carrier"></div>
           <div class="t396__filter"></div>
-          <div class="trash-bin" id="trash-bin"></div>
           <div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
             <div class="tn-atom">
               <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
@@ -525,13 +519,16 @@
         const itemContainer = $('<div>').appendTo(details);
         category.items.forEach(item => {
           const itemId = `custom-img${++itemCounter}`;
-          $('<div>').addClass('category-item').attr('data-elem-id', itemId).append(
+          const categoryItem = $('<div>').addClass('category-item').attr('data-elem-id', itemId).append(
             $('<img>').attr({
               src: item.src,
               alt: item.alt,
               'data-elem-id': itemId
             })
-          ).appendTo(itemContainer);
+          );
+          const removeBtn = $('<button>').addClass('remove-btn').text('x').attr('data-elem-id', itemId);
+          categoryItem.append(removeBtn);
+          categoryItem.appendTo(itemContainer);
         });
       });
 
@@ -549,7 +546,21 @@
         }
       });
 
-      $('.category-item').on('click', function() {
+      $('.category-item').on('click', function(event) {
+        if ($(event.target).hasClass('remove-btn')) {
+          const elemId = $(event.target).attr('data-elem-id');
+          const artboardElem = $(`.t396__elem[data-elem-id="${elemId}"]`);
+          if (artboardElem.length) {
+            artboardElem.remove();
+            if (lastSelectedImage === elemId) {
+              lastSelectedImage = null;
+              $('#rotate-slider').slider('value', 0);
+              $('#size-slider').slider('value', 1);
+            }
+          }
+          return;
+        }
+
         const src = $(this).find('img').attr('src');
         const alt = $(this).find('img').attr('alt');
         const elemId = $(this).find('img').attr('data-elem-id');
@@ -700,19 +711,6 @@
             });
 
             adjustImageSize(elemId, src, false, 1);
-          }
-        }
-      });
-
-      $('#trash-bin').droppable({
-        accept: '.t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"])',
-        hoverClass: 'trash-bin-hover',
-        drop: function(event, ui) {
-          ui.draggable.remove();
-          if (lastSelectedImage === ui.draggable.data('elem-id')) {
-            lastSelectedImage = null;
-            $('#rotate-slider').slider('value', 0);
-            $('#size-slider').slider('value', 1);
           }
         }
       });
