@@ -1,3 +1,5 @@
+make sure the uploaded image, is center of the container box, not outside of it
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,17 +16,23 @@
     .main-content {
       padding: 20px;
       text-align: center;
+      position: relative;
     }
     .main-content h1 {
       color: #8b0000;
       font-size: 48px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       font-family: 'Creepster', cursive;
       background-color: #000;
       padding: 15px;
       border-radius: 8px;
       letter-spacing: 2px;
       text-transform: uppercase;
+    }
+    .main-content p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #333;
     }
     .artboard-container {
       width: 100%;
@@ -360,22 +368,22 @@
           </div>
           <div class="t396__elem tn-elem drag" data-elem-id="custom-img6" data-elem-type="image" data-field-top-value="10" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+6" alt="Custom Image 6" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Hair_Element (1).png" alt="Custom Image 6" />
             </div>
           </div>
           <div class="t396__elem tn-elem drag" data-elem-id="custom-img7" data-elem-type="image" data-field-top-value="120" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+7" alt="Custom Image 7" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Beanie_Element (2).png" alt="Custom Image 7" />
             </div>
           </div>
           <div class="t396__elem tn-elem drag" data-elem-id="custom-img8" data-elem-type="image" data-field-top-value="230" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+8" alt="Custom Image 8" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Alien_Eyes.png" alt="Custom Image 8" />
             </div>
           </div>
           <div class="t396__elem tn-elem drag" data-elem-id="custom-img9" data-elem-type="image" data-field-top-value="340" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+9" alt="Custom Image 9" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Alien_Eyes_Blue.png" alt="Custom Image 9" />
             </div>
           </div>
           <div class="t396__elem tn-elem drag" data-elem-id="custom-img10" data-elem-type="image" data-field-top-value="450" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
@@ -484,6 +492,7 @@
         }
 
         const tempImg = new Image();
+        tempImg.crossOrigin = "Anonymous";
         tempImg.src = imgSrc;
         tempImg.onload = function() {
           const imgWidth = tempImg.naturalWidth;
@@ -569,40 +578,113 @@
       });
 
       $('.save-button').on('click', async function() {
+        const mainContent = document.querySelector('.main-content');
         const artboard = document.querySelector('.t396__artboard');
+        const mainContentRect = mainContent.getBoundingClientRect();
+        const artboardRect = artboard.getBoundingClientRect();
+        const header = document.querySelector('.main-content h1');
+        const description = document.querySelector('.main-content p');
+        const headerRect = header.getBoundingClientRect();
+        const descriptionRect = description.getBoundingClientRect();
+        const offsetX = artboardRect.left - mainContentRect.left;
+        const offsetY = artboardRect.top - mainContentRect.top;
+
         // Create a temporary container for the screenshot
         const tempContainer = document.createElement('div');
         tempContainer.style.position = 'absolute';
         tempContainer.style.top = '-9999px';
         tempContainer.style.left = '-9999px';
-        tempContainer.style.width = artboard.offsetWidth + 'px';
-        tempContainer.style.height = artboard.offsetHeight + 'px';
-        tempContainer.style.backgroundImage = artboard.style.backgroundImage;
-        tempContainer.style.backgroundPosition = 'center';
-        tempContainer.style.backgroundSize = 'cover';
-        document.body.appendChild(tempContainer);
+        tempContainer.style.width = Math.ceil(mainContentRect.width) + 'px';
+        tempContainer.style.height = Math.ceil(mainContentRect.height) + 'px';
+        tempContainer.style.padding = getComputedStyle(mainContent).padding;
+        tempContainer.style.textAlign = 'center';
+        tempContainer.style.backgroundColor = 'white'; // Ensure a white background for the screenshot
 
-        // Clone and append only the uploaded image and dragged custom images
+        // Add header
+        const tempHeader = document.createElement('h1');
+        tempHeader.style.cssText = getComputedStyle(header).cssText;
+        tempHeader.textContent = header.textContent;
+        tempHeader.style.position = 'absolute';
+        tempHeader.style.top = (headerRect.top - mainContentRect.top) + 'px';
+        tempHeader.style.left = (headerRect.left - mainContentRect.left) + 'px';
+        tempHeader.style.width = headerRect.width + 'px';
+        tempContainer.appendChild(tempHeader);
+
+        // Add description
+        const tempDescription = document.createElement('p');
+        tempDescription.style.cssText = getComputedStyle(description).cssText;
+        tempDescription.textContent = description.textContent;
+        tempDescription.style.position = 'absolute';
+        tempDescription.style.top = (descriptionRect.top - mainContentRect.top) + 'px';
+        tempDescription.style.left = (descriptionRect.left - mainContentRect.left) + 'px';
+        tempDescription.style.width = descriptionRect.width + 'px';
+        tempContainer.appendChild(tempDescription);
+
+        // Create a div for the artboard
+        const tempArtboard = document.createElement('div');
+        tempArtboard.style.width = artboardRect.width + 'px';
+        tempArtboard.style.height = artboardRect.height + 'px';
+        tempArtboard.style.backgroundImage = getComputedStyle(artboard).backgroundImage;
+        tempArtboard.style.backgroundPosition = 'center';
+        tempArtboard.style.backgroundSize = 'cover';
+        tempArtboard.style.backgroundRepeat = 'no-repeat';
+        tempArtboard.style.position = 'absolute';
+        tempArtboard.style.top = offsetY + 'px';
+        tempArtboard.style.left = offsetX + 'px';
+        tempArtboard.style.border = getComputedStyle(document.querySelector('.artboard-container')).border;
+        tempArtboard.style.borderRadius = getComputedStyle(document.querySelector('.artboard-container')).borderRadius;
+        tempContainer.appendChild(tempArtboard);
+
+        // Preload all images
+        const imageUrls = [artboard.style.backgroundImage.slice(5, -2)]; // Background image
+        $('.t396__elem[data-elem-type="image"]').each(function() {
+          const imgSrc = $(this).find('.tn-atom__img').attr('src');
+          if (imgSrc && ($(this).css('z-index') > 1 || $(this).data('elem-id') === 'custom-uploaded-img')) {
+            imageUrls.push(imgSrc);
+          }
+        });
+
+        await Promise.all(imageUrls.map(src => {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.crossOrigin = "Anonymous";
+            img.src = src;
+            img.onload = resolve;
+            img.onerror = () => {
+              console.warn(`Image failed to load: ${src}, proceeding without it.`);
+              resolve();
+            };
+          });
+        }));
+
+        // Clone and append the uploaded image
         const uploadedImg = $('.t396__elem[data-elem-id="custom-uploaded-img"]');
         if (uploadedImg.is(':visible')) {
           const cloneUploaded = uploadedImg.clone();
+          const img = cloneUploaded.find('.tn-atom__img');
+          img.attr('crossOrigin', 'Anonymous');
           cloneUploaded.css({
             position: 'absolute',
-            top: uploadedImg.css('top'),
-            left: uploadedImg.css('left'),
+            top: parseFloat(uploadedImg.css('top')) + offsetY + 'px',
+            left: parseFloat(uploadedImg.css('left')) + offsetX + 'px',
             transform: uploadedImg.css('transform'),
+            width: uploadedImg.css('width'),
+            height: uploadedImg.css('height'),
             zIndex: 0
           });
           tempContainer.appendChild(cloneUploaded[0]);
         }
 
+        // Clone and append dragged custom images
         $('.t396__elem[data-elem-type="image"]').not('[data-elem-id="custom-uploaded-img"]').each(function() {
-          if ($(this).css('z-index') > 1) { // Only include images that have been moved (z-index changed)
+          if ($(this).css('z-index') > 1) { // Only include images that have been moved
             const clone = $(this).clone();
+            const img = clone.find('.tn-atom__img');
+            img.attr('crossOrigin', 'Anonymous');
             clone.css({
               position: 'absolute',
-              top: $(this).css('top'),
-              left: $(this).css('left'),
+              top: parseFloat($(this).css('top')) + offsetY + 'px',
+              left: parseFloat($(this).css('left')) + offsetX + 'px',
               transform: $(this).find('.tn-atom__img').css('transform'),
               width: $(this).css('width'),
               height: $(this).css('height'),
@@ -612,18 +694,27 @@
           }
         });
 
+        // Append the temporary container to the body
+        document.body.appendChild(tempContainer);
+
         try {
           const canvas = await html2canvas(tempContainer, {
             useCORS: true,
-            allowTaint: true,
+            allowTaint: false,
             backgroundColor: null,
             scale: 2,
-            width: artboard.offsetWidth,
-            height: artboard.offsetHeight
+            width: Math.ceil(mainContentRect.width),
+            height: Math.ceil(mainContentRect.height),
+            windowWidth: Math.ceil(mainContentRect.width),
+            windowHeight: Math.ceil(mainContentRect.height),
+            x: 0,
+            y: 0,
+            scrollX: 0,
+            scrollY: 0
           });
 
           const link = document.createElement('a');
-          link.download = 'custom-artboard.png';
+          link.download = 'custom-artboard-full.png';
           link.href = canvas.toDataURL('image/png');
           link.click();
 
