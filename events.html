@@ -308,6 +308,1540 @@
     .dropdown-menu a:hover {
       background-color: #ef75ad;
       color: #2b1b0f;
+      box-shadow: 0 Secrets 0 10px #ef75ad inset;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2006;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      border: 2px solid #e67e22;
+      position: relative;
+    }
+
+    .modal-content h3 {
+      font-family: 'Bebas Neue', cursive;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
+    .modal-content input,
+    .modal-content textarea,
+    .modal-content select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+    }
+
+    .modal-content input[type="file"] {
+      background: none;
+      border: none;
+      padding: 5px;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 0 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      font-size: 1.2em;
+      padding: 5px 10px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+      }
+
+      body.night-mode .nav-links {
+        background: rgba(74, 55, 35, 0.9);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: rgba(74, 55, 35, 0.9);
+        box-shadow: none;
+        border: none;
+        margin: 5px 0;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+
+      .nav-right {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+      }
+
+      .nav-login {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav-login button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .theme-toggle {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 10px;
+      }
+
+      .header {
+        height: 50vh;
+      }
+
+      .header-logo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .header h1 {
+        font-size: 3em;
+      }
+
+      .header p {
+        font-size: 1.2em;
+      }
+
+      .apply-button, .secondary-button {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+
+      .scroll-down {
+        bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .section {
+        padding: 40px 15px;
+      }
+
+      .section h1, .section h2 {
+        font-size: 2em;
+      }
+
+      .section p {
+        font-size: 1em;
+        max-width: 95%;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 95%;
+      }
+
+      .event img {
+        height: 150px;
+      }
+
+      .event h3 {
+        font-size: 1.4em;
+      }
+
+      .event p {
+        font-size: 0.95em;
+      }
+
+      .event {
+        min-height: 600px;
+      }
+
+      .submit-cta-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .submit-section, .cta-section {
+        max-width: 95%;
+        padding: 15px;
+      }
+
+      .cta-button {
+        font-size: 1em;
+        padding: 10px 15px;
+      }
+
+      .submit-button {
+        font-size: 1rem;
+        padding: 10px 15px;
+      }
+
+      .emo-playlist-player {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .player-wrapper {
+        width: 250px;
+      }
+
+      .toggle-player {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+      }
+
+      .toggle-image {
+        width: 25px;
+        height: 25px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 120px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      nav {
+        padding: 10px 15px;
+      }
+
+      .header h1 {
+        font-size: 2.2em;
+      }
+
+      .header p {
+        font-size: 1em;
+      }
+
+      .header-logo {
+        width: 80px;
+        height: 80px;
+      }
+
+      .section h1, .section h2 {
+        font-size: 1.6em;
+      }
+
+      .section p {
+        font-size: 0.9em;
+      }
+
+      .event img {
+        height: 120px;
+      }
+
+      .event h3 {
+        font-size: 1.3em;
+      }
+
+      .event p {
+        font-size: 0.85em;
+      }
+
+      .event {
+        min-height: 500px;
+      }
+
+      .cta-button {
+        font-size: 0.9em;
+        padding: 8px 12px;
+      }
+
+      .submit-button {
+        font-size: 0.9em;
+        padding: 8px 12px;
+      }
+
+      .floating-submit-button {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+
+      .player-wrapper {
+        width: 200px;
+      }
+
+      .toggle-player {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+
+      .toggle-image {
+        width: 20px;
+        height: 20px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 100px;
+      }
+    }
+    
+
+    .floating-submit-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      white-space: nowrap;
+    }
+
+    .floating-submit-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
+    }
+
+    body.night-mode .floating-submit-button {
+      background-color: #f39c12;
+      color: #f8e1b4;
+    }
+
+    body.night-mode .floating-submit-button:hover {
+      background-color: #e67e22;
+      box-shadow: 0 0 10px #f39c12, 0 0 20px #e67e22;
+    }
+
+    .header {
+      background: url('images/Cover-Photo/last-try.png') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #f8e1b4;
+      position: relative;
+      text-shadow: 0 0 10px var(--primary);
+    }
+
+    .header-logo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 10;
+      filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
+    }
+
+    .header h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 4em;
+      max-width: 90%;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .header-ctas {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .apply-button, .secondary-button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .apply-button {
+      background: var(--primary);
+      color: var(--text);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    .secondary-button {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--text);
+    }
+
+    .apply-button:hover, .secondary-button:hover {
+      background: var(--secondary);
+      color: var(--background);
+    }
+
+    @keyframes glow {
+      from { 
+        text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400;
+        box-shadow: 0 0 5px var(--primary); 
+      }
+      to { 
+        text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22;
+        box-shadow: 0 0 15px var(--primary); 
+      }
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+      color: #f8e1b4;
+      transition: box-shadow 0.3s;
+    }
+
+    .scroll-down:hover {
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%); }
+      40% { transform: translate(-50%, -10px); }
+      60% { transform: translate(-50%, -5px); }
+    }
+
+    .event-filter {
+      margin: 20px auto;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .event-filter select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #2b1b0f;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    body.night-mode .event-filter select {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+    }
+
+    .cta-section, .submit-section {
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      padding: 40px 20px;
+      border-radius: 10px;
+      flex: 1;
+      min-width: 300px;
+      max-width: 580px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .submit-cta-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .cta-section h2, .submit-section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5rem;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
+    .cta-section p, .submit-section p {
+      font-size: 1.1rem;
+      color: #2b1b0f;
+      margin-bottom: 20px;
+    }
+
+    body.night-mode .cta-section h2,
+    body.night-mode .cta-section p,
+    body.night-mode .submit-section h2,
+    body.night-mode .submit-section p {
+      color: #f8e1b4;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      text-decoration: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+      transform: scale(1.05);
+    }
+
+    .submit-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      border: 2px solid var(--emo-accent);
+      border-radius: 8px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1.2rem;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(243, 156, 18, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .submit-button:hover::before {
+      opacity: 1;
+    }
+
+    .submit-button:hover {
+      box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12;
+      transform: scale(1.05);
+    }
+
+    body.night-mode .submit-button {
+      background-image: none;
+      background-color: #000000;
+      border-color: #f39c12;
+      color: #f8e1b4;
+    }
+
+    body.night-mode .submit-button:hover {
+      box-shadow: 0 0 10px #f39c12, 0 0 20px #f39c12;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .submit-button {
+        font-size: 1rem;
+        padding: 10px 15px;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      .submit-button {
+        font-size: 0.9em;
+        padding: 8px 12px;
+      }
+    }
+
+    .section {
+      padding: 80px 20px;
+      text-align: center;
+      background: url('images/dusty-texture.png') center/cover;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
+    }
+
+    .section:nth-of-type(odd) {
+      background-color: rgba(244, 228, 188, 0.8);
+    }
+
+    .section:nth-of-type(even) {
+      background-color: rgba(217, 185, 155, 0.8);
+    }
+
+    .section h1, .section h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #2b1b0f;
+      letter-spacing: 1px;
+    }
+
+    .section p {
+      font-size: 1.1em;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+      line-height: 1.6;
+      color: #2b1b0f;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      justify-items: center;
+      align-items: start;
+      position: relative;
+      min-height: 200px;
+    }
+
+    .event {
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border: 1px solid #e67e22;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.5s ease;
+      height: 100%;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-in forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .event:hover {
+      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
+      transform: translateY(-5px);
+    }
+
+    .event img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      border: 2px solid #f39c12;
+    }
+
+    .event h3 {
+      margin: 10px 0 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.5em;
+      color: #000000;
+      line-height: 1.2;
+    }
+
+    .event p {
+      font-size: 1em;
+      color: #000000;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .event p.event-date, .event p.event-time, .event p.event-end, .event p.event-category {
+      font-size: 0.95em;
+      color: #2b1b0f;
+      margin: 5px 0;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .event p.event-date strong, .event p.event-time strong, .event p.event-end strong, .event p.event-category strong {
+      color: #e67e22;
+    }
+
+    .event .edit-button, .event .delete-button {
+      display: none;
+      position: absolute;
+      top: 5px;
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
+      border: none;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .event .edit-button {
+      right: 35px;
+    }
+
+    .event .delete-button {
+      right: 5px;
+    }
+
+    .logged-in .event .edit-button, .logged-in .event .delete-button {
+      display: block;
+    }
+
+    .event .edit-button:hover, .event .delete-button:hover {
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .edit-section-button {
+      display: none;
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9em;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      margin: 10px auto;
+    }
+
+    .logged-in .edit-section-button {
+      display: block;
+    }
+
+    .edit-section-button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .events-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
+      border-radius: 10px;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .emo-playlist-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-player {
+      background: var(--primary);
+      color: var(--text);
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toggle-player:hover {
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    }
+
+    body.night-mode .toggle-player {
+      background: var(--secondary);
+      color: var(--background);
+    }
+
+    body.night-mode .toggle-player:hover {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
+
+    .toggle-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--primary);
+    }
+
+    .player-wrapper {
+      width: 300px;
+      background: rgba(44, 29, 15, 0.9);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .player-wrapper.active {
+      display: block;
+    }
+
+    body.night-mode .player-wrapper {
+      background: rgba(74, 55, 35, 0.9);
+      border-color: var(--secondary);
+    }
+
+    .emo-playlist-player iframe {
+      width: 100%;
+      height: 152px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
+    }
+
+    body.night-mode footer {
+      background-color: #4a3723;
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
+  <button class="hamburger" aria-label="Toggle Menu">☰</button>
+  <div class="nav-links">
+    <div class="dropdown">
+      <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#about">Our Camp</a>
+        <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#members">Core Camp Crew</a>
+        <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#mission">Our Mission</a>
+        <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#setup">Our Setup</a>
+        <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#history">Our History</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="events.html#upcoming-events">Upcoming Events</a>
+        <a href="events.html#past-events">Past Events</a>
+        <a href="events.html#submit">Submit Event</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
+      <div class="dropdown-menu">
+        <a href="join-camp.html">Membership Info</a>
+        <a href="join-camp.html">Apply to Join</a>
+        <a href="camp-fees.html">Camp Fees</a>
+        <a href="Task_Roster.html">Task/Roster</a>
+      </div>
+    </div>
+    <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Eye_Webbar_Movings.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
+    <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/Cloud_Webbar_Moving.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
+    <a href="contact.html"><img src="images/Webpage_Bar_Icons/Thunder_Webbar_Moving.gif" alt="Contact Icon" class="nav-icon">Contact Us</a>
+    <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/Skull_Webbars_Moving.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-login">
+      <button class="login-button" onclick="openModal('login-modal')">Login</button>
+      <button class="logout-button" aria-label="Logout">Logout</button>
+    </div>
+    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+  </div>
+</nav>
+
+  <div class="modal" id="login-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('login-modal')" aria-label="Close modal">×</button>
+      <h3>Login</h3>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required aria-label="Username">
+        <input type="password" id="password" placeholder="Password" required aria-label="Password">
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <header class="header" id="home">
+    <img src="images/Logo/Logo_Update.png" alt="Cosmic Rejex Logo" class="header-logo">
+    <h1>Cosmic Rejex at Kiwiburn</h1>
+    <p>Join us in creating unforgettable experiences at Kiwiburn!</p>
+    <div class="header-ctas">
+      <a href="submit-event.html" class="apply-button">Submit Your Event</a>
+      <a href="#upcoming-events" class="secondary-button">View Events</a>
+    </div>
+    <button class="edit-section-button" onclick="openHeaderModal()">Edit Section</button>
+    <a href="#upcoming-events" class="scroll-down" aria-label="Scroll to upcoming events">▼</a>
+  </header>
+
+  <a href="submit-event.html" class="floating-submit-button" aria-label="Submit Your Event Idea Now">Submit Your Event Idea Now</a>
+
+  <div class="emo-playlist-player">
+    <button class="toggle-player" onclick="togglePlayer()">
+      <img src="images/Spotify-Background/Play_Button (1).gif" alt="Emo Playlist Toggle Image" class="toggle-image">
+      Play Emo Playlist
+    </button>
+    <div class="player-wrapper" id="player-wrapper">
+      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy" 
+              aria-label="Emo Playlist Player"></iframe>
+    </div>
+  </div>
+
+  <div class="events-container">
+    <section class="section" id="upcoming-events">
+      <h1>Upcoming Events</h1>
+      <p>Stay tuned for our next cosmic adventures at Kiwiburn! No events are confirmed yet, but check back soon for updates.</p>
+      <div class="events-grid" ondragover="allowDrop(event)" ondrop="dropEvents(event)">
+      </div>
+      <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
+    </section>
+
+    <section class="section" id="past-events">
+      <h1>Past Events (2025)</h1>
+      <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
+      <div class="event-filter">
+        <select id="event-filter" aria-label="Filter Events by Category">
+          <option value="all">All Categories</option>
+          <option value="Music">Music</option>
+          <option value="Performance">Performance</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Art">Art</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
+      <div class="events-grid">
+        <div class="event" data-category="Music">
+          <img src="images/Event-Images/Emo-Night-Event.jpg" alt="Emo Night Poster">
+          <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
+          <p>Get ready to unleash your inner rebel at our Emo/Pop Punk Hour! Featuring a killer live band, dazzling light shows, a smoke-filled atmosphere, and enough angst to fuel your teenage dreams (or nightmares). Dress up, sing your heart out, and let the feels take over—this is the ultimate tribute to your favorite emo and pop-punk anthems. Don't miss out!</p>
+          <p class="event-date"><strong>Date:</strong> January 23, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
+          <p class="event-end"><strong>End:</strong> January 23, 2025, 11:59 PM</p>
+          <p class="event-category"><strong>Category:</strong> Music</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+        <div class="event" data-category="Performance">
+          <img src="images/Event-Images/Pole-Event.jpg" alt="Pole in the paddock">
+          <h3>Pole in the paddock</h3>
+          <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
+          <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
+          <p class="event-end"><strong>End:</strong> January 24, 2025, 7:00 PM</p>
+          <p class="event-category"><strong>Category:</strong> Performance</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+        <div class="event" data-category="Workshop">
+          <img src="images/Event-Images/Cosmic-Connections-Event.jpg" alt="Cosmic Connections">
+          <h3>Cosmic Connections</h3>
+          <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
+          <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 8:30 PM</p>
+          <p class="event-end"><strong>End:</strong> January 24, 2025, 9:30 PM</p>
+          <p class="event-category"><strong>Category:</strong> Workshop</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+        <div class="event" data-category="Music">
+          <img src="images/Event-Images/DJ-Poster.jpg" alt="DJ Showcase & Open Decks">
+          <h3>DJ Showcase & Open Decks</h3>
+          <p>Spin some tunes or vibe to the beats at our DJ Showcase & Open Decks! Our talented camp DJs will kick things off, followed by an open deck session where anyone can jump in and share their mixes. From drum and bass to emo remixes, expect a night of eclectic sounds and high energy.</p>
+          <p class="event-date"><strong>Date:</strong> January 25, 2025</p>
+          <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
+          <p class="event-end"><strong>End:</strong> January 26, 2025, 1:00 AM</p>
+          <p class="event-category"><strong>Category:</strong> Music</p>
+          <button class="edit-button" onclick="openEditEventModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteEvent(this)">×</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="submit-cta-container">
+    <section class="submit-section" id="submit">
+      <h2>Submit an Event</h2>
+      <p>Got an idea for an epic event? Share it with us and let’s make it happen at Kiwiburn!</p>
+      <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
+      <a href="submit-event.html" class="submit-button">Submit Your Event</a>
+    </section>
+
+    <section class="cta-section">
+      <h2>Join Our Cosmic Community</h2>
+      <p>Stay in the loop with Cosmic Rejex! Sign up for our newsletter to get updates on events, camps, and how you can contribute to the next Kiwiburn.</p>
+      <a href="index.html#newsletter" class="cta-button">Sign Up Now</a>
+    </section>
+  </div>
+
+  <div class="modal" id="event-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('event-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Event</h3>
+      <input type="text" id="event-title" placeholder="Event Title" required aria-label="Event Title">
+      <textarea id="event-description" placeholder="Event Description" required aria-label="Event Description"></textarea>
+      <input type="date" id="event-date" required aria-label="Event Date">
+      <input type="time" id="event-time" required aria-label="Event Time">
+      <input type="datetime-local" id="event-end" required aria-label="Event End Date and Time">
+      <select id="event-category" required aria-label="Event Category">
+        <option value="" disabled selected>Select Category</option>
+        <option value="Music">Music</option>
+        <option value="Art">Art</option>
+        <option value="Performance">Performance</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="file" id="event-image" accept="image/*" aria-label="Event Image">
+      <button onclick="saveEventDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="events-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('events-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Events Section</h3>
+      <input type="text" id="events-title" placeholder="Section Title" required aria-label="Section Title">
+      <textarea id="events-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+      <button onclick="saveEventsDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="submit-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('submit-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Submit Event Section</h3>
+      <input type="text" id="submit-title" placeholder="Section Title" required aria-label="Section Title">
+      <textarea id="submit-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+      <button onclick="saveSubmitDetails()">Save</button>
+    </div>
+  </div>
+
+  <div class="modal" id="header-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('header-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Header Section</h3>
+      <input type="text" id="header-title" placeholder="Header Title" required aria-label="Header Title">
+      <textarea id="header-description" placeholder="Header Description" required aria-label="Header Description"></textarea>
+      <input type="file" id="header-image" accept="image/*" aria-label="Header Image">
+      <button onclick="saveHeaderDetails()">Save</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Cosmic Rejex. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    // Toggle mobile menu
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
+      document.querySelector('.hamburger').textContent = document.querySelector('.nav-links').classList.contains('active') ? '✖' : '☰';
+    });
+
+    // Toggle night mode
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      document.querySelector('.theme-toggle').textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+    });
+
+    // Load theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('night-mode');
+      document.querySelector('.theme-toggle').textContent = '☀️';
+    }
+
+    // Modal functionality
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Login/Logout
+    const loginForm = document.getElementById('login-form');
+    const logoutButton = document.querySelector('.logout-button');
+    const loginContainer = document.querySelector('.nav-login');
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      loginContainer.classList.add('logged-in');
+      loginForm.style.display = 'none';
+      logoutButton.style.display = 'block';
+      document.body.classList.add('logged-in');
+    });
+
+    logoutButton.addEventListener('click', () => {
+      loginContainer.classList.remove('logged-in');
+      loginForm.style.display = 'flex';
+      logoutButton.style.display = 'none';
+      document.body.classList.remove('logged-in');
+    });
+
+    // Toggle dropdown menu on mobile
+    document.querySelectorAll('.dropdown-toggle').forEach(item => {
+      item.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const parent = item.parentElement;
+          parent.classList.toggle('active');
+        }
+      });
+    });
+
+    // Placeholder for toggleNewsletter
+    function toggleNewsletter() {
+      alert('Newsletter functionality requires additional modal and wrapper elements.');
+    }
+
+    // Header Modal
+    function openHeaderModal() {
+      document.getElementById('header-title').value = document.querySelector('.header h1').textContent;
+      document.getElementById('header-description').value = document.querySelector('.header p').textContent;
+      openModal('header-modal');
+    }
+
+    function saveHeaderDetails() {
+      document.querySelector('.header h1').textContent = document.getElementById('header-title').value;
+      document.querySelector('.header p').textContent = document.getElementById('header-description').value;
+      closeModal('header-modal');
+    }
+
+    // Event Modal
+    function openEditEventModal(button) {
+      const event = button.parentElement;
+      document.getElementById('event-title').value = event.querySelector('h3').textContent;
+      document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
+      document.getElementById('event-date').value = event.querySelector('.event-date').textContent.replace('Date: ', '');
+      document.getElementById('event-time').value = event.querySelector('.event-time').textContent.replace('Time: ', '');
+      document.getElementById('event-end').value = event.querySelector('.event-end').textContent.replace('End: ', '');
+      document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
+      openModal('event-modal');
+    }
+
+    function saveEventDetails() {
+      closeModal('event-modal');
+    }
+
+    // Delete Event
+    function deleteEvent(button) {
+      button.parentElement.remove();
+    }
+
+    // Drag and Drop
+    let draggedItem = null;
+
+    function drag(event) {
+      draggedItem = event.target;
+      event.dataTransfer.setData('text/plain', null);
+    }
+
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function dropEvents(event) {
+      event.preventDefault();
+      const grid = event.target.closest('.events-grid');
+      if (draggedItem && grid && grid.contains(event.target)) {
+        grid.insertBefore(draggedItem, event.target.closest('.event') || null);
+      }
+    }
+
+    // Playlist Player Toggle
+    function togglePlayer() {
+      const playerWrapper = document.getElementById('player-wrapper');
+      playerWrapper.classList.toggle('active');
+    }
+
+    // Section Editing
+    function saveEventsDetails() {
+      const title = document.getElement<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events - Cosmic Rejex - Kiwiburn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Creepster&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+      cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    :root {
+      --primary: #ef75ad;
+      --secondary: #ef75ad;
+      --text: #f8e1b4;
+      --background: #ef75ad;
+      --emo-dark: #ef75ad;
+      --emo-accent: #ef75ad;
+    }
+
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(44, 29, 15, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
+      border-radius: 6px;
+      border: 2px solid var(--secondary);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) rgba(44, 29, 15, 0.3);
+    }
+
+    body.night-mode {
+      background: url('images/full-background-night.jpg') center/cover no-repeat fixed;
+      color: #f8e1b4;
+    }
+
+    body.night-mode ::-webkit-scrollbar-track {
+      background: rgba(74, 55, 35, 0.3);
+    }
+
+    body.night-mode ::-webkit-scrollbar-thumb {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
+      border: 2px solid var(--primary);
+    }
+
+    body.night-mode ::-webkit-scrollbar-thumb:hover {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
+
+    body.night-mode {
+      scrollbar-color: var(--secondary) rgba(74, 55, 35, 0.3);
+    }
+
+    body.night-mode .section:nth-of-type(odd) {
+      background-color: rgba(44, 29, 15, 0.8);
+    }
+
+    body.night-mode .section:nth-of-type(even) {
+      background-color: rgba(74, 55, 35, 0.8);
+    }
+
+    body.night-mode .section h1,
+    body.night-mode .section h2,
+    body.night-mode .section p,
+    body.night-mode .event p,
+    body.night-mode .event p.event-date,
+    body.night-mode .event p.event-time,
+    body.night-mode .event p.event-end,
+    body.night-mode .event p.event-category {
+      color: #f8e1b4;
+    }
+
+    body.night-mode .events-container,
+    body.night-mode .submit-section,
+    body.night-mode .cta-section {
+      background: rgba(44, 29, 15, 0.3);
+    }
+
+    body.night-mode .modal-content {
+      background: rgba(44, 29, 15, 0.9);
+      color: #f8e1b4;
+    }
+
+    body.night-mode .modal-content input,
+    body.night-mode .modal-content textarea,
+    body.night-mode .modal-content select {
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+    }
+
+    a, button, input, textarea, select {
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      z-index: 1000;
+      border-bottom: 3px solid #d3c9b8;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      height: 30px;
+    }
+
+    body.night-mode nav {
+      background: #000000;
+      border-bottom: 3px solid #f39c12;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #f8e1b4;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      transition: color 0.3s, transform 0.2s;
+    }
+
+    .hamburger:hover {
+      color: #e67e22;
+      transform: scale(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+
+    nav a {
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Creepster', cursive;
+      font-size: 1.2rem;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background-color: #ef75ad;
+      color: #2b1b0f;
+      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+      transform: translateY(-2px);
+    }
+
+    .nav-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-right: 15px;
+      transition: transform 0.3s;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-icon {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      vertical-align: middle;
+      transition: transform 0.2s;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 2px solid #ffff;
+      color: #f8e1b4;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background: #ef75ad;
+      color: #2b1b0f;
+      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+      transform: translateY(-2px);
+    }
+
+    .nav-login {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-login button {
+      padding: 8px 15px;
+      background-color: #ffff;
+      color: #000000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .nav-login .logout-button {
+      display: none;
+    }
+
+    .nav-login button:hover {
+      background-color: #ef75ad;
+      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+      transform: translateY(-2px);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle {
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: block;
+      position: absolute;
+      background: rgba(44, 29, 15, 0.95);
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1001;
+      border-radius: 8px;
+      border: 2px solid #ef75ad;
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      transform: translateY(10px);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    body.night-mode .dropdown-menu {
+      background: rgba(74, 55, 35, 0.95);
+      border-color: #f39c12;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 18px;
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #ef75ad;
+      color: #2b1b0f;
       box-shadow: 0 0 10px #ef75ad inset;
     }
 
@@ -1457,6 +2991,36 @@
     // Section Editing
     function saveEventsDetails() {
       const title = document.getElementById('events-title').value;
+      const description = document.getElementById('events-description').value;
+      document.querySelector('#upcoming-events h1').textContent = title;
+      document.querySelector('#upcoming-events p').textContent = description;
+      document.querySelector('#past-events h1').textContent = title.replace('Upcoming', 'Past');
+      document.querySelector('#past-events p').textContent = description;
+      closeModal('events-modal');
+    }
+
+    function saveSubmitDetails() {
+      document.querySelector('#submit h2').textContent = document.getElementById('submit-title').value;
+      document.querySelector('#submit p').textContent = document.getElementById('submit-description').value;
+      closeModal('submit-modal');
+    }
+
+    // Event Filter
+    document.getElementById('event-filter').addEventListener('change', function() {
+      const category = this.value;
+      const events = document.querySelectorAll('.event');
+      events.forEach(event => {
+        if (category === 'all' || event.getAttribute('data-category') === category) {
+          event.style.display = 'flex';
+        } else {
+          event.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+ById('events-title').value;
       const description = document.getElementById('events-description').value;
       document.querySelector('#upcoming-events h1').textContent = title;
       document.querySelector('#upcoming-events p').textContent = description;
