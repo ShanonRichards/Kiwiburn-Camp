@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Artboard Page</title>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.2/themes/base/jquery-ui.min.css">
+  <title>Main Page with Interactive Artboard</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Creepster&display=swap" rel="stylesheet">
   <style>
     body {
@@ -29,7 +29,7 @@
     .artboard-container {
       width: 100%;
       min-width: 320px;
-      margin: 0; auto;
+      margin: 0 auto;
       border: 2px solid #ccc;
       border-radius: 8px;
       overflow: hidden;
@@ -52,10 +52,11 @@
       z-index: 1;
     }
     .t396__elem[data-elem-id="custom-uploaded-img"] {
-      z-index: 0 !important;      top: 50% !important;
+      z-index: 0;
+      top: 50% !important;
       left: 50% !important;
       transform: translate(-50%, -50%) !important;
-      pointer-events: none !important;
+      pointer-events: none;
     }
     .tn-atom__img {
       width: 100%;
@@ -63,34 +64,37 @@
       max-width: none;
       max-height: none;
       object-fit: contain;
+      transform-origin: center center;
     }
     .t396__elem[data-elem-type="text"] .tn-atom {
       color: #fff;
       font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 1.55;
-      letter-spacing: -1px;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      border-radius: 4px;
-      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-    }
-    .t396__elem[data-elem-type="button"] .tn-atom {
-      color: #fff;
-      font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 16px;
+      font-size: 26px;
       font-weight: 600;
       line-height: 1.55;
       letter-spacing: -1px;
       text-align: center;
       background-color: #000;
-      border-radius: 4px;
+      border-radius: 0;
       padding: 10px;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      transform: rotate(0deg);
+    }
+    .t396__elem[data-elem-type="button"] .tn-atom {
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      line-height: 1.55;
+      letter-spacing: -1px;
+      text-align: center;
+      background-color: #000;
+      border-radius: 0;
+      padding: 15px;
       display: block;
       text-decoration: none;
       transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+      transform: rotate(0deg);
       cursor: pointer;
     }
     .t396__elem[data-elem-type="upload"] input {
@@ -115,27 +119,13 @@
       background: #fd4e22;
       border: 2px solid #fff;
       cursor: pointer;
-      width: 20px;
-      height: 20px;
     }
     .t396__elem[data-elem-type="slider"] {
-      background-color: #333;
+      background-color: #fff;
       border: 2px solid #000;
       border-radius: 4px;
       padding: 15px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .t396__elem[data-elem-type="image"] {
-      width: 80px !important;
-      height: auto !important;
-      margin-bottom: 8px;
-      border: 2px solid #333;
-      border-radius: 4px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .t396__elem[data-elem-type="image"]:hover {
-      transform: scale(1.05);
     }
     .t396__elem[data-elem-type="text"] .tn-atom:hover,
     .t396__elem[data-elem-type="button"] .tn-atom:hover,
@@ -145,7 +135,7 @@
       color: #fff;
     }
     .ui-draggable-dragging {
-      transform: scale(1.05);
+      transform: scale(1);
     }
     .uploaded-image {
       display: block;
@@ -158,155 +148,178 @@
       transform: translateX(-50%);
       color: #fff;
       font-family: 'Montserrat', Arial, sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
       background-color: #000;
       padding: 5px 10px;
       border-radius: 4px;
     }
+    .custom-images-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .t396__elem[data-elem-id^="custom-img"] {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
     @media screen and (min-width: 1440px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 10px; left: 95%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img2"] { top: 100px; left: 95%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img3"] { top: 190px; left: 95%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img4"] { top: 280px; left: 95%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img5"] { top: 370px; left: 95%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img6"] { top: 460px; left: 95%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img7"] { top: 10px; left: 90%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img8"] { top: 100px; left: 90%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img9"] { top: 190px; left: 90%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img10"] { top: 280px; left: 90%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img11"] { top: 370px; left: 90%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img12"] { top: 460px; left: 90%; transform: translateX(-100%); }
-      .t396__elem[data-elem-id="custom-img13"] { top: 550px; left: 90%; transform: translateX(-100%); }
+      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 20px; left: auto; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 120px; right: 20px; left: auto; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 230px; right: 20px; left: auto; }
+      .t396__elem[data-elem-id="custom-img4"] { top: 340px; right: 20px; left: auto; }
+      .t396__elem[data-elem-id="custom-img5"] { top: 450px; right: 20px; left: auto; }
+      .t396__elem[data-elem-id="custom-img6"] { top: 10px; right: 140px; left: auto; }
+      .t396__elem[data-elem-id="custom-img7"] { top: 120px; right: 140px; left: auto; }
+      .t396__elem[data-elem-id="custom-img8"] { top: 230px; right: 140px; left: auto; }
+      .t396__elem[data-elem-id="custom-img9"] { top: 340px; right: 140px; left: auto; }
+      .t396__elem[data-elem-id="custom-img10"] { top: 450px; right: 140px; left: auto; }
+      .t396__elem[data-elem-id="custom-img11"] { top: 10px; right: 260px; left: auto; }
+      .t396__elem[data-elem-id="custom-img12"] { top: 120px; right: 260px; left: auto; }
+      .t396__elem[data-elem-id="custom-img13"] { top: 230px; right: 260px; left: auto; }
       .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 50%; width: 180px; }
       .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 15%; width: 160px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 35%; width: 200px; }
-      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 160px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 90px; left: 20px; width: 160px; }
-      .t396__elem[data-elem-id="custom-size-slider"] { top: 160px; left: 20px; width: 160px; }
-      .t396__elem[data-elem-id="custom-rotate-slider"] { top: 250px; left: 20px; width: 160px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 35%; width: 220px; }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-rotation-slider"] { top: 200px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 1439px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 90px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 170px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img4"] { top: 250px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img5"] { top: 330px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img6"] { top: 410px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img7"] { top: 10px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img8"] { top: 90px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img9"] { top: 170px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img10"] { top: 250px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img11"] { top: 330px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img12"] { top: 410px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img13"] { top: 490px; right: 90px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 50%; width: 160px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 15%; width: 140px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 35%; width: 180px; }
-      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 160px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 90px; left: 20px; width: 160px; }
-      .t396__elem[data-elem-id="custom-size-slider"] { top: 160px; left: 20px; width: 160px; }
-      .t396__elem[data-elem-id="custom-rotate-slider"] { top: 250px; left: 20px; width: 160px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 120px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 230px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img4"] { top: 340px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img5"] { top: 450px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img6"] { top: 10px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img7"] { top: 120px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img8"] { top: 230px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img9"] { top: 340px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img10"] { top: 450px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img11"] { top: 10px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img12"] { top: 120px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img13"] { top: 230px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 600px; width: 180px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 200px; width: 160px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 400px; width: 220px; }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-rotation-slider"] { top: 200px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 1199px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 90px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 170px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img4"] { top: 250px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img5"] { top: 330px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img6"] { top: 410px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img7"] { top: 10px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img8"] { top: 90px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img9"] { top: 170px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img10"] { top: 250px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img11"] { top: 330px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img12"] { top: 410px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img13"] { top: 10px; right: 170px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 300px; left: 50%; width: 140px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 350px; left: 15%; width: 120px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 400px; left: 35%; width: 160px; }
-      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 140px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 90px; left: 20px; width: 140px; }
-      .t396__elem[data-elem-id="custom-size-slider"] { top: 160px; left: 20px; width: 140px; }
-      .t396__elem[data-elem-id="custom-rotate-slider"] { top: 250px; left: 20px; width: 140px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 120px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 230px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img4"] { top: 340px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img5"] { top: 10px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img6"] { top: 120px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img7"] { top: 230px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img8"] { top: 340px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img9"] { top: 10px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img10"] { top: 120px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img11"] { top: 230px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img12"] { top: 340px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img13"] { top: 10px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-rotation-slider"] { top: 200px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 959px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 450px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 90px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 170px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img4"] { top: 250px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img5"] { top: 330px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img6"] { top: 10px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img7"] { top: 90px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img8"] { top: 170px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img9"] { top: 250px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img10"] { top: 330px; right: 90px; }
-      .t396__elem[data-elem-id="custom-img11"] { top: 10px; right: 170px; }
-      .t396__elem[data-elem-id="custom-img12"] { top: 90px; right: 170px; }
-      .t396__elem[data-elem-id="custom-img13"] { top: 170px; right: 170px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 280px; left: 50%; width: 120px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 330px; left: 15%; width: 100px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 380px; left: 35%; width: 140px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 120px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 230px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img4"] { top: 10px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img5"] { top: 120px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img6"] { top: 230px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img7"] { top: 10px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img8"] { top: 120px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img9"] { top: 230px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img10"] { top: 10px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-img11"] { top: 120px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-img12"] { top: 230px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-img13"] { top: 340px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 320px; left: 350px; width: 120px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 100px; width: 100px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 420px; left: 200px; width: 150px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
-      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 18px; }
-      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 140px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 90px; left: 20px; width: 140px; }
-      .t396__elem[data-elem-id="custom-size-slider"] { top: 160px; left: 20px; width: 140px; }
-      .t396__elem[data-elem-id="custom-rotate-slider"] { top: 250px; left: 20px; width: 140px; }
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(0deg); }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-rotation-slider"] { top: 200px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 639px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 400px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 80px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 150px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img4"] { top: 220px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img5"] { top: 290px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img6"] { top: 10px; right: 80px; }
-      .t396__elem[data-elem-id="custom-img7"] { top: 80px; right: 80px; }
-      .t396__elem[data-elem-id="custom-img8"] { top: 150px; right: 80px; }
-      .t396__elem[data-elem-id="custom-img9"] { top: 220px; right: 80px; }
-      .t396__elem[data-elem-id="custom-img10"] { top: 290px; right: 80px; }
-      .t396__elem[data-elem-id="custom-img11"] { top: 10px; right: 150px; }
-      .t396__elem[data-elem-id="custom-img12"] { top: 80px; right: 150px; }
-      .t396__elem[data-elem-id="custom-img13"] { top: 150px; right: 150px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 250px; left: 50%; width: 100px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 300px; left: 15%; width: 90px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 350px; left: 35%; width: 120px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 110px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 210px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img4"] { top: 10px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img5"] { top: 110px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img6"] { top: 210px; right: 120px; left: auto; }
+      .t396__elem[data-elem-id="custom-img7"] { top: 10px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img8"] { top: 110px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img9"] { top: 210px; right: 230px; left: auto; }
+      .t396__elem[data-elem-id="custom-img10"] { top: 10px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-img11"] { top: 110px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-img12"] { top: 210px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-img13"] { top: 310px; right: 340px; left: auto; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 280px; left: 280px; width: 100px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 340px; left: 80px; width: 90px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 380px; left: 150px; width: 120px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
-      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; }
-      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 120px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 90px; left: 20px; width: 120px; }
-      .t396__elem[data-elem-id="custom-size-slider"] { top: 160px; left: 20px; width: 120px; }
-      .t396__elem[data-elem-id="custom-rotate-slider"] { top: 250px; left: 20px; width: 120px; }
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(0deg); }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-rotation-slider"] { top: 200px; left: 20px; width: 180px; }
     }
     @media screen and (max-width: 479px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 350px; }
-      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img2"] { top: 70px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img3"] { top: 130px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img4"] { top: 190px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img5"] { top: 250px; right: 10px; }
-      .t396__elem[data-elem-id="custom-img6"] { top: 10px; right: 70px; }
-      .t396__elem[data-elem-id="custom-img7"] { top: 70px; right: 70px; }
-      .t396__elem[data-elem-id="custom-img8"] { top: 130px; right: 70px; }
-      .t396__elem[data-elem-id="custom-img9"] { top: 190px; right: 70px; }
-      .t396__elem[data-elem-id="custom-img10"] { top: 250px; right: 70px; }
-      .t396__elem[data-elem-id="custom-img11"] { top: 10px; right: 130px; }
-      .t396__elem[data-elem-id="custom-img12"] { top: 70px; right: 130px; }
-      .t396__elem[data-elem-id="custom-img13"] { top: 130px; right: 130px; }
-      .t396__elem[data-elem-id="custom-text1"] { top: 220px; left: 50%; width: 80px; }
-      .t396__elem[data-elem-id="custom-text2"] { top: 270px; left: 15%; width: 80px; }
-      .t396__elem[data-elem-id="custom-button1"] { top: 320px; left: 35%; width: 100px; }
+      .t396__elem[data-elem-id="custom-img1"] { top: 10px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img2"] { top: 90px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img3"] { top: 170px; right: 10px; left: auto; }
+      .t396__elem[data-elem-id="custom-img4"] { top: 10px; right: 110px; left: auto; }
+      .t396__elem[data-elem-id="custom-img5"] { top: 90px; right: 110px; left: auto; }
+      .t396__elem[data-elem-id="custom-img6"] { top: 170px; right: 110px; left: auto; }
+      .t396__elem[data-elem-id="custom-img7"] { top: 10px; right: 210px; left: auto; }
+      .t396__elem[data-elem-id="custom-img8"] { top: 90px; right: 210px; left: auto; }
+      .t396__elem[data-elem-id="custom-img9"] { top: 170px; right: 210px; left: auto; }
+      .t396__elem[data-elem-id="custom-img10"] { top: 10px; right: 310px; left: auto; }
+      .t396__elem[data-elem-id="custom-img11"] { top: 90px; right: 310px; left: auto; }
+      .t396__elem[data-elem-id="custom-img12"] { top: 170px; right: 310px; left: auto; }
+      .t396__elem[data-elem-id="custom-img13"] { top: 250px; right: 310px; left: auto; }
+      .t396__elem[data-elem-id="custom-text1"] { top: 240px; left: 200px; width: 80px; }
+      .t396__elem[data-elem-id="custom-text2"] { top: 300px; left: 50px; width: 70px; }
+      .t396__elem[data-elem-id="custom-button1"] { top: 340px; left: 100px; width: 100px; }
       .t396__elem[data-elem-type="text"] .tn-atom,
-      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 14px; }
-      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 100px; }
-      .t396__elem[data-elem-id="custom-save"] { top: 90px; left: 20px; width: 100px; }
-      .t396__elem[data-elem-id="custom-size-slider"] { top: 160px; left: 20px; width: 100px; }
-      .t396__elem[data-elem-id="custom-rotate-slider"] { top: 250px; left: 20px; width: 100px; }
+      .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; transform: rotate(0deg); }
+      .t396__elem[data-elem-id="custom-upload"] { top: 20px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-save"] { top: 80px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-size-slider"] { top: 140px; left: 20px; width: 180px; }
+      .t396__elem[data-elem-id="custom-rotation-slider"] { top: 200px; left: 20px; width: 180px; }
+    }
+    @media screen and (max-width: 100%) {
+      .artboard-container, .t396__artboard, .t396__carrier, .t396__filter {
+        overflow: hidden !important;
+        width: 100% !important;
+      }
+      .t396__elem {
+        visibility: visible !important;
+        z-index: 1 !important;
+      }
+      .t396__elem[data-elem-id="custom-uploaded-img"] {
+        z-index: 0 !important;
+      }
     }
   </style>
 </head>
@@ -319,69 +332,69 @@
         <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="hidden" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
           <div class="t396__carrier"></div>
           <div class="t396__filter"></div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="10" data-field-left-value="95%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="10" data-field-left-res-320-value="95%" data-field-top-res-480-value="10" data-field-left-res-480-value="95%" data-field-top-res-640-value="10" data-field-left-res-640-value="95%" data-field-top-res-960-value="10" data-field-left-res-960-value="95%" data-field-top-res-1200-value="10" data-field-left-res-1200-value="95%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img1" data-elem-type="image" data-field-top-value="10" data-field-right-value="20" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Hair_Element.png" alt="Emo Hair" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Hair_Element (1).png" alt="Custom Image 1" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img2" data-elem-type="image" data-field-top-value="100" data-field-left-value="95%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="70" data-field-left-res-320-value="95%" data-field-top-res-480-value="80" data-field-left-res-480-value="95%" data-field-top-res-640-value="90" data-field-left-res-640-value="95%" data-field-top-res-960-value="90" data-field-left-res-960-value="95%" data-field-top-res-1200-value="90" data-field-left-res-1200-value="95%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img2" data-elem-type="image" data-field-top-value="120" data-field-right-value="20" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Beanie_Element.png" alt="Emo Beanie" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Emo_Beanie_Element (2).png" alt="Custom Image 2" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img3" data-elem-type="image" data-field-top-value="190" data-field-left-value="95%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="130" data-field-left-res-320-value="95%" data-field-top-res-480-value="150" data-field-left-res-480-value="95%" data-field-top-res-640-value="170" data-field-left-res-640-value="95%" data-field-top-res-960-value="170" data-field-left-res-960-value="95%" data-field-top-res-1200-value="170" data-field-left-res-1200-value="95%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img3" data-elem-type="image" data-field-top-value="230" data-field-right-value="20" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="images/Rejex_Me/Alien_Eyes.png" alt="Alien Eyes" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Alien_Eyes.png" alt="Custom Image 3" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img4" data-elem-type="image" data-field-top-value="280" data-field-left-value="95%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="190" data-field-left-res-320-value="95%" data-field-top-res-480-value="220" data-field-left-res-480-value="95%" data-field-top-res-640-value="250" data-field-left-res-640-value="95%" data-field-top-res-960-value="250" data-field-left-res-960-value="95%" data-field-top-res-1200-value="250" data-field-left-res-1200-value="95%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img4" data-elem-type="image" data-field-top-value="340" data-field-right-value="20" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="images/Rejex_Me/Alien_Eyes_Blue.png" alt="Blue Alien Eyes" />
+              <img class="tn-atom__img t-img" src="images/Rejex_Me/Alien_Eyes_Blue.png" alt="Custom Image 4" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img5" data-elem-type="image" data-field-top-value="370" data-field-left-value="95%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="250" data-field-left-res-320-value="95%" data-field-top-res-480-value="290" data-field-left-res-480-value="95%" data-field-top-res-640-value="330" data-field-left-res-640-value="95%" data-field-top-res-960-value="330" data-field-left-res-960-value="95%" data-field-top-res-1200-value="330" data-field-left-res-1200-value="95%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img5" data-elem-type="image" data-field-top-value="450" data-field-right-value="20" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img5" alt="Custom Image 5" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+5" alt="Custom Image 5" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img6" data-elem-type="image" data-field-top-value="460" data-field-left-value="95%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="10" data-field-left-res-320-value="70%" data-field-top-res-480-value="10" data-field-left-res-480-value="80%" data-field-top-res-640-value="10" data-field-left-res-640-value="80%" data-field-top-res-960-value="410" data-field-left-res-960-value="95%" data-field-top-res-1200-value="410" data-field-left-res-1200-value="95%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img6" data-elem-type="image" data-field-top-value="10" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img6" alt="Custom Image 6" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+6" alt="Custom Image 6" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img7" data-elem-type="image" data-field-top-value="10" data-field-left-value="90%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="10" data-field-left-res-320-value="70%" data-field-top-res-480-value="80" data-field-left-res-480-value="80%" data-field-top-res-640-value="90" data-field-left-res-640-value="80%" data-field-top-res-960-value="90" data-field-left-res-960-value="90%" data-field-top-res-1200-value="90" data-field-left-res-1200-value="90%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img7" data-elem-type="image" data-field-top-value="120" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img7" alt="Custom Image 7" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+7" alt="Custom Image 7" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img8" data-elem-type="image" data-field-top-value="100" data-field-left-value="90%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="70" data-field-left-res-320-value="70%" data-field-top-res-480-value="150" data-field-left-res-480-value="80%" data-field-top-res-640-value="170" data-field-left-res-640-value="80%" data-field-top-res-960-value="170" data-field-left-res-960-value="90%" data-field-top-res-1200-value="170" data-field-left-res-1200-value="90%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img8" data-elem-type="image" data-field-top-value="230" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img8" alt="Custom Image 8" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+8" alt="Custom Image 8" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img9" data-elem-type="image" data-field-top-value="190" data-field-left-value="90%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="130" data-field-left-res-320-value="70%" data-field-top-res-480-value="220" data-field-left-res-480-value="80%" data-field-top-res-640-value="250" data-field-left-res-640-value="80%" data-field-top-res-960-value="250" data-field-left-res-960-value="90%" data-field-top-res-1200-value="250" data-field-left-res-1200-value="90%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img9" data-elem-type="image" data-field-top-value="340" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img9" alt="Custom Image 9" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+9" alt="Custom Image 9" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img10" data-elem-type="image" data-field-top-value="280" data-field-left-value="90%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="190" data-field-left-res-320-value="70%" data-field-top-res-480-value="290" data-field-left-res-480-value="80%" data-field-top-res-640-value="330" data-field-left-res-640-value="80%" data-field-top-res-960-value="330" data-field-left-res-960-value="90%" data-field-top-res-1200-value="330" data-field-left-res-1200-value="90%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img10" data-elem-type="image" data-field-top-value="450" data-field-right-value="140" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img10" alt="Custom Image 10" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+10" alt="Custom Image 10" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img11" data-elem-type="image" data-field-top-value="370" data-field-left-value="90%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="10" data-field-left-res-320-value="40%" data-field-top-res-480-value="10" data-field-left-res-480-value="50%" data-field-top-res-640-value="10" data-field-left-res-640-value="50%" data-field-top-res-960-value="410" data-field-left-res-960-value="90%" data-field-top-res-1200-value="410" data-field-left-res-1200-value="90%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img11" data-elem-type="image" data-field-top-value="10" data-field-right-value="260" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img11" alt="Custom Image 11" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+11" alt="Custom Image 11" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img12" data-elem-type="image" data-field-top-value="460" data-field-left-value="90%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="70" data-field-left-res-320-value="40%" data-field-top-res-480-value="80" data-field-left-res-480-value="50%" data-field-top-res-640-value="90" data-field-left-res-640-value="50%" data-field-top-res-960-value="90" data-field-left-res-960-value="90%" data-field-top-res-1200-value="90" data-field-left-res-1200-value="90%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img12" data-elem-type="image" data-field-top-value="120" data-field-right-value="260" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img12" alt="Custom Image 12" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+12" alt="Custom Image 12" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-img13" data-elem-type="image" data-field-top-value="550" data-field-left-value="90%" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-top-res-320-value="130" data-field-left-res-320-value="40%" data-field-top-res-480-value="150" data-field-left-res-480-value="50%" data-field-top-res-640-value="170" data-field-left-res-640-value="50%" data-field-top-res-960-value="170" data-field-left-res-960-value="90%" data-field-top-res-1200-value="170" data-field-left-res-1200-value="90%">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-img13" data-elem-type="image" data-field-top-value="230" data-field-right-value="260" data-field-axisy-value="top" data-field-axisx-value="right" data-field-container-value="grid" data-field-topunits-value="px" data-field-rightunits-value="px">
             <div class="tn-atom">
-              <img class="tn-atom__img t-img" src="https://via.placeholder.com/80?text=Img13" alt="Custom Image 13" />
+              <img class="tn-atom__img t-img" src="https://via.placeholder.com/150x200?text=Custom+Image+13" alt="Custom Image 13" />
             </div>
           </div>
           <div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
@@ -389,35 +402,35 @@
               <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
             </div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="400" data-field-left-value="50%" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-widthunits-value="px" data-field-top-res-320-value="220" data-field-left-res-320-value="50%" data-field-width-res-320-value="80" data-field-top-res-480-value="250" data-field-left-res-480-value="50%" data-field-width-res-480-value="100" data-field-top-res-640-value="280" data-field-left-res-640-value="50%" data-field-width-res-640-value="120" data-field-top-res-960-value="300" data-field-left-res-960-value="50%" data-field-width-res-960-value="140" data-field-top-res-1200-value="350" data-field-left-res-1200-value="50%" data-field-width-res-1200-value="160">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="400" data-field-left-value="700" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="240" data-field-left-res-320-value="200" data-field-width-res-320-value="80" data-field-top-res-480-value="280" data-field-left-res-480-value="280" data-field-width-res-480-value="100" data-field-top-res-640-value="320" data-field-left-res-640-value="350" data-field-width-res-640-value="120" data-field-top-res-960-value="350" data-field-left-res-960-value="500" data-field-width-res-960-value="150" data-field-top-res-1200-value="400" data-field-left-res-1200-value="600" data-field-width-res-1200-value="180">
             <div class="tn-atom">Try it with your photo!</div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="450" data-field-left-value="15%" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-widthunits-value="px" data-field-top-res-320-value="270" data-field-left-res-320-value="15%" data-field-width-res-320-value="80" data-field-top-res-480-value="300" data-field-left-res-480-value="15%" data-field-width-res-480-value="90" data-field-top-res-640-value="330" data-field-left-res-640-value="15%" data-field-width-res-640-value="100" data-field-top-res-960-value="350" data-field-left-res-960-value="15%" data-field-width-res-960-value="120" data-field-top-res-1200-value="400" data-field-left-res-1200-value="15%" data-field-width-res-1200-value="140">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="450" data-field-left-value="300" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="300" data-field-left-res-320-value="50" data-field-width-res-320-value="70" data-field-top-res-480-value="340" data-field-left-res-480-value="80" data-field-width-res-480-value="90" data-field-top-res-640-value="380" data-field-left-res-640-value="100" data-field-width-res-640-value="100" data-field-top-res-960-value="400" data-field-left-res-960-value="150" data-field-width-res-960-value="130" data-field-top-res-1200-value="450" data-field-left-res-1200-value="200" data-field-width-res-1200-value="160">
             <div class="tn-atom">Drag me around!</div>
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-top-value="500" data-field-left-value="35%" data-field-width-value="200" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="%" data-field-widthunits-value="px" data-field-top-res-320-value="320" data-field-left-res-320-value="35%" data-field-width-res-320-value="100" data-field-top-res-480-value="350" data-field-left-res-480-value="35%" data-field-width-res-480-value="120" data-field-top-res-640-value="380" data-field-left-res-640-value="35%" data-field-width-res-640-value="140" data-field-top-res-960-value="400" data-field-left-res-960-value="35%" data-field-width-res-960-value="160" data-field-top-res-1200-value="450" data-field-left-res-1200-value="35%" data-field-width-res-1200-value="180">
+          <div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-top-value="500" data-field-left-value="500" data-field-width-value="220" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="340" data-field-left-res-320-value="100" data-field-width-res-320-value="100" data-field-top-res-480-value="380" data-field-left-res-480-value="150" data-field-width-res-480-value="120" data-field-top-res-640-value="420" data-field-left-res-640-value="200" data-field-width-res-640-value="150" data-field-top-res-960-value="450" data-field-left-res-960-value="300" data-field-width-res-960-value="180" data-field-top-res-1200-value="500" data-field-left-res-1200-value="400" data-field-width-res-1200-value="220">
             <a class="tn-atom" href="#try-now">Try Now!</a>
           </div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-top-value="20" data-field-left-value="20" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="20" data-field-left-res-320-value="20" data-field-width-res-320-value="100" data-field-top-res-480-value="20" data-field-left-res-480-value="20" data-field-width-res-480-value="120" data-field-top-res-640-value="20" data-field-left-res-640-value="20" data-field-width-res-640-value="140" data-field-top-res-960-value="20" data-field-left-res-960-value="20" data-field-width-res-960-value="140" data-field-top-res-1200-value="20" data-field-left-res-1200-value="20" data-field-width-res-1200-value="160">
+          <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-top-value="20" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
             <input type="file" id="photo-upload" accept="image/*">
           </div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="90" data-field-left-value="20" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="90" data-field-left-res-320-value="20" data-field-width-res-320-value="100" data-field-top-res-480-value="90" data-field-left-res-480-value="20" data-field-width-res-480-value="120" data-field-top-res-640-value="90" data-field-left-res-640-value="20" data-field-width-res-640-value="140" data-field-top-res-960-value="90" data-field-left-res-960-value="20" data-field-width-res-960-value="140" data-field-top-res-1200-value="90" data-field-left-res-1200-value="20" data-field-width-res-1200-value="160">
+          <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-top-value="80" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
             <button class="tn-atom save-button">Save Photo</button>
           </div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-top-value="160" data-field-left-value="20" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="160" data-field-left-res-320-value="20" data-field-width-res-320-value="100" data-field-top-res-480-value="160" data-field-left-res-480-value="20" data-field-width-res-480-value="120" data-field-top-res-640-value="160" data-field-left-res-640-value="20" data-field-width-res-640-value="140" data-field-top-res-960-value="160" data-field-left-res-960-value="20" data-field-width-res-960-value="140" data-field-top-res-1200-value="160" data-field-left-res-1200-value="20" data-field-width-res-1200-value="160">
+          <div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-top-value="140" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
             <div id="size-slider"></div>
-            <span class="slider-label">Size</span>
+            <span class="slider-label">Size Slider</span>
           </div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-rotate-slider" data-elem-type="slider" data-field-top-value="250" data-field-left-value="20" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px" data-field-top-res-320-value="250" data-field-left-res-320-value="20" data-field-width-res-320-value="100" data-field-top-res-480-value="250" data-field-left-res-480-value="20" data-field-width-res-480-value="120" data-field-top-res-640-value="250" data-field-left-res-640-value="20" data-field-width-res-640-value="140" data-field-top-res-960-value="250" data-field-left-res-960-value="20" data-field-width-res-960-value="140" data-field-top-res-1200-value="250" data-field-left-res-1200-value="20" data-field-width-res-1200-value="160">
-            <div id="rotate-slider"></div>
-            <span class="slider-label">Rotate</span>
+          <div class="t396__elem tn-elem" data-elem-id="custom-rotation-slider" data-elem-type="slider" data-field-top-value="200" data-field-left-value="20" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-widthunits-value="px">
+            <div id="rotation-slider"></div>
+            <span class="slider-label">Rotation Slider</span>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
@@ -427,7 +440,6 @@
 
       $('.drag').draggable({
         cursor: "grabbing",
-        containment: ".t396__artboard",
         start: function() {
           $(this).css("z-index", zIndex++);
           if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
@@ -488,8 +500,7 @@
           });
           container.css({
             'width': newWidth + 'px',
-            'height': newHeight + 'px',
-            'transform-origin': 'center center'
+            'height': newHeight + 'px'
           });
         };
       }
@@ -514,7 +525,7 @@
           readFile(file).then(result => {
             const uploadedImg = $('.t396__elem[data-elem-id="custom-uploaded-img"] .tn-atom__img');
             uploadedImg.attr('src', result);
-            adjustImageSize('custom-uploaded-img', result, true, 0.5);
+            adjustImageSize('custom-uploaded-img', result, true, 1);
             $('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
           }).catch(error => {
             console.error('Error reading file:', error);
@@ -523,40 +534,47 @@
       });
 
       $('#size-slider').slider({
-        min: 0.2,
+        min: 0.5,
         max: 2,
         step: 0.1,
-        value: 0.5,
+        value: 1,
         slide: function(event, ui) {
           if (lastSelectedImage && lastSelectedImage.startsWith('custom-img')) {
             const imgSrc = $(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).attr('src');
-            const rotation = $('#rotate-slider').slider('value') || 0;
             if (imgSrc) {
-              adjustImageSize(lastSelectedImage, imgSrc, false, ui.value, rotation);
+              const currentRotation = $(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).data('rotation') || 0;
+              adjustImageSize(lastSelectedImage, imgSrc, false, ui.value, currentRotation);
             }
           }
         }
       });
 
-      $('#rotate-slider').slider({
-        min: -180,
-        max: 180,
+      $('#rotation-slider').slider({
+        min: 0,
+        max: 360,
         step: 1,
         value: 0,
         slide: function(event, ui) {
           if (lastSelectedImage && lastSelectedImage.startsWith('custom-img')) {
             const imgSrc = $(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).attr('src');
-            const scale = $('#size-slider').slider('value') || 0.5;
+            const currentScale = $(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).data('scale') || 1;
             if (imgSrc) {
-              adjustImageSize(lastSelectedImage, imgSrc, false, scale, ui.value);
+              adjustImageSize(lastSelectedImage, imgSrc, false, currentScale, ui.value);
+              $(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).data('rotation', ui.value);
             }
           }
         }
       });
 
       $('.save-button').on('click', async function() {
-        const artboard = $('.t396__artboard')[0];
-        const artboardRect = artboard.getBoundingClientRect();
+        const artboard = document.querySelector('.t396__artboard');
+        const originalOverflow = artboard.style.overflow;
+        const originalVisibility = $('.t396__elem').not('[data-elem-id="custom-uploaded-img"]').css('visibility');
+
+        // Hide UI elements and show only artboard content
+        $('.t396__elem').not('[data-elem-id="custom-uploaded-img"]').css('visibility', 'hidden');
+        $('.t396__elem[data-elem-id="custom-uploaded-img"]').css('visibility', 'visible');
+        artboard.style.overflow = 'visible';
 
         try {
           const canvas = await html2canvas(artboard, {
@@ -564,17 +582,19 @@
             allowTaint: true,
             backgroundColor: null,
             scale: 2,
-            width: artboardRect.width,
-            height: artboardRect.height,
-            windowWidth: artboardRect.width,
-            windowHeight: artboardRect.height
+            width: artboard.offsetWidth,
+            height: artboard.offsetHeight,
+            windowWidth: artboard.offsetWidth,
+            windowHeight: artboard.offsetHeight,
+            x: 0,
+            y: 0
           });
 
           const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
 
           if (window.showSaveFilePicker) {
             const handle = await window.showSaveFilePicker({
-              suggestedName: 'rejex-artboard.png',
+              suggestedName: 'custom-artboard.png',
               types: [{
                 description: 'PNG Image',
                 accept: { 'image/png': ['.png'] }
@@ -585,14 +605,17 @@
             await writable.close();
           } else {
             const link = document.createElement('a');
-            link.download = 'rejex-artboard.png';
+            link.download = 'custom-artboard.png';
             link.href = URL.createObjectURL(blob);
             link.click();
             URL.revokeObjectURL(link.href);
           }
         } catch (error) {
-          console.error('Error capturing screenshot:', error);
-          alert('Failed to save image. Please try again.');
+          console.error('Error capturing or saving screenshot:', error);
+        } finally {
+          // Restore original styles
+          $('.t396__elem').not('[data-elem-id="custom-uploaded-img"]').css('visibility', originalVisibility);
+          artboard.style.overflow = originalOverflow;
         }
       });
 
