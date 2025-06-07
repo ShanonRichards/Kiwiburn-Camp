@@ -145,12 +145,12 @@
       object-fit: contain;
     }
     .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]) {
-      transform: scale(0.5);
+      transform: translate(-50%, -50%) scale(0.5);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
+      position: absolute;
     }
     .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]).ui-draggable-dragging {
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
     .t396__elem[data-elem-type="text"] .tn-atom {
@@ -249,7 +249,7 @@
       color: #ffffff;
     }
     .ui-draggable-dragging {
-      transform: scale(1);
+      transform: translate(-50%, -50%) scale(1);
     }
     .uploaded-image {
       display: block;
@@ -528,7 +528,8 @@
           ui.helper.css({
             'width': '80px',
             'height': 'auto',
-            'opacity': '0.7'
+            'opacity': '0.7',
+            'transform': 'scale(1)'
           });
         }
       });
@@ -540,6 +541,8 @@
           $(this).closest('.t396__elem').remove();
           if (lastSelectedImage === elem.data('elem-id')) {
             lastSelectedImage = null;
+            $('#rotate-slider').slider('value', 0);
+            $('#size-slider').slider('value', 1);
           }
         });
       }
@@ -570,7 +573,8 @@
           }).css({
             top: dropY + 'px',
             left: dropX + 'px',
-            transform: 'translate(-50%, -50%) scale(1)'
+            transform: 'translate(-50%, -50%) scale(1)',
+            'z-index': zIndex++
           }).append(
             $('<div>').addClass('tn-atom').append(
               $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
@@ -581,25 +585,27 @@
 
           elem.draggable({
             cursor: 'grabbing',
-            start: function() {
+            containment: '.t396__artboard',
+            start: function(event, ui) {
               $(this).css('z-index', zIndex++);
               lastSelectedImage = elemId;
               $(this).css('transform', 'translate(-50%, -50%) scale(1)');
             },
-            stop: function() {
+            stop: function(event, ui) {
               const left = parseFloat($(this).css('left'));
               const artboardWidth = $('.t396__artboard').width();
-              if (left >= artboardWidth * 0.9) {
-                $(this).css('transform', 'translate(-50%, -50%) scale(0.5)');
-              } else {
-                $(this).css('transform', 'translate(-50%, -50%) scale(1)');
-              }
+              $(this).css('transform', 'translate(-50%, -50%) scale(1)');
             }
           });
 
-          elem.on('click', function() {
+          elem.on('click', function(e) {
+            e.stopPropagation();
             $(this).css('z-index', zIndex++);
             lastSelectedImage = elemId;
+            const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+            $('#rotate-slider').slider('value', currentRotation);
+            const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+            $('#size-slider').slider('value', currentScale);
           });
 
           adjustImageSize(elemId, src, false, 1);
@@ -632,7 +638,8 @@
             }).css({
               top: dropY + 'px',
               left: dropX + 'px',
-              transform: 'scale(1)'
+              transform: 'translate(-50%, -50%) scale(1)',
+              'z-index': zIndex++
             }).append(
               $('<div>').addClass('tn-atom').append(
                 $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
@@ -643,25 +650,25 @@
 
             elem.draggable({
               cursor: 'grabbing',
-              start: function() {
+              containment: '.t396__artboard',
+              start: function(event, ui) {
                 $(this).css('z-index', zIndex++);
                 lastSelectedImage = elemId;
-                $(this).css('transform', 'scale(1)');
+                $(this).css('transform', 'translate(-50%, -50%) scale(1)');
               },
-              stop: function() {
-                const left = parseFloat($(this).css('left'));
-                const artboardWidth = $('.t396__artboard').width();
-                if (left >= artboardWidth * 0.9) {
-                  $(this).css('transform', 'scale(0.5)');
-                } else {
-                  $(this).css('transform', 'scale(1)');
-                }
+              stop: function(event, ui) {
+                $(this).css('transform', 'translate(-50%, -50%) scale(1)');
               }
             });
 
-            elem.on('click', function() {
+            elem.on('click', function(e) {
+              e.stopPropagation();
               $(this).css('z-index', zIndex++);
               lastSelectedImage = elemId;
+              const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+              $('#rotate-slider').slider('value', currentRotation);
+              const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+              $('#size-slider').slider('value', currentScale);
             });
 
             adjustImageSize(elemId, src, false, 1);
@@ -676,37 +683,39 @@
           ui.draggable.remove();
           if (lastSelectedImage === ui.draggable.data('elem-id')) {
             lastSelectedImage = null;
+            $('#rotate-slider').slider('value', 0);
+            $('#size-slider').slider('value', 1);
           }
         }
       });
 
       $('.drag').draggable({
         cursor: 'grabbing',
-        start: function() {
+        containment: '.t396__artboard',
+        start: function(event, ui) {
           $(this).css('z-index', zIndex++);
           if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
             lastSelectedImage = $(this).data('elem-id');
-            $(this).css('transform', 'scale(1)');
+            $(this).css('transform', 'translate(-50%, -50%) scale(1)');
           }
         },
-        stop: function() {
+        stop: function(event, ui) {
           if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
-            const left = parseFloat($(this).css('left'));
-            const artboardWidth = $('.t396__artboard').width();
-            if (left >= artboardWidth * 0.9) {
-              $(this).css('transform', 'scale(0.5)');
-            } else {
-              $(this).css('transform', 'scale(1)');
-            }
+            $(this).css('transform', 'translate(-50%, -50%) scale(1)');
           }
         }
       });
 
-      $('.t396__elem[data-elem-type="image"]').on('click', function() {
+      $('.t396__elem[data-elem-type="image"]').on('click', function(e) {
+        e.stopPropagation();
         if ($(this).data('elem-id') !== 'custom-uploaded-img') {
           $(this).css('z-index', zIndex++);
           if ($(this).data('elem-id').startsWith('custom-img')) {
             lastSelectedImage = $(this).data('elem-id');
+            const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+            $('#rotate-slider').slider('value', currentRotation);
+            const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+            $('#size-slider').slider('value', currentScale);
           }
         }
       });
@@ -762,7 +771,7 @@
             container.css({
               'top': '50%',
               'left': '50%',
-              'transform': 'translate(-50%, -50%)'
+              'transform': 'translate(-50%, -50%) scale(1)'
             });
           }
         };
@@ -771,8 +780,12 @@
       function adjustImageRotation(elemId, angle) {
         const container = $(`.t396__elem[data-elem-id="${elemId}"]`);
         const img = container.find('.tn-atom__img');
+        const currentScale = parseFloat(container.css('transform').split('scale(')[1]?.split(')')[0]) || 1;
         img.css({
-          'transform': `rotate(${angle}deg) scale(${container.css('transform').includes('scale(0.5)') ? 0.5 : 1})`
+          'transform': `rotate(${angle}deg)`
+        });
+        container.css({
+          'transform': `translate(-50%, -50%) scale(${currentScale})`
         });
       }
 
@@ -809,6 +822,9 @@
             const imgSrc = $(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).attr('src');
             if (imgSrc) {
               adjustImageSize(lastSelectedImage, imgSrc, false, ui.value);
+              const container = $(`.t396__elem[data-elem-id="${lastSelectedImage}"]`);
+              const currentRotation = parseFloat(container.find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+              container.css('transform', `translate(-50%, -50%) scale(${ui.value})`);
             }
           }
         }
