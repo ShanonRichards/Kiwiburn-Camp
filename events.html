@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Events - Cosmic Rejex - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Creepster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
@@ -28,19 +28,19 @@
     }
 
     ::-webkit-scrollbar-thumb {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, #ff4d4d;
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
       border-radius: 6px;
-      border: 2px solid #e63939;
+      border: 2px solid var(--secondary);
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, #e63939;
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
     }
 
     html {
       scrollbar-width: thin;
-      scrollbar-color: #ff4d4d rgba(44, 29, 15, 0.3);
+      scrollbar-color: var(--primary) rgba(44, 29, 15, 0.3);
     }
 
     body.night-mode ::-webkit-scrollbar-track {
@@ -48,29 +48,29 @@
     }
 
     body.night-mode ::-webkit-scrollbar-thumb {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, #e63939;
-      border: 2px solid #ff4d4d;
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
+      border: 2px solid var(--primary);
     }
 
     body.night-mode ::-webkit-scrollbar-thumb:hover {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, #ff4d4d;
-      box-shadow: 0 0 10px #e63939, 0 0 20px #ff4d4d;
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
     }
 
     body.night-mode {
-      scrollbar-color: #e63939 rgba(74, 55, 35, 0.3);
+      scrollbar-color: var(--secondary) rgba(74, 55, 35, 0.3);
     }
 
     :root {
-      --primary: #ff4d4d;
-      --secondary: #e63939;
-      --text: #e0e0e0;
-      --background: #1c2526;
+      --primary: #e67e22;
+      --secondary: #f39c12;
+      --text: #f8e1b4;
+      --background: #2b1b0f;
     }
 
     body.night-mode {
-      background: linear-gradient(180deg, #1c2526 0%, #262626 100%);
-      color: #e0e0e0;
+      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
+      color: #f8e1b4;
     }
 
     body.night-mode .section:nth-of-type(odd) {
@@ -89,7 +89,7 @@
     body.night-mode .event p.event-time,
     body.night-mode .event p.event-end,
     body.night-mode .event p.event-category {
-      color: #e0e0e0;
+      color: #f8e1b4;
     }
 
     body.night-mode .events-container,
@@ -100,14 +100,14 @@
 
     body.night-mode .modal-content {
       background: rgba(44, 29, 15, 0.9);
-      color: #e0e0e0;
+      color: #f8e1b4;
     }
 
     body.night-mode .modal-content input,
     body.night-mode .modal-content textarea,
     body.night-mode .modal-content select {
       background: rgba(255, 255, 255, 0.1);
-      color: #e0e0e0;
+      color: #f8e1b4;
     }
 
     a, button, input, textarea, select {
@@ -124,8 +124,7 @@
       align-items: center;
       padding: 10px 30px;
       z-index: 1000;
-      border-bottom: 2px solid #ff4d4d;
-      font-family: 'Creepster', cursive;
+      border-bottom: 2px solid #e67e22;
     }
 
     body.night-mode nav {
@@ -152,44 +151,42 @@
     }
 
     nav a {
-      color: #e0e0e0;
+      color: #f8e1b4;
       text-decoration: none;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
       padding: 10px 15px;
       border-radius: 4px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s ease;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
       text-transform: uppercase;
     }
 
     nav a:hover {
-      background-color: #ff4d4d;
-      color: #1c2526;
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
-      transform: translateY(-2px);
+      background-color: #e67e22;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .theme-toggle {
       background: none;
       border: none;
-      color: #e0e0e0;
-      font-family: 'Creepster', cursive;
+      color: #f8e1b4;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
       padding: 10px;
       cursor: pointer;
-      transition: color 0.3s, box-shadow 0.3s, transform 0.2s ease;
+      transition: color 0.3s, box-shadow 0.3s;
     }
 
     .theme-toggle:hover {
-      color: #e63939;
-      box-shadow: 0 0 10px #ff4d4d;
-      transform: translateY(-2px);
+      color: #f39c12;
+      box-shadow: 0 0 10px #e67e22;
     }
 
     .hamburger {
       display: none;
       font-size: 1.5rem;
-      color: #e0e0e0;
+      color: #f8e1b4;
       background: none;
       border: none;
       cursor: pointer;
@@ -213,7 +210,7 @@
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1001;
       border-radius: 4px;
-      border: 1px solid #ff4d4d;
+      border: 1px solid #e67e22;
       top: 100%;
       left: 0;
       margin-top: 5px;
@@ -226,17 +223,17 @@
     .dropdown-menu a {
       display: block;
       padding: 10px 15px;
-      color: #e0e0e0;
+      color: #f8e1b4;
       text-decoration: none;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
       text-transform: uppercase;
     }
 
     .dropdown-menu a:hover {
-      background-color: #ff4d4d;
-      color: #1c2526;
-      box-shadow: 0 0 10px #ff4d4d;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #e67e22;
     }
 
     .dropdown:hover .dropdown-menu {
@@ -258,11 +255,10 @@
     .nav-login input {
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid #ff4d4d;
+      border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
       color: #ffffff;
       font-size: 0.9rem;
-      font-family: 'Montserrat', sans-serif;
     }
 
     .nav-login input::placeholder {
@@ -271,14 +267,14 @@
 
     .nav-login button {
       padding: 8px 12px;
-      background-color: #ff4d4d;
+      background-color: #e67e22;
       color: #ffffff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease;
+      transition: background-color 0.3s, box-shadow 0.3s;
     }
 
     .nav-login .logout-button {
@@ -286,9 +282,8 @@
     }
 
     .nav-login button:hover {
-      background-color: #e63939;
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
-      transform: translateY(-2px);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .nav-logo {
@@ -302,15 +297,15 @@
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background-color: #ff4d4d;
-      color: #1c2526;
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 25px;
       padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
       text-decoration: none;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -320,19 +315,19 @@
     }
 
     .floating-submit-button:hover {
-      background-color: #e63939;
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
       transform: scale(1.05);
     }
 
     body.night-mode .floating-submit-button {
-      background-color: #e63939;
-      color: #e0e0e0;
+      background-color: #f39c12;
+      color: #f8e1b4;
     }
 
     body.night-mode .floating-submit-button:hover {
-      background-color: #ff4d4d;
-      box-shadow: 0 0 10px #e63939, 0 0 20px #ff4d4d;
+      background-color: #e67e22;
+      box-shadow: 0 0 10px #f39c12, 0 0 20px #e67e22;
     }
 
     .header {
@@ -343,9 +338,9 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #e0e0e0;
+      color: #f8e1b4;
       position: relative;
-      text-shadow: 0 0 10px #ff4d4d;
+      text-shadow: 0 0 10px var(--primary);
     }
 
     .header-logo {
@@ -354,11 +349,11 @@
       border-radius: 50%;
       object-fit: cover;
       z-index: 10;
-      filter: drop-shadow(0 0 15px #ff4d4d) drop-shadow(0 0 25px #e63939);
+      filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
     }
 
     .header h1 {
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 4em;
       max-width: 90%;
       letter-spacing: 2px;
@@ -381,37 +376,36 @@
       padding: 12px 20px;
       border-radius: 5px;
       text-decoration: none;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.2em;
-      transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .apply-button {
-      background: #ff4d4d;
-      color: #e0e0e0;
+      background: var(--primary);
+      color: var(--text);
       animation: glow 3s ease-in-out infinite alternate;
     }
 
     .secondary-button {
       background: transparent;
-      border: 2px solid #ff4d4d;
-      color: #e0e0e0;
+      border: 2px solid var(--primary);
+      color: var(--text);
     }
 
     .apply-button:hover, .secondary-button:hover {
-      background: #e63939;
-      color: #1c2526;
-      transform: scale(1.05);
+      background: var(--secondary);
+      color: var(--background);
     }
 
     @keyframes glow {
       from { 
-        text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #e63939;
-        box-shadow: 0 0 5px #ff4d4d; 
+        text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400;
+        box-shadow: 0 0 5px var(--primary); 
       }
       to { 
-        text-shadow: 0 0 20px #e63939, 0 0 30px #e63939, 0 0 40px #ff4d4d;
-        box-shadow: 0 0 15px #ff4d4d; 
+        text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22;
+        box-shadow: 0 0 15px var(--primary); 
       }
     }
 
@@ -422,12 +416,12 @@
       transform: translateX(-50%);
       font-size: 1.5rem;
       animation: bounce 2s infinite;
-      color: #e0e0e0;
+      color: #f8e1b4;
       transition: box-shadow 0.3s;
     }
 
     .scroll-down:hover {
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     @keyframes bounce {
@@ -445,7 +439,7 @@
     .event-filter select {
       padding: 10px;
       border-radius: 5px;
-      border: 1px solid #ff4d4d;
+      border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
       color: #2b1b0f;
       font-family: 'Montserrat', sans-serif;
@@ -455,12 +449,12 @@
 
     body.night-mode .event-filter select {
       background: rgba(255, 255, 255, 0.1);
-      color: #e0e0e0;
+      color: #f8e1b4;
     }
 
     .cta-section, .submit-section {
       background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #ff4d4d holds;
+      border: 2px solid #e67e22;
       padding: 40px 20px;
       border-radius: 10px;
       flex: 1;
@@ -480,7 +474,7 @@
     }
 
     .cta-section h2, .submit-section h2 {
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 2.5rem;
       color: #2b1b0f;
       margin-bottom: 20px;
@@ -496,24 +490,24 @@
     body.night-mode .cta-section p,
     body.night-mode .submit-section h2,
     body.night-mode .submit-section p {
-      color: #e0e0e0;
+      color: #f8e1b4;
     }
 
     .cta-button, .submit-button {
       display: inline-block;
       padding: 12px 20px;
-      background-color: #ff4d4d;
-      color: #1c2526;
+      background-color: #e67e22;
+      color: #2b1b0f;
       text-decoration: none;
       border-radius: 5px;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
       transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
 
     .cta-button:hover, .submit-button:hover {
-      background-color: #e63939;
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
       transform: scale(1.05);
     }
 
@@ -521,8 +515,8 @@
       padding: 80px 20px;
       text-align: center;
       background: url('images/dusty-texture.png') center/cover;
-      border-top: 1px solid #ff4d4d;
-      border-bottom: 1px solid #ff4d4d;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
     }
 
     .section:nth-of-type(odd) {
@@ -534,7 +528,7 @@
     }
 
     .section h1, .section h2 {
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 3em;
       margin-bottom: 20px;
       color: #2b1b0f;
@@ -569,7 +563,7 @@
       align-items: center;
       background: rgba(255, 255, 255, 0.1);
       padding: 15px;
-      border: 1px solid #ff4d4d;
+      border: 1px solid #e67e22;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.5s ease;
       height: 100%;
@@ -583,7 +577,7 @@
     }
 
     .event:hover {
-      box-shadow: 0 6px 12px rgba(255, 77, 77, 0.5), 0 0 15px #ff4d4d, 0 0 25px #e63939;
+      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
     }
 
@@ -593,12 +587,12 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      border: 2px solid #e63939;
+      border: 2px solid #f39c12;
     }
 
     .event h3 {
       margin: 10px 0 5px;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
       color: #000000;
       line-height: 1.2;
@@ -621,7 +615,7 @@
     }
 
     .event p.event-date strong, .event p.event-time strong, .event p.event-end strong, .event p.event-category strong {
-      color: #ff4d4d;
+      color: #e67e22;
     }
 
     .event .edit-button, .event .delete-button {
@@ -629,7 +623,7 @@
       position: absolute;
       top: 5px;
       background: rgba(44, 29, 15, 0.7);
-      color: #e0e0e0;
+      color: #f8e1b4;
       border: none;
       border-radius: 50%;
       width: 24px;
@@ -652,8 +646,8 @@
     }
 
     .event .edit-button:hover, .event .delete-button:hover {
-      background: rgba(255, 77, 77, 0.9);
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .modal {
@@ -676,12 +670,12 @@
       max-width: 400px;
       width: 90%;
       text-align: center;
-      border: 2px solid #ff4d4d;
+      border: 2px solid #e67e22;
       position: relative;
     }
 
     .modal-content h3 {
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       color: #2b1b0f;
       margin-bottom: 20px;
     }
@@ -691,7 +685,7 @@
       padding: 10px;
       margin-bottom: 15px;
       border-radius: 5px;
-      border: 1px solid #ff4d4d;
+      border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
       color: #2b1b0f;
     }
@@ -703,22 +697,21 @@
     }
 
     .modal-content button {
-      padding: 10 Adolphuspx 20px;
-      background-color: #ff4d4d;
-      color: #1c2526;
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1em;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease;
+      transition: background-color 0.3s, box-shadow 0.3s;
       margin: 0 10px;
     }
 
     .modal-content button:hover {
-      background-color: #e63939;
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
-      transform: translateY(-2px);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .modal-content .close-button {
@@ -733,14 +726,14 @@
     .edit-section-button {
       display: none;
       padding: 8px 12px;
-      background-color: #ff4d4d;
-      color: #1c2526;
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 0.9em;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s ease;
+      transition: background-color 0.3s, box-shadow 0.3s;
       margin: 10px auto;
     }
 
@@ -749,16 +742,15 @@
     }
 
     .edit-section-button:hover {
-      background-color: #e63939;
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
-      transform: translateY(-2px);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .events-container {
       max-width: 1200px;
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.15);
-      border: 2px solid #ff4d4d;
+      border: 2px solid #e67e22;
       border-radius: 10px;
       padding: 40px 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -776,15 +768,15 @@
     }
 
     .toggle-player {
-      background: #ff4d4d;
-      color: #e0e0e0;
+      background: var(--primary);
+      color: var(--text);
       border: none;
       border-radius: 5px;
       padding: 8px 12px;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
       cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s, transform 0.2s ease;
+      transition: background 0.3s, box-shadow 0.3s;
       margin-bottom: 10px;
       display: flex;
       align-items: center;
@@ -792,19 +784,18 @@
     }
 
     .toggle-player:hover {
-      background: #e63939;
-      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #e63939;
-      transform: translateY(-2px);
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
     }
 
     body.night-mode .toggle-player {
-      background: #e63939;
-      color: #1c2526;
+      background: var(--secondary);
+      color: var(--background);
     }
 
     body.night-mode .toggle-player:hover {
-      background: #ff4d4d;
-      box-shadow: 0 0 10px #e63939, 0 0 20px #ff4d4d;
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
     }
 
     .toggle-image {
@@ -812,13 +803,13 @@
       height: 30px;
       border-radius: 50%;
       object-fit: cover;
-      border: 1px solid #ff4d4d;
+      border: 1px solid var(--primary);
     }
 
     .player-wrapper {
       width: 300px;
       background: rgba(44, 29, 15, 0.9);
-      border: 2px solid #ff4d4d;
+      border: 2px solid var(--primary);
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -831,7 +822,7 @@
 
     body.night-mode .player-wrapper {
       background: rgba(74, 55, 35, 0.9);
-      border-color: #e63939;
+      border-color: var(--secondary);
     }
 
     .emo-playlist-player iframe {
@@ -844,13 +835,13 @@
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #1c2526;
-      color: #e0e0e0;
-      border-top: 2px solid #ff4d4d;
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
     }
 
     body.night-mode footer {
-      background-color: #262626;
+      background-color: #4a3723;
     }
 
     @media only screen and (max-width: 768px) {
