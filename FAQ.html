@@ -122,7 +122,7 @@
       background-position: center;
       background-size: cover;
       background-attachment: fixed;
-      overflow: visible !important; /* Allow elements to be positioned at edges */
+      overflow: visible !important;
       position: relative;
     }
     .t396__carrier, .t396__filter {
@@ -279,30 +279,17 @@
       font-size: 20px;
       color: #ffffff;
     }
-    .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]):hover .remove-btn {
-      opacity: 1;
+    .right-sidebar .t396__elem {
+      position: relative;
+      display: block;
+      margin-bottom: 20px; /* Increased spacing between elements */
+      width: 100%;
     }
-    .remove-btn {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      width: 20px;
-      height: 20px;
-      background-color: #ff4d4d;
-      color: #ffffff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      opacity: 0;
-      transition: opacity 0.2s ease, background-color 0.2s ease;
-      z-index: 10;
-    }
-    .remove-btn:hover {
-      background-color: #e63939;
+    .right-sidebar .t396__elem[data-elem-type="upload"] input,
+    .right-sidebar .t396__elem[data-elem-type="button"] .tn-atom,
+    .right-sidebar .t396__elem[data-elem-type="slider"] .ui-slider {
+      width: 100%;
+      box-sizing: border-box;
     }
     @media screen and (min-width: 1440px) {
       .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
@@ -355,7 +342,6 @@
       .sidebar .category-item img { width: 60px; }
       .trash-bin { width: 32px; height: 32px; }
       .trash-bin::before { font-size: 16px; }
-      .remove-btn { width: 16px; height: 16px; font-size: 10px; top: -8px; right: -8px; }
     }
     @media screen and (max-width: 100%) {
       .artboard-container, .t396__artboard, .t396__carrier, .t396__filter {
@@ -369,16 +355,6 @@
       .t396__elem[data-elem-id="custom-uploaded-img"] {
         z-index: 0 !important;
       }
-    }
-    .right-sidebar .t396__elem {
-      position: relative;
-      margin-bottom: 12px;
-    }
-    .right-sidebar .t396__elem[data-elem-type="upload"] input,
-    .right-sidebar .t396__elem[data-elem-type="button"] .tn-atom,
-    .right-sidebar .t396__elem[data-elem-type="slider"] .ui-slider {
-      width: 100%;
-      box-sizing: border-box;
     }
   </style>
 </head>
@@ -443,62 +419,101 @@
         {
           name: 'Hats/Beanies',
           items: [
-            { src: 'Emo_Beanie.png', alt: 'Emo Beanie' }
+            { src: 'images/Rejex_Me/Emo_Beanie.png', alt: 'Emo Beanie 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Beanie+2', alt: 'Emo Beanie 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Beanie+3', alt: 'Emo Beanie 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Beanie+4', alt: 'Emo Beanie 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Beanie+5', alt: 'Emo Beanie 5' }
           ]
         },
         {
           name: 'Eyewear',
           items: [
-            { src: 'https://via.placeholder.com/150x200?text=Eyewear+1', alt: 'Eyewear 1' }
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+1', alt: 'Eyewear 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+2', alt: 'Eyewear 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+3', alt: 'Eyewear 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+4', alt: 'Eyewear 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+5', alt: 'Eyewear 5' }
           ]
         },
         {
           name: 'Hair',
           items: [
-            { src: 'images/Rejex_Me/Emo_Hair_Element.png', alt: 'Emo Hair' }
+            { src: 'images/Rejex_Me/Emo_Hair_Element.png', alt: 'Emo Hair 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Hair+2', alt: 'Emo Hair 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Hair+3', alt: 'Emo Hair 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Hair+4', alt: 'Emo Hair 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Hair+5', alt: 'Emo Hair 5' }
           ]
         },
         {
           name: 'Necklaces/Chokers',
           items: [
-            { src: 'https://via.placeholder.com/150x200?text=Necklace+1', alt: 'Necklace 1' }
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+1', alt: 'Necklace 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+2', alt: 'Necklace 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+3', alt: 'Necklace 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+4', alt: 'Necklace 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+5', alt: 'Necklace 5' }
           ]
         },
         {
           name: 'Earrings',
           items: [
-            { src: 'https://via.placeholder.com/150x200?text=Earring+1', alt: 'Earring 1' }
+            { src: 'https://via.placeholder.com/150x200?text=Earring+1', alt: 'Earring 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Earring+2', alt: 'Earring 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Earring+3', alt: 'Earring 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Earring+4', alt: 'Earring 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Earring+5', alt: 'Earring 5' }
           ]
         },
         {
           name: 'Eyebrows',
           items: [
-            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+1', alt: 'Eyebrow 1' }
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+1', alt: 'Eyebrow 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+2', alt: 'Eyebrow 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+3', alt: 'Eyebrow 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+4', alt: 'Eyebrow 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+5', alt: 'Eyebrow 5' }
           ]
         },
         {
           name: 'Eyes',
           items: [
-            { src: 'images/Rejex_Me/Alien_Eyes.png', alt: 'Alien Eyes' },
-            { src: 'images/Rejex_Me/Alien_Eyes_Blue.png', alt: 'Alien Eyes Blue' }
+            { src: 'images/Rejex_Me/Alien_Eyes.png', alt: 'Alien Eyes 1' },
+            { src: 'images/Rejex_Me/Alien_Eyes_Blue.png', alt: 'Alien Eyes Blue' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyes+3', alt: 'Eyes 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyes+4', alt: 'Eyes 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyes+5', alt: 'Eyes 5' }
           ]
         },
         {
           name: 'Eyeliner/Makeup',
           items: [
-            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+1', alt: 'Eyeliner 1' }
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+1', alt: 'Eyeliner 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+2', alt: 'Eyeliner 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+3', alt: 'Eyeliner 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+4', alt: 'Eyeliner 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+5', alt: 'Eyeliner 5' }
           ]
         },
         {
           name: 'Face Tattoos/Markings',
           items: [
-            { src: 'https://via.placeholder.com/150x200?text=Tattoo+1', alt: 'Tattoo 1' }
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+1', alt: 'Tattoo 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+2', alt: 'Tattoo 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+3', alt: 'Tattoo 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+4', alt: 'Tattoo 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+5', alt: 'Tattoo 5' }
           ]
         },
         {
           name: 'Piercings',
           items: [
-            { src: 'https://via.placeholder.com/150x200?text=Piercing+1', alt: 'Piercing 1' }
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+1', alt: 'Piercing 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+2', alt: 'Piercing 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+3', alt: 'Piercing 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+4', alt: 'Piercing 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+5', alt: 'Piercing 5' }
           ]
         }
       ];
@@ -534,19 +549,6 @@
         }
       });
 
-      function addRemoveButton(elem) {
-        const removeBtn = $('<div>').addClass('remove-btn').text('×').appendTo(elem);
-        removeBtn.on('click', function(e) {
-          e.stopPropagation();
-          $(this).closest('.t396__elem').remove();
-          if (lastSelectedImage === elem.data('elem-id')) {
-            lastSelectedImage = null;
-            $('#rotate-slider').slider('value', 0);
-            $('#size-slider').slider('value', 1);
-          }
-        });
-      }
-
       $('.category-item').on('click', function() {
         const src = $(this).find('img').attr('src');
         const alt = $(this).find('img').attr('alt');
@@ -580,8 +582,6 @@
               $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
             )
           ).appendTo('.t396__artboard');
-
-          addRemoveButton(elem);
 
           elem.draggable({
             cursor: 'grabbing',
@@ -659,8 +659,6 @@
                 $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
               )
             ).appendTo('.t396__artboard');
-
-            addRemoveButton(elem);
 
             elem.draggable({
               cursor: 'grabbing',
