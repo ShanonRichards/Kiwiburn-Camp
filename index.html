@@ -398,8 +398,36 @@ body.night-mode nav {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px; /* Increased gap for better spacing */
-  flex-wrap: nowrap;
+  gap: 20px;
+}
+@media only screen and (max-width: 768px) {
+  .nav-links {
+    display: none; /* Hide by default on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust based on nav height */
+    left: 0;
+    right: 0;
+    background: #2b1b0f;
+    padding: 20px;
+    z-index: 1000;
+  }
+  .nav-links.active {
+    display: flex; /* Show when active */
+  }
+}
+.hamburger {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger on mobile */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #f8e1b4;
+    cursor: pointer;
+  }
 }
 
 nav a {
@@ -675,14 +703,20 @@ body.night-mode .dropdown-menu {
         margin: 5px 0;
       }
 
-      .dropdown:hover .dropdown-menu {
-        display: none;
-      }
-
-      .dropdown.active .dropdown-menu {
-        display: block;
-      }
-
+.dropdown.active .dropdown-menu {
+  display: block;
+  position: absolute;
+  background: #2b1b0f;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  z-index: 1000;
+}
+@media only screen and (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    display: block; /* Restore hover for desktop */
+  }
+}
       .nav-login {
         margin-top: 10px;
         width: 100%;
@@ -2856,19 +2890,26 @@ Copy
 <style>
 /* About Container */
 .about-container {
-  max-width: 1200px;
-  margin: 40px auto;
-  background-image: url('images/Page-Background/'); /* Default background */
+  width: 100%; /* Use full width on all devices */
+  max-width: 1200px; /* Maintain max-width for desktop */
+  margin: 20px auto; /* Reduce margin for mobile */
+  background-image: url('images/Page-Background/');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border: 2px solid #ff4b2b;
   border-radius: 10px;
-  padding: 40px 20px;
+  padding: 20px 10px; /* Reduce padding for mobile */
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
   position: relative;
   z-index: 2;
   transition: background 0.3s, box-shadow 0.3s;
+}
+@media only screen and (max-width: 480px) {
+  .about-container {
+    padding: 15px 5px; /* Further reduce padding on small screens */
+    margin: 10px auto; /* Further reduce margin */
+  }
 }
 
 body.night-mode .about-container {
@@ -3028,10 +3069,17 @@ body.night-mode .setup-container {
 }
 
 .title-icon {
-  width: 150px; /* Increased from 100px */
+  width: 20vw; /* Scale with viewport width */
+  max-width: 120px; /* Cap for smaller screens */
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
+}
+@media only screen and (max-width: 480px) {
+  .title-icon {
+    width: 15vw; /* Smaller for mobile */
+    max-width: 80px;
+  }
 }
 
 .title-icon:hover {
@@ -3100,11 +3148,16 @@ body.night-mode .setup-container {
 
 .about-image img {
   width: 100%;
-  max-width: 500px; /* Increased from 400px */
+  max-width: 90vw; /* Prevent overflow on mobile */
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   border: 2px solid #e67e22;
+}
+@media only screen and (max-width: 480px) {
+  .about-image img {
+    max-width: 85vw; /* Slightly smaller for mobile */
+  }
 }
 
 body.night-mode .title-container h1,
@@ -3639,8 +3692,23 @@ hamburger.addEventListener('click', () => {
 document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   toggle.addEventListener('click', (e) => {
     if (window.innerWidth <= 768) {
+      e.preventDefault(); // Prevent navigation on mobile
+      const dropdown = toggle.parentElement;
+      // Close other open dropdowns
+      document.querySelectorAll('.dropdown').forEach(d => {
+        if (d !== dropdown) d.classList.remove('active');
+      });
+      dropdown.classList.toggle('active');
+    }
+  });
+  // Add touch support for mobile
+  toggle.addEventListener('touchstart', (e) => {
+    if (window.innerWidth <= 768) {
       e.preventDefault();
       const dropdown = toggle.parentElement;
+      document.querySelectorAll('.dropdown').forEach(d => {
+        if (d !== dropdown) d.classList.remove('active');
+      });
       dropdown.classList.toggle('active');
     }
   });
