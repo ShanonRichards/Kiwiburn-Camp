@@ -379,15 +379,20 @@ body.night-mode nav {
   border-bottom: 3px solid #f39c12;
 }
 
+/* Hamburger Menu */
 .hamburger {
-  display: none; /* Hidden on desktop by default */
+  display: none; /* Hidden on desktop */
   background: none;
   border: none;
-  color: #f8e1b4;
   font-size: 1.5rem;
+  color: #f8e1b4;
   cursor: pointer;
-  padding: 8px;
-  transition: color 0.3s, transform 0.2s;
+  padding: 10px;
+  z-index: 1001; /* Above nav-links */
+}
+
+body.night-mode .hamburger {
+  color: #f39c12;
 }
 
 .hamburger:hover {
@@ -665,19 +670,27 @@ body.night-mode .dropdown-menu {
   margin-right: 10px;
 }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      flex-wrap: wrap;
-    }
+/* Navigation Base Styles */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: rgba(44, 29, 15, 0.9); /* Match existing theme */
+  position: relative;
+  z-index: 1000; /* Ensure nav is above other content */
+}
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links.active {
+  display: flex; /* Ensure visibility when active */
+}
 
     @media only screen and (max-width: 768px) {
       .nav-links {
