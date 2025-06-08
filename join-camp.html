@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join Cosmic Rejex Camp - Kiwiburn 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Creepster&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
@@ -82,8 +82,6 @@
       --secondary: #f39c12;
       --text: #f8e1b4;
       --background: #2b1b0f;
-      --emo-dark: #2c1d0f;
-      --emo-accent: #ef75ad;
     }
 
     body.night-mode {
@@ -127,145 +125,72 @@
       cursor: pointer;
     }
 
-    /* Navigation Bar Styles */
     nav {
       position: sticky;
       top: 0;
-      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background: rgba(44, 29, 15, 0.85);
+      backdrop-filter: blur(10px);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 30px;
+      padding: 15px 20px;
       z-index: 1000;
-      border-bottom: 3px solid #d3c9b8;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      height: 30px;
+      border-bottom: 2px solid #e67e22;
     }
 
     body.night-mode nav {
-      background: #000000;
-      border-bottom: 3px solid #f39c12;
-    }
-
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #f8e1b4;
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 8px;
-      transition: color 0.3s, transform 0.2s;
-    }
-
-    .hamburger:hover {
-      color: #e67e22;
-      transform: scale(1.1);
+      background: rgba(74, 55, 35, 0.85);
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     nav a {
       color: #f8e1b4;
       text-decoration: none;
-      font-family: 'Creepster', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
+      margin: 5px 15px;
       padding: 10px 15px;
-      border-radius: 8px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
       text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
     }
 
     nav a:hover {
-      background-color: #ef75ad;
+      background-color: #e67e22;
       color: #2b1b0f;
-      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
-      transform: translateY(-2px);
-    }
-
-    .nav-logo {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      margin-right: 15px;
-      transition: transform 0.3s;
-    }
-
-    .nav-logo:hover {
-      transform: scale(1.05);
-    }
-
-    .nav-icon {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      vertical-align: middle;
-      transition: transform 0.2s;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .theme-toggle {
       background: none;
-      border: 2px solid #ffff;
+      border: none;
       color: #f8e1b4;
       font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      padding: 6px 10px;
-      border-radius: 6px;
+      font-size: 1rem;
+      padding: 10px;
       cursor: pointer;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+      transition: color 0.3s, box-shadow 0.3s;
     }
 
     .theme-toggle:hover {
-      background: #ef75ad;
-      color: #2b1b0f;
-      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
-      transform: translateY(-2px);
+      color: #f39c12;
+      box-shadow: 0 0 10px #e67e22;
     }
 
-    .nav-login {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-login button {
-      padding: 8px 15px;
-      background-color: #ffff;
-      color: #000000;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
-    }
-
-    .nav-login .logout-button {
+    .hamburger {
       display: none;
-    }
-
-    .nav-login button:hover {
-      background-color: #ef75ad;
-      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
-      transform: translateY(-2px);
+      font-size: 1.5rem;
+      color: #f8e1b4;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+   34
     }
 
     .dropdown {
@@ -278,348 +203,111 @@
     }
 
     .dropdown-menu {
-      display: block;
+      display: none;
       position: absolute;
-      background: rgba(44, 29, 15, 0.95);
-      min-width: 180px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      background: rgba(44, 29, 15, 0.9);
+      min-width: 160px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
       z-index: 1001;
-      border-radius: 8px;
-      border: 2px solid #ef75ad;
+      border-radius: 4px;
+      border: 1px solid #e67e22;
       top: 100%;
       left: 0;
-      margin-top: 8px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-      transform: translateY(10px);
-    }
-
-    .dropdown:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+      margin-top: 5px;
     }
 
     body.night-mode .dropdown-menu {
-      background: rgba(74, 55, 35, 0.95);
-      border-color: #f39c12;
+      background: rgba(74, 55, 35, 0.9);
     }
 
     .dropdown-menu a {
       display: block;
-      padding: 12px 18px;
+      padding: 10px 15px;
       color: #f8e1b4;
       text-decoration: none;
-    font-family: 'Bebas Neue', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
       text-transform: uppercase;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
     }
 
     .dropdown-menu a:hover {
-      background-color: #ef75ad;
+      background-color: #e67e22;
       color: #2b1b0f;
-      box-shadow: 0 0 10px #ef75ad inset;
+      box-shadow: 0 0 10px #e67e22;
     }
 
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 2000;
-      justify-content: center;
+    .nav-login {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-login form {
+      display: flex;
+      gap: 10px;
       align-items: center;
     }
 
-    .modal-content {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-      border: 2px solid #e67e22;
-      position: relative;
-    }
-
-    body.night-mode .modal-content {
-      background: rgba(44, 29, 15, 0.9);
-      color: #f8e1b4;
-    }
-
-    .modal-content h3 {
-      font-family: 'Bebas Neue', cursive;
-      color: #2b1b0f;
-      margin-bottom: 20px;
-    }
-
-    .modal-content input,
-    .modal-content textarea,
-    .modal-content select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
+    .nav-login input {
+      padding: 8px;
       border-radius: 5px;
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
-      color: #2b1b0f;
+      color: #ffffff;
+      font-size: 0.9rem;
     }
 
-    body.night-mode .modal-content input,
-    body.night-mode .modal-content textarea,
-    body.night-mode .modal-content select {
-      background: rgba(255, 255, 255, 0.1);
-      color: #f8e1b4;
+    .nav-login input::placeholder {
+      color: #ffffff;
     }
 
-    .modal-content button {
+    .nav-login button {
+      padding: 8px 12px;
+      background-color: #e67e22;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .nav-login .logout-button {
+      display: none;
+    }
+
+    .nav-login button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .nav-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      margin-right: 10px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 10px 20px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1em;
-      transition: background-color 0.3s, box-shadow 0.3s;
-      margin: 0 10px;
+      flex-wrap: wrap;
     }
 
-    .modal-content button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .modal-content .close-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      font-size: 1.2em;
-      padding: 5px 10px;
-    }
-
-    /* Sidebar Widgets (Newsletter and Playlist) */
-    .sidebar-widgets {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: flex-end;
-      transition: all 0.3s ease;
-    }
-
-    /* Newsletter Popup Styles */
-    .newsletter-player {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    .toggle-newsletter {
-      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #ffffff;
-      border: 2px solid var(--emo-accent);
-      border-radius: 8px;
-      padding: 10px 15px;
-      font-family: 'Special Elite', cursive;
-      font-size: 0.9rem;
+    .nav-links {
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
-      text-transform: uppercase;
-      width: 200px;
-      justify-content: center;
-      position: relative;
     }
 
-    .toggle-newsletter:hover {
-      background-color: rgba(230, 126, 34, 0.25);
-      background-blend-bg-color: #333333;
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
-      transform: scale(1.05);
-    }
-
-    body.night-mode .toggle-newsletter {
-      background: #000000;
-      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
-      color: #ffffff;
-      border-color: var(--emo-accent);
-    }
-
-    body.night-mode .toggle-newsletter:hover {
-      background-color: rgba(243, 156, 18, 0.75);
-      background-blend-bg-color: #000000;
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
-    }
-
-    .newsletter-wrapper {
-      width: 240px;
-      background: rgba(44, 29, 15, 0.9);
-      border: 2px solid var(--primary);
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5);
-      display: none;
-    }
-
-    .newsletter-wrapper.active {
-      display: block;
-    }
-
-    body.night-mode .newsletter-wrapper {
-      background: rgba(74, 55, 35, 0.9);
-      border-color: var(--secondary);
-    }
-
-    .newsletter-wrapper h3 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      color: #f39c12;
-      margin-bottom: 10px;
-    }
-
-    .newsletter-wrapper p {
-      font-size: 0.8rem;
-      color: #f39c12;
-      margin-bottom: 15px;
-    }
-
-    .newsletter-wrapper .form-container {
-      text-align: left;
-    }
-
-    .newsletter-wrapper input {
-      width: 100%;
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #f8e1b4;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
-    }
-
-    .newsletter-wrapper button {
-      width: 100%;
-      padding: 8px;
-      background-color: #e67e22;
-      color: #2b1b0f;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .newsletter-wrapper button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    /* Playlist Player Styles */
-    .emo-playlist-player {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    .toggle-player {
-      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: #ffffff;
-      border: 2px solid var(--emo-accent);
-      border-radius: 8px;
-      padding: 10px 15px;
-      font-family: 'Special Elite', cursive;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
-      text-transform: uppercase;
-      width: 200px;
-      justify-content: center;
-      position: relative;
-    }
-
-    .toggle-player:hover {
-      background-color: rgba(230, 126, 34, 0.3);
-      background-blend-bg-color: #ffffff;
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
-      transform: scale(1.05);
-    }
-
-    body.night-mode .toggle-player {
-      background: #000000;
-      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
-      color: #ffffff;
-      border-color: var(--emo-accent);
-    }
-
-    body.night-mode .toggle-player:hover {
-      background-color: rgba(243, 156, 18, 0.8);
-      background-blend-bg-color: #000000;
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
-    }
-
-    .toggle-image {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      object-fit: cover;
-      border-bottom-color: var(--emo-accent);
-    }
-
-    .player-wrapper {
-      width: 250px;
-      background: #000000;
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      display: none;
-      color: #ffffff;
-    }
-
-    .player-wrapper.active {
-      display: block;
-    }
-
-    body.night-mode .player-wrapper {
-      background: #000000;
-      border-color: var(--secondary);
-      color: #ffffff;
-    }
-
-    .emo-playlist-player iframe {
-      width: 100%;
-      height: 120px;
-      border: none;
-      border-radius: 10px;
-    }
-
-    /* Responsive Adjustments for Navigation and Widgets */
     @media only screen and (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-
       .nav-links {
         display: none;
         flex-direction: column;
@@ -631,10 +319,6 @@
         left: 0;
       }
 
-      body.night-mode .nav-links {
-        background: rgba(74, 55, 35, 0.9);
-      }
-
       .nav-links.active {
         display: flex;
       }
@@ -644,7 +328,7 @@
         background: rgba(74, 55, 35, 0.9);
         box-shadow: none;
         border: none;
-        margin: 0px 5px;
+        margin: 5px 0;
       }
 
       .dropdown:hover .dropdown-menu {
@@ -655,96 +339,28 @@
         display: block;
       }
 
-      .nav-right {
-        flex-direction: column;
-        align-items: flex-end;
-        width: 100%;
-      }
-
       .nav-login {
         margin-top: 10px;
         width: 100%;
         justify-content: center;
       }
 
+      .nav-login form {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .nav-login input,
       .nav-login button {
         width: 100%;
         box-sizing: border-box;
       }
 
-      .theme-toggle {
-        width: 100%;
-        box-sizing: border-box;
-        margin-top: 10px;
-      }
-
-      .toggle-newsletter,
-      .toggle-player {
-        font-size: 0.8rem;
-        padding: 8px 12px;
-        width: 130px;
-      }
-
-      .newsletter-wrapper {
-        width: 200px;
-      }
-
-      .newsletter-wrapper h3 {
-        font-size: 1.1rem;
-      }
-
-      .newsletter-wrapper p {
-        font-size: 0.75rem;
-      }
-
-      .player-wrapper {
-        width: 280px;
-      }
-
-      .emo-playlist-player iframe {
-        height: 100px;
+      .hamburger {
+        display: block;
       }
     }
 
-    @media only screen and (max-width: 480px) {
-      nav {
-        padding: 10px 15px;
-      }
-
-      .toggle-newsletter,
-      .toggle-player {
-        font-size: 0.7rem;
-        padding: 6px 10px;
-        width: 160px;
-      }
-
-      .toggle-image {
-        width: 18px;
-        height: 18px;
-      }
-
-      .newsletter-wrapper {
-        width: 180px;
-      }
-
-      .newsletter-wrapper h3 {
-        font-size: 1rem;
-      }
-
-      .newsletter-wrapper p {
-        font-size: 0.7rem;
-      }
-
-      .player-wrapper {
-        width: 260px;
-      }
-
-      .emo-playlist-player iframe {
-        height: 90px;
-      }
-    }
-
-    /* Existing Page Styles */
     .header {
       background: url('images/Cover-Photo/Banner_Test (1).png') center/cover no-repeat;
       height: 50vh;
@@ -978,8 +594,7 @@
 
     body.logged-in .edit-button,
     body.logged-in .delete-button,
-    body.logged-in .save-button,
-    body.logged-in .edit-section-button {
+    body.logged-in .save-button {
       display: block;
     }
 
@@ -1007,6 +622,7 @@
       margin: 20px 10px;
       cursor: pointer;
       transition: background-color 0.3s, box-shadow 0.3s;
+      display: none;
     }
 
     .save-button:hover, .edit-section-button:hover {
@@ -1224,6 +840,161 @@
       color: #f8e1b4;
     }
 
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: rgba(44, 29, 15, 0.95);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid #e67e22;
+      max-width: 500px;
+      width: 90%;
+      color: #f8e1b4;
+    }
+
+    body.night-mode .modal-content {
+      background: rgba(74, 55, 35, 0.95);
+    }
+
+    .modal-content h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #f8e1b4;
+    }
+
+    .modal-content label {
+      font-family: 'Montserrat', sans-serif;
+      color: #f8e1b4;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #e67e22;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f8e1b4;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: #e67e22;
+      color: #2b1b0f;
+      border: none;
+      border-radius: 5px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .modal-content button:hover {
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: #f8e1b4;
+      cursor: pointer;
+    }
+
+    .emo-playlist-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-player {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 12px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      margin-bottom: 10px;
+    }
+
+    .toggle-player:hover {
+      background: var(--secondary);
+      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+    }
+
+    body.night-mode .toggle-player {
+      background: var(--secondary);
+      color: #ffffff;
+    }
+
+    body.night-mode .toggle-player:hover {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+    }
+
+    .toggle-image {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--primary);
+    }
+
+    .player-wrapper {
+      width: 300px;
+      background: rgba(44, 29, 15, 0.9);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .player-wrapper.active {
+      display: block;
+    }
+
+    body.night-mode .player-wrapper {
+      background: rgba(74, 55, 35, 0.9);
+      border-color: var(--secondary);
+    }
+
+    .emo-playlist-player iframe {
+      width: 100%;
+      height: 152px;
+      border: none;
+      border-radius: 12px;
+    }
+
     footer {
       text-align: center;
       padding: 30px;
@@ -1330,9 +1101,27 @@
         padding: 20px;
       }
 
-      .sidebar-widgets {
+      .emo-playlist-player {
         bottom: 10px;
         right: 10px;
+      }
+
+      .player-wrapper {
+        width: 250px;
+      }
+
+      .toggle-player {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+      }
+
+      .toggle-image {
+        width: 25px;
+        height: 25px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 120px;
       }
     }
 
@@ -1401,6 +1190,24 @@
         padding: 2px 5px;
       }
 
+      .player-wrapper {
+        width: 200px;
+      }
+
+      .toggle-player {
+        font-size: 0.8rem;
+        padding: 5px 8px;
+      }
+
+      .toggle-image {
+        width: 20px;
+        height: 20px;
+      }
+
+      .emo-playlist-player iframe {
+        height: 100px;
+      }
+
       .name-container {
         flex-direction: column;
         gap: 10px;
@@ -1419,30 +1226,28 @@
   </style>
 </head>
 <body>
-  <nav aria-label="Main Navigation">
-    <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
-    <button class="hamburger" aria-label="Toggle Menu">☰</button>
+  <nav>
+    <img src="images/Logo/Alien_Logo_New.png" alt="Cosmic Rejex Logo" class="nav-logo">
+    <button class="hamburger" aria-label="Toggle menu">☰</button>
     <div class="nav-links">
       <div class="dropdown">
-        <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
+        <a href="index.html#about" class="dropdown-toggle">About</a>
         <div class="dropdown-menu">
-          <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#about">Our Camp</a>
-          <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#members">Core Camp Crew</a>
-          <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#mission">Our Mission</a>
-          <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#setup">About</a>
-          <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#history">History</a>
+          <a href="index.html#about">Our Camp</a>
+          <a href="index.html#mission">Our Mission</a>
+          <a href="index.html#history">Our History</a>
         </div>
       </div>
       <div class="dropdown">
-        <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
+        <a href="index.html#events" class="dropdown-toggle">Events</a>
         <div class="dropdown-menu">
-          <a href="events.html#upcoming-events">Upcoming Events</a>
-          <a href="events.html#past-events">Past Events</a>
-          <a href="events.html#submit">Submit Event</a>
+          <a href="index.html#events">Upcoming Events</a>
+          <a href="index.html#past-events">Past Events</a>
+          <a href="submit-event.html">Submit Event</a>
         </div>
       </div>
       <div class="dropdown">
-        <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
+        <a href="#join" class="dropdown-toggle">Join Us</a>
         <div class="dropdown-menu">
           <a href="join-camp.html">Membership Info</a>
           <a href="join-camp.html">Apply to Join</a>
@@ -1450,78 +1255,35 @@
           <a href="Task_Roster.html">Task/Roster</a>
         </div>
       </div>
-      <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Eye_Webbar_Movings.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
-      <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/Cloud_Webbar_Moving.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
-      <a href="contact.html"><img src="images/Webpage_Bar_Icons/Thunder_Webbar_Moving.gif" alt="Contact Icon" class="nav-icon">Contact</a>
-      <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/Skull_Webbars_Moving.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
-    </div>
-    <div class="nav-right">
-      <div class="nav-login">
-        <button class="login-button" onclick="openModal('login-modal')">Login</button>
-        <button class="logout-button" aria-label="Logout">Logout</button>
+      <div class="dropdown">
+        <a href="gallery.html" class="dropdown-toggle">Gallery</a>
+        <div class="dropdown-menu">
+          <a href="gallery.html?year=2021">2021</a>
+          <a href="gallery.html?year=2022">2022</a>
+          <a href="gallery.html?year=2023">2023</a>
+          <a href="gallery.html?year=2024">2024</a>
+          <a href="gallery.html?year=2025">2025</a>
+        </div>
       </div>
-      <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+      <a href="index.html#newsletter">Newsletter</a>
+      <a href="contact.html">Contact Us</a>
     </div>
-  </nav>
-
-  <div class="modal" id="login-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('login-modal')" aria-label="Close modal">×</button>
-      <h3>Login</h3>
+    <div class="nav-login">
       <form id="login-form">
         <input type="text" id="username" placeholder="Username" required aria-label="Username">
         <input type="password" id="password" placeholder="Password" required aria-label="Password">
         <button type="submit">Login</button>
       </form>
+      <button class="logout-button" aria-label="Logout">Logout</button>
     </div>
-  </div>
+    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+  </nav>
 
   <header class="header" id="join">
     <img src="images/Logo/Alien_Logo_New2.png" alt="Cosmic Rejex Logo" class="header-logo">
     <h1>Join Cosmic Rejex Camp</h1>
     <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
   </header>
-
-  <div class="sidebar-widgets">
-    <div class="newsletter-player">
-      <div class="newsletter-popup" id="newsletter">
-        <button class="toggle-newsletter" onclick="toggleNewsletter()">
-          <img src="images/Spotify-Background/News_Letter.gif" alt="Newsletter Toggle Image" class="toggle-image">
-          Stay in Touch
-        </button>
-        <div class="newsletter-wrapper" id="newsletter-wrapper">
-          <div class="form-container">
-            <h3>Stay in Touch</h3>
-            <p>Stay up to date on upcoming events.</p>
-            <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-            <button onclick="submitNewsletter()">Subscribe</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="emo-playlist-player">
-      <button class="toggle-player" onclick="togglePlayer()">
-        <img src="images/Spotify-Background/Spotify_Playlist.gif" alt="Emo Playlist Toggle Image" class="toggle-image">
-        Play Emo Playlist
-      </button>
-      <div class="player-wrapper" id="player-wrapper">
-        <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy" 
-                aria-label="Emo Playlist Player"></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="newsletter-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('newsletter-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Newsletter Section</h3>
-      <input type="text" id="newsletter-title" placeholder="Section Title" required aria-label="Section Title">
-      <textarea id="newsletter-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-      <button onclick="saveNewsletterDetails()">Save</button>
-    </div>
-  </div>
 
   <div class="roles-container">
     <section class="section" id="roles">
@@ -1792,8 +1554,8 @@
       <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
     </section>
   </div>
-
-  <section class="section" id="apply">
+  
+ <section class="section" id="apply">
     <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
     <p>Fill out the form below to request your spot in our camp for Kiwiburn Green's 2026. We can’t wait to vibe with you!</p>
     <div class="progress-container">
@@ -1804,11 +1566,14 @@
     </div>
     <div class="book-container">
       <div class="book">
-        <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://cosmicrejex.github.io/thank-you.html">
-          <input type="hidden" name="_subject" value="Cosmic Rejex 2026 Application">
-          <input type="hidden" name="_honey" value="">
+<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://cosmicrejex.github.io/thank-you.html">
+  <input type="hidden" name="_subject" value="Cosmic Rejex 2026 Application">
+  <input type="hidden" name="_honey" value="">
+  <!-- Rest of the form fields remain unchanged -->
+</form>
+
           <!-- Page 1 -->
           <div class="form-card page active" data-page="1">
             <div class="page-content">
@@ -1855,142 +1620,167 @@
               </div>
             </div>
           </div>
+
           <!-- Page 2 -->
           <div class="form-card page" data-page="2">
             <div class="page-content">
-              <label for="email">Email Address</label>
-              <input type="email" name="email" id="email" placeholder="Email Address" required aria-label="Email Address">
-              <label for="phone">Phone Number (Mobile, WhatsApp, or Signal)</label>
-              <input type="tel" name="phone" id="phone" placeholder="Phone Number" required aria-label="Phone Number">
+              <label>Email Address</label>
+              <input type="email" name="email" placeholder="Email Address" required>
+              <label>Phone Number (Mobile, WhatsApp, or Signal)</label>
+              <input type="tel" name="phone" placeholder="Phone Number" required>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 3 -->
           <div class="form-card page" data-page="3">
             <div class="page-content">
-              <label for="pronouns">Preferred Pronouns</label>
-              <input type="text" name="pronouns" id="pronouns" placeholder="e.g., She/Her, They/Them" aria-label="Preferred Pronouns">
-              <label for="availability">Availability for Kiwiburn 2026</label>
-              <textarea name="availability" id="availability" placeholder="Describe your availability (e.g., full event, specific days)" required aria-required="true"></textarea>
+              <label>Have you attended Burning Man, Kiwiburn, or other regional burns before? If so, which ones and when?</label>
+              <textarea name="burn_experience" rows="4" placeholder="Previous burn experience" required></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 4 -->
           <div class="form-card page" data-page="4">
             <div class="page-content">
-              <label for="experience">Previous Burner Experience</label>
-              <textarea name="experience" id="experience" placeholder="Tell us about your past festival or camp experiences" required aria-required="true"></textarea>
+              <label>Why do you want to join this camp?</label>
+              <textarea name="why_join" rows="4" placeholder="What draws you to this group and vision?" required></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 5 -->
           <div class="form-card page" data-page="5">
             <div class="page-content">
-              <label for="skills">Relevant Skills or Qualifications</label>
-              <textarea name="skills" id="skills" placeholder="List any skills or qualifications relevant to your role" required aria-required="true"></textarea>
+              <label>How will you be getting to the burn?</label>
+              <textarea name="travel" rows="4" placeholder="Travel method and timing" required></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 6 -->
           <div class="form-card page" data-page="6">
             <div class="page-content">
-              <label for="motivation">Why Join Cosmic Rejex?</label>
-              <textarea name="motivation" id="motivation" placeholder="What draws you to our camp and this role?" required aria-required="true"></textarea>
+              <label>What contributions can you offer to the camp?</label>
+              <textarea name="contributions" rows="4" placeholder="e.g., building, cooking, performance, art, administration, organisation" required></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 7 -->
           <div class="form-card page" data-page="7">
             <div class="page-content">
-              <label for="contribution">Contribution Ideas</label>
-              <textarea name="contribution" id="contribution" placeholder="What unique contributions can you bring to the camp?" required aria-required="true"></textarea>
+              <label>Do you have any specific ideas, events, or projects you’d like to bring to camp?</label>
+              <textarea name="ideas" rows="4" placeholder="Specific ideas or projects"></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 8 -->
           <div class="form-card page" data-page="8">
             <div class="page-content">
-              <label for="dietary">Dietary Needs</label>
-              <textarea name="dietary" id="dietary" placeholder="Any dietary restrictions or preferences?" aria-label="Dietary Needs"></textarea>
+              <label>Are you able to contribute any additional resources?</label>
+              <textarea name="resources" rows="4" placeholder="e.g., vehicles, tools, gear, infrastructure, supplies"></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 9 -->
           <div class="form-card page" data-page="9">
             <div class="page-content">
-              <label for="transport">Transportation Plans</label>
-              <textarea name="transport" id="transport" placeholder="How will you get to and from Kiwiburn?" required aria-required="true"></textarea>
+              <label>Camp dues are $____. Are you comfortable with this cost?</label>
+              <select name="dues_comfort" required>
+                <option value="">Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Unsure">Unsure</option>
+              </select>
+              <label>Will you pay in full upfront or prefer an instalment plan?</label>
+              <select name="payment_plan" required>
+                <option value="">Select an option</option>
+                <option value="Full Upfront">Pay in full upfront</option>
+                <option value="Instalments">Instalment plan</option>
+              </select>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 10 -->
           <div class="form-card page" data-page="10">
             <div class="page-content">
-              <label for="accessibility">Accessibility Needs</label>
-              <textarea name="accessibility" id="accessibility" placeholder="Any accessibility requirements we should know about?" aria-label="Accessibility Needs"></textarea>
+              <label>Our camp values include: consent, communication, participation, fun, and responsibility. Are you aligned with these?</label>
+              <select name="values_alignment" required>
+                <option value="">Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Unsure">Unsure</option>
+              </select>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 11 -->
           <div class="form-card page" data-page="11">
             <div class="page-content">
-              <label for="emergency_contact">Emergency Contact</label>
-              <input type="text" name="emergency_contact" id="emergency_contact" placeholder="Name and phone number" required aria-label="Emergency Contact">
+              <label>Do you have any health needs, access requirements, or relevant concerns you’d like us to be aware of?</label>
+              <textarea name="health_needs" rows="4" placeholder="Health or access needs"></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 12 -->
           <div class="form-card page" data-page="12">
             <div class="page-content">
-              <label for="agreement">Agreement to Camp Principles</label>
-              <div>
-                <input type="checkbox" name="agreement" id="agreement" required aria-required="true">
-                <label for="agreement" style="display: inline;">I agree to uphold the principles of Cosmic Rejex and Kiwiburn, including inclusivity, Leave No Trace, and participation.</label>
-              </div>
+              <label>Is there anything you’re unsure about or worried about regarding joining the camp?</label>
+              <textarea name="concerns" rows="4" placeholder="Any concerns or uncertainties"></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
                 <button type="button" class="next-btn book-btn">Next</button>
               </div>
             </div>
           </div>
+
           <!-- Page 13 -->
           <div class="form-card page" data-page="13">
             <div class="page-content">
-              <label>Review Your Application</label>
-              <p>Please review your details before submitting. You'll be redirected to a confirmation page upon submission.</p>
+              <label>Optional: Upload a photo or link to your social media</label>
+              <input type="url" name="social_media" placeholder="Link to social media or photo">
+              <label>Do you have any questions for us?</label>
+              <textarea name="questions" rows="4" placeholder="Your questions"></textarea>
               <div class="form-navigation">
                 <button type="button" class="prev-btn book-btn">Previous</button>
-                <button type="submit" class="book-btn">Submit Application</button>
+                <button type="submit" class="submit-btn book-btn">Submit Application</button>
               </div>
             </div>
           </div>
@@ -1999,73 +1789,234 @@
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Cosmic Rejex Camp. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="FAQ.html">FAQ</a></p>
-  </footer>
-
   <div class="modal" id="role-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeModal('role-modal')" aria-label="Close modal">×</button>
-      <h3>Create New Role</h3>
-      <input type="text" id="role-title" placeholder="Role Title" required aria-label="Role Title">
-      <textarea id="role-description" placeholder="Role Description" required aria-label="Role Description"></textarea>
-      <input type="text" id="role-image" placeholder="Image URL" required aria-label="Image URL">
-      <select id="role-status" required aria-label="Role Status">
-        <option value="Open">Open</option>
-        <option value="Filled">Filled</option>
-      </select>
-      <button onclick="createRole()">Create Role</button>
-    </div>
-  </div>
-
-  <div class="modal" id="edit-role-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('edit-role-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Role</h3>
-      <input type="text" id="edit-role-title" placeholder="Role Title" required aria-label="Role Title">
-      <textarea id="edit-role-description" placeholder="Role Description" required aria-label="Role Description"></textarea>
-      <input type="text" id="edit-role-image" placeholder="Image URL" required aria-label="Image URL">
-      <select id="edit-role-status" required aria-label="Role Status">
-        <option value="Open">Open</option>
-        <option value="Filled">Filled</option>
-      </select>
-      <button onclick="saveRoleEdit()">Save Changes</button>
+      <span class="close-modal" onclick="closeModal('role-modal')">×</span>
+      <h2 id="modal-title">Create New Role</h2>
+      <form id="role-form">
+        <label>Role Name</label>
+        <input type="text" id="role-name" required>
+        <label>Role Description</label>
+        <textarea id="role-description" rows="4" required></textarea>
+        <label>Role Image URL</label>
+        <input type="text" id="role-image" placeholder="Image URL" required>
+        <label>Role Status</label>
+        <select id="role-status" required>
+          <option value="Open">Open</option>
+          <option value="Filled">Filled</option>
+        </select>
+        <button type="submit" onclick="saveRole()">Save Role</button>
+      </form>
     </div>
   </div>
 
   <div class="modal" id="members-modal">
     <div class="modal-content">
-      <button class="close-button" onclick="closeModal('members-modal')" aria-label="Close modal">×</button>
-      <h3>Edit Roles Section</h3>
-      <input type="text" id="members-title" placeholder="Section Title" required aria-label="Section Title">
-      <textarea id="members-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
-      <button onclick="saveMembersDetails()">Save</button>
+      <span class="close-modal" onclick="closeModal('members-modal')">×</span>
+      <h2>Edit Section</h2>
+      <form id="section-form">
+        <label>Section Title</label>
+        <input type="text" id="section-title" required>
+        <label>Section Description</label>
+        <textarea id="section-description" rows="4" required></textarea>
+        <button type="submit" onclick="saveSection()">Save Section</button>
+      </form>
     </div>
   </div>
 
-  <script>
-    // Theme Toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('night-mode');
-      themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
-      localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'night' : 'day');
-    });
+  <div class="emo-playlist-player">
+    <button class="toggle-player" onclick="togglePlayer()">
+      <img src="images/Spotify-Background/Cosmic-Rejex.png" alt="Emo Playlist Toggle Image" class="toggle-image">
+      Play Emo Playlist
+    </button>
+    <div class="player-wrapper" id="player-wrapper">
+      <iframe src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ" 
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+              loading="lazy" 
+              aria-label="Emo Playlist Player"></iframe>
+    </div>
+  </div>
 
-    if (localStorage.getItem('theme') === 'night') {
-      document.body.classList.add('night-mode');
-      themeToggle.textContent = '☀️';
+  <footer>
+    <p>© 2025 Cosmic Rejex. All rights reserved. | <a href="contact.html">Contact Us</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    let currentPage = 1;
+    const totalPages = 13;
+
+    // Initialize form navigation
+    function initializeForm() {
+      updateNavigation();
+      updateProgressBar();
+      const urlParams = new URLSearchParams(window.location.search);
+      const role = urlParams.get('role');
+      if (role) {
+        document.getElementById('role-select').value = role;
+      }
     }
 
-    // Hamburger Menu
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+    // Update navigation buttons
+    function updateNavigation() {
+      const prevBtn = document.querySelector(`.form-card[data-page="${currentPage}"] .prev-btn`);
+      const nextBtn = document.querySelector(`.form-card[data-page="${currentPage}"] .next-btn`);
+      const submitBtn = document.querySelector(`.form-card[data-page="${currentPage}"] .submit-btn`);
+
+      if (prevBtn) prevBtn.disabled = currentPage === 1;
+      if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+      if (submitBtn) submitBtn.disabled = currentPage !== totalPages;
+    }
+
+    // Update progress bar
+    function updateProgressBar() {
+      const progressFill = document.getElementById('progress-fill');
+      const progressText = document.getElementById('progress-text');
+      const progressPercentage = (currentPage / totalPages) * 100;
+      progressFill.style.width = `${progressPercentage}%`;
+      progressText.textContent = `Step ${currentPage} of ${totalPages}`;
+    }
+
+    // Navigate to next page
+    function nextPage() {
+      if (currentPage < totalPages) {
+        const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
+        const nextCard = document.querySelector(`.form-card[data-page="${currentPage + 1}"]`);
+        
+        currentCard.classList.remove('active');
+        currentCard.classList.add('slide-out-left');
+        
+        setTimeout(() => {
+          currentCard.style.display = 'none';
+          currentCard.classList.remove('slide-out-left');
+          nextCard.style.display = 'block';
+          nextCard.classList.add('slide-in-right');
+          nextCard.classList.add('active');
+          
+          setTimeout(() => {
+            nextCard.classList.remove('slide-in-right');
+          }, 600);
+          
+          currentPage++;
+          updateNavigation();
+          updateProgressBar();
+        }, 600);
+      }
+    }
+
+    // Navigate to previous page
+    function prevPage() {
+      if (currentPage > 1) {
+        const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
+        const prevCard = document.querySelector(`.form-card[data-page="${currentPage - 1}"]`);
+        
+        currentCard.classList.remove('active');
+        currentCard.classList.add('slide-out-right');
+        
+        setTimeout(() => {
+          currentCard.style.display = 'none';
+          currentCard.classList.remove('slide-out-right');
+          prevCard.style.display = 'block';
+          prevCard.classList.add('slide-in-left');
+          prevCard.classList.add('active');
+          
+          setTimeout(() => {
+            prevCard.classList.remove('slide-in-left');
+          }, 600);
+          
+          currentPage--;
+          updateNavigation();
+          updateProgressBar();
+        }, 600);
+      }
+    }
+
+    // Handle form navigation clicks
+    document.querySelectorAll('.next-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const formCard = btn.closest('.form-card');
+        const inputs = formCard.querySelectorAll('input[required], select[required], textarea[required]');
+        let valid = true;
+
+        inputs.forEach(input => {
+          if (!input.value) {
+            valid = false;
+            input.style.borderColor = '#e74c3c';
+            setTimeout(() => {
+              input.style.borderColor = '#e67e22';
+            }, 2000);
+          }
+        });
+
+        if (valid) {
+          nextPage();
+        } else {
+          alert('Please fill out all required fields.');
+        }
+      });
     });
 
-    // Dropdown Menu for Mobile
+    document.querySelectorAll('.prev-btn').forEach(btn => {
+      btn.addEventListener('click', prevPage);
+    });
+// Handle form submission
+// Handle form submission
+document.getElementById('application-form').addEventListener('submit', function(e) {
+  const inputs = document.querySelectorAll('.form-card input[required], .form-card select[required], .form-card textarea[required]');
+  let valid = true;
+
+  inputs.forEach(input => {
+    if (!input.value) {
+      valid = false;
+      input.style.borderColor = '#e74c3c';
+      setTimeout(() => {
+        input.style.borderColor = '#e67e22';
+      }, 2000);
+    }
+  });
+
+  if (!valid) {
+    e.preventDefault();
+    alert('Please fill out all required fields before submitting.');
+    return;
+  }
+
+  const submitBtn = document.querySelector('.submit-btn');
+  submitBtn.textContent = 'Submitting...';
+  submitBtn.disabled = true;
+
+  // Let Formsubmit.co handle the submission
+  // No need to prevent default behavior here, as we want the form to submit to Formsubmit.co
+  setTimeout(() => {
+    submitBtn.textContent = 'Submit Application';
+    submitBtn.disabled = false;
+  }, 2000); // Reset button after a short delay
+});
+    // Select role from roles grid
+    function selectRole(role) {
+      const roleSelect = document.getElementById('role-select');
+      roleSelect.value = role;
+      document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Toggle night mode
+    document.querySelector('.theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      localStorage.setItem('nightMode', document.body.classList.contains('night-mode'));
+      document.querySelector('.theme-toggle').textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+    });
+
+    // Load night mode preference
+    if (localStorage.getItem('nightMode') === 'true') {
+      document.body.classList.add('night-mode');
+      document.querySelector('.theme-toggle').textContent = '☀️';
+    }
+
+    // Toggle mobile menu
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Handle dropdowns on mobile
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
       toggle.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
@@ -2076,7 +2027,55 @@
       });
     });
 
-    // Modal Functions
+    // Scroll roles grid
+    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+      arrow.addEventListener('click', () => {
+        const grid = document.querySelector(`.roles-grid`);
+        const direction = arrow.classList.contains('left') ? -1 : 1;
+        const scrollAmount = 300 * direction;
+        grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    });
+
+    // Drag and drop roles
+    let draggedRole = null;
+
+    function drag(event) {
+      draggedRole = event.target.closest('.role');
+      event.dataTransfer.setData('text/plain', '');
+    }
+
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+
+    function dropRoles(event) {
+      event.preventDefault();
+      if (draggedRole) {
+        const rolesGrid = event.target.closest('.roles-grid');
+        const roles = Array.from(rolesGrid.querySelectorAll('.role'));
+        const mouseX = event.clientX;
+        const gridRect = rolesGrid.getBoundingClientRect();
+        const closestRole = roles.reduce((closest, role) => {
+          const rect = role.getBoundingClientRect();
+          const distance = Math.abs(mouseX - (rect.left + rect.width / 2));
+          return distance < closest.distance ? { element: role, distance } : closest;
+        }, { element: null, distance: Infinity }).element;
+
+        if (closestRole && closestRole !== draggedRole) {
+          const draggedIndex = roles.indexOf(draggedRole);
+          const closestIndex = roles.indexOf(closestRole);
+          if (draggedIndex < closestIndex) {
+            rolesGrid.insertBefore(draggedRole, closestRole.nextSibling);
+          } else {
+            rolesGrid.insertBefore(draggedRole, closestRole);
+          }
+        }
+        draggedRole = null;
+      }
+    }
+
+    // Modal handling
     function openModal(modalId) {
       document.getElementById(modalId).style.display = 'flex';
     }
@@ -2085,264 +2084,125 @@
       document.getElementById(modalId).style.display = 'none';
     }
 
-    // Login/Logout
-    const loginButton = document.querySelector('.login-button');
-    const logoutButton = document.querySelector('.logout-button');
-    const loginForm = document.getElementById('login-form');
-
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      document.body.classList.add('logged-in');
-      loginButton.style.display = 'none';
-      logoutButton.style.display = 'block';
-      closeModal('login-modal');
-    });
-
-    logoutButton.addEventListener('click', () => {
-      document.body.classList.remove('logged-in');
-      loginButton.style.display = 'block';
-      logoutButton.style.display = 'none';
-    });
-
-    // Newsletter Toggle
-    function toggleNewsletter() {
-      const wrapper = document.getElementById('newsletter-wrapper');
-      wrapper.classList.toggle('active');
-    }
-
-    function submitNewsletter() {
-      const email = document.getElementById('newsletter-email').value;
-      if (email) {
-        alert('Subscribed successfully!');
-        toggleNewsletter();
-      } else {
-        alert('Please enter a valid email.');
-      }
-    }
-
-    function saveNewsletterDetails() {
-      const title = document.getElementById('newsletter-title').value;
-      const description = document.getElementById('newsletter-description').value;
-      if (title && description) {
-        document.querySelector('.newsletter-wrapper h3').textContent = title;
-        document.querySelector('.newsletter-wrapper p').textContent = description;
-        closeModal('newsletter-modal');
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-
-    // Playlist Toggle
-    function togglePlayer() {
-      const wrapper = document.getElementById('player-wrapper');
-      wrapper.classList.toggle('active');
-    }
-
-    // Form Navigation
-    let currentPage = 1;
-    const totalPages = 13;
-    const formCards = document.querySelectorAll('.form-card');
-    const progressFill = document.getElementById('progress-fill');
-    const progressText = document.getElementById('progress-text');
-    const prevButtons = document.querySelectorAll('.prev-btn');
-    const nextButtons = document.querySelectorAll('.next-btn');
-
-    function updateProgress() {
-      const progress = (currentPage / totalPages) * 100;
-      progressFill.style.width = `${progress}%`;
-      progressText.textContent = `Step ${currentPage} of ${totalPages}`;
-    }
-
-    function showPage(pageNumber, direction) {
-      const currentCard = document.querySelector(`.form-card[data-page="${currentPage}"]`);
-      const nextCard = document.querySelector(`.form-card[data-page="${pageNumber}"]`);
-
-      currentCard.classList.remove('active');
-      currentCard.classList.add(direction === 'next' ? 'slide-out-left' : 'slide-out-right');
-
-      setTimeout(() => {
-        currentCard.classList.remove('slide-out-left', 'slide-out-right');
-        nextCard.classList.add('active');
-        nextCard.classList.add(direction === 'next' ? 'slide-in-left' : 'slide-in-right');
-
-        setTimeout(() => {
-          nextCard.classList.remove('slide-in-left', 'slide-in-right');
-        }, 600);
-      }, 600);
-
-      currentPage = pageNumber;
-      updateProgress();
-
-      prevButtons.forEach(btn => btn.disabled = currentPage === 1);
-      nextButtons.forEach(btn => btn.disabled = currentPage === totalPages);
-    }
-
-    prevButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        if (currentPage > 1) {
-          showPage(currentPage - 1, 'prev');
-        }
-      });
-    });
-
-    nextButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        if (currentPage < totalPages) {
-          const currentInputs = formCards[currentPage - 1].querySelectorAll('input[required], textarea[required], select[required]');
-          let valid = true;
-          currentInputs.forEach(input => {
-            if (!input.value) {
-              valid = false;
-              input.style.borderColor = 'red';
-            } else {
-              input.style.borderColor = '#e67e22';
-            }
-          });
-          if (valid) {
-            showPage(currentPage + 1, 'next');
-          } else {
-            alert('Please fill in all required fields.');
-          }
-        }
-      });
-    });
-
-    // Role Selection
-    function selectRole(role) {
-      document.getElementById('role-select').value = role;
-      document.querySelector('.form-card[data-page="1"]').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Role Management
-    let draggedRole = null;
-
-    function drag(e) {
-      draggedRole = e.target.closest('.role');
-      e.dataTransfer.setData('text/plain', '');
-    }
-
-    function allowDrop(e) {
-      e.preventDefault();
-    }
-
-    function dropRoles(e) {
-      e.preventDefault();
-      const rolesGrid = document.querySelector('.roles-grid');
-      const roles = Array.from(rolesGrid.querySelectorAll('.role'));
-      const mouseX = e.clientX;
-      const gridRect = rolesGrid.getBoundingClientRect();
-      const relativeX = mouseX - gridRect.left;
-      const gridWidth = gridRect.width;
-      const insertIndex = Math.floor((relativeX / gridWidth) * roles.length);
-
-      if (draggedRole && rolesGrid.contains(draggedRole)) {
-        rolesGrid.insertBefore(draggedRole, roles[insertIndex] || null);
-      }
-      draggedRole = null;
-    }
-
-    function createRole() {
-      const title = document.getElementById('role-title').value;
-      const description = document.getElementById('role-description').value;
-      const image = document.getElementById('role-image').value;
-      const status = document.getElementById('role-status').value;
-
-      if (title && description && image) {
-        const rolesGrid = document.querySelector('.roles-grid');
-        const newRole = document.createElement('div');
-        newRole.className = 'role';
-        newRole.draggable = true;
-        newRole.ondragstart = drag;
-        newRole.innerHTML = `
-          <div class="role-status${status === 'Filled' ? ' filled' : ''}">${status}</div>
-          <img src="${image}" alt="${title} Icon">
-          <h3>${title}</h3>
-          <div class="tooltip"><p>${description}</p></div>
-          <a href="#apply" class="apply-button" onclick="selectRole('${title}')" ${status === 'Filled' ? 'disabled' : ''}>Apply for Role</a>
-          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
-        `;
-        rolesGrid.appendChild(newRole);
-        closeModal('role-modal');
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-
+    // Edit role modal
     function openEditRoleModal(button) {
       const role = button.closest('.role');
-      const title = role.querySelector('h3').textContent;
+      const name = role.querySelector('h3').textContent;
       const description = role.querySelector('.tooltip p').textContent;
       const image = role.querySelector('img').src;
       const status = role.querySelector('.role-status').textContent;
 
-      document.getElementById('edit-role-title').value = title;
-      document.getElementById('edit-role-description').value = description;
-      document.getElementById('edit-role-image').value = image;
-      document.getElementById('edit-role-status').value = status;
-
-      window.currentEditRole = role;
-      openModal('edit-role-modal');
+      document.getElementById('modal-title').textContent = 'Edit Role';
+      document.getElementById('role-name').value = name;
+      document.getElementById('role-description').value = description;
+      document.getElementById('role-image').value = image;
+      document.getElementById('role-status').value = status;
+      document.getElementById('role-form').dataset.editing = name;
+      openModal('role-modal');
     }
 
-    function saveRoleEdit() {
-      const title = document.getElementById('edit-role-title').value;
-      const description = document.getElementById('edit-role-description').value;
-      const image = document.getElementById('edit-role-image').value;
-      const status = document.getElementById('edit-role-status').value;
+    // Save role
+    function saveRole() {
+      const name = document.getElementById('role-name').value;
+      const description = document.getElementById('role-description').value;
+      const image = document.getElementById('role-image').value;
+      const status = document.getElementById('role-status').value;
+      const form = document.getElementById('role-form');
 
-      if (title && description && image && window.currentEditRole) {
-        const role = window.currentEditRole;
-        role.querySelector('h3').textContent = title;
+      if (form.dataset.editing) {
+        const oldName = form.dataset.editing;
+        const role = Array.from(document.querySelectorAll('.role')).find(r => r.querySelector('h3').textContent === oldName);
+        role.querySelector('h3').textContent = name;
         role.querySelector('.tooltip p').textContent = description;
         role.querySelector('img').src = image;
         const statusElement = role.querySelector('.role-status');
         statusElement.textContent = status;
-        statusElement.className = `role-status${status === 'Filled' ? ' filled' : ''}`;
-        const applyButton = role.querySelector('.apply-button');
-        applyButton.onclick = () => selectRole(title);
-        if (status === 'Filled') {
-          applyButton.setAttribute('disabled', 'true');
-        } else {
-          applyButton.removeAttribute('disabled');
-        }
-        closeModal('edit-role-modal');
+        statusElement.className = `role-status ${status.toLowerCase()}`;
+        role.querySelector('.apply-button').disabled = status === 'Filled';
+        role.querySelector('.apply-button').onclick = () => selectRole(name);
+        delete form.dataset.editing;
       } else {
-        alert('Please fill in all fields.');
+        const role = document.createElement('div');
+        role.className = 'role';
+        role.draggable = true;
+        role.ondragstart = drag;
+        role.innerHTML = `
+          <div class="role-status ${status.toLowerCase()}">${status}</div>
+          <img src="${image}" alt="${name} Icon">
+          <h3>${name}</h3>
+          <div class="tooltip"><p>${description}</p></div>
+          <a href="#apply" class="apply-button" ${status === 'Filled' ? 'disabled' : ''} onclick="selectRole('${name}')">Apply for Role</a>
+          <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+          <button class="delete-button" onclick="deleteRole(this)">×</button>
+        `;
+        document.querySelector('.roles-grid').appendChild(role);
+        updateRoleSelect();
       }
+      closeModal('role-modal');
     }
 
+    // Delete role
     function deleteRole(button) {
       if (confirm('Are you sure you want to delete this role?')) {
-        button.closest('.role').remove();
+        const role = button.closest('.role');
+        role.remove();
+        updateRoleSelect();
       }
     }
 
-    function saveMembersDetails() {
-      const title = document.getElementById('members-title').value;
-      const description = document.getElementById('members-description').value;
-      if (title && description) {
-        document.querySelector('#roles h2').textContent = title;
-        document.querySelector('#roles p').textContent = description;
-        closeModal('members-modal');
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
-
-    // Scroll Arrows for Roles Grid
-    document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-      arrow.addEventListener('click', () => {
-        const grid = document.querySelector('.roles-grid');
-        const isLeft = arrow.classList.contains('left');
-        grid.scrollBy({ left: isLeft ? -150 : 150, behavior: 'smooth' });
+    // Update role select dropdown
+    function updateRoleSelect() {
+      const roleSelect = document.getElementById('role-select');
+      const roles = Array.from(document.querySelectorAll('.role h3')).map(h3 => h3.textContent);
+      roleSelect.innerHTML = '<option value="">Select a role</option>';
+      roles.forEach(role => {
+        const option = document.createElement('option');
+        option.value = role;
+        option.textContent = role;
+        roleSelect.appendChild(option);
       });
+    }
+
+    // Save section
+    function saveSection() {
+      const title = document.getElementById('section-title').value;
+      const description = document.getElementById('section-description').value;
+      document.querySelector('#roles h2').textContent = title;
+      document.querySelector('#roles p').textContent = description;
+      closeModal('members-modal');
+    }
+
+    // Toggle Spotify player
+    function togglePlayer() {
+      const playerWrapper = document.getElementById('player-wrapper');
+      playerWrapper.classList.toggle('active');
+    }
+
+    // Login handling
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (username === 'admin' && password === 'password') {
+        document.body.classList.add('logged-in');
+        document.querySelector('.nav-login form').style.display = 'none';
+        document.querySelector('.logout-button').style.display = 'block';
+        alert('Logged in successfully!');
+      } else {
+        alert('Invalid credentials');
+      }
     });
 
-    // Initialize Form
-    formCards[0].classList.add('active');
-    updateProgress();
+    // Logout handling
+    document.querySelector('.logout-button').addEventListener('click', () => {
+      document.body.classList.remove('logged-in');
+      document.querySelector('.nav-login form').style.display = 'flex';
+      document.querySelector('.logout-button').style.display = 'none';
+      document.getElementById('login-form').reset();
+    });
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', initializeForm);
   </script>
 </body>
 </html>
-```
