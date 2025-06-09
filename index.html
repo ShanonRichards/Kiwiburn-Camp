@@ -379,20 +379,15 @@ body.night-mode nav {
   border-bottom: 3px solid #f39c12;
 }
 
-/* Hamburger Menu */
 .hamburger {
-  display: none; /* Hidden on desktop */
+  display: none; /* Hidden on desktop by default */
   background: none;
   border: none;
-  font-size: 1.5rem;
   color: #f8e1b4;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 10px;
-  z-index: 1001; /* Above nav-links */
-}
-
-body.night-mode .hamburger {
-  color: #f39c12;
+  padding: 8px;
+  transition: color 0.3s, transform 0.2s;
 }
 
 .hamburger:hover {
@@ -403,114 +398,8 @@ body.night-mode .hamburger {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
-}
-@media only screen and (max-width: 768px) {
-  .nav-links {
-    display: none; /* Hidden by default on mobile */
-    position: fixed;
-    top: 60px; /* Adjust based on nav height */
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 60px); /* Full height minus nav */
-    background: rgba(44, 29, 15, 0.95); /* Match nav background */
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-    overflow-y: auto; /* Scroll if content overflows */
-    z-index: 999; /* Below hamburger, above content */
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(-100%); /* Slide out by default */
-  }
-
-  .nav-links.active {
-    display: flex; /* Show when active */
-    transform: translateX(0); /* Slide in */
-  }
-
-  .nav-links .dropdown {
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-links .dropdown-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 15px;
-    font-size: 1.2rem;
-    color: #f8e1b4;
-    text-decoration: none;
-  }
-
-  .nav-links .dropdown-menu {
-    display: none; /* Hidden by default */
-    flex-direction: column;
-    background: rgba(230, 126, 34, 0.2);
-    border: 1px solid #e67e22;
-    border-radius: 5px;
-    margin: 10px 0;
-    padding: 10px;
-  }
-
-  .nav-links .dropdown.active .dropdown-menu {
-    display: flex; /* Show when active */
-  }
-
-  .nav-links .dropdown-menu a {
-    padding: 10px;
-    font-size: 1rem;
-    color: #f8e1b4;
-    text-decoration: none;
-  }
-
-  body.night-mode .nav-links,
-  body.night-mode .nav-links .dropdown-toggle,
-  body.night-mode .nav-links .dropdown-menu a {
-    color: #f39c12;
-  }
-
-  body.night-mode .nav-links .dropdown-menu {
-    background: rgba(243, 156, 18, 0.3);
-    border-color: #f39c12;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .hamburger {
-    font-size: 1.2rem; /* Match existing 480px style */
-  }
-
-  .nav-links {
-    top: 50px; /* Adjust for smaller nav height */
-    padding: 15px;
-  }
-
-  .nav-links .dropdown-toggle {
-    font-size: 1rem;
-    padding: 12px;
-  }
-
-  .nav-links .dropdown-menu a {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
-}
-}
-.hamburger {
-  display: none;
-}
-@media only screen and (max-width: 768px) {
-  .hamburger {
-    display: block; /* Show hamburger on mobile */
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    color: #f8e1b4;
-    cursor: pointer;
-  }
+  gap: 20px; /* Increased gap for better spacing */
+  flex-wrap: nowrap;
 }
 
 nav a {
@@ -642,50 +531,6 @@ nav-login form {
   display: inline-block;
 }
 
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: rgba(44, 29, 15, 0.95);
-  min-width: 200px;
-  padding: 10px 0;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-}
-
-.dropdown:hover .dropdown-menu {
-  display: block; /* Show on hover */
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 10px 20px;
-  color: #f8e1b4;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-.dropdown-menu a:hover {
-  background: rgba(230, 126, 34, 0.2);
-}
-
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 15px;
-  color: #f8e1b4;
-  text-decoration: none;
-}
-
-.nav-icon {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-}
-
 .dropdown-toggle {
   cursor: pointer;
 }
@@ -792,27 +637,19 @@ body.night-mode .dropdown-menu {
   margin-right: 10px;
 }
 
-/* Navigation Base Styles */
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background: rgba(44, 29, 15, 0.9); /* Match existing theme */
-  position: relative;
-  z-index: 1000; /* Ensure nav is above other content */
-}
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
 
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.nav-links.active {
-  display: flex; /* Ensure visibility when active */
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
     @media only screen and (max-width: 768px) {
       .nav-links {
@@ -838,20 +675,14 @@ nav {
         margin: 5px 0;
       }
 
-.dropdown.active .dropdown-menu {
-  display: block;
-  position: absolute;
-  background: #2b1b0f;
-  width: 100%;
-  left: 0;
-  top: 100%;
-  z-index: 1000;
-}
-@media only screen and (min-width: 769px) {
-  .dropdown:hover .dropdown-menu {
-    display: block; /* Restore hover for desktop */
-  }
-}
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+
       .nav-login {
         margin-top: 10px;
         width: 100%;
@@ -2300,73 +2131,34 @@ body.night-mode .about-description {
     }
 
     @media only screen and (max-width: 768px) {
-.hamburger {
-  display: block;
-  font-size: 1.5rem; /* Larger icon for visibility */
-  background: none;
-  border: none;
-  color: #e67e22; /* Theme color */
-  cursor: pointer;
-  padding: 10px;
-  z-index: 1001; /* Above nav-links */
-}
+      .hamburger {
+        display: block;
+      }
 
-.nav-links {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-  background: rgba(44, 29, 15, 0.95); /* More opaque */
-  padding: 15px 0; /* Better spacing */
-  position: absolute;
-  top: 60px; /* Closer to nav bar */
-  left: 0;
-  z-index: 1000; /* Below hamburger */
-  transition: transform 0.3s ease-in-out; /* Smooth slide */
-  transform: translateY(-100%); /* Hidden off-screen */
-}
+      nav {
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+      }
 
-.nav-links.active {
-  display: flex;
-  transform: translateY(0); /* Slide in */
-}
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+      }
 
-.dropdown {
-  width: 100%; /* Full width for mobile */
-  position: relative;
-}
+      body.night-mode .nav-links {
+        background: rgba(74, 55, 35, 0.9);
+      }
 
-.dropdown-menu {
-  display: none; /* Hidden by default */
-  flex-direction: column;
-  background: rgba(44, 29, 15, 0.95); /* Match nav-links */
-  width: 100%; /* Full width */
-  padding: 10px 0; /* Spacing */
-  position: static; /* Prevent floating */
-}
-
-.dropdown.active .dropdown-menu {
-  display: flex; /* Show when active */
-}
-
-.dropdown-menu a {
-  padding: 12px 20px; /* Touch-friendly padding */
-  font-size: 1rem;
-  color: #f8e1b4; /* Night-mode text */
-  text-align: left; /* Readable alignment */
-  border-bottom: 1px solid rgba(230, 126, 34, 0.3); /* Divider */
-}
-
-.dropdown-menu a:last-child {
-  border-bottom: none; /* No divider on last item */
-}
-
-.dropdown-toggle {
-  display: flex;
-  align-items: center;
-  padding: 12px 15px; /* Consistent padding */
-  font-size: 1rem;
-}
-
+      .nav-links.active {
+        display: flex;
+      }
 
       nav a {
         margin: 5px 0;
@@ -2767,41 +2559,35 @@ Copy
 <body>
 <nav>
   <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
-  <button class="hamburger" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+  <button class="hamburger" aria-label="Toggle Menu">☰</button>
   <div class="nav-links">
+<div class="dropdown">
+  <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
+  <div class="dropdown-menu">
+    <a href="#about">Our Camp</a>
+    <a href="#members">Core Camp Crew</a>
+    <a href="#mission">Our Mission</a>
+    <a href="#setup">Our Setup</a>
+    <a href="#history">Our History</a>
+  </div>
+</div>
     <div class="dropdown">
-      <a href="#about" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-        <img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span>
-      </a>
-      <div class="dropdown-menu">
-        <a href="#about">Our Camp</a>
-        <a href="#members">Core Camp Crew</a>
-        <a href="#mission">Our Mission</a>
-        <a href="#setup">Our Setup</a>
-        <a href="#history">Our History</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <a href="events.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-        <img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span>
-      </a>
+      <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
       <div class="dropdown-menu">
         <a href="events.html#upcoming-events">Upcoming Events</a>
         <a href="events.html#past-events">Past Events</a>
         <a href="events.html#submit">Submit Event</a>
       </div>
     </div>
-    <div class="dropdown">
-      <a href="#join" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-        <img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span>
-      </a>
+<div class="dropdown">
+      <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
       <div class="dropdown-menu">
         <a href="join-camp.html">Membership Info</a>
         <a href="join-camp.html">Apply to Join</a>
         <a href="camp-fees.html">Camp Fees</a>
         <a href="Task_Roster.html">Task/Roster</a>
       </div>
-    </div>
+</div>
     <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Eye_Webbar_Movings.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
     <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/Cloud_Webbar_Moving.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
     <a href="contact.html"><img src="images/Webpage_Bar_Icons/Thunder_Webbar_Moving.gif" alt="Contact Icon" class="nav-icon">Contact Us</a>
@@ -2810,7 +2596,7 @@ Copy
   <div class="nav-right">
     <div class="nav-login">
       <button class="login-button" onclick="openModal('login-modal')">Login</button>
-      <button class="logout-button" aria-label="Logout" style="display: none;">Logout</button>
+      <button class="logout-button" aria-label="Logout">Logout</button>
     </div>
     <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
   </div>
@@ -3070,26 +2856,19 @@ Copy
 <style>
 /* About Container */
 .about-container {
-  width: 100%; /* Use full width on all devices */
-  max-width: 1200px; /* Maintain max-width for desktop */
-  margin: 20px auto; /* Reduce margin for mobile */
-  background-image: url('images/Page-Background/');
+  max-width: 1200px;
+  margin: 40px auto;
+  background-image: url('images/Page-Background/'); /* Default background */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border: 2px solid #ff4b2b;
   border-radius: 10px;
-  padding: 20px 10px; /* Reduce padding for mobile */
+  padding: 40px 20px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
   position: relative;
   z-index: 2;
   transition: background 0.3s, box-shadow 0.3s;
-}
-@media only screen and (max-width: 480px) {
-  .about-container {
-    padding: 15px 5px; /* Further reduce padding on small screens */
-    margin: 10px auto; /* Further reduce margin */
-  }
 }
 
 body.night-mode .about-container {
@@ -3249,17 +3028,10 @@ body.night-mode .setup-container {
 }
 
 .title-icon {
-  width: 20vw; /* Scale with viewport width */
-  max-width: 120px; /* Cap for smaller screens */
+  width: 150px; /* Increased from 100px */
   height: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
-}
-@media only screen and (max-width: 480px) {
-  .title-icon {
-    width: 15vw; /* Smaller for mobile */
-    max-width: 80px;
-  }
 }
 
 .title-icon:hover {
@@ -3328,16 +3100,11 @@ body.night-mode .setup-container {
 
 .about-image img {
   width: 100%;
-  max-width: 90vw; /* Prevent overflow on mobile */
+  max-width: 500px; /* Increased from 400px */
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   border: 2px solid #e67e22;
-}
-@media only screen and (max-width: 480px) {
-  .about-image img {
-    max-width: 85vw; /* Slightly smaller for mobile */
-  }
 }
 
 body.night-mode .title-container h1,
@@ -3863,76 +3630,21 @@ function saveSetupDetails() {
 // Hamburger Menu
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
-
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('active');
   hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
-  hamburger.setAttribute('aria-expanded', navLinks.classList.contains('active'));
-  // Close all dropdowns when hamburger is toggled
-  document.querySelectorAll('.dropdown').forEach(dropdown => {
-    dropdown.classList.remove('active');
-  });
 });
 
 // Dropdown Menu for Mobile
 document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   toggle.addEventListener('click', (e) => {
     if (window.innerWidth <= 768) {
-      e.preventDefault(); // Prevent default navigation on mobile
-      const dropdown = toggle.parentElement;
-      // Toggle current dropdown, close others
-      document.querySelectorAll('.dropdown').forEach(d => {
-        if (d !== dropdown) d.classList.remove('active');
-      });
-      dropdown.classList.toggle('active');
-      // Update ARIA attributes
-      toggle.setAttribute('aria-expanded', dropdown.classList.contains('active'));
-    }
-  });
-
-// Touch support for mobile
-  toggle.addEventListener('touchstart', (e) => {
-    if (window.innerWidth <= 768) {
       e.preventDefault();
       const dropdown = toggle.parentElement;
-      document.querySelectorAll('.dropdown').forEach(d => {
-        if (d !== dropdown) d.classList.remove('active');
-      });
       dropdown.classList.toggle('active');
-      toggle.setAttribute('aria-expanded', dropdown.classList.contains('active'));
     }
   });
 });
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
-    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-      navLinks.classList.remove('active');
-      hamburger.textContent = '☰';
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.querySelectorAll('.dropdown').forEach(dropdown => {
-        dropdown.classList.remove('active');
-      });
-    }
-  }
-});
-
-// Keyboard accessibility for dropdowns
-document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-  toggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      const dropdown = toggle.parentElement;
-      document.querySelectorAll('.dropdown').forEach(d => {
-        if (d !== dropdown) d.classList.remove('active');
-      });
-      dropdown.classList.toggle('active');
-      toggle.setAttribute('aria-expanded', dropdown.classList.contains('active'));
-    }
-  });
-});
-
 
   // Login/ut
   const loginForm = document.getElementById('login-form');
