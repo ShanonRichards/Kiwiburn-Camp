@@ -552,11 +552,7 @@ nav-login form {
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
   transform: translateY(10px);
 }
-.dropdown:hover .dropdown-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
+
 
 body.night-mode .dropdown-menu {
   background: rgba(74, 55, 35, 0.95);
@@ -665,7 +661,11 @@ body.night-mode .dropdown-menu {
 
       .nav-links.active {
         display: flex;
-      }
+      
+gap: 10px;
+align-items: flex-start;
+padding: 10px 20px;
+}
 
       .dropdown-menu {
         position: static;
@@ -675,9 +675,7 @@ body.night-mode .dropdown-menu {
         margin: 5px 0;
       }
 
-      .dropdown:hover .dropdown-menu {
-        display: none;
-      }
+      
 
       .dropdown.active .dropdown-menu {
         display: block;
@@ -2158,7 +2156,11 @@ body.night-mode .about-description {
 
       .nav-links.active {
         display: flex;
-      }
+      
+gap: 10px;
+align-items: flex-start;
+padding: 10px 20px;
+}
 
       nav a {
         margin: 5px 0;
@@ -2559,8 +2561,8 @@ Copy
 <body>
 <nav>
   <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
-  <button class="hamburger" aria-label="Toggle Menu">☰</button>
-  <div class="nav-links" id="nav-links">
+  
+  <div class="nav-links">
 <div class="dropdown">
   <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
   <div class="dropdown-menu">
@@ -3645,241 +3647,6 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
     }
   });
 });
-
-  // Login/ut
-  const loginForm = document.getElementById('login-form');
-  const logoutButton = document.querySelector('.logout-button');
-  const loginContainer = document.querySelector('.nav-login');
-
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    loginContainer.classList.add('logged-in');
-    loginForm.style.display = 'none';
-    logoutButton.style.display = 'block';
-    document.body.classList.add('logged-in');
-  });
-
-  logoutButton.addEventListener('click', () => {
-    loginContainer.classList.remove('logged-in');
-    loginForm.style.display = 'flex';
-    logoutButton.style.display = 'none';
-    document.body.classList.remove('logged-in');
-  });
-
-  // Modal Functions
-  function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'flex';
-  }
-
-  function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-  }
-
-  // Member Modal
-  function openEditMemberModal(button) {
-    const member = button.parentElement;
-    document.getElementById('member-modal-title').textContent = 'Edit Member Details';
-    document.getElementById('member-name').value = member.querySelector('h3').textContent;
-    document.getElementById('member-role').value = member.querySelector('span').textContent;
-    document.getElementById('member-description').value = member.querySelector('p').textContent;
-    openModal('member-modal');
-  }
-
-  function saveMemberDetails() {
-    closeModal('member-modal');
-  }
-
-  // Role Modal
-  function openEditRoleModal(button) {
-    const role = button.parentElement;
-    document.getElementById('role-modal-title').textContent = 'Edit Role';
-    document.getElementById('role-title').value = role.querySelector('h3').textContent;
-    document.getElementById('role-description').value = role.querySelector('p').textContent;
-    openModal('role-modal');
-  }
-
-  function saveRoleDetails() {
-    closeModal('role-modal');
-  }
-
-  // Event Modal
-  function openEditEventModal(button) {
-    const event = button.parentElement;
-    document.getElementById('event-title').value = event.querySelector('h3').textContent;
-    document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
-    document.getElementById('event-date').value = event.querySelector('.event-date').textContent.replace('Date: ', '');
-    document.getElementById('event-time').value = event.querySelector('.event-time').textContent.replace('Time: ', '');
-    document.getElementById('event-end').value = event.querySelector('.event-end').textContent.replace('End: ', '');
-    document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
-    openModal('event-modal');
-  }
-
-  function saveEventDetails() {
-    closeModal('event-modal');
-  }
-
-  // Delete Functions
-  function deleteMember(button) {
-    button.parentElement.remove();
-  }
-
-  function deleteRole(button) {
-    button.parentElement.remove();
-  }
-
-  function deleteEvent(button) {
-    button.parentElement.remove();
-  }
-
-  function deleteMissionImage(button) {
-    button.parentElement.remove();
-  }
-
-  // Drag and Drop
-  let draggedItem = null;
-
-  function drag(event) {
-    draggedItem = event.target;
-    event.dataTransfer.setData('text/plain', null);
-  }
-
-  function allowDrop(event) {
-    event.preventDefault();
-  }
-
-  function dropMembers(event) {
-    event.preventDefault();
-    const grid = document.querySelector('.members-grid');
-    if (draggedItem && grid.contains(event.target)) {
-      grid.insertBefore(draggedItem, event.target.closest('.member') || null);
-    }
-  }
-
-  function dropRoles(event) {
-    event.preventDefault();
-    const grid = document.querySelector('.roles-grid');
-    if (draggedItem && grid.contains(event.target)) {
-      grid.insertBefore(draggedItem, event.target.closest('.role') || null);
-    }
-  }
-
-  function dropEvents(event) {
-    event.preventDefault();
-    const grid = document.querySelector('.events-grid');
-    if (draggedItem && grid.contains(event.target)) {
-      grid.insertBefore(draggedItem, event.target.closest('.event') || null);
-    }
-  }
-
-  function dragMissionImage(event) {
-    draggedItem = event.target.parentElement;
-  }
-
-  function dropMissionImage(event) {
-    event.preventDefault();
-    const gallery = document.getElementById('mission-gallery');
-    if (draggedItem && gallery.contains(event.target)) {
-      gallery.insertBefore(draggedItem, event.target.closest('.image-container') || null);
-    }
-  }
-
-  // Scroll Arrows
-  document.querySelectorAll('.scroll-arrow').forEach(arrow => {
-    arrow.addEventListener('click', () => {
-      const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
-      const direction = arrow.classList.contains('left') ? -1 : 1;
-      grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
-    });
-  });
-
-// Countdown Timer
-function updateCountdown() {
-  const now = new Date().getTime();
-  let targetDate = localStorage.getItem('countdownDate');
-
-// Default target date: January 29, 2026, 12:00 PM NZST
-  if (!targetDate) {
-    targetDate = new Date('2026-01-29T12:00:00+13:00').toISOString();
-    localStorage.setItem('countdownDate', targetDate);
-  }
-
-const targetTime = new Date(targetDate).getTime();
-  const distance = targetTime - now;
-
-if (distance <= 0) {
-    document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
-    clearInterval(countdownInterval);
-    return;
-  }
-
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-// Update DOM with padded numbers
-  try {
-    document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
-    document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<br><small>Hours</small>';
-    document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<br><small>Minutes</small>';
-    document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<br><small>Seconds</small>';
-  } catch (error) {
-    console.error('Error updating countdown DOM:', error);
-  }
-}
-
-function updateCountdownDate() {
-  const input = document.getElementById('countdown-input').value;
-if (input && !isNaN(new Date(input).getTime())) {
-  const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
-  const isoDate = new Date(nzstDate).toISOString();
-} else {
-  alert('Please enter a valid date and time.');
-}
-}
-
-// Updated saveCountdownDetails
-function saveCountdownDetails() {
-  const input = document.getElementById('countdown-date').value;
-  const bgInput = document.getElementById('countdown-bg');
-  if (input && !isNaN(new Date(input).getTime())) {
-    const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
-    const isoDate = new Date(nzstDate).toISOString();
-    localStorage.setItem('countdownDate', isoDate);
-    updateCountdown();
-  } else {
-    alert('Please enter a valid date and time.');
-  }
-  if (bgInput.files && bgInput.files[0]) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const countdownSection = document.querySelector('.countdown-section');
-      countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
-      countdownSection.style.backgroundAttachment = 'fixed'; // Ensure parallax
-      localStorage.setItem('countdownBg', e.target.result);
-    };
-    reader.readAsDataURL(bgInput.files[0]);
-  }
-  closeModal('countdown-modal');
-}
-
-// Load background image and initialize countdown
-document.addEventListener('DOMContentLoaded', () => {
-  const savedBg = localStorage.getItem('countdownBg');
-  if (savedBg) {
-    const countdownSection = document.querySelector('.countdown-section');
-    countdownSection.style.background = `url('${savedBg}') center/cover no-repeat`;
-    countdownSection.style.backgroundAttachment = 'fixed'; // Ensure parallax on load
-  }
-  updateCountdown(); // Initial call
-});
-
-// Run countdown every second
-const countdownInterval = setInterval(updateCountdown, 1000);
-
-// Parallax Scroll Effect
-window.addEventListener('scroll', function () {
-  const parallaxSections = document.querySelectorAll('.parallax-section');
   parallaxSections.forEach(section => {
     let scrollPosition = window.pageYOffset;
     let offset = section.getBoundingClientRect().top + window.scrollY;
@@ -4070,5 +3837,51 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
 </script>
+
+<!-- Mobile Taskbar Navigation -->
+<style>
+@media only screen and (max-width: 768px) {
+  .mobile-taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(44, 29, 15, 0.95);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 2000;
+    border-top: 2px solid #e67e22;
+  }
+  .mobile-taskbar a {
+    text-align: center;
+    color: #f8e1b4;
+    text-decoration: none;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .mobile-taskbar a img {
+    width: 24px;
+    height: 24px;
+  }
+  body {
+    padding-bottom: 60px; /* space for taskbar */
+  }
+}
+</style>
+
+<div class="mobile-taskbar">
+  <a href="#about"><img src="images/Webpage_Bar_Icons/About.png" alt="About"><span>About</span></a>
+  <a href="#events"><img src="images/Webpage_Bar_Icons/Events.png" alt="Events"><span>Events</span></a>
+  <a href="#join"><img src="images/Webpage_Bar_Icons/Join.png" alt="Join"><span>Join</span></a>
+  <a href="#gallery"><img src="images/Webpage_Bar_Icons/Gallery.png" alt="Gallery"><span>Gallery</span></a>
+  <a href="#contact"><img src="images/Webpage_Bar_Icons/Contact.png" alt="Contact"><span>Contact</span></a>
+</div>
+
 </body>
 </html>
