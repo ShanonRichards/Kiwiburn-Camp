@@ -3,18 +3,542 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Join Cosmic Rejex Camp - Kiwiburn 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <meta name="description" content="Join Cosmic Rejex Camp for Kiwiburn 2026. Apply to be part of our inclusive community.">
+  <meta name="keywords" content="Cosmic Rejex, Kiwiburn, join camp, apply, festival">
+  <meta name="author" content="Cosmic Rejex">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="index, follow">
+  <title>Join Cosmic Rejex Camp - Cosmic Rejex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&family=Creepster&family=Special+Elite&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <style>
-    html, body {
+    :root {
+      --primary-color: #ff3399;
+      --secondary-color: #9933ff;
+      --text-dark: #f0d0e0;
+      --text-light: #f8e1b4;
+      --bg-dark: rgba(15, 15, 15, 0.95);
+      --bg-dark-alt: rgba(30, 30, 30, 0.95);
+      --bg-light: rgba(40, 40, 40, 0.2);
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --transition: all 0.3s ease;
+      --emo-dark: #f8e1b4;
+      --emo-accent: #f8e1b4;
+      --primary: #e67e22;
+      --secondary: #f39c12;
+      --text: #f8e1b4;
+      --background: #2b1b0f;
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Roboto', sans-serif;
       scroll-behavior: smooth;
       background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
       color: #2b1b0f;
-      cursor: url('images/ufo-cursor.png'), auto;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
       transition: background 0.5s, color 0.5s;
+    }
+
+    body.night-mode {
+      background: url('images/full-background-night.jpg') center/cover no-repeat fixed;
+      color: var(--text-light);
+    }
+
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(44, 29, 15, 0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary-color);
+      border-radius: 6px;
+      border: 2px solid var(--secondary-color);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary-color);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+    }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary-color) rgba(44, 29, 15, 0.3);
+    }
+
+    body.night-mode ::-webkit-scrollbar-track {
+      background: rgba(74, 55, 35, 0.3);
+    }
+
+    body.night-mode ::-webkit-scrollbar-thumb {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    body.night-mode ::-webkit-scrollbar-thumb:hover {
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary-color);
+      box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--primary-color);
+    }
+
+    a, button, input, textarea, select {
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      z-index: 1000;
+      border-bottom: 3px solid #d3c9b8;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      height: 60px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    body.night-mode nav {
+      background: #000000;
+      border-bottom: 3px solid #f39c12;
+    }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #f8e1b4;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 8px;
+      transition: color 0.3s, transform 0.2s;
+    }
+
+    .hamburger:hover {
+      color: #e67e22;
+      transform: scale(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: nowrap;
+    }
+
+    nav a {
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Creepster', cursive;
+      font-size: 1.2rem;
+      padding: 10px 15px;
+      border-radius: 8px;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      background-color: #ef75ad;
+      color: #2b1b0f;
+      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+      transform: translateY(-2px);
+    }
+
+    .nav-logo {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin-right: 15px;
+      transition: transform 0.3s;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-icon {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      vertical-align: middle;
+      transition: transform 0.2s;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 2px solid #ffff;
+      color: #f8e1b4;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background: #ef75ad;
+      color: #2b1b0f;
+      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+      transform: translateY(-2px);
+    }
+
+    .nav-login {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-login button {
+      padding: 8px 15px;
+      background-color: #ffff;
+      color: #000000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 0.9rem;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .nav-login .logout-button {
+      display: none;
+    }
+
+    .nav-login button:hover {
+      background-color: #ef75ad;
+      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+      transform: translateY(-2px);
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle {
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: block;
+      position: absolute;
+      background: rgba(44, 29, 15, 0.95);
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1001;
+      border-radius: 8px;
+      border: 2px solid #ef75ad;
+      top: 100%;
+      left: 0;
+      margin-top: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+      transform: translateY(10px);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    body.night-mode .dropdown-menu {
+      background: rgba(74, 55, 35, 0.95);
+      border-color: #f39c12;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 18px;
+      color: #f8e1b4;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: #ef75ad;
+      color: #2b1b00;
+      box-shadow: 0 0 10px #ef75ad inset;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(44, 29, 15, 0.9);
+        padding: 10px 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .dropdown-menu {
+        position: static;
+        background: rgba(74, 55, 35, 0.9);
+        box-shadow: none;
+        border: none;
+        margin: 5px 0;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: none;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+
+      .nav-login {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        padding: 10px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-right {
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+      }
+    }
+
+    .sidebar-widgets {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: flex-end;
+      transition: var(--transition);
+    }
+
+    .newsletter-popup {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .toggle-newsletter {
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+      border: 2px solid var(--emo-accent);
+      border-radius: 8px;
+      padding: 10px 15px;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      text-transform: uppercase;
+      width: 200px;
+      justify-content: center;
+      position: relative;
+    }
+
+    .toggle-newsletter:hover, .toggle-newsletter:focus {
+      background-color: rgba(230, 126, 34, 0.25);
+      background-blend-mode: color;
+      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
+      transform: scale(1.05);
+    }
+
+    body.night-mode .toggle-newsletter {
+      background: #000000;
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+      color: #fff;
+      border-color: var(--emo-accent);
+    }
+
+    .toggle-image {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .newsletter-wrapper {
+      width: 240px;
+      background: var(--bg-dark);
+      border: 2px solid var(--primary-color);
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: var(--shadow);
+      display: none;
+    }
+
+    .newsletter-wrapper.active {
+      display: block;
+    }
+
+    .newsletter-wrapper h3 {
+      font-family: 'Creepster', cursive;
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px var(--emo-accent);
+    }
+
+    .newsletter-wrapper p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 15px;
+    }
+
+    .newsletter-wrapper input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid var(--primary-color);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .newsletter-wrapper button {
+      width: 100%;
+      padding: 8px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1rem;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: var(--bg-dark);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      border: 2px dashed var(--emo-accent);
+      box-shadow: var(--shadow);
+    }
+
+    .modal-content h3 {
+      font-family: 'Creepster', cursive;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid var(--primary-color);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+    }
+
+    .modal-content button {
+      padding: 10px 20px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Bebas Neue', cursive;
+    }
+
+    .modal-content .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      font-size: 1.2em;
+      padding: 5px 10px;
+      color: var(--text-light);
+      border: none;
+      cursor: pointer;
+    }
+
+    .edit-section-button {
+      display: none;
+      padding: 8px 12px;
+      background-color: var(--primary-color);
+      color: var(--text-light);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9em;
+      margin: 10px auto;
+    }
+
+    .logged-in .edit-section-button {
+      display: block;
     }
 
     /* Breathing text effect for Apply to Join header */
@@ -77,18 +601,6 @@
       100% { transform: translateX(0); opacity: 1; }
     }
 
-    :root {
-      --primary: #e67e22;
-      --secondary: #f39c12;
-      --text: #f8e1b4;
-      --background: #2b1b0f;
-    }
-
-    body.night-mode {
-      background: linear-gradient(180deg, #2b1b0f 0%, #4a3723 100%);
-      color: #f8e1b4;
-    }
-
     body.night-mode .section:nth-of-type(odd) {
       background-color: rgba(44, 29, 15, 0.8);
     }
@@ -103,7 +615,7 @@
     body.night-mode .role p,
     body.night-mode .form-container label,
     body.night-mode .form-card label {
-      color: #f8e1b4;
+      color: var(--text-light);
     }
 
     body.night-mode .form-container,
@@ -118,247 +630,7 @@
     body.night-mode .form-card textarea,
     body.night-mode .form-card select {
       background: rgba(255, 255, 255, 0.1);
-      color: #f8e1b4;
-    }
-
-    a, button, input, textarea, select {
-      cursor: pointer;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(44, 29, 15, 0.85);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      z-index: 1000;
-      border-bottom: 2px solid #e67e22;
-    }
-
-    body.night-mode nav {
-      background: rgba(74, 55, 35, 0.85);
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    nav a {
-      color: #f8e1b4;
-      text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1.2rem;
-      margin: 5px 15px;
-      padding: 10px 15px;
-      border-radius: 4px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-      text-transform: uppercase;
-    }
-
-    nav a:hover {
-      background-color: #e67e22;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .theme-toggle {
-      background: none;
-      border: none;
-      color: #f8e1b4;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      padding: 10px;
-      cursor: pointer;
-      transition: color 0.3s, box-shadow 0.3s;
-    }
-
-    .theme-toggle:hover {
-      color: #f39c12;
-      box-shadow: 0 0 10px #e67e22;
-    }
-
-    .hamburger {
-      display: none;
-      font-size: 1.5rem;
-      color: #f8e1b4;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 10px;
-   34
-    }
-
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-toggle {
-      cursor: pointer;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background: rgba(44, 29, 15, 0.9);
-      min-width: 160px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      z-index: 1001;
-      border-radius: 4px;
-      border: 1px solid #e67e22;
-      top: 100%;
-      left: 0;
-      margin-top: 5px;
-    }
-
-    body.night-mode .dropdown-menu {
-      background: rgba(74, 55, 35, 0.9);
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 10px 15px;
-      color: #f8e1b4;
-      text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      text-transform: uppercase;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu a:hover {
-      background-color: #e67e22;
-      color: #2b1b0f;
-      box-shadow: 0 0 10px #e67e22;
-    }
-
-    .nav-login {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-login form {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .nav-login input {
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #e67e22;
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      font-size: 0.9rem;
-    }
-
-    .nav-login input::placeholder {
-      color: #ffffff;
-    }
-
-    .nav-login button {
-      padding: 8px 12px;
-      background-color: #e67e22;
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .nav-login .logout-button {
-      display: none;
-    }
-
-    .nav-login button:hover {
-      background-color: #f39c12;
-      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-    }
-
-    .nav-logo {
-      width: 40px;
-      height: 40px;
-      object-fit: contain;
-      margin-right: 10px;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    @media only screen and (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(44, 29, 15, 0.9);
-        padding: 10px 0;
-        position: absolute;
-        top: 70px;
-        left: 0;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .dropdown-menu {
-        position: static;
-        background: rgba(74, 55, 35, 0.9);
-        box-shadow: none;
-        border: none;
-        margin: 5px 0;
-      }
-
-      .dropdown:hover .dropdown-menu {
-        display: none;
-      }
-
-      .dropdown.active .dropdown-menu {
-        display: block;
-      }
-
-      .nav-login {
-        margin-top: 10px;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .nav-login form {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .nav-login input,
-      .nav-login button {
-        width: 100%;
-        box-sizing: border-box;
-      }
-
-      .hamburger {
-        display: block;
-      }
+      color: var(--text-light);
     }
 
     .header {
@@ -369,7 +641,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #f8e1b4;
+      color: var(--text-light);
       position: relative;
       text-shadow: 0 0 10px var(--primary);
     }
@@ -384,7 +656,7 @@
     }
 
     .header h1 {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Creepster', cursive;
       font-size: 3em;
       max-width: 90%;
       letter-spacing: 2px;
@@ -413,7 +685,7 @@
     }
 
     .section h1, .section h2 {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Creepster', cursive;
       font-size: 3em;
       margin-bottom: 20px;
       color: #2b1b0f;
@@ -466,7 +738,7 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 2rem;
-      color: #f8e1b4;
+      color: var(--text-light);
       background: rgba(44, 29, 15, 0.7);
       padding: 10px;
       border-radius: 50%;
@@ -583,7 +855,7 @@
       top: 10px;
       padding: 5px;
       background: rgba(44, 29, 15, 0.7);
-      color: #f8e1b4;
+      color: var(--text-light);
       border: none;
       border-radius: 50%;
       cursor: pointer;
@@ -837,7 +1109,7 @@
     }
 
     body.night-mode .progress-text {
-      color: #f8e1b4;
+      color: var(--text-light);
     }
 
     .modal {
@@ -860,7 +1132,7 @@
       border: 2px solid #e67e22;
       max-width: 500px;
       width: 90%;
-      color: #f8e1b4;
+      color: var(--text-light);
     }
 
     body.night-mode .modal-content {
@@ -868,15 +1140,15 @@
     }
 
     .modal-content h2 {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Creepster', cursive;
       font-size: 2em;
       margin-bottom: 20px;
-      color: #f8e1b4;
+      color: var(--text-light);
     }
 
     .modal-content label {
       font-family: 'Montserrat', sans-serif;
-      color: #f8e1b4;
+      color: var(--text-light);
       margin-bottom: 8px;
       display: block;
       font-size: 1.1em;
@@ -891,7 +1163,7 @@
       border-radius: 8px;
       border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
-      color: #f8e1b4;
+      color: var(--text-light);
       font-size: 1rem;
       box-sizing: border-box;
     }
@@ -918,7 +1190,7 @@
       top: 10px;
       right: 10px;
       font-size: 1.5rem;
-      color: #f8e1b4;
+      color: var(--text-light);
       cursor: pointer;
     }
 
@@ -998,9 +1270,10 @@
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #2b1b0f;
-      color: #f8e1b4;
-      border-top: 2px solid #e67e22;
+      background-color: var(--emo-dark);
+      color: var(--text-light);
+      border-top: 1px dashed var(--emo-accent);
+      margin-top: auto;
     }
 
     body.night-mode footer {
@@ -1123,6 +1396,21 @@
       .emo-playlist-player iframe {
         height: 120px;
       }
+
+      .sidebar-widgets {
+        bottom: 10px;
+        right: 10px;
+      }
+
+      .newsletter-wrapper {
+        width: 200px;
+      }
+
+      .toggle-newsletter {
+        width: 180px;
+        font-size: 0.8rem;
+        padding: 8px 10px;
+      }
     }
 
     @media only screen and (max-width: 480px) {
@@ -1223,31 +1511,44 @@
         display: none;
       }
     }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
   </style>
 </head>
 <body>
   <nav>
-    <img src="images/Logo/Alien_Logo_New.png" alt="Cosmic Rejex Logo" class="nav-logo">
-    <button class="hamburger" aria-label="Toggle menu">☰</button>
+    <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
+    <button class="hamburger" aria-label="Toggle Menu">☰</button>
     <div class="nav-links">
       <div class="dropdown">
-        <a href="index.html#about" class="dropdown-toggle">About</a>
+        <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
         <div class="dropdown-menu">
           <a href="index.html#about">Our Camp</a>
+          <a href="index.html#members">Core Camp Crew</a>
           <a href="index.html#mission">Our Mission</a>
+          <a href="index.html#setup">Our Setup</a>
           <a href="index.html#history">Our History</a>
         </div>
       </div>
       <div class="dropdown">
-        <a href="index.html#events" class="dropdown-toggle">Events</a>
+        <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
         <div class="dropdown-menu">
-          <a href="index.html#events">Upcoming Events</a>
-          <a href="index.html#past-events">Past Events</a>
-          <a href="submit-event.html">Submit Event</a>
+          <a href="events.html#upcoming-events">Upcoming Events</a>
+          <a href="events.html#past-events">Past Events</a>
+          <a href="events.html#submit">Submit Event</a>
         </div>
       </div>
       <div class="dropdown">
-        <a href="#join" class="dropdown-toggle">Join Us</a>
+        <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
         <div class="dropdown-menu">
           <a href="join-camp.html">Membership Info</a>
           <a href="join-camp.html">Apply to Join</a>
@@ -1255,35 +1556,65 @@
           <a href="Task_Roster.html">Task/Roster</a>
         </div>
       </div>
-      <div class="dropdown">
-        <a href="gallery.html" class="dropdown-toggle">Gallery</a>
-        <div class="dropdown-menu">
-          <a href="gallery.html?year=2021">2021</a>
-          <a href="gallery.html?year=2022">2022</a>
-          <a href="gallery.html?year=2023">2023</a>
-          <a href="gallery.html?year=2024">2024</a>
-          <a href="gallery.html?year=2025">2025</a>
-        </div>
-      </div>
-      <a href="index.html#newsletter">Newsletter</a>
-      <a href="contact.html">Contact Us</a>
+      <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Eye_Webbar_Movings.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
+      <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/Cloud_Webbar_Moving.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
+      <a href="contact.html"><img src="images/Webpage_Bar_Icons/Thunder_Webbar_Moving.gif" alt="Contact Icon" class="nav-icon">Contact Us</a>
+      <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/Skull_Webbars_Moving.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
     </div>
-    <div class="nav-login">
+    <div class="nav-right">
+      <div class="nav-login">
+        <button class="login-button" onclick="openModal('login-modal')">Login</button>
+        <button class="logout-button" aria-label="Logout">Logout</button>
+      </div>
+      <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+    </div>
+  </nav>
+
+  <div class="modal" id="login-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('login-modal')" aria-label="Close modal">×</button>
+      <h3>Login</h3>
       <form id="login-form">
         <input type="text" id="username" placeholder="Username" required aria-label="Username">
         <input type="password" id="password" placeholder="Password" required aria-label="Password">
         <button type="submit">Login</button>
       </form>
-      <button class="logout-button" aria-label="Logout">Logout</button>
     </div>
-    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
-  </nav>
+  </div>
+
+  <div class="modal" id="newsletter-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('newsletter-modal')" aria-label="Close modal">×</button>
+      <h3>Edit Newsletter Section</h3>
+      <input type="text" id="newsletter-title" placeholder="Section Title" required aria-label="Section Title">
+      <textarea id="newsletter-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
+      <button onclick="saveNewsletterDetails()">Save</button>
+    </div>
+  </div>
 
   <header class="header" id="join">
     <img src="images/Logo/Alien_Logo_New2.png" alt="Cosmic Rejex Logo" class="header-logo">
     <h1>Join Cosmic Rejex Camp</h1>
     <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
   </header>
+
+  <div class="sidebar-widgets">
+    <div class="newsletter-popup" id="newsletter">
+      <button class="toggle-newsletter" onclick="toggleNewsletter()">
+        <img src="images/Spotify-Background/News_Letter.gif" alt="Newsletter Toggle Image" class="toggle-image">
+        Stay in Touch
+      </button>
+      <div class="newsletter-wrapper" id="newsletter-wrapper">
+        <div class="form-container">
+          <h3>Stay in Touch</h3>
+          <p>Join our crew for event updates and emo vibes.</p>
+          <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
+          <button onclick="submitNewsletter()">Subscribe</button>
+        </div>
+      </div>
+      <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+    </div>
+  </div>
 
   <div class="roles-container">
     <section class="section" id="roles">
@@ -1316,7 +1647,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Volunteer Coordinator')" disabled>Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1327,7 +1658,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Build Crew')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1338,7 +1669,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Camp Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1349,7 +1680,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Deputy Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1360,7 +1691,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Build Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1371,7 +1702,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Vibe Manager')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1382,7 +1713,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Logistics Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1393,7 +1724,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Sound Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1404,7 +1735,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Transport Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1415,7 +1746,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Art & Workshop Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1426,7 +1757,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1437,7 +1768,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Greeter')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1448,7 +1779,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Strike Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1459,7 +1790,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Comms Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1470,7 +1801,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Safety Officer')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1481,7 +1812,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('MOOP Manager')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1492,7 +1823,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1503,7 +1834,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Social Media Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1514,7 +1845,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1525,7 +1856,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1536,7 +1867,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
         <div class="role" draggable="true" ondragstart="drag(event)">
           <div class="role-status">Open</div>
@@ -1547,7 +1878,7 @@
           </div>
           <a href="#apply" class="apply-button" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
           <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-          <button class="delete-button" onclick="deleteRole(this)">×</button>
+          <button class="delete-button" onclick="deleteRole(this)">Delete</button>
         </div>
       </div>
       <button class="save-button" onclick="openModal('role-modal')">Create New Role</button>
@@ -1555,7 +1886,7 @@
     </section>
   </div>
   
- <section class="section" id="apply">
+  <section class="section" id="apply">
     <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
     <p>Fill out the form below to request your spot in our camp for Kiwiburn Green's 2026. We can’t wait to vibe with you!</p>
     <div class="progress-container">
@@ -1566,13 +1897,11 @@
     </div>
     <div class="book-container">
       <div class="book">
-<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://cosmicrejex.github.io/thank-you.html">
-  <input type="hidden" name="_subject" value="Cosmic Rejex 2026 Application">
-  <input type="hidden" name="_honey" value="">
-  <!-- Rest of the form fields remain unchanged -->
-</form>
+        <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" id="application-form">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://cosmicrejex.github.io/thank-you.html">
+          <input type="hidden" name="_subject" value="Cosmic Rejex 2026 Application">
+          <input type="hidden" name="_honey" value="">
 
           <!-- Page 1 -->
           <div class="form-card page active" data-page="1">
