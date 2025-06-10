@@ -100,117 +100,238 @@
       cursor: pointer;
     }
 
-    nav {
-      position: sticky;
-      top: 0;
-      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 30px;
-      z-index: 1000;
-      border-bottom: 3px solid #d3c9b8;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      height: 60px;
-    }
+  nav {
+  position: sticky;
+  top: 0;
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the entire nav */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents image tiling */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  z-index: 1000;
+  border-bottom: 3px solid #d3c9b8;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  height: 30px;
+}
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Controls the space between login button and theme toggle */
+}
 
-    body.night-mode nav {
-      background: #000000;
-      border-bottom: 3px solid #f39c12;
-    }
+body.night-mode nav {
+  background: #000000; /* Changed to solid black */
+  border-bottom: 3px solid #f39c12;
+}
 
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      color: #f8e1b4;
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 8px;
-      transition: color 0.3s, transform 0.2s;
-    }
+.hamburger {
+  display: none; /* Hidden on desktop by default */
+  background: none;
+  border: none;
+  color: #f8e1b4;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.3s, transform 0.2s;
+}
 
-    .hamburger:hover {
-      color: #e67e22;
-      transform: scale(1.1);
-    }
+.hamburger:hover {
+  color: #e67e22;
+  transform: scale(1.1);
+}
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: nowrap;
-    }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Increased gap for better spacing */
+  flex-wrap: nowrap;
+}
 
-    nav a {
-      color: #f8e1b4;
-      text-decoration: none;
-      font-family: 'Creepster', cursive;
-      font-size: 1.2rem;
-      padding: 10px 15px;
-      border-radius: 8px;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-    }
+nav a {
+  color: #f8e1b4;
+  text-decoration: none;
+font-family: 'Creepster', cursive, sans-serif;
+  font-size: 1.2rem; /* Larger for readability */
+  padding: 10px 15px; /* More padding for clickability */
+  border-radius: 8px; /* Softer corners */
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
 
-    nav a:hover {
-      background-color: #ef75ad;
-      color: #2b1b0f;
-      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
-      transform: translateY(-2px);
-    }
+nav a:hover {
+  background-color: #ef75ad;
+  color: #2b1b0f;
+  box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+  transform: translateY(-2px); /* Subtle lift on hover */
+}
 
-    .nav-logo {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      margin-right: 15px;
-      transition: transform 0.3s;
-    }
+.nav-logo {
+  width: 50px; /* Larger logo for prominence */
+  height: 50px;
+  object-fit: contain;
+  margin-right: 15px;
+  transition: transform 0.3s;
+}
 
-    .nav-logo:hover {
-      transform: scale(1.05);
-    }
+.nav-logo:hover {
+  transform: scale(1.05); /* Subtle logo animation */
+}
 
-    .nav-icon {
-      width: 32px;
-      height: 32px;
-      object-fit: contain;
-      vertical-align: middle;
-      transition: transform 0.2s;
-    }
+.nav-icon {
+  width: 32px; /* Smaller for balance */
+  height: 32px;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
 
-    .theme-toggle {
-      background: none;
-      border: 2px solid #ffff;
-      color: #f8e1b4;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 0.9rem;
-      padding: 6px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
-    }
+.nav- {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  margin-right: 15px;
+}
 
-    .theme-toggle:hover {
-      background: #ef75ad;
-      color: #2b1b0f;
-      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
-      transform: translateY(-2px);
-    }
+.theme-toggle {
+  background: none;
+  border: 2px solid #ffff;
+  color: #f8e1b4;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+  background: #ef75ad;
+  color: #2b1b0f;
+  box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
+  transform: translateY(-2px);
+}
+
+.nav-login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+nav-login form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-login input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ef75ad;
+  background: rgba(255, 255, 255, 0.2);
+  color: #f8e1b4;
+  font-size: 0.9rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.nav-login input:focus {
+  outline: none;
+  border-color: #f39c12;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-login input::placeholder {
+  color: #f8e1b4;
+  opacity: 0.8;
+}
+
+.nav-login button {
+  padding: 8px 15px;
+  background-color: #ffff;
+  color: #ffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.9rem;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.nav-login .logout-button {
+  display: none;
+}
+
+.nav-login button:hover {
+  background-color: #ffff;
+  box-shadow: 0 0 12px #ffff, 0 0 20px #ef75ad;
+  transform: translateY(-2px);
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: block;
+  position: absolute;
+  background: rgba(44, 29, 15, 0.95);
+  min-width: 180px; /* Wider for readability */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  border-radius: 8px;
+  border: 2px solid #ef75ad;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+}
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+body.night-mode .dropdown-menu {
+  background: rgba(74, 55, 35, 0.95);
+  border-color: #f39c12;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 18px;
+  color: #f8e1b4;
+  text-decoration: none;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #ef75ad;
+  color: #2b1b0f;
+  box-shadow: 0 0 10px #ef75ad inset;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
 
     .nav-login {
       display: flex;
@@ -218,16 +339,35 @@
       gap: 10px;
     }
 
+    .nav-login form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-login input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ef75ad;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 0.9rem;
+    }
+
+    .nav-login input::placeholder {
+      color: #ffffff;
+    }
+
     .nav-login button {
-      padding: 8px 15px;
+      padding: 8px 12px;
       background-color: #ffff;
       color: #000000;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
       font-size: 0.9rem;
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+      transition: background-color 0.3s, box-shadow 0.3s;
     }
 
     .nav-login .logout-button {
@@ -236,63 +376,28 @@
 
     .nav-login button:hover {
       background-color: #ef75ad;
-      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
-      transform: translateY(-2px);
+      box-shadow: 0 0 10px #ef75ad, 0 0 20px #ef75ad;
     }
 
-    .dropdown {
-      position: relative;
-      display: inline-block;
+.nav-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      flex-wrap: wrap;
     }
 
-    .dropdown-toggle {
-      cursor: pointer;
-    }
-
-    .dropdown-menu {
-      display: block;
-      position: absolute;
-      background: rgba(44, 29, 15, 0.95);
-      min-width: 180px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      z-index: 1001;
-      border-radius: 8px;
-      border: 2px solid #ef75ad;
-      top: 100%;
-      left: 0;
-      margin-top: 8px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-      transform: translateY(10px);
-    }
-
-    .dropdown:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    body.night-mode .dropdown-menu {
-      background: rgba(74, 55, 35, 0.95);
-      border-color: #f39c12;
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 12px 18px;
-      color: #f8e1b4;
-      text-decoration: none;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      text-transform: uppercase;
-      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
-    }
-
-    .dropdown-menu a:hover {
-      background-color: #ef75ad;
-      color: #2b1b00;
-      box-shadow: 0 0 10px #ef75ad inset;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     @media only screen and (max-width: 768px) {
@@ -333,20 +438,96 @@
         justify-content: center;
       }
 
-      .hamburger {
-        display: block;
-      }
-
-      nav {
-        padding: 10px 15px;
+      .nav-login form {
         flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-right {
-        flex-direction: column;
-        align-items: flex-end;
         width: 100%;
+      }
+
+      .nav-login input,
+      .nav-login button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    .header {
+      background: url('images/Cover-Photo/Big_Tent_Pencil_Brighter.png') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #f8e1b4;
+      position: relative;
+      text-shadow: 0 0 10px var(--primary);
+    }
+
+.header-logo {
+  max-width: 350px; /* Original size maintained */
+  height: auto; /* Maintains aspect ratio */
+  z-index: 10;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+  margin-top: 0px; /* Moves the logo downward from the nav bar */
+}
+.header h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 3em;
+  max-width: 90%;
+  letter-spacing: 2px;
+  margin-bottom: 0px;
+  color: #494949; /* Soft purple for "Color and Glow" */
+  text-shadow: 0 0 10px #ffff;
+  animation: glow-h1 3s ease-in-out infinite alternate; /* Dynamic glow */
+}
+
+.header p {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #ffff;
+  text-shadow: 0 0 10px #ffff; /* Blue glow */
+  animation: glow-p 3s ease-in-out infinite alternate; /* Dynamic glow */
+}
+
+    .header-ctas {
+      display: flex;
+      gap: 10px;
+    }
+
+    .apply-button, .secondary-button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 1.2em;
+    }
+
+    .apply-button {
+      background: var(--primary);
+      color: var(--text);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+    .secondary-button {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--text);
+    }
+
+    .apply-button:hover, .secondary-button:hover {
+      background: var(--secondary);
+      color: var(--background);
+    }
+
+    @keyframes glow {
+      from { 
+        text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400;
+        box-shadow: 0 0 5px var(--primary); 
+      }
+      to { 
+        text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22;
+        box-shadow: 0 0 15px var(--primary); 
       }
     }
 
