@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Creepster&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Join Cosmic Rejex - Kiwiburn</title>
@@ -2963,6 +2969,298 @@ body.night-mode .history-container {
   box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
+/* Add to existing <style> block in index.html or create a new one */
+.main-content {
+  padding: 30px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, #2a2e2e 0%, #1c2526 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.main-content h1 {
+  color: #ff4d4d;
+  font-size: 40px;
+  margin-bottom: 15px;
+  font-family: 'Creepster', cursive;
+  padding: 12px 24px;
+  display: inline-block;
+  border-radius: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.main-content p {
+  color: #d1d1d1;
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.container {
+  display: flex;
+  min-height: 0;
+  margin-bottom: 2cm;
+  padding: 0 15px;
+}
+.sidebar, .right-sidebar {
+  width: 200px;
+  background-color: #262626;
+  padding: 15px;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.sidebar details, .right-sidebar details {
+  margin-bottom: 12px;
+}
+.sidebar summary, .right-sidebar summary {
+  color: #ffffff;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #333333;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.sidebar summary:hover, .right-sidebar summary:hover {
+  background-color: #ff4d4d;
+  transform: translateY(-2px);
+}
+.sidebar .category-item {
+  margin: 8px 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.sidebar .category-item:hover {
+  transform: scale(1.05);
+}
+.sidebar .category-item img {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 8px auto;
+  border-radius: 6px;
+}
+.category-item .remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(255, 77, 77, 0.8);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: acostasackground-color 0.2s ease, transform 0.2s ease;
+}
+.category-item .remove-btn:hover {
+  background-color: #e63939;
+  transform: scale(1.1);
+}
+.artboard-container {
+  flex: 1;
+  min-width: 320px;
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: #262626;
+}
+.t396__artboard {
+  height: 600px;
+  background-image: url('images/Rejex_Me/Rejex_Background.png');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+.t396__carrier, .t396__filter {
+  height: 100%;
+}
+.t396__elem {
+  position: absolute;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+.t396__elem[data-elem-id="custom-uploaded-img"] {
+  z-index: 0;
+}
+.tn-atom__img {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+}
+.t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]) {
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: transform 0.3s ease;
+}
+.t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]).ui-draggable-dragging {
+  transform: translate(-50%, -50%) scale(1);
+}
+.t396__elem[data-elem-type="text"] .tn-atom {
+  color: #ffffff;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 8px;
+  padding: 12px 20px;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transform: rotate(350deg);
+}
+.t396__elem[data-elem-type="text"] .tn-atom:hover {
+  background-color: #ff4d4d;
+}
+.t396__elem[data-elem-type="button"] .tn-atom {
+  color: #ffffff;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+<|control56|>: -0.5px;
+  text-align: center;
+  background-color: #ff4d4d;
+  border-radius: 8px;
+  padding: 14px 20px;
+  display: block;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+.t396__elem[data-elem-type="button"] .tn-atom:hover {
+  background-color: #e63939;
+  transform: scale(1.05);
+}
+.t396__elem[data-elem-id="custom-save"] .tn-atom {
+  transform: rotate(0deg);
+  background-color: #4caf50;
+}
+.t396__elem[data-elem-id="custom-save"] .tn-atom:hover {
+  background-color: #3d8b40;
+}
+.t396__elem[data-elem-type="upload"] input {
+  color: #ffffff;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 16px;
+  background-color: #333333;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease-in-out;
+}
+.t396__elem[data-elem-type="upload"] input:hover {
+  background-color: #ff4d4d;
+}
+.t396__elem[data-elem-type="slider"] .ui-slider {
+  background-color: #333333;
+  border: none;
+  border-radius: 4px;
+  height: 6px;
+  margin-top: 8px;
+}
+.t396__elem[data-elem-type="slider"] .ui-slider-handle {
+  background: #ff4d4d;
+  border: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  top: -4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.t396__elem[data-elem-type="slider"] .ui-slider-handle:hover {
+  background: #e63939;
+}
+.t396__elem[data-elem-type="slider"] .slider-label {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #d1d1d1;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.ui-draggable-dragging {
+  transform: translate(-50%, -50%) scale(1);
+}
+.uploaded-image {
+  display: block;
+  object-fit: contain;
+}
+.right-sidebar .t396__elem {
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+  width: 100%;
+}
+.right-sidebar .t396__elem[data-elem-type="upload"] input,
+.right-sidebar .t396__elem[data-elem-type="button"] .tn-atom,
+.right-sidebar .t396__elem[data-elem-type="slider"] .ui-slider {
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Responsive adjustments */
+@media screen and (min-width: 1440px) {
+  .t396__artboard, .t396__carrier, .t396__filter { height: 600px; }
+  .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 50%; width: 180px; }
+  .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 15%; width: 160px; }
+  .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 35%; width: 220px; }
+}
+@media screen and (max-width: 1439px) {
+  .t396__artboard, .t396__carrier, .t396__filter { height: 550px; }
+  .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
+  .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
+  .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
+}
+@media screen and (max-width: 1199px) {
+  .t396__artboard, .t396__carrier, .t396__filter { height: 500px; }
+}
+@media screen and (max-width: 959px) {
+  .t396__artboard, .t396__carrier, .t396__filter { height: 450px; }
+  .t396__elem[data-elem-id="custom-text1"] { top: 320px; left: 350px; width: 120px; }
+  .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 100px; width: 100px; }
+  .t396__elem[data-elem-id="custom-button1"] { top: 420px; left: 200px; width: 150px; }
+  .t396__elem[data-elem-type="text"] .tn-atom,
+  .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
+  .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
+  .t396__elem[data-elem-id="custom-save"] .tn-atom { transform: rotate(0deg); }
+}
+@media screen and (max-width: 639px) {
+  .t396__artboard, .t396__carrier, .t396__filter { height: 400px; }
+  .t396__elem[data-elem-id="custom-text1"] { top: 280px; left: 280px; width: 100px; }
+  .t396__elem[data-elem-id="custom-text2"] { top: 340px; left: 80px; width: 90px; }
+  .t396__elem[data-elem-id="custom-button1"] { top: 380px; left: 150px; width: 120px; }
+  .t396__elem[data-elem-type="text"] .tn-atom,
+  .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
+}
+@media screen and (max-width: 479px) {
+  .t396__artboard, .t396__carrier, .t396__filter { height: 350px; }
+  .t396__elem[data-elem-id="custom-text1"] { top: 240px; left: 200px; width: 80px; }
+  .t396__elem[data-elem-id="custom-text2"] { top: 300px; left: 50px; width: 70px; }
+  .t396__elem[data-elem-id="custom-button1"] { top: 340px; left: 100px; width: 100px; }
+  .t396__elem[data-elem-type="text"] .tn-atom,
+  .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; }
+  .sidebar, .right-sidebar { width: 150px; }
+  .sidebar .category-item img { width: 60px; }
+}
+@media screen and (max-width: 100%) {
+  .artboard-container, .t396__artboard, .t396__carrier, .t396__filter {
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+}
+
 /* Countdown Container */
 .countdown-container {
   max-width: 1200px;
@@ -3539,6 +3837,508 @@ function saveSetupDetails() {
   document.querySelector('.setup-section h1').textContent = document.getElementById('setup-title').value;
   closeModal('setup-modal');
 }
+
+<script>
+$(document).ready(function() {
+  let zIndex = 10;
+  let lastSelectedImage = null;
+  let itemCounter = 0;
+
+  const categories = [
+    {
+      name: 'Hats/Beanies',
+      items: [
+        { src: 'images/Rejex_Me/Emo_Beanie_Hat_1.png', alt: 'Emo Beanie 1' },
+        { src: 'images/Rejex_Me/Emo_Beanie_Hat_2.png', alt: 'Emo Beanie 2' },
+        { src: 'images/Rejex_Me/Emo_Beanie_Hat_3.png', alt: 'Emo Beanie 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Beanie+4', alt: 'Emo Beanie 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Beanie+5', alt: 'Emo Beanie 5' }
+      ]
+    },
+    {
+      name: 'Eyewear',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+1', alt: 'Eyewear 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+2', alt: 'Eyewear 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+3', alt: 'Eyewear 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+4', alt: 'Eyewear 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+5', alt: 'Eyewear 5' }
+      ]
+    },
+    {
+      name: 'Hair',
+      items: [
+        { src: 'images/Rejex_Me/Emo_Hair_Element.png', alt: 'Emo Hair 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Hair+2', alt: 'Emo Hair 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Hair+3', alt: 'Emo Hair 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Hair+4', alt: 'Emo Hair 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Hair+5', alt: 'Emo Hair 5' }
+      ]
+    },
+    {
+      name: 'Necklaces/Chokers',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+1', alt: 'Necklace 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+2', alt: 'Necklace 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+3', alt: 'Necklace 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+4', alt: 'Necklace 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+5', alt: 'Necklace 5' }
+      ]
+    },
+    {
+      name: 'Earrings',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Earring+1', alt: 'Earring 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Earring+2', alt: 'Earring 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Earring+3', alt: 'Earring 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Earring+4', alt: 'Earring 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Earring+5', alt: 'Earring 5' }
+      ]
+    },
+    {
+      name: 'Eyebrows',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+1', alt: 'Eyebrow 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+2', alt: 'Eyebrow 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+3', alt: 'Eyebrow 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+4', alt: 'Eyebrow 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+5', alt: 'Eyebrow 5' }
+      ]
+    },
+    {
+      name: 'Eyes',
+      items: [
+        { src: 'images/Rejex_Me/Alien_Eyes.png', alt: 'Alien Eyes 1' },
+        { src: 'images/Rejex_Me/Alien_Eyes_Blue.png', alt: 'Alien Eyes Blue' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyes+3', alt: 'Eyes 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyes+4', alt: 'Eyes 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyes+5', alt: 'Eyes 5' }
+      ]
+    },
+    {
+      name: 'Eyeliner/Makeup',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+1', alt: 'Eyeliner 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+2', alt: 'Eyeliner 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+3', alt: 'Eyeliner 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+4', alt: 'Eyeliner 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+5', alt: 'Eyeliner 5' }
+      ]
+    },
+    {
+      name: 'Face Tattoos/Markings',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+1', alt: 'Tattoo 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+2', alt: 'Tattoo 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+3', alt: 'Tattoo 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+4', alt: 'Tattoo 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+5', alt: 'Tattoo 5' }
+      ]
+    },
+    {
+      name: 'Piercings',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+1', alt: 'Piercing 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+2', alt: 'Piercing 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+3', alt: 'Piercing 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+4', alt: 'Piercing 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+5', alt: 'Piercing 5' }
+      ]
+    }
+  ];
+
+  const sidebar = $('#category-sidebar');
+  categories.forEach(category => {
+    const details = $('<details>').appendTo(sidebar);
+    $('<summary>').text(category.name).appendTo(details);
+    const itemContainer = $('<div>').appendTo(details);
+    category.items.forEach(item => {
+      const itemId = `custom-img${++itemCounter}`;
+      const categoryItem = $('<div>').addClass('category-item').attr('data-elem-id', itemId).append(
+        $('<img>').attr({
+          src: item.src,
+          alt: item.alt,
+          'data-elem-id': itemId
+        })
+      );
+      const removeBtn = $('<button>').addClass('remove-btn').text('x').attr('data-elem-id', itemId);
+      categoryItem.append(removeBtn);
+      categoryItem.appendTo(itemContainer);
+    });
+  });
+
+  $('.category-item').draggable({
+    helper: 'clone',
+    cursor: 'move',
+    revert: 'invalid',
+    start: function(event, ui) {
+      ui.helper.css({
+        'width': '80px',
+        'height': 'auto',
+        'opacity': '0.7',
+        'transform': 'scale(1)'
+      });
+    }
+  });
+
+  $('.category-item').on('click', function(event) {
+    if ($(event.target).hasClass('remove-btn')) {
+      const elemId = $(event.target).attr('data-elem-id');
+      const artboardElem = $(`.t396__elem[data-elem-id="${elemId}"]`);
+      if (artboardElem.length) {
+        artboardElem.remove();
+        if (lastSelectedImage === elemId) {
+          lastSelectedImage = null;
+          $('#rotate-slider').slider('value', 0);
+          $('#size-slider').slider('value', 1);
+        }
+      }
+      return;
+    }
+
+    const src = $(this).find('img').attr('src');
+    const alt = $(this).find('img').attr('alt');
+    const elemId = $(this).find('img').attr('data-elem-id');
+    const existing = $(`.t396__elem[data-elem-id="${elemId}"]`);
+
+    if (!existing.length) {
+      const artboard = $('.t396__artboard');
+      const artboardWidth = artboard.width();
+      const artboardHeight = artboard.height();
+      const dropX = artboardWidth / 2;
+      const dropY = artboardHeight / 2;
+
+      const elem = $('<div>').addClass('t396__elem tn-elem drag').attr({
+        'data-elem-id': elemId,
+        'data-elem-type': 'image',
+        'data-field-top-value': dropY,
+        'data-field-left-value': dropX,
+        'data-field-axisy-value': 'top',
+        'data-field-axisx-value': 'left',
+        'data-field-container-value': 'grid',
+        'data-field-top-units-value': 'px',
+        'data-field-left-units-value': 'px'
+      }).css({
+        top: dropY + 'px',
+        left: dropX + 'px',
+        transform: 'translate(-50%, -50%) scale(1)',
+        'z-index': zIndex++
+      }).append(
+        $('<div>').addClass('tn-atom').append(
+          $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
+        )
+      ).appendTo('.t396__artboard');
+
+      elem.draggable({
+        cursor: 'grabbing',
+        containment: '.t396__artboard',
+        start: function(event, ui) {
+          $(this).css('z-index', zIndex++);
+          lastSelectedImage = elemId;
+        },
+        drag: function(event, ui) {
+          const container = $(this);
+          const artboard = $('.t396__artboard');
+          const artboardWidth = artboard.width();
+          const artboardHeight = artboard.height();
+          const elemWidth = container.width();
+          const elemHeight = container.height();
+
+          const minLeft = elemWidth / 2;
+          const maxLeft = artboardWidth - elemWidth / 2;
+          const minTop = elemHeight / 2;
+          const maxTop = artboardHeight - elemHeight / 2;
+
+          ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+          ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+        },
+        stop: function(event, ui) {
+          const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+          $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+        }
+      });
+
+      elem.on('click', function(e) {
+        e.stopPropagation();
+        $(this).css('z-index', zIndex++);
+        lastSelectedImage = elemId;
+        const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+        $('#rotate-slider').slider('value', currentRotation);
+        const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+        $('#size-slider').slider('value', currentScale);
+      });
+
+      adjustImageSize(elemId, src, false, 1);
+    }
+  });
+
+  $('.t396__artboard').droppable({
+    accept: '.category-item',
+    drop: function(event, ui) {
+      const src = ui.draggable.find('img').attr('src');
+      const alt = ui.draggable.find('img').attr('alt');
+      const elemId = ui.draggable.find('img').attr('data-elem-id');
+      const existing = $(`.t396__elem[data-elem-id="${elemId}"]`);
+
+      if (!existing.length) {
+        const artboardOffset = $(this).offset();
+        const dropX = event.pageX - artboardOffset.left;
+        const dropY = event.pageY - artboardOffset.top;
+
+        const elem = $('<div>').addClass('t396__elem tn-elem drag').attr({
+          'data-elem-id': elemId,
+          'data-elem-type': 'image',
+          'data-field-top-value': dropY,
+          'data-field-left-value': dropX,
+          'data-field-axisy-value': 'top',
+          'data-field-axisx-value': 'left',
+          'data-field-container-value': 'grid',
+          'data-field-top-units-value': 'px',
+          'data-field-left-units-value': 'px'
+        }).css({
+          top: dropY + 'px',
+          left: dropX + 'px',
+          transform: 'translate(-50%, -50%) scale(1)',
+          'z-index': zIndex++
+        }).append(
+          $('<div>').addClass('tn-atom').append(
+            $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
+          )
+        ).appendTo('.t396__artboard');
+
+        elem.draggable({
+          cursor: 'grabbing',
+          containment: '.t396__artboard',
+          start: function(event, ui) {
+            $(this).css('z-index', zIndex++);
+            lastSelectedImage = elemId;
+          },
+          drag: function(event, ui) {
+            const container = $(this);
+            const artboard = $('.t396__artboard');
+            const artboardWidth = artboard.width();
+            const artboardHeight = artboard.height();
+            const elemWidth = container.width();
+            const elemHeight = container.height();
+
+            const minLeft = elemWidth / 2;
+            const maxLeft = artboardWidth - elemWidth / 2;
+            const minTop = elemHeight / 2;
+            const maxTop = artboardHeight - elemHeight / 2;
+
+            ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+            ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+          },
+          stop: function(event, ui) {
+            const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+            $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+          }
+        });
+
+        elem.on('click', function(e) {
+          e.stopPropagation();
+          $(this).css('z-index', zIndex++);
+          lastSelectedImage = elemId;
+          const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+          $('#rotate-slider').slider('value', currentRotation);
+          const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+          $('#size-slider').slider('value', currentScale);
+        });
+
+        adjustImageSize(elemId, src, false, 1);
+      }
+    }
+  });
+
+  $('.drag').draggable({
+    cursor: 'grabbing',
+    containment: '.t396__artboard',
+    start: function(event, ui) {
+      $(this).css('z-index', zIndex++);
+      if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
+        lastSelectedImage = $(this).data('elem-id');
+      }
+    },
+    drag: function(event, ui) {
+      const container = $(this);
+      const artboard = $('.t396__artboard');
+      const artboardWidth = artboard.width();
+      const artboardHeight = artboard.height();
+      const elemWidth = container.width();
+      const elemHeight = container.height();
+
+      const minLeft = elemWidth / 2;
+      const maxLeft = artboardWidth - elemWidth / 2;
+      const minTop = elemHeight / 2;
+      const maxTop = artboardHeight - elemHeight / 2;
+
+      ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+      ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+    },
+    stop: function(event, ui) {
+      if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
+        const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+        $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+      }
+    }
+  });
+
+  $('.t396__elem[data-elem-type="image"]').on('click', function(e) {
+    e.stopPropagation();
+    if ($(this).data('elem-id') !== 'custom-uploaded-img') {
+      $(this).css('z-index', zIndex++);
+      if ($(this).data('elem-id').startsWith('custom-img')) {
+        lastSelectedImage = $(this).data('elem-id');
+        const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+        $('#rotate-slider').slider('value', currentRotation);
+        const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+        $('#size-slider').slider('value', currentScale);
+      }
+    }
+  });
+
+  function adjustImageSize(elemId, imgSrc, isUploaded = false, scaleFactor = 1) {
+    const container = $(`.t396__elem[data-elem-id="${elemId}"]`);
+    const img = container.find('.tn-atom__img');
+    const artboard = $('.t396__artboard');
+    
+    let artboardHeight, artboardWidth;
+    const screenWidth = $(window).width();
+    if (screenWidth <= 320) {
+      artboardHeight = 350;
+      artboardWidth = 320;
+    } else if (screenWidth <= 479) {
+      artboardHeight = 400;
+      artboardWidth = 479;
+    } else if (screenWidth <= 639) {
+      artboardHeight = 450;
+      artboardWidth = 639;
+    } else if (screenWidth <= 959) {
+      artboardHeight = 500;
+      artboardWidth = 959;
+    } else if (screenWidth <= 1199) {
+      artboardHeight = 550;
+      artboardWidth = 1199;
+    } else {
+      artboardHeight = 600;
+      artboardWidth = artboard.width();
+    }
+
+    const tempImg = new Image();
+    tempImg.src = imgSrc;
+    tempImg.onload = function() {
+      const imgWidth = tempImg.naturalWidth;
+      const imgHeight = tempImg.naturalHeight;
+      const baseScale = Math.min(artboardWidth / imgWidth, artboardHeight / imgHeight, 1);
+      const newWidth = imgWidth * baseScale * scaleFactor;
+      const newHeight = imgHeight * baseScale * scaleFactor;
+
+      img.css({
+        'width': newWidth + 'px',
+        'height': newHeight + 'px',
+        'max-width': 'none',
+        'max-height': 'none'
+      });
+      container.css({
+        'width': newWidth + 'px',
+        'height': newHeight + 'px'
+      });
+
+      if (isUploaded) {
+        container.css({
+          'top': '50%',
+          'left': '50%',
+          'transform': 'translate(-50%, -50%) scale(1)'
+        });
+      }
+    };
+  }
+
+  function adjustImageRotation(elemId, angle) {
+    const container = $(`.t396__elem[data-elem-id="${elemId}"]`);
+    const img = container.find('.tn-atom__img');
+    const currentScale = parseFloat(container.css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+    img.css({
+      'transform': `rotate(${angle}deg)`
+    });
+    container.css({
+      'transform': `translate(-50%, -50%) scale(${currentScale})`
+    });
+  }
+
+  function readFile(file) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    return new Promise((resolve, reject) => {
+      reader.onload = function() { resolve(reader.result); };
+      reader.onerror = function() { reject(reader.error); };
+    });
+  }
+
+  $('#photo-upload').on('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      readFile(file).then(result => {
+        const uploadedImg = $('.t396__elem[data-elem-id="custom-uploaded-img"] .tn-atom__img');
+        uploadedImg.attr('src', result);
+        adjustImageSize('custom-uploaded-img', result, true, 1);
+        $('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
+      }).catch(error => {
+        console.error('Error reading file:', error);
+      });
+    }
+  });
+
+  $('#size-slider').slider({
+    min: 0.5,
+    max: 2,
+    step: 0.1,
+    value: 1,
+    slide: function(event, ui) {
+      if (lastSelectedImage && lastSelectedImage.startsWith('custom-img')) {
+        const imgSrc = $(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).attr('src');
+        if (imgSrc) {
+          adjustImageSize(lastSelectedImage, imgSrc, false, ui.value);
+          const container = $(`.t396__elem[data-elem-id="${lastSelectedImage}"]`);
+          const currentRotation = parseFloat(container.find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+          container.css('transform', `translate(-50%, -50%) scale(${ui.value})`);
+        }
+      }
+    }
+  });
+
+  $('#rotate-slider').slider({
+    min: 0,
+    max: 360,
+    step: 1,
+    value: 0,
+    slide: function(event, ui) {
+      if (lastSelectedImage && lastSelectedImage.startsWith('custom-img')) {
+        adjustImageRotation(lastSelectedImage, ui.value);
+      }
+    }
+  });
+
+  $('.save-button').on('click', async function() {
+    const artboard = document.querySelector('.t396__artboard');
+    try {
+      const canvas = await html2canvas(artboard, {
+        backgroundColor: null,
+        scale: 1,
+        width: artboard.offsetWidth,
+        height: artboard.offsetHeight
+      });
+      const link = document.createElement('a');
+      link.download = 'custom-artboard.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch (error) {
+      console.error('Error capturing screenshot:', error);
+    }
+  });
+
+  $('.t396__elem[data-elem-id="custom-uploaded-img"]').hide();
+});
 </script>
 
 <div class="history-container">
@@ -3925,51 +4725,51 @@ function saveSetupDetails() {
     }
   </style>
 
-  <div class="main-content">
-    <h1>REJEX YOURSELF!</h1>
-    <p>Create and turn yourself into an emo, alien rejex!</p>
-  </div>
-  <div class="container">
-    <div class="right-sidebar">
-      <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-width-value="180">
-        <input type="file" id="photo-upload" accept="image/*">
-      </div>
-      <div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-width-value="180">
-        <div class="slider-label">Resize assets</div>
-        <div id="size-slider"></div>
-      </div>
-      <div class="t396__elem tn-elem" data-elem-id="custom-rotate-slider" data-elem-type="slider" data-field-width-value="180">
-        <div class="slider-label">Rotate assets</div>
-        <div id="rotate-slider"></div>
-      </div>
-      <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-width-value="180">
-        <button class="tn-atom save-button">Save Photo</button>
-      </div>
+<div class="main-content">
+  <h1>REJEX YOURSELF!</h1>
+  <p>Create and turn yourself into an emo, alien rejex!</p>
+</div>
+<div class="container">
+  <div class="right-sidebar">
+    <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-width-value="180">
+      <input type="file" id="photo-upload" accept="image/*">
     </div>
-    <div class="artboard-container">
-      <div class="t396">
-        <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="hidden" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
-          <div class="t396__carrier"></div>
-          <div class="t396__filter"></div>
-          <div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
-            <div class="tn-atom">
-              <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
-            </div>
+    <div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-width-value="180">
+      <div class="slider-label">Resize assets</div>
+      <div id="size-slider"></div>
+    </div>
+    <div class="t396__elem tn-elem" data-elem-id="custom-rotate-slider" data-elem-type="slider" data-field-width-value="180">
+      <div class="slider-label">Rotate assets</div>
+      <div id="rotate-slider"></div>
+    </div>
+    <div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-width-value="180">
+      <button class="tn-atom save-button">Save Photo</button>
+    </div>
+  </div>
+  <div class="artboard-container">
+    <div class="t396">
+      <div class="t396__artboard" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-height="600" data-artboard-valign="center" data-artboard-upscale="window" data-artboard-ovrflw="hidden" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-height-res-1200="550">
+        <div class="t396__carrier"></div>
+        <div class="t396__filter"></div>
+        <div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid">
+          <div class="tn-atom">
+            <img class="tn-atom__img t-img uploaded-image" src="" alt="Uploaded Image" />
           </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="400" data-field-left-value="700" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-top-units-value="px" data-field-left-units-value="px" data-field-width-units-value="px" data-field-top-res-320-value="240" data-field-left-res-320-value="200" data-field-width-res-320-value="80" data-field-top-res-480-value="280" data-field-left-res-480-value="280" data-field-width-res-480-value="100" data-field-top-res-640-value="320" data-field-left-res-640-value="350" data-field-width-res-640-value="120" data-field-top-res-960-value="350" data-field-left-res-960-value="500" data-field-width-res-960-value="150" data-field-top-res-1200-value="400" data-field-left-res-1200-value="600" data-field-width-res-1200-value="180">
-            <div class="tn-atom">Try it with your photo!</div>
-          </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="450" data-field-left-value="400" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-top-units-value="px" data-field-left-units-value="px" data-field-width-units-value="px" data-field-top-res-320-value="300" data-field-left-res-320-value="50" data-field-width-res-320-value="70" data-field-top-res-480-value="340" data-field-left-res-480-value="80" data-field-width-res-480-value="90" data-field-top-res-640-value="380" data-field-left-res-640-value="100" data-field-width-res-640-value="100" data-field-top-res-960-value="400" data-field-left-res-960-value="150" data-field-width-res-960-value="130" data-field-top-res-1200-value="450" data-field-left-res-1200-value="200" data-field-width-res-1200-value="160">
-            <div class="tn-atom">Drag me around!</div>
-          </div>
-          <div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-top-value="500" data-field-left-value="500" data-field-width-value="220" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-top-units-value="px" data-field-left-units-value="px" data-field-width-units-value="px" data-field-top-res-320-value="340" data-field-left-res-320-value="100" data-field-width-res-320-value="100" data-field-top-res-480-value="380" data-field-left-res-480-value="150" data-field-width-res-480-value="120" data-field-top-res-640-value="420" data-field-left-res-640-value="200" data-field-width-res-640-value="150" data-field-top-res-960-value="450" data-field-left-res-960-value="300" data-field-width-res-960-value="180" data-field-top-res-1200-value="500" data-field-left-res-1200-value="400" data-field-width-res-1200-value="220">
-            <a class="tn-atom" href="#try-now">Try Now!</a>
-          </div>
+        </div>
+        <div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-top-value="400" data-field-left-value="700" data-field-width-value="180" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-top-units-value="px" data-field-left-units-value="px" data-field-width-units-value="px" data-field-top-res-320-value="240" data-field-left-res-320-value="200" data-field-width-res-320-value="80" data-field-top-res-480-value="280" data-field-left-res-480-value="280" data-field-width-res-480-value="100" data-field-top-res-640-value="320" data-field-left-res-640-value="350" data-field-width-res-640-value="120" data-field-top-res-960-value="350" data-field-left-res-960-value="500" data-field-width-res-960-value="150" data-field-top-res-1200-value="400" data-field-left-res-1200-value="600" data-field-width-res-1200-value="180">
+          <div class="tn-atom">Try it with your photo!</div>
+        </div>
+        <div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-top-value="450" data-field-left-value="400" data-field-width-value="160" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-top-units-value="px" data-field-left-units-value="px" data-field-width-units-value="px" data-field-top-res-320-value="300" data-field-left-res-320-value="50" data-field-width-res-320-value="70" data-field-top-res-480-value="340" data-field-left-res-480-value="80" data-field-width-res-480-value="90" data-field-top-res-640-value="380" data-field-left-res-640-value="100" data-field-width-res-640-value="100" data-field-top-res-960-value="400" data-field-left-res-960-value="150" data-field-width-res-960-value="130" data-field-top-res-1200-value="450" data-field-left-res-1200-value="200" data-field-width-res-1200-value="160">
+          <div class="tn-atom">Drag me around!</div>
+        </div>
+        <div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-top-value="500" data-field-left-value="500" data-field-width-value="220" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-top-units-value="px" data-field-left-units-value="px" data-field-width-units-value="px" data-field-top-res-320-value="340" data-field-left-res-320-value="100" data-field-width-res-320-value="100" data-field-top-res-480-value="380" data-field-left-res-480-value="150" data-field-width-res-480-value="120" data-field-top-res-640-value="420" data-field-left-res-640-value="200" data-field-width-res-640-value="150" data-field-top-res-960-value="450" data-field-left-res-960-value="300" data-field-width-res-960-value="180" data-field-top-res-1200-value="500" data-field-left-res-1200-value="400" data-field-width-res-1200-value="220">
+          <a class="tn-atom" href="#try-now">Try Now!</a>
         </div>
       </div>
     </div>
-    <div class="sidebar" id="category-sidebar"></div>
   </div>
+  <div class="sidebar" id="category-sidebar"></div>
+</div>
 
   <script>
     $(document).ready(function() {
