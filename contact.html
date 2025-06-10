@@ -15,21 +15,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <style>
     :root {
-      --primary-color: #e67e22;
-      --secondary-color: #f39c12;
-      --text-dark: #2b1b0f;
-      --text-light: #f8e1b4;
-      --bg-dark: rgba(44, 29, 15, 0.95);
-      --bg-dark-alt: rgba(60, 45, 30, 0.95);
-      --bg-light: rgba(255, 255, 255, 0.15);
-      --shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      --primary-color: #ff3399; /* Vibrant pink for emo pop */
+      --secondary-color: #9933ff; /* Purple accent for depth */
+      --text-dark: #f0d0e0;
+      --text-light: #e6b3cc;
+      --bg-dark: rgba(15, 15, 15, 0.95); /* Deep black for emo vibe */
+      --bg-dark-alt: rgba(30, 30, 30, 0.95);
+      --bg-light: rgba(40, 40, 40, 0.2);
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
       --transition: all 0.3s ease;
-      --primary: #ef75ad;
-      --secondary: #ef75ad;
-      --text: #f8e1b4;
-      --background: #ef75ad;
-      --emo-dark: #ef75ad;
-      --emo-accent: #ef75ad;
+      --emo-dark: #0d0d0d;
+      --emo-accent: #ff66cc;
     }
 
     * {
@@ -41,8 +37,8 @@
     html, body {
       font-family: 'Roboto', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(180deg, #fff7e6 0%, #f5e6c6 100%);
-      color: var(--text-dark);
+      background: linear-gradient(180deg, #1c1c1c 0%, #0d0d0d 100%);
+      color: var(--text-light);
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
@@ -67,19 +63,19 @@
     }
 
     ::-webkit-scrollbar-thumb {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary-color);
       border-radius: 6px;
-      border: 2px solid var(--secondary);
+      border: 2px solid var(--secondary-color);
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary-color);
+      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
     }
 
     html {
       scrollbar-width: thin;
-      scrollbar-color: var(--primary) rgba(44, 29, 15, 0.3);
+      scrollbar-color: var(--primary-color) rgba(44, 29, 15, 0.3);
     }
 
     body.night-mode ::-webkit-scrollbar-track {
@@ -87,13 +83,13 @@
     }
 
     body.night-mode ::-webkit-scrollbar-thumb {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
-      border: 2px solid var(--primary);
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary-color);
+      border: 2px solid var(--primary-color);
     }
 
     body.night-mode ::-webkit-scrollbar-thumb:hover {
-      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
-      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary-color);
+      box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--primary-color);
     }
 
     a, button, input, textarea, select {
@@ -327,7 +323,7 @@ body.night-mode .dropdown-menu {
 
 .dropdown-menu a:hover {
   background-color: #ef75ad;
-  color: #2b1b0f;
+  color: #2b1b00;
   box-shadow: 0 0 10px #ef75ad inset;
 }
 
@@ -523,7 +519,7 @@ body.night-mode .dropdown-menu {
     .newsletter-wrapper {
       width: 240px;
       background: var(--bg-dark);
-      border: 2px solid var(--primary);
+      border: 2px solid var(--primary-color);
       border-radius: 10px;
       padding: 15px;
       box-shadow: var(--shadow);
@@ -536,19 +532,20 @@ body.night-mode .dropdown-menu {
 
     body.night-mode .newsletter-wrapper {
       background: var(--bg-dark-alt);
-      border-color: var(--secondary);
+      border-color: var(--secondary-color);
     }
 
     .newsletter-wrapper h3 {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Creepster', cursive;
       font-size: 1.2rem;
       color: var(--secondary-color);
       margin-bottom: 10px;
+      text-shadow: 0 0 5px var(--emo-accent);
     }
 
     .newsletter-wrapper p {
       font-size: 0.8rem;
-      color: var(--secondary-color);
+      color: var(--text-light);
       margin-bottom: 15px;
     }
 
@@ -570,14 +567,14 @@ body.night-mode .dropdown-menu {
     .newsletter-wrapper input:focus {
       outline: none;
       border-color: var(--secondary-color);
-      box-shadow: 0 0 8px rgba(230, 126, 34, 0.3);
+      box-shadow: 0 0 8px var(--emo-accent);
     }
 
     .newsletter-wrapper button {
       width: 100%;
       padding: 8px;
       background-color: var(--primary-color);
-      color: var(--text-dark);
+      color: var(--text-light);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -588,7 +585,7 @@ body.night-mode .dropdown-menu {
 
     .newsletter-wrapper button:hover, .newsletter-wrapper button:focus {
       background-color: var(--secondary-color);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+      box-shadow: 0 0 10px var(--emo-accent);
     }
 
     /* Modal Styles */
@@ -599,36 +596,34 @@ body.night-mode .dropdown-menu {
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.7);
       z-index: 2000;
       justify-content: center;
       align-items: center;
     }
 
     .modal-content {
-      background: rgba(255, 255, 255, 0.9);
+      background: var(--bg-dark);
       padding: 20px;
       border-radius: 10px;
       max-width: 400px;
       width: 90%;
       text-align: center;
-      border: 2px solid var(--primary-color);
+      border: 2px dashed var(--emo-accent);
       position: relative;
+      box-shadow: var(--shadow);
     }
 
     body.night-mode .modal-content {
-      background: var(--bg-dark);
-      color: var(--text-light);
+      background: var(--bg-dark-alt);
     }
 
     .modal-content h3 {
-      font-family: 'Bebas Neue', cursive;
-      color: var(--text-dark);
-      margin-bottom: 20px;
-    }
-
-    body.night-mode .modal-content h3 {
+      font-family: 'Creepster', cursive;
       color: var(--text-light);
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-shadow: 0 0 5px var(--emo-accent);
     }
 
     .modal-content input,
@@ -639,38 +634,32 @@ body.night-mode .dropdown-menu {
       border-radius: 5px;
       border: 1px solid var(--primary-color);
       background: rgba(255, 255, 255, 0.1);
-      color: var(--text-dark);
-    }
-
-    body.night-mode .modal-content input,
-    body.night-mode .modal-content textarea {
-      background: rgba(255, 255, 255, 0.15);
       color: var(--text-light);
+      font-family: 'Roboto', sans-serif;
     }
 
     .modal-content input:focus,
     .modal-content textarea:focus {
       outline: none;
       border-color: var(--secondary-color);
-      box-shadow: 0 0 8px rgba(230, 126, 34, 0.3);
+      box-shadow: 0 0 8px var(--emo-accent);
     }
 
     .modal-content button {
       padding: 10px 20px;
       background-color: var(--primary-color);
-      color: var(--text-dark);
+      color: var(--text-light);
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-family: 'Bebas Neue', cursive;
       font-size: 1em;
       transition: background-color 0.3s, box-shadow 0.3s;
-      margin: 0 10px;
     }
 
     .modal-content button:hover, .modal-content button:focus {
       background-color: var(--secondary-color);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+      box-shadow: 0 0 10px var(--emo-accent);
     }
 
     .modal-content .close-button {
@@ -680,20 +669,16 @@ body.night-mode .dropdown-menu {
       background: none;
       font-size: 1.2em;
       padding: 5px 10px;
-      color: var(--text-dark);
+      color: var(--text-light);
       border: none;
       cursor: pointer;
-    }
-
-    body.night-mode .modal-content .close-button {
-      color: var(--text-light);
     }
 
     .edit-section-button {
       display: none;
       padding: 8px 12px;
       background-color: var(--primary-color);
-      color: var(--text-dark);
+      color: var(--text-light);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -709,7 +694,7 @@ body.night-mode .dropdown-menu {
 
     .edit-section-button:hover, .edit-section-button:focus {
       background-color: var(--secondary-color);
-      box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+      box-shadow: 0 0 10px var(--emo-accent);
     }
 
     /* Contact Section */
@@ -729,59 +714,47 @@ body.night-mode .dropdown-menu {
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(230, 126, 34, 0.1) 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(255, 51, 153, 0.2) 0%, transparent 70%);
       z-index: -1;
     }
 
     .contact-section h1 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 3rem;
-      color: var(--text-dark);
-      margin-bottom: 1.5rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      position: relative;
-      display: inline-block;
-    }
-
-    .contact-section h1::after {
-      content: '';
-      position: absolute;
-      bottom: -0.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      height: 0.25rem;
-      background: linear-gradient(to right, transparent, var(--primary-color), transparent);
-    }
-
-    body.night-mode .contact-section h1 {
+      font-family: 'Creepster', cursive;
+      font-size: 3.5rem;
       color: var(--text-light);
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px var(--emo-accent);
     }
 
     .contact-section p {
+      font-family: 'Roboto', sans-serif;
       font-size: 1.2rem;
       max-width: 43.75rem;
       margin: 0 auto 2.5rem;
-      color: var(--text-dark);
-      font-weight: 300;
-    }
-
-    body.night-mode .contact-section p {
       color: var(--text-light);
+      font-weight: 300;
     }
 
     .contact-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
-      background: var(--bg-light);
+      background: var(--bg-dark);
       border-radius: 1rem;
       padding: 3rem;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       position: relative;
       overflow: hidden;
+      border: 2px dashed var(--emo-accent);
+      animation: pulse-border 3s infinite;
+    }
+
+    @keyframes pulse-border {
+      0% { border-color: var(--emo-accent); }
+      50% { border-color: var(--secondary-color); }
+      100% { border-color: var(--emo-accent); }
     }
 
     .contact-container::before {
@@ -791,7 +764,7 @@ body.night-mode .dropdown-menu {
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(230, 126, 34, 0.2) 0%, transparent 50%);
+      background: radial-gradient(circle, rgba(255, 51, 153, 0.15) 0%, transparent 50%);
       animation: rotate 20s linear infinite;
       z-index: -1;
     }
@@ -801,55 +774,42 @@ body.night-mode .dropdown-menu {
       to { transform: rotate(360deg); }
     }
 
-    body.night-mode .contact-container {
-      background: rgba(44, 29, 15, 0.4);
-    }
-
     .contact-info, .form-container {
       min-width: 18.75rem;
     }
 
     .contact-info h2 {
-      font-family: 'Bebas Neue', cursive;
+      font-family: 'Creepster', cursive;
       font-size: 2rem;
-      color: var(--text-dark);
+      color: var(--text-light);
       margin-bottom: 1.5rem;
       letter-spacing: 1px;
-    }
-
-    body.night-mode .contact-info h2 {
-      color: var(--text-light);
+      text-shadow: 0 0 5px var(--emo-accent);
     }
 
     .contact-info p {
       font-size: 1.1rem;
-      color: var(--text-dark);
+      color: var(--text-light);
       margin: 1rem 0;
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
 
-    body.night-mode .contact-info p {
-      color: var(--text-light);
-    }
-
     .contact-info i {
-      color: var(--primary-color);
+      color: var(--secondary-color);
       font-size: 1.4rem;
     }
 
     .contact-info a {
-      color: var(--text-dark);
-      text-decoration: none;
-    }
-
-    body.night-mode .contact-info a {
       color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
     }
 
     .contact-info a:hover, .contact-info a:focus {
-      color: var(--primary-color);
+      color: var(--secondary-color);
+      text-shadow: 0 0 5px var(--emo-accent);
     }
 
     .social-links {
@@ -860,23 +820,20 @@ body.night-mode .dropdown-menu {
     }
 
     .social-links a {
-      color: var(--text-dark);
+      color: var(--text-light);
       font-size: 1.8rem;
       text-decoration: none;
       padding: 0.5rem;
       border-radius: 50%;
-      background: rgba(230, 126, 34, 0.1);
-    }
-
-    body.night-mode .social-links a {
-      color: var(--text-light);
-      background: rgba(230, 126, 34, 0.2);
+      background: rgba(255, 51, 153, 0.2);
+      transition: all 0.3s;
     }
 
     .social-links a:hover, .social-links a:focus {
       color: #fff;
-      background: var(--primary-color);
+      background: var(--secondary-color);
       transform: scale(1.1);
+      box-shadow: 0 0 10px var(--emo-accent);
     }
 
     .form-container {
@@ -891,28 +848,22 @@ body.night-mode .dropdown-menu {
       border-radius: 0.5rem;
       border: 1px solid var(--primary-color);
       background: rgba(255, 255, 255, 0.1);
-      color: var(--text-dark);
-      font-size: 1rem;
-      font-family: 'Roboto', sans-serif;
-    }
-
-    body.night-mode .form-container input,
-    body.night-mode .form-container textarea {
-      background: rgba(255, 255, 255, 0.15);
       color: var(--text-light);
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
     }
 
     .form-container input:focus,
     .form-container textarea:focus {
       outline: none;
       border-color: var(--secondary-color);
-      box-shadow: 0 0 8px rgba(230, 126, 34, 0.3);
+      box-shadow: 0 0 8px var(--emo-accent);
       transform: translateY(-2px);
     }
 
     .form-container input::placeholder,
     .form-container textarea::placeholder {
-      color: #999;
+      color: #aaa;
       font-style: italic;
     }
 
@@ -927,8 +878,7 @@ body.night-mode .dropdown-menu {
       color: #fff;
       border: none;
       border-radius: 0.5rem;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 700;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.1rem;
       cursor: pointer;
       position: relative;
@@ -952,7 +902,7 @@ body.night-mode .dropdown-menu {
 
     .form-container button:hover, .form-container button:focus {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(230, 126, 34, 0.4);
+      box-shadow: 0 0 12px var(--emo-accent);
     }
 
     .success-message, .error-message {
@@ -968,14 +918,11 @@ body.night-mode .dropdown-menu {
       text-align: center;
       animation: fadeInOut 3s ease-in-out;
       z-index: 10;
+      border: 1px dashed var(--emo-accent);
     }
 
     .error-message {
       background: rgba(200, 0, 0, 0.95);
-    }
-
-    body.night-mode .success-message, body.night-mode .error-message {
-      background: var(--bg-dark-alt);
     }
 
     @keyframes fadeInOut {
@@ -985,18 +932,29 @@ body.night-mode .dropdown-menu {
       100% { opacity: 0; transform: translate(-50%, -40%); }
     }
 
+    .map-container {
+      margin-top: 2rem;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 2px dashed var(--emo-accent);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
     /* Footer */
     footer {
       text-align: center;
       padding: 2.5rem;
-      background-color: var(--text-dark);
+      background-color: var(--emo-dark);
       color: var(--text-light);
       font-size: 0.95rem;
       margin-top: auto;
-    }
-
-    body.night-mode footer {
-      background-color: #3a2b1f;
+      border-top: 1px dashed var(--emo-accent);
     }
 
     /* Responsive Design */
@@ -1020,10 +978,6 @@ body.night-mode .dropdown-menu {
         position: absolute;
         top: 70px;
         left: 0;
-      }
-
-      body.night-mode .nav-links {
-        background: var(--bg-dark-alt);
       }
 
       .nav-links.active {
@@ -1113,6 +1067,10 @@ body.night-mode .dropdown-menu {
       .newsletter-wrapper p {
         font-size: 0.75rem;
       }
+
+      .map-container iframe {
+        height: 200px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1180,77 +1138,80 @@ body.night-mode .dropdown-menu {
   </style>
 </head>
 <body>
-<nav>
-  <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
-  <button class="hamburger" aria-label="Toggle Menu">☰</button>
-  <div class="nav-links">
-<div class="dropdown">
-  <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
-  <div class="dropdown-menu">
-    <a href="index.html#about">Our Camp</a>
-    <a href="index.html#members">Core Camp Crew</a>
-    <a href="index.html#mission">Our Mission</a>
-    <a href="index.html#setup">Our Setup</a>
-    <a href="index.html#history">Our History</a>
-  </div>
-</div>
-    <div class="dropdown">
-      <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
-      <div class="dropdown-menu">
-        <a href="events.html#upcoming-events">Upcoming Events</a>
-        <a href="events.html#past-events">Past Events</a>
-        <a href="events.html#submit">Submit Event</a>
+  <nav>
+    <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
+    <button class="hamburger" aria-label="Toggle Menu">☰</button>
+    <div class="nav-links">
+      <div class="dropdown">
+        <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="index.html#about">Our Camp</a>
+          <a href="index.html#members">Core Camp Crew</a>
+          <a href="index.html#mission">Our Mission</a>
+          <a href="index.html#setup">Our Setup</a>
+          <a href="index.html#history">Our History</a>
+        </div>
       </div>
-    </div>
-<div class="dropdown">
-      <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
-      <div class="dropdown-menu">
-        <a href="join-camp.html">Membership Info</a>
-        <a href="join-camp.html">Apply to Join</a>
-        <a href="camp-fees.html">Camp Fees</a>
-        <a href="Task_Roster.html">Task/Roster</a>
+      <div class="dropdown">
+        <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="events.html#upcoming-events">Upcoming Events</a>
+          <a href="events.html#past-events">Past Events</a>
+          <a href="events.html#submit">Submit Event</a>
+        </div>
       </div>
-</div>
-    <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Eye_Webbar_Movings.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
-    <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/Cloud_Webbar_Moving.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
-    <a href="contact.html"><img src="images/Webpage_Bar_Icons/Thunder_Webbar_Moving.gif" alt="Contact Icon" class="nav-icon">Contact Us</a>
-    <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/Skull_Webbars_Moving.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
-  </div>
-  <div class="nav-right">
-    <div class="nav-login">
-      <button class="login-button" onclick="openModal('login-modal')">Login</button>
-      <button class="logout-button" aria-label="Logout">Logout</button>
+      <div class="dropdown">
+        <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="join-camp.html">Membership Info</a>
+          <a href="join-camp.html">Apply to Join</a>
+          <a href="camp-fees.html">Camp Fees</a>
+          <a href="Task_Roster.html">Task/Roster</a>
+        </div>
+      </div>
+      <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Eye_Webbar_Movings.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
+      <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/Cloud_Webbar_Moving.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
+      <a href="contact.html"><img src="images/Webpage_Bar_Icons/Thunder_Webbar_Moving.gif" alt="Contact Icon" class="nav-icon">Contact Us</a>
+      <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/Skull_Webbars_Moving.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
     </div>
-    <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
-  </div>
-</nav>
+    <div class="nav-right">
+      <div class="nav-login">
+        <button class="login-button" onclick="openModal('login-modal')">Login</button>
+        <button class="logout-button" aria-label="Logout">Logout</button>
+      </div>
+      <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
+    </div>
+  </nav>
 
-    <div class="modal" id="login-modal">
-      <div class="modal-content">
-        <button class="close-button" onclick="closeModal('login-modal')" aria-label="Close modal">×</button>
-        <h3>Login</h3>
-        <form id="login-form">
-          <input type="text" id="username" placeholder="Username" required aria-label="Username">
-          <input type="password" id="password" placeholder="Password" required aria-label="Password">
-          <button type="submit">Login</button>
-        </form>
-      </div>
+  <div class="modal" id="login-modal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal('login-modal')" aria-label="Close modal">×</button>
+      <h3>Login</h3>
+      <form id="login-form">
+        <input type="text" id="username" placeholder="Username" required aria-label="Username">
+        <input type="password" id="password" placeholder="Password" required aria-label="Password">
+        <button type="submit">Login</button>
+      </form>
     </div>
-  </header>
+  </div>
 
   <main>
     <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-      <h1 id="contact-heading">Contact Us</h1>
-      <p>We're here to answer your questions! Reach out through the form or connect with us directly.</p>
+      <h1 id="contact-heading">Contact Cosmic Rejex</h1>
+      <p>Got questions or vibes to share? Hit us up below or check our <a href="FAQ.html" class="faq-link">FAQ</a> for quick answers.</p>
       <div class="contact-container">
         <div class="contact-info" aria-labelledby="contact-info-heading">
-          <h2 id="contact-info-heading">Get in Touch</h2>
-          <p><i class="fas fa-envelope" aria-hidden="true"></i> shanonrichards@windowslive.com</p>
-          <p><i class="fas fa-phone" aria-hidden="true"></i> +64 223417486</p>
-          <p><a href="https://www.google.com/maps/place/136+Cooks+Rd,+Hunterville+4785,+New+Zealand" target="_blank" aria-label="View festival location on Google Maps"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> 136 Cooks Rd, Hunterville</a></p>
+          <h2 id="contact-info-heading">Connect With Us</h2>
+          <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:shanonrichards@windowslive.com">shanonrichards@windowslive.com</a></p>
+          <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+64223417486">+64 223417486</a></p>
+          <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/place/136+Cooks+Rd,+Hunterville+4785,+New+Zealand" target="_blank" aria-label="View festival location on Google Maps">136 Cooks Rd, Hunterville</a></p>
           <div class="social-links" role="navigation" aria-label="Social media links">
             <a href="https://www.facebook.com/groups/996318365425236" target="_blank" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
             <a href="https://instagram.com" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Visit our Twitter page"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          </div>
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.697208446473!2d175.5489733152744!3d-39.95598787942682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d4052c7c8b0f1b7%3A0x8f9b6b7b8f8f8f8!2s136+Cooks+Rd%2C+Hunterville+4785%2C+New+Zealand!5e0!3m2!1sen!2snz!4v1696999999999!5m2!1sen!2snz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Map of 136 Cooks Rd, Hunterville"></iframe>
           </div>
         </div>
         <div class="form-container">
@@ -1258,14 +1219,15 @@ body.night-mode .dropdown-menu {
             <h2 id="contact-form-heading" class="sr-only">Contact Form</h2>
             <input type="text" id="contact-name" name="name" placeholder="Your Name" required aria-label="Your Name">
             <input type="email" id="contact-email" name="email" placeholder="Your Email" required aria-label="Your Email">
+            <input type="tel" id="contact-phone" name="phone" placeholder="Your Phone (optional)" aria-label="Your Phone">
             <textarea id="contact-message" name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
             <button type="submit">Send Message</button>
           </form>
           <div class="success-message" id="success-message" role="alert">
-            <p>Message sent! We'll get back to you soon.</p>
+            <p>Message sent! We'll vibe with you soon.</p>
           </div>
           <div class="error-message" id="error-message" role="alert">
-            <p>Please fill out all fields correctly.</p>
+            <p>Please fill out all required fields correctly.</p>
           </div>
         </div>
       </div>
@@ -1281,7 +1243,7 @@ body.night-mode .dropdown-menu {
         <div class="newsletter-wrapper" id="newsletter-wrapper">
           <div class="form-container">
             <h3>Stay in Touch</h3>
-            <p>Stay up to date on upcoming events.</p>
+            <p>Join our crew for event updates and emo vibes.</p>
             <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
             <button onclick="submitNewsletter()">Subscribe</button>
           </div>
@@ -1378,23 +1340,45 @@ body.night-mode .dropdown-menu {
       e.preventDefault();
       const name = document.getElementById('contact-name').value.trim();
       const email = document.getElementById('contact-email').value.trim();
+      const phone = document.getElementById('contact-phone').value.trim();
       const message = document.getElementById('contact-message').value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^\+?\d{7,15}$/;
 
-      if (name && emailRegex.test(email) && message) {
-        successMessage.style.display = 'block';
-        setTimeout(() => {
-          successMessage.style.display = 'none';
-          contactForm.reset();
-        }, 3000);
-        const mailtoLink = `mailto:shanonrichards@windowslive.com?subject=Contact%20Form%20Submission&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0AMessage:%20${encodeURIComponent(message)}`;
-        window.location.href = mailtoLink;
-      } else {
+      if (!name || !email || !message) {
+        errorMessage.textContent = 'Please fill out all required fields.';
         errorMessage.style.display = 'block';
         setTimeout(() => {
           errorMessage.style.display = 'none';
         }, 3000);
+        return;
       }
+
+      if (!emailRegex.test(email)) {
+        errorMessage.textContent = 'Please enter a valid email address.';
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 3000);
+        return;
+      }
+
+      if (phone && !phoneRegex.test(phone)) {
+        errorMessage.textContent = 'Please enter a valid phone number.';
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 3000);
+        return;
+      }
+
+      successMessage.style.display = 'block';
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+        contactForm.reset();
+      }, 3000);
+      const mailtoLink = `mailto:shanonrichards@windowslive.com?subject=Contact%20Form%20Submission&body=Name:%20${encodeURIComponent(name)}%0AEmail:%20${encodeURIComponent(email)}%0APhone:%20${encodeURIComponent(phone)}%0AMessage:%20${encodeURIComponent(message)}`;
+      window.location.href = mailtoLink;
     });
 
     // Modal Functionality
