@@ -4731,7 +4731,8 @@ $(document).ready(function() {
 </div>
 <div class="container">
   <div class="right-sidebar">
-    <input type="file" id="photo-upload" accept="image/*">
+    <div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-width-value="180">
+      <input type="file" id="photo-upload" accept="image/*">
     </div>
     <div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-width-value="180">
       <div class="slider-label">Resize assets</div>
@@ -5447,22 +5448,15 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   }
 
   // Drag and Drop
-let draggedItem = null;
+  let draggedItem = null;
 
-function drag(event) {
-  if (!event.target.classList.contains('rejex-image')) {
+  function drag(event) {
     draggedItem = event.target;
     event.dataTransfer.setData('text/plain', null);
   }
-}
 
   function allowDrop(event) {
     event.preventDefault();
-  }
-
-  function drop(event) {
-    event.preventDefault();
-    // Code to move the image
   }
 
   function dropMembers(event) {
