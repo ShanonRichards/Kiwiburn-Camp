@@ -5448,15 +5448,22 @@ document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   }
 
   // Drag and Drop
-  let draggedItem = null;
+let draggedItem = null;
 
-  function drag(event) {
+function drag(event) {
+  if (!event.target.classList.contains('rejex-image')) {
     draggedItem = event.target;
     event.dataTransfer.setData('text/plain', null);
   }
+}
 
   function allowDrop(event) {
     event.preventDefault();
+  }
+
+  function drop(event) {
+    event.preventDefault();
+    // Code to move the image
   }
 
   function dropMembers(event) {
