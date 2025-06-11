@@ -100,13 +100,13 @@
       cursor: pointer;
     }
 
- nav {
+nav {
   position: sticky;
   top: 0;
-  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg'); /* Replace with your image path */
-  background-size: cover; /* Ensures the image covers the entire nav */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents image tiling */
+  background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -114,7 +114,7 @@
   z-index: 1000;
   border-bottom: 3px solid #d3c9b8;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  height: 30px;
+  min-height: 60px; /* Increased to accommodate content */
 }
 
 .nav-right {
@@ -174,7 +174,7 @@ nav a:hover {
 }
 
 .nav-logo {
-  width: 50px; /* Larger logo for prominence */
+  width: 50px;
   height: 50px;
   object-fit: contain;
   margin-right: 15px;
@@ -378,13 +378,6 @@ body.night-mode .dropdown-menu {
       background-color: #ef75ad;
       box-shadow: 0 0 10px #ef75ad, 0 0 20px #ef75ad;
     }
-
-.nav-logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  margin-right: 10px;
-}
 
     .nav {
       display: flex;
