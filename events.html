@@ -4,26 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Events - Cosmic Rejex - Kiwiburn</title>
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Shadows+Into+Light&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Creepster&family=Montserrat:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif;
       scroll-behavior: smooth;
-      background: linear-gradient(180deg, #1a1a1a 0%, #2c2c2c 100%);
-      color: #d3d3d3;
-      cursor: url('images/emo-cursor/broken-heart.png'), auto;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+      cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
       transition: background 0.5s, color 0.5s;
     }
 
     :root {
-      --primary: #ff69b4;
-      --secondary: #00ced1;
-      --text: #d3d3d3;
-      --background: #1a1a1a;
-      --emo-dark: #2c2c2c;
-      --emo-accent: #800080;
+      --primary: #ef75ad;
+      --secondary: #ef75ad;
+      --text: #f8e1b4;
+      --background: #ef75ad;
+      --emo-dark: #ef75ad;
+      --emo-accent: #ef75ad;
     }
 
     /* Custom Scrollbar Styles */
@@ -33,54 +33,54 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: rgba(26, 26, 26, 0.5);
+      background: rgba(44, 29, 15, 0.3);
     }
 
     ::-webkit-scrollbar-thumb {
-      background: url('images/emo-cursor/skull.png') center/contain no-repeat, var(--primary);
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
       border-radius: 6px;
       border: 2px solid var(--secondary);
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: url('images/emo-cursor/skull.png') center/contain no-repeat, var(--secondary);
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
       box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
     }
 
     html {
       scrollbar-width: thin;
-      scrollbar-color: var(--primary) rgba(26, 26, 26, 0.5);
+      scrollbar-color: var(--primary) rgba(44, 29, 15, 0.3);
     }
 
     body.night-mode {
-      background: url('images/emo-background/starry-grunge.jpg') center/cover no-repeat fixed;
-      color: #d3d3d3;
+      background: url('images/full-background-night.jpg') center/cover no-repeat fixed;
+      color: #f8e1b4;
     }
 
     body.night-mode ::-webkit-scrollbar-track {
-      background: rgba(44, 44, 44, 0.5);
+      background: rgba(74, 55, 35, 0.3);
     }
 
     body.night-mode ::-webkit-scrollbar-thumb {
-      background: url('images/emo-cursor/skull.png') center/contain no-repeat, var(--secondary);
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--secondary);
       border: 2px solid var(--primary);
     }
 
     body.night-mode ::-webkit-scrollbar-thumb:hover {
-      background: url('images/emo-cursor/skull.png') center/contain no-repeat, var(--primary);
+      background: url('images/ufo-cursor.png') center/contain no-repeat, var(--primary);
       box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
     }
 
     body.night-mode {
-      scrollbar-color: var(--secondary) rgba(44, 44, 44, 0.5);
+      scrollbar-color: var(--secondary) rgba(74, 55, 35, 0.3);
     }
 
     body.night-mode .section:nth-of-type(odd) {
-      background-color: rgba(26, 26, 26, 0.8);
+      background-color: rgba(44, 29, 15, 0.8);
     }
 
     body.night-mode .section:nth-of-type(even) {
-      background-color: rgba(44, 44, 44, 0.8);
+      background-color: rgba(74, 55, 35, 0.8);
     }
 
     body.night-mode .section h1,
@@ -91,25 +91,25 @@
     body.night-mode .event p.event-time,
     body.night-mode .event p.event-end,
     body.night-mode .event p.event-category {
-      color: #d3d3d3;
+      color: #f8e1b4;
     }
 
     body.night-mode .events-container,
     body.night-mode .submit-section,
     body.night-mode .cta-section {
-      background: rgba(26, 26, 26, 0.3);
+      background: rgba(44, 29, 15, 0.3);
     }
 
     body.night-mode .modal-content {
-      background: rgba(26, 26, 26, 0.9);
-      color: #d3d3d3;
+      background: rgba(44, 29, 15, 0.9);
+      color: #f8e1b4;
     }
 
     body.night-mode .modal-content input,
     body.night-mode .modal-content textarea,
     body.night-mode .modal-content select {
       background: rgba(255, 255, 255, 0.1);
-      color: #d3d3d3;
+      color: #f8e1b4;
     }
 
     a, button, input, textarea, select {
@@ -119,7 +119,7 @@
     nav {
       position: sticky;
       top: 0;
-      background-image: url('images/emo-background/grunge-bar.jpg');
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -128,8 +128,8 @@
       align-items: center;
       padding: 10px 30px;
       z-index: 1000;
-      border-bottom: 3px solid #800080;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      border-bottom: 3px solid #d3c9b8;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       height: 30px;
     }
 
@@ -141,14 +141,14 @@
 
     body.night-mode nav {
       background: #000000;
-      border-bottom: 3px solid var(--secondary);
+      border-bottom: 3px solid #f39c12;
     }
 
     .hamburger {
       display: none;
       background: none;
       border: none;
-      color: var(--text);
+      color: #f8e1b4;
       font-size: 1.5rem;
       cursor: pointer;
       padding: 8px;
@@ -156,7 +156,7 @@
     }
 
     .hamburger:hover {
-      color: var(--primary);
+      color: #e67e22;
       transform: scale(1.1);
     }
 
@@ -168,9 +168,9 @@
     }
 
     nav a {
-      color: var(--text);
+      color: #f8e1b4;
       text-decoration: none;
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Creepster', cursive, sans-serif;
       font-size: 1.2rem;
       padding: 10px 15px;
       border-radius: 8px;
@@ -183,9 +183,9 @@
     }
 
     nav a:hover {
-      background-color: var(--primary);
-      color: #000000;
-      box-shadow: 0 0 12px var(--primary), 0 0 20px var(--secondary);
+      background-color: #ef75ad;
+      color: #2b1b0f;
+      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
       transform: translateY(-2px);
     }
 
@@ -209,11 +209,18 @@
       transition: transform 0.2s;
     }
 
+    .nav- {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      margin-right: 15px;
+    }
+
     .theme-toggle {
       background: none;
-      border: 2px solid var(--text);
-      color: var(--text);
-      font-family: 'Shadows Into Light', cursive;
+      border: 2px solid #ffff;
+      color: #f8e1b4;
+      font-family: 'Bebas Neue', cursive;
       font-size: 0.9rem;
       padding: 6px 10px;
       border-radius: 6px;
@@ -222,9 +229,9 @@
     }
 
     .theme-toggle:hover {
-      background: var(--primary);
-      color: #000000;
-      box-shadow: 0 0 12px var(--primary), 0 0 20px var(--secondary);
+      background: #ef75ad;
+      color: #2b1b0f;
+      box-shadow: 0 0 12px #ef75ad, 0 0 20px #ef75ad;
       transform: translateY(-2px);
     }
 
@@ -243,32 +250,32 @@
     .nav-login input {
       padding: 8px 12px;
       border-radius: 6px;
-      border: 1px solid var(--primary);
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
+      border: 1px solid #ef75ad;
+      background: rgba(255, 255, 255, 0.2);
+      color: #f8e1b4;
       font-size: 0.9rem;
       transition: border-color 0.3s, background 0.3s;
     }
 
     .nav-login input:focus {
       outline: none;
-      border-color: var(--secondary);
-      background: rgba(255, 255, 255, 0.2);
+      border-color: #f39c12;
+      background: rgba(255, 255, 255, 0.3);
     }
 
     .nav-login input::placeholder {
-      color: var(--text);
+      color: #f8e1b4;
       opacity: 0.8;
     }
 
     .nav-login button {
       padding: 8px 15px;
-      background-color: var(--primary);
+      background-color: #ffff;
       color: #000000;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      font-family: 'Shadows Into Light', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 0.9rem;
       transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
     }
@@ -278,11 +285,12 @@
     }
 
     .nav-login button:hover {
-      background-color: var(--secondary);
-      box-shadow: 0 0 12px var(--primary), 0 0 20px var(--secondary);
+      background-color: #ef75ad;
+      box-shadow: 0 0 12px #ffff, 0 0 20px #ef75ad;
       transform: translateY(-2px);
     }
 
+    /* Dropdown Styles */
     .dropdown {
       position: relative;
       display: inline-block;
@@ -295,12 +303,12 @@
     .dropdown-menu {
       display: block;
       position: absolute;
-      background: rgba(26, 26, 26, 0.95);
+      background: rgba(44, 29, 15, 0.95);
       min-width: 180px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       z-index: 1001;
       border-radius: 8px;
-      border: 2px solid var(--primary);
+      border: 2px solid #ef75ad;
       top: 100%;
       left: 0;
       margin-top: 8px;
@@ -317,25 +325,29 @@
     }
 
     body.night-mode .dropdown-menu {
-      background: rgba(44, 44, 44, 0.95);
-      border-color: var(--secondary);
+      background: rgba(74, 55, 35, 0.95);
+      border-color: #f39c12;
     }
 
     .dropdown-menu a {
       display: block;
       padding: 12px 18px;
-      color: var(--text);
+      color: #f8e1b4;
       text-decoration: none;
-      font-family: 'Shadows Into Light', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
       text-transform: uppercase;
       transition: background 0.3s, color 0.3s, box-shadow 0.3s;
     }
 
     .dropdown-menu a:hover {
-      background-color: var(--primary);
-      color: #000000;
-      box-shadow: 0 0 10px var(--primary) inset;
+      background-color: #ef75ad;
+      color: #2b1b0f;
+      box-shadow: 0 0 10px #ef75ad inset;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
     }
 
     .modal {
@@ -345,26 +357,26 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.5);
       z-index: 2000;
       justify-content: center;
       align-items: center;
     }
 
     .modal-content {
-      background: rgba(26, 26, 26, 0.9);
+      background: rgba(255, 255, 255, 0.9);
       padding: 20px;
       border-radius: 10px;
       max-width: 400px;
       width: 90%;
       text-align: center;
-      border: 2px solid var(--primary);
+      border: 2px solid #e67e22;
       position: relative;
     }
 
     .modal-content h3 {
-      font-family: 'Permanent Marker', cursive;
-      color: var(--text);
+      font-family: 'Bebas Neue', cursive;
+      color: #2b1b0f;
       margin-bottom: 20px;
     }
 
@@ -375,9 +387,9 @@
       padding: 10px;
       margin-bottom: 15px;
       border-radius: 5px;
-      border: 1px solid var(--primary);
+      border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
+      color: #2b1b0f;
     }
 
     .modal-content input[type="file"] {
@@ -388,20 +400,20 @@
 
     .modal-content button {
       padding: 10px 20px;
-      background-color: var(--primary);
-      color: #000000;
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-family: 'Shadows Into Light', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1em;
       transition: background-color 0.3s, box-shadow 0.3s;
       margin: 0 10px;
     }
 
     .modal-content button:hover {
-      background-color: var(--secondary);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .modal-content .close-button {
@@ -413,6 +425,7 @@
       padding: 5px 10px;
     }
 
+    /* Sidebar Widgets */
     .sidebar-widgets {
       position: fixed;
       bottom: 20px;
@@ -432,11 +445,11 @@
     }
 
     .toggle-player {
-      background-image: url('images/emo-background/grunge-bar.jpg');
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      color: var(--text);
+      color: #ffffff;
       border: 2px solid var(--emo-accent);
       border-radius: 8px;
       padding: 10px 15px;
@@ -453,21 +466,23 @@
     }
 
     .toggle-player:hover {
-      background-color: rgba(255, 105, 180, 0.3);
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px var(--primary);
+      background-color: rgba(230, 126, 34, 0.3);
+      background-blend-bg-color: #ffffff;
+      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
       transform: scale(1.05);
     }
 
     body.night-mode .toggle-player {
       background: #000000;
-      background-image: url('images/emo-background/grunge-bar.jpg');
-      color: var(--text);
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+      color: #ffffff;
       border-color: var(--emo-accent);
     }
 
     body.night-mode .toggle-player:hover {
-      background-color: rgba(0, 206, 209, 0.3);
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px var(--secondary);
+      background-color: rgba(243, 156, 18, 0.8);
+      background-blend-bg-color: #000000;
+      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
     }
 
     .toggle-image {
@@ -486,7 +501,7 @@
       overflow: hidden;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
       display: none;
-      color: var(--text);
+      color: #ffffff;
     }
 
     .player-wrapper.active {
@@ -496,7 +511,7 @@
     body.night-mode .player-wrapper {
       background: #000000;
       border-color: var(--secondary);
-      color: var(--text);
+      color: #ffffff;
     }
 
     .emo-playlist-player iframe {
@@ -513,11 +528,11 @@
     }
 
     .toggle-newsletter {
-      background-image: url('images/emo-background/grunge-bar.jpg');
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      color: var(--text);
+      color: #ffffff;
       border: 2px solid var(--emo-accent);
       border-radius: 8px;
       padding: 10px 15px;
@@ -534,26 +549,28 @@
     }
 
     .toggle-newsletter:hover {
-      background-color: rgba(255, 105, 180, 0.3);
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px var(--primary);
+      background-color: rgba(230, 126, 34, 0.25);
+      background-blend-bg-color: #333333;
+      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
       transform: scale(1.05);
     }
 
     body.night-mode .toggle-newsletter {
       background: #000000;
-      background-image: url('images/emo-background/grunge-bar.jpg');
-      color: var(--text);
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+      color: #ffffff;
       border-color: var(--emo-accent);
     }
 
     body.night-mode .toggle-newsletter:hover {
-      background-color: rgba(0, 206, 209, 0.3);
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px var(--secondary);
+      background-color: rgba(243, 156, 18, 0.75);
+      background-blend-bg-color: #000000;
+      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
     }
 
     .newsletter-wrapper {
       width: 240px;
-      background: rgba(26, 26, 26, 0.9);
+      background: rgba(44, 29, 15, 0.9);
       border: 2px solid var(--primary);
       border-radius: 10px;
       padding: 15px;
@@ -566,20 +583,20 @@
     }
 
     body.night-mode .newsletter-wrapper {
-      background: rgba(44, 44, 44, 0.9);
+      background: rgba(74, 55, 35, 0.9);
       border-color: var(--secondary);
     }
 
     .newsletter-wrapper h3 {
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
-      color: var(--primary);
+      color: #f39c12;
       margin-bottom: 10px;
     }
 
     .newsletter-wrapper p {
       font-size: 0.8rem;
-      color: var(--text);
+      color: #f39c12;
       margin-bottom: 15px;
     }
 
@@ -591,9 +608,9 @@
       width: 100%;
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid var(--primary);
+      border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
+      color: #f8e1b4;
       font-size: 0.9rem;
       margin-bottom: 10px;
     }
@@ -601,30 +618,30 @@
     .newsletter-wrapper button {
       width: 100%;
       padding: 8px;
-      background-color: var(--primary);
-      color: #000000;
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-family: 'Shadows Into Light', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1rem;
       transition: background-color 0.3s, box-shadow 0.3s;
     }
 
     .newsletter-wrapper button:hover {
-      background-color: var(--secondary);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .floating-submit-button {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background-image: url('images/emo-background/grunge-bar.jpg');
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      color: var(--text);
+      color: #ffffff;
       border: 2px solid var(--emo-accent);
       border-radius: 8px;
       padding: 10px 15px;
@@ -636,30 +653,33 @@
       text-transform: uppercase;
       width: 200px;
       text-decoration: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       z-index: 1000;
       transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
       white-space: nowrap;
     }
 
     .floating-submit-button:hover {
-      background-color: rgba(255, 105, 180, 0.3);
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px var(--primary);
+      background-color: rgba(230, 126, 34, 0.3);
+      background-blend-bg-color: #ffffff;
+      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
       transform: scale(1.05);
     }
 
     body.night-mode .floating-submit-button {
       background: #000000;
-      background-image: url('images/emo-background/grunge-bar.jpg');
-      color: var(--text);
+      background-image: url('images/Webpage_Bar_Icons/Task_Bar_2.jpg');
+      color: #ffffff;
       border-color: var(--emo-accent);
     }
 
     body.night-mode .floating-submit-button:hover {
-      background-color: rgba(0, 206, 209, 0.3);
-      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px var(--secondary);
+      background-color: rgba(243, 156, 18, 0.8);
+      background-blend-bg-color: #000000;
+      box-shadow: 0 0 10px var(--emo-accent), 0 0 20px rgba(75, 0, 130, 0.5);
     }
 
+    /* Responsive Adjustments */
     @media only screen and (max-width: 768px) {
       .hamburger {
         display: block;
@@ -669,7 +689,7 @@
         display: none;
         flex-direction: column;
         width: 100%;
-        background: rgba(26, 26, 26, 0.9);
+        background: rgba(44, 29, 15, 0.9);
         padding: 10px 0;
         position: absolute;
         top: 70px;
@@ -677,7 +697,7 @@
       }
 
       body.night-mode .nav-links {
-        background: rgba(44, 44, 44, 0.9);
+        background: rgba(74, 55, 35, 0.9);
       }
 
       .nav-links.active {
@@ -686,7 +706,7 @@
 
       .dropdown-menu {
         position: static;
-        background: rgba(44, 44, 44, 0.9);
+        background: rgba(74, 55, 35, 0.9);
         box-shadow: none;
         border: none;
         margin: 0px 5px;
@@ -912,22 +932,16 @@
     }
 
     .header {
-      background: url('images/emo-background/emo-festival.jpg') center/cover no-repeat;
+      background: url('images/Cover-Photo/last-try.png') center/cover no-repeat;
       height: 70vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: var(--text);
+      color: #f8e1b4;
       position: relative;
       text-shadow: 0 0 10px var(--primary);
-      animation: flicker 5s infinite alternate;
-    }
-
-    @keyframes flicker {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-      20%, 24%, 55% { opacity: 0.8; }
     }
 
     .header-logo {
@@ -936,11 +950,11 @@
       border-radius: 50%;
       object-fit: cover;
       z-index: 2;
-      filter: drop-shadow(0 0 15px var(--primary)) drop-shadow(0 0 25px var(--secondary));
+      filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
     }
 
     .header h1 {
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 4em;
       max-width: 90%;
       letter-spacing: 2px;
@@ -963,14 +977,14 @@
       padding: 12px 20px;
       border-radius: 5px;
       text-decoration: none;
-      font-family: 'Shadows Into Light', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.2em;
       transition: background-color 0.3s, color 0.3s;
     }
 
     .apply-button {
       background: var(--primary);
-      color: #000000;
+      color: var(--text);
       animation: glow 3s ease-in-out infinite alternate;
     }
 
@@ -982,17 +996,17 @@
 
     .apply-button:hover, .secondary-button:hover {
       background: var(--secondary);
-      color: #000000;
+      color: var(--background);
     }
 
     @keyframes glow {
       from { 
-        text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--emo-accent);
+        text-shadow: 0 0 10px #e67e22, 0 0 20px #e67e22, 0 0 30px #d35400;
         box-shadow: 0 0 5px var(--primary); 
       }
       to { 
-        text-shadow: 0 0 20px var(--secondary), 0 0 30px var(--secondary), 0 0 40px var(--emo-accent);
-        box-shadow: 0 0 15px var(--secondary); 
+        text-shadow: 0 0 20px #f39c12, 0 0 30px #f39c12, 0 0 40px #e67e22;
+        box-shadow: 0 0 15px var(--primary); 
       }
     }
 
@@ -1003,12 +1017,12 @@
       transform: translateX(-50%);
       font-size: 1.5rem;
       animation: bounce 2s infinite;
-      color: var(--text);
+      color: #f8e1b4;
       transition: box-shadow 0.3s;
     }
 
     .scroll-down:hover {
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     @keyframes bounce {
@@ -1026,9 +1040,9 @@
     .event-filter select {
       padding: 10px;
       border-radius: 5px;
-      border: 1px solid var(--primary);
+      border: 1px solid #e67e22;
       background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
+      color: #2b1b0f;
       font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       width: 100%;
@@ -1036,19 +1050,19 @@
 
     body.night-mode .event-filter select {
       background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
+      color: #f8e1b4;
     }
 
     .cta-section, .submit-section {
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid var(--primary);
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
       padding: 40px 20px;
       border-radius: 10px;
       flex: 1;
       min-width: 300px;
       max-width: 580px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .submit-cta-container {
@@ -1061,15 +1075,15 @@
     }
 
     .cta-section h2, .submit-section h2 {
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 2.5rem;
-      color: var(--text);
+      color: #2b1b0f;
       margin-bottom: 20px;
     }
 
     .cta-section p, .submit-section p {
       font-size: 1.1rem;
-      color: var(--text);
+      color: #2b1b0f;
       margin-bottom: 20px;
     }
 
@@ -1077,48 +1091,48 @@
     body.night-mode .cta-section p,
     body.night-mode .submit-section h2,
     body.night-mode .submit-section p {
-      color: var(--text);
+      color: #f8e1b4;
     }
 
     .cta-button, .submit-button {
       display: inline-block;
       padding: 12px 20px;
-      background-color: var(--primary);
-      color: #000000;
+      background-color: #e67e22;
+      color: #2b1b0f;
       text-decoration: none;
       border-radius: 5px;
-      font-family: 'Shadows Into Light', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.2rem;
       transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
     }
 
     .cta-button:hover, .submit-button:hover {
-      background-color: var(--secondary);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
       transform: scale(1.05);
     }
 
     .section {
       padding: 80px 20px;
       text-align: center;
-      background: url('images/emo-background/grunge-texture.png') center/cover;
-      border-top: 1px solid var(--primary);
-      border-bottom: 1px solid var(--primary);
+      background: url('images/dusty-texture.png') center/cover;
+      border-top: 1px solid #e67e22;
+      border-bottom: 1px solid #e67e22;
     }
 
     .section:nth-of-type(odd) {
-      background-color: rgba(26, 26, 26, 0.8);
+      background-color: rgba(244, 228, 188, 0.8);
     }
 
     .section:nth-of-type(even) {
-      background-color: rgba(44, 44, 44, 0.8);
+      background-color: rgba(217, 185, 155, 0.8);
     }
 
     .section h1, .section h2 {
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 3em;
       margin-bottom: 20px;
-      color: var(--text);
+      color: #2b1b0f;
       letter-spacing: 1px;
     }
 
@@ -1127,7 +1141,7 @@
       max-width: 800px;
       margin: 0 auto 30px auto;
       line-height: 1.6;
-      color: var(--text);
+      color: #2b1b0f;
     }
 
     .events-grid {
@@ -1148,9 +1162,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.1);
       padding: 15px;
-      border: 1px solid var(--primary);
+      border: 1px solid #e67e22;
       box-sizing: border-box;
       transition: box-shadow 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
       height: 100%;
@@ -1164,7 +1178,7 @@
     }
 
     .event:hover {
-      box-shadow: 0 6px 12px rgba(255, 105, 180, 0.5), 0 0 15px var(--primary), 0 0 25px var(--secondary);
+      box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
       transform: translateY(-5px);
     }
 
@@ -1174,20 +1188,20 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 15px;
-      border: 2px solid var(--secondary);
+      border: 2px solid #f39c12;
     }
 
     .event h3 {
       margin: 10px 0 5px;
-      font-family: 'Permanent Marker', cursive;
+      font-family: 'Bebas Neue', cursive;
       font-size: 1.5em;
-      color: var(--text);
+      color: #000000;
       line-height: 1.2;
     }
 
     .event p {
       font-size: 1em;
-      color: var(--text);
+      color: #000000;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
@@ -1195,22 +1209,22 @@
 
     .event p.event-date, .event p.event-time, .event p.event-end, .event p.event-category {
       font-size: 0.95em;
-      color: var(--text);
+      color: #2b1b0f;
       margin: 5px 0;
       line-height: 1.4;
       max-width: 90%;
     }
 
     .event p.event-date strong, .event p.event-time strong, .event p.event-end strong, .event p.event-category strong {
-      color: var(--primary);
+      color: #e67e22;
     }
 
     .event .edit-button, .event .delete-button {
       display: none;
       position: absolute;
       top: 5px;
-      background: rgba(26, 26, 26, 0.7);
-      color: var(--text);
+      background: rgba(44, 29, 15, 0.7);
+      color: #f8e1b4;
       border: none;
       border-radius: 50%;
       width: 24px;
@@ -1233,15 +1247,15 @@
     }
 
     .event .edit-button:hover, .event .delete-button:hover {
-      background: rgba(255, 105, 180, 0.9);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      background: rgba(230, 126, 34, 0.9);
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .edit-section-button {
       display: none;
       padding: 8px 12px;
-      background-color: var(--primary);
-      color: #000000;
+      background-color: #e67e22;
+      color: #2b1b0f;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -1256,30 +1270,30 @@
     }
 
     .edit-section-button:hover {
-      background-color: var(--secondary);
-      box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
+      background-color: #f39c12;
+      box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
     }
 
     .events-container {
       max-width: 1200px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid var(--primary);
+      background: rgba(255, 255, 255, 0.15);
+      border: 2px solid #e67e22;
       border-radius: 10px;
       padding: 40px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      background-color: #1a1a1a;
-      color: var(--text);
-      border-top: 2px solid var(--primary);
+      background-color: #2b1b0f;
+      color: #f8e1b4;
+      border-top: 2px solid #e67e22;
     }
 
     body.night-mode footer {
-      background-color: #2c2c2c;
+      background-color: #4a3723;
     }
   </style>
 </head>
@@ -1289,7 +1303,7 @@
   <button class="hamburger" aria-label="Toggle Menu">☰</button>
   <div class="nav-links">
     <div class="dropdown">
-      <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#about" class="dropdown-toggle"><img src="images/emo-icons/skull-crown.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
+      <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
       <div class="dropdown-menu">
         <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#about">Our Camp</a>
         <a href="https://shanonrichards.github.io/Kiwiburn-Camp/index.html#members">Core Camp Crew</a>
@@ -1299,7 +1313,7 @@
       </div>
     </div>
     <div class="dropdown">
-      <a href="events.html" class="dropdown-toggle"><img src="images/emo-icons/broken-heart.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
+      <a href="events.html" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Heart_Webbar_Moving.gif" alt="Events Icon" class="nav-icon">Events <span class="dropdown-arrow">▼</span></a>
       <div class="dropdown-menu">
         <a href="events.html#upcoming-events">Upcoming Events</a>
         <a href="events.html#past-events">Past Events</a>
@@ -1307,7 +1321,7 @@
       </div>
     </div>
     <div class="dropdown">
-      <a href="#join" class="dropdown-toggle"><img src="images/emo-icons/tear-smile.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
+      <a href="#join" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif" alt="Join Icon" class="nav-icon">Join Us <span class="dropdown-arrow">▼</span></a>
       <div class="dropdown-menu">
         <a href="join-camp.html">Membership Info</a>
         <a href="join-camp.html">Apply to Join</a>
@@ -1315,10 +1329,10 @@
         <a href="Task_Roster.html">Task/Roster</a>
       </div>
     </div>
-    <a href="gallery.html"><img src="images/emo-icons/crying-eye.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
-    <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/emo-icons/cloud-tear.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
-    <a href="contact.html"><img src="images/emo-icons/lightning-heart.gif" alt="Contact Icon" class="nav-icon">Contact</a>
-    <a href="FAQ.html"><img src="images/emo-icons/skull-question.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
+    <a href="gallery.html"><img src="images/Webpage_Bar_Icons/Eye_Webbar_Movings.gif" alt="Gallery Icon" class="nav-icon">Gallery</a>
+    <a href="javascript:void(0)" onclick="toggleNewsletter()"><img src="images/Webpage_Bar_Icons/Cloud_Webbar_Moving.gif" alt="Newsletter Icon" class="nav-icon">Newsletter</a>
+    <a href="contact.html"><img src="images/Webpage_Bar_Icons/Thunder_Webbar_Moving.gif" alt="Contact Icon" class="nav-icon">Contact</a>
+    <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/Skull_Webbars_Moving.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
   </div>
   <div class="nav-right">
     <div class="nav-login">
@@ -1342,9 +1356,9 @@
 </div>
 
 <header class="header" id="home">
-  <img src="images/Logo/Emo_Heart.png" alt="Cosmic Rejex Logo" class="header-logo">
+  <img src="images/Logo/Logo_Update.png" alt="Cosmic Rejex Logo" class="header-logo">
   <h1>Cosmic Rejex at Kiwiburn</h1>
-  <p>Embrace the chaos and feel the vibe at Kiwiburn!</p>
+  <p>Join us in creating unforgettable experiences at Kiwiburn!</p>
   <div class="header-ctas">
     <a href="submit-event.html" class="apply-button">Submit Your Event</a>
     <a href="#upcoming-events" class="secondary-button">View Events</a>
@@ -1358,7 +1372,7 @@
 <div class="sidebar-widgets">
   <div class="emo-playlist-player">
     <button class="toggle-player" onclick="togglePlayer()">
-      <img src="images/emo-icons/playlist-tear.gif" alt="Emo Playlist Toggle Image" class="toggle-image">
+      <img src="images/Spotify-Background/Spotify_Playlist.gif" alt="Emo Playlist Toggle Image" class="toggle-image">
       Play Emo Playlist
     </button>
     <div class="player-wrapper" id="player-wrapper">
@@ -1370,13 +1384,13 @@
   </div>
   <div class="newsletter-popup" id="newsletter">
     <button class="toggle-newsletter" onclick="toggleNewsletter()">
-      <img src="images/emo-icons/newsletter-skull.gif" alt="Newsletter Toggle Image" class="toggle-image">
+      <img src="images/Spotify-Background/News_Letter.gif" alt="Newsletter Toggle Image" class="toggle-image">
       Stay in Touch
     </button>
     <div class="newsletter-wrapper" id="newsletter-wrapper">
       <div class="form-container">
         <h3>Stay in Touch</h3>
-        <p>Join our emo tribe for event updates.</p>
+        <p>Stay up to date on upcoming events.</p>
         <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
         <button onclick="submitNewsletter()">Subscribe</button>
       </div>
@@ -1388,7 +1402,7 @@
 <div class="events-container">
   <section class="section" id="upcoming-events">
     <h1>Upcoming Events</h1>
-    <p>Dive into our next wave of emo-fueled cosmic chaos at Kiwiburn! Check back for updates.</p>
+    <p>Stay tuned for our next cosmic adventures at Kiwiburn! No events are confirmed yet, but check back soon for updates.</p>
     <div class="events-grid" ondragover="allowDrop(event)" ondrop="dropEvents(event)">
     </div>
     <button class="edit-section-button" onclick="openModal('events-modal')">Edit Section</button>
@@ -1396,7 +1410,7 @@
 
   <section class="section" id="past-events">
     <h1>Past Events (2025)</h1>
-    <p>From tear-soaked singalongs to raw performances, relive our cosmic moments.</p>
+    <p>From silent discos to communal art builds, here’s a taste of what we’ve created together.</p>
     <div class="event-filter">
       <select id="event-filter" aria-label="Filter Events by Category">
         <option value="all">All Categories</option>
@@ -1412,7 +1426,7 @@
       <div class="event" data-category="Music">
         <img src="images/Event-Images/Emo-Night-Event.jpg" alt="Emo Night Poster">
         <h3>Emo Night: "It's not a phase mom! It's a tribute!"</h3>
-        <p>Unleash your inner angst at our Emo/Pop Punk Hour! Live bands, neon lights, and a haze of smoke set the stage for your favorite emo anthems. Dress in black, scream the lyrics, and let the tears flow. This is our tribute to the emo era.</p>
+        <p>Get ready to unleash your inner rebel at our Emo/Pop Punk Hour! Featuring a killer live band, dazzling light shows, a smoke-filled atmosphere, and enough angst to fuel your teenage dreams (or nightmares). Dress up, sing your heart out, and let the feels take over—this is the ultimate tribute to your favorite emo and pop-punk anthems. Don't miss out!</p>
         <p class="event-date"><strong>Date:</strong> January 23, 2025</p>
         <p class="event-time"><strong>Time:</strong> 8:00 PM</p>
         <p class="event-end"><strong>End:</strong> January 23, 2025, 11:59 PM</p>
@@ -1422,8 +1436,8 @@
       </div>
       <div class="event" data-category="Performance">
         <img src="images/Event-Images/Pole-Event.jpg" alt="Pole in the paddock">
-        <h3>Pole in the Paddock</h3>
-        <p>Witness raw emotion through pole performance. Strength, vulnerability, and artistry collide in a display that’s both fierce and fragile. Feel the Kiwiburn spirit in every spin.</p>
+        <h3>Pole in the paddock</h3>
+        <p>Join us for an exciting pole performance showcasing strength, grace, and creativity. Watch as some amazing humans twist, flip, and move in ways that'll leave you in awe. It’s going to be fun, fierce, and full of Kiwiburn energy – don’t miss it!</p>
         <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
         <p class="event-time"><strong>Time:</strong> 6:00 PM</p>
         <p class="event-end"><strong>End:</strong> January 24, 2025, 7:00 PM</p>
@@ -1434,7 +1448,7 @@
       <div class="event" data-category="Workshop">
         <img src="images/Event-Images/Cosmic-Connections-Event.jpg" alt="Cosmic Connections">
         <h3>Cosmic Connections</h3>
-        <p>Feel the universe’s pull? Share your stories of cosmic encounters in a safe space where doubts turn to wonder. Learn how to reach out to the stars and find your place among them.</p>
+        <p>Ever feel like the sky is watching you? Join us as we share stories of extraterrestrial encounters, where skeptics become seekers and believers find their tribe. This is a space to explore the unknown—and even learn tools for making contact yourself. Bring an open mind and heart!</p>
         <p class="event-date"><strong>Date:</strong> January 24, 2025</p>
         <p class="event-time"><strong>Time:</strong> 8:30 PM</p>
         <p class="event-end"><strong>End:</strong> January 24, 2025, 9:30 PM</p>
@@ -1445,7 +1459,7 @@
       <div class="event" data-category="Music">
         <img src="images/Event-Images/DJ-Poster.jpg" alt="DJ Showcase & Open Decks">
         <h3>DJ Showcase & Open Decks</h3>
-        <p>Lose yourself in the beats at our DJ Showcase & Open Decks. Our camp DJs drop emo-infused mixes, then the decks open for you to share your soul. From darkwave to pop-punk remixes, it’s a night of raw energy.</p>
+        <p>Spin some tunes or vibe to the beats at our DJ Showcase & Open Decks! Our talented camp DJs will kick things off, followed by an open deck session where anyone can jump in and share their mixes. From drum and bass to emo remixes, expect a night of eclectic sounds and high energy.</p>
         <p class="event-date"><strong>Date:</strong> January 25, 2025</p>
         <p class="event-time"><strong>Time:</strong> 9:00 PM</p>
         <p class="event-end"><strong>End:</strong> January 26, 2025, 1:00 AM</p>
@@ -1460,14 +1474,14 @@
 <div class="submit-cta-container">
   <section class="submit-section" id="submit">
     <h2>Submit an Event</h2>
-    <p>Got a dark, dreamy idea? Share it and let’s bring it to life at Kiwiburn.</p>
+    <p>Got an idea for an epic event? Share it with us and let’s make it happen at Kiwiburn!</p>
     <button class="edit-section-button" onclick="openModal('submit-modal')">Edit Section</button>
     <a href="submit-event.html" class="submit-button">Submit Your Event</a>
   </section>
 
   <section class="cta-section">
-    <h2>Join Our Cosmic Tribe</h2>
-    <p>Stay connected with Cosmic Rejex. Sign up for our newsletter to vibe with our events and join the Kiwiburn chaos.</p>
+    <h2>Join Our Cosmic Community</h2>
+    <p>Stay in the loop with Cosmic Rejex! Sign up for our newsletter to get updates on events, camps, and how you can contribute to the next Kiwiburn.</p>
     <a href="javascript:void(0)" onclick="toggleNewsletter()" class="cta-button">Sign Up Now</a>
   </section>
 </div>
