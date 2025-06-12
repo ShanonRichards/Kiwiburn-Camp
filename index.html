@@ -1,35 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<style>
-  .custom-container {
-    border: var(--border-thickness, 4px) solid var(--border-color, #e67e22);
-    border-image-source: var(--border-image, none);
-    border-image-slice: 30;
-    border-image-repeat: round;
-    border-image-width: 10px;
-    padding: 20px;
-  }
-
-  @media only screen and (max-width: 768px) {
-    .custom-container {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 15px;
-      border-width: var(--border-thickness-mobile, 3px);
-    }
-  }
-
-  @media only screen and (max-width: 480px) {
-    .custom-container {
-      padding: 10px;
-      border-width: var(--border-thickness-mobile, 2px);
-    }
-  }
-</style>
-
 <link href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Creepster&amp;display=swap" rel="stylesheet"/>
 <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -2595,33 +2566,6 @@ Copy
       }
     }
   </style>
-
-<style>
-.custom-container {
-  border-style: solid;
-  border-width: var(--border-thickness, 6px);
-  border-color: var(--border-color, #e67e22);
-  border-image-source: var(--border-image, none);
-  border-image-slice: 20 fill;
-  border-image-width: var(--border-image-width, 10px);
-  border-image-repeat: round;
-  padding: 20px;
-  box-sizing: border-box;
-}
-@media only screen and (max-width: 768px) {
-  .custom-container {
-    padding: 15px;
-    border-width: var(--border-thickness-mobile, 4px);
-  }
-}
-@media only screen and (max-width: 480px) {
-  .custom-container {
-    padding: 10px;
-    border-width: var(--border-thickness-mobile, 3px);
-  }
-}
-</style>
-
 </head>
 <body>
 <nav>
@@ -2881,7 +2825,7 @@ Copy
 </form>
 </div>
 </div>
-<div class="about-container custom-container">
+<div class="about-container">
 <section class="section about-section" id="about">
 <div class="title-container">
 <img alt="Left Alien Icon" class="title-icon" src="images/Index-Html/Index_Containers/About_Our_Camp/Metal_Left_Title.png"/>
@@ -3521,7 +3465,7 @@ body.night-mode .about-description {
 }
 </style>
 <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
-<div class="members-container custom-container">
+<div class="members-container">
 <section class="section" id="members">
 <h1>Meet Our Core Camp Crew</h1>
 <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
@@ -3579,7 +3523,7 @@ body.night-mode .about-description {
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
 </section>
 </div>
-<div class="mission-container custom-container">
+<div class="mission-container">
 <section class="section" id="mission">
 <h1>Our Mission</h1>
 <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
@@ -3859,23 +3803,1970 @@ body.night-mode .setup-description {
 <button onclick="saveSetupDetails()">Save</button>
 </div>
 </div>
-
-
-
+<script>
+function saveSetupDetails() {
+  document.querySelector('.setup-section h1').textContent = document.getElementById('setup-title').value;
+  closeModal('setup-modal');
+}
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    if (hamburger && navLinks) {
-      hamburger.addEventListener('click', function () {
-        navLinks.classList.toggle('active');
+$(document).ready(function() {
+  let zIndex = 10;
+  let lastSelectedImage = null;
+  let itemCounter = 0;
+
+  const categories = [
+    {
+      name: 'Hats/Beanies',
+      items: [
+        { src: 'images/Rejex_Me/Emo_Beanie_Hat_1.png', alt: 'Emo Beanie 1' },
+        { src: 'images/Rejex_Me/Emo_Beanie_Hat_2.png', alt: 'Emo Beanie 2' },
+        { src: 'images/Rejex_Me/Emo_Beanie_Hat_3.png', alt: 'Emo Beanie 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Beanie+4', alt: 'Emo Beanie 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Beanie+5', alt: 'Emo Beanie 5' }
+      ]
+    },
+    {
+      name: 'Eyewear',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+1', alt: 'Eyewear 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+2', alt: 'Eyewear 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+3', alt: 'Eyewear 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+4', alt: 'Eyewear 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyewear+5', alt: 'Eyewear 5' }
+      ]
+    },
+    {
+      name: 'Hair',
+      items: [
+        { src: 'images/Rejex_Me/Emo_Hair_Element.png', alt: 'Emo Hair 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Hair+2', alt: 'Emo Hair 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Hair+3', alt: 'Emo Hair 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Hair+4', alt: 'Emo Hair 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Hair+5', alt: 'Emo Hair 5' }
+      ]
+    },
+    {
+      name: 'Necklaces/Chokers',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+1', alt: 'Necklace 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+2', alt: 'Necklace 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+3', alt: 'Necklace 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+4', alt: 'Necklace 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Necklace+5', alt: 'Necklace 5' }
+      ]
+    },
+    {
+      name: 'Earrings',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Earring+1', alt: 'Earring 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Earring+2', alt: 'Earring 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Earring+3', alt: 'Earring 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Earring+4', alt: 'Earring 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Earring+5', alt: 'Earring 5' }
+      ]
+    },
+    {
+      name: 'Eyebrows',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+1', alt: 'Eyebrow 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+2', alt: 'Eyebrow 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+3', alt: 'Eyebrow 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+4', alt: 'Eyebrow 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyebrow+5', alt: 'Eyebrow 5' }
+      ]
+    },
+    {
+      name: 'Eyes',
+      items: [
+        { src: 'images/Rejex_Me/Alien_Eyes.png', alt: 'Alien Eyes 1' },
+        { src: 'images/Rejex_Me/Alien_Eyes_Blue.png', alt: 'Alien Eyes Blue' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyes+3', alt: 'Eyes 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyes+4', alt: 'Eyes 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyes+5', alt: 'Eyes 5' }
+      ]
+    },
+    {
+      name: 'Eyeliner/Makeup',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+1', alt: 'Eyeliner 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+2', alt: 'Eyeliner 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+3', alt: 'Eyeliner 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+4', alt: 'Eyeliner 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Eyeliner+5', alt: 'Eyeliner 5' }
+      ]
+    },
+    {
+      name: 'Face Tattoos/Markings',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+1', alt: 'Tattoo 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+2', alt: 'Tattoo 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+3', alt: 'Tattoo 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+4', alt: 'Tattoo 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Tattoo+5', alt: 'Tattoo 5' }
+      ]
+    },
+    {
+      name: 'Piercings',
+      items: [
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+1', alt: 'Piercing 1' },
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+2', alt: 'Piercing 2' },
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+3', alt: 'Piercing 3' },
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+4', alt: 'Piercing 4' },
+        { src: 'https://via.placeholder.com/150x200?text=Piercing+5', alt: 'Piercing 5' }
+      ]
+    }
+  ];
+
+  const sidebar = $('#category-sidebar');
+  categories.forEach(category => {
+    const details = $('<details>').appendTo(sidebar);
+    $('<summary>').text(category.name).appendTo(details);
+    const itemContainer = $('<div>').appendTo(details);
+    category.items.forEach(item => {
+      const itemId = `custom-img${++itemCounter}`;
+      const categoryItem = $('<div>').addClass('category-item').attr('data-elem-id', itemId).append(
+        $('<img>').attr({
+          src: item.src,
+          alt: item.alt,
+          'data-elem-id': itemId
+        })
+      );
+      const removeBtn = $('<button>').addClass('remove-btn').text('x').attr('data-elem-id', itemId);
+      categoryItem.append(removeBtn);
+      categoryItem.appendTo(itemContainer);
+    });
+  });
+
+  $('.category-item').draggable({
+    helper: 'clone',
+    cursor: 'move',
+    revert: 'invalid',
+    start: function(event, ui) {
+      ui.helper.css({
+        'width': '80px',
+        'height': 'auto',
+        'opacity': '0.7',
+        'transform': 'scale(1)'
       });
     }
   });
-</script>
 
-</body>
+  $('.category-item').on('click', function(event) {
+    if ($(event.target).hasClass('remove-btn')) {
+      const elemId = $(event.target).attr('data-elem-id');
+      const artboardElem = $(`.t396__elem[data-elem-id="${elemId}"]`);
+      if (artboardElem.length) {
+        artboardElem.remove();
+        if (lastSelectedImage === elemId) {
+          lastSelectedImage = null;
+          $('#rotate-slider').slider('value', 0);
+          $('#size-slider').slider('value', 1);
+        }
+      }
+      return;
+    }
+
+    const src = $(this).find('img').attr('src');
+    const alt = $(this).find('img').attr('alt');
+    const elemId = $(this).find('img').attr('data-elem-id');
+    const existing = $(`.t396__elem[data-elem-id="${elemId}"]`);
+
+    if (!existing.length) {
+      const artboard = $('.t396__artboard');
+      const artboardWidth = artboard.width();
+      const artboardHeight = artboard.height();
+      const dropX = artboardWidth / 2;
+      const dropY = artboardHeight / 2;
+
+      const elem = $('<div>').addClass('t396__elem tn-elem drag').attr({
+        'data-elem-id': elemId,
+        'data-elem-type': 'image',
+        'data-field-top-value': dropY,
+        'data-field-left-value': dropX,
+        'data-field-axisy-value': 'top',
+        'data-field-axisx-value': 'left',
+        'data-field-container-value': 'grid',
+        'data-field-top-units-value': 'px',
+        'data-field-left-units-value': 'px'
+      }).css({
+        top: dropY + 'px',
+        left: dropX + 'px',
+        transform: 'translate(-50%, -50%) scale(1)',
+        'z-index': zIndex++
+      }).append(
+        $('<div>').addClass('tn-atom').append(
+          $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
+        )
+      ).appendTo('.t396__artboard');
+
+      elem.draggable({
+        cursor: 'grabbing',
+        containment: '.t396__artboard',
+        start: function(event, ui) {
+          $(this).css('z-index', zIndex++);
+          lastSelectedImage = elemId;
+        },
+        drag: function(event, ui) {
+          const container = $(this);
+          const artboard = $('.t396__artboard');
+          const artboardWidth = artboard.width();
+          const artboardHeight = artboard.height();
+          const elemWidth = container.width();
+          const elemHeight = container.height();
+
+          const minLeft = elemWidth / 2;
+          const maxLeft = artboardWidth - elemWidth / 2;
+          const minTop = elemHeight / 2;
+          const maxTop = artboardHeight - elemHeight / 2;
+
+          ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+          ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+        },
+        stop: function(event, ui) {
+          const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+          $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+        }
+      });
+
+      elem.on('click', function(e) {
+        e.stopPropagation();
+        $(this).css('z-index', zIndex++);
+        lastSelectedImage = elemId;
+        const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+        $('#rotate-slider').slider('value', currentRotation);
+        const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+        $('#size-slider').slider('value', currentScale);
+      });
+
+      adjustImageSize(elemId, src, false, 1);
+    }
+  });
+
+  $('.t396__artboard').droppable({
+    accept: '.category-item',
+    drop: function(event, ui) {
+      const src = ui.draggable.find('img').attr('src');
+      const alt = ui.draggable.find('img').attr('alt');
+      const elemId = ui.draggable.find('img').attr('data-elem-id');
+      const existing = $(`.t396__elem[data-elem-id="${elemId}"]`);
+
+      if (!existing.length) {
+        const artboardOffset = $(this).offset();
+        const dropX = event.pageX - artboardOffset.left;
+        const dropY = event.pageY - artboardOffset.top;
+
+        const elem = $('<div>').addClass('t396__elem tn-elem drag').attr({
+          'data-elem-id': elemId,
+          'data-elem-type': 'image',
+          'data-field-top-value': dropY,
+          'data-field-left-value': dropX,
+          'data-field-axisy-value': 'top',
+          'data-field-axisx-value': 'left',
+          'data-field-container-value': 'grid',
+          'data-field-top-units-value': 'px',
+          'data-field-left-units-value': 'px'
+        }).css({
+          top: dropY + 'px',
+          left: dropX + 'px',
+          transform: 'translate(-50%, -50%) scale(1)',
+          'z-index': zIndex++
+        }).append(
+          $('<div>').addClass('tn-atom').append(
+            $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
+          )
+        ).appendTo('.t396__artboard');
+
+        elem.draggable({
+          cursor: 'grabbing',
+          containment: '.t396__artboard',
+          start: function(event, ui) {
+            $(this).css('z-index', zIndex++);
+            lastSelectedImage = elemId;
+          },
+          drag: function(event, ui) {
+            const container = $(this);
+            const artboard = $('.t396__artboard');
+            const artboardWidth = artboard.width();
+            const artboardHeight = artboard.height();
+            const elemWidth = container.width();
+            const elemHeight = container.height();
+
+            const minLeft = elemWidth / 2;
+            const maxLeft = artboardWidth - elemWidth / 2;
+            const minTop = elemHeight / 2;
+            const maxTop = artboardHeight - elemHeight / 2;
+
+            ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+            ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+          },
+          stop: function(event, ui) {
+            const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+            $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+          }
+        });
+
+        elem.on('click', function(e) {
+          e.stopPropagation();
+          $(this).css('z-index', zIndex++);
+          lastSelectedImage = elemId;
+          const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+          $('#rotate-slider').slider('value', currentRotation);
+          const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+          $('#size-slider').slider('value', currentScale);
+        });
+
+        adjustImageSize(elemId, src, false, 1);
+      }
+    }
+  });
+
+  $('.drag').draggable({
+    cursor: 'grabbing',
+    containment: '.t396__artboard',
+    start: function(event, ui) {
+      $(this).css('z-index', zIndex++);
+      if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
+        lastSelectedImage = $(this).data('elem-id');
+      }
+    },
+    drag: function(event, ui) {
+      const container = $(this);
+      const artboard = $('.t396__artboard');
+      const artboardWidth = artboard.width();
+      const artboardHeight = artboard.height();
+      const elemWidth = container.width();
+      const elemHeight = container.height();
+
+      const minLeft = elemWidth / 2;
+      const maxLeft = artboardWidth - elemWidth / 2;
+      const minTop = elemHeight / 2;
+      const maxTop = artboardHeight - elemHeight / 2;
+
+      ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+      ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+    },
+    stop: function(event, ui) {
+      if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
+        const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+        $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+      }
+    }
+  });
+
+  $('.t396__elem[data-elem-type="image"]').on('click', function(e) {
+    e.stopPropagation();
+    if ($(this).data('elem-id') !== 'custom-uploaded-img') {
+      $(this).css('z-index', zIndex++);
+      if ($(this).data('elem-id').startsWith('custom-img')) {
+        lastSelectedImage = $(this).data('elem-id');
+        const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+        $('#rotate-slider').slider('value', currentRotation);
+        const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+        $('#size-slider').slider('value', currentScale);
+      }
+    }
+  });
+
+  function adjustImageSize(elemId, imgSrc, isUploaded = false, scaleFactor = 1) {
+    const container = $(`.t396__elem[data-elem-id="${elemId}"]`);
+    const img = container.find('.tn-atom__img');
+    const artboard = $('.t396__artboard');
+    
+    let artboardHeight, artboardWidth;
+    const screenWidth = $(window).width();
+    if (screenWidth <= 320) {
+      artboardHeight = 350;
+      artboardWidth = 320;
+    } else if (screenWidth <= 479) {
+      artboardHeight = 400;
+      artboardWidth = 479;
+    } else if (screenWidth <= 639) {
+      artboardHeight = 450;
+      artboardWidth = 639;
+    } else if (screenWidth <= 959) {
+      artboardHeight = 500;
+      artboardWidth = 959;
+    } else if (screenWidth <= 1199) {
+      artboardHeight = 550;
+      artboardWidth = 1199;
+    } else {
+      artboardHeight = 600;
+      artboardWidth = artboard.width();
+    }
+
+    const tempImg = new Image();
+    tempImg.src = imgSrc;
+    tempImg.onload = function() {
+      const imgWidth = tempImg.naturalWidth;
+      const imgHeight = tempImg.naturalHeight;
+      const baseScale = Math.min(artboardWidth / imgWidth, artboardHeight / imgHeight, 1);
+      const newWidth = imgWidth * baseScale * scaleFactor;
+      const newHeight = imgHeight * baseScale * scaleFactor;
+
+      img.css({
+        'width': newWidth + 'px',
+        'height': newHeight + 'px',
+        'max-width': 'none',
+        'max-height': 'none'
+      });
+      container.css({
+        'width': newWidth + 'px',
+        'height': newHeight + 'px'
+      });
+
+      if (isUploaded) {
+        container.css({
+          'top': '50%',
+          'left': '50%',
+          'transform': 'translate(-50%, -50%) scale(1)'
+        });
+      }
+    };
+  }
+
+  function adjustImageRotation(elemId, angle) {
+    const container = $(`.t396__elem[data-elem-id="${elemId}"]`);
+    const img = container.find('.tn-atom__img');
+    const currentScale = parseFloat(container.css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+    img.css({
+      'transform': `rotate(${angle}deg)`
+    });
+    container.css({
+      'transform': `translate(-50%, -50%) scale(${currentScale})`
+    });
+  }
+
+  function readFile(file) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    return new Promise((resolve, reject) => {
+      reader.onload = function() { resolve(reader.result); };
+      reader.onerror = function() { reject(reader.error); };
+    });
+  }
+
+  $('#photo-upload').on('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      readFile(file).then(result => {
+        const uploadedImg = $('.t396__elem[data-elem-id="custom-uploaded-img"] .tn-atom__img');
+        uploadedImg.attr('src', result);
+        adjustImageSize('custom-uploaded-img', result, true, 1);
+        $('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
+      }).catch(error => {
+        console.error('Error reading file:', error);
+      });
+    }
+  });
+
+  $('#size-slider').slider({
+    min: 0.5,
+    max: 2,
+    step: 0.1,
+    value: 1,
+    slide: function(event, ui) {
+      if (lastSelectedImage && lastSelectedImage.startsWith('custom-img')) {
+        const imgSrc = $(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).attr('src');
+        if (imgSrc) {
+          adjustImageSize(lastSelectedImage, imgSrc, false, ui.value);
+          const container = $(`.t396__elem[data-elem-id="${lastSelectedImage}"]`);
+          const currentRotation = parseFloat(container.find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+          container.css('transform', `translate(-50%, -50%) scale(${ui.value})`);
+        }
+      }
+    }
+  });
+
+  $('#rotate-slider').slider({
+    min: 0,
+    max: 360,
+    step: 1,
+    value: 0,
+    slide: function(event, ui) {
+      if (lastSelectedImage && lastSelectedImage.startsWith('custom-img')) {
+        adjustImageRotation(lastSelectedImage, ui.value);
+      }
+    }
+  });
+
+  $('.save-button').on('click', async function() {
+    const artboard = document.querySelector('.t396__artboard');
+    try {
+      const canvas = await html2canvas(artboard, {
+        backgroundColor: null,
+        scale: 1,
+        width: artboard.offsetWidth,
+        height: artboard.offsetHeight
+      });
+      const link = document.createElement('a');
+      link.download = 'custom-artboard.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    } catch (error) {
+      console.error('Error capturing screenshot:', error);
+    }
+  });
+
+  $('.t396__elem[data-elem-id="custom-uploaded-img"]').hide();
+});
+</script>
+<div class="history-container">
+<section class="section history-section" id="history">
+<h1>Our History</h1>
+<div class="history-gallery">
+<div class="history-item">
+<img alt="Early Days of Cosmic Rejex" src="images/Index-Html/Index_Containers/Our_History/Kiwiburn_2022_smooth_loop.gif"/>
+<h3>The Early Days</h3>
+<div class="history-description">
+<p>Cosmic Rejex began as Cosmic Creatures and Camp Riddikulus before adopting its name in 2025, honoring former member Bede Max. It started with a small group of Kiwiburn regulars and newcomers brought together by a love for alternative music and self-expression. With just a few tents, a speaker, and a shared vision, we set out to build something bigger.</p>
+</div>
+</div>
+<div class="history-item">
+<img alt="First Sound Camp" src="images/Index-Html/Index_Containers/Our_History/Party_Camp.gif"/>
+<h3>The Sound Camp Era</h3>
+<div class="history-description">
+<p>By 2024, we had grown into a full-fledged sound camp with our roots in an emo night collaboration with R.A.T Camp. In 2025, we took over hosting, expanding into DJ sets featuring drum and bass and punk rock. Our team grew from 13 to 35, adding alien-themed art, a chill zone, and more, making Cosmic Rejex a true Kiwiburn fixture.</p>
+</div>
+</div>
+<div class="history-item">
+<img alt="Future Vision" src="images/Index-Html/Index_Containers/Our_History/Kiwiburn_Emo_Night.gif"/>
+<h3>The Future</h3>
+<div class="history-description">
+<p>Cosmic Rejex is now looking ahead to the next Kiwiburn, aiming to showcase more artwork and creative expression. We’re welcoming new members who share our love for emo, punk, and alternative music. Our focus is on growing the team, expanding roles, and building a space where artists and musicians can thrive. Join us and create freely.</p>
+</div>
+</div>
+</div>
+</section></div>
+<div class="rejex-container">
+<style>
+    .rejex-container * {
+      box-sizing: border-box;
+    }
+    .rejex-container {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background-color: #1c2526;
+      display: flex;
+      flex-direction: column;
+      color: #e0e0e0;
+      width: 100%;
+      max-width: 1200px; /* Adjustable based on parent layout */
+      margin: 0 auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .rejex-container .main-content {
+      padding: 30px 20px;
+      text-align: center;
+      background: linear-gradient(180deg, #2a2e2e 0%, #1c2526 100%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .rejex-container .main-content h1 {
+      color: #ff4d4d;
+      font-size: 40px;
+      margin-bottom: 15px;
+      font-family: 'Creepster', cursive;
+      padding: 12px 24px;
+      display: inline-block;
+      border-radius: 10px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    .rejex-container .main-content p {
+      color: #d1d1d1;
+      font-size: 18px;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .rejex-container .container {
+      display: flex;
+      min-height: 0;
+      padding: 0 15px;
+      margin-bottom: 2cm;
+    }
+    .rejex-container .sidebar {
+      width: 200px;
+      background-color: #262626;
+      padding: 15px;
+      overflow-y: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .rejex-container .right-sidebar {
+      width: 200px;
+      background-color: #262626;
+      padding: 15px;
+      overflow-y: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+    .rejex-container .sidebar details,
+    .rejex-container .right-sidebar details {
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .rejex-container .sidebar summary,
+    .rejex-container .right-sidebar summary {
+      color: #ffffff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 10px;
+      background-color: #333333;
+      border-radius: 8px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .rejex-container .sidebar summary:hover,
+    .rejex-container .right-sidebar summary:hover {
+      background-color: #ff4d4d;
+      transform: translateY(-2px);
+    }
+    .rejex-container .sidebar .category-item {
+      margin: 8px 0;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      position: relative;
+    }
+    .rejex-container .sidebar .category-item:hover {
+      transform: scale(1.05);
+    }
+    .rejex-container .sidebar .category-item img {
+      width: 80px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 8px auto;
+      border-radius: 6px;
+    }
+    .rejex-container .category-item .remove-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: rgba(255, 77, 77, 0.8);
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .rejex-container .category-item .remove-btn:hover {
+      background-color: #e63939;
+      transform: scale(1.1);
+    }
+    .rejex-container .artboard-container {
+      flex: 1;
+      min-width: 320px;
+      margin: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      background-color: #262626;
+    }
+    .rejex-container .t396__artboard {
+  background-attachment: fixed !important; background-position: center !important; background-repeat: no-repeat !important; background-size: cover !important;
+  animation: none !important;
+
+      height: 600px;
+      background-image: url('images/Rejex_Me/Rejex_Background_1.png');
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+      overflow: visible !important;
+      position: relative;
+    }
+    .rejex-container .t396__carrier,
+    .rejex-container .t396__filter {
+      height: 100%;
+    }
+    .rejex-container .t396__elem {
+      position: absolute;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+    .rejex-container .t396__elem[data-elem-id="custom-uploaded-img"] {
+      z-index: 0;
+    }
+    .rejex-container .tn-atom__img {
+      width: 100%;
+      height: auto;
+      max-width: none;
+      max-height: none;
+      object-fit: contain;
+    }
+    .rejex-container .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]) {
+      transform: translate(-50%, -50%) scale(0.5);
+      transition: transform 0.3s ease;
+      position: absolute;
+    }
+    .rejex-container .t396__elem[data-elem-type="image"]:not([data-elem-id="custom-uploaded-img"]).ui-draggable-dragging {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .rejex-container .t396__elem[data-elem-type="text"] .tn-atom {
+      color: #ffffff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: -0.5px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.75);
+      border-radius: 8px;
+      padding: 12px 20px;
+      transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+      transform: rotate(350deg);
+    }
+    .rejex-container .t396__elem[data-elem-type="text"] .tn-atom:hover {
+      background-color: #ff4d4d;
+    }
+    .rejex-container .t396__elem[data-elem-type="button"] .tn-atom {
+      color: #ffffff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: -0.5px;
+      text-align: center;
+      background-color: #ff4d4d;
+      border-radius: 8px;
+      padding: 14px 20px;
+      display: block;
+      text-decoration: none;
+      transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+      cursor: pointer;
+    }
+    .rejex-container .t396__elem[data-elem-type="button"] .tn-atom:hover {
+      background-color: #e63939;
+      transform: scale(1.05);
+    }
+    .rejex-container .t396__elem[data-elem-id="custom-save"] .tn-atom {
+      transform: rotate(0deg);
+      background-color: #4caf50;
+    }
+    .rejex-container .t396__elem[data-elem-id="custom-save"] .tn-atom:hover {
+      background-color: #3d8b40;
+      transform: scale(1.05);
+    }
+    .rejex-container .t396__elem[data-elem-type="upload"] input {
+      color: #ffffff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 16px;
+      background-color: #333333;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+      transition: background-color 0.2s ease-in-out;
+    }
+    .rejex-container .t396__elem[data-elem-type="upload"] input:hover {
+      background-color: #ff4d4d;
+    }
+    .rejex-container .t396__elem[data-elem-type="slider"] .ui-slider {
+      background-color: #333333;
+      border: none;
+      border-radius: 4px;
+      height: 6px;
+      margin-top: 8px;
+    }
+    .rejex-container .t396__elem[data-elem-type="slider"] .ui-slider-handle {
+      background: #ff4d4d;
+      border: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      top: -4px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .rejex-container .t396__elem[data-elem-type="slider"] .ui-slider-handle:hover {
+      background: #e63939;
+    }
+    .rejex-container .t396__elem[data-elem-type="slider"] .slider-label {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #d1d1d1;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    .rejex-container .ui-draggable-dragging {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .rejex-container .uploaded-image {
+      display: block;
+      object-fit: contain;
+    }
+    .rejex-container .right-sidebar .t396__elem {
+      position: relative;
+      display: block;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .rejex-container .right-sidebar .t396__elem[data-elem-type="upload"] input,
+    .rejex-container .right-sidebar .t396__elem[data-elem-type="button"] .tn-atom,
+    .rejex-container .right-sidebar .t396__elem[data-elem-type="slider"] .ui-slider {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    @media screen and (min-width: 1440px) {
+      .rejex-container .t396__artboard,
+      .rejex-container .t396__carrier,
+      .rejex-container .t396__filter { height: 600px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text1"] { top: 400px; left: 50%; width: 180px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text2"] { top: 450px; left: 15%; width: 160px; }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] { top: 500px; left: 35%; width: 220px; }
+    }
+    @media screen and (max-width: 1439px) {
+      .rejex-container .t396__artboard,
+      .rejex-container .t396__carrier,
+      .rejex-container .t396__filter { height: 550px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
+    }
+    @media screen and (max-width: 1199px) {
+      .rejex-container .t396__artboard,
+      .rejex-container .t396__carrier,
+      .rejex-container .t396__filter { height: 500px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text1"] { top: 350px; left: 500px; width: 150px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text2"] { top: 400px; left: 150px; width: 130px; }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] { top: 450px; left: 300px; width: 180px; }
+    }
+    @media screen and (max-width: 959px) {
+      .rejex-container .t396__artboard,
+      .rejex-container .t396__carrier,
+      .rejex-container .t396__filter { height: 450px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text1"] { top: 320px; left: 350px; width: 120px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text2"] { top: 380px; left: 100px; width: 100px; }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] { top: 420px; left: 200px; width: 150px; }
+      .rejex-container .t396__elem[data-elem-type="text"] .tn-atom,
+      .rejex-container .t396__elem[data-elem-type="button"] .tn-atom { font-size: 20px; transform: rotate(354deg); }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
+      .rejex-container .t396__elem[data-elem-id="custom-save"] .tn-atom { transform: rotate(0deg); }
+    }
+    @media screen and (max-width: 639px) {
+      .rejex-container .t396__artboard,
+      .rejex-container .t396__carrier,
+      .rejex-container .t396__filter { height: 400px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text1"] { top: 280px; left: 280px; width: 100px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text2"] { top: 340px; left: 80px; width: 90px; }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] { top: 380px; left: 150px; width: 120px; }
+      .rejex-container .t396__elem[data-elem-type="text"] .tn-atom,
+      .rejex-container .t396__elem[data-elem-type="button"] .tn-atom { font-size: 16px; transform: rotate(334deg); }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
+      .rejex-container .t396__elem[data-elem-id="custom-save"] .tn-atom { transform: rotate(0deg); }
+    }
+    @media screen and (max-width: 479px) {
+      .rejex-container .t396__artboard,
+      .rejex-container .t396__carrier,
+      .rejex-container .t396__filter { height: 350px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text1"] { top: 240px; left: 200px; width: 80px; }
+      .rejex-container .t396__elem[data-elem-id="custom-text2"] { top: 300px; left: 50px; width: 70px; }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] { top: 340px; left: 100px; width: 100px; }
+      .rejex-container .t396__elem[data-elem-type="text"] .tn-atom,
+      .rejex-container .t396__elem[data-elem-type="button"] .tn-atom { font-size: 13px; }
+      .rejex-container .t396__elem[data-elem-id="custom-button1"] .tn-atom { transform: rotate(18deg); }
+      .rejex-container .t396__elem[data-elem-id="custom-save"] .tn-atom { transform: rotate(0deg); }
+      .rejex-container .sidebar,
+      .rejex-container .right-sidebar { width: 150px; }
+      .rejex-container .sidebar .category-item img { width: 60px; }
+    }
+    @media screen and (max-width: 100%) {
+      .rejex-container .artboard-container,
+      .rejex-container .t396__artboard,
+      .rejex-container .t396__carrier,
+      .rejex-container .t396__filter {
+        overflow: hidden !important;
+        width: 100% !important;
+      }
+      .rejex-container .t396__elem {
+        visibility: visible !important;
+        z-index: 1 !important;
+      }
+      .rejex-container .t396__elem[data-elem-id="custom-uploaded-img"] {
+        z-index: 0 !important;
+      }
+    }
+  </style>
+<div class="main-content">
+<h1>REJEX YOURSELF!</h1>
+<p>Create and turn yourself into an emo, alien rejex!</p>
+</div>
+<div class="container">
+<div class="right-sidebar">
+<div class="t396__elem tn-elem" data-elem-id="custom-upload" data-elem-type="upload" data-field-width-value="180">
+<input accept="image/*" id="photo-upload" type="file"/>
+</div>
+<div class="t396__elem tn-elem" data-elem-id="custom-size-slider" data-elem-type="slider" data-field-width-value="180">
+<div class="slider-label">Resize assets</div>
+<div id="size-slider"></div>
+</div>
+<div class="t396__elem tn-elem" data-elem-id="custom-rotate-slider" data-elem-type="slider" data-field-width-value="180">
+<div class="slider-label">Rotate assets</div>
+<div id="rotate-slider"></div>
+</div>
+<div class="t396__elem tn-elem" data-elem-id="custom-save" data-elem-type="button" data-field-width-value="180">
+<button class="tn-atom save-button">Save Photo</button>
+</div>
+</div>
+<div class="artboard-container">
+<div class="t396">
+<div class="t396__artboard" data-artboard-height="600" data-artboard-height-res-1200="550" data-artboard-height-res-320="350" data-artboard-height-res-480="400" data-artboard-height-res-640="450" data-artboard-height-res-960="500" data-artboard-ovrflw="hidden" data-artboard-recid="custom" data-artboard-screens="320,480,640,960,1200,1440" data-artboard-upscale="window" data-artboard-valign="center">
+<div class="t396__carrier"></div>
+<div class="t396__filter"></div>
+<div class="t396__elem tn-elem" data-elem-id="custom-uploaded-img" data-elem-type="image" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid">
+<div class="tn-atom">
+<img alt="Uploaded Image" class="tn-atom__img t-img uploaded-image" src=""/>
+</div>
+</div>
+<div class="t396__elem tn-elem drag" data-elem-id="custom-text1" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-left-res-1200-value="600" data-field-left-res-320-value="200" data-field-left-res-480-value="280" data-field-left-res-640-value="350" data-field-left-res-960-value="500" data-field-left-units-value="px" data-field-left-value="700" data-field-top-res-1200-value="400" data-field-top-res-320-value="240" data-field-top-res-480-value="280" data-field-top-res-640-value="320" data-field-top-res-960-value="350" data-field-top-units-value="px" data-field-top-value="400" data-field-width-res-1200-value="180" data-field-width-res-320-value="80" data-field-width-res-480-value="100" data-field-width-res-640-value="120" data-field-width-res-960-value="150" data-field-width-units-value="px" data-field-width-value="180">
+<div class="tn-atom">Try it with your photo!</div>
+</div>
+<div class="t396__elem tn-elem drag" data-elem-id="custom-text2" data-elem-type="text" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-left-res-1200-value="200" data-field-left-res-320-value="50" data-field-left-res-480-value="80" data-field-left-res-640-value="100" data-field-left-res-960-value="150" data-field-left-units-value="px" data-field-left-value="400" data-field-top-res-1200-value="450" data-field-top-res-320-value="300" data-field-top-res-480-value="340" data-field-top-res-640-value="380" data-field-top-res-960-value="400" data-field-top-units-value="px" data-field-top-value="450" data-field-width-res-1200-value="160" data-field-width-res-320-value="70" data-field-width-res-480-value="90" data-field-width-res-640-value="100" data-field-width-res-960-value="130" data-field-width-units-value="px" data-field-width-value="160">
+<div class="tn-atom">Drag me around!</div>
+</div>
+<div class="t396__elem tn-elem drag" data-elem-id="custom-button1" data-elem-type="button" data-field-axisx-value="left" data-field-axisy-value="top" data-field-container-value="grid" data-field-left-res-1200-value="400" data-field-left-res-320-value="100" data-field-left-res-480-value="150" data-field-left-res-640-value="200" data-field-left-res-960-value="300" data-field-left-units-value="px" data-field-left-value="500" data-field-top-res-1200-value="500" data-field-top-res-320-value="340" data-field-top-res-480-value="380" data-field-top-res-640-value="420" data-field-top-res-960-value="450" data-field-top-units-value="px" data-field-top-value="500" data-field-width-res-1200-value="220" data-field-width-res-320-value="100" data-field-width-res-480-value="120" data-field-width-res-640-value="150" data-field-width-res-960-value="180" data-field-width-units-value="px" data-field-width-value="220">
+<a class="tn-atom" href="#try-now">Try Now!</a>
+</div>
+</div>
+</div>
+</div>
+<div class="sidebar" id="category-sidebar"></div>
+</div>
+<script>
+    $(document).ready(function() {
+      // Scope jQuery selectors to .rejex-container
+      const $container = $('.rejex-container');
+      let zIndex = 10;
+      let lastSelectedImage = null;
+      let itemCounter = 0;
+
+      const categories = [
+        {
+          name: 'Hats/Beanies',
+          items: [
+            { src: 'images/Rejex_Me/Emo_Beanie_Hat_1.png', alt: 'Emo Beanie 1' },
+            { src: 'images/Rejex_Me/Emo_Beanie_Hat_2.png', alt: 'Emo Beanie 2' },
+            { src: 'images/Rejex_Me/Emo_Beanie_Hat_3.png', alt: 'Emo Beanie 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Beanie+4', alt: 'Emo Beanie 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Beanie+5', alt: 'Emo Beanie 5' }
+          ]
+        },
+        {
+          name: 'Eyewear',
+          items: [
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+1', alt: 'Eyewear 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+2', alt: 'Eyewear 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+3', alt: 'Eyewear 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+4', alt: 'Eyewear 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyewear+5', alt: 'Eyewear 5' }
+          ]
+        },
+        {
+          name: 'Hair',
+          items: [
+            { src: 'images/Rejex_Me/Emo_Hair_Element.png', alt: 'Emo Hair 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Hair+2', alt: 'Emo Hair 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Hair+3', alt: 'Emo Hair 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Hair+4', alt: 'Emo Hair 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Hair+5', alt: 'Emo Hair 5' }
+          ]
+        },
+        {
+          name: 'Necklaces/Chokers',
+          items: [
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+1', alt: 'Necklace 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+2', alt: 'Necklace 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+3', alt: 'Necklace 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+4', alt: 'Necklace 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Necklace+5', alt: 'Necklace 5' }
+          ]
+        },
+        {
+          name: 'Earrings',
+          items: [
+            { src: 'https://via.placeholder.com/150x200?text=Earring+1', alt: 'Earring 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Earring+2', alt: 'Earring 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Earring+3', alt: 'Earring 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Earring+4', alt: 'Earring 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Earring+5', alt: 'Earring 5' }
+          ]
+        },
+        {
+          name: 'Eyebrows',
+          items: [
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+1', alt: 'Eyebrow 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+2', alt: 'Eyebrow 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+3', alt: 'Eyebrow 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+4', alt: 'Eyebrow 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyebrow+5', alt: 'Eyebrow 5' }
+          ]
+        },
+        {
+          name: 'Eyes',
+          items: [
+            { src: 'images/Rejex_Me/Alien_Eyes.png', alt: 'Alien Eyes 1' },
+            { src: 'images/Rejex_Me/Alien_Eyes_Blue.png', alt: 'Alien Eyes Blue' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyes+3', alt: 'Eyes 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyes+4', alt: 'Eyes 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyes+5', alt: 'Eyes 5' }
+          ]
+        },
+        {
+          name: 'Eyeliner/Makeup',
+          items: [
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+1', alt: 'Eyeliner 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+2', alt: 'Eyeliner 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+3', alt: 'Eyeliner 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+4', alt: 'Eyeliner 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Eyeliner+5', alt: 'Eyeliner 5' }
+          ]
+        },
+        {
+          name: 'Face Tattoos/Markings',
+          items: [
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+1', alt: 'Tattoo 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+2', alt: 'Tattoo 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+3', alt: 'Tattoo 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+4', alt: 'Tattoo 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Tattoo+5', alt: 'Tattoo 5' }
+          ]
+        },
+        {
+          name: 'Piercings',
+          items: [
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+1', alt: 'Piercing 1' },
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+2', alt: 'Piercing 2' },
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+3', alt: 'Piercing 3' },
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+4', alt: 'Piercing 4' },
+            { src: 'https://via.placeholder.com/150x200?text=Piercing+5', alt: 'Piercing 5' }
+          ]
+        }
+      ];
+
+      const sidebar = $container.find('#category-sidebar');
+      categories.forEach(category => {
+        const details = $('<details>').appendTo(sidebar);
+        $('<summary>').text(category.name).appendTo(details);
+        const itemContainer = $('<div>').appendTo(details);
+        category.items.forEach(item => {
+          const itemId = `custom-img${++itemCounter}`;
+          const categoryItem = $('<div>').addClass('category-item').attr('data-elem-id', itemId).append(
+            $('<img>').attr({
+              src: item.src,
+              alt: item.alt,
+              'data-elem-id': itemId
+            })
+          );
+          const removeBtn = $('<button>').addClass('remove-btn').text('x').attr('data-elem-id', itemId);
+          categoryItem.append(removeBtn);
+          categoryItem.appendTo(itemContainer);
+        });
+      });
+
+      $container.find('.category-item').draggable({
+        helper: 'clone',
+        cursor: 'move',
+        revert: 'invalid',
+        start: function(event, ui) {
+          ui.helper.css({
+            'width': '80px',
+            'height': 'auto',
+            'opacity': '0.7',
+            'transform': 'scale(1)'
+          });
+        }
+      });
+
+      $container.find('.category-item').on('click', function(event) {
+        if ($(event.target).hasClass('remove-btn')) {
+          const elemId = $(event.target).attr('data-elem-id');
+          const artboardElem = $container.find(`.t396__elem[data-elem-id="${elemId}"]`);
+          if (artboardElem.length) {
+            artboardElem.remove();
+            if (lastSelectedImage === elemId) {
+              lastSelectedImage = null;
+              $container.find('#rotate-slider').slider('value', 0);
+              $container.find('#size-slider').slider('value', 1);
+            }
+          }
+          return;
+        }
+
+        const src = $(this).find('img').attr('src');
+        const alt = $(this).find('img').attr('alt');
+        const elemId = $(this).find('img').attr('data-elem-id');
+        const existing = $container.find(`.t396__elem[data-elem-id="${elemId}"]`);
+
+        if (!existing.length) {
+          const artboard = $container.find('.t396__artboard');
+          const artboardWidth = artboard.width();
+          const artboardHeight = artboard.height();
+          const dropX = artboardWidth / 2;
+          const dropY = artboardHeight / 2;
+
+          const elem = $('<div>').addClass('t396__elem tn-elem drag').attr({
+            'data-elem-id': elemId,
+            'data-elem-type': 'image',
+            'data-field-top-value': dropY,
+            'data-field-left-value': dropX,
+            'data-field-axisy-value': 'top',
+            'data-field-axisx-value': 'left',
+            'data-field-container-value': 'grid',
+            'data-field-top-units-value': 'px',
+            'data-field-left-units-value': 'px'
+          }).css({
+            top: dropY + 'px',
+            left: dropX + 'px',
+            transform: 'translate(-50%, -50%) scale(1)',
+            'z-index': zIndex++
+          }).append(
+            $('<div>').addClass('tn-atom').append(
+              $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
+            )
+          ).appendTo(artboard);
+
+          elem.draggable({
+            cursor: 'grabbing',
+            containment: artboard,
+            start: function(event, ui) {
+              $(this).css('z-index', zIndex++);
+              lastSelectedImage = elemId;
+            },
+            drag: function(event, ui) {
+              const container = $(this);
+              const artboardWidth = artboard.width();
+              const artboardHeight = artboard.height();
+              const elemWidth = container.width();
+              const elemHeight = container.height();
+
+              const minLeft = elemWidth / 2;
+              const maxLeft = artboardWidth - elemWidth / 2;
+              const minTop = elemHeight / 2;
+              const maxTop = artboardHeight - elemHeight / 2;
+
+              ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+              ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+            },
+            stop: function(event, ui) {
+              const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+              $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+            }
+          });
+
+          elem.on('click', function(e) {
+            e.stopPropagation();
+            $(this).css('z-index', zIndex++);
+            lastSelectedImage = elemId;
+            const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+            $container.find('#rotate-slider').slider('value', currentRotation);
+            const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+            $container.find('#size-slider').slider('value', currentScale);
+          });
+
+          adjustImageSize(elemId, src, false, 1);
+        }
+      });
+
+      $container.find('.t396__artboard').droppable({
+        accept: '.category-item',
+        drop: function(event, ui) {
+          const src = ui.draggable.find('img').attr('src');
+          const alt = ui.draggable.find('img').attr('alt');
+          const elemId = ui.draggable.find('img').attr('data-elem-id');
+          const existing = $container.find(`.t396__elem[data-elem-id="${elemId}"]`);
+
+          if (!existing.length) {
+            const artboardOffset = $(this).offset();
+            const dropX = event.pageX - artboardOffset.left;
+            const dropY = event.pageY - artboardOffset.top;
+
+            const elem = $('<div>').addClass('t396__elem tn-elem drag').attr({
+              'data-elem-id': elemId,
+              'data-elem-type': 'image',
+              'data-field-top-value': dropY,
+              'data-field-left-value': dropX,
+              'data-field-axisy-value': 'top',
+              'data-field-axisx-value': 'left',
+              'data-field-container-value': 'grid',
+              'data-field-top-units-value': 'px',
+              'data-field-left-units-value': 'px'
+            }).css({
+              top: dropY + 'px',
+              left: dropX + 'px',
+              transform: 'translate(-50%, -50%) scale(1)',
+              'z-index': zIndex++
+            }).append(
+              $('<div>').addClass('tn-atom').append(
+                $('<img>').addClass('tn-atom__img t-img').attr({ src, alt })
+              )
+            ).appendTo(this);
+
+            elem.draggable({
+              cursor: 'grabbing',
+              containment: this,
+              start: function(event, ui) {
+                $(this).css('z-index', zIndex++);
+                lastSelectedImage = elemId;
+              },
+              drag: function(event, ui) {
+                const container = $(this);
+                const artboardWidth = $(this).parent().width();
+                const artboardHeight = $(this).parent().height();
+                const elemWidth = container.width();
+                const elemHeight = container.height();
+
+                const minLeft = elemWidth / 2;
+                const maxLeft = artboardWidth - elemWidth / 2;
+                const minTop = elemHeight / 2;
+                const maxTop = artboardHeight - elemHeight / 2;
+
+                ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+                ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+              },
+              stop: function(event, ui) {
+                const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+                $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+              }
+            });
+
+            elem.on('click', function(e) {
+              e.stopPropagation();
+              $(this).css('z-index', zIndex++);
+              lastSelectedImage = elemId;
+              const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+              $container.find('#rotate-slider').slider('value', currentRotation);
+              const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+              $container.find('#size-slider').slider('value', currentScale);
+            });
+
+            adjustImageSize(elemId, src, false, 1);
+          }
+        }
+      });
+
+      $container.find('.drag').draggable({
+        cursor: 'grabbing',
+        containment: $container.find('.t396__artboard'),
+        start: function(event, ui) {
+          $(this).css('z-index', zIndex++);
+          if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
+            lastSelectedImage = $(this).data('elem-id');
+          }
+        },
+        drag: function(event, ui) {
+          const container = $(this);
+          const artboard = $container.find('.t396__artboard');
+          const artboardWidth = artboard.width();
+          const artboardHeight = artboard.height();
+          const elemWidth = container.width();
+          const elemHeight = container.height();
+
+          const minLeft = elemWidth / 2;
+          const maxLeft = artboardWidth - elemWidth / 2;
+          const minTop = elemHeight / 2;
+          const maxTop = artboardHeight - elemHeight / 2;
+
+          ui.position.left = Math.max(minLeft, Math.min(maxLeft, ui.position.left));
+          ui.position.top = Math.max(minTop, Math.min(maxTop, ui.position.top));
+        },
+        stop: function(event, ui) {
+          if ($(this).data('elem-type') === 'image' && $(this).data('elem-id').startsWith('custom-img')) {
+            const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+            $(this).css('transform', `translate(-50%, -50%) scale(${currentScale})`);
+          }
+        }
+      });
+
+      $container.find('.t396__elem[data-elem-type="image"]').on('click', function(e) {
+        e.stopPropagation();
+        if ($(this).data('elem-id') !== 'custom-uploaded-img') {
+          $(this).css('z-index', zIndex++);
+          if ($(this).data('elem-id').startsWith('custom-img')) {
+            lastSelectedImage = $(this).data('elem-id');
+            const currentRotation = parseFloat($(this).find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+            $container.find('#rotate-slider').slider('value', currentRotation);
+            const currentScale = parseFloat($(this).css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+            $container.find('#size-slider').slider('value', currentScale);
+          }
+        }
+      });
+
+      function adjustImageSize(elemId, imgSrc, isUploaded = false, scaleFactor = 1) {
+        const container = $container.find(`.t396__elem[data-elem-id="${elemId}"]`);
+        const img = container.find('.tn-atom__img');
+        const artboard = $container.find('.t396__artboard');
+        
+        let artboardHeight, artboardWidth;
+        const screenWidth = $(window).width();
+        if (screenWidth <= 320) {
+          artboardHeight = 350;
+          artboardWidth = 320;
+        } else if (screenWidth <= 479) {
+          artboardHeight = 400;
+          artboardWidth = 479;
+        } else if (screenWidth <= 639) {
+          artboardHeight = 450;
+          artboardWidth = 639;
+        } else if (screenWidth <= 959) {
+          artboardHeight = 500;
+          artboardWidth = 959;
+        } else if (screenWidth <= 1199) {
+          artboardHeight = 550;
+          artboardWidth = 1199;
+        } else {
+          artboardHeight = 600;
+          artboardWidth = artboard.width();
+        }
+
+        const tempImg = new Image();
+        tempImg.src = imgSrc;
+        tempImg.onload = function() {
+          const imgWidth = tempImg.naturalWidth;
+          const imgHeight = tempImg.naturalHeight;
+          const baseScale = Math.min(artboardWidth / imgWidth, artboardHeight / imgHeight, 1);
+          const newWidth = imgWidth * baseScale * scaleFactor;
+          const newHeight = imgHeight * baseScale * scaleFactor;
+
+          img.css({
+            'width': newWidth + 'px',
+            'height': newHeight + 'px',
+            'max-width': 'none',
+            'max-height': 'none'
+          });
+          container.css({
+            'width': newWidth + 'px',
+            'height': newHeight + 'px'
+          });
+
+          if (isUploaded) {
+            container.css({
+              'top': '50%',
+              'left': '50%',
+              'transform': 'translate(-50%, -50%) scale(1)'
+            });
+          }
+        };
+      }
+
+      function adjustImageRotation(elemId, angle) {
+        const container = $container.find(`.t396__elem[data-elem-id="${elemId}"]`);
+        const img = container.find('.tn-atom__img');
+        const currentScale = parseFloat(container.css('transform').split('scale(')[1]?.split(')')[0]) || 1;
+        img.css({
+          'transform': `rotate(${angle}deg)`
+        });
+        container.css({
+          'transform': `translate(-50%, -50%) scale(${currentScale})`
+        });
+      }
+
+      function readFile(file) {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        return new Promise((resolve, reject) => {
+          reader.onload = function() { resolve(reader.result); };
+          reader.onerror = function() { reject(reader.error); };
+        });
+      }
+
+      $container.find('#photo-upload').on('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+          readFile(file).then(result => {
+            const uploadedImg = $container.find('.t396__elem[data-elem-id="custom-uploaded-img"] .tn-atom__img');
+            uploadedImg.attr('src', result);
+            adjustImageSize('custom-uploaded-img', result, true, 1);
+            $container.find('.t396__elem[data-elem-id="custom-uploaded-img"]').show();
+          }).catch(error => {
+            console.error('Error reading file:', error);
+          });
+        }
+      });
+
+      $container.find('#size-slider').slider({
+        min: 0.5,
+        max: 2,
+        step: 0.1,
+        value: 1,
+        slide: function(event, ui) {
+          if (lastSelectedImage && lastSelectedImage.startsWith('custom-img')) {
+            const imgSrc = $container.find(`.t396__elem[data-elem-id="${lastSelectedImage}"] .tn-atom__img`).attr('src');
+            if (imgSrc) {
+              adjustImageSize(lastSelectedImage, imgSrc, false, ui.value);
+              const container = $container.find(`.t396__elem[data-elem-id="${lastSelectedImage}"]`);
+              const currentRotation = parseFloat(container.find('.tn-atom__img').css('transform').split('rotate(')[1]?.split('deg')[0]) || 0;
+              container.css('transform', `translate(-50%, -50%) scale(${ui.value})`);
+            }
+          }
+        }
+      });
+
+      $container.find('#rotate-slider').slider({
+        min: 0,
+        max: 360,
+        step: 1,
+        value: 0,
+        slide: function(event, ui) {
+          if (lastSelectedImage && lastSelectedImage.startsWith('custom-img')) {
+            adjustImageRotation(lastSelectedImage, ui.value);
+          }
+        }
+      });
+
+      $container.find('.save-button').on('click', async function() {
+        const artboard = $container.find('.t396__artboard')[0];
+        try {
+          const canvas = await html2canvas(artboard, {
+            backgroundColor: null,
+            scale: 1,
+            width: artboard.offsetWidth,
+            height: artboard.offsetHeight
+          });
+          const link = document.createElement('a');
+          link.download = 'custom-artboard.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        } catch (error) {
+          console.error('Error capturing screenshot:', error);
+        }
+      });
+
+      $container.find('.t396__elem[data-elem-id="custom-uploaded-img"]').hide();
+    });
+  </script>
+</div>
+<button class="edit-section-button" onclick="openModal('history-modal')">Edit Section</button>
+<div class="sidebar-widgets">
+<div class="emo-playlist-player">
+<button class="toggle-player" onclick="togglePlayer()">
+<img alt="Emo Playlist Toggle Image" class="toggle-image" src="images/Sidebar_Widgets/Spotify_Playlist.gif"/>
+      Play Emo Playlist
+    </button>
+<div class="player-wrapper" id="player-wrapper">
+<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" aria-label="Emo Playlist Player" loading="lazy" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ"></iframe>
+</div>
+</div>
+<div class="newsletter-popup" id="newsletter">
+<button class="toggle-newsletter" onclick="toggleNewsletter()">
+<img alt="Newsletter Toggle Image" class="toggle-image" src="images/Sidebar_Widgets/News_Letter.gif"/>
+      Stay in Touch
+    </button>
+<div class="newsletter-wrapper" id="newsletter-wrapper">
+<div class="form-container">
+<h3>Stay in Touch</h3>
+<p>Stay up to date on upcoming events.</p>
+<input aria-label="Email" id="newsletter-email" placeholder="Enter your email" required="" type="email"/>
+<button onclick="submitNewsletter()">Subscribe</button>
+</div>
+</div>
+<button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
+</div>
+</div>
+<div class="countdown-container">
+<section class="section countdown-section" id="countdown">
+<h2>Kiwiburn 2026 Countdown</h2>
+<div class="countdown" id="countdown-timer">
+<span id="days">237<br/><small>Days</small></span>
+<span id="hours">07<br/><small>Hours</small></span>
+<span id="minutes">01br&gt;<small>Minutes</small></span>
+<span id="seconds">28<br/><small>Seconds</small></span>
+</div>
+<input aria-label="Set Countdown Date" id="countdown-input" type="datetime-local"/>
+<button onclick="updateCountdownDate()">Update Date</button>
+<button class="edit-section-button" onclick="openModal('countdown-modal')">Edit Countdown</button>
+</section>
+</div>
+<script>
+  // Theme Toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('night-mode');
+    themeToggle.textContent = document.body.classList.contains('night-mode') ? '☀️' : '🌙';
+    localStorage.setItem('theme', document.body.classList.contains('night-mode') ? 'dark' : 'light');
+  });
+
+  // Load theme preference
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('night-mode');
+    themeToggle.textContent = '☀️';
+  }
+
+// Hamburger Menu
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+  hamburger.textContent = navLinks.classList.contains('active') ? '✖' : '☰';
+});
+
+// Dropdown Menu for Mobile
+document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const dropdown = toggle.parentElement;
+      dropdown.classList.toggle('active');
+    }
+  });
+});
+
+  // Login/ut
+  const loginForm = document.getElementById('login-form');
+  const logoutButton = document.querySelector('.logout-button');
+  const loginContainer = document.querySelector('.nav-login');
+
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    loginContainer.classList.add('logged-in');
+    loginForm.style.display = 'none';
+    logoutButton.style.display = 'block';
+    document.body.classList.add('logged-in');
+  });
+
+  logoutButton.addEventListener('click', () => {
+    loginContainer.classList.remove('logged-in');
+    loginForm.style.display = 'flex';
+    logoutButton.style.display = 'none';
+    document.body.classList.remove('logged-in');
+  });
+
+  // Modal Functions
+  function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'flex';
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+  }
+
+  // Member Modal
+  function openEditMemberModal(button) {
+    const member = button.parentElement;
+    document.getElementById('member-modal-title').textContent = 'Edit Member Details';
+    document.getElementById('member-name').value = member.querySelector('h3').textContent;
+    document.getElementById('member-role').value = member.querySelector('span').textContent;
+    document.getElementById('member-description').value = member.querySelector('p').textContent;
+    openModal('member-modal');
+  }
+
+  function saveMemberDetails() {
+    closeModal('member-modal');
+  }
+
+  // Role Modal
+  function openEditRoleModal(button) {
+    const role = button.parentElement;
+    document.getElementById('role-modal-title').textContent = 'Edit Role';
+    document.getElementById('role-title').value = role.querySelector('h3').textContent;
+    document.getElementById('role-description').value = role.querySelector('p').textContent;
+    openModal('role-modal');
+  }
+
+  function saveRoleDetails() {
+    closeModal('role-modal');
+  }
+
+  // Event Modal
+  function openEditEventModal(button) {
+    const event = button.parentElement;
+    document.getElementById('event-title').value = event.querySelector('h3').textContent;
+    document.getElementById('event-description').value = event.querySelector('p:not(.event-date):not(.event-time):not(.event-end):not(.event-category)').textContent;
+    document.getElementById('event-date').value = event.querySelector('.event-date').textContent.replace('Date: ', '');
+    document.getElementById('event-time').value = event.querySelector('.event-time').textContent.replace('Time: ', '');
+    document.getElementById('event-end').value = event.querySelector('.event-end').textContent.replace('End: ', '');
+    document.getElementById('event-category').value = event.querySelector('.event-category').textContent.replace('Category: ', '');
+    openModal('event-modal');
+  }
+
+  function saveEventDetails() {
+    closeModal('event-modal');
+  }
+
+  // Delete Functions
+  function deleteMember(button) {
+    button.parentElement.remove();
+  }
+
+  function deleteRole(button) {
+    button.parentElement.remove();
+  }
+
+  function deleteEvent(button) {
+    button.parentElement.remove();
+  }
+
+  function deleteMissionImage(button) {
+    button.parentElement.remove();
+  }
+
+  // Drag and Drop
+  let draggedItem = null;
+
+  function drag(event) {
+    draggedItem = event.target;
+    event.dataTransfer.setData('text/plain', null);
+  }
+
+  function allowDrop(event) {
+    event.preventDefault();
+  }
+
+  function dropMembers(event) {
+    event.preventDefault();
+    const grid = document.querySelector('.members-grid');
+    if (draggedItem && grid.contains(event.target)) {
+      grid.insertBefore(draggedItem, event.target.closest('.member') || null);
+    }
+  }
+
+  function dropRoles(event) {
+    event.preventDefault();
+    const grid = document.querySelector('.roles-grid');
+    if (draggedItem && grid.contains(event.target)) {
+      grid.insertBefore(draggedItem, event.target.closest('.role') || null);
+    }
+  }
+
+  function dropEvents(event) {
+    event.preventDefault();
+    const grid = document.querySelector('.events-grid');
+    if (draggedItem && grid.contains(event.target)) {
+      grid.insertBefore(draggedItem, event.target.closest('.event') || null);
+    }
+  }
+
+  function dragMissionImage(event) {
+    draggedItem = event.target.parentElement;
+  }
+
+  function dropMissionImage(event) {
+    event.preventDefault();
+    const gallery = document.getElementById('mission-gallery');
+    if (draggedItem && gallery.contains(event.target)) {
+      gallery.insertBefore(draggedItem, event.target.closest('.image-container') || null);
+    }
+  }
+
+  // Scroll Arrows
+  document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+    arrow.addEventListener('click', () => {
+      const grid = document.querySelector(`.${arrow.dataset.grid}-grid`);
+      const direction = arrow.classList.contains('left') ? -1 : 1;
+      grid.scrollBy({ left: direction * 200, behavior: 'smooth' });
+    });
+  });
+
+// Countdown Timer
+function updateCountdown() {
+  const now = new Date().getTime();
+  let targetDate = localStorage.getItem('countdownDate');
+
+// Default target date: January 29, 2026, 12:00 PM NZST
+  if (!targetDate) {
+    targetDate = new Date('2026-01-29T12:00:00+13:00').toISOString();
+    localStorage.setItem('countdownDate', targetDate);
+  }
+
+const targetTime = new Date(targetDate).getTime();
+  const distance = targetTime - now;
+
+if (distance <= 0) {
+    document.getElementById('countdown-timer').innerHTML = 'Kiwiburn 2026 has started!';
+    clearInterval(countdownInterval);
+    return;
+  }
+
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+// Update DOM with padded numbers
+  try {
+    document.getElementById('days').innerHTML = String(days).padStart(2, '0') + '<br><small>Days</small>';
+    document.getElementById('hours').innerHTML = String(hours).padStart(2, '0') + '<br><small>Hours</small>';
+    document.getElementById('minutes').innerHTML = String(minutes).padStart(2, '0') + '<br><small>Minutes</small>';
+    document.getElementById('seconds').innerHTML = String(seconds).padStart(2, '0') + '<br><small>Seconds</small>';
+  } catch (error) {
+    console.error('Error updating countdown DOM:', error);
+  }
+}
+
+function updateCountdownDate() {
+  const input = document.getElementById('countdown-input').value;
+if (input && !isNaN(new Date(input).getTime())) {
+  const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+  const isoDate = new Date(nzstDate).toISOString();
+} else {
+  alert('Please enter a valid date and time.');
+}
+}
+
+// Updated saveCountdownDetails
+function saveCountdownDetails() {
+  const input = document.getElementById('countdown-date').value;
+  const bgInput = document.getElementById('countdown-bg');
+  if (input && !isNaN(new Date(input).getTime())) {
+    const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+    const isoDate = new Date(nzstDate).toISOString();
+    localStorage.setItem('countdownDate', isoDate);
+    updateCountdown();
+  } else {
+    alert('Please enter a valid date and time.');
+  }
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const countdownSection = document.querySelector('.countdown-section');
+      countdownSection.style.background = `url('${e.target.result}') center/cover no-repeat`;
+      countdownSection.style.backgroundAttachment = 'fixed'; // Ensure parallax
+      localStorage.setItem('countdownBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('countdown-modal');
+}
+
+// Load background image and initialize countdown
+document.addEventListener('DOMContentLoaded', () => {
+  const savedBg = localStorage.getItem('countdownBg');
+  if (savedBg) {
+    const countdownSection = document.querySelector('.countdown-section');
+    countdownSection.style.background = `url('${savedBg}') center/cover no-repeat`;
+    countdownSection.style.backgroundAttachment = 'fixed'; // Ensure parallax on load
+  }
+  updateCountdown(); // Initial call
+});
+
+// Run countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
+
+// Parallax Scroll Effect
+window.addEventListener('scroll', function () {
+  const parallaxSections = document.querySelectorAll('.parallax-section');
+  parallaxSections.forEach(section => {
+    let scrollPosition = window.pageYOffset;
+    let offset = section.getBoundingClientRect().top + window.scrollY;
+    let relativeScroll = scrollPosition - offset;
+    section.style.backgroundPositionY = -(relativeScroll * 0.3) + 'px'; // Adjust parallax speed
+  });
+});
+
+  // EMO PLAYLIST PLAYER Toggle
+function togglePlayer() {
+  const playerWrapper = document.getElementById('player-wrapper');
+  playerWrapper.classList.toggle('active');
+}
+
+function toggleNewsletter() {
+  const newsletterPopup = document.getElementById('newsletter');
+  const newsletterWrapper = document.getElementById('newsletter-wrapper');
+  newsletterPopup.classList.toggle('active');
+  newsletterWrapper.classList.toggle('active');
+}
+
+function submitNewsletter() {
+  alert('Subscribed successfully!');
+}
+
+  function saveHeaderDetails() {
+    document.querySelector('.header h1').textContent = document.getElementById('header-title').value;
+    closeModal('header-modal');
+  }
+
+  function openGalleryImageModal(button, section) {
+    const imageContainer = button.parentElement;
+    document.getElementById('gallery-image-alt').value = imageContainer.querySelector('img').alt;
+    openModal('gallery-image-modal');
+  }
+
+  function saveGalleryImageDetails() {
+    closeModal('gallery-image-modal');
+  }
+
+// Save About Section Details
+function saveAboutDetails() {
+  document.querySelector('.about-section h1').textContent = document.getElementById('about-title').value;
+  document.querySelector('.about-section .about-description p').textContent = document.getElementById('about-description').value;
+  const bgInput = document.getElementById('about-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const aboutContainer = document.querySelector('.about-container');
+      aboutContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('aboutBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('about-modal');
+}
+
+// Save Members Section Details
+function saveMembersDetails() {
+  document.querySelector('#members h1').textContent = document.getElementById('members-title').value;
+  document.querySelector('#members p').textContent = document.getElementById('members-description').value;
+  const bgInput = document.getElementById('members-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const membersContainer = document.querySelector('.members-container');
+      membersContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('membersBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('members-modal');
+}
+
+// Save Mission Section Details
+function saveMissionDetails() {
+  document.querySelector('#mission h1').textContent = document.getElementById('mission-title').value;
+  document.querySelector('#mission p').textContent = document.getElementById('mission-description').value;
+  const bgInput = document.getElementById('mission-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const missionContainer = document.querySelector('.mission-container');
+      missionContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('missionBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('mission-modal');
+}
+
+// Save History Section Details
+function saveHistoryDetails() {
+  document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
+  document.querySelector('.history-section p').textContent = document.getElementById('history-description').value;
+  const bgInput = document.getElementById('history-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const historyContainer = document.querySelector('.history-container');
+      historyContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('historyBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('history-modal');
+}
+
+// Save Setup Section Details
+function saveSetupDetails() {
+  document.querySelector('.setup-section h1').textContent = document.getElementById('setup-title').value;
+  document.querySelector('.setup-section p').textContent = document.getElementById('setup-description').value;
+  const bgInput = document.getElementById('setup-bg');
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const setupContainer = document.querySelector('.setup-container');
+      setupContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('setupBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('setup-modal');
+}
+
+// Save Countdown Section Details
+function saveCountdownDetails() {
+  const input = document.getElementById('countdown-date').value;
+  const bgInput = document.getElementById('countdown-bg');
+  if (input && !isNaN(new Date(input).getTime())) {
+    const nzstDate = new Date(input).toLocaleString('en-NZ', { timeZone: 'Pacific/Auckland' });
+    const isoDate = new Date(nzstDate).toISOString();
+    localStorage.setItem('countdownDate', isoDate);
+    updateCountdown();
+  } else {
+    alert('Please enter a valid date and time.');
+  }
+  if (bgInput.files && bgInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const countdownContainer = document.querySelector('.countdown-container');
+      countdownContainer.style.backgroundImage = `url('${e.target.result}')`;
+      localStorage.setItem('countdownBg', e.target.result);
+    };
+    reader.readAsDataURL(bgInput.files[0]);
+  }
+  closeModal('countdown-modal');
+}
+
+// Load saved backgrounds on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedAboutBg = localStorage.getItem('aboutBg');
+  if (savedAboutBg) {
+    document.querySelector('.about-container').style.backgroundImage = `url('${savedAboutBg}')`;
+  }
+
+  const savedMembersBg = localStorage.getItem('membersBg');
+  if (savedMembersBg) {
+    document.querySelector('.members-container').style.backgroundImage = `url('${savedMembersBg}')`;
+  }
+
+  const savedMissionBg = localStorage.getItem('missionBg');
+  if (savedMissionBg) {
+    document.querySelector('.mission-container').style.backgroundImage = `url('${savedMissionBg}')`;
+  }
+
+  const savedHistoryBg = localStorage.getItem('historyBg');
+  if (savedHistoryBg) {
+    document.querySelector('.history-container').style.backgroundImage = `url('${savedHistoryBg}')`;
+  }
+
+  const savedSetupBg = localStorage.getItem('setupBg');
+  if (savedSetupBg) {
+    document.querySelector('.setup-container').style.backgroundImage = `url('${savedSetupBg}')`;
+  }
+
+  const savedCountdownBg = localStorage.getItem('countdownBg');
+  if (savedCountdownBg) {
+    document.querySelector('.countdown-container').style.backgroundImage = `url('${savedCountdownBg}')`;
+  }
+
+  updateCountdown(); // Initialize countdown
+});
+
+  function saveHistoryDetails() {
+    document.querySelector('.history-section h1').textContent = document.getElementById('history-title').value;
+    closeModal('history-modal');
+  }
+  
+</script>
+<script>
+document.querySelectorAll('.t396__elem').forEach(function(elem) {
+  const label = elem.querySelector('.tn-atom')?.textContent?.trim();
+  if (label === 'Try Now!' || label === 'Try it with your photo!' || label === 'Drag me around!') {
+    const closeButton = document.createElement('button');
+    closeButton.textContent = '×';
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '5px';
+    closeButton.style.right = '5px';
+    closeButton.style.background = 'rgba(255,0,0,0.8)';
+    closeButton.style.color = 'white';
+    closeButton.style.border = 'none';
+    closeButton.style.borderRadius = '50%';
+    closeButton.style.width = '20px';
+    closeButton.style.height = '20px';
+    closeButton.style.cursor = 'pointer';
+    closeButton.onclick = () => elem.remove();
+    elem.appendChild(closeButton);
+  }
+});
+</script></body>
 </html>
 <script>
   $(function() {
