@@ -1,6 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<style>
+  .custom-container {
+    border: var(--border-thickness, 4px) solid var(--border-color, #e67e22);
+    border-image-source: var(--border-image, none);
+    border-image-slice: 30;
+    border-image-repeat: round;
+    border-image-width: 10px;
+    padding: 20px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .custom-container {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px;
+      border-width: var(--border-thickness-mobile, 3px);
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .custom-container {
+      padding: 10px;
+      border-width: var(--border-thickness-mobile, 2px);
+    }
+  }
+
+<style>
+  .custom-container {
+    border: 10px solid transparent;
+    border-image-source: url('images/border-pattern.png'); /* Replace this path */
+    border-image-slice: 30;
+    border-image-repeat: round;
+    border-image-width: 20px;
+    border-image-outset: 0;
+    border-image: url('images/border-pattern.png') 30 round;
+    padding: 20px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .custom-container {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 15px;
+      border-width: 6px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .custom-container {
+      padding: 10px;
+      border-width: 4px;
+    }
+  }
+</style>
+
 <link href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;family=Creepster&amp;display=swap" rel="stylesheet"/>
 <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -2825,7 +2881,7 @@ Copy
 </form>
 </div>
 </div>
-<div class="about-container">
+<div class="about-container custom-container">
 <section class="section about-section" id="about">
 <div class="title-container">
 <img alt="Left Alien Icon" class="title-icon" src="images/Index-Html/Index_Containers/About_Our_Camp/Metal_Left_Title.png"/>
@@ -3465,7 +3521,7 @@ body.night-mode .about-description {
 }
 </style>
 <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
-<div class="members-container">
+<div class="members-container custom-container">
 <section class="section" id="members">
 <h1>Meet Our Core Camp Crew</h1>
 <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
@@ -3523,7 +3579,7 @@ body.night-mode .about-description {
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
 </section>
 </div>
-<div class="mission-container">
+<div class="mission-container custom-container">
 <section class="section" id="mission">
 <h1>Our Mission</h1>
 <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
@@ -4311,7 +4367,7 @@ $(document).ready(function() {
   $('.t396__elem[data-elem-id="custom-uploaded-img"]').hide();
 });
 </script>
-<div class="history-container">
+<div class="history-container custom-container">
 <section class="section history-section" id="history">
 <h1>Our History</h1>
 <div class="history-gallery">
@@ -5274,7 +5330,7 @@ $(document).ready(function() {
 <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
 </div>
 </div>
-<div class="countdown-container">
+<div class="countdown-container custom-container">
 <section class="section countdown-section" id="countdown">
 <h2>Kiwiburn 2026 Countdown</h2>
 <div class="countdown" id="countdown-timer">
