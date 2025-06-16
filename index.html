@@ -707,18 +707,21 @@ body.night-mode .dropdown-menu {
       }
     }
 
-    .header {
-      background: url('images/Index-Html/Index_Page_Background/Index_Background_Banner_1.png') center/cover no-repeat;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #f8e1b4;
-      position: relative;
-      text-shadow: 0 0 10px var(--primary);
-    }
+.header {
+  background: url('images/Index-Html/Index_Page_Background/Index_Background_Banner_1.png') center/cover no-repeat;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-bottom: 10px solid #343837; /* Border only at the bottom, same size & color */
+  padding: 0px 0px; /* Padding between box & text */
+  box-shadow: 10px 10px rgba(1,0,0,0.3); /* Box shadow - bottom & left, color */
+  position: relative;
+  z-index: 2;
+  transition: background 100s, box-shadow;
+}
 
 .header-logo {
   max-width: 350px; /* Original size maintained */
