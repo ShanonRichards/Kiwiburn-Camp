@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -989,19 +990,18 @@ html, body {
 <div class="form-container">
 <h3>Stay in Touch</h3>
 <p>Join our crew for event updates and emo vibes.</p>
+<!DOCTYPE html>
+<!-- ... same HTML as before until we reach the newsletter form ... -->
 <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" onsubmit="handleNewsletterSubmit(event)">
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_subject" type="hidden" value="Newsletter Subscription"/>
-<input name="_template" type="hidden" value="box"/>
-<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" onsubmit="handleNewsletterSubmit(event)">
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_subject" type="hidden" value="New Newsletter Subscription Request"/>
-<input name="_template" type="hidden" value="box"/>
-<input name="message" type="hidden" value="This person wishes to subscribe for newsletter updates."/>
-<input aria-label="Email" id="newsletter-email" name="email" placeholder="Enter your email" required="" type="email"/>
-<button type="submit">Subscribe</button>
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="New Newsletter Subscription Request">
+  <input type="hidden" name="_template" value="box">
+  <input type="hidden" name="message" value="This person wishes to subscribe for newsletter updates.">
+  <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Subscribe</button>
 </form>
-</form>
+<!-- ... rest of the HTML remains the same ... -->
+
 </div>
 </div>
 <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
