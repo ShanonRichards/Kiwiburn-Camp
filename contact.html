@@ -895,8 +895,13 @@ html, body {
           <div class="form-container">
             <h3>Stay in Touch</h3>
             <p>Join our crew for event updates and emo vibes.</p>
-            <input type="email" id="newsletter-email" placeholder="Enter your email" required aria-label="Email">
-            <button onclick="submitNewsletter()">Subscribe</button>
+            <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_subject" value="Newsletter Subscription">
+  <input type="hidden" name="_template" value="box">
+  <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required aria-label="Email">
+  <button type="submit">Subscribe</button>
+</form>
           </div>
         </div>
         <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
