@@ -916,8 +916,8 @@ body.logged-in .github-token-section {
     </div>
     <div class="nav-right">
       <div class="nav-login">
-        <button class="login-button" onclick="openModal('login-modal')" style="display: block;">Login</button>
-        <button class="logout-button" aria-label="Logout" style="display: none;">Logout</button>
+        <button class="login-button" onclick="openModal('login-modal')">Login</button>
+        <button class="logout-button" aria-label="Logout">Logout</button>
       </div>
       <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
     </div>
@@ -1080,8 +1080,8 @@ body.logged-in .github-token-section {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       loginContainer.classList.add('logged-in');
-      document.querySelector('.login-button').style.display = 'none';
-      logoutButton.style.display = 'inline-block';
+      loginForm.parentElement.style.display = 'none';
+      logoutButton.style.display = 'block';
       document.body.classList.add('logged-in');
     });
 
@@ -1316,6 +1316,62 @@ document.addEventListener("DOMContentLoaded", () => {
     <button onclick="saveSocialLinks()">Save</button>
   </div>
 </div>
+
+
+<script>
+document.getElementById('save-to-github').addEventListener('click', async () => {
+  const token = document.getElementById('github-token').value.trim();
+  if (!token) {
+    alert("GitHub token is required.");
+    return;
+  }
+
+  const owner = "ShanonRichards";
+  const repo = "Kiwiburn-Camp";
+  const path = "contact.html";
+  const branch = "main";
+
+  try {
+    // Step 1: Get current file SHA
+    const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+    const getResp = await fetch(getUrl, {
+      headers: { Authorization: `token ${token}` }
+    });
+
+    if (!getResp.ok) throw new Error("Failed to fetch file SHA");
+    const fileData = await getResp.json();
+    const sha = fileData.sha;
+
+    // Step 2: Prepare updated content (entire document)
+    const content = document.documentElement.outerHTML;
+    const encodedContent = btoa(unescape(encodeURIComponent(content)));
+
+    // Step 3: PUT updated file to GitHub
+    const putResp = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": `token ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Update contact.html from web UI",
+        content: encodedContent,
+        branch: branch,
+        sha: sha
+      })
+    });
+
+    if (putResp.ok) {
+      alert("Page successfully pushed to GitHub!");
+    } else {
+      const error = await putResp.json();
+      throw new Error(error.message || "Push failed.");
+    }
+  } catch (err) {
+    alert("GitHub Push Failed: " + err.message);
+  }
+});
+</script>
 
 </body>
 </html>
