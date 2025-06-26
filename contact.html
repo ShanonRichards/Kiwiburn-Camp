@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,6 +72,14 @@
     font-size: 0.9rem;
     color: #bbb;
   }
+
+.github-token-section {
+  display: none;
+}
+body.logged-in .github-token-section {
+  display: block;
+}
+
 </style>
 
   <meta charset="UTF-8">
@@ -862,7 +867,15 @@ html, body {
       clip: rect(0, 0, 0, 0);
       border: 0;
     }
-  </style>
+  
+.github-token-section {
+  display: none;
+}
+body.logged-in .github-token-section {
+  display: block;
+}
+
+</style>
 </head>
 <body>
   <nav>
@@ -870,9 +883,9 @@ html, body {
     <button class="hamburger" aria-label="Toggle Menu">☰</button>
     <div class="nav-links">
       <div class="dropdown">
-        <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a>
+        <a href="#about" class="dropdown-toggle"><img src="images/Webpage_Bar_Icons/Crown_Skull_Webbar_Moving.gif" alt="About Icon" class="nav-icon">About <span class="dropdown-arrow">▼</span></a></span>
         <div class="dropdown-menu">
-          <a href="index.html#about">Our Camp</a>
+          <a href="index.html#about">Our Camp</a></span>
           <a href="index.html#members">Core Camp Crew</a>
           <a href="index.html#mission">Our Mission</a>
           <a href="index.html#setup">Our Setup</a>
@@ -903,8 +916,8 @@ html, body {
     </div>
     <div class="nav-right">
       <div class="nav-login">
-        <button class="login-button" onclick="openModal('login-modal')">Login</button>
-        <button class="logout-button" aria-label="Logout">Logout</button>
+        <button class="login-button" onclick="openModal('login-modal')" style="display: block;">Login</button>
+        <button class="logout-button" aria-label="Logout" style="display: none;">Logout</button>
       </div>
       <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
     </div>
@@ -929,14 +942,15 @@ html, body {
       <div class="contact-container">
         <div class="contact-info" aria-labelledby="contact-info-heading">
           <h2 id="contact-info-heading">Connect With Us</h2>
-          <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:shanonrichards@windowslive.com">shanonrichards@windowslive.com</a></p>
+          <p><i class="fas fa-envelope" aria-hidden="true"></i> <span contenteditable="true" class="editable-email"><a href="mailto:shanonrichards@windowslive.com">shanonrichards@windowslive.com</a></p>
           <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+64223417486">+64 223417486</a></p>
           <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/place/136+Cooks+Rd,+Hunterville+4785,+New+Zealand" target="_blank" aria-label="View festival location on Google Maps">136 Cooks Rd, Hunterville</a></p>
-          <div class="social-links" role="navigation" aria-label="Social media links">
+          <div class="social-links" id="social-links" role="navigation" aria-label="Social media links">
             <a href="https://www.facebook.com/groups/996318365425236" target="_blank" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
             <a href="https://instagram.com" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram" aria-hidden="true"></i></a>
             <a href="https://twitter.com" target="_blank" aria-label="Visit our Twitter page"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-          </div>
+          <button class="edit-section-button" onclick="openModal('social-links-modal')">Edit Social Links</button>
+</div>
           <div class="map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.697208446473!2d175.5489733152744!3d-39.95598787942682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d4052c7c8b0f1b7%3A0x8f9b6b7b8f8f8f8!2s136+Cooks+Rd%2C+Hunterville+4785%2C+New+Zealand!5e0!3m2!1sen!2snz!4v1696999999999!5m2!1sen!2snz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Map of 136 Cooks Rd, Hunterville"></iframe>
           </div>
@@ -991,11 +1005,19 @@ html, body {
         <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
       </div>
     </div>
-  </main>
+  
+<div class="github-token-section logged-in-only" style="margin: 3rem auto; text-align: center; max-width: 600px; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; border: 2px dashed #ff3399; font-family: 'Roboto', sans-serif;">
+  <h3 style="color: #ff3399; font-size: 1.5rem; margin-bottom: 1rem; font-family: 'Roboto', sans-serif;">Push Changes to GitHub</h3>
+  <label for="github-token" style="color: #fff;">GitHub Token:</label>
+  <input type="text" id="github-token" class="token-input" placeholder="Enter your GitHub token" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ff3399; border-radius: 6px;">
+  <button id="save-to-github" style="padding: 10px 20px; background-color: #ff3399; border: none; color: white; border-radius: 6px;">Push to GitHub</button>
+</div>
+
+</main>
 
   <div class="modal" id="newsletter-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('newsletter-modal')" aria-label="Close modal">×</button>
+    <div class="modal-content" style="position: relative;">
+    <button class="close-button" onclick="closeModal('newsletter-modal')" aria-label="Close modal" style="position: absolute; top: 10px; right: 10px;">×</button>
       <h3>Edit Newsletter Section</h3>
       <input type="text" id="newsletter-title" placeholder="Section Title" required aria-label="Section Title">
       <textarea id="newsletter-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
@@ -1004,8 +1026,8 @@ html, body {
   </div>
 
   <div class="modal" id="contact-modal">
-    <div class="modal-content">
-      <button class="close-button" onclick="closeModal('contact-modal')" aria-label="Close modal">×</button>
+    <div class="modal-content" style="position: relative;">
+    <button class="close-button" onclick="closeModal('contact-modal')" aria-label="Close modal" style="position: absolute; top: 10px; right: 10px;">×</button>
       <h3>Edit Contact Section</h3>
       <input type="text" id="contact-title" placeholder="Section Title" required aria-label="Section Title">
       <textarea id="contact-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
@@ -1015,7 +1037,7 @@ html, body {
 
   
 <footer aria-label="Professional footer" style="background-color:#1a1a1a; color:#fff; padding:2rem; text-align:center; font-family:'Roboto', sans-serif;">
-  <p>&copy; 2025 Cosmic Rejex. Built with passion by our crew. | <a href="mailto:shanonrichards@windowslive.com" style="color:#ff3399;">Contact Us</a></p>
+  <p>&copy; 2025 Cosmic Rejex. Built with passion by our crew. | <span contenteditable="true" class="editable-email"><a href="mailto:shanonrichards@windowslive.com" style="color:#ff3399;">Contact Us</a></p>
 </footer>
 
 
@@ -1058,8 +1080,8 @@ html, body {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
       loginContainer.classList.add('logged-in');
-      loginForm.parentElement.style.display = 'none';
-      logoutButton.style.display = 'block';
+      document.querySelector('.login-button').style.display = 'none';
+      logoutButton.style.display = 'inline-block';
       document.body.classList.add('logged-in');
     });
 
@@ -1218,61 +1240,45 @@ html, body {
 
 
 
-
-
-
-
-
-
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById('login-form');
   const logoutButton = document.querySelector('.logout-button');
   const loginModal = document.getElementById('login-modal');
 
-  const failModal = document.createElement("div");
-  failModal.style.display = "none";
-  failModal.style.position = "fixed";
-  failModal.style.top = "0";
-  failModal.style.left = "0";
-  failModal.style.width = "100vw";
-  failModal.style.height = "100vh";
-  failModal.style.background = "rgba(0,0,0,0.7)";
-  failModal.style.zIndex = "9999";
-  failModal.style.display = "flex";
-  failModal.style.alignItems = "center";
-  failModal.style.justifyContent = "center";
-  failModal.innerHTML = '<div style="background:#1a1a1a;color:#fff;padding:20px 30px;border:2px solid #ff3399;border-radius:8px;font-size:1.1rem;text-align:center;">Incorrect username or password.<br><br><button style="background:#ff3399;color:#fff;border:none;padding:8px 16px;border-radius:6px;margin-top:10px;cursor:pointer;" onclick="this.closest('div').style.display='none'">Close</button></div>';
-  document.body.appendChild(failModal);
-
-  let idleTimer;
-  const idleLogoutTime = 5 * 60 * 1000; // 5 min
-
-  function resetIdleTimer() {
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => {
-      if (document.body.classList.contains("logged-in")) {
-        alert("Session timed out due to inactivity.");
-        logoutButton.click();
-      }
-    }, idleLogoutTime);
-  }
-  window.onmousemove = window.onkeydown = resetIdleTimer;
+  const loginError = document.createElement("div");
+  loginError.id = "login-error";
+  loginError.style.color = "#ff3399";
+  loginError.style.marginTop = "10px";
 
   if (loginForm) {
+    const passwordField = document.getElementById('password');
+    const passwordToggle = document.createElement("label");
+    passwordToggle.innerHTML = '<input type="checkbox" id="toggle-password"> Show Password';
+    passwordToggle.style.color = "#ccc";
+    passwordToggle.style.fontSize = "0.9rem";
+    passwordToggle.style.display = "block";
+    passwordToggle.style.marginTop = "8px";
+    passwordField.parentNode.appendChild(passwordToggle);
+    passwordField.parentNode.appendChild(loginError);
+
+    document.getElementById("toggle-password").addEventListener("change", function () {
+      passwordField.type = this.checked ? "text" : "password";
+    });
+
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
-      if (username === 'Admin' && password === 'Password') {
+      const username = document.getElementById('username').value.trim().toLowerCase();
+      const password = document.getElementById('password').value.trim().toLowerCase();
+      if (username === 'admin' && password === 'password') {
         document.body.classList.add('logged-in');
         loginModal.style.display = 'none';
         logoutButton.style.display = 'inline-block';
-        alert('Welcome Admin! Editing is now enabled.');
+        loginError.textContent = '';
+        alert('Logged in successfully! You can now edit the page.');
         enableEditing();
-        resetIdleTimer();
       } else {
-        failModal.style.display = 'flex';
+        loginError.textContent = 'Invalid username or password.';
       }
     });
   }
@@ -1284,172 +1290,9 @@ document.addEventListener("DOMContentLoaded", () => {
         el.contentEditable = "false";
         el.style.outline = "none";
       });
-      document.querySelectorAll('.edit-btn, .token-input, #save-to-github, #clear-token').forEach(el => el.remove());
+      document.querySelectorAll('.edit-btn, .token-input, #save-to-github').forEach(el => el.remove());
       logoutButton.style.display = 'none';
-    });
-  }
-
-  function enableEditing() {
-    const editableFields = [
-      { selector: "#contact h1", label: "✎", type: "text" },
-      { selector: "#contact p", label: "✎", type: "text" },
-      { selector: "#newsletter h3", label: "✎", type: "text" },
-      { selector: "#newsletter p", label: "✎", type: "text" },
-      { selector: ".contact-info a[href^='mailto']", label: "✉️", type: "text" },
-      { selector: ".contact-info a[href^='tel']", label: "📞", type: "text" },
-      { selector: ".contact-info a[href*='maps']", label: "📍", type: "text" },
-      { selector: "a[href*='facebook.com']", label: "📘", type: "url" },
-      { selector: "a[href*='instagram.com']", label: "📸", type: "url" },
-      { selector: "a[href*='twitter.com']", label: "🐦", type: "url" }
-    ];
-
-    editableFields.forEach(({ selector, label, type }) => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach((el) => {
-        const badge = document.createElement("button");
-        badge.textContent = label;
-        badge.className = "edit-btn";
-        badge.style.position = "absolute";
-        badge.style.top = "8px";
-        badge.style.left = "8px";
-        badge.style.background = "#ff3399";
-        badge.style.color = "#fff";
-        badge.style.border = "none";
-        badge.style.borderRadius = "50%";
-        badge.style.width = "32px";
-        badge.style.height = "32px";
-        badge.style.fontSize = "1rem";
-        badge.style.boxShadow = "0 2px 6px rgba(0,0,0,0.25)";
-        badge.style.cursor = "pointer";
-        badge.style.zIndex = "1000";
-        badge.style.opacity = "0";
-        badge.style.transition = "opacity 0.3s ease";
-        badge.title = "Click to Edit";
-
-        badge.addEventListener("click", () => {
-          if (type === "url") {
-            const newUrl = prompt("Enter new URL:", el.href);
-            if (newUrl) el.setAttribute("href", newUrl);
-          } else {
-            el.contentEditable = "true";
-            el.focus();
-            el.style.outline = "2px dashed #ff3399";
-          }
-        });
-
-        const wrapper = document.createElement("div");
-        wrapper.style.position = "relative";
-        wrapper.classList.add("edit-hover-wrapper");
-        el.parentElement.insertBefore(wrapper, el);
-        wrapper.appendChild(el);
-        wrapper.appendChild(badge);
-
-        wrapper.addEventListener("mouseenter", () => badge.style.opacity = "1");
-        wrapper.addEventListener("mouseleave", () => badge.style.opacity = "0");
-      });
-    });
-
-    const tokenInput = document.createElement("input");
-    tokenInput.placeholder = "Enter GitHub Token";
-    tokenInput.className = "token-input";
-    tokenInput.type = "password";
-    tokenInput.style.position = "fixed";
-    tokenInput.style.bottom = "90px";
-    tokenInput.style.right = "20px";
-    tokenInput.style.padding = "8px";
-    tokenInput.style.width = "250px";
-    tokenInput.style.border = "1px solid #ff3399";
-    tokenInput.style.borderRadius = "6px";
-    tokenInput.style.zIndex = "10001";
-    document.body.appendChild(tokenInput);
-
-    const clearBtn = document.createElement("button");
-    clearBtn.textContent = "❌ Clear Token";
-    clearBtn.id = "clear-token";
-    clearBtn.style.position = "fixed";
-    clearBtn.style.bottom = "130px";
-    clearBtn.style.right = "20px";
-    clearBtn.style.padding = "8px 12px";
-    clearBtn.style.background = "#333";
-    clearBtn.style.color = "#fff";
-    clearBtn.style.border = "none";
-    clearBtn.style.borderRadius = "6px";
-    clearBtn.style.cursor = "pointer";
-    clearBtn.style.zIndex = "10001";
-    clearBtn.addEventListener("click", () => {
-      tokenInput.value = "";
-      alert("Token cleared.");
-    });
-    document.body.appendChild(clearBtn);
-
-    const saveBtn = document.createElement("button");
-    saveBtn.textContent = "💾 Save Changes to GitHub";
-    saveBtn.id = "save-to-github";
-    saveBtn.style.position = "fixed";
-    saveBtn.style.bottom = "40px";
-    saveBtn.style.right = "20px";
-    saveBtn.style.padding = "10px 20px";
-    saveBtn.style.background = "#ff3399";
-    saveBtn.style.color = "#fff";
-    saveBtn.style.border = "none";
-    saveBtn.style.borderRadius = "8px";
-    saveBtn.style.fontSize = "1rem";
-    saveBtn.style.cursor = "pointer";
-    saveBtn.style.zIndex = "10000";
-    document.body.appendChild(saveBtn);
-
-    saveBtn.addEventListener("click", async () => {
-      const token = tokenInput.value.trim();
-      if (!token) return alert("GitHub token is required.");
-      const confirmed = confirm("Are you sure you want to save changes to GitHub?");
-      if (!confirmed) return;
-
-      const githubAPI = "https://api.github.com/repos/ShanonRichards/Kiwiburn-Camp/contents/contact.html";
-
-      const res = await fetch(githubAPI, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const data = await res.json();
-      const sha = data.sha;
-
-      const originalHTML = await fetch(window.location.href).then(r => r.text());
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(originalHTML, "text/html");
-
-      editableFields.forEach(({ selector }) => {
-        const current = document.querySelector(selector);
-        const target = doc.querySelector(selector);
-        if (current && target) {
-          if (current.hasAttribute("href")) {
-            target.setAttribute("href", current.getAttribute("href"));
-          } else {
-            target.innerHTML = current.innerHTML;
-          }
-        }
-      });
-
-      const updatedHTML = "<!DOCTYPE html>
-" + doc.documentElement.outerHTML;
-      const base64Content = btoa(unescape(encodeURIComponent(updatedHTML)));
-
-      const result = await fetch(githubAPI, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: "Safe update from admin editor",
-          content: base64Content,
-          sha: sha
-        })
-      });
-
-      if (result.ok) {
-        alert("Changes successfully pushed to GitHub!");
-      } else {
-        alert("Failed to save changes to GitHub.");
-      }
+      alert('Logged out.');
     });
   }
 
@@ -1458,6 +1301,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 </script>
+
+
+<div class="modal" id="social-links-modal">
+  <div class="modal-content" style="position: relative;">
+    <button class="close-button" onclick="closeModal('social-links-modal')" aria-label="Close modal" style="position: absolute; top: 10px; right: 10px;">×</button>
+    <h3>Edit Social Media Links</h3>
+    <label for="facebook-url">Facebook URL</label>
+    <input type="url" id="facebook-url" placeholder="https://facebook.com/yourpage">
+    <label for="instagram-url">Instagram URL</label>
+    <input type="url" id="instagram-url" placeholder="https://instagram.com/yourhandle">
+    <label for="twitter-url">Twitter URL</label>
+    <input type="url" id="twitter-url" placeholder="https://twitter.com/yourhandle">
+    <button onclick="saveSocialLinks()">Save</button>
+  </div>
+</div>
 
 </body>
 </html>
