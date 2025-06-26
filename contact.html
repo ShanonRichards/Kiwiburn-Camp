@@ -870,6 +870,7 @@ html, body {
         <div class="form-container">
           
 <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+  <input type="hidden" name="_next" value="https://shanonrichards.github.io/Kiwiburn-Camp/contact.html">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="box">
   <input type="text" name="name" placeholder="Your Name" required>
@@ -901,6 +902,7 @@ html, body {
             <h3>Stay in Touch</h3>
             <p>Join our crew for event updates and emo vibes.</p>
             <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+  <input type="hidden" name="_next" value="https://shanonrichards.github.io/Kiwiburn-Camp/contact.html">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_subject" value="New Newsletter Subscription Request">
   <input type="hidden" name="_template" value="box">
@@ -1081,5 +1083,26 @@ html, body {
       closeModal('contact-modal');
     }
   </script>
+
+<script>
+  // Show thank you alert if page loaded from a redirect
+  if (document.referrer.includes("formsubmit.co")) {
+    const message = document.createElement("div");
+    message.style.position = "fixed";
+    message.style.top = "20px";
+    message.style.left = "50%";
+    message.style.transform = "translateX(-50%)";
+    message.style.backgroundColor = "#222";
+    message.style.color = "#fff";
+    message.style.padding = "15px 30px";
+    message.style.borderRadius = "8px";
+    message.style.boxShadow = "0 0 10px #ff3399";
+    message.style.zIndex = "9999";
+    message.style.fontFamily = "Bebas Neue, sans-serif";
+    message.innerText = "Thank you! Your message has been submitted.";
+    document.body.appendChild(message);
+    setTimeout(() => message.remove(), 5000);
+  }
+</script>
 </body>
 </html>
