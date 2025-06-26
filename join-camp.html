@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -1808,7 +1809,8 @@ body.night-mode .apply-box {
 <div class="modal-content">
 <button aria-label="Close modal" class="close-button" onclick="closeModal('login-modal')">×</button>
 <h3>Login</h3>
-<form action="https://formsubmit.co/shanonrichards@windowslive.com" id="login-form" method="POST" ><input name="_template" type="hidden" value="table"/><input name="_subject" type="hidden" value="New Camp Application Submission"/><input name="_captcha" type="hidden" value="false"/>
+<form action="https://formsubmit.co/shanonrichards@windowslive.com" id="login-form" method="POST" >
+  <input type="hidden" name="_next" value="https://shanonrichards.github.io/Kiwiburn-Camp/join-camp.html?submitted=true"><input name="_template" type="hidden" value="table"/><input name="_subject" type="hidden" value="New Camp Application Submission"/><input name="_captcha" type="hidden" value="false"/>
 <input aria-label="Username" id="username" placeholder="Username" required="" type="text"/>
 <input aria-label="Password" id="password" placeholder="Password" required="" type="password"/>
 <button type="submit">Login</button>
@@ -2752,6 +2754,17 @@ function handleFormSubmit() {
     window.location.href = "https://shanonrichards.github.io/Kiwiburn-Camp/join-camp.html";
   }, 100); // slight delay to ensure the form submits
 }
+</script>
+
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('submitted') === 'true') {
+      alert('✅ Submitted application');
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  });
 </script>
 
 </body>
