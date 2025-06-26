@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -987,22 +986,7 @@ html, body {
           Stay in Touch
         </button>
 <div class="newsletter-wrapper" id="newsletter-wrapper">
-<div class="form-container">
-<h3>Stay in Touch</h3>
-<p>Join our crew for event updates and emo vibes.</p>
-<!DOCTYPE html>
-<!-- ... same HTML as before until we reach the newsletter form ... -->
-<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" onsubmit="handleNewsletterSubmit(event)">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_subject" value="New Newsletter Subscription Request">
-  <input type="hidden" name="_template" value="box">
-  <input type="hidden" name="message" value="This person wishes to subscribe for newsletter updates.">
-  <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required>
-  <button type="submit">Subscribe</button>
-</form>
-<!-- ... rest of the HTML remains the same ... -->
-
-</div>
+<div class="form-container"><h3>Stay in Touch</h3><p>Join our crew for event updates and emo vibes.</p><form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST" onsubmit="return true;"><input name="_captcha" type="hidden" value="false"/><input name="_subject" type="hidden" value="New Newsletter Subscription Request"/><input name="_template" type="hidden" value="box"/><input name="message" type="hidden" value="This person wishes to subscribe for newsletter updates."/><input id="newsletter-email" name="email" placeholder="Enter your email" required="True" type="email"/><button type="submit">Subscribe</button></form></div>
 </div>
 <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
 </div>
@@ -1026,12 +1010,10 @@ html, body {
 <button onclick="saveContactDetails()">Save</button>
 </div>
 </div>
-
 <footer style="background: #111; color: #f8e1b4; padding: 2rem; text-align: center; font-family: 'Roboto', sans-serif; font-size: 0.95rem; border-top: 2px dashed var(--emo-accent); box-shadow: 0 -2px 15px rgba(0,0,0,0.5);">
-  <p>© 2025 Cosmic Rejex — Built with emo vibes & cosmic energy.</p>
-  <p><a href="contact.html" style="color: var(--primary-color); text-decoration: underline;">Contact</a> | <a href="FAQ.html" style="color: var(--primary-color); text-decoration: underline;">FAQ</a></p>
+<p>© 2025 Cosmic Rejex — Built with emo vibes &amp; cosmic energy.</p>
+<p><a href="contact.html" style="color: var(--primary-color); text-decoration: underline;">Contact</a> | <a href="FAQ.html" style="color: var(--primary-color); text-decoration: underline;">FAQ</a></p>
 </footer>
-
 <script>
     const themeToggle = document.querySelector('.theme-toggle');
     themeToggle.addEventListener('click', () => {
