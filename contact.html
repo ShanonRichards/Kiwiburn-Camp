@@ -1104,5 +1104,29 @@ html, body {
     setTimeout(() => message.remove(), 5000);
   }
 </script>
+
+<script>
+  // Detect if redirected from formsubmit.co and show appropriate message
+  if (document.referrer.includes("formsubmit.co")) {
+    const message = document.createElement("div");
+    message.style.position = "fixed";
+    message.style.top = "20px";
+    message.style.left = "50%";
+    message.style.transform = "translateX(-50%)";
+    message.style.backgroundColor = "#222";
+    message.style.color = "#fff";
+    message.style.padding = "15px 30px";
+    message.style.borderRadius = "8px";
+    message.style.boxShadow = "0 0 10px #ff3399";
+    message.style.zIndex = "9999";
+    message.style.fontFamily = "Bebas Neue, sans-serif";
+
+    const isNewsletter = document.referrer.includes("Newsletter") || document.referrer.toLowerCase().includes("subscribe");
+    message.innerText = isNewsletter ? "Thank you for subscribing!" : "Thank you! Your message has been sent.";
+
+    document.body.appendChild(message);
+    setTimeout(() => message.remove(), 6000);
+  }
+</script>
 </body>
 </html>
