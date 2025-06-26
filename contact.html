@@ -944,9 +944,9 @@ body.logged-in .github-token-section {
           <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+64223417486">+64 223417486</a></p>
           <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/place/136+Cooks+Rd,+Hunterville+4785,+New+Zealand" target="_blank" aria-label="View festival location on Google Maps">136 Cooks Rd, Hunterville</a></p>
           <div class="social-links" id="social-links" role="navigation" aria-label="Social media links">
-            <a href="https://www.facebook.com/groups/996318365425236" target="_blank" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
-            <a href="https://instagram.com" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-            <a href="https://twitter.com" target="_blank" aria-label="Visit our Twitter page"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a href="" target="_blank" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/shanon_richards/" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="" target="_blank" aria-label="Visit our Twitter page"><i class="fab fa-twitter" aria-hidden="true"></i></a>
           <button class="edit-section-button" onclick="openModal('social-links-modal')">Edit Social Links</button>
 </div>
           <div class="map-container">
@@ -1369,6 +1369,93 @@ document.getElementById('save-to-github').addEventListener('click', async () => 
     alert("GitHub Push Failed: " + err.message);
   }
 });
+</script>
+
+
+<script>
+function showStatusMessage(message, isError = false) {
+  const msgBox = document.createElement("div");
+  msgBox.style.position = "fixed";
+  msgBox.style.top = "20px";
+  msgBox.style.left = "50%";
+  msgBox.style.transform = "translateX(-50%)";
+  msgBox.style.backgroundColor = isError ? "#b30000" : "#006600";
+  msgBox.style.color = "#fff";
+  msgBox.style.padding = "15px 30px";
+  msgBox.style.borderRadius = "8px";
+  msgBox.style.boxShadow = "0 0 10px #ff3399";
+  msgBox.style.zIndex = "9999";
+  msgBox.style.fontFamily = "Bebas Neue, sans-serif";
+  msgBox.innerText = message;
+  document.body.appendChild(msgBox);
+  setTimeout(() => msgBox.remove(), 6000);
+}
+
+document.getElementById('save-to-github').addEventListener('click', async () => {
+  const token = document.getElementById('github-token').value.trim();
+  if (!token) {
+    showStatusMessage("GitHub token is required.", true);
+    return;
+  }
+
+  const owner = "ShanonRichards";
+  const repo = "Kiwiburn-Camp";
+  const path = "contact.html";
+  const branch = "main";
+
+  try {
+    const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+    const getResp = await fetch(getUrl, {
+      headers: { Authorization: `token ${token}` }
+    });
+
+    if (!getResp.ok) throw new Error("Failed to fetch file SHA");
+    const fileData = await getResp.json();
+    const sha = fileData.sha;
+
+    const content = document.documentElement.outerHTML;
+    const encodedContent = btoa(unescape(encodeURIComponent(content)));
+
+    const putResp = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": `token ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Update contact.html from web UI",
+        content: encodedContent,
+        branch: branch,
+        sha: sha
+      })
+    });
+
+    if (putResp.ok) {
+      showStatusMessage("✅ GitHub Push Completed Successfully!");
+    } else {
+      const error = await putResp.json();
+      throw new Error(error.message || "Push failed.");
+    }
+  } catch (err) {
+    showStatusMessage("❌ GitHub Push Failed: " + err.message, true);
+  }
+});
+
+function saveSocialLinks() {
+  const fb = document.getElementById('facebook-url').value.trim();
+  const insta = document.getElementById('instagram-url').value.trim();
+  const twitter = document.getElementById('twitter-url').value.trim();
+
+  const links = document.getElementById('social-links');
+  const anchors = links.getElementsByTagName('a');
+  if (anchors.length >= 3) {
+    anchors[0].href = fb;
+    anchors[1].href = insta;
+    anchors[2].href = twitter;
+  }
+  closeModal('social-links-modal');
+  showStatusMessage("✅ Social links updated. Please push to GitHub to save.");
+}
 </script>
 
 
