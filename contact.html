@@ -1,4 +1,82 @@
-<html lang="en"><head>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Orbitron:wght@400;600&display=swap');
+
+  body {
+    background-color: #111;
+    color: #eee;
+    font-family: 'Orbitron', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    font-family: 'UnifrakturCook', cursive;
+    color: #ff3399;
+    text-shadow: 0 0 5px #ff3399;
+  }
+
+  a {
+    color: #ff66c4;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  a:hover {
+    color: #ffffff;
+  }
+
+  .contact-section, .newsletter-section, footer {
+    background-color: #1a1a1a;
+    padding: 2em;
+    border-radius: 12px;
+    margin-bottom: 2em;
+    box-shadow: 0 0 20px rgba(255, 51, 153, 0.2);
+  }
+
+  input, textarea {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #ff3399;
+    border-radius: 6px;
+    padding: 10px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  button {
+    background-color: #ff3399;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-family: 'Orbitron', sans-serif;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #ff66c4;
+  }
+
+  .edit-btn {
+    font-family: Arial, sans-serif !important;
+  }
+
+  .token-input {
+    background-color: #222;
+    color: #fff;
+  }
+
+  footer {
+    font-size: 0.9rem;
+    color: #bbb;
+  }
+</style>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Contact Cosmic Rejex for inquiries, event submissions, or general questions.">
@@ -8,8 +86,8 @@
   <meta name="robots" content="index, follow">
   <title>Contact - Cosmic Rejex</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Roboto:wght@300;400;700&amp;family=Creepster&amp;family=Special+Elite&amp;family=Montserrat:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&family=Creepster&family=Special+Elite&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <style>
     :root {
@@ -786,7 +864,7 @@ html, body {
     }
   </style>
 </head>
-<body class="logged-in">
+<body>
   <nav>
     <img src="images/Webpage_Bar_Icons/Emo_Heart.png" alt="Cosmic Rejex Logo" class="nav-logo">
     <button class="hamburger" aria-label="Toggle Menu">☰</button>
@@ -824,21 +902,21 @@ html, body {
       <a href="FAQ.html"><img src="images/Webpage_Bar_Icons/Skull_Webbars_Moving.gif" alt="FAQ Icon" class="nav-icon">FAQ</a>
     </div>
     <div class="nav-right">
-      <div class="nav-login logged-in">
+      <div class="nav-login">
         <button class="login-button" onclick="openModal('login-modal')">Login</button>
-        <button class="logout-button" aria-label="Logout" style="display: inline-block;">Logout</button>
+        <button class="logout-button" aria-label="Logout">Logout</button>
       </div>
       <button class="theme-toggle" aria-label="Toggle Night Mode">🌙</button>
     </div>
   </nav>
 
-  <div class="modal" id="login-modal" style="display: none;">
-    <div class="modal-content" style="display: none;">
+  <div class="modal" id="login-modal">
+    <div class="modal-content">
       <button class="close-button" onclick="closeModal('login-modal')" aria-label="Close modal">×</button>
       <h3>Login</h3>
       <form id="login-form">
-        <input type="text" id="username" placeholder="Username" required="" aria-label="Username">
-        <input type="password" id="password" placeholder="Password" required="" aria-label="Password">
+        <input type="text" id="username" placeholder="Username" required aria-label="Username">
+        <input type="password" id="password" placeholder="Password" required aria-label="Password">
         <button type="submit">Login</button>
       </form>
     </div>
@@ -846,18 +924,18 @@ html, body {
 
   <main>
     <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-      <div class="edit-hover-wrapper" style="position: relative;"><h1 id="contact-heading">Contact Cosmic Rejex</h1><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
-      <div class="edit-hover-wrapper" style="position: relative;"><p>Got questions or vibes to share? Hit us up below or check our <a href="FAQ.html" class="faq-link">FAQ</a> for quick answers.</p><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
+      <h1 id="contact-heading">Contact Cosmic Rejex</h1>
+      <p>Got questions or vibes to share? Hit us up below or check our <a href="FAQ.html" class="faq-link">FAQ</a> for quick answers.</p>
       <div class="contact-container">
         <div class="contact-info" aria-labelledby="contact-info-heading">
           <h2 id="contact-info-heading">Connect With Us</h2>
-          <div class="edit-hover-wrapper" style="position: relative;"><p><i class="fas fa-envelope" aria-hidden="true"></i> <div class="edit-hover-wrapper" style="position: relative;"><a href="mailto:shanonrichards@windowslive.com">shanonrichards@windowslive.com</a><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✉️</button></div></p><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
-          <div class="edit-hover-wrapper" style="position: relative;"><p><i class="fas fa-phone" aria-hidden="true"></i> <div class="edit-hover-wrapper" style="position: relative;"><a href="tel:+64223417486">+64 223417486</a><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">📞</button></div></p><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
-          <div class="edit-hover-wrapper" style="position: relative;"><p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <div class="edit-hover-wrapper" style="position: relative;"><a href="https://www.google.com/maps/place/136+Cooks+Rd,+Hunterville+4785,+New+Zealand" target="_blank" aria-label="View festival location on Google Maps">136 Cooks Rd, Hunterville</a><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">📍</button></div></p><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
+          <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:shanonrichards@windowslive.com">shanonrichards@windowslive.com</a></p>
+          <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+64223417486">+64 223417486</a></p>
+          <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> <a href="https://www.google.com/maps/place/136+Cooks+Rd,+Hunterville+4785,+New+Zealand" target="_blank" aria-label="View festival location on Google Maps">136 Cooks Rd, Hunterville</a></p>
           <div class="social-links" role="navigation" aria-label="Social media links">
-            <div class="edit-hover-wrapper" style="position: relative;"><a href="https://www.facebook.com/groups/996318365425236" target="_blank" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">📘</button></div>
-            <div class="edit-hover-wrapper" style="position: relative;"><a href="https://instagram.com/shanon_richards" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram" aria-hidden="true"></i></a><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">📸</button></div>
-            <div class="edit-hover-wrapper" style="position: relative;"><a href="https://twitter.com" target="_blank" aria-label="Visit our Twitter page"><i class="fab fa-twitter" aria-hidden="true"></i></a><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">🐦</button></div>
+            <a href="https://www.facebook.com/groups/996318365425236" target="_blank" aria-label="Visit our Facebook page"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Visit our Instagram page"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Visit our Twitter page"><i class="fab fa-twitter" aria-hidden="true"></i></a>
           </div>
           <div class="map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.697208446473!2d175.5489733152744!3d-39.95598787942682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d4052c7c8b0f1b7%3A0x8f9b6b7b8f8f8f8!2s136+Cooks+Rd%2C+Hunterville+4785%2C+New+Zealand!5e0!3m2!1sen!2snz!4v1696999999999!5m2!1sen!2snz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Map of 136 Cooks Rd, Hunterville"></iframe>
@@ -869,18 +947,18 @@ html, body {
   <input type="hidden" name="_next" value="https://shanonrichards.github.io/Kiwiburn-Camp/contact.html?source=contact">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="box">
-  <input type="text" name="name" placeholder="Your Name" required="">
-  <input type="email" name="email" placeholder="Your Email" required="">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
   <input type="tel" name="phone" placeholder="Your Phone (optional)">
-  <textarea name="message" placeholder="Your Message" required=""></textarea>
+  <textarea name="message" placeholder="Your Message" required></textarea>
   <button type="submit">Send Message</button>
 </form>
 
           <div class="success-message" id="success-message" role="alert">
-            <div class="edit-hover-wrapper" style="position: relative;"><p>Message sent! We'll vibe with you soon.</p><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
+            <p>Message sent! We'll vibe with you soon.</p>
           </div>
           <div class="error-message" id="error-message" role="alert">
-            <div class="edit-hover-wrapper" style="position: relative;"><p>Please fill out all required fields correctly.</p><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
+            <p>Please fill out all required fields correctly.</p>
           </div>
         </div>
       </div>
@@ -895,8 +973,8 @@ html, body {
         </button>
         <div class="newsletter-wrapper" id="newsletter-wrapper" style="width: 340px; padding: 25px;">
           <div class="form-container">
-            <div class="edit-hover-wrapper" style="position: relative;"><h3>Stay in Touch</h3><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
-            <div class="edit-hover-wrapper" style="position: relative;"><p>Join our crew for event updates and emo vibes.</p><button class="edit-btn" title="Click to Edit" style="position: absolute; top: 8px; left: 8px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 50%; width: 32px; height: 32px; font-size: 1rem; box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 6px; cursor: pointer; z-index: 1000; opacity: 0; transition: opacity 0.3s;">✎</button></div>
+            <h3>Stay in Touch</h3>
+            <p>Join our crew for event updates and emo vibes.</p>
             <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
   <input type="hidden" name="_next" value="https://shanonrichards.github.io/Kiwiburn-Camp/contact.html?source=newsletter">
   <input type="hidden" name="_captcha" value="false">
@@ -904,10 +982,10 @@ html, body {
   <input type="hidden" name="_template" value="box">
   <input type="hidden" name="message" value="This person wishes to subscribe for newsletter updates.">
   <input type="hidden" name="_next" value="https://shanonrichards.github.io/Kiwiburn-Camp/contact.html?source=newsletter">
-  <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required="" aria-label="Email" style="margin: 0 auto 10px auto; display: block; width: 90%;">
+  <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" required aria-label="Email" style="margin: 0 auto 10px auto; display: block; width: 90%;">
   <button type="submit" style="margin: 0 auto; display: block; padding: 8px 16px; font-size: 0.9rem;">Subscribe</button>
 </form>
-
+</form>
           </div>
         </div>
         <button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
@@ -919,8 +997,8 @@ html, body {
     <div class="modal-content">
       <button class="close-button" onclick="closeModal('newsletter-modal')" aria-label="Close modal">×</button>
       <h3>Edit Newsletter Section</h3>
-      <input type="text" id="newsletter-title" placeholder="Section Title" required="" aria-label="Section Title">
-      <textarea id="newsletter-description" placeholder="Section Description" required="" aria-label="Section Description"></textarea>
+      <input type="text" id="newsletter-title" placeholder="Section Title" required aria-label="Section Title">
+      <textarea id="newsletter-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
       <button onclick="saveNewsletterDetails()">Save</button>
     </div>
   </div>
@@ -929,15 +1007,15 @@ html, body {
     <div class="modal-content">
       <button class="close-button" onclick="closeModal('contact-modal')" aria-label="Close modal">×</button>
       <h3>Edit Contact Section</h3>
-      <input type="text" id="contact-title" placeholder="Section Title" required="" aria-label="Section Title">
-      <textarea id="contact-description" placeholder="Section Description" required="" aria-label="Section Description"></textarea>
+      <input type="text" id="contact-title" placeholder="Section Title" required aria-label="Section Title">
+      <textarea id="contact-description" placeholder="Section Description" required aria-label="Section Description"></textarea>
       <button onclick="saveContactDetails()">Save</button>
     </div>
   </div>
 
   
 <footer aria-label="Professional footer" style="background-color:#1a1a1a; color:#fff; padding:2rem; text-align:center; font-family:'Roboto', sans-serif;">
-  <p>© 2025 Cosmic Rejex. Built with passion by our crew. | <a href="mailto:shanonrichards@windowslive.com" style="color:#ff3399;">Contact Us</a></p>
+  <p>&copy; 2025 Cosmic Rejex. Built with passion by our crew. | <a href="mailto:shanonrichards@windowslive.com" style="color:#ff3399;">Contact Us</a></p>
 </footer>
 
 
@@ -1134,25 +1212,51 @@ html, body {
 
 
 
+
+
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById('login-form');
   const logoutButton = document.querySelector('.logout-button');
   const loginModal = document.getElementById('login-modal');
 
+  const loginError = document.createElement("div");
+  loginError.id = "login-error";
+  loginError.style.color = "#ff3399";
+  loginError.style.marginTop = "10px";
+
   if (loginForm) {
+    const passwordField = document.getElementById('password');
+    const passwordToggle = document.createElement("label");
+    passwordToggle.innerHTML = '<input type="checkbox" id="toggle-password"> Show Password';
+    passwordToggle.style.color = "#ccc";
+    passwordToggle.style.fontSize = "0.9rem";
+    passwordToggle.style.display = "block";
+    passwordToggle.style.marginTop = "8px";
+    passwordField.parentNode.appendChild(passwordToggle);
+    passwordField.parentNode.appendChild(loginError);
+
+    document.getElementById("toggle-password").addEventListener("change", function () {
+      passwordField.type = this.checked ? "text" : "password";
+    });
+
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
-      if (username === 'Admin' && password === 'Password') {
+      const username = document.getElementById('username').value.trim().toLowerCase();
+      const password = document.getElementById('password').value.trim().toLowerCase();
+      if (username === 'admin' && password === 'password') {
         document.body.classList.add('logged-in');
         loginModal.style.display = 'none';
         logoutButton.style.display = 'inline-block';
+        loginError.textContent = '';
         alert('Logged in successfully! You can now edit the page.');
         enableEditing();
       } else {
-        alert('Invalid credentials. Try again.');
+        loginError.textContent = 'Invalid username or password.';
       }
     });
   }
@@ -1170,141 +1274,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function enableEditing() {
-    const editableFields = [
-      { selector: "#contact h1", label: "✎", type: "text" },
-      { selector: "#contact p", label: "✎", type: "text" },
-      { selector: "#newsletter h3", label: "✎", type: "text" },
-      { selector: "#newsletter p", label: "✎", type: "text" },
-      { selector: ".contact-info a[href^='mailto']", label: "✉️", type: "text" },
-      { selector: ".contact-info a[href^='tel']", label: "📞", type: "text" },
-      { selector: ".contact-info a[href*='maps']", label: "📍", type: "text" },
-      { selector: "a[href*='facebook.com']", label: "📘", type: "url" },
-      { selector: "a[href*='instagram.com']", label: "📸", type: "url" },
-      { selector: "a[href*='twitter.com']", label: "🐦", type: "url" }
-    ];
-
-    editableFields.forEach(({ selector, label, type }) => {
-      const elements = document.querySelectorAll(selector);
-      elements.forEach((el) => {
-        const badge = document.createElement("button");
-        badge.textContent = label;
-        badge.className = "edit-btn";
-        badge.style.position = "absolute";
-        badge.style.top = "8px";
-        badge.style.left = "8px";
-        badge.style.background = "#ff3399";
-        badge.style.color = "#fff";
-        badge.style.border = "none";
-        badge.style.borderRadius = "50%";
-        badge.style.width = "32px";
-        badge.style.height = "32px";
-        badge.style.fontSize = "1rem";
-        badge.style.boxShadow = "0 2px 6px rgba(0,0,0,0.25)";
-        badge.style.cursor = "pointer";
-        badge.style.zIndex = "1000";
-        badge.style.opacity = "0";
-        badge.style.transition = "opacity 0.3s ease";
-        badge.title = "Click to Edit";
-
-        badge.addEventListener("click", () => {
-          if (type === "url") {
-            const newUrl = prompt("Enter new URL:", el.href);
-            if (newUrl) el.setAttribute("href", newUrl);
-          } else {
-            el.contentEditable = "true";
-            el.focus();
-            el.style.outline = "2px dashed #ff3399";
-          }
-        });
-
-        const wrapper = document.createElement("div");
-        wrapper.style.position = "relative";
-        wrapper.classList.add("edit-hover-wrapper");
-        el.parentElement.insertBefore(wrapper, el);
-        wrapper.appendChild(el);
-        wrapper.appendChild(badge);
-
-        wrapper.addEventListener("mouseenter", () => badge.style.opacity = "1");
-        wrapper.addEventListener("mouseleave", () => badge.style.opacity = "0");
-      });
-    });
-
-    const tokenInput = document.createElement("input");
-    tokenInput.placeholder = "Enter GitHub Token";
-    tokenInput.className = "token-input";
-    tokenInput.type = "password";
-    tokenInput.style.position = "fixed";
-    tokenInput.style.bottom = "70px";
-    tokenInput.style.right = "20px";
-    tokenInput.style.padding = "8px";
-    tokenInput.style.width = "250px";
-    tokenInput.style.border = "1px solid #ff3399";
-    tokenInput.style.borderRadius = "6px";
-    tokenInput.style.zIndex = "10001";
-    document.body.appendChild(tokenInput);
-
-    const saveBtn = document.createElement("button");
-    saveBtn.textContent = "💾 Save Changes to GitHub";
-    saveBtn.id = "save-to-github";
-    saveBtn.style.position = "fixed";
-    saveBtn.style.bottom = "20px";
-    saveBtn.style.right = "20px";
-    saveBtn.style.padding = "10px 20px";
-    saveBtn.style.background = "#ff3399";
-    saveBtn.style.color = "#fff";
-    saveBtn.style.border = "none";
-    saveBtn.style.borderRadius = "8px";
-    saveBtn.style.fontSize = "1rem";
-    saveBtn.style.cursor = "pointer";
-    saveBtn.style.zIndex = "10000";
-    document.body.appendChild(saveBtn);
-
-    saveBtn.addEventListener("click", async () => {
-      const token = tokenInput.value.trim();
-      if (!token) return alert("GitHub token is required.");
-
-      const confirmed = confirm("Are you sure you want to save changes to GitHub?");
-      if (!confirmed) return;
-
-      const githubAPI = "https://api.github.com/repos/ShanonRichards/Kiwiburn-Camp/contents/contact.html";
-
-      const res = await fetch(githubAPI, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const data = await res.json();
-      const sha = data.sha;
-
-      const fullHTML = document.documentElement.outerHTML;
-      const base64Content = btoa(unescape(encodeURIComponent(fullHTML)));
-
-      const result = await fetch(githubAPI, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: "Admin edits contact.html",
-          content: base64Content,
-          sha: sha
-        })
-      });
-
-      if (result.ok) {
-        alert("Changes successfully pushed to GitHub!");
-      } else {
-        alert("Failed to save changes to GitHub.");
-      }
-    });
-  }
-
   if (document.body.classList.contains("logged-in")) {
     enableEditing();
   }
 });
 </script>
 
-
-
-<input placeholder="Enter GitHub Token" class="token-input" type="password" style="position: fixed; bottom: 70px; right: 20px; padding: 8px; width: 250px; border: 1px solid rgb(255, 51, 153); border-radius: 6px; z-index: 10001;"><button id="save-to-github" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; background: rgb(255, 51, 153); color: rgb(255, 255, 255); border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; z-index: 10000;">💾 Save Changes to GitHub</button></body></html>
+</body>
+</html>
