@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -567,6 +568,12 @@ body.night-mode .dropdown-menu {
     }
 
     .sidebar-widgets {
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -887,9 +894,7 @@ body.night-mode .dropdown-menu {
     .section {
       padding: 60px 20px;
       text-align: center;
-      background: url('images/Join_Us_Html/Joins_Us_Background/Skull_Background_Wider.png') center/cover;
-      border-top: 1px solid #e67e22;
-      border-bottom: 1px solid #e67e22;
+      background: url('images/Join_Us_Html/Joins_Us_Background/Skull_Background_Wider.png') center/cover; border: none;
     }
 
     .section:nth-of-type(odd) {
@@ -1484,6 +1489,15 @@ body.night-mode .dropdown-menu {
     }
 
     footer {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--emo-dark);
+  color: var(--text-light);
+  border-top: 2px solid var(--emo-accent);
+  margin-top: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+
       text-align: center;
       padding: 30px;
       background-color: var(--emo-dark);
@@ -1493,6 +1507,15 @@ body.night-mode .dropdown-menu {
     }
 
     body.night-mode footer {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--emo-dark);
+  color: var(--text-light);
+  border-top: 2px solid var(--emo-accent);
+  margin-top: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+
       background-color: #4a3723;
     }
 
@@ -1614,6 +1637,12 @@ body.night-mode .dropdown-menu {
       }
 
       .sidebar-widgets {
+  flex-direction: row !important;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+
         bottom: 10px;
         right: 10px;
       }
