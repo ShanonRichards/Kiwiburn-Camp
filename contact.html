@@ -1218,45 +1218,61 @@ html, body {
 
 
 
+
+
+
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById('login-form');
   const logoutButton = document.querySelector('.logout-button');
   const loginModal = document.getElementById('login-modal');
 
-  const loginError = document.createElement("div");
-  loginError.id = "login-error";
-  loginError.style.color = "#ff3399";
-  loginError.style.marginTop = "10px";
+  const failModal = document.createElement("div");
+  failModal.style.display = "none";
+  failModal.style.position = "fixed";
+  failModal.style.top = "0";
+  failModal.style.left = "0";
+  failModal.style.width = "100vw";
+  failModal.style.height = "100vh";
+  failModal.style.background = "rgba(0,0,0,0.7)";
+  failModal.style.zIndex = "9999";
+  failModal.style.display = "flex";
+  failModal.style.alignItems = "center";
+  failModal.style.justifyContent = "center";
+  failModal.innerHTML = '<div style="background:#1a1a1a;color:#fff;padding:20px 30px;border:2px solid #ff3399;border-radius:8px;font-size:1.1rem;text-align:center;">Incorrect username or password.<br><br><button style="background:#ff3399;color:#fff;border:none;padding:8px 16px;border-radius:6px;margin-top:10px;cursor:pointer;" onclick="this.closest('div').style.display='none'">Close</button></div>';
+  document.body.appendChild(failModal);
+
+  let idleTimer;
+  const idleLogoutTime = 5 * 60 * 1000; // 5 min
+
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      if (document.body.classList.contains("logged-in")) {
+        alert("Session timed out due to inactivity.");
+        logoutButton.click();
+      }
+    }, idleLogoutTime);
+  }
+  window.onmousemove = window.onkeydown = resetIdleTimer;
 
   if (loginForm) {
-    const passwordField = document.getElementById('password');
-    const passwordToggle = document.createElement("label");
-    passwordToggle.innerHTML = '<input type="checkbox" id="toggle-password"> Show Password';
-    passwordToggle.style.color = "#ccc";
-    passwordToggle.style.fontSize = "0.9rem";
-    passwordToggle.style.display = "block";
-    passwordToggle.style.marginTop = "8px";
-    passwordField.parentNode.appendChild(passwordToggle);
-    passwordField.parentNode.appendChild(loginError);
-
-    document.getElementById("toggle-password").addEventListener("change", function () {
-      passwordField.type = this.checked ? "text" : "password";
-    });
-
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const username = document.getElementById('username').value.trim().toLowerCase();
-      const password = document.getElementById('password').value.trim().toLowerCase();
-      if (username === 'admin' && password === 'password') {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if (username === 'Admin' && password === 'Password') {
         document.body.classList.add('logged-in');
         loginModal.style.display = 'none';
         logoutButton.style.display = 'inline-block';
-        loginError.textContent = '';
-        alert('Logged in successfully! You can now edit the page.');
+        alert('Welcome Admin! Editing is now enabled.');
         enableEditing();
+        resetIdleTimer();
       } else {
-        loginError.textContent = 'Invalid username or password.';
+        failModal.style.display = 'flex';
       }
     });
   }
@@ -1268,9 +1284,172 @@ document.addEventListener("DOMContentLoaded", () => {
         el.contentEditable = "false";
         el.style.outline = "none";
       });
-      document.querySelectorAll('.edit-btn, .token-input, #save-to-github').forEach(el => el.remove());
+      document.querySelectorAll('.edit-btn, .token-input, #save-to-github, #clear-token').forEach(el => el.remove());
       logoutButton.style.display = 'none';
-      alert('Logged out.');
+    });
+  }
+
+  function enableEditing() {
+    const editableFields = [
+      { selector: "#contact h1", label: "✎", type: "text" },
+      { selector: "#contact p", label: "✎", type: "text" },
+      { selector: "#newsletter h3", label: "✎", type: "text" },
+      { selector: "#newsletter p", label: "✎", type: "text" },
+      { selector: ".contact-info a[href^='mailto']", label: "✉️", type: "text" },
+      { selector: ".contact-info a[href^='tel']", label: "📞", type: "text" },
+      { selector: ".contact-info a[href*='maps']", label: "📍", type: "text" },
+      { selector: "a[href*='facebook.com']", label: "📘", type: "url" },
+      { selector: "a[href*='instagram.com']", label: "📸", type: "url" },
+      { selector: "a[href*='twitter.com']", label: "🐦", type: "url" }
+    ];
+
+    editableFields.forEach(({ selector, label, type }) => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach((el) => {
+        const badge = document.createElement("button");
+        badge.textContent = label;
+        badge.className = "edit-btn";
+        badge.style.position = "absolute";
+        badge.style.top = "8px";
+        badge.style.left = "8px";
+        badge.style.background = "#ff3399";
+        badge.style.color = "#fff";
+        badge.style.border = "none";
+        badge.style.borderRadius = "50%";
+        badge.style.width = "32px";
+        badge.style.height = "32px";
+        badge.style.fontSize = "1rem";
+        badge.style.boxShadow = "0 2px 6px rgba(0,0,0,0.25)";
+        badge.style.cursor = "pointer";
+        badge.style.zIndex = "1000";
+        badge.style.opacity = "0";
+        badge.style.transition = "opacity 0.3s ease";
+        badge.title = "Click to Edit";
+
+        badge.addEventListener("click", () => {
+          if (type === "url") {
+            const newUrl = prompt("Enter new URL:", el.href);
+            if (newUrl) el.setAttribute("href", newUrl);
+          } else {
+            el.contentEditable = "true";
+            el.focus();
+            el.style.outline = "2px dashed #ff3399";
+          }
+        });
+
+        const wrapper = document.createElement("div");
+        wrapper.style.position = "relative";
+        wrapper.classList.add("edit-hover-wrapper");
+        el.parentElement.insertBefore(wrapper, el);
+        wrapper.appendChild(el);
+        wrapper.appendChild(badge);
+
+        wrapper.addEventListener("mouseenter", () => badge.style.opacity = "1");
+        wrapper.addEventListener("mouseleave", () => badge.style.opacity = "0");
+      });
+    });
+
+    const tokenInput = document.createElement("input");
+    tokenInput.placeholder = "Enter GitHub Token";
+    tokenInput.className = "token-input";
+    tokenInput.type = "password";
+    tokenInput.style.position = "fixed";
+    tokenInput.style.bottom = "70px";
+    tokenInput.style.right = "20px";
+    tokenInput.style.padding = "8px";
+    tokenInput.style.width = "250px";
+    tokenInput.style.border = "1px solid #ff3399";
+    tokenInput.style.borderRadius = "6px";
+    tokenInput.style.zIndex = "10001";
+    document.body.appendChild(tokenInput);
+
+    const clearBtn = document.createElement("button");
+    clearBtn.textContent = "❌ Clear Token";
+    clearBtn.id = "clear-token";
+    clearBtn.style.position = "fixed";
+    clearBtn.style.bottom = "45px";
+    clearBtn.style.right = "20px";
+    clearBtn.style.padding = "8px 12px";
+    clearBtn.style.background = "#333";
+    clearBtn.style.color = "#fff";
+    clearBtn.style.border = "none";
+    clearBtn.style.borderRadius = "6px";
+    clearBtn.style.cursor = "pointer";
+    clearBtn.style.zIndex = "10001";
+    clearBtn.addEventListener("click", () => {
+      tokenInput.value = "";
+      alert("Token cleared.");
+    });
+    document.body.appendChild(clearBtn);
+
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "💾 Save Changes to GitHub";
+    saveBtn.id = "save-to-github";
+    saveBtn.style.position = "fixed";
+    saveBtn.style.bottom = "20px";
+    saveBtn.style.right = "20px";
+    saveBtn.style.padding = "10px 20px";
+    saveBtn.style.background = "#ff3399";
+    saveBtn.style.color = "#fff";
+    saveBtn.style.border = "none";
+    saveBtn.style.borderRadius = "8px";
+    saveBtn.style.fontSize = "1rem";
+    saveBtn.style.cursor = "pointer";
+    saveBtn.style.zIndex = "10000";
+    document.body.appendChild(saveBtn);
+
+    saveBtn.addEventListener("click", async () => {
+      const token = tokenInput.value.trim();
+      if (!token) return alert("GitHub token is required.");
+      const confirmed = confirm("Are you sure you want to save changes to GitHub?");
+      if (!confirmed) return;
+
+      const githubAPI = "https://api.github.com/repos/ShanonRichards/Kiwiburn-Camp/contents/contact.html";
+
+      const res = await fetch(githubAPI, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const data = await res.json();
+      const sha = data.sha;
+
+      const originalHTML = await fetch(window.location.href).then(r => r.text());
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(originalHTML, "text/html");
+
+      editableFields.forEach(({ selector }) => {
+        const current = document.querySelector(selector);
+        const target = doc.querySelector(selector);
+        if (current && target) {
+          if (current.hasAttribute("href")) {
+            target.setAttribute("href", current.getAttribute("href"));
+          } else {
+            target.innerHTML = current.innerHTML;
+          }
+        }
+      });
+
+      const updatedHTML = "<!DOCTYPE html>
+" + doc.documentElement.outerHTML;
+      const base64Content = btoa(unescape(encodeURIComponent(updatedHTML)));
+
+      const result = await fetch(githubAPI, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: "Safe update from admin editor",
+          content: base64Content,
+          sha: sha
+        })
+      });
+
+      if (result.ok) {
+        alert("Changes successfully pushed to GitHub!");
+      } else {
+        alert("Failed to save changes to GitHub.");
+      }
     });
   }
 
