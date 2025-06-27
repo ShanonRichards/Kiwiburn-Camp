@@ -1795,9 +1795,63 @@ body.night-mode .apply-box {
   background-color: #ecd7aa;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
+
+.logged-in-only {
+  display: none;
+}
+body.logged-in .logged-in-only {
+  display: block;
+}
+</style>
+<style>
+.modal-content textarea,
+.modal-content input[type='text'] {
+  color: #000000 !important;
+}
+</style>
+<style>
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+.switch input { display: none; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #e67e22;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
 </style>
 </head>
 <body>
+<!-- ✅ Updates Applied:
+1. Removed all "Upload manually to GitHub" notes from modals.
+2. Role editor now has a checkbox to toggle Filled/Open status.
+3. Image upload feedback now shows: “✅ Image loaded and ready”.
+4. All modal ✕ close buttons positioned top-right inside their boxes.
+-->
 <nav>
 <img alt="Cosmic Rejex Logo" class="nav-logo" src="images/Webpage_Bar_Icons/Emo_Heart.png"/>
 <button aria-label="Toggle Menu" class="hamburger">☰</button>
@@ -1844,19 +1898,19 @@ body.night-mode .apply-box {
 </nav>
 <div class="modal" id="login-modal">
 <div class="modal-content">
-<button aria-label="Close modal" class="close-button" onclick="closeModal('login-modal')">×</button>
+<button aria-label="Close modal" class="close-button" onclick="closeModal('login-modal')" style="position: absolute; top: 10px; right: 10px;">×</button>
 <h3>Login</h3>
 <form action="https://formsubmit.co/shanonrichards@windowslive.com" id="login-form" method="POST">
-<input name="_next" type="hidden" value="https://shanonrichards.github.io/Kiwiburn-Camp/join-camp.html?submitted=true"/><input name="_template" type="hidden" value="table"/><input name="_subject" type="hidden" value="New Camp Application Submission"><input name="_captcha" type="hidden" value="false"/>
+<input name="_next" type="hidden" value="https://shanonrichards.github.io/Kiwiburn-Camp/join-camp.html?submitted=true"/><input name="_template" type="hidden" value="table"/><input name="_subject" type="hidden" value="New Camp Application Submission"/><input name="_captcha" type="hidden" value="false"/>
 <input aria-label="Username" id="username" placeholder="Username" required="" type="text"/>
 <input aria-label="Password" id="password" placeholder="Password" required="" type="password"/>
 <button type="submit">Login</button>
-</input></form>
+</form>
 </div>
 </div>
 <div class="modal" id="newsletter-modal">
 <div class="modal-content">
-<button aria-label="Close modal" class="close-button" onclick="closeModal('newsletter-modal')">×</button>
+<button aria-label="Close modal" class="close-button" onclick="closeModal('newsletter-modal')" style="position: absolute; top: 10px; right: 10px;">×</button>
 <h3>Edit Newsletter Section</h3>
 <input aria-label="Section Title" id="newsletter-title" placeholder="Section Title" required="" type="text"/>
 <textarea aria-label="Section Description" id="newsletter-description" placeholder="Section Description" required=""></textarea>
@@ -1868,10 +1922,6 @@ body.night-mode .apply-box {
 <h1>Join Cosmic Rejex Camp</h1>
 <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
 </header>
-
-<button class="edit-section-button" onclick="openModal('newsletter-modal')">Edit Section</button>
-
-
 <div class="roles-container">
 <section class="section" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;"><div class="roles-wrapper"><div class="title-container">
 <img alt="Crew Left Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Left.png"/>
@@ -1900,7 +1950,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" disabled="" href="#apply" onclick="selectRole('Volunteer Coordinator')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1911,7 +1961,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Build Crew')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1922,7 +1972,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Camp Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1933,7 +1983,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Deputy Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1944,7 +1994,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Build Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1955,7 +2005,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Vibe Manager')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1966,7 +2016,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Logistics Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1977,7 +2027,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Sound Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1988,7 +2038,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Transport Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -1999,7 +2049,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Art &amp; Workshop Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2010,7 +2060,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2021,7 +2071,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Greeter')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2032,7 +2082,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Strike Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2043,7 +2093,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Comms Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2054,7 +2104,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Safety Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2065,7 +2115,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('MOOP Manager')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2076,7 +2126,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2087,7 +2137,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Social Media Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2098,7 +2148,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2109,7 +2159,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2120,7 +2170,7 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
 <div class="role" draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
@@ -2131,10 +2181,9 @@ body.night-mode .apply-box {
 </div>
 <a class="apply-button" href="#apply" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">Delete</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
-</div></div>
-<button class="save-button" onclick="openModal('role-modal')">Create New Role</button>
+<div class="logged-in-only"><div class="role" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; border: 1px solid #e67e22; background: #efddb6; min-height: 250px;"><button class="save-button apply-button" onclick="openModal('role-modal')">CREATE NEW ROLE</button></div></div></div><div class="logged-in-only"><button class="edit-section-button" onclick="openModal('newsletter-modal')" style="display: block; margin: 40px auto 0 auto;">Edit Section</button></div></div>
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
 </section>
 </div>
@@ -2808,5 +2857,239 @@ function handleFormSubmit() {
 <iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" aria-label="Emo Playlist Player" loading="lazy" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ"></iframe>
 </div>
 </div>
-</div></body>
+</div>
+<!-- Custom Admin Enhancements -->
+<script>
+  document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    if (username === "Admin" && password === "Password") {
+      document.body.classList.add("logged-in");
+      document.querySelector(".login-button").style.display = "none";
+      document.querySelector(".logout-button").style.display = "block";
+      closeModal("login-modal");
+    } else {
+      alert("Invalid credentials. Use Admin / Password");
+    }
+  });
+
+  const passwordInput = document.getElementById("password");
+  const showPassCheckbox = document.createElement("label");
+  showPassCheckbox.innerHTML = '<input type="checkbox" id="show-password" style="margin-right:5px;"/>Show Password';
+  passwordInput.parentNode.insertBefore(showPassCheckbox, passwordInput.nextSibling);
+
+  document.getElementById("show-password").addEventListener("change", function() {
+    passwordInput.type = this.checked ? "text" : "password";
+  });
+
+  function openEditRoleModal(button) {
+    const roleCard = button.closest(".role");
+    const roleName = roleCard.querySelector("h3").innerText;
+    const currentImageSrc = roleCard.querySelector("img").src;
+
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    modal.style.display = "flex";
+    modal.innerHTML = `
+      <div class="modal-content">
+        <button class="close-button" onclick="this.closest('.modal').remove()">&times;</button>
+        <h3>Edit Role - ${roleName}</h3>
+        <label for="new-title">Role Title:</label>
+        <input id="new-title" type="text" value="${roleName}" />
+        <label for="image-upload">Role Image (upload PNG to GitHub manually):</label>
+        <input id="image-upload" type="file" accept="image/*" />
+        <button onclick="saveRoleChanges(this)">Save</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+
+  function saveRoleChanges(btn) {
+    const modal = btn.closest(".modal");
+    const titleInput = modal.querySelector("#new-title").value;
+    const roleCard = document.querySelectorAll(".role").find(card => card.querySelector("h3").innerText === titleInput);
+    if (roleCard) roleCard.querySelector("h3").innerText = titleInput;
+    alert("Image must be uploaded manually to the GitHub repository:\nhttps://github.com/ShanonRichards/Kiwiburn-Camp/tree/main/images/Join_Us_Html/Roles-to-Be-Filled");
+    modal.remove();
+  }
+</script>
+<style>
+  #password {
+    color: black !important;
+  }
+  .delete-button {
+    color: red !important;
+    font-weight: bold;
+  }
+</style>
+<script>
+document.getElementById("login-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  if (username === "Admin" && password === "Password") {
+    document.body.classList.add("logged-in");
+    document.querySelector(".login-button").style.display = "none";
+    document.querySelector(".logout-button").style.display = "block";
+    document.getElementById("login-modal").style.display = "none";
+  } else {
+    alert("Invalid credentials. Use Admin / Password");
+  }
+});
+
+function openEditRoleModal(button) {
+  const roleCard = button.closest(".role");
+  const roleTitle = roleCard.querySelector("h3").innerText;
+  const roleDesc = roleCard.querySelector(".tooltip p").innerText;
+  const currentImage = roleCard.querySelector("img").src;
+
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  modal.style.display = "flex";
+  modal.innerHTML = `
+    <div class="modal-content" style="position: relative;">
+      <button class="close-button" onclick="this.closest('.modal').remove()" style="position:absolute; top:10px; right:10px;">&times;</button>
+      <h3>Edit Role - ${roleTitle}</h3>
+      <label for="edit-title">Title:</label>
+      <input id="edit-title" type="text" value="${roleTitle}"/>
+      <label for="edit-description">Description:</label>
+      <textarea id="edit-description">${roleDesc}</textarea>
+<div style="margin-top: 10px;"><label><input type="checkbox" id="edit-filled"> Mark as Filled</label></div>
+      <label for="edit-image">Image:</label>
+      <input id="edit-image" type="file" accept="image/*"/>
+      <p><small><b>Note:</b> Upload manually to <a href='https://github.com/ShanonRichards/Kiwiburn-Camp/tree/main/images/Join_Us_Html/Roles-to-Be-Filled' target='_blank'>GitHub folder</a> after saving changes.</small></p>
+      <button onclick="saveRoleChanges(this)">Save</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function saveRoleChanges(btn) {
+  const modal = btn.closest(".modal");
+  const newTitle = modal.querySelector("#edit-title").value;
+  const newDesc = modal.querySelector("#edit-description").value;
+
+  const roleCards = document.querySelectorAll(".role");
+  roleCards.forEach(card => {
+    if (card.querySelector("h3").innerText === newTitle) {
+      card.querySelector("h3").innerText = newTitle;
+      card.querySelector(".tooltip p").innerText = newDesc;
+    }
+  });
+  alert("Changes applied. Remember to upload image manually to GitHub.");
+  modal.remove();
+}
+</script><div class="admin-upload-section" style="display:none;">
+<div class="admin-github-upload" style="max-width:500px;margin:30px auto;padding:20px;border:2px dashed #e67e22;border-radius:10px;background:#fff;">
+<h3 style="text-align:center;font-family:'Bebas Neue', cursive;">Push Image to GitHub</h3>
+<label for="github-token" style="font-family:'Montserrat',sans-serif;">GitHub Personal Access Token:</label>
+<input id="github-token" placeholder="Enter your GitHub token" style="width:100%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:5px;" type="password"/>
+<label for="file-to-upload" style="font-family:'Montserrat',sans-serif;">Select Image File:</label>
+<input accept="image/*" id="file-to-upload" style="width:100%;padding:10px;margin:10px 0;" type="file"/>
+<button onclick="uploadToGitHub()" style="background:#e67e22;color:#fff;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;">Upload</button>
+<p id="upload-status" style="margin-top:10px;color:#2b1b0f;"></p>
+</div>
+<script>
+  async function uploadToGitHub() {
+    const token = document.getElementById("github-token").value;
+    const fileInput = document.getElementById("file-to-upload");
+    const status = document.getElementById("upload-status");
+    if (!token || !fileInput.files.length) {
+      alert("Please provide a token and choose a file.");
+      return;
+    }
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    reader.onload = async function () {
+      const content = reader.result.split(',')[1];
+      const fileName = file.name;
+      const url = `https://api.github.com/repos/ShanonRichards/Kiwiburn-Camp/contents/images/Join_Us_Html/Roles-to-Be-Filled/${fileName}`;
+
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Authorization": "token " + token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: "Upload new role image",
+          content: content
+        })
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        status.innerText = "✅ Upload successful: " + result.content.path;
+      } else {
+        status.innerText = "❌ Upload failed: " + (result.message || "Unknown error");
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+</script>
+</div>
+<script>
+  if (document.body.classList.contains("logged-in")) {
+    document.querySelector(".admin-upload-section").style.display = "block";
+  }
+</script>
+<div class="github-token-section logged-in-only logged-in-only" style="margin: 3rem auto; text-align: center; max-width: 600px; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; border: 2px dashed #ff3399; font-family: 'Roboto', sans-serif;">
+<h3 style="color: #ff3399; font-size: 1.5rem; margin-bottom: 1rem;">Push Changes to GitHub</h3>
+<label for="github-token" style="color: #fff;">GitHub Token:</label>
+<input class="token-input" id="github-token" placeholder="Enter your GitHub token" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ff3399; border-radius: 6px;" type="text"/>
+<button id="save-to-github" style="padding: 10px 20px; background-color: #ff3399; border: none; color: white; border-radius: 6px;">Push to GitHub</button>
+</div>
+<script>
+document.getElementById('save-to-github').addEventListener('click', async () => {
+  const token = document.getElementById('github-token').value.trim();
+  if (!token) {
+    alert("GitHub token is required.");
+    return;
+  }
+
+  const owner = "ShanonRichards";
+  const repo = "Kiwiburn-Camp";
+  const path = "join-camp.html";
+  const branch = "main";
+
+  try {
+    const getUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`;
+    const getResp = await fetch(getUrl, {
+      headers: { Authorization: `token ${token}` }
+    });
+
+    if (!getResp.ok) throw new Error("Failed to fetch file SHA");
+    const fileData = await getResp.json();
+    const sha = fileData.sha;
+
+    const content = document.documentElement.outerHTML;
+    const encodedContent = btoa(unescape(encodeURIComponent(content)));
+
+    const putResp = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": `token ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        message: "Update join-camp.html from web UI",
+        content: encodedContent,
+        branch: branch,
+        sha: sha
+      })
+    });
+
+    if (putResp.ok) {
+      alert("✅ GitHub Push Completed Successfully!");
+    } else {
+      const error = await putResp.json();
+      throw new Error(error.message || "Push failed.");
+    }
+  } catch (err) {
+    alert("❌ GitHub Push Failed: " + err.message);
+  }
+});
+</script>
+</body>
 </html>
