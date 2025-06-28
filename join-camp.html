@@ -1,5 +1,9 @@
 
 
+
+
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -1802,43 +1806,6 @@ body.night-mode .apply-box {
 body.logged-in .logged-in-only {
   display: block;
 }
-
-
-body {
-  background: url('images/Join_Us_Html/Joins_Us_Background/Skull_Background_Wider.png') center/cover fixed no-repeat;
-}
-
-.section {
-  background-color: rgba(255, 255, 255, 0.85);
-  border: 3px solid #2b1b0f;
-  border-radius: 16px;
-  margin: 20px auto;
-  padding: 60px 20px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.25);
-}
-
-/* === STATIC BACKGROUND OVERRIDES START === */
-.section {
-  background-image: none !important;
-  background-color: #fdf0da !important;
-}
-.section:nth-of-type(odd) {
-  background-color: #f4e4bc !important;
-}
-.section:nth-of-type(even) {
-  background-color: #e9d6bb !important;
-}
-.header {
-  background-image: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') !important;
-}
-body {
-  background-image: url('images/Join_Us_Html/Joins_Us_Background/Skull_Background_Wider.png') !important;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-/* === STATIC BACKGROUND OVERRIDES END === */
-
 </style>
 <style>
 .modal-content textarea,
@@ -1914,8 +1881,8 @@ input:checked + .slider:before {
 <div class="dropdown">
 <a class="dropdown-toggle" href="#join"><img alt="Join Icon" class="nav-icon" src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif"/>Join Us <span class="dropdown-arrow">▼</span></a>
 <div class="dropdown-menu">
-<a href="#roles">Membership Info</a>
-<a href="#apply">Apply to Join</a>
+<a href="join-camp.html" href="#roles">Membership Info</a>
+<a href="join-camp.html" href="#apply">Apply to Join</a>
 <a href="camp-fees.html">Camp Fees</a>
 <a href="Task_Roster.html">Task/Roster</a>
 </div>
@@ -1960,7 +1927,7 @@ input:checked + .slider:before {
 <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
 </header>
 <div class="roles-container">
-<section class="section" id="roles" style="border-radius: 12px; padding: 40px 20px; "><div class="roles-wrapper"><div class="title-container">
+<section class="section" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;"><div class="roles-wrapper"><div class="title-container">
 <img alt="Crew Left Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Left.png"/>
 <img alt="Crew Title Icon" class="title-image crew-title" src="images/Join_Us_Html/Roles_Container/Join_Our_Cult_Crewz.png"/>
 <img alt="Crew Right Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Right.png"/>
@@ -2226,7 +2193,7 @@ input:checked + .slider:before {
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
 </section>
 </div>
-<section class="section" id="apply" style="background-color: #f4e4bc; border: 3px solid #2b1b0f; border-radius: 16px; margin: 20px auto; padding: 60px 20px; box-shadow: 0 0 12px rgba(0,0,0,0.25);">
+<section class="section" id="apply">
 <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
 <a id="apply-info"></a>
 <a id="apply-info"></a>
@@ -3132,6 +3099,7 @@ document.getElementById('save-to-github').addEventListener('click', async () => 
   }
 });
 </script>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.classList.contains('logged-in')) {
@@ -3139,5 +3107,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+
 </body>
 </html>
