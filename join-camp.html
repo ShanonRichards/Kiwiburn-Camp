@@ -1,8 +1,5 @@
 
 
-
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -1805,6 +1802,20 @@ body.night-mode .apply-box {
 body.logged-in .logged-in-only {
   display: block;
 }
+
+
+body {
+  background: url('images/Join_Us_Html/Joins_Us_Background/Skull_Background_Wider.png') center/cover fixed no-repeat;
+}
+
+.section {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 3px solid #2b1b0f;
+  border-radius: 16px;
+  margin: 20px auto;
+  padding: 60px 20px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+}
 </style>
 <style>
 .modal-content textarea,
@@ -1880,8 +1891,8 @@ input:checked + .slider:before {
 <div class="dropdown">
 <a class="dropdown-toggle" href="#join"><img alt="Join Icon" class="nav-icon" src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif"/>Join Us <span class="dropdown-arrow">▼</span></a>
 <div class="dropdown-menu">
-<a href="join-camp.html" href="#roles">Membership Info</a>
-<a href="join-camp.html" href="#apply">Apply to Join</a>
+<a href="#roles">Membership Info</a>
+<a href="#apply">Apply to Join</a>
 <a href="camp-fees.html">Camp Fees</a>
 <a href="Task_Roster.html">Task/Roster</a>
 </div>
@@ -3098,7 +3109,6 @@ document.getElementById('save-to-github').addEventListener('click', async () => 
   }
 });
 </script>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.classList.contains('logged-in')) {
@@ -3106,6 +3116,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
 </body>
 </html>
