@@ -1563,25 +1563,36 @@ body.night-mode .dropdown-menu {
       }
 
       .roles-grid {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 15px;
-        max-width: 95%;
-        padding: 0 10px;
-        scroll-snap-type: x mandatory;
-      }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      justify-items: center;
+      align-items: start;
+      position: relative;
+      min-height: 200px;
+    }
 
       .roles-grid .scroll-arrow {
         display: block;
       }
 
       .role {
-        flex: 0 0 140px;
-        scroll-snap-align: start;
-        min-height: 240px;
-        padding: 10px;
-      }
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #efddb6;
+      padding: 15px;
+      border: 1px solid #e67e22;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      height: 100%;
+      min-height: 250px;
+      justify-content: space-between;
+    }
 
       .role img {
         width: 60px;
@@ -1688,15 +1699,32 @@ body.night-mode .dropdown-menu {
       }
 
       .roles-grid {
-        gap: 10px;
-        padding: 0 5px;
-      }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto 0 auto;
+      justify-items: center;
+      align-items: start;
+      position: relative;
+      min-height: 200px;
+    }
 
       .role {
-        flex: 0 0 120px;
-        min-height: 200px;
-        padding: 8px;
-      }
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #efddb6;
+      padding: 15px;
+      border: 1px solid #e67e22;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      height: 100%;
+      min-height: 250px;
+      justify-content: space-between;
+    }
 
       .role img {
         width: 50px;
@@ -2223,9 +2251,9 @@ input:checked + .slider:before {
 <input name="_subject" type="hidden" value="New Camp Application Submission"/>
 <input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
-<input name="_captcha" type="hidden" value="false">
-<input name="_subject" type="hidden" value="Cosmic Rejex 2026 Application">
-<input name="_honey" type="hidden" value="">
+<input name="_captcha" type="hidden" value="false"/>
+<input name="_subject" type="hidden" value="Cosmic Rejex 2026 Application"/>
+<input name="_honey" type="hidden" value=""/>
 <!-- Page 1 -->
 <div class="form-card page active" data-page="1">
 <div class="page-content">
@@ -2259,12 +2287,12 @@ input:checked + .slider:before {
 <div class="name-container">
 <div>
 <label>Full Name</label>
-<input name="full_name" placeholder="Full Name" required="" type="text">
-</input></div>
+<input name="full_name" placeholder="Full Name" required="" type="text"/>
+</div>
 <div>
 <label>Burner/Playa Name</label>
-<input name="burner_name" placeholder="Burner/Playa Name" type="text"/>
-</div>
+<input name="burner_name" placeholder="Burner/Playa Name" type="text">
+</input></div>
 </div>
 <div class="form-navigation">
 <button class="prev-btn book-btn" disabled="" type="button">Previous</button>
@@ -2276,14 +2304,14 @@ input:checked + .slider:before {
 <div class="form-card page" data-page="2">
 <div class="page-content">
 <label>Email Address</label>
-<input name="email" placeholder="Email Address" required="" type="email"/>
+<input name="email" placeholder="Email Address" required="" type="email">
 <label>Phone Number (Mobile, WhatsApp, or Signal)</label>
-<input name="phone" placeholder="Phone Number" required="" type="tel"/>
+<input name="phone" placeholder="Phone Number" required="" type="tel">
 <div class="form-navigation">
 <button class="prev-btn book-btn" type="button">Previous</button>
 <button class="next-btn book-btn" type="button">Next</button>
 </div>
-</div>
+</input></input></div>
 </div>
 <!-- Page 3 -->
 <div class="form-card page" data-page="3">
@@ -2424,7 +2452,7 @@ input:checked + .slider:before {
 </div>
 </div>
 </div>
-</input></input></input></form>
+</form>
 </div>
 </div>
 </section>
