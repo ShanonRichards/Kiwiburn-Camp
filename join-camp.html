@@ -44,18 +44,20 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      font-family: 'Roboto', sans-serif;
-      scroll-behavior: smooth;
-      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
-      color: #2b1b0f;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
-      transition: background 0.5s, color 0.5s;
-    }
+    
+html, body {
+  font-family: 'Roboto', sans-serif;
+  scroll-behavior: smooth;
+  background: url('images/full-background.jpg') center/cover no-repeat fixed;
+  color: #2b1b0f;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
+  transition: background 0.5s, color 0.5s;
+}
+
 
     
 body.night-mode {
@@ -491,7 +493,9 @@ body.night-mode .dropdown-menu {
     }
 
     
+
 .header {
+  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -502,6 +506,7 @@ body.night-mode .dropdown-menu {
   position: relative;
   text-shadow: 0 0 10px var(--primary);
 }
+
 
 
 .header-logo {
@@ -858,7 +863,9 @@ body.night-mode .dropdown-menu {
     }
 
     
+
 .header {
+  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -869,6 +876,7 @@ body.night-mode .dropdown-menu {
   position: relative;
   text-shadow: 0 0 10px var(--primary);
 }
+
 
 
     .header-logo {
@@ -1521,9 +1529,20 @@ body.night-mode .dropdown-menu {
     }
 
     @media only screen and (max-width: 768px) {
-      .header {
-        height: 40vh;
-      }
+      
+.header {
+  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text-light);
+  position: relative;
+  text-shadow: 0 0 10px var(--primary);
+}
+
 
       .header-logo {
         width: 80px;
