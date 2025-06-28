@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -1802,13 +1803,6 @@ body.night-mode .apply-box {
 body.logged-in .logged-in-only {
   display: block;
 }
-
-footer {
-    background-color: #000000 !important;
-}
-body.night-mode footer {
-    background-color: #000000 !important;
-}
 </style>
 <style>
 .modal-content textarea,
@@ -1884,8 +1878,8 @@ input:checked + .slider:before {
 <div class="dropdown">
 <a class="dropdown-toggle" href="#join"><img alt="Join Icon" class="nav-icon" src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif"/>Join Us <span class="dropdown-arrow">▼</span></a>
 <div class="dropdown-menu">
-<a href="#roles">Membership Info</a>
-<a href="#apply">Apply to Join</a>
+<a href="join-camp.html">Membership Info</a>
+<a href="join-camp.html">Apply to Join</a>
 <a href="camp-fees.html">Camp Fees</a>
 <a href="Task_Roster.html">Task/Roster</a>
 </div>
@@ -3098,13 +3092,5 @@ document.getElementById('save-to-github').addEventListener('click', async () => 
   }
 });
 </script>
-<script>
-function drag(event) {
-    if (!document.body.classList.contains('logged-in')) {
-        event.preventDefault();
-        return;
-    }
-    event.dataTransfer.setData("text", event.target.id);
-}
-</script></body>
+</body>
 </html>
