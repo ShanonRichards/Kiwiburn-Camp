@@ -44,26 +44,23 @@
       box-sizing: border-box;
     }
 
-    
-html, body {
-  font-family: 'Roboto', sans-serif;
-  scroll-behavior: smooth;
-  background: url('images/full-background.jpg') center/cover no-repeat fixed;
-  color: #2b1b0f;
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
-  transition: background 0.5s, color 0.5s;
-}
+    html, body {
+      font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth;
+      background: linear-gradient(180deg, #f4e4bc 0%, #d9b99b 100%);
+      color: #2b1b0f;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      cursor: url('images/Mouse_Cursor/Alien_Head.png'), auto;
+      transition: background 0.5s, color 0.5s;
+    }
 
-
-    
-body.night-mode {
-  color: var(--text-light);
-}
-
+    body.night-mode {
+      background: url('images/full-background-night.jpg') center/cover no-repeat fixed;
+      color: var(--text-light);
+    }
 
     ::-webkit-scrollbar {
       width: 12px;
@@ -492,22 +489,18 @@ body.night-mode .dropdown-menu {
       }
     }
 
-    
-
-.header {
-  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--text-light);
-  position: relative;
-  text-shadow: 0 0 10px var(--primary);
-}
-
-
+    .header {
+      background: url('images/Cover-Photo/Big_Tent_Pencil_Brighter.png') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #f8e1b4;
+      position: relative;
+      text-shadow: 0 0 10px var(--primary);
+    }
 
 .header-logo {
   max-width: 350px; /* Original size maintained */
@@ -834,9 +827,13 @@ body.night-mode .dropdown-menu {
       100% { transform: translateX(0); opacity: 1; }
     }
 
-    body.night-mode 
+    body.night-mode .section:nth-of-type(odd) {
+      background-color: rgba(44, 29, 15, 0.8);
+    }
 
-    body.night-mode 
+    body.night-mode .section:nth-of-type(even) {
+      background-color: rgba(74, 55, 35, 0.8);
+    }
 
     body.night-mode .section h1,
     body.night-mode .section h2,
@@ -862,22 +859,18 @@ body.night-mode .dropdown-menu {
       color: var(--text-light);
     }
 
-    
-
-.header {
-  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--text-light);
-  position: relative;
-  text-shadow: 0 0 10px var(--primary);
-}
-
-
+    .header {
+      background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--text-light);
+      position: relative;
+      text-shadow: 0 0 10px var(--primary);
+    }
 
     .header-logo {
       max-width: 350px;
@@ -900,17 +893,19 @@ body.night-mode .dropdown-menu {
       margin-bottom: 20px;
     }
 
-    
-.section {
-  padding: 60px 20px;
-  text-align: center;
-  background: none;
-}
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+      background: url('images/Join_Us_Html/Joins_Us_Background/Skull_Background_Wider.png') center/cover; border: none;
+    }
 
+    .section:nth-of-type(odd) {
+      background-color: rgba(244, 228, 188, 0.8);
+    }
 
-    
-
-    
+    .section:nth-of-type(even) {
+      background-color: rgba(217, 185, 155, 0.8);
+    }
 
     .section h1, .section h2 {
       font-family: 'Creepster', cursive;
@@ -1183,21 +1178,19 @@ body.night-mode .dropdown-menu {
       transform: translate(-50%, -110%);
     }
 
-    
-.form-container {
-  text-align: left;
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 40px;
-  border-radius: 12px;
-  background: none;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
-  position: relative;
-  overflow: hidden;
-}
-
+    .form-container {
+      text-align: left;
+      max-width: 600px;
+      margin: 40px auto;
+      background: rgba(255, 235, 205, 0.3);
+      border: 2px solid #e67e22;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
+      position: relative;
+      overflow: hidden;
+    }
 
     .form-card {
       text-align: left;
@@ -1529,20 +1522,9 @@ body.night-mode .dropdown-menu {
     }
 
     @media only screen and (max-width: 768px) {
-      
-.header {
-  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--text-light);
-  position: relative;
-  text-shadow: 0 0 10px var(--primary);
-}
-
+      .header {
+        height: 40vh;
+      }
 
       .header-logo {
         width: 80px;
@@ -1788,25 +1770,24 @@ body.night-mode .dropdown-menu {
       border: 0;
     }
   
-
 .apply-box {
   max-width: 800px;
   margin: 30px auto;
   padding: 30px;
+  border: 3px dashed #e67e22;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
-  box-shadow: none;
-  backdrop-filter: none;
-  border: none;
-  background: none;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  backdrop-filter: blur(5px);
+  animation: breathe 3s ease-in-out infinite;
 }
-
-
 
 body.night-mode .apply-box {
-  background: none;
+  background-color: rgba(44, 29, 15, 0.8);
+  border-color: #f39c12;
+  color: var(--text-light);
 }
-
-
 
 .roles-wrapper {
   border: 4px solid #ecd7aa;
