@@ -1,9 +1,5 @@
 
 
-
-
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -1777,7 +1773,7 @@ body.night-mode .dropdown-menu {
   padding: 30px;
   border: 3px dashed #e67e22;
   border-radius: 16px;
-  background-color: #ecd7aa;
+  background-color: transparent;
   text-align: center;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
   backdrop-filter: blur(5px);
@@ -1791,12 +1787,12 @@ body.night-mode .apply-box {
 }
 
 .roles-wrapper {
-  border: 4px solid #ecd7aa;
+  border: none;
   border-radius: 12px;
   padding: 30px;
   margin: 40px auto;
   max-width: 1400px;
-  background-color: #ecd7aa;
+  background-color: transparent;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -1897,8 +1893,8 @@ input:checked + .slider:before {
 <div class="dropdown">
 <a class="dropdown-toggle" href="#join"><img alt="Join Icon" class="nav-icon" src="images/Webpage_Bar_Icons/Smile_Webbar_Moving.gif"/>Join Us <span class="dropdown-arrow">▼</span></a>
 <div class="dropdown-menu">
-<a href="join-camp.html" href="#roles">Membership Info</a>
-<a href="join-camp.html" href="#apply">Apply to Join</a>
+<a href="#roles">Membership Info</a>
+<a href="#apply">Apply to Join</a>
 <a href="camp-fees.html">Camp Fees</a>
 <a href="Task_Roster.html">Task/Roster</a>
 </div>
@@ -1943,7 +1939,9 @@ input:checked + .slider:before {
 <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
 </header>
 <div class="roles-container">
-<section class="section" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;"><div class="roles-wrapper"><div class="title-container">
+<section class="section" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;">
+<button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
+<div class="title-container">
 <img alt="Crew Left Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Left.png"/>
 <img alt="Crew Title Icon" class="title-image crew-title" src="images/Join_Us_Html/Roles_Container/Join_Our_Cult_Crewz.png"/>
 <img alt="Crew Right Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Right.png"/>
@@ -2205,9 +2203,7 @@ input:checked + .slider:before {
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
 </div>
-<div class="logged-in-only"><div class="role" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; border: 1px solid #e67e22; background: #efddb6; min-height: 250px;"><button class="save-button apply-button" onclick="openModal('role-modal')">CREATE NEW ROLE</button></div></div></div><div class="logged-in-only"><button class="edit-section-button" onclick="openModal('newsletter-modal')" style="display: block; margin: 40px auto 0 auto;">Edit Section</button></div></div>
-<button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
-</section>
+<div class="logged-in-only"><div class="role" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; border: 1px solid #e67e22; background: #efddb6; min-height: 250px;"><button class="save-button apply-button" onclick="openModal('role-modal')">CREATE NEW ROLE</button></div></div></div><div class="logged-in-only"><button class="edit-section-button" onclick="openModal('newsletter-modal')" style="display: block; margin: 40px auto 0 auto;">Edit Section</button></div></section>
 </div>
 <section class="section" id="apply">
 <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
@@ -2222,14 +2218,14 @@ input:checked + .slider:before {
 </div>
 <div class="book-container">
 <div class="book">
-<form id="application-form" method="POST" action="https://formsubmit.co/shanonrichards@windowslive.com">
-  <input type="hidden" name="_next" value="https://shanonrichards.github.io/Kiwiburn-Camp/join-camp.html?submitted=true">
-  <input type="hidden" name="_subject" value="New Camp Application Submission">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_captcha" value="false">
+<form action="https://formsubmit.co/shanonrichards@windowslive.com" id="application-form" method="POST">
+<input name="_next" type="hidden" value="https://shanonrichards.github.io/Kiwiburn-Camp/join-camp.html?submitted=true"/>
+<input name="_subject" type="hidden" value="New Camp Application Submission"/>
+<input name="_template" type="hidden" value="table"/>
 <input name="_captcha" type="hidden" value="false"/>
-<input name="_subject" type="hidden" value="Cosmic Rejex 2026 Application"/>
-<input name="_honey" type="hidden" value=""/>
+<input name="_captcha" type="hidden" value="false">
+<input name="_subject" type="hidden" value="Cosmic Rejex 2026 Application">
+<input name="_honey" type="hidden" value="">
 <!-- Page 1 -->
 <div class="form-card page active" data-page="1">
 <div class="page-content">
@@ -2263,8 +2259,8 @@ input:checked + .slider:before {
 <div class="name-container">
 <div>
 <label>Full Name</label>
-<input name="full_name" placeholder="Full Name" required="" type="text"/>
-</div>
+<input name="full_name" placeholder="Full Name" required="" type="text">
+</input></div>
 <div>
 <label>Burner/Playa Name</label>
 <input name="burner_name" placeholder="Burner/Playa Name" type="text"/>
@@ -2428,7 +2424,7 @@ input:checked + .slider:before {
 </div>
 </div>
 </div>
-</form>
+</input></input></input></form>
 </div>
 </div>
 </section>
@@ -3119,7 +3115,6 @@ document.getElementById('save-to-github').addEventListener('click', async () => 
   }
 });
 </script>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.classList.contains('logged-in')) {
@@ -3127,6 +3122,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
 </body>
 </html>
