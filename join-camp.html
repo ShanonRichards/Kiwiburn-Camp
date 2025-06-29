@@ -1,9 +1,4 @@
-
-
-
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -488,44 +483,50 @@ body.night-mode .dropdown-menu {
       }
     }
 
-    .header {
-      background: url('images/Cover-Photo/Big_Tent_Pencil_Brighter.png') center/cover no-repeat;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #f8e1b4;
-      position: relative;
-      text-shadow: 0 0 10px var(--primary);
-    }
+    
+.header {
+  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
+  height: 45vh; /* reduced from 70vh */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* move content to top */
+  align-items: center;
+  text-align: center;
+  padding-top: 40px; /* add spacing from top */
+  color: var(--text-light);
+  position: relative;
+  text-shadow: 0 0 10px var(--primary);
+}
 
 .header-logo {
-  max-width: 350px; /* Original size maintained */
-  height: auto; /* Maintains aspect ratio */
+  max-width: 250px; /* reduced from 350px */
+  height: auto;
+  object-fit: contain;
   z-index: 10;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
-  margin-top: 0px; /* Moves the logo downward from the nav bar */
+  filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
+  margin-bottom: 10px; /* spacing under logo */
 }
+
 .header h1 {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 3em;
+  font-family: 'Creepster', cursive;
+  font-size: 2.5em;
   max-width: 90%;
   letter-spacing: 2px;
-  margin-bottom: 0px;
-  color: #494949; /* Soft purple for "Color and Glow" */
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #494949;
   text-shadow: 0 0 10px #ffff;
-  animation: glow-h1 3s ease-in-out infinite alternate; /* Dynamic glow */
+  animation: glow-h1 3s ease-in-out infinite alternate;
 }
 
 .header p {
-  font-size: 1.5em;
-  margin-bottom: 20px;
+  font-size: 1.1em;
+  margin-bottom: 10px;
   color: #ffff;
-  text-shadow: 0 0 10px #ffff; /* Blue glow */
-  animation: glow-p 3s ease-in-out infinite alternate; /* Dynamic glow */
+  text-shadow: 0 0 10px #ffff;
+  animation: glow-p 3s ease-in-out infinite alternate;
 }
+
 
     .header-ctas {
       display: flex;
@@ -853,39 +854,50 @@ body.night-mode .dropdown-menu {
       color: var(--text-light);
     }
 
-    .header {
-      background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: var(--text-light);
-      position: relative;
-      text-shadow: 0 0 10px var(--primary);
-    }
+    
+.header {
+  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
+  height: 45vh; /* reduced from 70vh */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* move content to top */
+  align-items: center;
+  text-align: center;
+  padding-top: 40px; /* add spacing from top */
+  color: var(--text-light);
+  position: relative;
+  text-shadow: 0 0 10px var(--primary);
+}
 
-    .header-logo {
-      max-width: 350px;
-      height: auto;
-      object-fit: contain;
-      z-index: 10;
-      filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
-    }
+.header-logo {
+  max-width: 250px; /* reduced from 350px */
+  height: auto;
+  object-fit: contain;
+  z-index: 10;
+  filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
+  margin-bottom: 10px; /* spacing under logo */
+}
 
-    .header h1 {
-      font-family: 'Creepster', cursive;
-      font-size: 3em;
-      max-width: 90%;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
+.header h1 {
+  font-family: 'Creepster', cursive;
+  font-size: 2.5em;
+  max-width: 90%;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #494949;
+  text-shadow: 0 0 10px #ffff;
+  animation: glow-h1 3s ease-in-out infinite alternate;
+}
 
-    .header p {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-    }
+.header p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #ffff;
+  text-shadow: 0 0 10px #ffff;
+  animation: glow-p 3s ease-in-out infinite alternate;
+}
+
 
     .section {
       padding: 60px 20px;
@@ -1466,22 +1478,50 @@ body.night-mode .dropdown-menu {
     }
 
     @media only screen and (max-width: 768px) {
-      .header {
-        height: 40vh;
-      }
+      
+.header {
+  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner.png') center/cover no-repeat;
+  height: 45vh; /* reduced from 70vh */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* move content to top */
+  align-items: center;
+  text-align: center;
+  padding-top: 40px; /* add spacing from top */
+  color: var(--text-light);
+  position: relative;
+  text-shadow: 0 0 10px var(--primary);
+}
 
-      .header-logo {
-        width: 80px;
-        height: 80px;
-      }
+.header-logo {
+  max-width: 250px; /* reduced from 350px */
+  height: auto;
+  object-fit: contain;
+  z-index: 10;
+  filter: drop-shadow(0 0 15px #e67e22) drop-shadow(0 0 25px #f39c12);
+  margin-bottom: 10px; /* spacing under logo */
+}
 
-      .header h1 {
-        font-size: 2.5em;
-      }
+.header h1 {
+  font-family: 'Creepster', cursive;
+  font-size: 2.5em;
+  max-width: 90%;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #494949;
+  text-shadow: 0 0 10px #ffff;
+  animation: glow-h1 3s ease-in-out infinite alternate;
+}
 
-      .header p {
-        font-size: 1em;
-      }
+.header p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #ffff;
+  text-shadow: 0 0 10px #ffff;
+  animation: glow-p 3s ease-in-out infinite alternate;
+}
+
 
       .section {
         padding: 40px 15px;
