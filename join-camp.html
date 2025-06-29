@@ -1,4 +1,10 @@
+
+
+
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -1810,6 +1816,21 @@ body {
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 
+
+.emo-border {
+  border: 3px dashed #ef75ad;
+  border-radius: 16px;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 10px #ef75ad, 0 0 25px #9933ff;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.emo-border:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 15px #ef75ad, 0 0 30px #9933ff;
+}
 </style>
 <style>
 .modal-content textarea,
@@ -1931,7 +1952,7 @@ input:checked + .slider:before {
 <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
 </header>
 <div class="roles-container">
-<section class="section" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;">
+<section class="section emo-border" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;">
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
 <div class="title-container">
 <img alt="Crew Left Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Left.png"/>
@@ -2197,7 +2218,7 @@ input:checked + .slider:before {
 </div>
 <div class="logged-in-only"><div class="role" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; border: 1px solid #e67e22; background: #efddb6; min-height: 250px;"><button class="save-button apply-button" onclick="openModal('role-modal')">CREATE NEW ROLE</button></div></div></div><div class="logged-in-only"><button class="edit-section-button" onclick="openModal('newsletter-modal')" style="display: block; margin: 40px auto 0 auto;">Edit Section</button></div></section>
 </div>
-<section class="section" id="apply">
+<section class="section emo-border" id="apply">
 <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
 <a id="apply-info"></a>
 <a id="apply-info"></a>
