@@ -1,7 +1,5 @@
 
 
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -628,12 +626,7 @@ body.night-mode .dropdown-menu {
       border-color: var(--emo-accent);
     }
 
-    .toggle-image {
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+    
 
     .newsletter-wrapper {
       width: 240px;
@@ -1416,78 +1409,28 @@ body.night-mode .dropdown-menu {
       cursor: pointer;
     }
 
-    .emo-playlist-player {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      transition: all 0.3s ease;
-    }
+    
 
-    .toggle-player {
-      background: var(--primary);
-      color: #ffffff;
-      border: none;
-      border-radius: 5px;
-      padding: 8px 12px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
-      margin-bottom: 10px;
-    }
+    
 
     .toggle-player:hover {
       background: var(--secondary);
       box-shadow: 0 0 10px var(--primary), 0 0 20px var(--secondary);
     }
 
-    body.night-mode .toggle-player {
-      background: var(--secondary);
-      color: #ffffff;
-    }
+    body.night-mode 
 
-    body.night-mode .toggle-player:hover {
-      background: var(--primary);
-      box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--primary);
-    }
+    
 
-    .toggle-image {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid var(--primary);
-    }
+    
 
-    .player-wrapper {
-      width: 300px;
-      background: rgba(44, 29, 15, 0.9);
-      border: 2px solid var(--primary);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-      display: none;
-    }
+    
 
-    .player-wrapper.active {
-      display: block;
-    }
+    
 
-    body.night-mode .player-wrapper {
-      background: rgba(74, 55, 35, 0.9);
-      border-color: var(--secondary);
-    }
+    body.night-mode 
 
-    .emo-playlist-player iframe {
-      width: 100%;
-      height: 152px;
-      border: none;
-      border-radius: 12px;
-    }
+    
 
     footer {
   text-align: center;
@@ -1625,28 +1568,15 @@ body.night-mode .dropdown-menu {
         padding: 20px;
       }
 
-      .emo-playlist-player {
-        bottom: 10px;
-        right: 10px;
-      }
+      
 
-      .player-wrapper {
-        width: 250px;
-      }
+      
 
-      .toggle-player {
-        font-size: 0.9rem;
-        padding: 6px 10px;
-      }
+      
 
-      .toggle-image {
-        width: 25px;
-        height: 25px;
-      }
+      
 
-      .emo-playlist-player iframe {
-        height: 120px;
-      }
+      
 
       .sidebar-widgets {
   flex-direction: row !important;
@@ -1752,23 +1682,13 @@ body.night-mode .dropdown-menu {
         padding: 2px 5px;
       }
 
-      .player-wrapper {
-        width: 200px;
-      }
+      
 
-      .toggle-player {
-        font-size: 0.8rem;
-        padding: 5px 8px;
-      }
+      
 
-      .toggle-image {
-        width: 20px;
-        height: 20px;
-      }
+      
 
-      .emo-playlist-player iframe {
-        height: 100px;
-      }
+      
 
       .name-container {
         flex-direction: column;
@@ -2293,8 +2213,8 @@ input:checked + .slider:before {
 </div>
 <div>
 <label>Burner/Playa Name</label>
-<input name="burner_name" placeholder="Burner/Playa Name" type="text">
-</input></div>
+<input name="burner_name" placeholder="Burner/Playa Name" type="text"/>
+</div>
 </div>
 <div class="form-navigation">
 <button class="prev-btn book-btn" disabled="" type="button">Previous</button>
@@ -2306,14 +2226,14 @@ input:checked + .slider:before {
 <div class="form-card page" data-page="2">
 <div class="page-content">
 <label>Email Address</label>
-<input name="email" placeholder="Email Address" required="" type="email">
+<input name="email" placeholder="Email Address" required="" type="email"/>
 <label>Phone Number (Mobile, WhatsApp, or Signal)</label>
-<input name="phone" placeholder="Phone Number" required="" type="tel">
+<input name="phone" placeholder="Phone Number" required="" type="tel"/>
 <div class="form-navigation">
 <button class="prev-btn book-btn" type="button">Previous</button>
 <button class="next-btn book-btn" type="button">Next</button>
 </div>
-</input></input></div>
+</div>
 </div>
 <!-- Page 3 -->
 <div class="form-card page" data-page="3">
@@ -2489,15 +2409,6 @@ input:checked + .slider:before {
 <textarea id="section-description" required="" rows="4"></textarea>
 <button onclick="saveSection()" type="submit">Save Section</button>
 </form>
-</div>
-</div>
-<div class="emo-playlist-player">
-<button class="toggle-player" onclick="togglePlayer()">
-<img alt="Emo Playlist Toggle Image" class="toggle-image" src="images/Spotify-Background/Cosmic-Rejex.png"/>
-      Play Emo Playlist
-    </button>
-<div class="player-wrapper" id="player-wrapper">
-<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" aria-label="Emo Playlist Player" loading="lazy" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ"></iframe>
 </div>
 </div>
 <footer>
@@ -2836,10 +2747,7 @@ document.getElementById('application-form').addEventListener('submit', function(
     }
 
     // Toggle Spotify player
-    function togglePlayer() {
-      const playerWrapper = document.getElementById('player-wrapper');
-      playerWrapper.classList.toggle('active');
-    }
+    
 
     // Login handling
     document.getElementById('login-form').addEventListener('submit', (e) => {
@@ -2902,15 +2810,6 @@ function handleFormSubmit() {
   };
 </script>
 <div class="sidebar-widgets">
-<div class="emo-playlist-player">
-<button class="toggle-player" onclick="togglePlayer()">
-<img alt="Emo Playlist Toggle Image" class="toggle-image" src="images/Sidebar_Widgets/Spotify_Playlist.gif"/>
-      Play Emo Playlist
-    </button>
-<div class="player-wrapper" id="player-wrapper">
-<iframe allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" aria-label="Emo Playlist Player" loading="lazy" src="https://open.spotify.com/embed/playlist/6M7yn5eYckziVjQjeqjfHz?si=wJyCsXnNSz2zxb7wPnX3HQ"></iframe>
-</div>
-</div>
 </div>
 <!-- Custom Admin Enhancements -->
 <script>
@@ -2947,7 +2846,7 @@ function handleFormSubmit() {
     modal.style.display = "flex";
     modal.innerHTML = `
       <div class="modal-content">
-        <button class="close-button" onclick="this.closest('.modal').remove()">&times;</button>
+        <button class="close-button" onclick="document.getElementById('thank-you-modal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; font-size: 1.2rem; color: #f8e1b4; border: none; cursor: pointer;">&times;</button>
         <h3>Edit Role - ${roleName}</h3>
         <label for="new-title">Role Title:</label>
         <input id="new-title" type="text" value="${roleName}" />
@@ -3152,5 +3051,63 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
+
+<!-- Newsletter Button and Popup -->
+<div class="sidebar-widgets">
+  <div class="newsletter-popup">
+    <button class="toggle-newsletter">Stay in Touch</button>
+    <div class="newsletter-wrapper">
+      <h3 style="font-family: 'Bebas Neue', cursive; font-size: 1.1rem; color: #f8e1b4; text-shadow: 0 0 5px #000; margin-bottom: 4px;">STAY IN TOUCH</h3>
+      <p style="font-family: 'Roboto', sans-serif; font-size: 0.8rem; color: #f8e1b4; margin-bottom: 8px;">Stay up to date on upcoming events.</p>
+      
+<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+  <input type="email" name="email" placeholder="Enter your email" required style="color: black; font-size: 0.85rem; padding: 8px; margin-bottom: 10px; border: 1px solid #f39c12; border-radius: 4px; width: 100%;" />
+  <input type="hidden" name="_subject" value="New Newsletter Signup!">
+  <button style="background-color: #f39c12; color: #000; font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.85rem; border-radius: 4px; padding: 10px; border: none; width: 100%; margin-top: 4px;">SUBSCRIBE</button>
+</form>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.toggle-newsletter')?.addEventListener('click', () => {
+    const wrapper = document.querySelector('.newsletter-wrapper');
+    wrapper?.classList.toggle('active');
+  });
+</script>
+
+
+<div id="thank-you-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <button class="close-button" onclick="document.getElementById('thank-you-modal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; font-size: 1.2rem; color: #f8e1b4; border: none; cursor: pointer;">&times;</button>
+    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #f39c12;">Thanks for subscribing to our newsletter!</h2>
+  </div>
+</div>
+
+<script>
+  const form = document.querySelector('.newsletter-popup form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          document.getElementById('thank-you-modal').style.display = 'flex';
+          form.reset();
+        } else {
+          alert('There was an error. Please try again.');
+        }
+      });
+    });
+  }
+</script>
+
 </body>
 </html>
