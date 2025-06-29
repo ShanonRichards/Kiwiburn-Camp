@@ -1,4 +1,7 @@
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -1820,6 +1823,24 @@ body {
   transform: scale(1.01);
   box-shadow: 0 0 15px #ef75ad, 0 0 30px #9933ff;
 }
+
+
+.role-filler {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2ecc71;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  z-index: 5;
+  border: 1px solid #27ae60;
+}
+
 </style>
 <style>
 .modal-content textarea,
@@ -1949,10 +1970,27 @@ input:checked + .slider:before {
 <img alt="Crew Right Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Right.png"/>
 </div><a id="roles-info"></a>
 <a id="roles-info"></a>
-<p style="; margin-top: 40px;">We're always looking for passionate people to join our camp. Check out the roles below and apply to be part of Cosmic Rejex!</p><div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)">
-<div class="scroll-arrow left" data-grid="roles">◄</div>
-<div class="scroll-arrow right" data-grid="roles">►</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+<p style="; margin-top: 40px;">We're always looking for passionate people to join our camp. Check out the roles below and apply to be part of Cosmic Rejex!</p><div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)"><div class="role" data-draggable="true" ondragstart="drag(event)">
+<div class="role-status filled">Filled</div>
+<img alt="Camp Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Camp-Leadz.png"/>
+<h3>Camp Lead</h3>
+<div class="tooltip">
+<p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
+</div>
+<div class="apply-button" style="pointer-events: none; cursor: default; background-color: #2ecc71; color: #ffffff;">Shanon Richards</div>
+<button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
+<div class="role-status filled">Filled</div>
+<img alt="Kitchen Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Kitchen-Lead.png"/>
+<h3>Kitchen Lead</h3>
+<div class="tooltip">
+<p>Plans shared meals and food storage. Oversees cooking, cleaning and food rosters effectively.</p>
+</div>
+<div class="apply-button" style="pointer-events: none; cursor: default; background-color: #2ecc71; color: #ffffff;">Alana Stewart</div>
+<button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Logistics &amp; Build Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Logestics-&amp;-Build-Lead.png"/>
 <h3>Logistics &amp; Build Lead</h3>
@@ -1962,19 +2000,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Logistics &amp; Build Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
-<div class="role-status filled">Filled</div>
-<img alt="Volunteer Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Volunteer-Coordinator.png"/>
-<h3>Volunteer Coordinator</h3>
-<div class="tooltip">
-<p>Assigns &amp; tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
-</div>
-<a class="apply-button" disabled="" href="#apply" onclick="selectRole('Volunteer Coordinator')">Apply for Role</a>
-<button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Build Crew Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Build-Crew.png"/>
 <h3>Build Crew</h3>
@@ -1984,19 +2010,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Build Crew')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
-<div class="role-status">Open</div>
-<img alt="Camp Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Camp-Leadz.png"/>
-<h3>Camp Lead</h3>
-<div class="tooltip">
-<p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
-</div>
-<a class="apply-button" href="#apply" onclick="selectRole('Camp Lead')">Apply for Role</a>
-<button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
-<button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Deputy Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Deputy-Leads.png"/>
 <h3>Deputy Lead</h3>
@@ -2006,8 +2020,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Deputy Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Build Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Build-Lead.png"/>
 <h3>Build Lead</h3>
@@ -2017,8 +2030,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Build Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Vibe Manager Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Vibe-Managers.png"/>
 <h3>Vibe Manager</h3>
@@ -2028,8 +2040,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Vibe Manager')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Logistics Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Logistics-Lead.png"/>
 <h3>Logistics Lead</h3>
@@ -2039,8 +2050,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Logistics Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Sound Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Sound-Lead.png"/>
 <h3>Sound Lead</h3>
@@ -2050,8 +2060,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Sound Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Transport Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Transport-Lead.png"/>
 <h3>Transport Lead</h3>
@@ -2061,8 +2070,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Transport Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Art &amp; Workshop Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Arts-&amp;-Workshop-Lead.png"/>
 <h3>Art &amp; Workshop Lead</h3>
@@ -2072,8 +2080,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Art &amp; Workshop Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Wellbeing Officer Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Wellbeing-Officers.png"/>
 <h3>Wellbeing Officer</h3>
@@ -2083,8 +2090,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Greeter Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Greeters.png"/>
 <h3>Greeter</h3>
@@ -2094,8 +2100,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Greeter')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Strike Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Strike-Lead.png"/>
 <h3>Strike Lead</h3>
@@ -2105,8 +2110,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Strike Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Comms Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Comms-Lead.png"/>
 <h3>Comms Lead</h3>
@@ -2116,8 +2120,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Comms Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Safety Officer Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Safety-Officer.png"/>
 <h3>Safety Officer</h3>
@@ -2127,8 +2130,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Safety Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="MOOP Manager Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Moop-Manager.png"/>
 <h3>MOOP Manager</h3>
@@ -2138,8 +2140,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('MOOP Manager')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Power/Tech Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Power_Tech_Lead.png"/>
 <h3>Power/Tech Lead</h3>
@@ -2149,8 +2150,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Social Media Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Social-Media-Lead.png"/>
 <h3>Social Media Lead</h3>
@@ -2160,8 +2160,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Social Media Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Fundraising Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Fundraising-Lead.png"/>
 <h3>Fundraising Lead</h3>
@@ -2171,8 +2170,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Sustainability Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Sustainability_Lead.png"/>
 <h3>Sustainability Lead</h3>
@@ -2182,8 +2180,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Inclusion Officer Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Inclusion_Officer.png"/>
 <h3>Inclusion Officer</h3>
@@ -2193,8 +2190,7 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-</div>
-<div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Workshop Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Workshop-Coordinator.png"/>
 <h3>Workshop Coordinator</h3>
@@ -2204,8 +2200,17 @@ input:checked + .slider:before {
 <a class="apply-button" href="#apply" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
+<div class="role-status">Open</div>
+<img alt="Volunteer Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Volunteer-Coordinator.png"/>
+<h3>Volunteer Coordinator</h3>
+<div class="tooltip">
+<p>Assigns &amp; tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
 </div>
-<div class="logged-in-only"><div class="role" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; border: 1px solid #e67e22; background: #efddb6; min-height: 250px;"><button class="save-button apply-button" onclick="openModal('role-modal')">CREATE NEW ROLE</button></div></div></div><div class="logged-in-only"><button class="edit-section-button" onclick="openModal('newsletter-modal')" style="display: block; margin: 40px auto 0 auto;">Edit Section</button></div></section>
+<a class="apply-button" href="#apply" onclick="selectRole('Volunteer Coordinator')">Apply for Role</a>
+<button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
+<button class="delete-button" onclick="deleteRole(this)">×</button>
+</div></div><div class="logged-in-only"><button class="edit-section-button" onclick="openModal('newsletter-modal')" style="display: block; margin: 40px auto 0 auto;">Edit Section</button></div></section>
 </div>
 <section class="section emo-border" id="apply">
 <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
@@ -3103,40 +3108,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 </script>
-
 <!-- Newsletter Button and Popup -->
 <div class="sidebar-widgets">
-  <div class="newsletter-popup">
-    <button class="toggle-newsletter">Stay in Touch</button>
-    <div class="newsletter-wrapper">
-      <h3 style="font-family: 'Bebas Neue', cursive; font-size: 1.1rem; color: #f8e1b4; text-shadow: 0 0 5px #000; margin-bottom: 4px;">STAY IN TOUCH</h3>
-      <p style="font-family: 'Roboto', sans-serif; font-size: 0.8rem; color: #f8e1b4; margin-bottom: 8px;">Stay up to date on upcoming events.</p>
-      
+<div class="newsletter-popup">
+<button class="toggle-newsletter">Stay in Touch</button>
+<div class="newsletter-wrapper">
+<h3 style="font-family: 'Bebas Neue', cursive; font-size: 1.1rem; color: #f8e1b4; text-shadow: 0 0 5px #000; margin-bottom: 4px;">STAY IN TOUCH</h3>
+<p style="font-family: 'Roboto', sans-serif; font-size: 0.8rem; color: #f8e1b4; margin-bottom: 8px;">Stay up to date on upcoming events.</p>
 <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
-  <input type="email" name="email" placeholder="Enter your email" required style="color: black; font-size: 0.85rem; padding: 8px; margin-bottom: 10px; border: 1px solid #f39c12; border-radius: 4px; width: 100%;" />
-  <input type="hidden" name="_subject" value="New Newsletter Signup!">
-  <button style="background-color: #f39c12; color: #000; font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.85rem; border-radius: 4px; padding: 10px; border: none; width: 100%; margin-top: 4px;">SUBSCRIBE</button>
+<input name="email" placeholder="Enter your email" required="" style="color: black; font-size: 0.85rem; padding: 8px; margin-bottom: 10px; border: 1px solid #f39c12; border-radius: 4px; width: 100%;" type="email"/>
+<input name="_subject" type="hidden" value="New Newsletter Signup!"/>
+<button style="background-color: #f39c12; color: #000; font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.85rem; border-radius: 4px; padding: 10px; border: none; width: 100%; margin-top: 4px;">SUBSCRIBE</button>
 </form>
-
-    </div>
-  </div>
 </div>
-
+</div>
+</div>
 <script>
   document.querySelector('.toggle-newsletter')?.addEventListener('click', () => {
     const wrapper = document.querySelector('.newsletter-wrapper');
     wrapper?.classList.toggle('active');
   });
 </script>
-
-
-<div id="thank-you-modal" class="modal" style="display: none;">
-  <div class="modal-content">
-    <button class="close-button" onclick="document.getElementById('thank-you-modal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; font-size: 1.2rem; color: #f8e1b4; border: none; cursor: pointer;">&times;</button>
-    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #f39c12;">Thanks for subscribing to our newsletter!</h2>
-  </div>
+<div class="modal" id="thank-you-modal" style="display: none;">
+<div class="modal-content">
+<button class="close-button" onclick="document.getElementById('thank-you-modal').style.display='none'" style="position: absolute; top: 10px; right: 10px; background: none; font-size: 1.2rem; color: #f8e1b4; border: none; cursor: pointer;">×</button>
+<h2 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: #f39c12;">Thanks for subscribing to our newsletter!</h2>
 </div>
-
+</div>
 <script>
   const form = document.querySelector('.newsletter-popup form');
   if (form) {
@@ -3160,8 +3158,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 </script>
-
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.querySelector(".hamburger");
@@ -3172,10 +3168,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
 </body>
 </html>
-
 <footer>
-  <p>&copy; 2025 Cosmic Rejex. All rights reserved.</p>
+<p>© 2025 Cosmic Rejex. All rights reserved.</p>
 </footer>
