@@ -1,9 +1,4 @@
-
-
-
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -1894,38 +1889,8 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 </style>
-
-<style>
-#bloodCanvas {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.blood-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('images/effects/blood-splatter.png') repeat;
-  background-size: contain;
-  z-index: 2;
-  opacity: 0.1;
-  pointer-events: none;
-}
-</style>
-
 </head>
 <body>
-
-<canvas id="bloodCanvas"></canvas>
-<div class="blood-overlay"></div>
-
 <!-- ✅ Updates Applied:
 1. Removed all "Upload manually to GitHub" notes from modals.
 2. Role editor now has a checkbox to toggle Filled/Open status.
@@ -3197,15 +3162,17 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="newsletter-popup">
 <button class="toggle-newsletter">Stay in Touch</button>
 <div class="newsletter-wrapper">
-<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
-  <input type="hidden" name="_subject" value="New Newsletter Subscription"/>
-  <input type="hidden" name="_template" value="table"/>
-  <input type="hidden" name="_captcha" value="false"/>
-  <input type="hidden" name="_next" value="https://shanonrichards.github.io/Kiwiburn-Camp/thanks.html"/>
-
-  <input type="email" name="email" placeholder="Your Email" required />
-  <button type="submit">Subscribe</button>
-</form>
+  <h3 style="font-family: 'Bebas Neue', cursive; font-size: 1.1rem; color: #f8e1b4; text-shadow: 0 0 5px #000; margin-bottom: 4px;">STAY IN TOUCH</h3>
+  <p style="font-family: 'Roboto', sans-serif; font-size: 0.8rem; color: #f8e1b4; margin-bottom: 8px;">Stay up to date on upcoming events.</p>
+  <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+    <input name="email" placeholder="Enter your email" required type="email"
+      style="color: black; font-size: 0.85rem; padding: 8px; margin-bottom: 10px; border: 1px solid #f39c12; border-radius: 4px; width: 100%;" />
+    <input type="hidden" name="_subject" value="New Newsletter Signup!" />
+    <button
+      style="background-color: #f39c12; color: #000; font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.85rem; border-radius: 4px; padding: 10px; border: none; width: 100%; margin-top: 4px;">
+      SUBSCRIBE
+    </button>
+  </form>
 </div>
 </div>
 </div>
@@ -3305,49 +3272,5 @@ function toggleNewsletter() {
 }
 </script>
 
-
-<script>
-const canvas = document.getElementById('bloodCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const drops = [];
-
-for (let i = 0; i < 100; i++) {
-  drops.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * -canvas.height,
-    length: 60 + Math.random() * 80,
-    speed: 0.3 + Math.random(),
-    width: 1 + Math.random() * 3,
-    opacity: 0.2 + Math.random() * 0.3
-  });
-}
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let drop of drops) {
-    ctx.beginPath();
-    ctx.strokeStyle = `rgba(120,0,0,${drop.opacity})`;
-    ctx.lineWidth = drop.width;
-    ctx.moveTo(drop.x, drop.y);
-    ctx.lineTo(drop.x, drop.y + drop.length);
-    ctx.stroke();
-
-    drop.y += drop.speed;
-    if (drop.y > canvas.height) {
-      drop.y = -drop.length;
-      drop.x = Math.random() * canvas.width;
-    }
-  }
-  requestAnimationFrame(draw);
-}
-
-draw();
-</script>
-
 </body>
 </html>
-
-
