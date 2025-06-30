@@ -1,4 +1,8 @@
+
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -3153,13 +3157,15 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="newsletter-popup">
 <button class="toggle-newsletter">Stay in Touch</button>
 <div class="newsletter-wrapper">
-<h3 style="font-family: 'Bebas Neue', cursive; font-size: 1.1rem; color: #f8e1b4; text-shadow: 0 0 5px #000; margin-bottom: 4px;">STAY IN TOUCH</h3>
-<p style="font-family: 'Roboto', sans-serif; font-size: 0.8rem; color: #f8e1b4; margin-bottom: 8px;">Stay up to date on upcoming events.</p>
-<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
-<input name="email" placeholder="Enter your email" required="" style="color: black; font-size: 0.85rem; padding: 8px; margin-bottom: 10px; border: 1px solid #f39c12; border-radius: 4px; width: 100%;" type="email"/>
-<input name="_subject" type="hidden" value="New Newsletter Signup!"/>
-<button style="background-color: #f39c12; color: #000; font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.85rem; border-radius: 4px; padding: 10px; border: none; width: 100%; margin-top: 4px;">SUBSCRIBE</button>
-</form>
+  <h3>Stay in Touch!</h3>
+  <p>Subscribe to get Cosmic Rejex updates and Kiwiburn announcements.</p>
+  <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+    <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="email" name="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
 </div>
 </div>
 </div>
@@ -3248,6 +3254,17 @@ document.addEventListener("DOMContentLoaded", function () {
     text-decoration: underline;
   }
 </style>
+
+<script>
+function toggleNewsletter() {
+  const newsletter = document.querySelector('.newsletter-wrapper');
+  if (newsletter) {
+    newsletter.classList.toggle('active');
+    newsletter.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+</script>
+
 </body>
 </html>
 
