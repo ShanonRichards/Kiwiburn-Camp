@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1859,58 +1860,9 @@ body {
 }
 
 </style>
-<style>
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-2deg); }
-  50% { transform: rotate(2deg); }
-  75% { transform: rotate(-1deg); }
-}
-.wiggle {
-  animation: wiggle 2s ease-in-out infinite;
-  display: inline-block;
-}
 
-@keyframes breathe-glow {
-  0% {
-    filter: drop-shadow(0 0 5px red) drop-shadow(0 0 10px red);
-  }
-  50% {
-    filter: drop-shadow(0 0 15px red) drop-shadow(0 0 30px red);
-  }
-  100% {
-    filter: drop-shadow(0 0 5px red) drop-shadow(0 0 10px red);
-  }
-}
-.glow {
-  animation: breathe-glow 2.5s ease-in-out infinite;
-  display: inline-block;
-}
-</style>
 
-<style>
-@keyframes wiggle {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(-2deg);
-  }
-  50% {
-    transform: rotate(2deg);
-  }
-  75% {
-    transform: rotate(-1deg);
-  }
-}
-.wiggle {
-  animation: wiggle 2s ease-in-out infinite;
-  display: inline-block;
-}
-.glow {
-  filter: drop-shadow(0 0 10px red) drop-shadow(0 0 20px red);
-}
-</style>
+
 
 <style>
 @keyframes red-glow-wiggle {
@@ -3353,6 +3305,46 @@ document.addEventListener("DOMContentLoaded", function () {
     color: #ef75ad;
     text-decoration: underline;
   }
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-0.5deg);
+  }
+  50% {
+    transform: rotate(0.5deg);
+  }
+  75% {
+    transform: rotate(-0.3deg);
+  }
+}
+.wiggle {
+  animation: wiggle 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+  75% {
+    transform: rotate(-0.6deg);
+  }
+}
+.wiggle {
+  animation: wiggle 3s ease-in-out infinite;
+  display: inline-block;
+}
+
 </style>
 
 <script>
