@@ -1,4 +1,9 @@
+
+
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -1891,6 +1896,16 @@ input:checked + .slider:before {
 </style>
 
 <style>
+#bloodCanvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .blood-overlay {
   position: fixed;
   top: 0;
@@ -1898,9 +1913,9 @@ input:checked + .slider:before {
   width: 100vw;
   height: 100vh;
   background: url('images/effects/blood-splatter.png') repeat;
-  background-size: cover;
-  z-index: -2;
-  opacity: 0.15;
+  background-size: contain;
+  z-index: 2;
+  opacity: 0.1;
   pointer-events: none;
 }
 </style>
@@ -1908,8 +1923,8 @@ input:checked + .slider:before {
 </head>
 <body>
 
+<canvas id="bloodCanvas"></canvas>
 <div class="blood-overlay"></div>
-<canvas id="bloodCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;"></canvas>
 
 <!-- ✅ Updates Applied:
 1. Removed all "Upload manually to GitHub" notes from modals.
@@ -3299,22 +3314,19 @@ canvas.height = window.innerHeight;
 
 const drops = [];
 
-for (let i = 0; i < 60; i++) {
+for (let i = 0; i < 100; i++) {
   drops.push({
     x: Math.random() * canvas.width,
     y: Math.random() * -canvas.height,
-    length: 20 + Math.random() * 80,
-    speed: 0.5 + Math.random() * 1.5,
-    width: 2 + Math.random() * 3,
-    opacity: 0.1 + Math.random() * 0.3
+    length: 60 + Math.random() * 80,
+    speed: 0.3 + Math.random(),
+    width: 1 + Math.random() * 3,
+    opacity: 0.2 + Math.random() * 0.3
   });
 }
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "rgba(60,0,0,0.3)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
   for (let drop of drops) {
     ctx.beginPath();
     ctx.strokeStyle = `rgba(120,0,0,${drop.opacity})`;
@@ -3325,11 +3337,10 @@ function draw() {
 
     drop.y += drop.speed;
     if (drop.y > canvas.height) {
-      drop.y = Math.random() * -canvas.height;
+      drop.y = -drop.length;
       drop.x = Math.random() * canvas.width;
     }
   }
-
   requestAnimationFrame(draw);
 }
 
