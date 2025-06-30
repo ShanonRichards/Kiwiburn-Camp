@@ -1860,6 +1860,59 @@ body {
 
 </style>
 <style>
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+  75% { transform: rotate(-1deg); }
+}
+.wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes breathe-glow {
+  0% {
+    filter: drop-shadow(0 0 5px red) drop-shadow(0 0 10px red);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px red) drop-shadow(0 0 30px red);
+  }
+  100% {
+    filter: drop-shadow(0 0 5px red) drop-shadow(0 0 10px red);
+  }
+}
+.glow {
+  animation: breathe-glow 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+</style>
+
+<style>
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+}
+.wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+  display: inline-block;
+}
+.glow {
+  filter: drop-shadow(0 0 10px red) drop-shadow(0 0 20px red);
+}
+</style>
+
+<style>
 @keyframes red-glow-wiggle {
   0% {
     filter: drop-shadow(0 0 5px red) drop-shadow(0 0 10px red);
@@ -2003,7 +2056,7 @@ input:checked + .slider:before {
 </div>
 </div>
 <header class="header" id="join">
-<img alt="Cosmic Rejex Logo" class="header-logo red-glow" src="images/Join_Us_Html/Join_Us_Logo/Cosmic_Rejex_Cult_Logo.png"/>
+<img alt="Cosmic Rejex Logo" class="header-logo glow" src="images/Join_Us_Html/Join_Us_Logo/Cosmic_Rejex_Cult_Logo.png"/>
 <h1>Join Cosmic Rejex Camp</h1>
 <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
 </header>
@@ -2011,9 +2064,9 @@ input:checked + .slider:before {
 <section class="section emo-border" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;">
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
 <div class="title-container">
-<img alt="Crew Left Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Left.png"/>
+<img alt="Crew Left Icon" class="title-image wiggle" src="images/Join_Us_Html/Roles_Container/Alien_Left.png"/>
 <img alt="Crew Title Icon" class="title-image crew-title" src="images/Join_Us_Html/Roles_Container/Join_Our_Cult_Crewz.png"/>
-<img alt="Crew Right Icon" class="title-image" src="images/Join_Us_Html/Roles_Container/Alien_Right.png"/>
+<img alt="Crew Right Icon" class="title-image wiggle" src="images/Join_Us_Html/Roles_Container/Alien_Right.png"/>
 </div><a id="roles-info"></a>
 <a id="roles-info"></a>
 <p style="; margin-top: 40px;">We're always looking for passionate people to join our camp. Check out the roles below and apply to be part of Cosmic Rejex!</p><div class="roles-grid" ondragover="allowDrop(event)" ondrop="dropRoles(event)"><div class="role" data-draggable="true" ondragstart="drag(event)">
