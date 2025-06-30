@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6353,7 +6354,96 @@ document.querySelectorAll('.t396__elem').forEach(function(elem) {
     elem.appendChild(closeButton);
   }
 });
-</script></body>
+</script>
+<!-- Autoplay background music with emo/cult themed controls -->
+<audio id="background-audio" autoplay loop>
+  <source src="https://raw.githubusercontent.com/ShanonRichards/Kiwiburn-Camp/main/Music/ADayToRememberAllMyFriends.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<div id="audio-controls">
+  <button onclick="togglePlay()" id="play-btn">💀 Pause</button>
+  <label for="volume">🎧</label>
+  <input type="range" id="volume" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
+</div>
+
+<style>
+  #audio-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(20, 0, 20, 0.95);
+    padding: 12px 18px;
+    border-radius: 12px;
+    color: #f8e1b4;
+    z-index: 1000;
+    font-family: 'Special Elite', cursive;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 0 15px #ef75ad, 0 0 30px rgba(239, 117, 173, 0.5);
+    border: 2px solid #ef75ad;
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  #audio-controls button {
+    background: #ef75ad;
+    border: none;
+    color: #2b1b0f;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-family: 'Creepster', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  }
+
+  #audio-controls button:hover {
+    background: #ff98c6;
+    transform: scale(1.05);
+    box-shadow: 0 0 8px #ef75ad, 0 0 16px #ef75ad;
+  }
+
+  #audio-controls input[type="range"] {
+    accent-color: #ef75ad;
+    cursor: pointer;
+  }
+
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px #ef75ad; }
+    50% { box-shadow: 0 0 25px #ef75ad, 0 0 40px #ef75ad; }
+    100% { box-shadow: 0 0 10px #ef75ad; }
+  }
+</style>
+
+<script>
+  const audio = document.getElementById('background-audio');
+  const playBtn = document.getElementById('play-btn');
+
+  function togglePlay() {
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = '💀 Pause';
+    } else {
+      audio.pause();
+      playBtn.textContent = '💀 Play';
+    }
+  }
+
+  function setVolume(value) {
+    audio.volume = value;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      audio.autoplay = false;
+      audio.pause();
+      playBtn.textContent = '💀 Play';
+    }
+  });
+</script>
+
+</body>
 </html>
 <script>
   $(function() {
