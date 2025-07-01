@@ -1,6 +1,7 @@
 
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -1858,11 +1859,72 @@ body {
   border: 1px solid #27ae60;
 }
 
+
+.omen-banner {
+  position: relative;
+  height: 60vh;
+  background: url('images/Join_Us_Html/Join_Us_Banner/Upscall_Image.png') center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  margin-top: -20px;
+  z-index: 1;
+}
+
+.omen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.5);
+  z-index: 2;
+}
+
+.omen-logo {
+  position: relative;
+  z-index: 3;
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.omen-content {
+  position: relative;
+  z-index: 3;
+  color: #f8e1b4;
+  text-shadow: 0 0 10px #f39c12, 0 0 20px #e67e22;
+}
+
+.omen-content h1 {
+  font-family: 'Creepster', cursive;
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.omen-content p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.omen-button {
+  background: #e67e22;
+  color: #2b1b0f;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2em;
+  text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.omen-button:hover {
+  background: #f39c12;
+  box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
+}
 </style>
-
-
-
-
 <style>
 @keyframes red-glow-wiggle {
   0% {
@@ -1891,7 +1953,6 @@ body {
   display: inline-block;
 }
 </style>
-
 <style>
 .modal-content textarea,
 .modal-content input[type='text'] {
@@ -2006,19 +2067,19 @@ input:checked + .slider:before {
 <button onclick="saveNewsletterDetails()">Save</button>
 </div>
 </div>
-
 <!-- 🔮 Ominous Cult Section -->
+
 <section class="omen-banner">
-  <div class="omen-overlay"></div>
-  <div class="omen-content">
-    <h1 class="glow-omen">Enter the Circle</h1>
-    <p>Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
-    <a href="#roles" class="omen-button">Apply Now</a>
-  </div>
-  <!-- 🔊 Optional ambient chant -->
-  <audio autoplay loop hidden>
-    <source src="sounds/ambient_fire_loop.mp3" type="audio/mpeg">
-  </audio>
+<div class="omen-overlay"></div>
+<img alt="Cosmic Rejex Logo" class="omen-logo" src="images/Webpage_Bar_Icons/Emo_Heart.png"/>
+<div class="omen-content">
+<h1 class="glow-omen">Enter the Circle</h1>
+<p>Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
+<a class="omen-button" href="#roles">Apply Now</a>
+</div>
+<audio autoplay="" hidden="" loop="">
+<source src="sounds/ambient_fire_loop.mp3" type="audio/mpeg"/>
+</audio>
 </section>
 
 <div class="roles-container">
@@ -2299,75 +2360,71 @@ input:checked + .slider:before {
 <label>Which camp role are you interested in filling?</label>
 <select id="role-select" name="role" required="">
 <option value="">-- Undecided / Open to Any Role --</option>
-  <option value="Art &amp; Workshop Lead">Art &amp; Workshop Lead</option>
-  <option value="Build Crew">Build Crew</option>
-  <option value="Build Lead">Build Lead</option>
-  <option value="Chief Vibe Inspector">Chief Vibe Inspector</option>
-  <option value="Comms Lead">Comms Lead</option>
-  <option value="Cuddle Puddle Coordinator">Cuddle Puddle Coordinator</option>
-  <option value="Decoration Crew / Décor Lead">Decoration Crew / Décor Lead</option>
-  <option value="Deputy Lead">Deputy Lead</option>
-  <option value="First Aid Officer">First Aid Officer</option>
-  <option value="Fundraising Lead">Fundraising Lead</option>
-  <option value="Gift Lead / Swag Wrangler">Gift Lead / Swag Wrangler</option>
-  <option value="Greeter">Greeter</option>
-  <option value="Inclusion Officer">Inclusion Officer</option>
-  <option value="Lighting Lead">Lighting Lead</option>
-  <option value="Logistics &amp; Build Lead">Logistics &amp; Build Lead</option>
-  <option value="Logistics Lead">Logistics Lead</option>
-  <option value="MOOP Manager">MOOP Manager</option>
-  <option value="Power/Tech Lead">Power/Tech Lead</option>
-  <option value="Public Relations / Outreach Lead">Public Relations / Outreach Lead</option>
-  <option value="Ritual Master / Cult Coordinator">Ritual Master / Cult Coordinator</option>
-  <option value="Safety Officer">Safety Officer</option>
-  <option value="Social Media Lead">Social Media Lead</option>
-  <option value="Sound Lead">Sound Lead</option>
-  <option value="Strike Lead">Strike Lead</option>
-  <option value="Sustainability Lead">Sustainability Lead</option>
-  <option value="Transport Lead">Transport Lead</option>
-  <option value="Vibe Manager">Vibe Manager</option>
-  <option value="Volunteer Coordinator">Volunteer Coordinator</option>
-  <option value="Wellbeing Officer">Wellbeing Officer</option>
-  <option value="Workshop Coordinator">Workshop Coordinator</option>
+<option value="Art &amp; Workshop Lead">Art &amp; Workshop Lead</option>
+<option value="Build Crew">Build Crew</option>
+<option value="Build Lead">Build Lead</option>
+<option value="Chief Vibe Inspector">Chief Vibe Inspector</option>
+<option value="Comms Lead">Comms Lead</option>
+<option value="Cuddle Puddle Coordinator">Cuddle Puddle Coordinator</option>
+<option value="Decoration Crew / Décor Lead">Decoration Crew / Décor Lead</option>
+<option value="Deputy Lead">Deputy Lead</option>
+<option value="First Aid Officer">First Aid Officer</option>
+<option value="Fundraising Lead">Fundraising Lead</option>
+<option value="Gift Lead / Swag Wrangler">Gift Lead / Swag Wrangler</option>
+<option value="Greeter">Greeter</option>
+<option value="Inclusion Officer">Inclusion Officer</option>
+<option value="Lighting Lead">Lighting Lead</option>
+<option value="Logistics &amp; Build Lead">Logistics &amp; Build Lead</option>
+<option value="Logistics Lead">Logistics Lead</option>
+<option value="MOOP Manager">MOOP Manager</option>
+<option value="Power/Tech Lead">Power/Tech Lead</option>
+<option value="Public Relations / Outreach Lead">Public Relations / Outreach Lead</option>
+<option value="Ritual Master / Cult Coordinator">Ritual Master / Cult Coordinator</option>
+<option value="Safety Officer">Safety Officer</option>
+<option value="Social Media Lead">Social Media Lead</option>
+<option value="Sound Lead">Sound Lead</option>
+<option value="Strike Lead">Strike Lead</option>
+<option value="Sustainability Lead">Sustainability Lead</option>
+<option value="Transport Lead">Transport Lead</option>
+<option value="Vibe Manager">Vibe Manager</option>
+<option value="Volunteer Coordinator">Volunteer Coordinator</option>
+<option value="Wellbeing Officer">Wellbeing Officer</option>
+<option value="Workshop Coordinator">Workshop Coordinator</option>
 </select>
-
-
 <label for="secondary-role">If your chosen role is filled or you’d like to take on a second responsibility, which other role would you be open to?</label>
 <select id="secondary-role" name="Secondary Role">
-<option value="N/A" selected>-- N/A (No Second Role) --</option>
-  <option value="Art &amp; Workshop Lead">Art &amp; Workshop Lead</option>
-  <option value="Build Crew">Build Crew</option>
-  <option value="Build Lead">Build Lead</option>
-  <option value="Chief Vibe Inspector">Chief Vibe Inspector</option>
-  <option value="Comms Lead">Comms Lead</option>
-  <option value="Cuddle Puddle Coordinator">Cuddle Puddle Coordinator</option>
-  <option value="Decoration Crew / Décor Lead">Decoration Crew / Décor Lead</option>
-  <option value="Deputy Lead">Deputy Lead</option>
-  <option value="First Aid Officer">First Aid Officer</option>
-  <option value="Fundraising Lead">Fundraising Lead</option>
-  <option value="Gift Lead / Swag Wrangler">Gift Lead / Swag Wrangler</option>
-  <option value="Greeter">Greeter</option>
-  <option value="Inclusion Officer">Inclusion Officer</option>
-  <option value="Lighting Lead">Lighting Lead</option>
-  <option value="Logistics &amp; Build Lead">Logistics &amp; Build Lead</option>
-  <option value="Logistics Lead">Logistics Lead</option>
-  <option value="MOOP Manager">MOOP Manager</option>
-  <option value="Power/Tech Lead">Power/Tech Lead</option>
-  <option value="Public Relations / Outreach Lead">Public Relations / Outreach Lead</option>
-  <option value="Ritual Master / Cult Coordinator">Ritual Master / Cult Coordinator</option>
-  <option value="Safety Officer">Safety Officer</option>
-  <option value="Social Media Lead">Social Media Lead</option>
-  <option value="Sound Lead">Sound Lead</option>
-  <option value="Strike Lead">Strike Lead</option>
-  <option value="Sustainability Lead">Sustainability Lead</option>
-  <option value="Transport Lead">Transport Lead</option>
-  <option value="Vibe Manager">Vibe Manager</option>
-  <option value="Volunteer Coordinator">Volunteer Coordinator</option>
-  <option value="Wellbeing Officer">Wellbeing Officer</option>
-  <option value="Workshop Coordinator">Workshop Coordinator</option>
+<option selected="" value="N/A">-- N/A (No Second Role) --</option>
+<option value="Art &amp; Workshop Lead">Art &amp; Workshop Lead</option>
+<option value="Build Crew">Build Crew</option>
+<option value="Build Lead">Build Lead</option>
+<option value="Chief Vibe Inspector">Chief Vibe Inspector</option>
+<option value="Comms Lead">Comms Lead</option>
+<option value="Cuddle Puddle Coordinator">Cuddle Puddle Coordinator</option>
+<option value="Decoration Crew / Décor Lead">Decoration Crew / Décor Lead</option>
+<option value="Deputy Lead">Deputy Lead</option>
+<option value="First Aid Officer">First Aid Officer</option>
+<option value="Fundraising Lead">Fundraising Lead</option>
+<option value="Gift Lead / Swag Wrangler">Gift Lead / Swag Wrangler</option>
+<option value="Greeter">Greeter</option>
+<option value="Inclusion Officer">Inclusion Officer</option>
+<option value="Lighting Lead">Lighting Lead</option>
+<option value="Logistics &amp; Build Lead">Logistics &amp; Build Lead</option>
+<option value="Logistics Lead">Logistics Lead</option>
+<option value="MOOP Manager">MOOP Manager</option>
+<option value="Power/Tech Lead">Power/Tech Lead</option>
+<option value="Public Relations / Outreach Lead">Public Relations / Outreach Lead</option>
+<option value="Ritual Master / Cult Coordinator">Ritual Master / Cult Coordinator</option>
+<option value="Safety Officer">Safety Officer</option>
+<option value="Social Media Lead">Social Media Lead</option>
+<option value="Sound Lead">Sound Lead</option>
+<option value="Strike Lead">Strike Lead</option>
+<option value="Sustainability Lead">Sustainability Lead</option>
+<option value="Transport Lead">Transport Lead</option>
+<option value="Vibe Manager">Vibe Manager</option>
+<option value="Volunteer Coordinator">Volunteer Coordinator</option>
+<option value="Wellbeing Officer">Wellbeing Officer</option>
+<option value="Workshop Coordinator">Workshop Coordinator</option>
 </select>
-
-
 <div class="name-container">
 <div>
 <label>Full Name</label>
@@ -2573,7 +2630,6 @@ input:checked + .slider:before {
 </form>
 </div>
 </div>
-
 <script>
     let currentPage = 1;
     const totalPages = 13;
@@ -3216,17 +3272,15 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="newsletter-popup">
 <button class="toggle-newsletter">Stay in Touch</button>
 <div class="newsletter-wrapper">
-  <h3 style="font-family: 'Bebas Neue', cursive; font-size: 1.1rem; color: #f8e1b4; text-shadow: 0 0 5px #000; margin-bottom: 4px;">STAY IN TOUCH</h3>
-  <p style="font-family: 'Roboto', sans-serif; font-size: 0.8rem; color: #f8e1b4; margin-bottom: 8px;">Stay up to date on upcoming events.</p>
-  <form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
-    <input name="email" placeholder="Enter your email" required type="email"
-      style="color: black; font-size: 0.85rem; padding: 8px; margin-bottom: 10px; border: 1px solid #f39c12; border-radius: 4px; width: 100%;" />
-    <input type="hidden" name="_subject" value="New Newsletter Signup!" />
-    <button
-      style="background-color: #f39c12; color: #000; font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.85rem; border-radius: 4px; padding: 10px; border: none; width: 100%; margin-top: 4px;">
+<h3 style="font-family: 'Bebas Neue', cursive; font-size: 1.1rem; color: #f8e1b4; text-shadow: 0 0 5px #000; margin-bottom: 4px;">STAY IN TOUCH</h3>
+<p style="font-family: 'Roboto', sans-serif; font-size: 0.8rem; color: #f8e1b4; margin-bottom: 8px;">Stay up to date on upcoming events.</p>
+<form action="https://formsubmit.co/shanonrichards@windowslive.com" method="POST">
+<input name="email" placeholder="Enter your email" required="" style="color: black; font-size: 0.85rem; padding: 8px; margin-bottom: 10px; border: 1px solid #f39c12; border-radius: 4px; width: 100%;" type="email"/>
+<input name="_subject" type="hidden" value="New Newsletter Signup!"/>
+<button style="background-color: #f39c12; color: #000; font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 0.85rem; border-radius: 4px; padding: 10px; border: none; width: 100%; margin-top: 4px;">
       SUBSCRIBE
     </button>
-  </form>
+</form>
 </div>
 </div>
 </div>
@@ -3275,16 +3329,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
 <footer class="site-footer">
-  <div class="footer-container">
-    <p>&copy; 2025 Cosmic Rejex. Built with love for the Burn. 🌌</p>
-    <div class="footer-links">
-      <a href="contact.html">Contact</a>
-      <a href="FAQ.html">FAQ</a>
-      <a href="https://kiwiburn.com" target="_blank" rel="noopener noreferrer">Kiwiburn</a>
-    </div>
-  </div>
+<div class="footer-container">
+<p>© 2025 Cosmic Rejex. Built with love for the Burn. 🌌</p>
+<div class="footer-links">
+<a href="contact.html">Contact</a>
+<a href="FAQ.html">FAQ</a>
+<a href="https://kiwiburn.com" rel="noopener noreferrer" target="_blank">Kiwiburn</a>
+</div>
+</div>
 </footer>
 <style>
   .site-footer {
@@ -3428,7 +3481,6 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 </style>
-
 <script>
 function toggleNewsletter() {
   const newsletter = document.querySelector('.newsletter-wrapper');
@@ -3438,6 +3490,5 @@ function toggleNewsletter() {
   }
 }
 </script>
-
 </body>
 </html>
