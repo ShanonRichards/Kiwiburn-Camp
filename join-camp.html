@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2009,6 +2010,20 @@ input:checked + .slider:before {
 <h1>Join Cosmic Rejex Camp</h1>
 <p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
 </header>
+<!-- 🔮 Ominous Cult Section -->
+<section class="omen-banner">
+  <div class="omen-overlay"></div>
+  <div class="omen-content">
+    <h1 class="glow-omen">Enter the Circle</h1>
+    <p>Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
+    <a href="#apply" class="omen-button">Apply Now</a>
+  </div>
+  <!-- 🔊 Optional ambient chant -->
+  <audio autoplay loop hidden>
+    <source src="sounds/ambient_fire_loop.mp3" type="audio/mpeg">
+  </audio>
+</section>
+
 <div class="roles-container">
 <section class="section emo-border" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;">
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
@@ -3340,6 +3355,79 @@ document.addEventListener("DOMContentLoaded", function () {
 .wiggle {
   animation: wiggle 3s ease-in-out infinite;
   display: inline-block;
+}
+
+
+/* 🔥 Cult Omen Vibe Section */
+.omen-banner {
+  position: relative;
+  background: url('images/Join_Us_Html/Joins_Us_Background/ominous_fire_loop.webp') center/cover no-repeat fixed;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f8e1b4;
+  font-family: 'Creepster', cursive;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.omen-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(200, 0, 0, 0.2) 0%, transparent 70%);
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+
+.omen-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.glow-omen {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  animation: omen-glow 3s ease-in-out infinite alternate;
+  text-shadow: 0 0 10px red, 0 0 20px crimson, 0 0 30px darkred;
+}
+
+.omen-content p {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.2rem;
+  color: #f8e1b4;
+  margin-bottom: 30px;
+}
+
+.omen-button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid #f8e1b4;
+  color: #f8e1b4;
+  font-family: 'Bebas Neue', cursive;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.omen-button:hover {
+  background: rgba(255, 0, 0, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px red, 0 0 20px crimson;
+}
+
+@keyframes omen-glow {
+  from {
+    text-shadow: 0 0 10px red, 0 0 20px crimson;
+  }
+  to {
+    text-shadow: 0 0 25px red, 0 0 40px darkred;
+  }
 }
 
 </style>
