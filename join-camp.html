@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1922,6 +1923,23 @@ body {
   background: #f39c12;
   box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
 }
+
+.filled-name {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #2ecc71;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1rem;
+  margin-top: auto;
+  pointer-events: none;
+  cursor: default;
+  animation: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
 </style>
 <style>
 @keyframes red-glow-wiggle {
@@ -2102,7 +2120,7 @@ input:checked + .slider:before {
 <div class="tooltip">
 <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
 </div>
-<div class="apply-button" style="pointer-events: none; cursor: default; background-color: #2ecc71; color: #ffffff;">Shanon Richards</div>
+<div class="filled-name">Shanon Richards</div>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
 </div><div class="role" data-draggable="true" ondragstart="drag(event)">
@@ -2112,7 +2130,7 @@ input:checked + .slider:before {
 <div class="tooltip">
 <p>Plans shared meals and food storage. Oversees cooking, cleaning and food rosters effectively.</p>
 </div>
-<div class="apply-button" style="pointer-events: none; cursor: default; background-color: #2ecc71; color: #ffffff;">Alana Stewart</div>
+<div class="filled-name">Alana Stewart</div>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
 </div><div class="role" data-draggable="true" ondragstart="drag(event)">
