@@ -1,7 +1,7 @@
 
 
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -1024,8 +1024,7 @@ body.night-mode .dropdown-menu {
   width: 160px;
   box-sizing: border-box;
   margin: 0 auto;
-
-  border: 2px solid #ccc;}
+}
 
     .role:hover {
       box-shadow: 0 6px 12px rgba(230, 126, 34, 0.5), 0 0 15px #e67e22, 0 0 25px #f39c12;
@@ -1593,8 +1592,7 @@ footer {
   width: 160px;
   box-sizing: border-box;
   margin: 0 auto;
-
-  border: 2px solid #ccc;}
+}
 
       .role img {
         width: 60px;
@@ -1716,8 +1714,7 @@ footer {
   width: 160px;
   box-sizing: border-box;
   margin: 0 auto;
-
-  border: 2px solid #ccc;}
+}
 
       .role img {
         width: 50px;
@@ -1865,7 +1862,7 @@ body {
 
 .omen-banner {
   position: relative;
-  height: 400px;
+  height: 600px;
   background: url('images/Join_Us_Html/Join_Us_Banner/Upscall_Image.png') center/cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -1890,7 +1887,7 @@ body {
 .omen-logo {
   position: relative;
   z-index: 3;
-  max-width: 150px;
+  max-width: 660px;
   margin-bottom: 20px;
 }
 
@@ -2088,17 +2085,23 @@ input:checked + .slider:before {
 </div>
 </div>
 <!-- 🔮 Ominous Cult Section -->
+
 <!-- Updated banner section -->
+
 <!-- Updated banner section with corrected banner background -->
 <section class="omen-banner" style="background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner_Dark_Version.png') center/cover no-repeat;">
-<div class="omen-overlay"></div>
-<img alt="Cosmic Rejex Logo" class="omen-logo" src="images/Join_Us_Html/Join_Us_Logo/Cosmic_Rejex_Cult_Logo.png"/>
-<div class="omen-content">
-<h1 class="glow-omen">Enter the Circle</h1>
-<p>Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
-<a class="omen-button" href="#roles">Apply Now</a>
-</div>
+  <div class="omen-overlay"></div>
+  <img alt="Cosmic Rejex Logo" class="omen-logo" src="images/Join_Us_Html/Join_Us_Logo/Cosmic_Rejex_Cult_Logo.png" style="max-width: 660px; width: 100%; height: auto;" />
+    src="images/Join_Us_Html/Join_Us_Logo/Cosmic_Rejex_Cult_Logo.png"
+  />
+  <div class="omen-content">
+    <h1 class="glow-omen">Enter the Circle</h1>
+    <p>Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
+    <a class="omen-button" href="#roles">Apply Now</a>
+  </div>
 </section>
+
+
 <div class="roles-container">
 <section class="section emo-border" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;">
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
@@ -2135,198 +2138,220 @@ input:checked + .slider:before {
 <div class="tooltip">
 <p>Plans camp layout, manages ride shares, carpools, and essential gear.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Logistics &amp; Build Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Logistics &amp; Build Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Build Crew Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Build-Crew.png"/>
 <h3>Build Crew</h3>
 <div class="tooltip">
 <p>Builds shade, tents, and layout. Manages power, water, and camp infrastructure.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Build Crew')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Build Crew')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Deputy Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Deputy-Leads.png"/>
 <h3>Deputy Lead</h3>
 <div class="tooltip">
 <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Deputy Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Deputy Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Build Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Build-Lead.png"/>
 <h3>Build Lead</h3>
 <div class="tooltip">
 <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Build Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Build Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Vibe Manager Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Vibe-Managers.png"/>
 <h3>Vibe Manager</h3>
 <div class="tooltip">
 <p>Creates safe spaces and emotional support. Fosters connection, inclusion, and belonging always.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Vibe Manager')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Vibe Manager')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Logistics Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Logistics-Lead.png"/>
 <h3>Logistics Lead</h3>
 <div class="tooltip">
 <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Logistics Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Logistics Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Sound Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Sound-Lead.png"/>
 <h3>Sound Lead</h3>
 <div class="tooltip">
 <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Sound Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Sound Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Transport Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Transport-Lead.png"/>
 <h3>Transport Lead</h3>
 <div class="tooltip">
 <p>Organizes and manages the transport of camp gear, ensuring safe delivery to and from Kiwiburn.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Transport Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Transport Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Art &amp; Workshop Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Arts-&amp;-Workshop-Lead.png"/>
 <h3>Art &amp; Workshop Lead</h3>
 <div class="tooltip">
 <p>Manages camp art and workshops. Supports artists, event hosts, and creative materials fully.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Art &amp; Workshop Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Art &amp; Workshop Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Wellbeing Officer Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Wellbeing-Officers.png"/>
 <h3>Wellbeing Officer</h3>
 <div class="tooltip">
 <p>Checks mental health and group dynamics. Provides active listening and support consistently.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Wellbeing Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Wellbeing Officer')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Greeter Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Greeters.png"/>
 <h3>Greeter</h3>
 <div class="tooltip">
 <p>Welcomes arrivals, gives orientations, and helps everyone feel at home right—all wrapped in a cozy, laid-back vibe. You’re always welcome.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Greeter')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Greeter')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Strike Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Strike-Lead.png"/>
 <h3>Strike Lead</h3>
 <div class="tooltip">
 <p>Organizes pack-down, cleanup, and Leave No Trace. Ensures gear is sorted and returned well.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Strike Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Strike Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Comms Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Comms-Lead.png"/>
 <h3>Comms Lead</h3>
 <div class="tooltip">
 <p>Sends key info, updates, and reminders. Keeps everyone connected and informed consistently.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Comms Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Comms Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Safety Officer Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Safety-Officer.png"/>
 <h3>Safety Officer</h3>
 <div class="tooltip">
 <p>Ensures camp safety, fire protocols, and first-aid basics. Supports emergency readiness well.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Safety Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Safety Officer')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="MOOP Manager Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Moop-Manager.png"/>
 <h3>MOOP Manager</h3>
 <div class="tooltip">
 <p>Organizes cleanup and daily MOOP sweeps.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('MOOP Manager')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('MOOP Manager')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Power/Tech Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Power_Tech_Lead.png"/>
 <h3>Power/Tech Lead</h3>
 <div class="tooltip">
 <p>Manages power, lighting, and tech systems. Handles setup, maintenance, and issues promptly.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Power/Tech Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Power/Tech Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Social Media Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Social-Media-Lead.png"/>
 <h3>Social Media Lead</h3>
 <div class="tooltip">
 <p>Manages the camp’s online presence, posting updates and engaging with the community.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Social Media Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Social Media Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Fundraising Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Fundraising-Lead.png"/>
 <h3>Fundraising Lead</h3>
 <div class="tooltip">
 <p>Coordinates fundraising efforts to support camp costs and creative projects.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Fundraising Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Fundraising Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Sustainability Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Sustainability_Lead.png"/>
 <h3>Sustainability Lead</h3>
 <div class="tooltip">
 <p>Promotes eco-friendly practices, manages recycling, and ensures the camp aligns with Leave No Trace principles.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Sustainability Lead')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Sustainability Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Inclusion Officer Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Inclusion_Officer.png"/>
 <h3>Inclusion Officer</h3>
 <div class="tooltip">
 <p>Ensures the camp is welcoming to all, addressing accessibility and diversity needs.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Inclusion Officer')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Inclusion Officer')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Workshop Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Workshop-Coordinator.png"/>
 <h3>Workshop Coordinator</h3>
 <div class="tooltip">
 <p>Organizes and promotes workshops, ensuring materials and schedules are ready.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Workshop Coordinator')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Workshop Coordinator')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)">
+</div><div class="role" data-draggable="true" ondragstart="drag(event)">
 <div class="role-status">Open</div>
 <img alt="Volunteer Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Volunteer-Coordinator.png"/>
 <h3>Volunteer Coordinator</h3>
 <div class="tooltip">
 <p>Assigns &amp; tracks camp duties (kitchen, cleanup), ensuring fair participation.</p>
 </div>
+<a class="apply-button" href="#apply" onclick="selectRole('Volunteer Coordinator')">Apply for Role</a>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
-<a class="apply-button" href="#apply" onclick="selectRole('Volunteer Coordinator')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Public Relations / Outreach Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Public-Relations-Outreach-Lead.png"/><h3 style="font-size: 1.2em;">Public Relations / Outreach Lead</h3><div class="tooltip"><p>Coordinates with other camps or Kiwiburn leads.</p></div><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button><a class="apply-button" href="#apply" onclick="selectRole('Public Relations / Outreach Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Gift Lead / Swag Wrangler Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Gift-Lead-Swag-Wrangler.png"/><h3>Gift Lead / Swag Wrangler</h3><div class="tooltip"><p>Organizes camp gifts or handmade swag to give out.</p></div><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button><a class="apply-button" href="#apply" onclick="selectRole('Gift Lead / Swag Wrangler')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="First Aid Officer Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/First-Aid-Officer.png"/><h3>First Aid Officer</h3><div class="tooltip"><p>Maintains first aid supplies and basic health support.</p></div><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button><a class="apply-button" href="#apply" onclick="selectRole('First Aid Officer')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Ritual Master / Cult Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Ritual-Master-Cult Coordinator.png"/><h3 style="font-size: 1.2em;">Ritual Master / Cult Coordinator</h3><div class="tooltip"><p>Leads camp ceremonies, initiations, or weird/fun traditions.</p></div><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button><a class="apply-button" href="#apply" onclick="selectRole('Ritual Master / Cult Coordinator')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Chief Vibe Inspector Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Chief-Vibe-Inspector.png"/><h3>Chief Vibe Inspector</h3><div class="tooltip"><p>Enforces good vibes through hugs, glitter, or sass.</p></div><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button><a class="apply-button" href="#apply" onclick="selectRole('Chief Vibe Inspector')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Lighting Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Lighting-Lead.png"/><h3>Lighting Lead</h3><div class="tooltip"><p>Sets up ambient or decorative lighting, solar lights, etc.</p></div><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button><a class="apply-button" href="#apply" onclick="selectRole('Lighting Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Decoration Crew / Décor Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Decoration-Crew-Décor-Lead.png"/><h3>Decoration Crew / Décor Lead</h3><div class="tooltip"><p>Oversees visuals and creative ambiance in camp.</p></div><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button><a class="apply-button" href="#apply" onclick="selectRole('Decoration Crew / Décor Lead')">Apply for Role</a></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Cuddle Puddle Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Cuddle-Puddle-Coordinator.png"/><h3>Cuddle Puddle Coordinator</h3><div class="tooltip"><p>Self-explanatory. Because, Kiwiburn, help keep the chill space setup and nice.</p></div><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button><a class="apply-button" href="#apply" onclick="selectRole('Cuddle Puddle Coordinator')">Apply for Role</a></div></div><div class="logged-in-only"><button class="edit-section-button" onclick="openModal('newsletter-modal')" style="display: block; margin: 40px auto 0 auto;">Edit Section</button></div></section>
+</div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Public Relations / Outreach Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Public-Relations-Outreach-Lead.png"/><h3 style="font-size: 1.2em;">Public Relations / Outreach Lead</h3><div class="tooltip"><p>Coordinates with other camps or Kiwiburn leads.</p></div><a class="apply-button" href="#apply" onclick="selectRole('Public Relations / Outreach Lead')">Apply for Role</a><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Gift Lead / Swag Wrangler Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Gift-Lead-Swag-Wrangler.png"/><h3>Gift Lead / Swag Wrangler</h3><div class="tooltip"><p>Organizes camp gifts or handmade swag to give out.</p></div><a class="apply-button" href="#apply" onclick="selectRole('Gift Lead / Swag Wrangler')">Apply for Role</a><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="First Aid Officer Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/First-Aid-Officer.png"/><h3>First Aid Officer</h3><div class="tooltip"><p>Maintains first aid supplies and basic health support.</p></div><a class="apply-button" href="#apply" onclick="selectRole('First Aid Officer')">Apply for Role</a><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Ritual Master / Cult Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Ritual-Master-Cult Coordinator.png"/><h3 style="font-size: 1.2em;">Ritual Master / Cult Coordinator</h3><div class="tooltip"><p>Leads camp ceremonies, initiations, or weird/fun traditions.</p></div><a class="apply-button" href="#apply" onclick="selectRole('Ritual Master / Cult Coordinator')">Apply for Role</a><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Chief Vibe Inspector Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Chief-Vibe-Inspector.png"/><h3>Chief Vibe Inspector</h3><div class="tooltip"><p>Enforces good vibes through hugs, glitter, or sass.</p></div><a class="apply-button" href="#apply" onclick="selectRole('Chief Vibe Inspector')">Apply for Role</a><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Lighting Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Lighting-Lead.png"/><h3>Lighting Lead</h3><div class="tooltip"><p>Sets up ambient or decorative lighting, solar lights, etc.</p></div><a class="apply-button" href="#apply" onclick="selectRole('Lighting Lead')">Apply for Role</a><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Decoration Crew / Décor Lead Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Decoration-Crew-Décor-Lead.png"/><h3>Decoration Crew / Décor Lead</h3><div class="tooltip"><p>Oversees visuals and creative ambiance in camp.</p></div><a class="apply-button" href="#apply" onclick="selectRole('Decoration Crew / Décor Lead')">Apply for Role</a><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button></div><div class="role" data-draggable="true" ondragstart="drag(event)"><div class="role-status">Open</div><img alt="Cuddle Puddle Coordinator Icon" src="images/Join_Us_Html/Roles-to-Be-Filled/Cuddle-Puddle-Coordinator.png"/><h3>Cuddle Puddle Coordinator</h3><div class="tooltip"><p>Self-explanatory. Because, Kiwiburn, help keep the chill space setup and nice.</p></div><a class="apply-button" href="#apply" onclick="selectRole('Cuddle Puddle Coordinator')">Apply for Role</a><button class="edit-button" onclick="openEditRoleModal(this)">✎</button><button class="delete-button" onclick="deleteRole(this)">×</button></div></div><div class="logged-in-only"><button class="edit-section-button" onclick="openModal('newsletter-modal')" style="display: block; margin: 40px auto 0 auto;">Edit Section</button></div></section>
 </div>
 <section class="section emo-border" id="apply">
 <h1 class="breathe-text">Apply to Join Cosmic Rejex</h1>
@@ -3485,6 +3510,7 @@ function toggleNewsletter() {
   }
 }
 </script>
+
 <script>
   function toggleMobileMenu() {
     const nav = document.querySelector('.nav-links');
@@ -3580,3 +3606,4 @@ function toggleNewsletter() {
 </body>
 </html>
 
+</html>
