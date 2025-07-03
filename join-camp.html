@@ -1,11 +1,15 @@
+
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta content="Join Cosmic Rejex Camp for Kiwiburn 2026. Apply to be part of our inclusive community." name="description"/>
 <meta content="Cosmic Rejex, Kiwiburn, join camp, apply, festival" name="keywords"/>
-<meta content="Cosmic Rejex" name="author"/>f
+<meta content="Cosmic Rejex" name="author"/>
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="index, follow" name="robots"/>
 <title>Join Cosmic Rejex Camp - Cosmic Rejex</title>
@@ -1860,15 +1864,15 @@ body {
 .omen-banner {
   position: relative;
   height: 400px;
-  width: 100%;
-  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner_Dark_Version.png') center/cover no-repeat;
+  background: url('images/Join_Us_Html/Join_Us_Banner/Upscall_Image.png') center/cover no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
   text-align: center;
-  padding-top: 50px;
+  margin-top: -20px;
+  z-index: 1;
 }
 
 .omen-overlay {
@@ -1884,7 +1888,7 @@ body {
 .omen-logo {
   position: relative;
   z-index: 3;
-  max-width: 660px;
+  max-width: 150px;
   margin-bottom: 20px;
 }
 
@@ -1920,23 +1924,6 @@ body {
 .omen-button:hover {
   background: #f39c12;
   box-shadow: 0 0 10px #e67e22, 0 0 20px #f39c12;
-}
-
-.filled-name {
-  display: inline-block;
-  padding: 8px 12px;
-  background-color: #2ecc71;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 5px;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 1rem;
-  margin-top: auto;
-  pointer-events: none;
-  cursor: default;
-  animation: none !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
 }
 </style>
 <style>
@@ -2082,22 +2069,18 @@ input:checked + .slider:before {
 </div>
 </div>
 <!-- 🔮 Ominous Cult Section -->
-
-<!-- Updated banner section -->
-
-<!-- Updated banner section with corrected banner background -->
-<section class="omen-banner" style="background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner_Dark_Version.png') center/cover no-repeat;">
-  <div class="omen-overlay"></div>
-  <img alt="Cosmic Rejex Logo" class="omen-logo" style="max-width: 220px; width: 100%; height: auto; margin-top: 50px;" />
-
-  <div class="omen-content">
-    <h1 class="glow-omen">Enter the Circle</h1>
-    <p>Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
-    
-  </div>
+<section class="omen-banner">
+<div class="omen-overlay"></div>
+<img alt="Cosmic Rejex Logo" class="omen-logo" src="images/Webpage_Bar_Icons/Emo_Heart.png"/>
+<div class="omen-content">
+<h1 class="glow-omen">Enter the Circle</h1>
+<p>Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
+<a class="omen-button" href="#roles">Apply Now</a>
+</div>
+<audio autoplay="" hidden="" loop="">
+<source src="sounds/ambient_fire_loop.mp3" type="audio/mpeg"/>
+</audio>
 </section>
-
-
 <div class="roles-container">
 <section class="section emo-border" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;">
 <button class="edit-section-button" onclick="openModal('members-modal')">Edit Section</button>
@@ -2114,7 +2097,7 @@ input:checked + .slider:before {
 <div class="tooltip">
 <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
 </div>
-<div class="filled-name">Shanon Richards</div>
+<div class="apply-button" style="pointer-events: none; cursor: default; background-color: #2ecc71; color: #ffffff;">Shanon Richards</div>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
 </div><div class="role" data-draggable="true" ondragstart="drag(event)">
@@ -2124,7 +2107,7 @@ input:checked + .slider:before {
 <div class="tooltip">
 <p>Plans shared meals and food storage. Oversees cooking, cleaning and food rosters effectively.</p>
 </div>
-<div class="filled-name">Alana Stewart</div>
+<div class="apply-button" style="pointer-events: none; cursor: default; background-color: #2ecc71; color: #ffffff;">Alana Stewart</div>
 <button class="edit-button" onclick="openEditRoleModal(this)">✎</button>
 <button class="delete-button" onclick="deleteRole(this)">×</button>
 </div><div class="role" data-draggable="true" ondragstart="drag(event)">
@@ -3427,16 +3410,15 @@ document.addEventListener("DOMContentLoaded", function () {
 /* 🔥 Cult Omen Vibe Section */
 .omen-banner {
   position: relative;
-  height: 400px;
-  width: 100%;
-  background: url('images/Join_Us_Html/Join_Us_Banner/Background_Banner_Dark_Version.png') center/cover no-repeat;
+  background: url('images/Join_Us_Html/Joins_Us_Background/ominous_fire_loop.webp') center/cover no-repeat fixed;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: center;
+  color: #f8e1b4;
+  font-family: 'Creepster', cursive;
   overflow: hidden;
-  text-align: center;
-  padding-top: 50px;
+  z-index: 1;
 }
 
 .omen-overlay {
