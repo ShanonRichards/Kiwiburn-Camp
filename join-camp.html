@@ -2010,8 +2010,8 @@ input:checked + .slider:before {
 </div>
 </div>
 <header class="header" id="join">
-<img alt="Cosmic Rejex Logo" class="header-logo glow" src="images/Join_Us_Html/Join_Us_Logo/Cosmic_Rejex_Cult_Logo.png"/>
-<h1 class="cosmic-glow" style="color: #f8e1b4; text-shadow: 0 0 10px #ec5048, 0 0 20px #ec5048;">Enter the Circle</h1>
+<img alt="Cosmic Rejex Logo" class="header-logo glow fire-glow" src="images/Join_Us_Html/Join_Us_Logo/Cosmic_Rejex_Cult_Logo.png"/>
+<h1 class="cosmic-glow fire-glow" style="color: #f8e1b4; text-shadow: 0 0 10px #ec5048, 0 0 20px #ec5048; filter: drop-shadow(0 0 6px #ff7043) drop-shadow(0 0 12px #ffc107);">Enter the Circle</h1>
 <p class="cosmic-glow" style="color: #f7dbad; text-shadow: 0 0 10px #f0b77c, 0 0 20px #f0b77c;">Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
 </header>
 <div class="roles-container">
@@ -3366,6 +3366,33 @@ document.addEventListener("DOMContentLoaded", function () {
 .cosmic-glow {
   animation: cosmic-glow-pulse 3s ease-in-out infinite;
   display: inline-block;
+}
+
+@keyframes fire-glow {
+  0% {
+    filter: drop-shadow(0 0 4px #ff5722) drop-shadow(0 0 8px #ff9800);
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    filter: drop-shadow(0 0 6px #ff7043) drop-shadow(0 0 12px #ffc107);
+    transform: scale(1.01) rotate(-1deg);
+  }
+  50% {
+    filter: drop-shadow(0 0 8px #ff5722) drop-shadow(0 0 16px #ffeb3b);
+    transform: scale(1.02) rotate(1deg);
+  }
+  75% {
+    filter: drop-shadow(0 0 6px #ff7043) drop-shadow(0 0 12px #ffc107);
+    transform: scale(1.01) rotate(-1deg);
+  }
+  100% {
+    filter: drop-shadow(0 0 4px #ff5722) drop-shadow(0 0 8px #ff9800);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.fire-glow {
+  animation: fire-glow 2s ease-in-out infinite;
 }
 </style>
 
