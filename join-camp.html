@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1936,6 +1937,35 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 </style>
+
+<style>
+.fire-glow-static {
+  filter: drop-shadow(0 0 8px #ff5722) drop-shadow(0 0 16px #ff9800) drop-shadow(0 0 24px #ffc107);
+  animation: flame-flicker 1.8s infinite ease-in-out;
+}
+
+@keyframes flame-flicker {
+  0% {
+    filter: drop-shadow(0 0 4px #ff5722) drop-shadow(0 0 8px #ff9800) drop-shadow(0 0 12px #ffc107);
+  }
+  20% {
+    filter: drop-shadow(0 0 6px #ff7043) drop-shadow(0 0 12px #ffa726) drop-shadow(0 0 18px #ffd54f);
+  }
+  40% {
+    filter: drop-shadow(0 0 8px #e65100) drop-shadow(0 0 14px #ffb300) drop-shadow(0 0 20px #ffe082);
+  }
+  60% {
+    filter: drop-shadow(0 0 5px #ff6f00) drop-shadow(0 0 10px #ff9800) drop-shadow(0 0 16px #ffcc80);
+  }
+  80% {
+    filter: drop-shadow(0 0 7px #ff3d00) drop-shadow(0 0 13px #ff9100) drop-shadow(0 0 22px #ffecb3);
+  }
+  100% {
+    filter: drop-shadow(0 0 4px #ff5722) drop-shadow(0 0 8px #ff9800) drop-shadow(0 0 12px #ffc107);
+  }
+}
+</style>
+
 </head>
 <body>
 <!-- ✅ Updates Applied:
@@ -2010,7 +2040,7 @@ input:checked + .slider:before {
 </div>
 </div>
 <header class="header" id="join">
-<img alt="Cosmic Rejex Logo" class="header-logo glow fire-glow" src="images/Join_Us_Html/Join_Us_Logo/Cosmic Rejex Cult.png"/>
+<img alt="Cosmic Rejex Logo" class="header-logo glow fire-glow-static" src="images/Join_Us_Html/Join_Us_Logo/Cosmic Rejex Cult.png"/>
 <h1 class="cosmic-glow fire-glow" style="color: #f8e1b4; text-shadow: 0 0 10px #ec5048, 0 0 20px #ec5048; filter: drop-shadow(0 0 6px #ff7043) drop-shadow(0 0 12px #ffc107);">Enter the Circle</h1>
 <p class="cosmic-glow" style="color: #f7dbad; text-shadow: 0 0 10px #f0b77c, 0 0 20px #f0b77c;">Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
 </header>
