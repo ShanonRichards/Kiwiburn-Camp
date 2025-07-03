@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2010,8 +2011,8 @@ input:checked + .slider:before {
 </div>
 <header class="header" id="join">
 <img alt="Cosmic Rejex Logo" class="header-logo glow" src="images/Join_Us_Html/Join_Us_Logo/Cosmic_Rejex_Cult_Logo.png"/>
-<h1>Join Cosmic Rejex Camp</h1>
-<p>Apply to become part of our inclusive community of emos, rockers, and dreamers at Kiwiburn 2026!</p>
+<h1 class="cosmic-glow" style="color: #f8e1b4; text-shadow: 0 0 10px #ec5048, 0 0 20px #ec5048;">Enter the Circle</h1>
+<p class="cosmic-glow" style="color: #f7dbad; text-shadow: 0 0 10px #f0b77c, 0 0 20px #f0b77c;">Join the chosen. Embrace the unknown. Your place awaits within Cosmic Rejex.</p>
 </header>
 <div class="roles-container">
 <section class="section emo-border" id="roles" style="background-color: #efddb6; border-radius: 12px; padding: 40px 20px;">
@@ -3346,6 +3347,26 @@ document.addEventListener("DOMContentLoaded", function () {
   display: inline-block;
 }
 
+
+@keyframes cosmic-glow-pulse {
+  0% {
+    text-shadow: 0 0 10px #ec5048, 0 0 20px #f0b77c;
+    color: #f8e1b4;
+  }
+  50% {
+    text-shadow: 0 0 20px #ec5048, 0 0 40px #f0b77c;
+    color: #f7dbad;
+  }
+  100% {
+    text-shadow: 0 0 10px #ec5048, 0 0 20px #f0b77c;
+    color: #f8e1b4;
+  }
+}
+
+.cosmic-glow {
+  animation: cosmic-glow-pulse 3s ease-in-out infinite;
+  display: inline-block;
+}
 </style>
 
 <script>
