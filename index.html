@@ -1,5 +1,6 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <link href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet"/>
@@ -2737,8 +2738,12 @@ Copy
   background-color: #fcda93 !important;
 }
 
-</style>
 
+.history-container,
+.setup-container {
+    background: #fcda93 !important;
+}
+</style>
 <style>
 .t396__carrier {
   background-attachment: scroll !important;
@@ -2761,7 +2766,6 @@ Copy
 }
 
 </style>
-
 </head>
 <body>
 <nav>
@@ -3799,18 +3803,16 @@ body.night-mode .about-description {
 <button class="edit-section-button" onclick="openModal('about-modal')">Edit Section</button>
 <div class="members-container">
 <section class="section" id="members">
-
 <div class="title-container">
-  <img class="title-icon" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Camp_Left.png" alt="Core Crew Icon">
-  <h1>Meet Our Core Camp Crew</h1>
-  <img class="title-icon" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Camp_Right.png" alt="Core Crew Icon">
+<img alt="Core Crew Icon" class="title-icon" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Camp_Left.png"/>
+<h1>Meet Our Core Camp Crew</h1>
+<img alt="Core Crew Icon" class="title-icon" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Camp_Right.png"/>
 </div>
-
 <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
 <div aria-label="Scroll members left" class="scroll-arrow left" data-grid="members" role="button">◄</div>
 <div aria-label="Scroll members right" class="scroll-arrow right" data-grid="members" role="button">►</div>
 <div class="member camp-lead" draggable="false" ondragstart="drag(event)">
-<img alt="Shanon Richards" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Shanon_Richards.png"/>
+<img alt="Shanon Richards" draggable="false" oncontextmenu="return false;" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Shanon_Richards.png" style="pointer-events: none; user-select: none"/>
 <h3>Shanon Richards</h3>
 <span>Camp Lead</span>
 <p>Oversees planning, forms, and execution. Manages policies, resources, and conflict resolution tasks.</p>
@@ -3818,7 +3820,7 @@ body.night-mode .about-description {
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
 <div class="member deputy-lead" draggable="false" ondragstart="drag(event)">
-<img alt="Meghan" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Meghan_Louise_Robson.png"/>
+<img alt="Meghan" draggable="false" oncontextmenu="return false;" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Meghan_Louise_Robson.png" style="pointer-events: none; user-select: none"/>
 <h3>Meghan Robson</h3>
 <span>Deputy Lead</span>
 <p>Supports Camp Lead, tracks tasks, timelines, and fills gaps. Ensures smooth operations flow daily.</p>
@@ -3826,7 +3828,7 @@ body.night-mode .about-description {
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
 <div class="member" draggable="false" ondragstart="drag(event)">
-<img alt="Russell" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Russell_Duffield.png"/>
+<img alt="Russell" draggable="false" oncontextmenu="return false;" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Russell_Duffield.png" style="pointer-events: none; user-select: none"/>
 <h3>Russell Duffield</h3>
 <span>Build Lead</span>
 <p>Leads camp setup, structures, and layout. Manages build crew, tools, and safety protocols well.</p>
@@ -3834,7 +3836,7 @@ body.night-mode .about-description {
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
 <div class="member" draggable="false" ondragstart="drag(event)">
-<img alt="Micheal" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Micheal_Dunstan.png"/>
+<img alt="Micheal" draggable="false" oncontextmenu="return false;" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Micheal_Dunstan.png" style="pointer-events: none; user-select: none"/>
 <h3>Micheal Dunstan</h3>
 <span>Logistics Lead</span>
 <p>Tracks gear, camp assets, and purchasing. Coordinates transport and supplies with efficiency.</p>
@@ -3842,7 +3844,7 @@ body.night-mode .about-description {
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
 <div class="member" draggable="false" ondragstart="drag(event)">
-<img alt="Tomas" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Tomas_Shelby.png"/>
+<img alt="Tomas" draggable="false" oncontextmenu="return false;" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Tomas_Shelby.png" style="pointer-events: none; user-select: none"/>
 <h3>Tomas Shelby</h3>
 <span>Sound Lead</span>
 <p>Manages camp music, DJs, and audio gear. Ensures the sound setup runs smoothly all the time.</p>
@@ -3850,7 +3852,7 @@ body.night-mode .about-description {
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
 <div class="member" draggable="false" ondragstart="drag(event)">
-<img alt="Alana" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Alana_Stewart.png"/>
+<img alt="Alana" draggable="false" oncontextmenu="return false;" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Alana_Stewart.png" style="pointer-events: none; user-select: none"/>
 <h3>Alana Stewart</h3>
 <span>Kitchen Lead</span>
 <p>Plans shared meals and food storage. Oversees cooking, cleaning, and food rosters effectively.</p>
@@ -3863,13 +3865,11 @@ body.night-mode .about-description {
 </div>
 <div class="mission-container">
 <section class="section" id="mission">
-
 <div class="title-container">
-  <img class="title-icon" src="images/Index-Html/Index_Page_Icons/Our_Mission_Icon.png" alt="Mission Icon">
-  <h1>Our Mission</h1>
-  <img class="title-icon" src="images/Index-Html/Index_Page_Icons/Our_Mission_Icon.png" alt="Mission Icon">
+<img alt="Mission Icon" class="title-icon" src="images/Index-Html/Index_Page_Icons/Our_Mission_Icon.png"/>
+<h1>Our Mission</h1>
+<img alt="Mission Icon" class="title-icon" src="images/Index-Html/Index_Page_Icons/Our_Mission_Icon.png"/>
 </div>
-
 <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
 <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
 <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
@@ -3882,7 +3882,6 @@ body.night-mode .about-description {
 <button class="save-button" onclick="uploadMissionImage()">Upload New Image</button>
 </section>
 </div>
-
 <style>
 /* Our Setup Section */
 .setup-container {
@@ -4204,14 +4203,14 @@ body.night-mode .setup-description {
 <div class="setup-item">
 <img alt="Chill Zone Setup" src="images/Our_Setup/Camping_Setup.jpg"/>
 <h3>Shared Space</h3>
-<div class="setup-description">
+<div class="setup-description" style="background: #fcda93">
 <p>We have a spacious 12x19m Double Star Party Tent — perfect for a covered dance floor and pole dancing. Additionally, there are three separate gazebos: one each for the DJ booth, chill zone, and kitchen area.</p>
 </div>
 </div>
 <div class="setup-item">
 <img src="images/"/>
 <h3>Sound Stage</h3>
-<div class="setup-description">
+<div class="setup-description" style="background: #fcda93">
 <p>Main Stage Sound setup for emo, punk &amp; DnB:
 •2× Mackie 15" (1400W)
 •2× Alto Pro 15" (2500W)
@@ -4221,28 +4220,28 @@ body.night-mode .setup-description {
 <div class="setup-item">
 <img alt="Art Installation" src="images/Our-Setup/Art_Installation.jpg"/>
 <h3>Art Installation</h3>
-<div class="setup-description">
+<div class="setup-description" style="background: #fcda93">
 <p>Alien-themed sculptures and interactive art pieces to spark creativity.</p>
 </div>
 </div>
 <div class="setup-item">
 <img alt="Kitchen Hub Setup" src="images/Index-Html/Index_Containers/Our_Setup/Open_Dj.jpg"/>
 <h3>Drop In &amp; DJ</h3>
-<div class="setup-description">
+<div class="setup-description" style="background: #fcda93">
 <p>Our camp offers an open-air DJ space where anyone can jump on the decks and share their sound. Whether you're a seasoned pro or just vibing, plug in and play — spontaneous sets, wild mixes, and dancefloor magic.</p>
 </div>
 </div>
 <div class="setup-item">
 <img alt="Communal Area" src="images/Index-Html/Index_Containers/Our_Setup/DJ_Zone.png"/>
 <h3>Sound Stage</h3>
-<div class="setup-description">
+<div class="setup-description" style="background: #fcda93">
 <p>The main stage sound setup features two 15" 1400W Mackie speakers, two 15" 2500W Alto Pro speakers, and three 18" 1200W Mackie Thump18S subwoofers—optimized for emo, punk, and DnB—alongside dynamic lighting effects including DJ lights, a fog machine, and more.</p>
 </div>
 </div>
 <div class="setup-item">
 <img alt="Workshop Space Setup" src="images/Index-Html/Index_Containers/Our_Setup/Chill_Zone.png"/>
 <h3>Chill Zone</h3>
-<div class="setup-description">
+<div class="setup-description" style="background: #fcda93">
 <p>A cozy and safe retreat tucked away at the back of our camp, opposite the DJ stand. This blacklight-lit neon space is filled with pillows, couches, bean bags, and fairy lights—perfect for relaxing and deep conversations.</p>
 </div>
 </div>
@@ -4781,21 +4780,21 @@ $(document).ready(function() {
 <div class="history-item">
 <img alt="Early Days of Cosmic Rejex" src="images/Index-Html/Index_Containers/Our_History/Kiwiburn_2022_smooth_loop.gif"/>
 <h3>The Early Days</h3>
-<div class="history-description">
+<div class="history-description" style="background: #fcda93">
 <p>Cosmic Rejex began as Cosmic Creatures and Camp Riddikulus before adopting its name in 2025, honoring former member Bede Max. It started with a small group of Kiwiburn regulars and newcomers brought together by a love for alternative music and self-expression. With just a few tents, a speaker, and a shared vision, we set out to build something bigger.</p>
 </div>
 </div>
 <div class="history-item">
 <img alt="First Sound Camp" src="images/Index-Html/Index_Containers/Our_History/Party_Camp.gif"/>
 <h3>The Sound Camp Era</h3>
-<div class="history-description">
+<div class="history-description" style="background: #fcda93">
 <p>By 2024, we had grown into a full-fledged sound camp with our roots in an emo night collaboration with R.A.T Camp. In 2025, we took over hosting, expanding into DJ sets featuring drum and bass and punk rock. Our team grew from 13 to 35, adding alien-themed art, a chill zone, and more, making Cosmic Rejex a true Kiwiburn fixture.</p>
 </div>
 </div>
 <div class="history-item">
 <img alt="Future Vision" src="images/Index-Html/Index_Containers/Our_History/Kiwiburn_Emo_Night.gif"/>
 <h3>The Future</h3>
-<div class="history-description">
+<div class="history-description" style="background: #fcda93">
 <p>Cosmic Rejex is now looking ahead to the next Kiwiburn, aiming to showcase more artwork and creative expression. We’re welcoming new members who share our love for emo, punk, and alternative music. Our focus is on growing the team, expanding roles, and building a space where artists and musicians can thrive. Join us and create freely.</p>
 </div>
 </div>
@@ -6356,17 +6355,15 @@ document.querySelectorAll('.t396__elem').forEach(function(elem) {
 });
 </script>
 <!-- Autoplay background music with emo/cult themed controls -->
-<audio id="background-audio" autoplay loop>
-  <source src="https://raw.githubusercontent.com/ShanonRichards/Kiwiburn-Camp/main/Music/A%20Day%20To%20Remember%20-%20All%20My%20Friends%20(Official%20Audio).mp3" type="audio/mpeg">
+<audio autoplay="" id="background-audio" loop="">
+<source src="https://raw.githubusercontent.com/ShanonRichards/Kiwiburn-Camp/main/Music/A%20Day%20To%20Remember%20-%20All%20My%20Friends%20(Official%20Audio).mp3" type="audio/mpeg"/>
   Your browser does not support the audio element.
 </audio>
-
 <div id="audio-controls">
-  <button onclick="togglePlay()" id="play-btn">💀 Pause</button>
-  <label for="volume">🎧</label>
-  <input type="range" id="volume" min="0" max="1" step="0.01" value="1" onchange="setVolume(this.value)">
+<button id="play-btn" onclick="togglePlay()">💀 Pause</button>
+<label for="volume">🎧</label>
+<input id="volume" max="1" min="0" onchange="setVolume(this.value)" step="0.01" type="range" value="1"/>
 </div>
-
 <style>
   #audio-controls {
     position: fixed;
@@ -6415,7 +6412,6 @@ document.querySelectorAll('.t396__elem').forEach(function(elem) {
     100% { box-shadow: 0 0 10px #ef75ad; }
   }
 </style>
-
 <script>
   const audio = document.getElementById('background-audio');
   const playBtn = document.getElementById('play-btn');
@@ -6442,7 +6438,6 @@ document.querySelectorAll('.t396__elem').forEach(function(elem) {
     }
   });
 </script>
-
 </body>
 </html>
 <script>
