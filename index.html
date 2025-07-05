@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -841,12 +842,12 @@ body.night-mode .dropdown-menu {
       60% { transform: translate(-50%, -5px); }
     }
 
-.section {
+.section { /* Removed orange lines at top and bottom */
   padding: 80px 20px;
   text-align: center;
   background: none; /* Remove background */
-  border-top: 1px solid #e67e22;
-  border-bottom: 1px solid #e67e22;
+  /* border-top: 1px solid #e67e22; */
+  /* border-bottom: 1px solid #e67e22; */
 }
 
 .section:nth-of-type(odd) {
@@ -2278,7 +2279,7 @@ body.night-mode .about-description {
         font-size: 1.2rem;
       }
 
-      .section {
+      .section { /* Removed orange lines at top and bottom */
         padding: 40px 15px;
       }
 
@@ -2311,7 +2312,7 @@ body.night-mode .about-description {
         display: block;
       }
 
-      .member, .role {
+      .member, .role { border-radius: 10px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); background-color: rgba(255, 255, 255, 0.1); border: 1px solid #e67e22; transition: box-shadow 0.3s ease, transform 0.3s ease;
         flex: 0 0 140px;
         scroll-snap-align: start;
         min-height: 240px;
@@ -2414,7 +2415,7 @@ Copy
     margin: 20px auto;
   }
 
-  .section {
+  .section { /* Removed orange lines at top and bottom */
     padding: 40px 15px;
   }
 }
@@ -2426,7 +2427,7 @@ Copy
     margin: 15px auto;
   }
 
-  .section {
+  .section { /* Removed orange lines at top and bottom */
     padding: 30px 10px;
   }
 }
@@ -2507,7 +2508,7 @@ Copy
         scroll-snap-type: x mandatory;
       }
 
-      .member, .role {
+      .member, .role { border-radius: 10px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); background-color: rgba(255, 255, 255, 0.1); border: 1px solid #e67e22; transition: box-shadow 0.3s ease, transform 0.3s ease;
         flex: 0 0 120px;
         scroll-snap-align: start;
         min-height: 200px;
@@ -2732,7 +2733,7 @@ Copy
 }
 
 
-.member, .role {
+.member, .role { border-radius: 10px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); background-color: rgba(255, 255, 255, 0.1); border: 1px solid #e67e22; transition: box-shadow 0.3s ease, transform 0.3s ease;
   background-color: #fcda93 !important;
 }
 
@@ -2755,7 +2756,7 @@ Copy
   transition: none !important;
 }
 
-.member, .role {
+.member, .role { border-radius: 10px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); background-color: rgba(255, 255, 255, 0.1); border: 1px solid #e67e22; transition: box-shadow 0.3s ease, transform 0.3s ease;
   background-color: #fcda93 !important;
 }
 
@@ -3790,7 +3791,7 @@ body.night-mode .about-description {
 }
 
 
-.member, .role {
+.member, .role { border-radius: 10px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); background-color: rgba(255, 255, 255, 0.1); border: 1px solid #e67e22; transition: box-shadow 0.3s ease, transform 0.3s ease;
   background-color: #fcda93 !important;
 }
 
@@ -3808,7 +3809,7 @@ body.night-mode .about-description {
 <div class="members-grid" ondragover="allowDrop(event)" ondrop="dropMembers(event)">
 <div aria-label="Scroll members left" class="scroll-arrow left" data-grid="members" role="button">◄</div>
 <div aria-label="Scroll members right" class="scroll-arrow right" data-grid="members" role="button">►</div>
-<div class="member camp-lead" draggable="true" ondragstart="drag(event)">
+<div class="member camp-lead" draggable="false" ondragstart="drag(event)">
 <img alt="Shanon Richards" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Shanon_Richards.png"/>
 <h3>Shanon Richards</h3>
 <span>Camp Lead</span>
@@ -3816,7 +3817,7 @@ body.night-mode .about-description {
 <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
-<div class="member deputy-lead" draggable="true" ondragstart="drag(event)">
+<div class="member deputy-lead" draggable="false" ondragstart="drag(event)">
 <img alt="Meghan" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Meghan_Louise_Robson.png"/>
 <h3>Meghan Robson</h3>
 <span>Deputy Lead</span>
@@ -3824,7 +3825,7 @@ body.night-mode .about-description {
 <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
-<div class="member" draggable="true" ondragstart="drag(event)">
+<div class="member" draggable="false" ondragstart="drag(event)">
 <img alt="Russell" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Russell_Duffield.png"/>
 <h3>Russell Duffield</h3>
 <span>Build Lead</span>
@@ -3832,7 +3833,7 @@ body.night-mode .about-description {
 <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
-<div class="member" draggable="true" ondragstart="drag(event)">
+<div class="member" draggable="false" ondragstart="drag(event)">
 <img alt="Micheal" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Micheal_Dunstan.png"/>
 <h3>Micheal Dunstan</h3>
 <span>Logistics Lead</span>
@@ -3840,7 +3841,7 @@ body.night-mode .about-description {
 <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
-<div class="member" draggable="true" ondragstart="drag(event)">
+<div class="member" draggable="false" ondragstart="drag(event)">
 <img alt="Tomas" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Tomas_Shelby.png"/>
 <h3>Tomas Shelby</h3>
 <span>Sound Lead</span>
@@ -3848,7 +3849,7 @@ body.night-mode .about-description {
 <button class="edit-button" onclick="openEditMemberModal(this)">✎</button>
 <button class="delete-button" onclick="deleteMember(this)">×</button>
 </div>
-<div class="member" draggable="true" ondragstart="drag(event)">
+<div class="member" draggable="false" ondragstart="drag(event)">
 <img alt="Alana" src="images/Index-Html/Index_Containers/Meet _Our _Core _Camp _Crew/Alana_Stewart.png"/>
 <h3>Alana Stewart</h3>
 <span>Kitchen Lead</span>
@@ -3872,7 +3873,7 @@ body.night-mode .about-description {
 <p>We exist to bring together creative humans who defy the norm, support each other, and build unforgettable moments at Kiwiburn.</p>
 <button class="edit-section-button" onclick="openModal('mission-modal')">Edit Section</button>
 <div class="gallery" id="mission-gallery" ondragover="allowDrop(event)" ondrop="dropMissionImage(event)">
-<div class="image-container" draggable="true" ondragstart="dragMissionImage(event)">
+<div class="image-container" draggable="false" ondragstart="dragMissionImage(event)">
 <img alt="Our Mission Camp Photo" src="images/Index-Html/Index_Containers/Our_Mission/Camp_Photo.jpg"/>
 <button class="edit-button" onclick="openGalleryImageModal(this, 'mission')">✎</button>
 <button class="delete-button" onclick="deleteMissionImage(this)">×</button>
@@ -4191,7 +4192,7 @@ body.night-mode .setup-description {
 }
 
 
-.member, .role {
+.member, .role { border-radius: 10px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); background-color: rgba(255, 255, 255, 0.1); border: 1px solid #e67e22; transition: box-shadow 0.3s ease, transform 0.3s ease;
   background-color: #fcda93 !important;
 }
 
@@ -5281,7 +5282,7 @@ $(document).ready(function() {
 }
 
 
-.member, .role {
+.member, .role { border-radius: 10px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); background-color: rgba(255, 255, 255, 0.1); border: 1px solid #e67e22; transition: box-shadow 0.3s ease, transform 0.3s ease;
   background-color: #fcda93 !important;
 }
 
